@@ -369,7 +369,7 @@
   background: var(--surface3);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 6px 4px;
+  padding: 6px 2px;
   text-align: center;
 }
 .stat-label { font-size: 9px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0; overflow: hidden; white-space: nowrap; }
