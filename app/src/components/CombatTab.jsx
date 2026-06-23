@@ -55,6 +55,13 @@ function buffAnnot(activeBuffs, ...keys) {
   return total !== 0 ? { total, title: parts.join(', ') } : null
 }
 
+function condAnnot(condMods, ...keys) {
+  if (!condMods) return null
+  let total = 0
+  for (const k of keys) total += Number(condMods[k] ?? 0)
+  return total !== 0 ? total : null
+}
+
 function BuffTag({ info }) {
   if (!info) return null
   return (
@@ -64,20 +71,31 @@ function BuffTag({ info }) {
   )
 }
 
-function StatBox({ label, value, sub, className, buffInfo }) {
+function CondTag({ value }) {
+  if (!value) return null
+  const pos = value > 0
+  return (
+    <span className={`cond-tag ${pos ? 'cond-pos' : 'cond-neg'}`} title="Zustand">
+      ⚡{pos ? `+${value}` : value}
+    </span>
+  )
+}
+
+function StatBox({ label, value, sub, className, buffInfo, condInfo }) {
   return (
     <div className={`stat-box${className ? ' ' + className : ''}`}>
       <div className="stat-label">{label}</div>
       <div className="stat-value-row">
         <div className="stat-value">{typeof value === 'number' ? fmtBonus(value) : value}</div>
         <BuffTag info={buffInfo} />
+        <CondTag value={condInfo} />
       </div>
       {sub && <div className="stat-sub">{sub}</div>}
     </div>
   )
 }
 
-function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, onNoteChange, notePlaceholder, lang, buffInfo }) {
+function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, onNoteChange, notePlaceholder, lang, buffInfo, condInfo }) {
   const L = lang === 'de'
   return (
     <div className="save-box">
@@ -86,6 +104,7 @@ function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, o
         <div className="save-total-wrap">
           <span className="save-total">{fmtBonus(total)}</span>
           <BuffTag info={buffInfo} />
+          <CondTag value={condInfo} />
         </div>
       </div>
       <div className="save-breakdown">
