@@ -181,7 +181,7 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className="topbar">
+      <header className={`topbar${barsHidden ? ' bars-hidden' : ''}`}>
         <div className="topbar-row1">
           <button
             className="topbar-icon-btn char-list-btn"
