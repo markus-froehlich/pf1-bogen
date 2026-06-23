@@ -24,6 +24,17 @@ export function BioSection({ char, setBio, lang }) {
 
   return (
     <div className="bio-section">
+      {/* Kampagne */}
+      <div className="bio-field">
+        <label className="bio-label">{L ? 'Kampagne' : 'Campaign'}</label>
+        <input
+          className="bio-input"
+          placeholder={L ? 'Kampagnenname …' : 'Campaign name …'}
+          value={bio.campaign ?? ''}
+          onChange={e => setBio('campaign', e.target.value)}
+        />
+      </div>
+
       {/* Grunddaten row 1: Gesinnung + Gottheit */}
       <div className="bio-row-2">
         <div className="bio-field">
