@@ -40,6 +40,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
+@media (max-width: 400px) {
+  .bio-row-2 { grid-template-columns: 1fr; }
+}
 
 .bio-select {
   background: var(--surface3);
