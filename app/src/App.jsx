@@ -86,6 +86,16 @@ export default function App() {
     lastScrollY.current = y
   }
 
+  function cycleFont() {
+    setFontScale(f => {
+      const next = _SCALES[(_SCALES.indexOf(f) + 1) % _SCALES.length]
+      localStorage.setItem('pf1_font_scale', next)
+      document.documentElement.classList.remove('fs-s', 'fs-l', 'fs-xl')
+      if (next !== 'm') document.documentElement.classList.add(`fs-${next}`)
+      return next
+    })
+  }
+
   function switchTabAndShow(id) {
     setTab(id)
     setBarsHidden(false)
