@@ -62,6 +62,29 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [hbOpen, setHbOpen] = useState(false)
   const [printOpen, setPrintOpen] = useState(false)
+  const [barsHidden, setBarsHidden] = useState(false)
+  const lastScrollY = useRef(0)
+
+  function handleScroll(e) {
+    const el = e.currentTarget
+    const y = el.scrollTop
+    const atTop    = y <= 8
+    const atBottom = el.scrollHeight - el.clientHeight - y <= 8
+    if (atTop || atBottom) {
+      setBarsHidden(false)
+    } else if (y > lastScrollY.current + 4) {
+      setBarsHidden(true)
+    } else if (y < lastScrollY.current - 4) {
+      setBarsHidden(false)
+    }
+    lastScrollY.current = y
+  }
+
+  function switchTabAndShow(id) {
+    setTab(id)
+    setBarsHidden(false)
+    lastScrollY.current = 0
+  }
 
   const [combatInternalOrder, moveCombatInternal] = useSectionOrder('pf1_combat_internal_order', COMBAT_INTERNAL_DEFAULT)
   const [combatOuterOrder,    moveCombatOuter]    = useSectionOrder('pf1_combat_outer_order',    COMBAT_OUTER_DEFAULT)
