@@ -266,7 +266,7 @@ export default function App() {
         />
       )}
 
-      <main className="main-scroll">
+      <main className="main-scroll" onScroll={handleScroll}>
         {tab === 'attr' && (
           <div className="section">
             {attrOrder.map((id, idx) => {
