@@ -59,7 +59,7 @@ function indexEntry(id, char) {
   const classes = (char.meta?.classes ?? [])
     .filter(c => c.id)
     .map(c => ({ id: c.id, level: Number(c.level) || 1 }))
-  return { id, name: char.meta?.name || '—', race: char.meta?.race || '', classes, updated: Date.now() }
+  return { id, name: char.meta?.name || '—', race: char.meta?.race || '', classes, campaign: char.bio?.campaign || '', updated: Date.now() }
 }
 
 function initialize() {
