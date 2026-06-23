@@ -408,9 +408,9 @@ export default function App() {
         )}
       </main>
 
-      <nav className="bottom-nav">
+      <nav className={`bottom-nav${barsHidden ? ' bars-hidden' : ''}`}>
         {TABS.map(t => (
-          <button key={t.id} className={`nav-btn ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
+          <button key={t.id} className={`nav-btn ${tab === t.id ? 'active' : ''}`} onClick={() => switchTabAndShow(t.id)}>
             <span className="nav-icon">{NAV_ICONS[t.id]}</span>
             <span className="nav-label">{t[lang]}</span>
           </button>
