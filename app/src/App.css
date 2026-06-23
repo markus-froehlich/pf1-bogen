@@ -377,11 +377,13 @@
   background: var(--surface2);
   border-top: 1px solid var(--border);
   padding-bottom: env(safe-area-inset-bottom);
-  transition: transform 0.25s ease;
-  will-change: transform;
+  max-height: 80px;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.2s ease;
 }
 .bottom-nav.bars-hidden {
-  transform: translateY(100%);
+  max-height: 0;
+  opacity: 0;
 }
 .bottom-nav::-webkit-scrollbar { display: none; }
 
