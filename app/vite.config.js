@@ -1,8 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { execSync } from 'child_process'
+
+let commitHash = 'dev'
+try { commitHash = execSync('git rev-parse --short HEAD').toString().trim() } catch {}
 
 export default defineConfig({
+  define: { __COMMIT__: JSON.stringify(commitHash) },
   base: process.env.GITHUB_ACTIONS ? '/pf1-bogen/' : '/',
   plugins: [
     react(),
