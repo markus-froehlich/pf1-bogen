@@ -48,7 +48,9 @@ export function CharacterDrawer({ index, activeId, onSwitch, onNew, onDelete, on
               <div className="cde-top-row">
                 <div className="cde-info">
                   <span className="cde-name">{entry.name || (L ? '(Unbenannt)' : '(Unnamed)')}</span>
-                  {entry.race && <span className="cde-race">{entry.race}</span>}
+                  <span className="cde-sub">
+                    {[raceName(entry.race), classStr(entry.classes)].filter(Boolean).join(' · ')}
+                  </span>
                 </div>
                 {entry.id !== activeId && (
                   <button
