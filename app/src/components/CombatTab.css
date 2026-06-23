@@ -484,6 +484,11 @@
 
 /* Saves */
 .saves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+@media (max-width: 400px) {
+  .saves-grid { grid-template-columns: 1fr; }
+  .speed-extras-grid { grid-template-columns: 1fr; }
+  .es-label { min-width: 72px; }
+}
 .save-box {
   background: var(--surface3);
   border: 1px solid var(--border);
