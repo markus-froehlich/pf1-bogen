@@ -18,9 +18,9 @@
   border-bottom: 1px solid var(--border);
   max-height: 200px;
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.3s ease, border-width 0.3s ease;
+  transition: max-height 0.28s ease, opacity 0.2s ease, padding 0.28s ease, border-width 0.2s ease;
 }
-.topbar.bars-hidden {
+.topbar.bar-collapsed {
   max-height: 0;
   opacity: 0;
   padding-top: 0;
