@@ -1,0 +1,1172 @@
+{
+  "_meta": {
+    "source": "Volk!A3:J54 (VolkTab)",
+    "speed_unit": "meters",
+    "faithful_to": "Bogen 6.61 Spieler.xlsx",
+    "count": 38,
+    "ability_mods_are_display_only": true,
+    "note": "Im Excel werden Volks-Attribut-Mods NICHT automatisch angewendet: der Spieler tragt den fertigen Attributwert (inkl. Volksbonus) direkt ein. 'ability_mods' / 'ability_mods_text' sind reiner Anzeige-/Hinweistext. Verifiziert: Bogen!T26 = VLOOKUP(ST+BuffST,Attributtab,2) ohne Volks-Term."
+  },
+  "races": [
+    {
+      "id": "elf",
+      "name": {
+        "de": "Elf",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "IN": 2,
+        "KO": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, IN+2, KO-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "k",
+        "trait_ref": "(G21, E10, V10)",
+        "merkmal_idx": 7.0
+      },
+      "traits": []
+    },
+    {
+      "id": "gnom",
+      "name": {
+        "de": "Gnom",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 4.5
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "KO": 2,
+        "CH": 2,
+        "ST": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "KO+2, CH+2, ST+2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "l",
+        "trait_ref": "(G22, E12, V20)",
+        "merkmal_idx": 9.0
+      },
+      "traits": []
+    },
+    {
+      "id": "halb_elf",
+      "name": {
+        "de": "Halb-Elf",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {},
+      "ability_mod_floating": 1,
+      "ability_mods_text": {
+        "de": "1 Attribut +2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "m",
+        "trait_ref": "(G23, E14, V30)",
+        "merkmal_idx": 11.0
+      },
+      "traits": []
+    },
+    {
+      "id": "halb_ork",
+      "name": {
+        "de": "Halb-Ork",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {},
+      "ability_mod_floating": 1,
+      "ability_mods_text": {
+        "de": "1 Attribut +2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "n",
+        "trait_ref": "(G24, E16, V40)",
+        "merkmal_idx": 13.0
+      },
+      "traits": []
+    },
+    {
+      "id": "halbling",
+      "name": {
+        "de": "Halbling",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 4.5
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "ST": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, ST-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "o",
+        "trait_ref": "(G25, E18, V50)",
+        "merkmal_idx": 15.0
+      },
+      "traits": []
+    },
+    {
+      "id": "mensch",
+      "name": {
+        "de": "Mensch",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 1,
+      "ability_mods": {},
+      "ability_mod_floating": 1,
+      "ability_mods_text": {
+        "de": "1 Attribut +2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "p",
+        "trait_ref": "(G26, E20, V60)",
+        "merkmal_idx": 17.0
+      },
+      "traits": []
+    },
+    {
+      "id": "zwerg",
+      "name": {
+        "de": "Zwerg",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "KO": 2,
+        "WE": 2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "KO+2, WE+2, CH-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "q",
+        "trait_ref": "(G27, E22, V70)",
+        "merkmal_idx": 19.0
+      },
+      "traits": []
+    },
+    {
+      "id": "aasimar",
+      "name": {
+        "de": "Aasimar",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "WE": 2,
+        "CH": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "WE+2, CH+2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "r",
+        "trait_ref": "(V84)",
+        "merkmal_idx": 21.0
+      },
+      "traits": []
+    },
+    {
+      "id": "drow",
+      "name": {
+        "de": "Drow",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "KO": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, KO-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "s",
+        "trait_ref": "(V90)",
+        "merkmal_idx": 23.0
+      },
+      "traits": []
+    },
+    {
+      "id": "gestrandete",
+      "name": {
+        "de": "Gestrandete",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "WE": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, WE-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "t",
+        "trait_ref": "(V96)",
+        "merkmal_idx": 25.0
+      },
+      "traits": []
+    },
+    {
+      "id": "goblin",
+      "name": {
+        "de": "Goblin",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": -2,
+        "GE": -2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST-2, GE-2, CH-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "u",
+        "trait_ref": "(V102)",
+        "merkmal_idx": 27.0
+      },
+      "traits": []
+    },
+    {
+      "id": "halb_vampir",
+      "name": {
+        "de": "Halb-Vampir",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "KO": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, KO-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "v",
+        "trait_ref": "(V108)",
+        "merkmal_idx": 29.0
+      },
+      "traits": []
+    },
+    {
+      "id": "hobgoblin",
+      "name": {
+        "de": "Hobgoblin",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "KO": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, KO+2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "w",
+        "trait_ref": "(V114)",
+        "merkmal_idx": 31.0
+      },
+      "traits": []
+    },
+    {
+      "id": "katzenvolk",
+      "name": {
+        "de": "Katzenvolk",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "WE": -2,
+        "CH": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, WE-2, CH+2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "x",
+        "trait_ref": "(V120)",
+        "merkmal_idx": 33.0
+      },
+      "traits": []
+    },
+    {
+      "id": "kobold",
+      "name": {
+        "de": "Kobold",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": -4,
+        "GE": 2,
+        "KO": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST-4, GE+2, KO-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "y",
+        "trait_ref": "(V126)",
+        "merkmal_idx": 35.0
+      },
+      "traits": []
+    },
+    {
+      "id": "oreade",
+      "name": {
+        "de": "Oreade",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 4.5
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": 2,
+        "WE": 2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST+2, WE+2, CH-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "z",
+        "trait_ref": "(V132)",
+        "merkmal_idx": 37.0
+      },
+      "traits": []
+    },
+    {
+      "id": "ork",
+      "name": {
+        "de": "Ork",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": 4,
+        "IN": -2,
+        "WE": -2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST+4, IN-2, WE-2, CH-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "aa",
+        "trait_ref": "(V138)",
+        "merkmal_idx": 39.0
+      },
+      "traits": []
+    },
+    {
+      "id": "pyrier",
+      "name": {
+        "de": "Pyrier",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "WE": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, WE-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "ab",
+        "trait_ref": "(V144)",
+        "merkmal_idx": 41.0
+      },
+      "traits": []
+    },
+    {
+      "id": "rattenvolk",
+      "name": {
+        "de": "Rattenvolk",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 4.5
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": -2,
+        "GE": 2,
+        "IN": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST-2, GE+2, IN+2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "ac",
+        "trait_ref": "(V150)",
+        "merkmal_idx": 43.0
+      },
+      "traits": []
+    },
+    {
+      "id": "sylphen",
+      "name": {
+        "de": "Sylphen",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "IN": 2,
+        "KO": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, IN+2, KO-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "ad",
+        "trait_ref": "(V156)",
+        "merkmal_idx": 45.0
+      },
+      "traits": []
+    },
+    {
+      "id": "tengus",
+      "name": {
+        "de": "Tengus",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "KO": -2,
+        "WE": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, KO-2, WE+2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "ae",
+        "trait_ref": "(V162)",
+        "merkmal_idx": 47.0
+      },
+      "traits": []
+    },
+    {
+      "id": "tiefling",
+      "name": {
+        "de": "Tiefling",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "IN": 2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, IN+2, CH-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "af",
+        "trait_ref": "(V168)",
+        "merkmal_idx": 49.0
+      },
+      "traits": []
+    },
+    {
+      "id": "undine",
+      "name": {
+        "de": "Undine",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "WE": 2,
+        "ST": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, WE+2, ST-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "ag",
+        "trait_ref": "(V174)",
+        "merkmal_idx": 51.0
+      },
+      "traits": []
+    },
+    {
+      "id": "duergar",
+      "name": {
+        "de": "Duergar",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "KO": 2,
+        "WE": 2,
+        "CH": -4
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "KO+2, WE+2, CH-4"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "ah",
+        "trait_ref": "(V184)",
+        "merkmal_idx": 53.0
+      },
+      "traits": []
+    },
+    {
+      "id": "grippli",
+      "name": {
+        "de": "Grippli",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "WE": 2,
+        "ST": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, WE+2, ST-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "ai",
+        "trait_ref": "(V186)",
+        "merkmal_idx": 55.0
+      },
+      "traits": []
+    },
+    {
+      "id": "kiemenmensch",
+      "name": {
+        "de": "Kiemenmensch",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "KO": 2,
+        "CH": 2,
+        "WE": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "KO+2, CH+2, WE-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "aj",
+        "trait_ref": "(V188)",
+        "merkmal_idx": 57.0
+      },
+      "traits": []
+    },
+    {
+      "id": "kitsune",
+      "name": {
+        "de": "Kitsune",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "ST": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, ST-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "ak",
+        "trait_ref": "(V190)",
+        "merkmal_idx": 59.0
+      },
+      "traits": []
+    },
+    {
+      "id": "meervolk",
+      "name": {
+        "de": "Meervolk",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 1.5,
+        "armored": 1.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "KO": 2,
+        "CH": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, KO+2, CH+2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "al",
+        "trait_ref": "(V192)",
+        "merkmal_idx": 61.0
+      },
+      "traits": []
+    },
+    {
+      "id": "nagaji",
+      "name": {
+        "de": "Nagaji",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": 2,
+        "CH": 2,
+        "IN": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST+2, CH+2, IN-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "am",
+        "trait_ref": "(V194)",
+        "merkmal_idx": 63.0
+      },
+      "traits": []
+    },
+    {
+      "id": "samsaran",
+      "name": {
+        "de": "Samsaran",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "IN": 2,
+        "WE": 2,
+        "KO": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "IN+2, WE+2, KO-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "an",
+        "trait_ref": "(V196)",
+        "merkmal_idx": 65.0
+      },
+      "traits": []
+    },
+    {
+      "id": "strix",
+      "name": {
+        "de": "Strix",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "ao",
+        "trait_ref": "(V198)",
+        "merkmal_idx": 67.0
+      },
+      "traits": []
+    },
+    {
+      "id": "suli",
+      "name": {
+        "de": "Suli",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": 2,
+        "CH": 2,
+        "IN": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST+2, CH+2, IN-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "ap",
+        "trait_ref": "(V200)",
+        "merkmal_idx": 69.0
+      },
+      "traits": []
+    },
+    {
+      "id": "svirfneblin",
+      "name": {
+        "de": "Svirfneblin",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 4.5
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "ST": -2,
+        "GE": 2,
+        "CH": -4
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "ST-2, GE+2, CH-4"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "aq",
+        "trait_ref": "(V202)",
+        "merkmal_idx": 71.0
+      },
+      "traits": []
+    },
+    {
+      "id": "vanara",
+      "name": {
+        "de": "Vanara",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "WE": 2,
+        "CH": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, WE+2, CH-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "ar",
+        "trait_ref": "(V204)",
+        "merkmal_idx": 73.0
+      },
+      "traits": []
+    },
+    {
+      "id": "vischkanya",
+      "name": {
+        "de": "Vischkanya",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "CH": 2,
+        "WE": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, CH+2, WE-2"
+      },
+      "low_light_or_darkvision": true,
+      "_source": {
+        "kraefte_col": "as",
+        "trait_ref": "(V206)",
+        "merkmal_idx": 75.0
+      },
+      "traits": []
+    },
+    {
+      "id": "wayang",
+      "name": {
+        "de": "Wayang",
+        "en": null
+      },
+      "size": {
+        "de": "Klein"
+      },
+      "speed_m": {
+        "unarmored": 6.0,
+        "armored": 4.5
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "GE": 2,
+        "IN": 2,
+        "WE": -2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "GE+2, IN+2, WE-2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "at",
+        "trait_ref": "(V208)",
+        "merkmal_idx": 77.0
+      },
+      "traits": []
+    },
+    {
+      "id": "wechselbalg",
+      "name": {
+        "de": "Wechselbalg",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {
+        "KO": -2,
+        "WE": 2,
+        "CH": 2
+      },
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": "KO-2, WE+2, CH+2"
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": "au",
+        "trait_ref": "(V210)",
+        "merkmal_idx": 79.0
+      },
+      "traits": []
+    },
+    {
+      "id": "sukkubus",
+      "name": {
+        "de": "Sukkubus",
+        "en": null
+      },
+      "size": {
+        "de": "Mittelgroß"
+      },
+      "speed_m": {
+        "unarmored": 9.0,
+        "armored": 6.0
+      },
+      "extra_skill_points_per_level": 0,
+      "ability_mods": {},
+      "ability_mod_floating": null,
+      "ability_mods_text": {
+        "de": null
+      },
+      "low_light_or_darkvision": false,
+      "_source": {
+        "kraefte_col": null,
+        "trait_ref": "(MHB1 50)",
+        "merkmal_idx": 0.0
+      },
+      "traits": []
+    }
+  ]
+}

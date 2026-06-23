@@ -1,0 +1,117 @@
+.cf-panel {
+  margin-top: 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cf-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+.cf-toggle:active { background: color-mix(in srgb, var(--accent) 8%, var(--surface2)); }
+
+.cf-toggle-label {
+  flex: 1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.cf-badge {
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+.cf-arrow {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.cf-body {
+  border-top: 1px solid var(--border);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cf-class-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cf-class-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.cf-class-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.cf-class-link {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.15s;
+}
+.cf-class-link:hover { color: var(--accent); }
+.cf-class-level {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.cf-level-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.cf-lv-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 4px;
+  padding: 2px 5px;
+  min-width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.cf-feats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.cf-feat-chip {
+  font-size: 0.68rem;
+  color: var(--text);
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px 7px;
+}
+
+.cf-no-data {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 4px 2px;
+}
+.cf-compact-badge { padding: 2px 0 4px; }

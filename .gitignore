@@ -1,0 +1,16 @@
+# Excel source + raw extraction dumps (large, regenerierbar)
+Version 6.61/
+extraction/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+app/node_modules/
+app/dist/
+
+# OS
+.DS_Store

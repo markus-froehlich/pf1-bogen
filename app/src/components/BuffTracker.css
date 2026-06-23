@@ -1,0 +1,208 @@
+.bt-panel {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bt-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.bt-title {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex: 1;
+}
+.bt-active-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: #4a9a5a;
+  color: #fff;
+  border-radius: 10px;
+  padding: 2px 7px;
+}
+.bt-toggle-icon {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.bt-body {
+  padding: 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bt-entry {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  transition: border-color 0.12s;
+}
+.bt-entry-active {
+  border-color: color-mix(in srgb, #4a9a5a 60%, var(--border));
+  background: color-mix(in srgb, #4a9a5a 8%, var(--surface3));
+}
+
+.bt-toggle {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.bt-toggle.on  { color: #4a9a5a; }
+.bt-toggle.off { color: var(--text-muted); }
+
+.bt-entry-info {
+  flex: 1;
+  cursor: pointer;
+  min-width: 0;
+}
+.bt-entry-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  display: block;
+}
+.bt-entry-summary {
+  font-size: 0.62rem;
+  color: #4a9a5a;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bt-del {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.bt-del:hover { color: #c96e6e; }
+
+.bt-empty {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 2px 0;
+}
+
+.bt-add-btn {
+  background: none;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.12s;
+  text-align: left;
+}
+.bt-add-btn:hover { border-color: #4a9a5a; color: #4a9a5a; }
+
+/* Form */
+.bt-form {
+  background: color-mix(in srgb, #4a9a5a 8%, var(--surface2));
+  border: 1px solid color-mix(in srgb, #4a9a5a 40%, var(--border));
+  border-radius: 7px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bt-form-name {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-size: 0.82rem;
+  padding: 6px 8px;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+.bt-form-name:focus { outline: none; border-color: #4a9a5a; }
+
+.bt-form-cats { display: flex; flex-direction: column; gap: 6px; }
+.bt-form-cat-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: #4a9a5a;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 3px;
+}
+.bt-form-stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.bt-form-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 44px;
+}
+.bt-form-stat-name {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+.bt-form-stat-input {
+  width: 44px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-size: 0.78rem;
+  text-align: center;
+  padding: 3px 4px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.bt-form-stat-input:focus { outline: none; border-color: #4a9a5a; }
+
+.bt-form-actions { display: flex; gap: 7px; }
+.bt-form-save {
+  background: #4a9a5a;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.bt-form-cancel {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: inherit;
+}

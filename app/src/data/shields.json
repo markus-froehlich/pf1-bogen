@@ -1,0 +1,212 @@
+{
+  "shields": [
+    {
+      "id": "bereitschaftsschild_lh",
+      "name": {
+        "de": "Bereitschaftsschild LH",
+        "en": "Bereitschaftsschild LH"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -2,
+      "spell_failure": 0.05,
+      "weight_kg": 6,
+      "page_ref": "E179"
+    },
+    {
+      "id": "bereitschaftsschild_ls",
+      "name": {
+        "de": "Bereitschaftsschild LS",
+        "en": "Bereitschaftsschild LS"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -2,
+      "spell_failure": 0.05,
+      "weight_kg": 7,
+      "page_ref": "E179"
+    },
+    {
+      "id": "klar",
+      "name": {
+        "de": "Klar",
+        "en": "Klar"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -1,
+      "spell_failure": 0.05,
+      "weight_kg": 6,
+      "page_ref": "Go213"
+    },
+    {
+      "id": "knotenschild_holz",
+      "name": {
+        "de": "Knotenschild, Holz",
+        "en": "Knotenschild, Holz"
+      },
+      "type": "Schwer",
+      "bonus": 2,
+      "check_penalty": -3,
+      "spell_failure": 0.15,
+      "weight_kg": 15,
+      "page_ref": "GN22"
+    },
+    {
+      "id": "knotenschild_stahl",
+      "name": {
+        "de": "Knotenschild, Stahl",
+        "en": "Knotenschild, Stahl"
+      },
+      "type": "Schwer",
+      "bonus": 2,
+      "check_penalty": -3,
+      "spell_failure": 0.15,
+      "weight_kg": 20,
+      "page_ref": "GN22"
+    },
+    {
+      "id": "l_holzschild",
+      "name": {
+        "de": "L. Holzschild",
+        "en": "L. Holzschild"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -1,
+      "spell_failure": 0.05,
+      "weight_kg": 5,
+      "page_ref": "G151"
+    },
+    {
+      "id": "l_stahlschild",
+      "name": {
+        "de": "L. Stahlschild",
+        "en": "L. Stahlschild"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -1,
+      "spell_failure": 0.05,
+      "weight_kg": 6,
+      "page_ref": "G151"
+    },
+    {
+      "id": "madu_stahl",
+      "name": {
+        "de": "Madu, Stahl",
+        "en": "Madu, Stahl"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -2,
+      "spell_failure": 0.05,
+      "weight_kg": 6,
+      "page_ref": "AR17"
+    },
+    {
+      "id": "madu_leder",
+      "name": {
+        "de": "Madu. Leder",
+        "en": "Madu. Leder"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": -2,
+      "spell_failure": 0.05,
+      "weight_kg": 5,
+      "page_ref": "AR17"
+    },
+    {
+      "id": "sch_holzschild",
+      "name": {
+        "de": "Sch. Holzschild",
+        "en": "Sch. Holzschild"
+      },
+      "type": "Schwer",
+      "bonus": 2,
+      "check_penalty": -2,
+      "spell_failure": 0.15,
+      "weight_kg": 10,
+      "page_ref": "G151"
+    },
+    {
+      "id": "sch_stahlschild",
+      "name": {
+        "de": "Sch. Stahlschild",
+        "en": "Sch. Stahlschild"
+      },
+      "type": "Schwer",
+      "bonus": 2,
+      "check_penalty": -2,
+      "spell_failure": 0.15,
+      "weight_kg": 15,
+      "page_ref": "G151"
+    },
+    {
+      "id": "tartsche",
+      "name": {
+        "de": "Tartsche",
+        "en": "Tartsche"
+      },
+      "type": "Arm",
+      "bonus": 1,
+      "check_penalty": -1,
+      "spell_failure": 0.05,
+      "weight_kg": 5,
+      "page_ref": "G151"
+    },
+    {
+      "id": "turmschild",
+      "name": {
+        "de": "Turmschild",
+        "en": "Turmschild"
+      },
+      "type": "Turm",
+      "bonus": 4,
+      "check_penalty": -10,
+      "spell_failure": 0.5,
+      "weight_kg": 45,
+      "page_ref": "G151"
+    },
+    {
+      "id": "mitrahl_stachelschild",
+      "name": {
+        "de": "Mitrahl-Stachelschild",
+        "en": "Mitrahl-Stachelschild"
+      },
+      "type": "Schwer",
+      "bonus": 3,
+      "check_penalty": 0,
+      "spell_failure": 0.05,
+      "weight_kg": 5,
+      "page_ref": ""
+    },
+    {
+      "id": "l_stachelschild_ma",
+      "name": {
+        "de": "L. Stachelschild MA",
+        "en": "L. Stachelschild MA"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "check_penalty": 0,
+      "spell_failure": 0.05,
+      "weight_kg": 6,
+      "page_ref": ""
+    },
+    {
+      "id": "schlangenschild_2",
+      "name": {
+        "de": "Schlangenschild +2",
+        "en": "Schlangenschild +2"
+      },
+      "type": "Schwer",
+      "bonus": 4,
+      "check_penalty": 0,
+      "spell_failure": 0.15,
+      "weight_kg": 15,
+      "page_ref": ""
+    }
+  ]
+}

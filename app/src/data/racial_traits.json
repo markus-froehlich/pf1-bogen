@@ -1,0 +1,659 @@
+{
+  "by_race": {
+    "rattenvolk": [
+      {
+        "name": "Anhaltende Seuche E Rattenvolk",
+        "trait": "Anhaltende Seuche E",
+        "desc": "Wirkungsdauer Krankheit verdoppelt od. Inkubationszeit & Frequenz halbiert (zus. RW 1 Rd. später)"
+      },
+      {
+        "name": "Geruchssinn Rattenvolk",
+        "trait": "Geruchssinn",
+        "desc": "Gerruchssinn, aber -2 Malus auf Wahrnehmung (sicht- und gehörbasierend)"
+      },
+      {
+        "name": "Mäch. Seuchenbombe E Rattenvolk",
+        "trait": "Mäch. Seuchenbombe E",
+        "desc": "Rauch = Mächtige Ansteckung statt Nebelwolke; Rauch = doppelter Explosionsradius für 1 Rd/St."
+      },
+      {
+        "name": "Sprachen Rattenvolk",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache (klo, Drak., Finsterl., Gnollisch, Gnomisch, Goblinisch, Halblingisch, Orkisch & Zwergisch"
+      }
+    ],
+    "tiefling": [
+      {
+        "name": "Augen Tiefling",
+        "trait": "Augen",
+        "desc": "Augen glühen infernalisch, 18m Dunkelsicht, in jeder Art Dunkelheit perfekt sehen wie Teufel"
+      },
+      {
+        "name": "Essen Tiefling",
+        "trait": "Essen",
+        "desc": "Du kannst Asche, Funken, Staub und Sand verspeisen und wirst dadurch genährt"
+      },
+      {
+        "name": "Geschult Tiefling",
+        "trait": "Geschult",
+        "desc": "+2 Volksbonus auf Proben gegen Bluffen und Heimlichkeit"
+      },
+      {
+        "name": "Initiative Tiefling",
+        "trait": "Initiative",
+        "desc": "Du erhältst einen Bonus von +2 auf Initiativewürfe in der Nacht."
+      },
+      {
+        "name": "Schlaf Tiefling",
+        "trait": "Schlaf",
+        "desc": "Du benötigst keinen Schlaf, bist aber nicht gegen Schlafeffekte immun"
+      },
+      {
+        "name": "Schwäche Spüren Tiefling",
+        "trait": "Schwäche Spüren",
+        "desc": "Du spürst Schwachstellen, dies verleiht dir einen Bonus von +1 auf alle Kritischen Bestätigungswürfe"
+      },
+      {
+        "name": "Silber Tiefling",
+        "trait": "Silber",
+        "desc": "Du erhältst SR 2/Silber."
+      },
+      {
+        "name": "Sprachen Tiefling",
+        "trait": "Sprachen",
+        "desc": "Gemeinspr. & Abyssisch/Diab. (Aby./Diab., Drak., Elfisch, Gnomisch, Gobl., Halbl., Orkisch od. Zwergisch)"
+      },
+      {
+        "name": "Zauberä. Fähigkeit Tiefling",
+        "trait": "Zauberä. Fähigkeit",
+        "desc": "1/Tag Dunkelheit als ZF (ZS = St.)"
+      }
+    ],
+    "kitsune": [
+      {
+        "name": "Behände Kitsune",
+        "trait": "Behände",
+        "desc": "+2 Volksbonus Akrobatik"
+      },
+      {
+        "name": "Berichterstatter denunzieren Trick Kitsune",
+        "trait": "Berichterstatter denunzieren Trick",
+        "desc": "Nach Verwirren: neuer konk. Wurf Diplomatie, Erfolg: Malus WE/CH/IN Diplomatie des Ziels gg. Zuhörer"
+      },
+      {
+        "name": "Berichterstatter verwirren Trick Kitsune",
+        "trait": "Berichterstatter verwirren Trick",
+        "desc": "konk. Wurf Diplomatie: Stören Erzählung (Probleme an Details erinnern), Scheitern: Motiv erkennen"
+      },
+      {
+        "name": "Falscher Freund Trick Kitsune",
+        "trait": "Falscher Freund Trick",
+        "desc": "+4 Bluffen gegen Fremde um zu überzeugen sie kennen sich gut od. sind sich schon einmal begegnet"
+      },
+      {
+        "name": "Gestalt wechseln Kitsune",
+        "trait": "Gestalt wechseln",
+        "desc": "Menschengestalt, Bissangriff nicht verwenden, +10 Volksbonus Verkleiden"
+      },
+      {
+        "name": "Nat. Waffen Kitsune",
+        "trait": "Nat. Waffen",
+        "desc": "Bissangriff 1W4 Punkte Schaden"
+      },
+      {
+        "name": "Sprachen Kitsune",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Sylvanisch (Aklo, Celestisch, Elfisch, Gnomisch und Tengu)"
+      }
+    ],
+    "strix": [
+      {
+        "name": "Behände Strix",
+        "trait": "Behände",
+        "desc": "+1 Volksbonus Reflexwürfe"
+      },
+      {
+        "name": "Fliegen Strix",
+        "trait": "Fliegen",
+        "desc": "Bewegungsrate (Fliegen) 18m"
+      },
+      {
+        "name": "Hass Strix",
+        "trait": "Hass",
+        "desc": "+1 Volksbonus Angriffswürfe gegen Humanoide (Mensch)"
+      },
+      {
+        "name": "Sprachen Strix",
+        "trait": "Sprachen",
+        "desc": "Strix (Aural, Drakonisch, Gemeinsprache, Gnomisch, Goblinisch, Infernalisch, Riesisch)"
+      },
+      {
+        "name": "Unterart Strix",
+        "trait": "Unterart",
+        "desc": "Humanoide (Strix)"
+      },
+      {
+        "name": "Zäh Strix",
+        "trait": "Zäh",
+        "desc": "+1 Volksbonus Zähigkeitswürfe"
+      }
+    ],
+    "vanara": [
+      {
+        "name": "Behände Vanara",
+        "trait": "Behände",
+        "desc": "+2 Volksbonus Akrobatik & Heimlichkeit"
+      },
+      {
+        "name": "Klettern Vanara",
+        "trait": "Klettern",
+        "desc": "Bewegungsrate (Klettern) 6m"
+      },
+      {
+        "name": "Sprachen Vanara",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Vanarisch (Aklo, Celestisch, Elfisch, Gnomisch, Goblinisch und Sylvanisch)"
+      },
+      {
+        "name": "Unterart Vanara",
+        "trait": "Unterart",
+        "desc": "Humanoide (Vanara)"
+      }
+    ],
+    "mensch": [
+      {
+        "name": "Bonustalent Mensch",
+        "trait": "Bonustalent",
+        "desc": "zusätzliches Talent auf 1. Stufe"
+      },
+      {
+        "name": "Geschult Mensch",
+        "trait": "Geschult",
+        "desc": "zusätzlicher Fertigkeitsrang pro Stufe"
+      },
+      {
+        "name": "Sprachen Mensch",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache (jede andere Sprache außer Geheimsprachen)"
+      },
+      {
+        "name": "Unterart Mensch",
+        "trait": "Unterart",
+        "desc": "Humanoide mit der Unterart Mensch"
+      }
+    ],
+    "grippli": [
+      {
+        "name": "Chamäleonhaut E Grippli",
+        "trait": "Chamäleonhaut E",
+        "desc": "+4 Verbesserungsbonus auf Heimlichkeit, +8 ab 10. St."
+      },
+      {
+        "name": "Klettern Grippli",
+        "trait": "Klettern",
+        "desc": "Klettern 6m"
+      },
+      {
+        "name": "Sprachen Grippli",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Grippli (Boggard, Drakonisch, Elfisch, Gnomisch, Goblinisch und Sylvanisch)"
+      },
+      {
+        "name": "Tarnung Grippli",
+        "trait": "Tarnung",
+        "desc": "+4 Volksbonus Heimlichkeit in Sümpfen od. Wäldern"
+      },
+      {
+        "name": "Tödliches Exkret E Grippli",
+        "trait": "Tödliches Exkret E",
+        "desc": "Grippligift mit KO Schaden statt GE Schaden"
+      },
+      {
+        "name": "Unterwassersprengung E Grippli",
+        "trait": "Unterwassersprengung E",
+        "desc": "ALC kann Bomben unter Wasser werfen, Reichweite auf 1,50m reduziert"
+      },
+      {
+        "name": "Waffenvertrautheit Grippli",
+        "trait": "Waffenvertrautheit",
+        "desc": "geübt mit Netzen"
+      }
+    ],
+    "elf": [
+      {
+        "name": "Drow Elf",
+        "trait": "Drow",
+        "desc": "Humanoide der Unterart Elf"
+      },
+      {
+        "name": "Sprachen Elf",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache, Elfisch (Celestisch, Drakonisch, Gnollisch, Gnomisch, Goblinisch, Orkisch und Sylvanisch)"
+      },
+      {
+        "name": "Waffenvertrautheit Elf",
+        "trait": "Waffenvertrautheit",
+        "desc": "Lang- & Kurzbögen (inkl. Komposit), Langschw., Rapier + elfische Waffen"
+      }
+    ],
+    "drow": [
+      {
+        "name": "Dunkelsicht Drow",
+        "trait": "Dunkelsicht",
+        "desc": "Dunkelsicht 36m"
+      },
+      {
+        "name": "Immunität der Drow",
+        "trait": "Immunität der",
+        "desc": "immun gegen Schlafeffekte; +2 Volksbonus auf Rettungswürfe"
+      },
+      {
+        "name": "Sprachen Drow",
+        "trait": "Sprachen",
+        "desc": "Elfisch, Finsterl. (Abyssisch, Aklo, Aqual, Drakon., Gemeinspr., Gnomisch, Goblinisch, Zeichenspr. Drow)"
+      },
+      {
+        "name": "Waffenvertrautheit Drow",
+        "trait": "Waffenvertrautheit",
+        "desc": "Handarmbrust, Rapier & Kurzschwert"
+      },
+      {
+        "name": "Zauberresistenz Drow",
+        "trait": "Zauberresistenz",
+        "desc": "Zauberresistenz 6 + Klassenstufe"
+      }
+    ],
+    "sylphen": [
+      {
+        "name": "Elem. Resistenz Sylphen",
+        "trait": "Elem. Resistenz",
+        "desc": "Elektrizitätsresistenz 5"
+      },
+      {
+        "name": "Sprachen Sylphen",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Aural (Aqual, Elfisch, Gnomisch, Halblingisch, Ignal, Terral und Zwergisch)"
+      },
+      {
+        "name": "Windgeflüster Sylphen",
+        "trait": "Windgeflüster",
+        "desc": "+4 Volksbonus Heimlichkeit"
+      },
+      {
+        "name": "Zauberä. Fähigkeit Sylphen",
+        "trait": "Zauberä. Fähigkeit",
+        "desc": "1/Tag Federfall (ZS = St.)"
+      }
+    ],
+    "undine": [
+      {
+        "name": "Elem. Resistenz Undine",
+        "trait": "Elem. Resistenz",
+        "desc": "Kälteresistenz 5"
+      },
+      {
+        "name": "Elem. Verbundenheit Undine",
+        "trait": "Elem. Verbundenheit",
+        "desc": "HXM Element. Blutlinie (Wasser) (CH +2 Berechnung); Domäne Wasser: +1 Zauberstufe"
+      },
+      {
+        "name": "Schwimmen Undine",
+        "trait": "Schwimmen",
+        "desc": "Schwimmen 9m, Im Wasser bewegen ohne Fertigkeitswürfe, Schwimmen=Klassenfertigkeit"
+      },
+      {
+        "name": "Sprachen Undine",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Aqual (Aural, Elfisch, Gnomisch, Halblingisch, Ignal, Terral und Zwergisch)"
+      },
+      {
+        "name": "Zauberä. Fähigkeit Undine",
+        "trait": "Zauberä. Fähigkeit",
+        "desc": "1/Tag Wasserstrahl (ZS = St.)"
+      }
+    ],
+    "pyrier": [
+      {
+        "name": "Elem. Verbundenheit Pyrier",
+        "trait": "Elem. Verbundenheit",
+        "desc": "HXM Element. Blutlinie (Feuer) (CH +2 Berechnung); Domäne Feuer: +1 Zauberstufe"
+      },
+      {
+        "name": "Energieresistenz Pyrier",
+        "trait": "Energieresistenz",
+        "desc": "Feuerresistent 5"
+      },
+      {
+        "name": "Sprachen Pyrier",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Ignal (Aqual, Aural, Elfisch, Gnomisch, Halblingisch, Terral und Zwergisch)"
+      },
+      {
+        "name": "Zauberä. Fähigkeit Pyrier",
+        "trait": "Zauberä. Fähigkeit",
+        "desc": "1/Tag Brennende Hände (ZS = St.)"
+      }
+    ],
+    "suli": [
+      {
+        "name": "Energieresistenz Suli",
+        "trait": "Energieresistenz",
+        "desc": "Resistenz Elektrizität 5, Feuer 5, Kälte 5 und Säure 5"
+      },
+      {
+        "name": "Schockschild Suli",
+        "trait": "Schockschild",
+        "desc": "Elektrizitätsresistenz 5, bei Elementarangriff: als AA Stromschlag w6"
+      },
+      {
+        "name": "Sprachen Suli",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache & 1 Elementarspra. (Aqual, Aural, Ignal oder Terral);(Aqual, Aural, Drakonisch, Ignal & Terral)"
+      }
+    ],
+    "goblin": [
+      {
+        "name": "Flammenbrand E Goblin",
+        "trait": "Flammenbrand E",
+        "desc": "1 Anw./Tag als SA: Feuerschaden (Aufflammen), ab 10. St. wie Flammeninferno, brennt 1 Min"
+      },
+      {
+        "name": "Geschult Goblin",
+        "trait": "Geschult",
+        "desc": "+4 Volksbonus Heimlichkeit und Reiten"
+      },
+      {
+        "name": "Lumpenpuppen-Mutagen E Goblin",
+        "trait": "Lumpenpuppen-Mutagen E",
+        "desc": "+St Entfessel., Öffnungen quet. 1 Kat. lleiner, REF SG 15+1/gefall. 3m, ab 10. St. 2 Kat kl., Fallschaden nichttödl."
+      },
+      {
+        "name": "Raketenbombe E Goblin",
+        "trait": "Raketenbombe E",
+        "desc": "Explosionsradius m, Grundreichweite 15m - nicht auf individuelle Kreaturen"
+      },
+      {
+        "name": "Schrottbombe E Goblin",
+        "trait": "Schrottbombe E",
+        "desc": "Bombe explodiert mit Splitterhagel, 1 Pkt. Blutungsschaden pro Würfel, außer RW REF gelingt"
+      },
+      {
+        "name": "Sprachen Goblin",
+        "trait": "Sprachen",
+        "desc": "Goblinoidisch (Drakonisch, Gnoll, Gnomisch, Halblingisch, Gemeinsprache, Orkisch und Zwergisch)"
+      },
+      {
+        "name": "Waffenvertrautheit Goblin",
+        "trait": "Waffenvertrautheit",
+        "desc": "Hundsschnitter & Pferdeschlächter, \"Goblin\" = Kriegswaffe"
+      }
+    ],
+    "tengus": [
+      {
+        "name": "Gleiten Tengus",
+        "trait": "Gleiten",
+        "desc": "Fliegen SG 15: Fallen wie Federfall; im Fallen: SG 15 > pro 6m Fallen 1,5m waagrecht gleiten"
+      },
+      {
+        "name": "Hinterhältig Tengus",
+        "trait": "Hinterhältig",
+        "desc": "+2 Volksbonus Heimlichkeit und Wahrnehmung"
+      },
+      {
+        "name": "Klauenangriff Tengus",
+        "trait": "Klauenangriff",
+        "desc": "2 Klauenangriffe 1W3 (= Verbesserter Waffenloser Schlag)"
+      },
+      {
+        "name": "Natürliche Waffe Tengus",
+        "trait": "Natürliche Waffe",
+        "desc": "Bissangriff 1W3 Schadenspunkte"
+      },
+      {
+        "name": "Sprachen Tengus",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Tengu (alle Sprachen bis auf Geheimsprachen)"
+      }
+    ],
+    "gnom": [
+      {
+        "name": "Hass Gnom",
+        "trait": "Hass",
+        "desc": "+1 Bonus Angriffswürfe gegen Humanoide Reptil od. Goblinoider"
+      },
+      {
+        "name": "Sprachbegabt Gnom",
+        "trait": "Sprachbegabt",
+        "desc": "+1 Bonus Bluffen & Diplomatie, zusätzliche Sprache für jeden Rang Sprachenkunde"
+      },
+      {
+        "name": "Sprachen Gnom",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache, Gnomisch & Sylvanisch (Drakonisch, Elfisch, Goblinisch, Orkisch, Riesisch & Zwergisch)"
+      },
+      {
+        "name": "Unterart Gnom",
+        "trait": "Unterart",
+        "desc": "Humanoide (Gnom)"
+      },
+      {
+        "name": "Waffenvertrautheit Gnom",
+        "trait": "Waffenvertrautheit",
+        "desc": "gnomisch = Kriegswaffe"
+      }
+    ],
+    "zwerg": [
+      {
+        "name": "Hass Zwerg",
+        "trait": "Hass",
+        "desc": "+1 Volksbonus Angriffswürfe humanoide Kreaturen (Ork, Goblinoider)"
+      },
+      {
+        "name": "Sprachen Zwerg",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache & Zwergisch (Finsterländisch, Gnomisch, Goblinisch, Orkisch, Riesisch und Terral)"
+      },
+      {
+        "name": "Unterart Zwerg",
+        "trait": "Unterart",
+        "desc": "Humanoide (Zwerg)"
+      },
+      {
+        "name": "Waffenvertrautheit Zwerg",
+        "trait": "Waffenvertrautheit",
+        "desc": "Streitäxte, Streithämmer, Kriegshacken & Kriegshämmer; \"zwergisch\" = Kriegswaffe"
+      }
+    ],
+    "hobgoblin": [
+      {
+        "name": "Hinterhältig Hobgoblin",
+        "trait": "Hinterhältig",
+        "desc": "+4 Volksbonus Heimlichkeit"
+      },
+      {
+        "name": "Sprachen Hobgoblin",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Goblinisch (Drakonisch, Infernalisch, Orkisch, Riesisch, Zwergisch)"
+      }
+    ],
+    "duergar": [
+      {
+        "name": "Immunitäten der Duergar",
+        "trait": "Immunitäten der",
+        "desc": "+2 Volksbonus RW Zauber/ZF, immun gegen Gift, Lähmung und Phantome"
+      },
+      {
+        "name": "Sprachen Duergar",
+        "trait": "Sprachen",
+        "desc": "Finsterländisch, Gemeinsprache & Zwergisch (Aklo, Drakonisch, Goblinisch, Orkisch, Riesisch und Terral)"
+      },
+      {
+        "name": "Zauberä. Fähigkeit Duergar",
+        "trait": "Zauberä. Fähigkeit",
+        "desc": "1/Tag Person vergrößern und Unsichtbarkeit auf sich selbst"
+      }
+    ],
+    "wechselbalg": [
+      {
+        "name": "Klauen Wechselbalg",
+        "trait": "Klauen",
+        "desc": "2 Klauenangriffe 1W4"
+      },
+      {
+        "name": "Nat. Rüstung Wechselbalg",
+        "trait": "Nat. Rüstung",
+        "desc": "+1 natürlicher Rüstungsbonus"
+      },
+      {
+        "name": "Sprachen Wechselbalg",
+        "trait": "Sprachen",
+        "desc": "Gemeinspr. + Hauptspr. Volk (Aklo, Drakon., Elfisch, Gnollisch, Goblinisch, Orkisch, Riesisch & Zwergisch)"
+      },
+      {
+        "name": "Unterart Wechselbalg",
+        "trait": "Unterart",
+        "desc": "Humanoide mit der Unterart Wechselbalg"
+      }
+    ],
+    "svirfneblin": [
+      {
+        "name": "Magie der Svirfneblin",
+        "trait": "Magie der",
+        "desc": "SG +1 Illusionszauber; ZF: Unauffindbarkeit; 1/Tag Blind./Taubh. verurs., Selbstverkl. & Verschw. (ZS = St.)"
+      },
+      {
+        "name": "Sprachen Svirfneblin",
+        "trait": "Sprachen",
+        "desc": "Finsterl. & Gnomisch (Aklo, Drak., Elfisch, Gemeinspr., Goblinisch, Orkisch, Riesisch, Terral od. Zwergisch)"
+      }
+    ],
+    "nagaji": [
+      {
+        "name": "Resistent Nagaji",
+        "trait": "Resistent",
+        "desc": "+2 RW Gift und geistesbeeinflussende Effekte"
+      },
+      {
+        "name": "Sprachen Nagaji",
+        "trait": "Sprachen",
+        "desc": "Gemeinspr. & Drakonisch (jede menschl. Spr., Abyssisch, Aklo, Celestisch, Infernal., Riesisch & Sylvanisch)"
+      }
+    ],
+    "kobold": [
+      {
+        "name": "Rüstung Kobold",
+        "trait": "Rüstung",
+        "desc": "+1 natürlicher RK Bonus"
+      },
+      {
+        "name": "Schwächen Kobold",
+        "trait": "Schwächen",
+        "desc": "Lichtempfindlichkeit"
+      },
+      {
+        "name": "Sprachen Kobold",
+        "trait": "Sprachen",
+        "desc": "Drakonisch (insterländisch, Gemeinsprache, Gnomisch und Zwergisch)"
+      }
+    ],
+    "wayang": [
+      {
+        "name": "Schattenmagie Wayang",
+        "trait": "Schattenmagie",
+        "desc": "SG+1 Zauber Untersch. Schatten; CH>=11: 1/Tag Bauchr. Geisterh. Gerä., Spurl. Schritt (SG 10+ZG+CHMod)"
+      },
+      {
+        "name": "Sprachen Wayang",
+        "trait": "Sprachen",
+        "desc": "Gemeinspr. +Wayang. (jede Menschenspr., Abys., Aklo, Drak., Goblin., Infernal., Nagaji, Samsarisch & Tengu)"
+      },
+      {
+        "name": "Unterart Wayang",
+        "trait": "Unterart",
+        "desc": "Dunkelsicht 18m"
+      }
+    ],
+    "kiemenmensch": [
+      {
+        "name": "Schwimmen Kiemenmensch",
+        "trait": "Schwimmen",
+        "desc": "Schwimmen 9m, keine Fertigkeitswürfe für Schwimmen zum, Klassenfertigkeit"
+      },
+      {
+        "name": "Sprachen Kiemenmensch",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Abolethisch (Aklo, Aqual, Drakonisch und Elfisch)"
+      }
+    ],
+    "aasimar": [
+      {
+        "name": "Sprachen Aasimar",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache, Celestisch (Drakonisch, Elfisch, Gnomisch, Halblingisch, Sylvanisch und Zwergisch)"
+      }
+    ],
+    "halb_elf": [
+      {
+        "name": "Sprachen Halb-Elf",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Elfisch (jede andere Nicht Geheimsprache)"
+      }
+    ],
+    "halbling": [
+      {
+        "name": "Sprachen Halbling",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Halblinglisch (Elfisch, Gnomisch, Goblinisch und Zwergisch)"
+      }
+    ],
+    "halb_ork": [
+      {
+        "name": "Sprachen Halb-Ork",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Orkisch (Abyssisch, Drakonisch, Gnollisch, Goblinisch und Riesisch)"
+      }
+    ],
+    "katzenvolk": [
+      {
+        "name": "Sprachen Katzenvolk",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache und Felin (Elfisch, Gnoll, Gnomisch, Halblingisch, Orkisch und Sylvanisch)"
+      }
+    ],
+    "oreade": [
+      {
+        "name": "Sprachen Oreade",
+        "trait": "Sprachen",
+        "desc": "Gemeinsprache + Terrai (Aqual, Aural, Elfisch, Finsterländisch, Gnomisch, Halblingisch, Ignal & Zwergisch)"
+      },
+      {
+        "name": "Zauberä. Fähigkeit Oreade",
+        "trait": "Zauberä. Fähigkeit",
+        "desc": "Magischer Stein 1/Tag"
+      }
+    ],
+    "samsaran": [
+      {
+        "name": "Sprachen Samsaran",
+        "trait": "Sprachen",
+        "desc": "CH >=11: 1/Tag Sprachen verstehen, Stabilisieren und Totenwache (ZS = St.)"
+      },
+      {
+        "name": "Unterart Samsaran",
+        "trait": "Unterart",
+        "desc": "Gemeinspr. & Samarisch (Abys., Aqual, Aural, Celest., Drakon., Ignal, Infern., Nagaji, Riesisch, Tengu & Terral)"
+      }
+    ],
+    "vischkanya": [
+      {
+        "name": "Unterart Vischkanya",
+        "trait": "Unterart",
+        "desc": "Humanoide (Vischkanya)"
+      }
+    ]
+  },
+  "_meta": {
+    "count": 117,
+    "races": 33
+  }
+}

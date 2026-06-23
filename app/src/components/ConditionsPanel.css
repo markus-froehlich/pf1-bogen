@@ -1,0 +1,191 @@
+.cond-panel {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cond-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cond-title {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  flex: 1;
+}
+.cond-ref-link {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.15s, color 0.15s;
+}
+.cond-ref-link:hover { opacity: 1; color: var(--accent); border-color: var(--accent); }
+
+.cond-active-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: #c96e6e;
+  color: #fff;
+  border-radius: 10px;
+  padding: 2px 7px;
+}
+
+.cond-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.cond-chip {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.12s;
+  font-family: inherit;
+}
+.cond-chip:active { opacity: 0.7; }
+.cond-chip.active {
+  background: color-mix(in srgb, #c96e6e 20%, var(--surface2));
+  border-color: #c96e6e;
+  color: #e8a0a0;
+  font-weight: 700;
+}
+
+.cond-active-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--border);
+  padding-top: 6px;
+}
+.cond-effect-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+.cond-effect-name {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #e8a0a0;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+.cond-effect-text {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Verwirrt d%-helper */
+.cond-confused-panel {
+  margin-top: 6px;
+  background: color-mix(in srgb, #9966cc 10%, var(--surface2));
+  border: 1px solid color-mix(in srgb, #9966cc 40%, var(--border));
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cond-confused-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #c8a0e8;
+}
+.cond-roll-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cond-roll-input {
+  width: 54px;
+  background: color-mix(in srgb, #9966cc 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, #9966cc 40%, var(--border));
+  color: #d8b0f0;
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-size: 0.78rem;
+  font-family: inherit;
+  text-align: center;
+}
+.cond-roll-input::placeholder { color: color-mix(in srgb, #9966cc 50%, var(--text-muted)); }
+.cond-roll-input::-webkit-inner-spin-button,
+.cond-roll-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.cond-roll-btn {
+  background: color-mix(in srgb, #9966cc 30%, var(--surface3));
+  border: 1px solid color-mix(in srgb, #9966cc 50%, var(--border));
+  color: #d8b0f0;
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.68rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+.cond-roll-btn:active { opacity: 0.7; }
+.cond-confused-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, #9966cc 20%, var(--surface3));
+  border-radius: 4px;
+  padding: 5px 8px;
+}
+.cond-roll-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #d8b0f0;
+  min-width: 30px;
+}
+.cond-roll-text {
+  font-size: 0.72rem;
+  color: var(--text);
+  font-weight: 700;
+}
+.cond-confused-table {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cond-ct-row {
+  display: flex;
+  gap: 8px;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+.cond-ct-row.highlight {
+  background: color-mix(in srgb, #9966cc 25%, var(--surface3));
+  color: var(--text);
+}
+.cond-ct-range {
+  font-weight: 700;
+  color: #c8a0e8;
+  min-width: 44px;
+  flex-shrink: 0;
+}

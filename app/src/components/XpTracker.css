@@ -1,0 +1,129 @@
+.xp-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.xp-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.xp-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  min-width: 20px;
+}
+.xp-track-sel {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-size: 0.72rem;
+  padding: 3px 7px;
+  appearance: none;
+  cursor: pointer;
+  flex: 1;
+}
+.xp-track-sel:focus { outline: none; border-color: var(--accent); }
+.xp-lv {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.xp-lv.mismatch { color: #c9a96e; }
+.xp-mismatch-icon { font-size: 0.7rem; }
+
+/* Progress bar */
+.xp-bar-wrap { display: flex; flex-direction: column; gap: 2px; }
+.xp-bar-track {
+  height: 7px;
+  background: var(--surface3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #6ec9c9));
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  min-width: 2px;
+}
+.xp-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  padding: 0 1px;
+}
+
+/* Current XP row */
+.xp-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.xp-input {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  width: 90px;
+  text-align: right;
+  -moz-appearance: textfield;
+}
+.xp-input::-webkit-outer-spin-button,
+.xp-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.xp-input:focus { outline: none; border-color: var(--accent); }
+.xp-unit { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; flex-shrink: 0; }
+.xp-remaining {
+  flex: 1;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+.xp-maxlv {
+  flex: 1;
+  font-size: 0.72rem;
+  color: var(--good);
+  font-weight: 700;
+  text-align: right;
+}
+
+.xp-add-input {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-size: 0.82rem;
+  padding: 5px 8px;
+  width: 72px;
+  -moz-appearance: textfield;
+}
+.xp-add-input::-webkit-outer-spin-button,
+.xp-add-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.xp-add-input:focus { outline: none; border-color: var(--accent); }
+.xp-add-input::placeholder { color: var(--text-muted); font-style: italic; }
+.xp-add-btn {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.xp-add-btn:not(:disabled):active { background: color-mix(in srgb, var(--accent) 15%, var(--surface2)); }
+.xp-add-btn:disabled { opacity: 0.4; cursor: default; }

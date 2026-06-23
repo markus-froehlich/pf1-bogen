@@ -1,0 +1,1977 @@
+{
+  "by_class": {
+    "kaempfer": {
+      "name": "Kämpfer",
+      "levels": {
+        "1": [
+          "Bonustalent"
+        ],
+        "2": [
+          "Tapferkeit (AF)"
+        ],
+        "3": [
+          "Rüstungstraining (AF)"
+        ],
+        "5": [
+          "Waffentraining (AF)"
+        ],
+        "19": [
+          "Rüstungsmeisterschaft (AF)"
+        ],
+        "20": [
+          "Waffenmeisterschaft (AF)"
+        ]
+      }
+    },
+    "barbar": {
+      "name": "Barbar",
+      "levels": {
+        "1": [
+          "Schnelle Bewegung (AF)",
+          "Kampfrausch (AF)"
+        ],
+        "2": [
+          "Reflexbewegung (AF)"
+        ],
+        "3": [
+          "Fallengespür (AF)"
+        ],
+        "5": [
+          "Verb. Reflexbewegung (AF)"
+        ],
+        "7": [
+          "Schadensreduzierung (AF)"
+        ],
+        "11": [
+          "Stärkerer Kampfrausch (AF)"
+        ],
+        "14": [
+          "Unbeugsamer Wille (AF)"
+        ],
+        "17": [
+          "Unerm. Kampfrausch (AF)"
+        ],
+        "20": [
+          "Mächtiger Kampfrausch (AF)"
+        ]
+      }
+    },
+    "barde": {
+      "name": "Barde",
+      "levels": {
+        "1": [
+          "Ablenkung (ÜF) A",
+          "Bannlied (ÜF) A",
+          "Bardenauftritt A",
+          "Bardenwissen",
+          "Faszinieren (ÜF) A",
+          "Lied des Mutes (ÜF) A"
+        ],
+        "2": [
+          "Bewandert (AF)",
+          "Vielseitiger Auftritt (AF)"
+        ],
+        "3": [
+          "Lied des Erfolgs (ÜF) A"
+        ],
+        "5": [
+          "Gelehrter (AF)"
+        ],
+        "6": [
+          "Einflüsterung (ZF) A"
+        ],
+        "8": [
+          "Klagelied (ÜF) A"
+        ],
+        "9": [
+          "Lied der Größe (ÜF) A"
+        ],
+        "10": [
+          "Tausendsassa (AF)"
+        ],
+        "12": [
+          "Erfrisch. Auftritt (ÜF) A"
+        ],
+        "14": [
+          "Lied der Furcht (ZF) A"
+        ],
+        "15": [
+          "Lied des Heldenmuts (ÜF) A"
+        ],
+        "18": [
+          "Masseneinflüsterung (ZF) A"
+        ],
+        "20": [
+          "Tödliche Melodie (ÜF) A"
+        ]
+      }
+    },
+    "druide": {
+      "name": "Druide",
+      "levels": {
+        "1": [
+          "Spontanes Zaubern",
+          "Bonussprachen",
+          "Bund mit der Natur (AF)",
+          "Naturgespür (AF)",
+          "Gebete (AF)",
+          "Tierempathie (AF)"
+        ],
+        "2": [
+          "Unterholz durchqueren (AF)"
+        ],
+        "3": [
+          "Spurloser Schritt (AF)"
+        ],
+        "4": [
+          "Lockruf d. Natur widerst. (AF)",
+          "Tiergestalt (ÜF)"
+        ],
+        "9": [
+          "Immunität > Gifte (AF)"
+        ],
+        "13": [
+          "Tausend Gesichter (ÜF)"
+        ],
+        "15": [
+          "Zeitloser Körper (AF)"
+        ]
+      }
+    },
+    "magier": {
+      "name": "Magier",
+      "levels": {
+        "1": [
+          "Arkane Schule",
+          "Schriftrolle anfertigen",
+          "Arkane Verbindung (ZF)",
+          "Bonustalente"
+        ]
+      }
+    },
+    "hexe": {
+      "name": "Hexe",
+      "levels": {
+        "1": [
+          "Hexenvertrauter (AF)Hex",
+          "Hexerei (ÜF) H"
+        ]
+      }
+    },
+    "kleriker": {
+      "name": "Kleriker",
+      "levels": {
+        "1": [
+          "Aura (AF)",
+          "Energie fokussieren (ÜF)",
+          "Spontanes Zaubern",
+          "Bonussprachen Kleriker"
+        ]
+      }
+    },
+    "moench": {
+      "name": "Mönch",
+      "levels": {
+        "1": [
+          "Rüstungsklassenbonus",
+          "Schlaghagel (AF)",
+          "Waffenloser Schlag (BT)",
+          "Bonustalente",
+          "Betäub. Schlag (AF)"
+        ],
+        "2": [
+          "Entrinnen (AF)"
+        ],
+        "3": [
+          "Schnelle Bewegung (AF)",
+          "Manövertraining (AF)",
+          "Ruhiger Geist (AF)"
+        ],
+        "4": [
+          "Ki-Vorrat (ÜF)",
+          "Ki-Schlagt (ÜF)",
+          "Sturz abbremsen (AF)"
+        ],
+        "5": [
+          "Hochsprung (AF)",
+          "Reinheit des Körpers (AF)"
+        ],
+        "7": [
+          "Unvers. des Körpers (AF)"
+        ],
+        "9": [
+          "Verb. Entrinnen (AF)"
+        ],
+        "11": [
+          "Diamantkörper (ÜF)"
+        ],
+        "12": [
+          "Weiter Schritt (ÜF)"
+        ],
+        "13": [
+          "Diamantseele (AF)"
+        ],
+        "15": [
+          "Vibri. Handfläche (ÜF)"
+        ],
+        "17": [
+          "Zeitloser Körper (AF)",
+          "Sprache v. Mond+Sonne (AF)"
+        ],
+        "19": [
+          "Körper lösen (ÜF)"
+        ],
+        "20": [
+          "Perfektes Selbst"
+        ]
+      }
+    },
+    "paladin": {
+      "name": "Paladin",
+      "levels": {
+        "1": [
+          "Aura des Guten (AF)",
+          "Böses entdecken (ZF)",
+          "Böses niederstrecken (ÜF)"
+        ],
+        "2": [
+          "Göttliche Würde (ÜF)",
+          "Handauflegen (ÜF)"
+        ],
+        "3": [
+          "Aura d. Tapferkeit (ÜF)",
+          "Göttliche Gesundheit (AF)",
+          "Gnade (ÜF)"
+        ],
+        "4": [
+          "Pos. Energie fokuss. (ÜF)"
+        ],
+        "5": [
+          "Göttlicher Bund (ZF)"
+        ],
+        "8": [
+          "Aura d. Entschlossenheit (ÜF)"
+        ],
+        "11": [
+          "Aura d. Gerechtigkeit (ÜF)"
+        ],
+        "14": [
+          "Aura des Glaubens (ÜF)"
+        ],
+        "17": [
+          "Aura d. Rechtschaffenheit (ÜF)"
+        ],
+        "20": [
+          "Heiliger Streiter (ÜF)"
+        ]
+      }
+    },
+    "erzmagier": {
+      "name": "Erzmagier",
+      "levels": {
+        "1": [
+          "Legendentalent",
+          "Kraftschub L",
+          "Legendenkraft L",
+          "Schwer zu töten L",
+          "Erzmagier-Arkanum",
+          "Pfadfähigkeit L"
+        ],
+        "2": [
+          "Arttribusplus L",
+          "Unglaubliche Initiative L"
+        ],
+        "3": [
+          "Erholung L"
+        ],
+        "5": [
+          "Leg. Rettungswürfe L"
+        ],
+        "6": [
+          "Machtvoller Wille L"
+        ],
+        "8": [
+          "Unaufhaltsam L"
+        ],
+        "9": [
+          "Unsterblich L"
+        ],
+        "10": [
+          "Legendärer Held L",
+          "Wahrer Erzmagier L"
+        ]
+      }
+    },
+    "kreuzfahrer_der_erbin": {
+      "name": "Kreuzfahrer der Erbin",
+      "levels": {
+        "1": [
+          "Zauber Kreuzfahrer",
+          "Große Aura des Mutes (ÜF)"
+        ],
+        "2": [
+          "Streiter wider die Tyrannei (ÜF)"
+        ],
+        "3": [
+          "Streiter geg. d. Ungerechtigkeit (ÜF)"
+        ]
+      }
+    },
+    "schurke": {
+      "name": "Schurke",
+      "levels": {
+        "1": [
+          "Hinterhältiger Angriff",
+          "Fallen finden"
+        ],
+        "2": [
+          "Entrinnen (AF)",
+          "Tricks"
+        ],
+        "3": [
+          "Fallengespür (AF)"
+        ],
+        "4": [
+          "Reflexbewegung (AF)"
+        ],
+        "8": [
+          "Verb. Reflexbewegung (AF)"
+        ],
+        "10": [
+          "Verb. Tricks"
+        ],
+        "20": [
+          "Meisterh. Angriff (AF)"
+        ]
+      }
+    },
+    "waldlaeufer": {
+      "name": "Waldläufer",
+      "levels": {
+        "1": [
+          "Erzfeind",
+          "Spuren lesen (AF)",
+          "Tierempathie (AF)"
+        ],
+        "2": [
+          "Kampfstiltalent (AF)"
+        ],
+        "3": [
+          "Ausdauer",
+          "Bev. Gelände (AF)"
+        ],
+        "4": [
+          "Bund des Jägers (AF)"
+        ],
+        "7": [
+          "Unterholz durchqueren (AF)"
+        ],
+        "8": [
+          "Schneller Verfolger (AF)"
+        ],
+        "9": [
+          "Entrinnen (AF)"
+        ],
+        "11": [
+          "Beute (AF)"
+        ],
+        "12": [
+          "Tarnung (AF)"
+        ],
+        "16": [
+          "Verb. Entrinnen (AF)"
+        ],
+        "17": [
+          "Meisterl. Verstecken (AF)"
+        ],
+        "19": [
+          "Verb. Beute (AF)"
+        ],
+        "20": [
+          "Meisterjäger (AF)"
+        ]
+      }
+    },
+    "alchemist": {
+      "name": "Alchemist",
+      "levels": {
+        "1": [
+          "Alchemie (ÜF)",
+          "Bombe (ÜF)",
+          "Trank brauen (AF)",
+          "Mutagen (ÜF)",
+          "Imp. Fernkampf (AF)"
+        ],
+        "2": [
+          "Entdeckung (ÜF)",
+          "Giftresistenz (AF)",
+          "Gift einsetzen (AF)"
+        ],
+        "3": [
+          "Schnelle Alchemie(AF)"
+        ],
+        "6": [
+          "Schnelles Vergiften (AF)"
+        ],
+        "14": [
+          "Beständiges Mutagen (ÜF)"
+        ],
+        "18": [
+          "Sofortige Alchemie (AF)"
+        ],
+        "20": [
+          "Große Entdeckung (ÜF) GE"
+        ]
+      }
+    },
+    "inquisitor": {
+      "name": "Inquisitor",
+      "levels": {
+        "1": [
+          "Richtspruch (ÜF)",
+          "Durchschlagend RS",
+          "Gerechtigkeit RS",
+          "Heilung RS",
+          "Reinheit RS",
+          "Resistenz RS",
+          "Schutz RS",
+          "Unverwüstlichkeit RS",
+          "Vernichtung RS",
+          "Zerschmettern RS",
+          "Monsterkunde (AF)",
+          "Durchdringender Blick (AF)"
+        ],
+        "2": [
+          "Gewiefte Initiative (AF)",
+          "Gesinnung entdecken (ZF)",
+          "Spuren lesen (AF)"
+        ],
+        "3": [
+          "Einzelkämpfertaktik (AF)",
+          "Gemeinschaftstalent"
+        ],
+        "5": [
+          "Lügen erkennen (ZF)",
+          "Verderben (ÜF)"
+        ],
+        "11": [
+          "Standhaft (AF)"
+        ],
+        "12": [
+          "Mäch. Verderben (ÜF)"
+        ],
+        "14": [
+          "Schwachstelle ausnutzen (AF)"
+        ],
+        "17": [
+          "Henker (AF)"
+        ],
+        "20": [
+          "Wahrer Richtspruch (ÜF)"
+        ]
+      }
+    },
+    "mystiker": {
+      "name": "Mystiker",
+      "levels": {
+        "1": [
+          "Mystikerfluch",
+          "Offenbarung"
+        ],
+        "20": [
+          "Letze Offenbarung"
+        ]
+      }
+    },
+    "paktmagier": {
+      "name": "Paktmagier",
+      "levels": {
+        "1": [
+          "Eidolon",
+          "Lebensband (ÜF)",
+          "Monster herbeizaubern (ZF)"
+        ],
+        "2": [
+          "Sinnesband (ÜF)"
+        ],
+        "4": [
+          "Verbündeten schützen (AF)"
+        ],
+        "6": [
+          "Ruf des Schöpfers (ÜF)"
+        ],
+        "8": [
+          "Platztausch (ÜF)"
+        ],
+        "10": [
+          "Paktevolution (ÜF)"
+        ],
+        "12": [
+          "Mäch. Verb. schützen (ÜF)"
+        ],
+        "14": [
+          "Lebensbund (ÜF)"
+        ],
+        "16": [
+          "Verschmelzen (ÜF)"
+        ],
+        "18": [
+          "Mäch. Paktevolution (ÜF)"
+        ],
+        "20": [
+          "Zwillingseidolon (ÜF)"
+        ]
+      }
+    },
+    "ritter": {
+      "name": "Ritter",
+      "levels": {
+        "1": [
+          "Herausforderung (AF)",
+          "Reittier (AF)",
+          "Taktiker(AF)"
+        ],
+        "3": [
+          "Verb. Sturmangriff (AF)"
+        ],
+        "4": [
+          "Meisterl. Ausbilder (AF)"
+        ],
+        "5": [
+          "Banner(AF)"
+        ],
+        "6": [
+          "Bonustalent"
+        ],
+        "9": [
+          "Mächtiger Taktiker (AF)"
+        ],
+        "11": [
+          "Mäch. Sturmangriff (AF)"
+        ],
+        "12": [
+          "Ansp. Herausforderung (AF)"
+        ],
+        "14": [
+          "Mäch. Banner (AF)"
+        ],
+        "17": [
+          "Meistertaktiker (AF)"
+        ],
+        "20": [
+          "Überl. Sturmangriff (AF)"
+        ]
+      }
+    },
+    "adept": {
+      "name": "Adept",
+      "levels": {
+        "2": [
+          "Vertrauter Adept"
+        ]
+      }
+    },
+    "ark_betrueger": {
+      "name": "Ark. Betrüger",
+      "levels": {
+        "1": [
+          "Weitr. Fingerfertigkeit (ÜF)"
+        ],
+        "2": [
+          "Hinterhältiger Angriff"
+        ],
+        "3": [
+          "Imp. Hinterh. Angriff (AF)"
+        ],
+        "4": [
+          "Zauberlist (ÜF)"
+        ],
+        "9": [
+          "Unsichtbarer Dieb (ÜF)"
+        ],
+        "10": [
+          "Überraschungszauber"
+        ]
+      }
+    },
+    "ark_bogenschuetze": {
+      "name": "Ark. Bogenschütze",
+      "levels": {
+        "1": [
+          "Pfeil verbessern 1 (ÜF)"
+        ],
+        "2": [
+          "Pfeilzauber (ÜF)"
+        ],
+        "3": [
+          "Pfeil verbessern 3 (ÜF)"
+        ],
+        "4": [
+          "Suchpfeil (ÜF)"
+        ],
+        "5": [
+          "Pfeil verbessern 5 (ÜF)"
+        ],
+        "6": [
+          "Ätherpfeil (ÜF)"
+        ],
+        "7": [
+          "Pfeil verbessern 7 (ÜF)"
+        ],
+        "8": [
+          "Pfeilhagel (ÜF)"
+        ],
+        "9": [
+          "Pfeil verbessern 9 (ÜF)"
+        ],
+        "10": [
+          "Pfeil des Todes (ÜF)"
+        ]
+      }
+    },
+    "assassine": {
+      "name": "Assassine",
+      "levels": {
+        "1": [
+          "Hinterhältiger Angriff",
+          "Todesangriff",
+          "Gift einsetzen"
+        ],
+        "2": [
+          "Bonus auf RW> Gift",
+          "Reflexbewegung (AF)"
+        ],
+        "4": [
+          "Waffe verbergen (AF)",
+          "Wahrer Tod (AF)"
+        ],
+        "5": [
+          "Verb. Reflexbewegung (AF)"
+        ],
+        "6": [
+          "Lautloser Tod"
+        ],
+        "8": [
+          "Meisterl. Verstecken (ÜF)"
+        ],
+        "9": [
+          "Schneller Tod"
+        ],
+        "10": [
+          "Todesengel (ÜF)"
+        ]
+      }
+    },
+    "drachenjuenger": {
+      "name": "Drachenjünger",
+      "levels": {
+        "1": [
+          "Drachenblut",
+          "Nat. Rüstungsbonus (AF)"
+        ],
+        "2": [
+          "Attributserhöhung (AF)",
+          "Talent der Blutlinie",
+          "Drachenbiss (AF)"
+        ],
+        "3": [
+          "Odemwaffe (ÜF)"
+        ],
+        "5": [
+          "Blindgespür (AF)"
+        ],
+        "7": [
+          "Drachengestalt (ZF)"
+        ],
+        "9": [
+          "Schwingen (ÜF)"
+        ]
+      }
+    },
+    "duellant": {
+      "name": "Duellant",
+      "levels": {
+        "1": [
+          "Gewitzte Verteidigung (AF)",
+          "Präziser Schlag (AF)"
+        ],
+        "2": [
+          "Verb. Reaktion (AF)",
+          "Parieren (AF)"
+        ],
+        "3": [
+          "Verb. Beweglichkeit (AF)"
+        ],
+        "4": [
+          "Kampfreflexe",
+          "Anmut (AF)"
+        ],
+        "5": [
+          "Riposte (AF)"
+        ],
+        "6": [
+          "Akrob. Sturmangriff (AF)"
+        ],
+        "7": [
+          "Ausgefeilte Parade (AF)"
+        ],
+        "9": [
+          "Geschosse abwehren",
+          "Kein Rückzug (AF)"
+        ],
+        "10": [
+          "Verkrüpp. Krit. Treffer (AF)"
+        ]
+      }
+    },
+    "mystischer_ritter": {
+      "name": "Mystischer Ritter",
+      "levels": {
+        "1": [
+          "Bonustalent",
+          "Vielseitige Ausbildung"
+        ],
+        "10": [
+          "Kritischer Zauber (ÜF)"
+        ]
+      }
+    },
+    "mystischer_theurg": {
+      "name": "Mystischer Theurg",
+      "levels": {
+        "1": [
+          "Magiefusion (ÜF)"
+        ],
+        "10": [
+          "Zaubersynthese (ÜF)"
+        ]
+      }
+    },
+    "schattentaenzer": {
+      "name": "Schattentänzer",
+      "levels": {
+        "1": [
+          "Meisterl. Verstecken (ÜF)"
+        ],
+        "2": [
+          "Entrinnen (AF)",
+          "Dunkelsicht (ÜF)",
+          "Reflexbewegung (AF)"
+        ],
+        "3": [
+          "Schurkentrick",
+          "Schattenillusion (ÜF)",
+          "Schatten herbeizaubern (ÜF)"
+        ],
+        "4": [
+          "Schattenruf (ZF)",
+          "Schattenschritt (ÜF)"
+        ],
+        "5": [
+          "Ausweichrolle (AF)",
+          "Verb. Reflexbewegung (AF)"
+        ],
+        "7": [
+          "Entschlüpfender Geist (AF)"
+        ],
+        "8": [
+          "Schattenmacht (ZF)"
+        ],
+        "10": [
+          "Verb. Entrinnen (AF)",
+          "Schattenmeister (ÜF)"
+        ]
+      }
+    },
+    "wissenshueter": {
+      "name": "Wissenshüter",
+      "levels": {
+        "1": [
+          "Geheimes Wissen"
+        ],
+        "2": [
+          "Legendenkunde"
+        ],
+        "4": [
+          "Zusätzliche Sprachen"
+        ],
+        "6": [
+          "Höhere Legendenkunde (AF)"
+        ],
+        "10": [
+          "Wahre Legendenkunde(AF)"
+        ]
+      }
+    },
+    "bote_des_zorn": {
+      "name": "Bote des Zorn",
+      "levels": {
+        "1": [
+          "Mystischer Barbar",
+          "Schutzgeist I (AF)"
+        ],
+        "2": [
+          "Mysterium der Schutzgeister",
+          "Zorniger Heiler (ÜF)"
+        ],
+        "3": [
+          "Unbeirrbares Zaubern (AF)"
+        ],
+        "4": [
+          "Zornerfülltes Zaubern (ÜF)"
+        ],
+        "5": [
+          "Schutzgeist II (ZF)"
+        ],
+        "6": [
+          "Verl. Kampfrausch (ÜF)"
+        ],
+        "8": [
+          "Zorniger Zauberkundiger (ÜF)"
+        ],
+        "9": [
+          "Schutzgeist III (ZF)"
+        ],
+        "10": [
+          "Stärkerer Kampfrausch (AF)"
+        ]
+      }
+    },
+    "glaubenskrieger": {
+      "name": "Glaubenskrieger",
+      "levels": {
+        "1": [
+          "Energie fokussieren (ÜF)",
+          "Schild des Glaubenskriegers (ÜF)"
+        ],
+        "2": [
+          "Stigmata (ÜF)"
+        ],
+        "3": [
+          "Glaubensheilung (ÜF)"
+        ],
+        "4": [
+          "Göttlicher Zorn (ZF)"
+        ],
+        "5": [
+          "Feuriges Blut (ÜF)",
+          "Fokus. Niederstrecken"
+        ],
+        "6": [
+          "Vielfält. Fokussieren (ÜF)"
+        ],
+        "7": [
+          "Göttliches Urteil (ZF)"
+        ],
+        "9": [
+          "Blutschauer (ÜF)"
+        ],
+        "10": [
+          "Göttliche Vergeltung (ZF)"
+        ]
+      }
+    },
+    "hueter_der_natur": {
+      "name": "Hüter der Natur",
+      "levels": {
+        "1": [
+          "Bund des Tiergefährten (AF)",
+          "Naturempathie (AF)"
+        ],
+        "2": [
+          "Mystischer Einklang (ÜF)",
+          "Wildnis durchqueren (AF)"
+        ],
+        "3": [
+          "Sprache der Tiere (ZF)"
+        ],
+        "4": [
+          "Silbermantel (ÜF)"
+        ],
+        "5": [
+          "Bevorz. Gelände (AF)",
+          "Überlebenskünstler (AF)"
+        ],
+        "6": [
+          "Holz schmieden (ZF)"
+        ],
+        "7": [
+          "Bund der Reise (ÜF)",
+          "Sprache der Pflanzen (ZF)"
+        ],
+        "8": [
+          "Eisenmantel (ÜF)"
+        ],
+        "9": [
+          "Behütetes Gebiet (ÜF)"
+        ],
+        "10": [
+          "Ewiger Bund (ÜF)"
+        ]
+      }
+    },
+    "kriegsherold": {
+      "name": "Kriegsherold",
+      "levels": {
+        "1": [
+          "Ruf des Mutes (AF)",
+          "Stimme der Autorität (AF)",
+          "Verb. Anführen (AF)"
+        ],
+        "2": [
+          "Erleich. Marschieren (AF)"
+        ],
+        "4": [
+          "Lied der Größe (AF)"
+        ],
+        "5": [
+          "Banner (AF)"
+        ],
+        "7": [
+          "Ansp. Herausforderung (AF)"
+        ],
+        "8": [
+          "Dauerhaftes Signal (AF)"
+        ],
+        "9": [
+          "Signal zum Letzten Gefecht (AF)"
+        ],
+        "10": [
+          "Komplexe Signale (AF)"
+        ]
+      }
+    },
+    "meisterspion": {
+      "name": "Meisterspion",
+      "levels": {
+        "1": [
+          "Hinterhältiger Angriff (AF)",
+          "Kunst der Täuschung (AF)",
+          "Meister der Verkleidung (AF)"
+        ],
+        "2": [
+          "Aalglatt (AF)",
+          "Gesinnung verbergen (ÜF)"
+        ],
+        "3": [
+          "Magie verbergen (ZF)",
+          "Oberfl. Wissen (AF)"
+        ],
+        "4": [
+          "Gedanken verbergen (ÜF)",
+          "Schnelles Verkleiden (AF)"
+        ],
+        "5": [
+          "Ausspähung entgehen (ZF)",
+          "Entschlüpfender Geist (ÜF)"
+        ],
+        "6": [
+          "Gesinnungstausch (ÜF)"
+        ],
+        "8": [
+          "Todesangriff (AF)",
+          "Vorget. Bezauberung (ÜF)"
+        ],
+        "9": [
+          "Versteckte Gedanken (ZF)"
+        ],
+        "10": [
+          "Identitätstausch (ÜF)"
+        ]
+      }
+    },
+    "mutierter": {
+      "name": "Mutierter",
+      "levels": {
+        "1": [
+          "Bombenwerfer (AF)",
+          "Mutagengestalt (AF)",
+          "Mutieren (ÜF)"
+        ],
+        "2": [
+          "Verb. Mutagen (ÜF)"
+        ],
+        "3": [
+          "Brutalität (AF)"
+        ]
+      }
+    },
+    "standh_verteidiger": {
+      "name": "Standh. Verteidiger",
+      "levels": {
+        "1": [
+          "RK-Bonus (AF)",
+          "Verteidigungshaltung (AF)"
+        ],
+        "2": [
+          "Verteidigungsfähigkeiten (AF)"
+        ],
+        "3": [
+          "Reflexbewegung (AF)"
+        ],
+        "5": [
+          "Schadensreduzierung (AF)"
+        ],
+        "7": [
+          "Verb. Reflexbewegung (AF)"
+        ],
+        "9": [
+          "Bew. Verteidigungshaltung (AF)"
+        ],
+        "10": [
+          "Das Letzte Wort (AF)"
+        ]
+      }
+    },
+    "weltengaenger": {
+      "name": "Weltengänger",
+      "levels": {
+        "1": [
+          "Bevorzugtes Gelände"
+        ],
+        "2": [
+          "Geländemeisterschaft"
+        ],
+        "3": [
+          "GeländebeherrschungWeG"
+        ],
+        "10": [
+          "Eins mit dem Gelände (ÜF)WeG"
+        ]
+      }
+    },
+    "kampfmagus": {
+      "name": "Kampfmagus",
+      "levels": {
+        "1": [
+          "Arkaner Vorrat 1 (ÜF)",
+          "Kampfzauberei (AF)"
+        ],
+        "2": [
+          "Zauberschlag (ÜF)"
+        ],
+        "3": [
+          "Arkanum"
+        ],
+        "4": [
+          "Zauberrückruf (ÜF)"
+        ],
+        "5": [
+          "Arkaner Vorrat 5-1 (ÜF)",
+          "Arkaner Vorrat 5-2 (ÜF)"
+        ],
+        "7": [
+          "MS Rüstung (AF)",
+          "Wissensvorrat (ÜF)"
+        ],
+        "8": [
+          "Verb. Kampfzauberei (AF)"
+        ],
+        "10": [
+          "Kämpferausbildung (AF)"
+        ],
+        "11": [
+          "Verb. Zauberrückruf (ÜF)"
+        ],
+        "13": [
+          "Schwere Rüstung (AF)"
+        ],
+        "14": [
+          "Mächt. Kampfzauberei (AF)"
+        ],
+        "16": [
+          "Gegenschlag (AF)"
+        ],
+        "19": [
+          "Mächt. Zugang-Zaubern (ÜF)"
+        ],
+        "20": [
+          "Wahrer Kampfmagus (ÜF)"
+        ]
+      }
+    },
+    "ninja": {
+      "name": "Ninja",
+      "levels": {
+        "1": [
+          "Gift einsetzen",
+          "Hinterhältiger Angriff"
+        ],
+        "2": [
+          "Ki-Vorrat (AF)",
+          "Ninjatrick"
+        ],
+        "3": [
+          "Keine Spuren (AF)"
+        ],
+        "4": [
+          "Reflexbewegung (AF)"
+        ],
+        "6": [
+          "Leichte Schritte (AF)"
+        ],
+        "8": [
+          "Verb. Reflexbew. (AF)"
+        ],
+        "10": [
+          "Meistertricks"
+        ],
+        "20": [
+          "Verbor. Meister (ÜF)"
+        ]
+      }
+    },
+    "schuetze": {
+      "name": "Schütze",
+      "levels": {
+        "1": [
+          "Büchsenmacher",
+          "Schneid (ÜF)",
+          "Schützentrick",
+          "ST Geschoss ausweichen (AF)",
+          "ST Lauf reinigen (AF)",
+          "ST Zielgenauigkeit (AF)"
+        ],
+        "2": [
+          "Behände (AF)"
+        ],
+        "3": [
+          "ST Kolbenhieb (AF)",
+          "ST Schnell ziehen (AF)",
+          "ST Trickschuss (AF)"
+        ],
+        "4": [
+          "Bonustalent"
+        ],
+        "5": [
+          "Feuerwaffentraining (AF)"
+        ],
+        "7": [
+          "ST Blattschuss (AF)",
+          "ST Warnschuss (AF)",
+          "ST Zielen (AF)"
+        ],
+        "11": [
+          "ST Blitzschnelles Nachladen (AF)",
+          "ST Blutende Schusswunde (AF)",
+          "ST Sorgfältiges Nachladen (AF)"
+        ],
+        "15": [
+          "ST Schreckschuss (AF)",
+          "ST Schützenglück (AF)",
+          "ST Schwer zu treffen (AF)"
+        ],
+        "19": [
+          "ST Betäubender Schuss (AF)",
+          "ST Dem Tod entrinnen (AF)",
+          "ST Todesschuss (AF)"
+        ],
+        "20": [
+          "Wahrer Schneid (AF)"
+        ]
+      }
+    },
+    "kundsch_geleh": {
+      "name": "Kundsch.-Geleh.",
+      "levels": {
+        "1": [
+          "Zauber",
+          "Versierte Aktivierung (AF)",
+          "Meisterl. Gelehrter (AF)"
+        ],
+        "2": [
+          "Esoterische Magie (AF)",
+          "Glyphen finden (AF)"
+        ],
+        "3": [
+          "Herr der Schriftrollen (ÜF)"
+        ],
+        "4": [
+          "Schnelle Identifizierung (ZF)"
+        ],
+        "5": [
+          "Siegelmeister (ÜF)"
+        ],
+        "6": [
+          "Zauber analysieren (ZF)",
+          "Herr der Stille (ÜF)"
+        ],
+        "7": [
+          "Bannmeister (ÜF)"
+        ],
+        "8": [
+          "Herr der Symbole (ÜF)"
+        ],
+        "9": [
+          "Herr der Zauberei (AF)"
+        ],
+        "10": [
+          "Herr der Gegenstände (ÜF)"
+        ]
+      }
+    },
+    "antipaladin": {
+      "name": "Antipaladin",
+      "levels": {
+        "1": [
+          "Aura des Bösen (AF)",
+          "Gutes entdecken (ZF)",
+          "Gutes niederstrecken (ÜF)"
+        ],
+        "2": [
+          "Hand der Verderbnis (ÜF)",
+          "Unh. Widerstandskraft (ÜF)"
+        ],
+        "3": [
+          "Aura der Feigheit (ÜF)",
+          "Grausamkeit (ÜF)",
+          "Seuchenträger (AF)"
+        ],
+        "4": [
+          "Neg. Energie fokuss. (ÜF)"
+        ],
+        "5": [
+          "Dunkle Gunst (ZF)"
+        ],
+        "8": [
+          "Aura der Verzweiflung (ÜF)"
+        ],
+        "11": [
+          "Aura der Vergeltung (ÜF)"
+        ],
+        "14": [
+          "Aura der Sünde (ÜF)"
+        ],
+        "17": [
+          "Aura der Verderbtheit (ÜF)"
+        ],
+        "20": [
+          "Unheiliger Streiter (ÜF)"
+        ]
+      }
+    },
+    "kluftwaechter": {
+      "name": "Kluftwächter",
+      "levels": {
+        "1": [
+          "Gegenherbeiz.",
+          "Planarer Führer"
+        ],
+        "2": [
+          "Planares Fokussieren",
+          "Sprüche/Tag"
+        ],
+        "3": [
+          "Bekämpfung"
+        ],
+        "4": [
+          "Teleportation kontern"
+        ],
+        "5": [
+          "Planare Plage"
+        ],
+        "7": [
+          "Verb. Telep. kontern"
+        ],
+        "8": [
+          "Planare Säuberung"
+        ],
+        "10": [
+          "Mäch. Telep. kontern"
+        ]
+      }
+    },
+    "niederer_templer": {
+      "name": "Niederer Templer",
+      "levels": {
+        "1": [
+          "Kreuzfahrer",
+          "Fähnchen im"
+        ],
+        "2": [
+          "Schmutzig kämpfen"
+        ],
+        "3": [
+          "Hinterhältiger Angriff"
+        ],
+        "5": [
+          "Schneller Rückzug",
+          "Pfad der Finsternis/des Lichts"
+        ],
+        "6": [
+          "Erbarmungslos"
+        ],
+        "10": [
+          "Pfad der Verdammnis/Erlösung"
+        ]
+      }
+    },
+    "adeliger": {
+      "name": "Adeliger",
+      "levels": {
+        "1": [
+          "Bürgerlicher",
+          "Experte",
+          "Krieger"
+        ]
+      }
+    },
+    "buergerlicher": {
+      "name": "Bürgerlicher",
+      "levels": {
+        "1": [
+          "Experte",
+          "Krieger"
+        ]
+      }
+    },
+    "experte": {
+      "name": "Experte",
+      "levels": {
+        "1": [
+          "Krieger"
+        ]
+      }
+    },
+    "hierophant": {
+      "name": "Hierophant",
+      "levels": {
+        "1": [
+          "Legendentalent",
+          "Kraftschub L",
+          "Legendenkraft L",
+          "Schwer zu töten L",
+          "Göttlicher Kraftschub L",
+          "Pfadfähigkeit L"
+        ],
+        "2": [
+          "Arttribusplus L",
+          "Unglaubliche Initiative L"
+        ],
+        "3": [
+          "Erholung L"
+        ],
+        "5": [
+          "Leg. Rettungswürfe L"
+        ],
+        "6": [
+          "Machtvoller Wille L"
+        ],
+        "8": [
+          "Unaufhaltsam L"
+        ],
+        "9": [
+          "Unsterblich L"
+        ],
+        "10": [
+          "Legendärer Held L",
+          "Göttliches Medium L"
+        ]
+      }
+    },
+    "marschall": {
+      "name": "Marschall",
+      "levels": {
+        "1": [
+          "Legendentalent",
+          "Kraftschub L",
+          "Legendenkraft L",
+          "Schwer zu töten L",
+          "Marschallbefehl L",
+          "Pfadfähigkeit L"
+        ],
+        "2": [
+          "Arttribusplus L",
+          "Unglaubliche Initiative L"
+        ],
+        "3": [
+          "Erholung L"
+        ],
+        "5": [
+          "Leg. Rettungswürfe L"
+        ],
+        "6": [
+          "Machtvoller Wille L"
+        ],
+        "8": [
+          "Unaufhaltsam L"
+        ],
+        "9": [
+          "Unsterblich L"
+        ],
+        "10": [
+          "Legendärer Held L",
+          "Visionärer Befehlshaber L"
+        ]
+      }
+    },
+    "streiter": {
+      "name": "Streiter",
+      "levels": {
+        "1": [
+          "Legendentalent",
+          "Kraftschub L",
+          "Legendenkraft L",
+          "Schwer zu töten L",
+          "Streiterschlag L",
+          "Pfadfähigkeit L"
+        ],
+        "2": [
+          "Arttribusplus L",
+          "Unglaubliche Initiative L"
+        ],
+        "3": [
+          "Erholung L"
+        ],
+        "5": [
+          "Leg. Rettungswürfe L"
+        ],
+        "6": [
+          "Machtvoller Wille L"
+        ],
+        "8": [
+          "Unaufhaltsam L"
+        ],
+        "9": [
+          "Unsterblich L"
+        ],
+        "10": [
+          "Legendärer Held L",
+          "Legendärer Streiter L"
+        ]
+      }
+    },
+    "trickser": {
+      "name": "Trickser",
+      "levels": {
+        "1": [
+          "Legendentalent",
+          "Kraftschub L",
+          "Legendenkraft L",
+          "Schwer zu töten L",
+          "Tricksterangriff L",
+          "Pfadfähigkeit L"
+        ],
+        "2": [
+          "Arttribusplus L",
+          "Unglaubliche Initiative L"
+        ],
+        "3": [
+          "Erholung L"
+        ],
+        "5": [
+          "Leg. Rettungswürfe L"
+        ],
+        "6": [
+          "Machtvoller Wille L"
+        ],
+        "8": [
+          "Unaufhaltsam L"
+        ],
+        "9": [
+          "Unsterblich L"
+        ],
+        "10": [
+          "Legendärer Held L",
+          "Meistertrickster L"
+        ]
+      }
+    },
+    "waechter": {
+      "name": "Wächter",
+      "levels": {
+        "1": [
+          "Legendentalent",
+          "Kraftschub L",
+          "Legendenkraft L",
+          "Schwer zu töten L",
+          "Wächterruf L",
+          "Pfadfähigkeit L"
+        ],
+        "2": [
+          "Arttribusplus L",
+          "Unglaubliche Initiative L"
+        ],
+        "3": [
+          "Erholung L"
+        ],
+        "5": [
+          "Leg. Rettungswürfe L"
+        ],
+        "6": [
+          "Machtvoller Wille L"
+        ],
+        "8": [
+          "Unaufhaltsam L"
+        ],
+        "9": [
+          "Unsterblich L"
+        ],
+        "10": [
+          "Legendärer Held L",
+          "Wahrer Verteidiger L"
+        ]
+      }
+    },
+    "arkanist": {
+      "name": "Arkanist",
+      "levels": {
+        "1": [
+          "Arkanes Reservoir",
+          "Arkanistentrick",
+          "Zauberplatz umwandeln"
+        ],
+        "11": [
+          "Mächtige Arkanistentricks"
+        ],
+        "20": [
+          "Meister der Magie"
+        ]
+      }
+    },
+    "attentaeter": {
+      "name": "Attentäter",
+      "levels": {
+        "1": [
+          "Feind studieren (AF)",
+          "Spuren lesen (AF)"
+        ],
+        "2": [
+          "Attentätertrick"
+        ],
+        "3": [
+          "Hinterh. Angriff"
+        ],
+        "7": [
+          "Pirscher (AF)"
+        ],
+        "11": [
+          "Schn. Verfolger (AF)"
+        ],
+        "13": [
+          "Schneller Schritt (AF)"
+        ],
+        "14": [
+          "Beute (AF)"
+        ],
+        "19": [
+          "Verb. Beute (AF) att"
+        ],
+        "20": [
+          "Meisterattentäter"
+        ]
+      }
+    },
+    "blutwueter": {
+      "name": "Blutwüter",
+      "levels": {
+        "1": [
+          "Blutwut (ÜF)",
+          "Schnelle Bewegung (AF)"
+        ],
+        "2": [
+          "Reflexbewegung (AF)Blu"
+        ],
+        "3": [
+          "Schutz des Blutes (ÜF)"
+        ],
+        "4": [
+          "Magie des Blutes (ÜF)",
+          "Materialkomp.los Zaubern"
+        ],
+        "5": [
+          "Verb.Reflexbewegung (AF)"
+        ],
+        "7": [
+          "Schadensreduzierung (AF)Blu"
+        ],
+        "11": [
+          "Stärkere Blutwut (AF)"
+        ],
+        "14": [
+          "Unbeugsamer Wille (AF)"
+        ],
+        "17": [
+          "Unermüdliche Blutwut (AF)"
+        ],
+        "20": [
+          "Mächtige Blutwut (AF)Blu"
+        ]
+      }
+    },
+    "draufgaenger": {
+      "name": "Draufgänger",
+      "levels": {
+        "1": [
+          "Draufgängerfinesse (AF)",
+          "Draufgängertricks (AF)",
+          "Elan (AF)"
+        ],
+        "2": [
+          "Schützendes Charisma (AF)"
+        ],
+        "3": [
+          "Behände (AF)"
+        ],
+        "4": [
+          "Draufgängerwaffentraining (AF)"
+        ],
+        "5": [
+          "Bonuskampftalent (AF)"
+        ],
+        "20": [
+          "Waffenmeisterschaft (AF)"
+        ]
+      }
+    },
+    "ermittler": {
+      "name": "Ermittler",
+      "levels": {
+        "1": [
+          "Alchemie (ÜF)",
+          "Inspiration (AF)",
+          "Fallen finden"
+        ],
+        "2": [
+          "Giftkunde (AF)",
+          "Giftresistenz (AF)"
+        ],
+        "3": [
+          "Ermittlertrick",
+          "Umfangreiches Wissen",
+          "Fallengespür (AF)",
+          "Schnelle Alchemie (AF)",
+          "Gegner einschätzen (AF)",
+          "Punktgenauer Schlag (AF)"
+        ],
+        "11": [
+          "Giftimmunität"
+        ],
+        "20": [
+          "Wahre Inspiration (AF)"
+        ]
+      }
+    },
+    "jaeger": {
+      "name": "Jäger",
+      "levels": {
+        "1": [
+          "Zauber (AF)",
+          "Naturausbildung (AF)",
+          "Tieraspekt 1 (AF)",
+          "Tieraspekt 2 (AF)",
+          "Tieraspekt 3 (AF)",
+          "Tieraspekt 4 (AF)",
+          "Tieraspekt 5 (AF)",
+          "Tierempathie (AF)"
+        ],
+        "2": [
+          "Tiergefährte (AF)",
+          "Gen. Ausmanövrieren (AF)",
+          "Spuren lesen (AF)"
+        ],
+        "3": [
+          "Jägertaktiken (AF)"
+        ],
+        "4": [
+          "Verb. Emp. Verbindung (AF)"
+        ],
+        "5": [
+          "Unterholz durchqueren (AF)"
+        ],
+        "8": [
+          "Schneller Verfolger (AF)",
+          "Zweiter Tieraspekt (AF)"
+        ],
+        "10": [
+          "Toten Tiergef. Erwecken (ZF)"
+        ],
+        "11": [
+          "Mit Meister sprechen (AF)"
+        ],
+        "14": [
+          "Mäch. Emp. Verbindung (ÜF)"
+        ],
+        "17": [
+          "Eins mit der Wildnis (AF)"
+        ],
+        "20": [
+          "Nimrod (AF)"
+        ]
+      }
+    },
+    "kriegspriester": {
+      "name": "Kriegspriester",
+      "levels": {
+        "1": [
+          "Aura",
+          "Bonussprachen",
+          "Fokuswaffe",
+          "Geweihte Waffe (ÜF)",
+          "Spontanes Zaubern",
+          "Segnungen"
+        ],
+        "2": [
+          "Eifer (ÜF)"
+        ],
+        "4": [
+          "Energie fokussieren"
+        ],
+        "7": [
+          "Geweihte Rüstung (ÜF)"
+        ],
+        "20": [
+          "Aspekt des Krieger (ÜF)"
+        ]
+      }
+    },
+    "raufbold": {
+      "name": "Raufbold",
+      "levels": {
+        "1": [
+          "Kampfausbildung (AF)",
+          "Krieg.Anpass.fähigkeit (AF)",
+          "Schlägerschläue (AF)",
+          "Waffenloser Schlag"
+        ],
+        "2": [
+          "Bonuskampftalent",
+          "Raufboldschlaghagel (AF)"
+        ],
+        "3": [
+          "Manövertraining (AF)"
+        ],
+        "4": [
+          "K.O. (AF)",
+          "RK-Bonus (AF)"
+        ],
+        "5": [
+          "NB.Waffenmeistersch. (AF)",
+          "Raufboldschlag (AF)"
+        ],
+        "16": [
+          "Wuchtiger Schlag (AF)"
+        ],
+        "20": [
+          "Verb. Wuch. Schlag (AF)"
+        ]
+      }
+    },
+    "schamane": {
+      "name": "Schamane",
+      "levels": {
+        "1": [
+          "Totem",
+          "Totemmagie",
+          "Totentier"
+        ],
+        "2": [
+          "Hexerei Schamane"
+        ],
+        "3": [
+          "Brührungszauber übermitten"
+        ],
+        "4": [
+          "Zeitweiliges Totem"
+        ],
+        "6": [
+          "Zeitweilige Hexerei"
+        ],
+        "20": [
+          "Totemmanifestation"
+        ]
+      }
+    },
+    "skalde": {
+      "name": "Skalde",
+      "levels": {
+        "1": [
+          "Bardenwissen (AF)",
+          "Schriftrolle anfertigen",
+          "Berserkerlied (ÜF)",
+          "Lied des Kampfrausches (ÜF)"
+        ],
+        "2": [
+          "Bewandert (AF)",
+          "Vielseitiger Auftritt (AF)"
+        ],
+        "3": [
+          "Kampfrauschkraft (AF)",
+          "Marschlied (ÜF)"
+        ],
+        "4": [
+          "Reflexbewegung (AF)"
+        ],
+        "5": [
+          "Zauberwissen (ÜF)"
+        ],
+        "6": [
+          "Lied der Stärke (ÜF)"
+        ],
+        "7": [
+          "Verb. Reflexbewegung (AF)",
+          "Gelehrter (AF)"
+        ],
+        "9": [
+          "Schadensreduzierung (ÜF)"
+        ],
+        "10": [
+          "Klagelied (ÜF)"
+        ],
+        "14": [
+          "Lied der Gefallenen (ÜF)"
+        ],
+        "20": [
+          "Meisterskalde (ÜF)"
+        ]
+      }
+    },
+    "krieger": {
+      "name": "Krieger",
+      "levels": {
+        "1": [
+          "Ark. Betrüger",
+          "Ark. Bogenschütze",
+          "Assassine",
+          "Drachenjünger",
+          "Duellant",
+          "Kundsch.-Chronist",
+          "Mystischer Ritter",
+          "Mystischer Theurg",
+          "Schattentänzer",
+          "Wissenshüter",
+          "Bote des",
+          "Glaubenskrieger",
+          "Hüter der Natur",
+          "Kriegsherold",
+          "Meisterspion",
+          "Mutierter",
+          "Standh. Verteidiger",
+          "Weltengänger",
+          "Ulfengardist",
+          "Vollstrecker d. R. Legion",
+          "Kundsch.-Forscher",
+          "Kriegsgelehrter",
+          "Göttlicher Spross",
+          "Kryptomagier",
+          "Jünger d. Schmerzen",
+          "Agent d. Schattenhofes",
+          "Akolyth d. Gr. Glaubens",
+          "Dämmerblumen-Dissident",
+          "Höllenritter-Signifer",
+          "Prophet Von Kalistrade"
+        ]
+      }
+    },
+    "kundsch_chronist": {
+      "name": "Kundsch.-Chronist",
+      "levels": {
+        "1": [
+          "Mystischer Ritter",
+          "Mystischer Theurg",
+          "Schattentänzer",
+          "Wissenshüter",
+          "Bote des",
+          "Glaubenskrieger",
+          "Hüter der Natur",
+          "Kriegsherold",
+          "Meisterspion",
+          "Mutierter",
+          "Standh. Verteidiger",
+          "Weltengänger",
+          "Ulfengardist",
+          "Vollstrecker d. R. Legion",
+          "Kundsch.-Forscher",
+          "Kriegsgelehrter",
+          "Göttlicher Spross",
+          "Kryptomagier",
+          "Jünger d. Schmerzen",
+          "Agent d. Schattenhofes",
+          "Akolyth d. Gr. Glaubens",
+          "Dämmerblumen-Dissident",
+          "Höllenritter-Signifer",
+          "Prophet Von Kalistrade",
+          "Streiter Iroris",
+          "Sturmstifter",
+          "Aldori-Schwertmeister",
+          "Bruder Des Siegels",
+          "Goldener Legionär",
+          "Grubenkämpfer"
+        ]
+      }
+    },
+    "test1": {
+      "name": "test1",
+      "levels": {
+        "1": [
+          "e2",
+          "Tier Gefährte",
+          "Kampfmagus",
+          "Kampfmagus Fluchweber",
+          "Kampfmagus Schwarzklingenträger",
+          "Kampfmagus Stabmagus",
+          "Kampfmagus Zauberklinge",
+          "Kampfmagus Kensai",
+          "Kampfmagus Seelenschmied",
+          "Kampfmagus Skirnir",
+          "Kampfmagus Zauberstreiter",
+          "Kampfmagus Zaubertänzer",
+          "Kampfmagus Scheußlicher Schinder",
+          "Kampfmagus Elementarritter",
+          "Kampfmagus Kampfmagusarkana",
+          "Kampfmagus Blutmagus",
+          "Kampfmagus Mordanter Eskorte",
+          "Kampfmagus Grünstachel-Magus",
+          "Kampfmagus Kartenmagus",
+          "Kampfmagus Zauberschütze",
+          "Kampfmagus Kapeniatänzer",
+          "Kampfmagus Tiermagus",
+          "Kampfmagus Esoteriker",
+          "Kampfmagus Seelenklinge",
+          "Ninja",
+          "Schütze",
+          "Schütze Geh. Fremder",
+          "Schütze Gep. Schütze"
+        ]
+      }
+    },
+    "e2": {
+      "name": "e2",
+      "levels": {
+        "1": [
+          "Tier Gefährte",
+          "Kampfmagus",
+          "Kampfmagus Fluchweber",
+          "Kampfmagus Schwarzklingenträger",
+          "Kampfmagus Stabmagus",
+          "Kampfmagus Zauberklinge",
+          "Kampfmagus Kensai",
+          "Kampfmagus Seelenschmied",
+          "Kampfmagus Skirnir",
+          "Kampfmagus Zauberstreiter",
+          "Kampfmagus Zaubertänzer",
+          "Kampfmagus Scheußlicher Schinder",
+          "Kampfmagus Elementarritter",
+          "Kampfmagus Kampfmagusarkana",
+          "Kampfmagus Blutmagus",
+          "Kampfmagus Mordanter Eskorte",
+          "Kampfmagus Grünstachel-Magus",
+          "Kampfmagus Kartenmagus",
+          "Kampfmagus Zauberschütze",
+          "Kampfmagus Kapeniatänzer",
+          "Kampfmagus Tiermagus",
+          "Kampfmagus Esoteriker",
+          "Kampfmagus Seelenklinge",
+          "Ninja",
+          "Schütze",
+          "Schütze Geh. Fremder",
+          "Schütze Gep. Schütze",
+          "Schütze Musketenmeister"
+        ]
+      }
+    }
+  },
+  "_meta": {
+    "class_count": 65
+  }
+}

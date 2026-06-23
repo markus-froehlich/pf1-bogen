@@ -1,0 +1,85 @@
+.attr-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 5px 8px;
+  gap: 7px;
+}
+
+.attr-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.attr-abbr {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.attr-name {
+  font-size: 0.56rem;
+  color: var(--text-muted);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attr-score {
+  width: 46px;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 0;
+  flex-shrink: 0;
+  -moz-appearance: textfield;
+}
+.attr-score::-webkit-outer-spin-button,
+.attr-score::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.attr-score:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.attr-mod {
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--surface3);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.attr-mod.pos { color: var(--good); border-color: var(--good); }
+.attr-mod.neg { color: var(--bad); border-color: var(--bad); }
+
+.attr-buff {
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: #6ec9c9;
+  background: color-mix(in srgb, #6ec9c9 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, #6ec9c9 35%, var(--border));
+  border-radius: 3px;
+  padding: 1px 3px;
+  white-space: nowrap;
+  cursor: default;
+  flex-shrink: 0;
+}

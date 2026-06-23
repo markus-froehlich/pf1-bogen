@@ -1,0 +1,634 @@
+{
+  "armor": [
+    {
+      "id": "beschlagene_lederrüstung",
+      "name": {
+        "de": "Beschlagene Lederrüstung",
+        "en": "Beschlagene Lederrüstung"
+      },
+      "type": "Leicht",
+      "bonus": 3,
+      "max_dex": 5,
+      "check_penalty": -1,
+      "spell_failure": 0.15,
+      "weight_kg": 20,
+      "page_ref": "G151"
+    },
+    {
+      "id": "gepanzerter_waffenrock",
+      "name": {
+        "de": "Gepanzerter Waffenrock",
+        "en": "Gepanzerter Waffenrock"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "max_dex": 6,
+      "check_penalty": 0,
+      "spell_failure": 0,
+      "weight_kg": 10,
+      "page_ref": "Go213"
+    },
+    {
+      "id": "gesteppter_wafferock",
+      "name": {
+        "de": "Gesteppter Wafferock",
+        "en": "Gesteppter Wafferock"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "max_dex": 8,
+      "check_penalty": 0,
+      "spell_failure": 0.1,
+      "weight_kg": 15,
+      "page_ref": "E179"
+    },
+    {
+      "id": "haramaki",
+      "name": {
+        "de": "Haramaki",
+        "en": "Haramaki"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "max_dex": null,
+      "check_penalty": 0,
+      "spell_failure": 0,
+      "weight_kg": 1,
+      "page_ref": "K128"
+    },
+    {
+      "id": "holzrüstung",
+      "name": {
+        "de": "Holzrüstung",
+        "en": "Holzrüstung"
+      },
+      "type": "Leicht",
+      "bonus": 3,
+      "max_dex": 3,
+      "check_penalty": -1,
+      "spell_failure": 0.15,
+      "weight_kg": 25,
+      "page_ref": "E179"
+    },
+    {
+      "id": "kettenhemd",
+      "name": {
+        "de": "Kettenhemd",
+        "en": "Kettenhemd"
+      },
+      "type": "Leicht",
+      "bonus": 4,
+      "max_dex": 4,
+      "check_penalty": -2,
+      "spell_failure": 0.2,
+      "weight_kg": 25,
+      "page_ref": "G151"
+    },
+    {
+      "id": "lamellar_leder",
+      "name": {
+        "de": "Lamellar, Leder-",
+        "en": "Lamellar, Leder-"
+      },
+      "type": "Leicht",
+      "bonus": 4,
+      "max_dex": 3,
+      "check_penalty": -2,
+      "spell_failure": 0.2,
+      "weight_kg": 25,
+      "page_ref": "K128"
+    },
+    {
+      "id": "lamellarbrustharnisch",
+      "name": {
+        "de": "Lamellarbrustharnisch",
+        "en": "Lamellarbrustharnisch"
+      },
+      "type": "Leicht",
+      "bonus": 2,
+      "max_dex": 4,
+      "check_penalty": 0,
+      "spell_failure": 0.05,
+      "weight_kg": 8,
+      "page_ref": "K128"
+    },
+    {
+      "id": "laub_rüstung",
+      "name": {
+        "de": "Laub Rüstung",
+        "en": "Laub Rüstung"
+      },
+      "type": "Leicht",
+      "bonus": 3,
+      "max_dex": 8,
+      "check_penalty": 0,
+      "spell_failure": 0.1,
+      "weight_kg": 10,
+      "page_ref": "Go213"
+    },
+    {
+      "id": "lederrüstung",
+      "name": {
+        "de": "Lederrüstung",
+        "en": "Lederrüstung"
+      },
+      "type": "Leicht",
+      "bonus": 2,
+      "max_dex": 6,
+      "check_penalty": 0,
+      "spell_failure": 0.1,
+      "weight_kg": 15,
+      "page_ref": "G151"
+    },
+    {
+      "id": "paraderüstung",
+      "name": {
+        "de": "Paraderüstung",
+        "en": "Paraderüstung"
+      },
+      "type": "Leicht",
+      "bonus": 3,
+      "max_dex": 5,
+      "check_penalty": -1,
+      "spell_failure": 0.15,
+      "weight_kg": 20,
+      "page_ref": "AR5"
+    },
+    {
+      "id": "rosenholz_rüstung",
+      "name": {
+        "de": "Rosenholz Rüstung",
+        "en": "Rosenholz Rüstung"
+      },
+      "type": "Leicht",
+      "bonus": 2,
+      "max_dex": 6,
+      "check_penalty": 0,
+      "spell_failure": 0.1,
+      "weight_kg": 15,
+      "page_ref": "Go213"
+    },
+    {
+      "id": "schuppenhemd",
+      "name": {
+        "de": "Schuppenhemd",
+        "en": "Schuppenhemd"
+      },
+      "type": "Leicht",
+      "bonus": 3,
+      "max_dex": 4,
+      "check_penalty": -1,
+      "spell_failure": 0.15,
+      "weight_kg": 18,
+      "page_ref": "Va14"
+    },
+    {
+      "id": "waffenrock",
+      "name": {
+        "de": "Waffenrock",
+        "en": "Waffenrock"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "max_dex": 8,
+      "check_penalty": 0,
+      "spell_failure": 0.05,
+      "weight_kg": 10,
+      "page_ref": "G151"
+    },
+    {
+      "id": "zeremonielle_seidenrüstung",
+      "name": {
+        "de": "Zeremonielle Seidenrüstung",
+        "en": "Zeremonielle Seidenrüstung"
+      },
+      "type": "Leicht",
+      "bonus": 1,
+      "max_dex": null,
+      "check_penalty": 0,
+      "spell_failure": 0,
+      "weight_kg": 4,
+      "page_ref": "K129"
+    },
+    {
+      "id": "behände_brustplatte",
+      "name": {
+        "de": "Behände Brustplatte",
+        "en": "Behände Brustplatte"
+      },
+      "type": "Mittel",
+      "bonus": 6,
+      "max_dex": 3,
+      "check_penalty": -4,
+      "spell_failure": 0.25,
+      "weight_kg": 25,
+      "page_ref": "E179"
+    },
+    {
+      "id": "bergmusterrüstung",
+      "name": {
+        "de": "Bergmusterrüstung",
+        "en": "Bergmusterrüstung"
+      },
+      "type": "Mittel",
+      "bonus": 6,
+      "max_dex": 3,
+      "check_penalty": -4,
+      "spell_failure": 0.3,
+      "weight_kg": 40,
+      "page_ref": "K128"
+    },
+    {
+      "id": "brustplatte",
+      "name": {
+        "de": "Brustplatte",
+        "en": "Brustplatte"
+      },
+      "type": "Mittel",
+      "bonus": 6,
+      "max_dex": 3,
+      "check_penalty": -4,
+      "spell_failure": 0.25,
+      "weight_kg": 30,
+      "page_ref": "G151"
+    },
+    {
+      "id": "do_maru",
+      "name": {
+        "de": "Do-maru",
+        "en": "Do-maru"
+      },
+      "type": "Mittel",
+      "bonus": 5,
+      "max_dex": 4,
+      "check_penalty": -4,
+      "spell_failure": 0.25,
+      "weight_kg": 30,
+      "page_ref": "K128"
+    },
+    {
+      "id": "fellrüstung",
+      "name": {
+        "de": "Fellrüstung",
+        "en": "Fellrüstung"
+      },
+      "type": "Mittel",
+      "bonus": 4,
+      "max_dex": 4,
+      "check_penalty": -3,
+      "spell_failure": 0.2,
+      "weight_kg": 25,
+      "page_ref": "G151"
+    },
+    {
+      "id": "gepanzerter_mantel",
+      "name": {
+        "de": "Gepanzerter Mantel",
+        "en": "Gepanzerter Mantel"
+      },
+      "type": "Mittel",
+      "bonus": 4,
+      "max_dex": 3,
+      "check_penalty": -2,
+      "spell_failure": 0.2,
+      "weight_kg": 20,
+      "page_ref": "E179"
+    },
+    {
+      "id": "kettenpanzer",
+      "name": {
+        "de": "Kettenpanzer",
+        "en": "Kettenpanzer"
+      },
+      "type": "Mittel",
+      "bonus": 6,
+      "max_dex": 2,
+      "check_penalty": -5,
+      "spell_failure": 0.3,
+      "weight_kg": 40,
+      "page_ref": "G151"
+    },
+    {
+      "id": "kikko_rüstung",
+      "name": {
+        "de": "Kikko-Rüstung",
+        "en": "Kikko-Rüstung"
+      },
+      "type": "Mittel",
+      "bonus": 5,
+      "max_dex": 4,
+      "check_penalty": -3,
+      "spell_failure": 0.2,
+      "weight_kg": 25,
+      "page_ref": "K128"
+    },
+    {
+      "id": "lamellar_horn",
+      "name": {
+        "de": "Lamellar, Horn-",
+        "en": "Lamellar, Horn-"
+      },
+      "type": "Mittel",
+      "bonus": 5,
+      "max_dex": 3,
+      "check_penalty": -4,
+      "spell_failure": 0.25,
+      "weight_kg": 30,
+      "page_ref": "K128"
+    },
+    {
+      "id": "lamellar_stahl",
+      "name": {
+        "de": "Lamellar, Stahl-",
+        "en": "Lamellar, Stahl-"
+      },
+      "type": "Mittel",
+      "bonus": 6,
+      "max_dex": 3,
+      "check_penalty": -5,
+      "spell_failure": 0.25,
+      "weight_kg": 35,
+      "page_ref": "K128"
+    },
+    {
+      "id": "schuppenpanzer",
+      "name": {
+        "de": "Schuppenpanzer",
+        "en": "Schuppenpanzer"
+      },
+      "type": "Mittel",
+      "bonus": 5,
+      "max_dex": 3,
+      "check_penalty": -4,
+      "spell_failure": 0.25,
+      "weight_kg": 30,
+      "page_ref": "G151"
+    },
+    {
+      "id": "vier_spiegel_rüstung",
+      "name": {
+        "de": "Vier-Spiegel-Rüstung",
+        "en": "Vier-Spiegel-Rüstung"
+      },
+      "type": "Mittel",
+      "bonus": 6,
+      "max_dex": 2,
+      "check_penalty": -5,
+      "spell_failure": 0.3,
+      "weight_kg": 45,
+      "page_ref": "K129"
+    },
+    {
+      "id": "bänderpanzer",
+      "name": {
+        "de": "Bänderpanzer",
+        "en": "Bänderpanzer"
+      },
+      "type": "Schwer",
+      "bonus": 7,
+      "max_dex": 1,
+      "check_penalty": -6,
+      "spell_failure": 0.35,
+      "weight_kg": 35,
+      "page_ref": "G152"
+    },
+    {
+      "id": "bebändeter_plattenpanzer",
+      "name": {
+        "de": "Bebändeter Plattenpanzer",
+        "en": "Bebändeter Plattenpanzer"
+      },
+      "type": "Schwer",
+      "bonus": 8,
+      "max_dex": 0,
+      "check_penalty": -7,
+      "spell_failure": 0.4,
+      "weight_kg": 55,
+      "page_ref": "E179"
+    },
+    {
+      "id": "höllenritter_rüstung",
+      "name": {
+        "de": "Höllenritter-Rüstung",
+        "en": "Höllenritter-Rüstung"
+      },
+      "type": "Schwer",
+      "bonus": 9,
+      "max_dex": 1,
+      "check_penalty": -5,
+      "spell_failure": 0.35,
+      "weight_kg": 50,
+      "page_ref": "WI291"
+    },
+    {
+      "id": "kusari_gusoku",
+      "name": {
+        "de": "Kusari-Gusoku",
+        "en": "Kusari-Gusoku"
+      },
+      "type": "Schwer",
+      "bonus": 7,
+      "max_dex": 1,
+      "check_penalty": -7,
+      "spell_failure": 0.35,
+      "weight_kg": 45,
+      "page_ref": "K128"
+    },
+    {
+      "id": "lamellar_eisen",
+      "name": {
+        "de": "Lamellar, Eisen-",
+        "en": "Lamellar, Eisen-"
+      },
+      "type": "Schwer",
+      "bonus": 7,
+      "max_dex": 0,
+      "check_penalty": -7,
+      "spell_failure": 0.4,
+      "weight_kg": 50,
+      "page_ref": "K128"
+    },
+    {
+      "id": "lamellar_stein",
+      "name": {
+        "de": "Lamellar, Stein-",
+        "en": "Lamellar, Stein-"
+      },
+      "type": "Schwer",
+      "bonus": 8,
+      "max_dex": 0,
+      "check_penalty": -7,
+      "spell_failure": 0.4,
+      "weight_kg": 45,
+      "page_ref": "AR9"
+    },
+    {
+      "id": "o_yoroi",
+      "name": {
+        "de": "O-yoroi",
+        "en": "O-yoroi"
+      },
+      "type": "Schwer",
+      "bonus": 8,
+      "max_dex": 2,
+      "check_penalty": -6,
+      "spell_failure": 0.35,
+      "weight_kg": 45,
+      "page_ref": "K128"
+    },
+    {
+      "id": "plattenpanzer",
+      "name": {
+        "de": "Plattenpanzer",
+        "en": "Plattenpanzer"
+      },
+      "type": "Schwer",
+      "bonus": 8,
+      "max_dex": 0,
+      "check_penalty": -7,
+      "spell_failure": 0.4,
+      "weight_kg": 50,
+      "page_ref": "G153"
+    },
+    {
+      "id": "plattenrüstung",
+      "name": {
+        "de": "Plattenrüstung",
+        "en": "Plattenrüstung"
+      },
+      "type": "Schwer",
+      "bonus": 7,
+      "max_dex": 2,
+      "check_penalty": -6,
+      "spell_failure": 0.4,
+      "weight_kg": 50,
+      "page_ref": "Go213"
+    },
+    {
+      "id": "ritterrüstung",
+      "name": {
+        "de": "Ritterrüstung",
+        "en": "Ritterrüstung"
+      },
+      "type": "Schwer",
+      "bonus": 9,
+      "max_dex": 1,
+      "check_penalty": -6,
+      "spell_failure": 0.35,
+      "weight_kg": 50,
+      "page_ref": "G154"
+    },
+    {
+      "id": "schienenpanzer",
+      "name": {
+        "de": "Schienenpanzer",
+        "en": "Schienenpanzer"
+      },
+      "type": "Schwer",
+      "bonus": 7,
+      "max_dex": 0,
+      "check_penalty": -7,
+      "spell_failure": 0.4,
+      "weight_kg": 45,
+      "page_ref": "G151"
+    },
+    {
+      "id": "steinmantel",
+      "name": {
+        "de": "Steinmantel",
+        "en": "Steinmantel"
+      },
+      "type": "Schwer",
+      "bonus": 8,
+      "max_dex": 0,
+      "check_penalty": -7,
+      "spell_failure": 0.4,
+      "weight_kg": 45,
+      "page_ref": "K129"
+    },
+    {
+      "id": "steinplatte",
+      "name": {
+        "de": "Steinplatte",
+        "en": "Steinplatte"
+      },
+      "type": "Schwer",
+      "bonus": 9,
+      "max_dex": 0,
+      "check_penalty": -8,
+      "spell_failure": 0.35,
+      "weight_kg": 75,
+      "page_ref": "Go214"
+    },
+    {
+      "id": "tatami_do",
+      "name": {
+        "de": "Tatami-do",
+        "en": "Tatami-do"
+      },
+      "type": "Schwer",
+      "bonus": 7,
+      "max_dex": 3,
+      "check_penalty": -6,
+      "spell_failure": 0.35,
+      "weight_kg": 45,
+      "page_ref": "K129"
+    },
+    {
+      "id": "mithralkettenhemd_1",
+      "name": {
+        "de": "Mithralkettenhemd +1",
+        "en": "Mithralkettenhemd +1"
+      },
+      "type": "Leicht",
+      "bonus": 5,
+      "max_dex": 6,
+      "check_penalty": 0,
+      "spell_failure": 0.1,
+      "weight_kg": 10,
+      "page_ref": "GR 466"
+    },
+    {
+      "id": "elfischer_kettenpanzer_3",
+      "name": {
+        "de": "Elfischer Kettenpanzer +3",
+        "en": "Elfischer Kettenpanzer +3"
+      },
+      "type": "Leicht",
+      "bonus": 9,
+      "max_dex": 6,
+      "check_penalty": -2,
+      "spell_failure": 0.2,
+      "weight_kg": 20,
+      "page_ref": "GR 466"
+    },
+    {
+      "id": "mitrahl_brustplatte_2",
+      "name": {
+        "de": "Mitrahl Brustplatte +2",
+        "en": "Mitrahl Brustplatte +2"
+      },
+      "type": "Leicht",
+      "bonus": 8,
+      "max_dex": 5,
+      "check_penalty": -1,
+      "spell_failure": 0.15,
+      "weight_kg": 30,
+      "page_ref": ""
+    },
+    {
+      "id": "waldwächter_grünholz_mag",
+      "name": {
+        "de": "Waldwächter Grünholz mag.",
+        "en": "Waldwächter Grünholz mag."
+      },
+      "type": "Mittel",
+      "bonus": 10,
+      "max_dex": 2,
+      "check_penalty": -4,
+      "spell_failure": 0.25,
+      "weight_kg": 12.5,
+      "page_ref": "AR129"
+    }
+  ]
+}

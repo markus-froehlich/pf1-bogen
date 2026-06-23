@@ -1,0 +1,222 @@
+/* Print view — light, print-friendly */
+.pv-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px 20px 40px;
+  color: #111;
+  font-family: system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.pv-header {
+  border-bottom: 2px solid #2d5fa0;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+.pv-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.pv-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.78rem;
+  color: #444;
+  margin-top: 4px;
+}
+.pv-meta span b { color: #1a1a1a; }
+
+.pv-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.pv-col { display: flex; flex-direction: column; gap: 14px; }
+
+.pv-section h3 {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #2d5fa0;
+  border-bottom: 1px solid #ccd6e5;
+  padding-bottom: 3px;
+  margin: 0 0 6px;
+}
+
+/* Attributes */
+.pv-attr-table { width: 100%; border-collapse: collapse; }
+.pv-attr-table td { padding: 2px 4px; }
+.pva-abbr  { font-weight: 700; color: #2d5fa0; width: 28px; }
+.pva-name  { color: #555; font-size: 0.72rem; }
+.pva-score { font-weight: 700; text-align: right; width: 30px; }
+.pva-mod   { font-weight: 700; text-align: right; width: 36px; color: #2d5fa0; }
+
+/* Stat grid (combat / saves) */
+.pv-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.pv-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+.pv-stat span { font-size: 0.6rem; color: #777; text-align: center; }
+.pv-stat b    { font-size: 0.95rem; color: #111; }
+
+/* Gear */
+.pv-gear-line { font-size: 0.78rem; margin-bottom: 2px; }
+.pv-empty     { font-size: 0.72rem; color: #aaa; font-style: italic; }
+
+/* Tags */
+.pv-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.pv-tag  {
+  font-size: 0.62rem; font-weight: 700;
+  padding: 2px 7px; border-radius: 10px;
+  background: #fee2e2; color: #c00; border: 1px solid #f9a8a8;
+}
+
+/* Weapons */
+.pv-weapon { font-size: 0.78rem; margin-bottom: 3px; }
+
+/* Skills */
+.pv-skill-table { width: 100%; border-collapse: collapse; }
+.pv-skill-table td { padding: 1px 3px; }
+.pvsk-name  { font-size: 0.73rem; }
+.pvsk-total { font-weight: 700; text-align: right; width: 30px; color: #2d5fa0; }
+.pvsk-ranks { font-size: 0.62rem; color: #777; text-align: right; width: 36px; }
+
+/* Feats / specials */
+.pv-feat-list { display: flex; flex-direction: column; gap: 1px; }
+.pv-feat-item { font-size: 0.75rem; }
+
+/* Bio */
+.pv-bio-row { font-size: 0.7rem; color: #333; margin-bottom: 3px; line-height: 1.4; }
+.pv-bio-row span { font-weight: 700; margin-right: 4px; }
+.pv-bio-bg { white-space: pre-wrap; }
+
+/* Spells */
+.pv-spell-level {
+  display: flex; align-items: baseline; gap: 6px; margin-bottom: 3px; flex-wrap: wrap;
+}
+.pv-spell-lv {
+  font-size: 0.62rem; font-weight: 700;
+  background: #1a1a2e; color: #fff;
+  border-radius: 3px; padding: 1px 5px; flex-shrink: 0;
+}
+.pv-spell-slots { font-size: 0.62rem; color: #555; white-space: nowrap; flex-shrink: 0; }
+.pv-spell-names { font-size: 0.68rem; color: #222; }
+
+/* Notes */
+.pv-notes {
+  font-size: 0.73rem;
+  white-space: pre-wrap;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Page hint in header */
+.pv-page-hint { font-size: 0.68rem; color: #888; font-style: italic; }
+
+/* Compact header for page 2 */
+.pv-header-compact {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #2d5fa0;
+}
+.pv-name-small { font-size: 1rem; font-weight: 700; color: #1a1a1a; }
+.pv-meta-small { font-size: 0.72rem; color: #555; }
+
+/* Page 2 separator (screen only) */
+.pv-page-2-separator {
+  text-align: center;
+  margin: 28px 0 20px;
+  border-top: 2px dashed #c5d5e8;
+  padding-top: 10px;
+  font-size: 0.72rem;
+  color: #888;
+  letter-spacing: 0.1em;
+}
+
+/* DC header */
+.pv-dc-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+/* DC row (one cell per spell level) */
+.pv-dc-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.pv-dc-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccd6e5;
+  border-radius: 4px;
+  padding: 3px 7px;
+  min-width: 42px;
+}
+.pv-dc-val { font-size: 0.72rem; font-weight: 700; color: #2d5fa0; }
+
+/* Spell table (page 2) */
+.pv-spell-table { display: flex; flex-direction: column; gap: 6px; }
+.pv-spell-row { border-left: 2px solid #ccd6e5; padding-left: 7px; }
+.pv-spell-row-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+.pv-spell-slots-detail { font-size: 0.65rem; color: #666; }
+.pv-spell-names-block { display: flex; flex-wrap: wrap; gap: 3px; }
+.pv-spell-chip {
+  font-size: 0.65rem;
+  background: #f0f4fb;
+  border: 1px solid #ccd6e5;
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: #222;
+}
+
+/* Class features (print) */
+.pv-cf-block { margin-bottom: 5px; }
+.pv-cf-class { font-size: 0.65rem; font-weight: 700; color: #2d5fa0; display: block; margin-bottom: 2px; }
+.pv-cf-chips { display: flex; flex-wrap: wrap; gap: 3px; }
+.pv-cf-chip {
+  font-size: 0.6rem;
+  background: #f0f4fb;
+  border: 1px solid #ccd6e5;
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: #333;
+}
+
+@media print {
+  .pv-page { padding: 0; max-width: none; }
+  .pv-body { gap: 12px; }
+  .pv-section h3 { font-size: 0.6rem; }
+  .pv-stat b { font-size: 0.85rem; }
+  .pv-section { break-inside: avoid; }
+  /* Second page starts on a new sheet */
+  .pv-page-2 { page-break-before: always; break-before: page; }
+  .print-hide { display: none; }
+  .pv-page-hint { display: none; }
+}

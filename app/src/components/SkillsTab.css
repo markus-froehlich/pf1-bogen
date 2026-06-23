@@ -1,0 +1,166 @@
+.skills-tab { display: flex; flex-direction: column; gap: 0; }
+
+.skills-sticky-head {
+  position: sticky;
+  top: -16px;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.skills-header {
+  display: grid;
+  grid-template-columns: 28px 1fr 32px 36px 36px 38px;
+  gap: 4px;
+  padding: 6px 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px 6px 0 0;
+}
+.sh-cs, .sh-ability, .sh-ranks, .sh-misc, .sh-total {
+  font-size: 0.6rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+.sh-name { font-size: 0.6rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+
+.skills-list {
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  overflow: hidden;
+}
+
+.skill-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 32px 36px 36px 38px;
+  gap: 4px;
+  align-items: center;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+  transition: background 0.1s;
+}
+.skill-row:last-child { border-bottom: none; }
+.skill-row:nth-child(even) { background: var(--surface3); }
+.skill-row.is-class { background: #1a2540; }
+.skill-row.is-class:nth-child(even) { background: #162038; }
+
+.sk-cs-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  text-align: center;
+  line-height: 1;
+  width: 28px;
+  height: 24px;
+  border-radius: 4px;
+}
+.sk-cs-btn.active { color: var(--accent); }
+.sk-cs-btn:active { background: var(--surface3); }
+
+.sk-name {
+  font-size: 0.78rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sk-t  { color: var(--accent); margin-left: 2px; font-size: 0.55rem; }
+.sk-ap { color: #c96e6e; margin-left: 2px; font-size: 0.55rem; }
+
+.sk-ability {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: center;
+  font-weight: 600;
+}
+
+.sk-ranks {
+  width: 100%;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 2px 0;
+  -moz-appearance: textfield;
+}
+.sk-ranks::-webkit-outer-spin-button,
+.sk-ranks::-webkit-inner-spin-button { -webkit-appearance: none; }
+.sk-ranks:focus { outline: none; border-color: var(--accent); }
+
+.sk-misc {
+  width: 100%;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text);
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 2px 0;
+  -moz-appearance: textfield;
+}
+.sk-misc::-webkit-outer-spin-button,
+.sk-misc::-webkit-inner-spin-button { -webkit-appearance: none; }
+.sk-misc:focus { outline: none; border-color: var(--accent); }
+
+.sk-total {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+.sk-total.pos { color: var(--good); }
+.sk-total.neg { color: var(--bad); }
+
+.fk-budget {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 7px 12px;
+  font-size: 0.75rem;
+}
+
+.fk-budget.over  { border-color: #c96e6e; background: color-mix(in srgb, #c96e6e 8%, var(--surface2)); }
+.fk-budget.over .fk-label { color: #c96e6e; }
+.fk-budget.over .fk-used  { color: #c96e6e; }
+.fk-budget.done  { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.fk-label  { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; flex: 1; }
+.fk-used   { font-weight: 700; color: var(--text); }
+.fk-sep    { color: var(--text-muted); }
+.fk-total  { font-weight: 700; color: var(--text-muted); }
+.fk-remain { font-size: 0.65rem; color: var(--good); margin-left: 4px; }
+.fk-remain.neg { color: var(--bad); }
+
+.skill-ref-link {
+  font-size: 0.58rem; color: var(--text-muted); text-decoration: none;
+  opacity: 0.35; margin-left: 3px; transition: opacity 0.15s, color 0.15s;
+}
+.skill-ref-link:hover { opacity: 1; color: var(--accent); }
+
+.skills-armor-note {
+  font-size: 0.65rem;
+  color: #c96e6e;
+  font-weight: 600;
+  margin: 4px 0 0;
+  padding: 5px 8px;
+  background: color-mix(in srgb, #c96e6e 10%, var(--surface2));
+  border-radius: 5px;
+  border: 1px solid color-mix(in srgb, #c96e6e 30%, var(--border));
+}
+
+.skills-note {
+  font-size: 0.58rem;
+  color: var(--text-muted);
+  margin: 8px 0 0;
+  line-height: 1.4;
+  font-style: italic;
+}

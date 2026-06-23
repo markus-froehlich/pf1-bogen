@@ -1,0 +1,36 @@
+/* ── Pathfinder 1e Charakterbogen — Design Tokens ── */
+:root {
+  --bg:        #1a1a2e;
+  --surface2:  #16213e;
+  --surface3:  #0f1529;
+  --border:    #2a3050;
+  --text:      #e8e0d0;
+  --text-muted:#7a8099;
+  --accent:    #c9a96e;
+  --good:      #6ec96e;
+  --bad:       #c96e6e;
+  --warn:      #c9b36e;
+
+  --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font: 16px/1.4 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; overflow: hidden; }
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 600; }
+
+input, select, button { font: inherit; }
+
+button { cursor: pointer; }

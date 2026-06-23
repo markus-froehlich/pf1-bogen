@@ -1,0 +1,157 @@
+{
+  "templates": [
+    {
+      "id": "geist",
+      "name": "Geist",
+      "page": "GRW S. 122",
+      "desc": ""
+    },
+    {
+      "id": "halb_celestisch",
+      "name": "Halb Celestisch",
+      "page": "GRW S. 144",
+      "desc": ""
+    },
+    {
+      "id": "halb_drache",
+      "name": "Halb Drache",
+      "page": "GRW S. 145",
+      "desc": ""
+    },
+    {
+      "id": "halb_scheusal",
+      "name": "Halb Scheusal",
+      "page": "GRW S. 146",
+      "desc": ""
+    },
+    {
+      "id": "leichnam",
+      "name": "Leichnam",
+      "page": "GRW S. 168",
+      "desc": ""
+    },
+    {
+      "id": "celestisch",
+      "name": "Celestisch",
+      "page": "GRW S. 294",
+      "desc": ""
+    },
+    {
+      "id": "entropisch",
+      "name": "Entropisch",
+      "page": "GRW2 S. 292",
+      "desc": ""
+    },
+    {
+      "id": "infernalisch",
+      "name": "Infernalisch",
+      "page": "GRW S. 294",
+      "desc": ""
+    },
+    {
+      "id": "resolut",
+      "name": "Resolut",
+      "page": "GRW2 S. 293",
+      "desc": ""
+    },
+    {
+      "id": "lykanthrop",
+      "name": "Lykanthrop",
+      "page": "GRW S. 174",
+      "desc": ""
+    },
+    {
+      "id": "skelett",
+      "name": "Skelett",
+      "page": "GRW S. 239",
+      "desc": ""
+    },
+    {
+      "id": "blutskelett",
+      "name": "Blutskelett",
+      "page": "GRW S. 240",
+      "desc": ""
+    },
+    {
+      "id": "feuerskelett",
+      "name": "Feuerskelett",
+      "page": "GRW S. 240",
+      "desc": ""
+    },
+    {
+      "id": "skelettstreiter",
+      "name": "Skelettstreiter",
+      "page": "GRW S. 241",
+      "desc": ""
+    },
+    {
+      "id": "vampir",
+      "name": "Vampir",
+      "page": "GRW S. 267",
+      "desc": ""
+    },
+    {
+      "id": "vampirbrut",
+      "name": "Vampirbrut",
+      "page": "GRW S. 268",
+      "desc": ""
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "page": "GRW S. 287",
+      "desc": ""
+    },
+    {
+      "id": "schneller_zombie",
+      "name": "Schneller Zombie",
+      "page": "GRW S. 288",
+      "desc": ""
+    },
+    {
+      "id": "verseuchter_zombie",
+      "name": "Verseuchter Zombie",
+      "page": "GRW S. 288",
+      "desc": ""
+    },
+    {
+      "id": "juju_zombie",
+      "name": "Juju-Zombie",
+      "page": "GRW2 S. 291",
+      "desc": ""
+    },
+    {
+      "id": "ogerartige",
+      "name": "Ogerartige",
+      "page": "GRW2 S. 183",
+      "desc": ""
+    },
+    {
+      "id": "jung",
+      "name": "Jung",
+      "page": "GRW S. 295",
+      "desc": ""
+    },
+    {
+      "id": "riesenhaft",
+      "name": "Riesenhaft",
+      "page": "GRW S. 295",
+      "desc": ""
+    },
+    {
+      "id": "verbessert",
+      "name": "Verbessert",
+      "page": "GRW S. 295",
+      "desc": ""
+    },
+    {
+      "id": "untot",
+      "name": "Untot",
+      "page": "GRW S. 310",
+      "desc": ""
+    }
+  ],
+  "_meta": {
+    "count": 25
+  }
+}

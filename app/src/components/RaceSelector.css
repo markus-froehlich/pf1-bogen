@@ -1,0 +1,95 @@
+.race-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.race-select {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  width: 100%;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a96e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+.race-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.race-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.race-info > span {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--surface3);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.race-mods { color: var(--accent) !important; }
+.race-note { color: var(--warn) !important; font-style: italic; }
+
+/* Racial traits collapsible */
+.race-traits-wrap { margin-top: 4px; }
+.race-traits-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+.race-traits-toggle:active { background: var(--surface3); }
+.rtt-arrow { margin-left: auto; font-size: 0.6rem; }
+.race-traits-list {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.rt-item { display: flex; flex-direction: column; gap: 2px; }
+.rt-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.rt-desc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
