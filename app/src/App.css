@@ -241,7 +241,7 @@
 }
 
 /* ── Section ── */
-.section { display: flex; flex-direction: column; gap: 16px; }
+.section { display: flex; flex-direction: column; gap: 22px; }
 .section-meta { /* race selector wrapper */ }
 .section-title {
   font-size: 0.75rem;
