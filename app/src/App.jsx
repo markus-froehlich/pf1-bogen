@@ -68,22 +68,24 @@ export default function App() {
   const [hbOpen, setHbOpen] = useState(false)
   const [printOpen, setPrintOpen] = useState(false)
   const [fontScale, setFontScale] = useState(_initScale)
-  const [barsHidden, setBarsHidden] = useState(false)
-  const lastScrollY = useRef(0)
+  const [topbarCollapsed, setTopbarCollapsed] = useState(() =>
+    localStorage.getItem('pf1_topbar_collapsed') === '1')
+  const [navCollapsed, setNavCollapsed] = useState(() =>
+    localStorage.getItem('pf1_nav_collapsed') === '1')
 
-  function handleScroll(e) {
-    const el = e.currentTarget
-    const y = el.scrollTop
-    const atTop    = y <= 8
-    const atBottom = el.scrollHeight - el.clientHeight - y <= 8
-    if (atTop || atBottom) {
-      setBarsHidden(false)
-    } else if (y > lastScrollY.current + 4) {
-      setBarsHidden(true)
-    } else if (y < lastScrollY.current - 4) {
-      setBarsHidden(false)
-    }
-    lastScrollY.current = y
+  function toggleTopbar() {
+    setTopbarCollapsed(v => {
+      const next = !v
+      localStorage.setItem('pf1_topbar_collapsed', next ? '1' : '0')
+      return next
+    })
+  }
+  function toggleNav() {
+    setNavCollapsed(v => {
+      const next = !v
+      localStorage.setItem('pf1_nav_collapsed', next ? '1' : '0')
+      return next
+    })
   }
 
   function cycleFont() {
@@ -94,12 +96,6 @@ export default function App() {
       if (next !== 'm') document.documentElement.classList.add(`fs-${next}`)
       return next
     })
-  }
-
-  function switchTabAndShow(id) {
-    setTab(id)
-    setBarsHidden(false)
-    lastScrollY.current = 0
   }
 
   const [combatInternalOrder, moveCombatInternal] = useSectionOrder('pf1_combat_internal_order', COMBAT_INTERNAL_DEFAULT)
