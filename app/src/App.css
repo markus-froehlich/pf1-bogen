@@ -395,9 +395,9 @@
   padding-bottom: env(safe-area-inset-bottom);
   max-height: 80px;
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.2s ease;
+  transition: max-height 0.28s ease, opacity 0.2s ease;
 }
-.bottom-nav.bars-hidden {
+.bottom-nav.bar-collapsed {
   max-height: 0;
   opacity: 0;
 }
