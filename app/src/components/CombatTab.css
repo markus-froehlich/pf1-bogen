@@ -386,6 +386,25 @@
   white-space: nowrap;
 }
 
+.cond-tag {
+  font-size: 0.52rem;
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 1px 3px;
+  cursor: default;
+  white-space: nowrap;
+}
+.cond-neg {
+  color: var(--bad);
+  background: color-mix(in srgb, var(--bad) 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, var(--bad) 35%, var(--border));
+}
+.cond-pos {
+  color: var(--good);
+  background: color-mix(in srgb, var(--good) 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, var(--good) 35%, var(--border));
+}
+
 /* Gear selector */
 .gear-selector { display: flex; flex-direction: column; gap: 4px; }
 .gear-row { display: flex; align-items: center; gap: 6px; }
