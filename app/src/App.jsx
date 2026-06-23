@@ -367,6 +367,7 @@ export default function App() {
               encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
               buffTotals={buffTotals}
               activeBuffs={char.active_buffs ?? []}
+              condMods={condMods}
               sectionOrder={combatInternalOrder}
               onMoveSection={moveCombatInternal}
               collapsedSections={combatCollapsed}
