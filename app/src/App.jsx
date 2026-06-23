@@ -166,6 +166,7 @@ export default function App() {
   const computed   = computeAttributes(char, buffTotals)
   const baseValues = computeBABAndSaves(char)
   const combat     = computeCombat(char, computed, baseValues, buffTotals)
+  const condMods   = getConditionMods(char.conditions)
 
   const gear = char.gear ?? {}
   const armorCheckPenalty = (ARMOR_MAP[gear.armor_id]?.check_penalty ?? 0)
