@@ -252,6 +252,7 @@ export default function App() {
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
             <span className="app-version" title="Build-Version">#{__COMMIT__}</span>
+            <button className="topbar-icon-btn bar-collapse-btn" onClick={toggleTopbar} title="Menü einklappen">−</button>
           </div>
         </div>
         <input
