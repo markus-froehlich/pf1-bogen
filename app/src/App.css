@@ -173,6 +173,9 @@
   letter-spacing: 0.03em;
   flex-shrink: 0;
 }
+@media (max-width: 420px) {
+  .app-version { display: none; }
+}
 
 .topbar-level {
   font-size: 0.68rem;
