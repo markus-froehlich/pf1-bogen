@@ -388,9 +388,11 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
         {!isCollapsed && <>
           <div className="stat-row">
             <StatBox label={L ? 'RK' : 'AC'} value={combat.rk}
-              buffInfo={buffAnnot(activeBuffs, 'ac', 'nat_armor', 'deflection')} />
+              buffInfo={buffAnnot(activeBuffs, 'ac', 'nat_armor', 'deflection')}
+              condInfo={condAnnot(condMods, 'rk')} />
             <StatBox label={L ? 'Berührung' : 'Touch'} value={combat.rk_touch}
-              buffInfo={buffAnnot(activeBuffs, 'ac', 'deflection')} />
+              buffInfo={buffAnnot(activeBuffs, 'ac', 'deflection')}
+              condInfo={condAnnot(condMods, 'rk')} />
             <StatBox label={L ? 'Falsch. Fuß' : 'Flat'} value={combat.rk_flat}
               buffInfo={buffAnnot(activeBuffs, 'ac', 'nat_armor')} />
           </div>
