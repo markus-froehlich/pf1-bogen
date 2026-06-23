@@ -365,7 +365,7 @@
 .stat-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .stat-box {
   flex: 1;
-  min-width: 60px;
+  min-width: 55px;
   background: var(--surface3);
   border: 1px solid var(--border);
   border-radius: 6px;
