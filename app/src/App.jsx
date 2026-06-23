@@ -25,6 +25,11 @@ import { BuffTracker } from './components/BuffTracker.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
 
+// Apply saved font scale before first paint
+const _SCALES = ['m', 'l', 'xl', 's']
+const _initScale = localStorage.getItem('pf1_font_scale') ?? 'm'
+if (_initScale !== 'm') document.documentElement.classList.add(`fs-${_initScale}`)
+
 const COMBAT_INTERNAL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr']
 const COMBAT_OUTER_DEFAULT    = ['features', 'conditions', 'buffs', 'resources', 'weapons']
 const ATTR_DEFAULT            = ['race', 'class', 'attrs', 'xp', 'bio']
