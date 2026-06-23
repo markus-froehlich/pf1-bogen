@@ -17,13 +17,15 @@
   border-radius: 6px 6px 0 0;
 }
 .sh-cs, .sh-ability, .sh-ranks, .sh-misc, .sh-total {
-  font-size: 0.6rem;
+  font-size: 9px;
   color: var(--accent);
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
 }
-.sh-name { font-size: 0.6rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+.sh-name { font-size: 9px; color: var(--accent); font-weight: 700; text-transform: uppercase; overflow: hidden; white-space: nowrap; }
 
 .skills-list {
   border: 1px solid var(--border);
