@@ -246,6 +246,9 @@ export default function App() {
             </label>
             <button className="topbar-icon-btn" title={lang === 'de' ? 'Drucken' : 'Print'} onClick={() => setPrintOpen(true)}>🖨</button>
             <button className="topbar-icon-btn" title="Homebrew" onClick={() => setHbOpen(true)}>⚙</button>
+            <button className="topbar-icon-btn font-scale-btn" title="Schriftgröße" onClick={cycleFont}>
+              Aa<span className="fs-badge">{fontScale.toUpperCase()}</span>
+            </button>
             <button className="lang-btn" onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}>
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
