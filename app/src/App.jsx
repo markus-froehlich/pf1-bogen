@@ -193,7 +193,10 @@ export default function App() {
 
   return (
     <div className="app-shell">
-      <header className={`topbar${barsHidden ? ' bars-hidden' : ''}`}>
+      {topbarCollapsed && (
+        <button className="bar-restore bar-restore-top" onClick={toggleTopbar} title="Menü einblenden">▾</button>
+      )}
+      <header className={`topbar${topbarCollapsed ? ' bar-collapsed' : ''}`}>
         <div className="topbar-row1">
           <button
             className="topbar-icon-btn char-list-btn"
