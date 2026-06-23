@@ -451,19 +451,22 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               misc={misc.fort_misc ?? 0} onMiscChange={v => setCombatMisc('fort_misc', v)}
               note={misc.fort_note ?? ''} onNoteChange={v => setCombatMisc('fort_note', v)}
               notePlaceholder={L ? 'z.B. Umhang der Resistenz +2, Sturheit …' : 'e.g. Cloak of Resistance +2 …'} lang={lang}
-              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'fort')} />
+              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'fort')}
+              condInfo={condAnnot(condMods, 'fort')} />
             <SaveBox label={L ? 'Reflex' : 'Reflex'} total={combat.ref}
               base={baseValues.ref} mod={attrs.GE.mod} modAttr={L ? 'GE' : 'DEX'}
               misc={misc.ref_misc ?? 0} onMiscChange={v => setCombatMisc('ref_misc', v)}
               note={misc.ref_note ?? ''} onNoteChange={v => setCombatMisc('ref_note', v)}
               notePlaceholder={L ? 'z.B. Umhang der Resistenz +2, Schnelle Reflexe …' : 'e.g. Cloak of Resistance +2 …'} lang={lang}
-              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'ref')} />
+              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'ref')}
+              condInfo={condAnnot(condMods, 'ref_flat')} />
             <SaveBox label={L ? 'Wille' : 'Will'} total={combat.will}
               base={baseValues.will} mod={attrs.WE.mod} modAttr={L ? 'WE' : 'WIS'}
               misc={misc.will_misc ?? 0} onMiscChange={v => setCombatMisc('will_misc', v)}
               note={misc.will_note ?? ''} onNoteChange={v => setCombatMisc('will_note', v)}
               notePlaceholder={L ? 'z.B. Umhang der Resistenz +2, Eiserner Wille …' : 'e.g. Cloak of Resistance +2 …'} lang={lang}
-              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'will')} />
+              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'will')}
+              condInfo={condAnnot(condMods, 'will')} />
           </div>
         </>}
       </section>
