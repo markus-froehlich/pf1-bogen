@@ -49,7 +49,7 @@ export function CharacterDrawer({ index, activeId, onSwitch, onNew, onDelete, on
                 <div className="cde-info">
                   <span className="cde-name">{entry.name || (L ? '(Unbenannt)' : '(Unnamed)')}</span>
                   <span className="cde-sub">
-                    {[raceName(entry.race), classStr(entry.classes)].filter(Boolean).join(' · ')}
+                    {[raceName(entry.race), classStr(entry.classes), entry.campaign || null].filter(Boolean).join(' · ')}
                   </span>
                 </div>
                 {entry.id !== activeId && (
