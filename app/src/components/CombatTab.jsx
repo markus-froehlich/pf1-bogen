@@ -297,9 +297,11 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
 
           <div className="stat-row">
             <StatBox label="GAB" value={combat.bab}
-              buffInfo={buffAnnot(activeBuffs, 'attack')} />
+              buffInfo={buffAnnot(activeBuffs, 'attack')}
+              condInfo={condAnnot(condMods, 'attack')} />
             <StatBox label={L ? 'Init' : 'Init'} value={combat.init} sub={`GE${fmtBonus(attrs.GE.mod)}`}
-              buffInfo={buffAnnot(activeBuffs, 'init')} />
+              buffInfo={buffAnnot(activeBuffs, 'init')}
+              condInfo={condAnnot(condMods, 'init')} />
             <StatBox label="KMB" value={combat.kmb}
               buffInfo={buffAnnot(activeBuffs, 'attack')} />
             <StatBox label="KMV" value={combat.kmv} />
