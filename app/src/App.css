@@ -16,6 +16,11 @@
   padding: 8px 14px;
   background: var(--surface2);
   border-bottom: 1px solid var(--border);
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+.topbar.bars-hidden {
+  transform: translateY(-100%);
 }
 
 .topbar-row1 {
