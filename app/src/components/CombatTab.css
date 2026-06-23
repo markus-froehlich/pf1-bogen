@@ -505,8 +505,28 @@
 .saves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 @media (max-width: 400px) {
   .saves-grid { grid-template-columns: 1fr; }
-  .speed-extras-grid { grid-template-columns: 1fr; }
-  .es-label { min-width: 72px; }
+}
+
+/* Bewegung — mobil vertikal stapeln */
+@media (max-width: 520px) {
+  .speed-main-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .speed-main-box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    padding: 6px 12px;
+  }
+  .speed-main-val { font-size: 1.3rem; }
+  .speed-extras-grid {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
 }
 .save-box {
   background: var(--surface3);
