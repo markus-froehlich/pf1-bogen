@@ -210,6 +210,7 @@ export default function App() {
             <button className="lang-btn" onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}>
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
+            <span className="app-version" title="Build-Version">#{__COMMIT__}</span>
           </div>
         </div>
         <input
