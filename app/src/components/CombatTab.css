@@ -184,12 +184,14 @@
   gap: 4px;
 }
 .es-label {
-  font-size: 0.6rem;
+  font-size: 9px;
   color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  min-width: 52px;
+  min-width: 48px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .es-input {
   width: 46px;
