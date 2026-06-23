@@ -68,6 +68,7 @@
 .cde-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .cde-name { font-size: 0.9rem; font-weight: 600; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cde-race { font-size: 0.65rem; color: var(--text-muted); }
+.cde-sub  { font-size: 0.7rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .cde-active-mark { color: var(--accent); font-size: 0.8rem; }
 
