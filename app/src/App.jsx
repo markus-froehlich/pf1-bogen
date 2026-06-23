@@ -284,6 +284,8 @@ export default function App() {
           onSwitch={switchChar} onNew={newChar} onDelete={deleteChar}
           onClose={() => setDrawerOpen(false)}
           lang={lang}
+          raceMap={RACE_MAP_APP}
+          classMap={CLASS_MAP_APP}
         />
       )}
 
