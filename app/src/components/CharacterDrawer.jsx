@@ -1,9 +1,25 @@
 import { useState } from 'react'
 import './CharacterDrawer.css'
 
-export function CharacterDrawer({ index, activeId, onSwitch, onNew, onDelete, onClose, lang }) {
+export function CharacterDrawer({ index, activeId, onSwitch, onNew, onDelete, onClose, lang, raceMap = {}, classMap = {} }) {
   const L = lang === 'de'
   const [confirmId, setConfirmId] = useState(null)
+
+  function raceName(id) {
+    if (!id) return null
+    const r = raceMap[id]
+    return r?.name?.[lang] || r?.name?.de || id
+  }
+
+  function classStr(classes) {
+    if (!classes?.length) return null
+    return classes
+      .map(c => {
+        const name = classMap[c.id]?.name?.[lang] || classMap[c.id]?.name?.de || c.id
+        return `${name} ${c.level}`
+      })
+      .join(' / ')
+  }
 
   function handleDelete(id) {
     if (confirmId === id) {
