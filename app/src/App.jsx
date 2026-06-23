@@ -67,6 +67,7 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [hbOpen, setHbOpen] = useState(false)
   const [printOpen, setPrintOpen] = useState(false)
+  const [fontScale, setFontScale] = useState(_initScale)
   const [barsHidden, setBarsHidden] = useState(false)
   const lastScrollY = useRef(0)
 
