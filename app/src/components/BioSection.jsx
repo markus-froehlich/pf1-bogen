@@ -127,6 +127,17 @@ export function BioSection({ char, setBio, lang }) {
         </div>
       </div>
 
+      {/* Kampagne */}
+      <div className="bio-field">
+        <label className="bio-label">{L ? 'Kampagne' : 'Campaign'}</label>
+        <input
+          className="bio-input"
+          placeholder={L ? 'Kampagnenname …' : 'Campaign name …'}
+          value={bio.campaign ?? ''}
+          onChange={e => setBio('campaign', e.target.value)}
+        />
+      </div>
+
       {/* Existing fields */}
       <div className="bio-field">
         <label className="bio-label">{L ? 'Sprachen' : 'Languages'}</label>
