@@ -133,6 +133,16 @@
 }
 .hp-dmg-btn:active { background: var(--accent); color: var(--bg); }
 .hp-dmg-sep { width: 1px; height: 18px; background: var(--border); margin: 0 2px; }
+
+.hp-ko-hint {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.65rem; color: var(--text-muted);
+  padding: 2px 4px; margin-top: 2px;
+}
+.hp-ko-label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); font-size: 0.6rem; }
+.hp-ko-eq    { flex: 1; }
+.hp-ko-val   { font-weight: 700; color: var(--good); }
+.hp-ko-val.neg { color: var(--bad); }
 .hp-nl-row { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
 .hp-nl-info { font-size: 0.65rem; color: #c9a96e; flex: 1; }
 .hp-nl-clear {
