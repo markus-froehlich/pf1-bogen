@@ -16,6 +16,25 @@ const ALL_TRAITS = [...ALL_RACIAL, ...ALL_CLASS_FEATS]
 const ALL_POISONS    = poisonsData.poisons
 const ALL_TEMPLATES  = templatesData.templates
 
+function toPoisonSlug(name) {
+  return name
+    .replace(/ä/g, 'ae').replace(/Ä/g, 'Ae')
+    .replace(/ö/g, 'oe').replace(/Ö/g, 'Oe')
+    .replace(/ü/g, 'ue').replace(/Ü/g, 'Ue')
+    .replace(/ß/g, 'ss')
+    .replace(/\s+/g, '')
+    .replace(/[^a-zA-Z0-9]/g, '')
+}
+
+function PoisonRefLink({ name, page }) {
+  if (!page?.startsWith('G')) return null
+  const url = `http://prd.5footstep.de/Grundregelwerk/Anhang/BesondereFaehigkeiten/Gebrechen/Gifte/${toPoisonSlug(name)}`
+  return (
+    <a className="poison-ref-link" href={url} target="_blank" rel="noreferrer"
+      onClick={e => e.stopPropagation()} title="prd.5footstep.de">↗</a>
+  )
+}
+
 function genId() {
   return Math.random().toString(36).slice(2, 10)
 }
