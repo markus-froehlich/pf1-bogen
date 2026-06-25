@@ -59,7 +59,7 @@ function saveChar(id, data) {
 function loadChar(id) {
   try {
     const s = localStorage.getItem(CHAR_KEY(id))
-    return s ? { ...DEFAULT_CHAR, ...JSON.parse(s) } : null
+    return s ? deepMerge(DEFAULT_CHAR, JSON.parse(s)) : null
   } catch { return null }
 }
 
