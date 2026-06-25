@@ -356,25 +356,6 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
                   onChange={e => setCombatMisc('speed_climb', e.target.value ? Number(e.target.value) : '')} />
                 <span className="es-unit">m</span>
               </div>
-              <div className="es-cell">
-                <span className="es-label">{L ? 'Graben' : 'Burrow'}</span>
-                <input className="es-input" type="number" min={0} placeholder="—"
-                  value={misc.speed_burrow ?? ''}
-                  onChange={e => setCombatMisc('speed_burrow', e.target.value ? Number(e.target.value) : '')} />
-                <span className="es-unit">m</span>
-              </div>
-            </div>
-            <div className="es-maneuver-row">
-              <span className="es-label">{L ? 'Manöver' : 'Maneuver'}</span>
-              <select className="es-maneuver-sel"
-                value={misc.speed_fly_maneuver ?? ''}
-                onChange={e => setCombatMisc('speed_fly_maneuver', e.target.value)}>
-                <option value="">—</option>
-                {(L
-                  ? ['Schlecht','Unterdurchschn.','Durchschn.','Gut','Vollkommen','Perfekt']
-                  : ['Clumsy','Poor','Average','Good','Perfect','Perfect']
-                ).map(m => <option key={m} value={m}>{m}</option>)}
-              </select>
             </div>
           </div>
         </>}
