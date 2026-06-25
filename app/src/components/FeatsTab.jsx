@@ -270,7 +270,7 @@ export function FeatsTab({ char, setFeats, totalLevel = 0, lang }) {
                   <LookupFeatRow key={f.id} feat={f} lang={lang} onAdd={() => {
                     setFeats(prev => [...prev, {
                       id: genId(), name: f.name.de, type: f.type,
-                      desc: f.desc?.de ?? '', notes: ''
+                      desc: f.desc?.de ?? '', notes: '', source: f.source ?? ''
                     }])
                     setMode('char')
                   }} />
