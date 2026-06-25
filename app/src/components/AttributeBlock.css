@@ -57,20 +57,28 @@
 }
 
 .attr-mod {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 700;
+  color: var(--text-muted);
   background: var(--surface3);
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 3px 6px;
   flex-shrink: 0;
+  min-width: 30px;
+  text-align: center;
+  line-height: 1.2;
 }
-.attr-mod.pos { color: var(--good); border-color: var(--good); }
-.attr-mod.neg { color: var(--bad); border-color: var(--bad); }
+.attr-mod.pos {
+  color: var(--good);
+  background: color-mix(in srgb, var(--good) 10%, var(--surface3));
+  border-color: color-mix(in srgb, var(--good) 30%, var(--border));
+}
+.attr-mod.neg {
+  color: var(--bad);
+  background: color-mix(in srgb, var(--bad) 10%, var(--surface3));
+  border-color: color-mix(in srgb, var(--bad) 30%, var(--border));
+}
 
 .attr-buff {
   font-size: 0.52rem;
