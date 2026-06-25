@@ -301,6 +301,13 @@ export default function App() {
           value={char.meta.name}
           onChange={e => setMeta('name', e.target.value)}
         />
+        <input
+          className="player-name-input"
+          type="text"
+          placeholder={lang === 'de' ? 'Spieler' : 'Player'}
+          value={char.meta.player ?? ''}
+          onChange={e => setMeta('player', e.target.value)}
+        />
       </header>
 
       {printOpen && (
