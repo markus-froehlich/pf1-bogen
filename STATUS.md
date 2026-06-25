@@ -414,6 +414,13 @@ Engine-Gerüst.
   `spell-name` hat `min-width: 0` + text-overflow ellipsis; `spell-ref-link` hat `flex-shrink: 0`
   → Pfeil immer direkt nach Name sichtbar, auch bei langen Namen
 
+- **Bonuszauber-Fix + ✦-Toggle** — `engine/spellSlots.js`: Auto-Button-Formel korrigiert auf
+  `floor((mod − L) / 4) + 1` (war immer +1, jetzt korrekt ab Mod ≥ 5);
+  Zauberbuch: ✦-Button je Zauber → markiert als Bonuszauber (Blutlinie/Mysterium/Patron);
+  markierte Zauber zählen nicht gegen N/Max bekannt; golden hervorgehoben;
+  `bloodline_ids[]` per Level in `char.spellbook.levels[lv]`; rückwärtskompatibel
+  Verifiziert: Arkanes Siegel ✦ aktiv → 0/4 bekannt ✓
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
