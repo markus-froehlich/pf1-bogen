@@ -322,7 +322,7 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
                       <span className="ii-weight">{Math.round(it.weight * it.qty * 10) / 10} kg</span>
                     )}
                     {it.gp > 0 && (
-                      <span className="ii-gp">{it.qty > 1 ? `${it.qty}×` : ''}{it.gp} GP</span>
+                      <span className="ii-gp">{it.qty > 1 ? `${it.qty}×` : ''}{it.gp} {COIN_LABEL.gp}</span>
                     )}
                   </div>
                   {it.notes && <p className="ii-notes">{it.notes}</p>}
