@@ -140,7 +140,7 @@ export function useCharacters() {
   const setWeaponSlot = useCallback((idx, field, value) => {
     patchChar(prev => {
       const NUM_SLOTS = 5
-      const EMPTY = { weapon_id: '', enhancement: 0, misc_attack: 0, misc_damage: 0, finesse: false, off_hand: false }
+      const EMPTY = { weapon_id: '', enhancement: 0, misc_attack: 0, misc_damage: 0, finesse: false, off_hand: false, notes: '' }
       const weapons = Array.from({ length: NUM_SLOTS }, (_, i) => ({ ...EMPTY, ...(prev.weapons?.[i] ?? {}) }))
       weapons[idx] = { ...weapons[idx], [field]: typeof value === 'boolean' ? value : (isNaN(Number(value)) ? value : (value === '' ? value : Number(value))) }
       return { ...prev, weapons }
