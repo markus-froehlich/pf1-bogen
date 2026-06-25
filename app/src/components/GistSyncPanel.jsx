@@ -102,11 +102,6 @@ export function GistSyncPanel({ gistSync, onClose }) {
 
           {connected && (
             <div className="gist-actions">
-              <p className="gist-info">
-                Alle Änderungen werden automatisch nach 3 Sekunden gesichert.
-                Um auf einem anderen Gerät / nach Cache-Reset wiederherzustellen:
-                „Laden" klicken.
-              </p>
               <div className="gist-btn-row">
                 <button className="gist-action-btn gist-pull-btn" onClick={handlePull} disabled={working}>
                   {working ? 'Lädt…' : '⬇ Daten laden'}
