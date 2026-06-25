@@ -7,11 +7,19 @@ import './SpellsTab.css'
 const CASTING_STAT = {
   hxm_magier: 'IN', arkanist: 'IN', alchemist: 'IN',
   hexe: 'IN', kampfmagier: 'IN', ermittler: 'IN',
+  magier: 'IN',
   kleriker: 'WE', druide: 'WE', inquisitor: 'WE',
   waldlaeufer: 'WE', jaeger: 'WE', schamane: 'WE',
   mystiker: 'WE', kriegspriester: 'WE', adept: 'WE',
   barde: 'CH', paladin: 'CH', antipaladin: 'CH',
   blutwueter: 'CH', skalde: 'CH', paktmagier: 'CH',
+  hexenmeister: 'CH', orakel: 'CH',
+}
+
+// spells.json class IDs → possible classes.json char class IDs
+// (e.g. hxm_magier covers both hexenmeister and magier in the spell list)
+const SPELLBOOK_TO_CHAR_ID = {
+  hxm_magier: ['hexenmeister', 'magier'],
 }
 
 const ALL_SPELLS = spellsData.spells
