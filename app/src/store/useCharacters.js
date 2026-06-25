@@ -326,15 +326,3 @@ export function useCharacters() {
     getBackupData, reinitialize,
   }
 }
-
-function deepMerge(base, patch) {
-  const out = { ...base }
-  for (const k of Object.keys(patch)) {
-    if (patch[k] && typeof patch[k] === 'object' && !Array.isArray(patch[k])) {
-      out[k] = { ...(base[k] || {}), ...patch[k] }
-    } else {
-      out[k] = patch[k]
-    }
-  }
-  return out
-}
