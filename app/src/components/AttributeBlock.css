@@ -35,9 +35,9 @@
 }
 
 .attr-score {
-  width: 46px;
+  width: 40px;
   text-align: center;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text);
   background: var(--surface3);
