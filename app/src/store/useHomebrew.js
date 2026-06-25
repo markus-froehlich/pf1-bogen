@@ -42,5 +42,7 @@ export function useHomebrew() {
     patch(prev => ({ ...prev, [type]: prev[type].filter(i => i.id !== id) }))
   }, [patch])
 
-  return { hb, addHB, saveHBItem, deleteHB }
+  const reloadHB = useCallback(() => { setHB(load()) }, [])
+
+  return { hb, addHB, saveHBItem, deleteHB, reloadHB }
 }
