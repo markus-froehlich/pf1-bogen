@@ -203,6 +203,7 @@ export default function App() {
             localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
           }
           localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+          if (data.homebrew) { localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew)); reloadHB() }
           reinitialize()
           pushReadyRef.current = true
           return
