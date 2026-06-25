@@ -370,10 +370,96 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
   )
 }
 
-// ── Main tab ───────────────────────────────────────────────────────────────────
-export function SpellsTab({ char, setSpellbook, attrs, lang }) {
+// ── Wands panel ────────────────────────────────────────────────────────────────
+function WandsPanel({ char, setWands, lang }) {
   const L = lang === 'de'
-  const [mode, setMode] = useState('book')  // 'lookup' | 'book'
+  const wands = char.wands ?? []
+  const [adding, setAdding] = useState(false)
+  const [draft, setDraft] = useState({ name: '', max_charges: 50, charges: 50, notes: '' })
+
+  function uid() { return Math.random().toString(36).slice(2, 9) }
+
+  function addWand() {
+    if (!draft.name.trim()) return
+    const max = Math.max(1, Number(draft.max_charges) || 50)
+    setWands(prev => [...prev, { id: uid(), name: draft.name.trim(), max_charges: max, charges: max, notes: draft.notes }])
+    setDraft({ name: '', max_charges: 50, charges: 50, notes: '' })
+    setAdding(false)
+  }
+
+  function changeCharges(id, delta) {
+    setWands(prev => prev.map(w => w.id === id
+      ? { ...w, charges: Math.max(0, Math.min(w.max_charges, w.charges + delta)) }
+      : w))
+  }
+
+  function removeWand(id) {
+    setWands(prev => prev.filter(w => w.id !== id))
+  }
+
+  return (
+    <div className="wands-panel">
+      {wands.length === 0 && !adding && (
+        <p className="wands-empty">{L ? 'Keine Zauberstäbe eingetragen.' : 'No wands added yet.'}</p>
+      )}
+
+      {wands.map(w => {
+        const pct = w.max_charges > 0 ? (w.charges / w.max_charges) * 100 : 0
+        const color = pct > 50 ? '#6ec97e' : pct > 20 ? '#c9a96e' : '#c96e6e'
+        return (
+          <div key={w.id} className="wand-row">
+            <div className="wand-info">
+              <span className="wand-name">🪄 {w.name}</span>
+              {w.notes && <span className="wand-notes">{w.notes}</span>}
+            </div>
+            <div className="wand-charges">
+              <button className="wand-charge-btn" onClick={() => changeCharges(w.id, -1)} disabled={w.charges <= 0}>−</button>
+              <div className="wand-charge-display">
+                <span className="wand-charge-val" style={{ color }}>{w.charges}</span>
+                <span className="wand-charge-sep">/</span>
+                <span className="wand-charge-max">{w.max_charges}</span>
+                <div className="wand-charge-bar">
+                  <div className="wand-charge-fill" style={{ width: pct + '%', background: color }} />
+                </div>
+              </div>
+              <button className="wand-charge-btn" onClick={() => changeCharges(w.id, 1)} disabled={w.charges >= w.max_charges}>+</button>
+              <button className="wand-remove-btn" onClick={() => removeWand(w.id)} title={L ? 'Entfernen' : 'Remove'}>🗑</button>
+            </div>
+          </div>
+        )
+      })}
+
+      {adding ? (
+        <div className="wand-add-form">
+          <input className="wand-input" placeholder={L ? 'Name (z.B. Zauberstab: Feuerball)' : 'Name (e.g. Wand of Fireball)'}
+            value={draft.name} onChange={e => setDraft(d => ({ ...d, name: e.target.value }))}
+            onKeyDown={e => e.key === 'Enter' && addWand()} autoFocus />
+          <div className="wand-add-row">
+            <label className="wand-add-label">{L ? 'Max. Ladungen' : 'Max charges'}</label>
+            <input className="wand-input wand-input-num" type="text" inputMode="numeric"
+              value={draft.max_charges}
+              onChange={e => setDraft(d => ({ ...d, max_charges: e.target.value }))} />
+          </div>
+          <input className="wand-input" placeholder={L ? 'Notiz (optional)' : 'Note (optional)'}
+            value={draft.notes} onChange={e => setDraft(d => ({ ...d, notes: e.target.value }))} />
+          <div className="wand-form-btns">
+            <button className="wand-save-btn" onClick={addWand} disabled={!draft.name.trim()}>✓</button>
+            <button className="wand-cancel-btn" onClick={() => setAdding(false)}>✕</button>
+          </div>
+        </div>
+      ) : (
+        <button className="wand-add-btn" onClick={() => setAdding(true)}>
+          + {L ? 'Zauberstab / Stab hinzufügen' : 'Add wand / staff'}
+        </button>
+      )}
+    </div>
+  )
+}
+
+// ── Main tab ───────────────────────────────────────────────────────────────────
+export function SpellsTab({ char, setSpellbook, setWands, attrs, lang }) {
+  const L = lang === 'de'
+  const [mode, setMode] = useState('book')  // 'lookup' | 'book' | 'wands'
 
   function handlePrepare(spell, level, classId) {
     setSpellbook(prev => {
@@ -401,10 +487,15 @@ export function SpellsTab({ char, setSpellbook, attrs, lang }) {
           onClick={() => setMode('book')}>
           {L ? '📖 Zauberbuch' : '📖 Spellbook'}
         </button>
+        <button className={`smt-btn ${mode === 'wands' ? 'active' : ''}`}
+          onClick={() => setMode('wands')}>
+          {L ? '🪄 Stäbe' : '🪄 Wands'}
+        </button>
       </div>
 
       {mode === 'lookup' && <SpellLookup lang={lang} onPrepare={setSpellbook ? handlePrepare : null} />}
       {mode === 'book'   && <SpellBook char={char} setSpellbook={setSpellbook} attrs={attrs} lang={lang} />}
+      {mode === 'wands'  && <WandsPanel char={char} setWands={setWands} lang={lang} />}
     </div>
   )
 }
