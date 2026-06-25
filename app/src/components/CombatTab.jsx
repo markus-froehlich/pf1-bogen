@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ARMOR_MAP, SHIELDS_MAP } from '../engine/index.js'
 import armorData      from '../data/armor.json'
 import shieldsData    from '../data/shields.json'
