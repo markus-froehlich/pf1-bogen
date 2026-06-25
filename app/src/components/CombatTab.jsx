@@ -264,7 +264,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               <div className="hp-ko-hint"
                 title={`KO-Mod ${koMod >= 0 ? '+' : ''}${koMod} × ${lvls} Stufen = ${contrib >= 0 ? '+' : ''}${contrib} Max-TP`}>
                 <span className="hp-ko-label">KO</span>
-                <span className="hp-ko-eq">{koMod >= 0 ? '+' : ''}{koMod} × {lvls} Stf</span>
+                <span className="hp-ko-eq">{koMod >= 0 ? '+' : ''}{koMod} × {lvls} Stufen</span>
                 <span className={`hp-ko-val ${contrib < 0 ? 'neg' : ''}`}>{contrib >= 0 ? '+' : ''}{contrib} TP</span>
               </div>
             )
