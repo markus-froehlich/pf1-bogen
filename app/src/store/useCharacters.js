@@ -287,6 +287,7 @@ export function useCharacters() {
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs,
     importChar, newChar, switchChar, deleteChar,
+    getBackupData,
   }
 }
 
