@@ -193,9 +193,10 @@ export default function App() {
       if (document.visibilityState !== 'visible') return
       gistSync.pull().then(data => {
         if (!data?.index?.length || !data?.chars) return
-        const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
-        const localMax  = Math.max(...index.map(e => e.updated ?? 0))
-        if (remoteMax <= localMax) return
+        const remoteMax    = Math.max(...data.index.map(e => e.updated ?? 0))
+        const localMax     = Math.max(...index.map(e => e.updated ?? 0))
+        const countChanged = data.index.length !== index.length
+        if (!countChanged && remoteMax <= localMax) return
         for (const [id, charData] of Object.entries(data.chars)) {
           localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
         }
