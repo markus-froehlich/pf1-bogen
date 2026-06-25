@@ -294,23 +294,41 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
       )}
 
       <div className="inv-list">
-        {items.map(it => (
-          <div key={it.id}
-            className={`inv-item ${editId === it.id ? 'editing' : ''}`}
-            onClick={() => editId !== it.id && openEdit(it)}>
-            <div className="ii-main">
-              <span className="ii-name">{it.name}</span>
-              {it.qty > 1 && <span className="ii-qty">×{it.qty}</span>}
-              {it.weight > 0 && (
-                <span className="ii-weight">{Math.round(it.weight * it.qty * 10) / 10} kg</span>
-              )}
-              {it.gp > 0 && (
-                <span className="ii-gp">{it.qty > 1 ? `${it.qty}×` : ''}{it.gp} GP</span>
-              )}
+        {(() => {
+          const groups = {}
+          for (const it of items) {
+            const key = it.bag?.trim() || ''
+            if (!groups[key]) groups[key] = []
+            groups[key].push(it)
+          }
+          const keys = Object.keys(groups).sort((a, b) => {
+            if (a === '') return -1
+            if (b === '') return 1
+            return a.localeCompare(b)
+          })
+          return keys.map(key => (
+            <div key={key || '__worn__'}>
+              {key && <div className="inv-bag-header">📦 {key}</div>}
+              {groups[key].map(it => (
+                <div key={it.id}
+                  className={`inv-item ${editId === it.id ? 'editing' : ''}`}
+                  onClick={() => editId !== it.id && openEdit(it)}>
+                  <div className="ii-main">
+                    <span className="ii-name">{it.name}</span>
+                    {it.qty > 1 && <span className="ii-qty">×{it.qty}</span>}
+                    {it.weight > 0 && (
+                      <span className="ii-weight">{Math.round(it.weight * it.qty * 10) / 10} kg</span>
+                    )}
+                    {it.gp > 0 && (
+                      <span className="ii-gp">{it.qty > 1 ? `${it.qty}×` : ''}{it.gp} GP</span>
+                    )}
+                  </div>
+                  {it.notes && <p className="ii-notes">{it.notes}</p>}
+                </div>
+              ))}
             </div>
-            {it.notes && <p className="ii-notes">{it.notes}</p>}
-          </div>
-        ))}
+          ))
+        })()}
       </div>
 
       {!editId && (
