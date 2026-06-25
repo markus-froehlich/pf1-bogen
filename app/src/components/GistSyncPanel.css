@@ -111,12 +111,26 @@
 }
 .gist-token-input:focus { outline: none; border-color: var(--accent); }
 
-.gist-help-link {
-  font-size: 0.7rem;
+.gist-help-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface2));
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-radius: 7px;
   color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 9px 14px;
   text-decoration: none;
+  cursor: pointer;
 }
-.gist-help-link:hover { text-decoration: underline; }
+.gist-help-btn:hover { background: color-mix(in srgb, var(--accent) 18%, var(--surface2)); }
+.gist-help-hint {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
 
 .gist-connect-btn {
   background: var(--accent);
