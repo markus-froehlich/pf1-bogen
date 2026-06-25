@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { PrintView } from './components/PrintView.jsx'
 import { useCharacters } from './store/useCharacters.js'
 import { useHomebrew }   from './store/useHomebrew.js'
