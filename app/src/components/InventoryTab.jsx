@@ -157,7 +157,7 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
                 )
               })}
             </div>
-            <div className="conv-rates">{L ? 'Kurs: 1PP=10GP · 1GP=10SP · 1SP=10CP' : 'Rate: 1PP=10GP · 1GP=10SP · 1SP=10CP'}</div>
+            <div className="conv-rates">{L ? `Kurs: 1PM=10GM · 1GM=10SM · 1SM=10KM` : 'Rate: 1PP=10GP · 1GP=10SP · 1SP=10CP'}</div>
           </div>
         )}
       </div>
