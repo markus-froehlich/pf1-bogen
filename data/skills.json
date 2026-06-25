@@ -70,7 +70,7 @@
         "de": "Beruf",
         "en": "Profession"
       },
-      "ability": "IN",
+      "ability": "WE",
       "trained_only": true,
       "armor_check_penalty": false,
       "has_subskills": true,
@@ -525,7 +525,7 @@
         "de": "Mit Tieren umgehen",
         "en": "Handle Animal"
       },
-      "ability": "WE",
+      "ability": "CH",
       "trained_only": true,
       "armor_check_penalty": false,
       "class_skills": [

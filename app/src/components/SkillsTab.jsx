@@ -99,8 +99,8 @@ export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalF
                 value={char.skills?.[def.id]?.misc ?? 0}
                 onChange={e => setSkill(def.id, 'misc', e.target.value)}
               />
-              <span className={`sk-total ${cv.total >= 0 ? 'pos' : 'neg'}`}>
-                {fmtBonus(cv.total)}
+              <span className={`sk-total ${def.trained_only && ranks === 0 ? 'sk-untrained' : cv.total >= 0 ? 'pos' : 'neg'}`}>
+                {def.trained_only && ranks === 0 ? '—' : fmtBonus(cv.total)}
               </span>
             </div>
           )
