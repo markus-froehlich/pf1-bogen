@@ -115,10 +115,10 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
           ))}
         </div>
         <div className="coins-total">
-          {L ? 'Münzwert' : 'Coin value'}: {totalGp % 1 === 0 ? totalGp : totalGp.toFixed(2)} GP
+          {L ? 'Münzwert' : 'Coin value'}: {totalGp % 1 === 0 ? totalGp : totalGp.toFixed(2)} {COIN_LABEL.gp}
           {totalItemGp > 0 && (
             <span className="coins-grand-total">
-              · {L ? 'Gesamt' : 'Total'}: {grandTotalGp % 1 === 0 ? grandTotalGp : grandTotalGp.toFixed(2)} GP
+              · {L ? 'Gesamt' : 'Total'}: {grandTotalGp % 1 === 0 ? grandTotalGp : grandTotalGp.toFixed(2)} {COIN_LABEL.gp}
             </span>
           )}
         </div>
