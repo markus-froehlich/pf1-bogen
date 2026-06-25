@@ -80,11 +80,13 @@ export function useGistSync() {
     } catch { setStatus('error'); return false }
   }
 
-  async function pull() {
-    if (!token || !gistId) return null
+  async function pull(overrideToken, overrideGistId) {
+    const t  = overrideToken  ?? token
+    const id = overrideGistId ?? gistId
+    if (!t || !id) return null
     setStatus('syncing')
     try {
-      const res = await fetch(`${API}/gists/${gistId}`, { headers: ghHeaders(token) })
+      const res = await fetch(`${API}/gists/${id}`, { headers: ghHeaders(t) })
       if (!res.ok) { setStatus('error'); return null }
       const gist = await res.json()
       const content = gist.files?.[FILENAME]?.content
