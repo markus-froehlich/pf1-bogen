@@ -257,7 +257,7 @@ export default function App() {
                       ✦ Homebrew
                     </button>
                   </div>
-                </div>
+                </>
               )}
             </div>
             <div className="font-scale-stepper" title="Schriftgröße">
