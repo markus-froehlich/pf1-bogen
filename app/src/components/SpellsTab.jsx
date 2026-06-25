@@ -457,9 +457,9 @@ function WandsPanel({ char, setWands, lang }) {
 }
 
 // ── Main tab ───────────────────────────────────────────────────────────────────
-export function SpellsTab({ char, setSpellbook, setWands, attrs, lang }) {
+export function SpellsTab({ char, setSpellbook, attrs, lang }) {
   const L = lang === 'de'
-  const [mode, setMode] = useState('book')  // 'lookup' | 'book' | 'wands'
+  const [mode, setMode] = useState('book')  // 'lookup' | 'book'
 
   function handlePrepare(spell, level, classId) {
     setSpellbook(prev => {
@@ -487,15 +487,10 @@ export function SpellsTab({ char, setSpellbook, setWands, attrs, lang }) {
           onClick={() => setMode('book')}>
           {L ? '📖 Zauberbuch' : '📖 Spellbook'}
         </button>
-        <button className={`smt-btn ${mode === 'wands' ? 'active' : ''}`}
-          onClick={() => setMode('wands')}>
-          {L ? '🪄 Stäbe' : '🪄 Wands'}
-        </button>
       </div>
 
       {mode === 'lookup' && <SpellLookup lang={lang} onPrepare={setSpellbook ? handlePrepare : null} />}
       {mode === 'book'   && <SpellBook char={char} setSpellbook={setSpellbook} attrs={attrs} lang={lang} />}
-      {mode === 'wands'  && <WandsPanel char={char} setWands={setWands} lang={lang} />}
     </div>
   )
 }
