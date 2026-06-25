@@ -328,6 +328,19 @@ Engine-Gerüst.
   - BioSection + XpTracker: eigene Card-Styles entfernt (waren doppelt genested in ct-section)
   - iOS-Test bestanden: Portrait (390×664) + Landscape (750×340), navAtBottom, kein Overflow ✓
 
+- **XL-Font-Fixes (375px iPhone, font-size: 22px)** — reale iPhone-Screenshots geprüft:
+  - `main-scroll { overflow-x: hidden }` → kein horizontaler Viewport-Shift mehr
+  - Tragelast-Kacheln: `carry-label/ct-tag/ct-val/carry-current` auf feste px-Größen (9px/11px)
+    statt rem → skaliert nicht mit XL-Font; carry-coin-toggle auf 14px
+  - Kampf-Tab Bewegungszeile: `overflow: hidden` von `.speed-extras-grid` entfernt;
+    `es-cell { min-width: 0; overflow: hidden }` + `es-maneuver-sel { min-width: 0 }` →
+    MANÖVER-Select erzwingt keine Überbreite mehr; SCHWIMMEN/GRABEN "m"-Einheit sichtbar ✓
+  - Kampf-Tab Kampfwerte: `stat-row { gap: 5px }` (von 8px) → NAHKAMPF-Label vollständig ✓
+  - Zauber-Tab Zauberbuch: `sb-class-row { flex-wrap: wrap }` → Spontan-Badge + ⟳ Auto-Button
+    wrappen zur zweiten Zeile statt rechts abzuschneiden; `sb-lv-title { white-space: nowrap }`
+    verhindert "Stufe\n0"-Umbruch; `sb-slots { flex-shrink: 0; margin-left: auto }`
+  - Verifiziert: 375px Portrait + Landscape, alle 4 gemeldeten Issues behoben ✓
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
