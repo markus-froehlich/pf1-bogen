@@ -238,7 +238,8 @@ export default function App() {
         localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
       }
       localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
-      window.location.reload()
+      reinitialize()
+      reloading = false
     }
     const interval = setInterval(checkRemote, 20000)
     function onVisible() { if (document.visibilityState === 'visible') checkRemote() }
