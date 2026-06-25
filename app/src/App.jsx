@@ -504,35 +504,31 @@ export default function App() {
               buffTotals={buffTotals}
               activeBuffs={char.active_buffs ?? []}
               condMods={condMods}
-              sectionOrder={combatInternalOrder}
-              onMoveSection={moveCombatInternal}
+              sectionOrder={combatOrder}
+              onMoveSection={moveCombat}
               collapsedSections={combatCollapsed}
               onToggleCollapse={toggleCombatCollapse}
-            />
-            {combatOuterOrder.map((id, idx) => {
-              const L = lang === 'de'
-              const outerLabels = {
-                features:   L ? 'Klassenmerkmale' : 'Class Features',
-                conditions: L ? 'Zustände'        : 'Conditions',
-                buffs:      L ? 'Buffs / Effekte' : 'Buffs / Effects',
-                resources:  L ? 'Ressourcen'      : 'Resources',
-                weapons:    L ? 'Waffen'          : 'Weapons',
-              }
-              const panels = {
+              extraPanels={{
                 features:   <ClassFeaturesPanel char={char} lang={lang} hideTitle />,
                 conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
                 buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
                 resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
                 weapons:    <WeaponsTab char={char} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} />,
-              }
-              return (
-                <div key={id} className="sortable-outer-panel">
-                  <SortBar id={id} idx={idx} total={combatOuterOrder.length} label={outerLabels[id]} onMove={moveCombatOuter}
-                    collapsed={outerCollapsed.has(id)} onToggle={toggleOuterCollapse} />
-                  {!outerCollapsed.has(id) && panels[id]}
-                </div>
-              )
-            })}
+              }}
+              extraLabels={lang === 'de' ? {
+                features:   'Klassenmerkmale',
+                conditions: 'Zustände',
+                buffs:      'Buffs / Effekte',
+                resources:  'Ressourcen',
+                weapons:    'Waffen',
+              } : {
+                features:   'Class Features',
+                conditions: 'Conditions',
+                buffs:      'Buffs / Effects',
+                resources:  'Resources',
+                weapons:    'Weapons',
+              }}
+            />
           </div>
         )}
 
