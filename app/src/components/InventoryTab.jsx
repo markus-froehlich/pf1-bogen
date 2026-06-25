@@ -250,6 +250,20 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
             </div>
           </div>
           <div className="invf-row">
+            <label className="invf-label">{L ? 'Behälter' : 'Container'}</label>
+            <input className="invf-input" list="bag-suggestions"
+              placeholder={L ? 'Rucksack, Gürtel, … (leer = getragen)' : 'Backpack, Belt, … (empty = worn)'}
+              value={draft.bag ?? ''}
+              onChange={e => setDraft(d => ({ ...d, bag: e.target.value }))} />
+            <datalist id="bag-suggestions">
+              <option value={L ? 'Rucksack' : 'Backpack'} />
+              <option value={L ? 'Gürtel' : 'Belt'} />
+              <option value={L ? 'Satteltasche' : 'Saddlebag'} />
+              <option value={L ? 'Beutel' : 'Pouch'} />
+              <option value={L ? 'Kiste' : 'Chest'} />
+            </datalist>
+          </div>
+          <div className="invf-row">
             <label className="invf-label">{L ? 'Notiz' : 'Note'}</label>
             <input className="invf-input"
               placeholder={L ? 'Fundort, Wert, …' : 'Location, value, …'}
