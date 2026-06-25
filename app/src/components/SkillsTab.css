@@ -119,6 +119,7 @@
 }
 .sk-total.pos { color: var(--good); }
 .sk-total.neg { color: var(--bad); }
+.sk-total.sk-untrained { color: var(--text-muted); font-weight: 400; }
 
 .fk-budget {
   display: flex;
