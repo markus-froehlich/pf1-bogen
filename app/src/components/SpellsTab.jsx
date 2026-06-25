@@ -379,8 +379,15 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
               <div className="sb-prepared">
                 {lvData.prepared.map(spellId => {
                   const spell = SPELL_MAP[spellId]
+                  const isBloodline = bloodlineIds.includes(spellId)
                   return (
-                    <div key={spellId} className="sb-spell">
+                    <div key={spellId} className={`sb-spell${isBloodline ? ' sb-spell-bloodline' : ''}`}>
+                      <button
+                        className={`sb-bloodline-btn${isBloodline ? ' active' : ''}`}
+                        onClick={() => toggleBloodline(lv, spellId)}
+                        title={isBloodline ? (L ? 'Blutlinienzauber (zählt nicht gegen Limit)' : 'Bloodline spell (not counted)') : (L ? 'Als Blutlinienzauber markieren' : 'Mark as bloodline spell')}>
+                        🩸
+                      </button>
                       <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? spellId}</span>
                       {spell && <RefLink name={spell.name.de} page={spell.page} />}
                       {spell?.school && <span className="sb-spell-school">{spell.school}</span>}
