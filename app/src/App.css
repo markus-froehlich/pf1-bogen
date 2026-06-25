@@ -52,6 +52,22 @@
 .char-name-input:focus { outline: none; border-color: var(--accent); }
 .char-name-input::placeholder { color: var(--text-muted); font-weight: 400; }
 
+.player-name-input {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--text-muted);
+  padding: 2px 2px 3px;
+  font-size: 0.72rem;
+  box-sizing: border-box;
+  margin-top: -3px;
+}
+.player-name-input:focus { outline: none; border-bottom-color: var(--accent); color: var(--text); }
+.player-name-input::placeholder { color: color-mix(in srgb, var(--text-muted) 50%, transparent); font-style: italic; }
+
 .char-list-btn {
   position: relative;
   font-size: 1rem;
