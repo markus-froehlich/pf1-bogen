@@ -446,8 +446,10 @@ export function NotesTab({ char, setNotes, setContacts, setSpecials, lang }) {
                 <div key={p.id} className={`poison-row ${isOpen ? 'open' : ''}`}
                   onClick={() => setPoisonExpanded(isOpen ? null : p.id)}>
                   <div className="poison-main">
-                    <span className="poison-name">{p.name}</span>
-                    <PoisonRefLink name={p.name} page={p.page} />
+                    <span className="poison-name-wrap">
+                      <span className="poison-name">{p.name}</span>
+                      <PoisonRefLink name={p.name} page={p.page} />
+                    </span>
                     {p.type && <span className="poison-type">{p.type.split(',')[0]}</span>}
                     {p.dc && <span className="poison-dc">SG {p.dc}</span>}
                     {p.page && <span className="poison-page">{p.page}</span>}
