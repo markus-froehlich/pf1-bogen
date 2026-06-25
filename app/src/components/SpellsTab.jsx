@@ -173,7 +173,10 @@ function DcPanel({ char, attrs, lang }) {
   const classId = sb.class_id
   if (!classId) return null
 
-  const stat = CASTING_STAT[classId]
+  const aliases = SPELLBOOK_TO_CHAR_ID[classId] ?? []
+  const charEntry = (char.meta.classes ?? []).find(e => e.id === classId || aliases.includes(e.id))
+  const effectiveId = (charEntry && charEntry.id !== classId) ? charEntry.id : classId
+  const stat = CASTING_STAT[effectiveId] ?? CASTING_STAT[classId]
   if (!stat) return null
 
   const mod = attrs?.[stat]?.mod ?? 0
