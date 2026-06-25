@@ -385,8 +385,8 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
                       <button
                         className={`sb-bloodline-btn${isBloodline ? ' active' : ''}`}
                         onClick={() => toggleBloodline(lv, spellId)}
-                        title={isBloodline ? (L ? 'Blutlinienzauber (zählt nicht gegen Limit)' : 'Bloodline spell (not counted)') : (L ? 'Als Blutlinienzauber markieren' : 'Mark as bloodline spell')}>
-                        🩸
+                        title={isBloodline ? (L ? 'Bonuszauber — zählt nicht gegen bekannte Zauber (Blutlinie/Mysterium/Patron)' : 'Bonus spell — not counted against spells known') : (L ? 'Als Bonuszauber markieren (Blutlinie/Mysterium/Patron)' : 'Mark as bonus spell')}>
+                        ✦
                       </button>
                       <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? spellId}</span>
                       {spell && <RefLink name={spell.name.de} page={spell.page} />}
