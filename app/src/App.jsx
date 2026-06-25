@@ -569,7 +569,6 @@ export default function App() {
         {TABS.map(t => (
           <button key={t.id} className={`nav-btn ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
             <span className="nav-icon">{NAV_ICONS[t.id]}</span>
-            {tab === t.id && <span className="nav-label">{t[lang]}</span>}
           </button>
         ))}
         <button className="nav-collapse-handle" onClick={toggleNav} title="Navigation einklappen">−</button>
