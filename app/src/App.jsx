@@ -62,7 +62,7 @@ const TABS = [
   { id: 'notes',     de: 'Notizen',   en: 'Notes'   },
 ]
 
-const NAV_ICONS = { attr: '👤', combat: '⚔', skills: '🔨', spells: '🪄', inventory: '🎒', feats: '❋', notes: '✎' }
+const NAV_ICONS = { attr: '👤', combat: '⚔', skills: '🔨', spells: '🪄', inventory: '🪙', feats: '❋', notes: '✎' }
 
 export default function App() {
   const [tab, setTab] = useState('attr')
