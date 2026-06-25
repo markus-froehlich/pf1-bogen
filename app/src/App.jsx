@@ -186,6 +186,29 @@ export default function App() {
     if (gistSync.connected) gistSync.schedulePush(getBackupData)
   }, [index])
 
+  // Pull from Gist when app comes to foreground (tab switch, phone unlock)
+  useEffect(() => {
+    if (!gistSync.connected) return
+    function onVisible() {
+      if (document.visibilityState !== 'visible') return
+      gistSync.pull().then(data => {
+        if (!data?.index?.length || !data?.chars) return
+        const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
+        const localMax  = Math.max(...index.map(e => e.updated ?? 0))
+        if (remoteMax <= localMax) return
+        for (const [id, charData] of Object.entries(data.chars)) {
+          localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+        }
+        localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+        if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
+        window.location.reload()
+      })
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => document.removeEventListener('visibilitychange', onVisible)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gistSync.connected])
+
   const { hb, saveHBItem, deleteHB } = useHomebrew()
 
   // Register homebrew entries into engine lookup maps (runs before any engine call)
