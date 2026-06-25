@@ -81,11 +81,11 @@ export function BioSection({ char, setBio, lang }) {
           <label className="bio-label">{L ? 'Alter' : 'Age'}</label>
           <input
             className="bio-input bio-input-num"
-            type="number"
-            min={1}
+            type="text"
+            inputMode="numeric"
             placeholder="—"
             value={bio.age ?? ''}
-            onChange={e => setBio('age', e.target.value ? Number(e.target.value) : '')}
+            onChange={e => setBio('age', e.target.value)}
           />
         </div>
       </div>
@@ -96,22 +96,22 @@ export function BioSection({ char, setBio, lang }) {
           <label className="bio-label">{L ? 'Größe (cm)' : 'Height (cm)'}</label>
           <input
             className="bio-input bio-input-num"
-            type="number"
-            min={1}
+            type="text"
+            inputMode="numeric"
             placeholder="—"
             value={bio.height_cm ?? ''}
-            onChange={e => setBio('height_cm', e.target.value ? Number(e.target.value) : '')}
+            onChange={e => setBio('height_cm', e.target.value)}
           />
         </div>
         <div className="bio-field">
           <label className="bio-label">{L ? 'Gewicht (kg)' : 'Weight (kg)'}</label>
           <input
             className="bio-input bio-input-num"
-            type="number"
-            min={1}
+            type="text"
+            inputMode="numeric"
             placeholder="—"
             value={bio.weight_kg ?? ''}
-            onChange={e => setBio('weight_kg', e.target.value ? Number(e.target.value) : '')}
+            onChange={e => setBio('weight_kg', e.target.value)}
           />
         </div>
       </div>
