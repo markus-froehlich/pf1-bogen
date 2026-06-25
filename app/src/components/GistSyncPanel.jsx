@@ -33,6 +33,10 @@ export function GistSyncPanel({ gistSync, onClose }) {
       localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
     }
     localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+    if (data.homebrew) localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew))
+    if (data.preferences) {
+      for (const [k, v] of Object.entries(data.preferences)) localStorage.setItem(k, JSON.stringify(v))
+    }
     setMsg('Daten geladen — Seite wird neu geladen…')
     setTimeout(() => window.location.reload(), 700)
   }
@@ -49,6 +53,10 @@ export function GistSyncPanel({ gistSync, onClose }) {
       localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
     }
     localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+    if (data.homebrew) localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew))
+    if (data.preferences) {
+      for (const [k, v] of Object.entries(data.preferences)) localStorage.setItem(k, JSON.stringify(v))
+    }
     setMsg('Daten geladen — Seite wird neu geladen…')
     setTimeout(() => window.location.reload(), 700)
   }
