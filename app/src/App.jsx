@@ -186,33 +186,39 @@ export default function App() {
     if (gistSync.connected) gistSync.schedulePush(getBackupData)
   }, [index])
 
-  // Refs so the visibilitychange handler always sees current values
+  // Refs so the sync handler always sees current values (avoids stale closures)
   const pullRef  = useRef(gistSync.pull)
   const indexRef = useRef(index)
   useEffect(() => { pullRef.current  = gistSync.pull }, [gistSync.pull])
   useEffect(() => { indexRef.current = index },         [index])
 
-  // Pull from Gist when app comes to foreground (tab switch, phone unlock)
+  // Poll Gist every 20 s + on visibilitychange — reload if remote is newer
   useEffect(() => {
     if (!gistSync.connected) return
-    function onVisible() {
-      if (document.visibilityState !== 'visible') return
-      pullRef.current().then(data => {
-        if (!data?.index?.length || !data?.chars) return
-        const remoteMax    = Math.max(...data.index.map(e => e.updated ?? 0))
-        const localMax     = Math.max(...indexRef.current.map(e => e.updated ?? 0))
-        const countChanged = data.index.length !== indexRef.current.length
-        if (!countChanged && remoteMax <= localMax) return
-        for (const [id, charData] of Object.entries(data.chars)) {
-          localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
-        }
-        localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
-        if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
-        window.location.reload()
-      })
+    let reloading = false
+    async function checkRemote() {
+      if (reloading) return
+      const data = await pullRef.current()
+      if (!data?.index?.length || !data?.chars) return
+      const remoteMax    = Math.max(...data.index.map(e => e.updated ?? 0))
+      const localMax     = Math.max(...indexRef.current.map(e => e.updated ?? 0))
+      const countChanged = data.index.length !== indexRef.current.length
+      if (!countChanged && remoteMax <= localMax) return
+      reloading = true
+      for (const [id, charData] of Object.entries(data.chars)) {
+        localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+      }
+      localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+      if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
+      window.location.reload()
     }
+    const interval = setInterval(checkRemote, 20000)
+    function onVisible() { if (document.visibilityState === 'visible') checkRemote() }
     document.addEventListener('visibilitychange', onVisible)
-    return () => document.removeEventListener('visibilitychange', onVisible)
+    return () => {
+      clearInterval(interval)
+      document.removeEventListener('visibilitychange', onVisible)
+    }
   }, [gistSync.connected])
 
   const { hb, saveHBItem, deleteHB } = useHomebrew()
