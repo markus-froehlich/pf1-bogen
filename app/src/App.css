@@ -17,8 +17,10 @@
   background: var(--surface2);
   border-bottom: 1px solid var(--border);
   max-height: 200px;
-  overflow: hidden;
+  overflow: visible;
   transition: max-height 0.28s ease, opacity 0.2s ease, padding 0.28s ease, border-width 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 .topbar.bar-collapsed {
   max-height: 0;
@@ -26,6 +28,7 @@
   padding-top: 0;
   padding-bottom: 0;
   border-width: 0;
+  overflow: hidden;
 }
 
 .topbar-row1 {
