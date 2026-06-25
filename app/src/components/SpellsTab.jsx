@@ -206,20 +206,24 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
   const sb = char.spellbook ?? { class_id: '', levels: {} }
 
   // Auto-fill slots from PF1e standard tables
-  const classEntry = (char.meta.classes ?? []).find(e => e.id === sb.class_id)
+  // Resolve char class entry using alias map (e.g. hxm_magier → hexenmeister/magier)
+  const sbAliases  = SPELLBOOK_TO_CHAR_ID[sb.class_id] ?? []
+  const classEntry = (char.meta.classes ?? []).find(e => e.id === sb.class_id || sbAliases.includes(e.id))
   const classLevel = Number(classEntry?.level) || 1
-  const spontaneous = isSpontaneousCaster(sb.class_id)
-  const castingStat = CASTING_STAT[sb.class_id]
+  // Use the actual char class ID for slot-type lookup (hexenmeister → spontaneous, magier → prepared)
+  const effectiveClassId = (classEntry && classEntry.id !== sb.class_id) ? classEntry.id : sb.class_id
+  const spontaneous = isSpontaneousCaster(effectiveClassId)
+  const castingStat = CASTING_STAT[effectiveClassId] ?? CASTING_STAT[sb.class_id]
   const castingMod  = (castingStat && attrs) ? (attrs[castingStat]?.mod ?? 0) : 0
   const concBonus   = classLevel + castingMod
   const fmtB = n => n >= 0 ? `+${n}` : `${n}`
-  const knownMax    = spontaneous ? (getSpellsKnown(sb.class_id, classLevel) ?? {}) : {}
+  const knownMax    = spontaneous ? (getSpellsKnown(effectiveClassId, classLevel) ?? {}) : {}
   function autoFillSlots() {
     if (!sb.class_id) return
-    const baseSlots = getSpellSlots(sb.class_id, classLevel)
+    const baseSlots = getSpellSlots(effectiveClassId, classLevel)
     if (!baseSlots) return
     // Bonus slots from high casting stat: +1 per level up to ability mod (levels 1+)
-    const stat = CASTING_STAT[sb.class_id]
+    const stat = castingStat
     const abilityMod = (stat && attrs) ? (attrs[stat]?.mod ?? 0) : 0
     setSpellbook(prev => {
       const newLevels = {}
