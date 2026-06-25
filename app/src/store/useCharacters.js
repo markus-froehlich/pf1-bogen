@@ -315,7 +315,14 @@ export function useCharacters() {
       const s = localStorage.getItem(HOMEBREW_KEY)
       if (s) homebrew = JSON.parse(s)
     } catch {}
-    return { version: 2, index: state.index, chars, activeId: state.activeId, homebrew }
+    const preferences = {}
+    for (const key of PREF_KEYS) {
+      try {
+        const s = localStorage.getItem(key)
+        if (s) preferences[key] = JSON.parse(s)
+      } catch {}
+    }
+    return { version: 2, index: state.index, chars, activeId: state.activeId, homebrew, preferences }
   }, [state])
 
   const reinitialize = useCallback(() => {
