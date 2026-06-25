@@ -101,12 +101,19 @@
 
 .res-form-actions { display: flex; gap: 6px; justify-content: flex-end; }
 .res-save-btn, .res-cancel-btn, .res-del-btn {
-  border-radius: 6px; padding: 4px 12px; font-size: 0.75rem; font-weight: 700; cursor: pointer;
+  border-radius: 8px;
+  width: 40px; height: 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
 }
 .res-save-btn   { background: var(--accent); border: none; color: var(--bg); }
 .res-save-btn:disabled { opacity: 0.4; cursor: default; }
 .res-cancel-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); }
-.res-del-btn    { background: none; border: 1px solid #c96e6e; color: #c96e6e; margin-right: auto; }
+.res-del-btn    { background: none; border: 1px solid #c96e6e; color: #c96e6e; margin-right: auto; font-size: 0.95rem; }
 
 /* Empty state */
 .res-empty {
