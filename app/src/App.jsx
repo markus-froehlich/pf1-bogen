@@ -156,7 +156,7 @@ export default function App() {
     setAttr, setMeta, setCombatMisc, setClass, setGear, setSkill, setWeaponSlot, setHp,
     setNotes, setSpellbook, setContacts, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
-    setNlDamage, setMagicSlots, setActiveBuffs,
+    setNlDamage, setMagicSlots, setActiveBuffs, setWands,
     importChar, newChar, switchChar, deleteChar,
     getBackupData,
   } = useCharacters()

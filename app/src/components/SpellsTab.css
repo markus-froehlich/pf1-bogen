@@ -407,3 +407,50 @@
   color: var(--text);
   min-width: 22px;
 }
+
+/* Wands panel */
+.wands-panel { display: flex; flex-direction: column; gap: 8px; }
+.wands-empty { font-size: 0.78rem; color: var(--text-muted); text-align: center; padding: 16px 0; margin: 0; }
+
+.wand-row {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wand-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.wand-name { font-size: 0.82rem; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wand-notes { font-size: 0.65rem; color: var(--text-muted); }
+
+.wand-charges { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.wand-charge-btn {
+  width: 28px; height: 28px;
+  background: var(--surface3); border: 1px solid var(--border); border-radius: 5px;
+  color: var(--text); font-size: 1rem; font-weight: 700; cursor: pointer; line-height: 1;
+}
+.wand-charge-btn:disabled { opacity: 0.3; cursor: default; }
+.wand-charge-display { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 44px; }
+.wand-charge-val { font-size: 1rem; font-weight: 700; line-height: 1; }
+.wand-charge-sep { display: none; }
+.wand-charge-max { font-size: 0.62rem; color: var(--text-muted); line-height: 1; }
+.wand-charge-bar { width: 40px; height: 3px; background: var(--surface3); border-radius: 2px; overflow: hidden; }
+.wand-charge-fill { height: 100%; border-radius: 2px; transition: width 0.2s; }
+.wand-remove-btn { background: none; border: none; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; padding: 2px 4px; }
+.wand-remove-btn:hover { color: #c96e6e; }
+
+.wand-add-form { display: flex; flex-direction: column; gap: 6px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+.wand-input { background: var(--surface3); border: 1px solid var(--border); border-radius: 5px; color: var(--text); font-size: 0.82rem; padding: 6px 8px; width: 100%; box-sizing: border-box; }
+.wand-input:focus { outline: none; border-color: var(--accent); }
+.wand-input-num { width: 70px; }
+.wand-add-row { display: flex; align-items: center; gap: 8px; }
+.wand-add-label { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
+.wand-form-btns { display: flex; gap: 6px; }
+.wand-save-btn { background: var(--accent); border: none; border-radius: 5px; color: var(--bg); font-size: 0.85rem; font-weight: 700; padding: 6px 14px; cursor: pointer; }
+.wand-save-btn:disabled { opacity: 0.4; cursor: default; }
+.wand-cancel-btn { background: var(--surface3); border: 1px solid var(--border); border-radius: 5px; color: var(--text-muted); font-size: 0.85rem; padding: 6px 14px; cursor: pointer; }
+
+.wand-add-btn { background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; color: var(--text-muted); font-size: 0.8rem; padding: 10px; cursor: pointer; text-align: center; width: 100%; }
+.wand-add-btn:hover { border-color: var(--accent); color: var(--accent); }
