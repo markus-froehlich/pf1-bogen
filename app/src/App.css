@@ -150,6 +150,45 @@
 }
 .nav-collapse-handle:hover { opacity: 1; color: var(--accent); }
 
+/* ── App menu (⚙ dropdown) ── */
+.app-menu-wrap {
+  position: relative;
+}
+.app-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+}
+.app-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  overflow: hidden;
+  min-width: 170px;
+  z-index: 301;
+}
+.app-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 12px 16px;
+  cursor: pointer;
+  text-align: left;
+}
+.app-menu-item:last-child { border-bottom: none; }
+.app-menu-item:active { background: var(--surface3); color: var(--accent); }
+
 .font-scale-stepper {
   display: flex;
   align-items: center;
