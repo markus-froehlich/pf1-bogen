@@ -305,6 +305,10 @@ export default function App() {
           onClose={() => setHbOpen(false)} lang={lang} />
       )}
 
+      {gistOpen && (
+        <GistSyncPanel gistSync={gistSync} onClose={() => setGistOpen(false)} />
+      )}
+
       {drawerOpen && (
         <CharacterDrawer
           index={index} activeId={activeId}
