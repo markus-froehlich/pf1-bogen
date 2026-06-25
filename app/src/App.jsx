@@ -158,7 +158,7 @@ export default function App() {
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
     importChar, newChar, switchChar, deleteChar,
-    getBackupData,
+    getBackupData, reinitialize,
   } = useCharacters()
 
   const gistSync = useGistSync()
