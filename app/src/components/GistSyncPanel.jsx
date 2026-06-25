@@ -33,7 +33,6 @@ export function GistSyncPanel({ gistSync, onClose }) {
       localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
     }
     localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
-    if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
     setMsg('Daten geladen — Seite wird neu geladen…')
     setTimeout(() => window.location.reload(), 700)
   }
@@ -50,7 +49,6 @@ export function GistSyncPanel({ gistSync, onClose }) {
       localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
     }
     localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
-    if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
     setMsg('Daten geladen — Seite wird neu geladen…')
     setTimeout(() => window.location.reload(), 700)
   }
