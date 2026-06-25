@@ -266,14 +266,15 @@
   font-size: 0.75rem;
   cursor: pointer;
   padding: 0 2px;
-  opacity: 0.25;
+  opacity: 0.2;
   flex-shrink: 0;
   line-height: 1;
+  color: var(--accent);
 }
 .sb-bloodline-btn.active { opacity: 1; }
 .sb-spell-bloodline {
-  background: color-mix(in srgb, #a33 12%, var(--surface3));
-  border: 1px solid color-mix(in srgb, #c44 30%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, var(--surface3));
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
 }
 
 /* Filters */
