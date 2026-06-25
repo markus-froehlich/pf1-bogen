@@ -341,6 +341,13 @@ Engine-Gerüst.
     verhindert "Stufe\n0"-Umbruch; `sb-slots { flex-shrink: 0; margin-left: auto }`
   - Verifiziert: 375px Portrait + Landscape, alle 4 gemeldeten Issues behoben ✓
 
+- **UI-Überarbeitung (2026-06-25)** — schwarzes Theme (#000/#111), Font-Stepper −Aa+ (statt Cycle),
+  Tab "Attribute" → "Char"; 4 weitere XL-iPhone-12-mini-Fixes:
+  `attr-block { min-width: 0 }` → Mod-Kreise rechte Spalte sichtbar;
+  `gear-select/class-select { min-width: 0 }` → Verz.-Input + WW-Badge vollständig;
+  `gear-enh-label { flex-direction: row }` → Verz. inline;
+  `stat-value-row { flex-wrap: wrap }` → Buff-Badges wrappen nach unten
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
