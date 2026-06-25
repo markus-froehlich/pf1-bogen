@@ -390,11 +390,13 @@
   outline-offset: -1px;
 }
 .carry-current {
-  font-size: 0.72rem;
+  font-size: 11px;
   font-weight: 700;
-  padding: 2px 7px;
+  padding: 2px 5px;
   border-radius: 5px;
   margin-left: 4px;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .carry-current-light  { color: #6ec96e; background: color-mix(in srgb, #6ec96e 15%, var(--surface3)); }
 .carry-current-medium { color: #c9a96e; background: color-mix(in srgb, #c9a96e 15%, var(--surface3)); }
