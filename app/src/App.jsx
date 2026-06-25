@@ -186,16 +186,22 @@ export default function App() {
     if (gistSync.connected) gistSync.schedulePush(getBackupData)
   }, [index])
 
+  // Refs so the visibilitychange handler always sees current values
+  const pullRef  = useRef(gistSync.pull)
+  const indexRef = useRef(index)
+  useEffect(() => { pullRef.current  = gistSync.pull }, [gistSync.pull])
+  useEffect(() => { indexRef.current = index },         [index])
+
   // Pull from Gist when app comes to foreground (tab switch, phone unlock)
   useEffect(() => {
     if (!gistSync.connected) return
     function onVisible() {
       if (document.visibilityState !== 'visible') return
-      gistSync.pull().then(data => {
+      pullRef.current().then(data => {
         if (!data?.index?.length || !data?.chars) return
         const remoteMax    = Math.max(...data.index.map(e => e.updated ?? 0))
-        const localMax     = Math.max(...index.map(e => e.updated ?? 0))
-        const countChanged = data.index.length !== index.length
+        const localMax     = Math.max(...indexRef.current.map(e => e.updated ?? 0))
+        const countChanged = data.index.length !== indexRef.current.length
         if (!countChanged && remoteMax <= localMax) return
         for (const [id, charData] of Object.entries(data.chars)) {
           localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
@@ -207,7 +213,6 @@ export default function App() {
     }
     document.addEventListener('visibilitychange', onVisible)
     return () => document.removeEventListener('visibilitychange', onVisible)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gistSync.connected])
 
   const { hb, saveHBItem, deleteHB } = useHomebrew()
