@@ -66,11 +66,6 @@ export function GistSyncPanel({ gistSync, onClose }) {
         </div>
 
         <div className="gist-body">
-          <p className="gist-desc">
-            Charaktere werden automatisch in einem privaten GitHub Gist gesichert.
-            Nur ein kostenloser GitHub-Token mit <code>gist</code>-Berechtigung nötig.
-          </p>
-
           <div className="gist-status-row">
             <span className="gist-status-dot" style={{ background: sl.color }} />
             <span className="gist-status-text" style={{ color: sl.color }}>{sl.text}</span>
