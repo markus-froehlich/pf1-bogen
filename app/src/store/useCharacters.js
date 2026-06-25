@@ -6,8 +6,7 @@ const CHAR_KEY     = id => `pf1_char_${id}`
 const LEGACY_KEY   = 'pf1_character'
 const HOMEBREW_KEY = 'pf1_homebrew'
 const PREF_KEYS = [
-  'pf1_combat_internal_order',
-  'pf1_combat_outer_order',
+  'pf1_combat_order',
   'pf1_attr_order',
   'pf1_combat_collapsed',
   'pf1_attr_collapsed',
