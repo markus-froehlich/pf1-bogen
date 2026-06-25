@@ -99,15 +99,6 @@ export function GistSyncPanel({ gistSync, onClose }) {
                 disabled={!inputToken.trim() || working}>
                 {working ? 'Verbinde…' : 'Verbinden'}
               </button>
-              <details className="gist-create-details">
-                <summary>Noch kein Token? Neuen erstellen (nur einmal nötig)</summary>
-                <a className="gist-help-btn"
-                  href="https://github.com/settings/tokens/new?scopes=gist&description=PF1+Bogen"
-                  target="_blank" rel="noreferrer">
-                  ↗ Token auf GitHub erstellen
-                  <span className="gist-help-hint">(nur „gist" ankreuzen, dann mit Gruppe teilen)</span>
-                </a>
-              </details>
             </div>
           )}
 
