@@ -231,7 +231,13 @@ export default function App() {
           )}
           <div className="topbar-actions">
             <div className="app-menu-wrap">
-              <button className="topbar-icon-btn" title="Menü" onClick={() => setAppMenuOpen(v => !v)}>⚙</button>
+              <button className="topbar-icon-btn" title="Menü" onClick={() => setAppMenuOpen(v => !v)}>
+                ⚙
+                {gistSync.connected && (
+                  <span className="gist-status-badge"
+                    style={{ background: gistSync.status === 'ok' ? '#6ec97e' : gistSync.status === 'error' ? '#c96e6e' : '#c9a96e' }} />
+                )}
+              </button>
               {appMenuOpen && (
                 <>
                 <div className="app-menu-backdrop" onClick={() => setAppMenuOpen(false)} />
