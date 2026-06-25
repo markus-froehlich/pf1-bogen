@@ -180,6 +180,27 @@
   margin-left: auto;
 }
 
+.gist-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.gist-create-details {
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+}
+.gist-create-details summary {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 0;
+}
+.gist-create-details summary:hover { color: var(--text); }
+.gist-create-details[open] summary { margin-bottom: 8px; }
+
 .gist-error {
   background: color-mix(in srgb, #c96e6e 12%, var(--surface2));
   border: 1px solid #c96e6e;
