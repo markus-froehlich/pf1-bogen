@@ -1,9 +1,28 @@
 import { useState, useCallback } from 'react'
 
-const INDEX_KEY  = 'pf1_chars_index'   // [{id, name, race, updated}]
-const ACTIVE_KEY = 'pf1_active_char'   // string id
-const CHAR_KEY   = id => `pf1_char_${id}`
-const LEGACY_KEY = 'pf1_character'     // old single-char storage
+const INDEX_KEY    = 'pf1_chars_index'
+const ACTIVE_KEY   = 'pf1_active_char'
+const CHAR_KEY     = id => `pf1_char_${id}`
+const LEGACY_KEY   = 'pf1_character'
+const HOMEBREW_KEY = 'pf1_homebrew'
+
+// Deep-merge: recursively merges plain objects; arrays + primitives take override value.
+function deepMerge(base, override) {
+  if (!override || typeof override !== 'object') return base
+  const result = { ...base }
+  for (const [k, v] of Object.entries(override)) {
+    if (
+      v !== null && typeof v === 'object' && !Array.isArray(v) &&
+      result[k] !== null && result[k] !== undefined &&
+      typeof result[k] === 'object' && !Array.isArray(result[k])
+    ) {
+      result[k] = deepMerge(result[k], v)
+    } else {
+      result[k] = v
+    }
+  }
+  return result
+}
 
 export const DEFAULT_CHAR = {
   meta: { name: '', race: '', level: 1, classes: [{ id: '', level: 1 }], domains: [] },
