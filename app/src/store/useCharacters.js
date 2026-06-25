@@ -283,6 +283,10 @@ export function useCharacters() {
     return { version: 1, index: state.index, chars, activeId: state.activeId }
   }, [state])
 
+  const reinitialize = useCallback(() => {
+    setState(initialize())
+  }, [])
+
   return {
     char, index, activeId,
     update, setAttr, setBuff, setMeta, setCombatMisc,
@@ -291,7 +295,7 @@ export function useCharacters() {
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
     importChar, newChar, switchChar, deleteChar,
-    getBackupData,
+    getBackupData, reinitialize,
   }
 }
 
