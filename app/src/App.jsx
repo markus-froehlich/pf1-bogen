@@ -248,7 +248,7 @@ export default function App() {
     }
   }, [gistSync.connected])
 
-  const { hb, saveHBItem, deleteHB } = useHomebrew()
+  const { hb, saveHBItem, deleteHB, reloadHB } = useHomebrew()
 
   // Register homebrew entries into engine lookup maps (runs before any engine call)
   registerHomebrewClasses(hb.classes)
