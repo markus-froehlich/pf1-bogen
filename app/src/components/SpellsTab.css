@@ -55,7 +55,8 @@
 .sb-class-row, .sb-add-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 .sb-class-label, .sb-add-label {
   font-size: 0.62rem;
@@ -64,7 +65,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   white-space: nowrap;
-  min-width: 48px;
+  flex-shrink: 0;
 }
 .sb-lv-sel {
   background: var(--surface2);
