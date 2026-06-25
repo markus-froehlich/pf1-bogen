@@ -163,6 +163,23 @@ export default function App() {
 
   const gistSync = useGistSync()
 
+  // Auto-restore from Gist on startup when localStorage is empty (e.g. after cache clear)
+  useEffect(() => {
+    if (!gistSync.connected) return
+    const isEmpty = index.length === 1 && !index[0].name && !index[0].race
+    if (!isEmpty) return
+    gistSync.pull().then(data => {
+      if (!data?.index?.length || !data?.chars) return
+      for (const [id, charData] of Object.entries(data.chars)) {
+        localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+      }
+      localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+      if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
+      window.location.reload()
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // Auto-push to Gist whenever any character changes (debounced 3 s)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
