@@ -158,7 +158,16 @@ export default function App() {
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs,
     importChar, newChar, switchChar, deleteChar,
+    getBackupData,
   } = useCharacters()
+
+  const gistSync = useGistSync()
+
+  // Auto-push to Gist whenever any character changes (debounced 3 s)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (gistSync.connected) gistSync.schedulePush(getBackupData)
+  }, [index])
 
   const { hb, saveHBItem, deleteHB } = useHomebrew()
 
