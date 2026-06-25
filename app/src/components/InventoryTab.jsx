@@ -245,7 +245,7 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
                 onChange={e => setDraft(d => ({ ...d, weight: Number(e.target.value) || 0 }))} />
             </div>
             <div className="invf-cell">
-              <label className="invf-label">{L ? 'Preis (GP)' : 'Cost (GP)'}</label>
+              <label className="invf-label">{L ? `Preis (${COIN_LABEL.gp})` : 'Cost (GP)'}</label>
               <input className="invf-input invf-small" type="number" min={0} step={0.01}
                 value={draft.gp ?? 0}
                 onChange={e => setDraft(d => ({ ...d, gp: Number(e.target.value) || 0 }))} />
