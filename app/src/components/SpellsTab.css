@@ -289,8 +289,11 @@
 .spell-level-tabs {
   display: flex;
   gap: 4px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.spell-level-tabs::-webkit-scrollbar { display: none; }
 .lvl-tab {
   background: var(--surface2);
   border: 1px solid var(--border);
