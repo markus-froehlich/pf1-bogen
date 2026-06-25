@@ -251,6 +251,14 @@ export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = 
                   </div>
                 </div>
 
+                <textarea
+                  className="ws-notes"
+                  placeholder={L ? 'Notiz (z.B. Bonusherkunft)…' : 'Note (e.g. bonus source)…'}
+                  value={slot.notes ?? ''}
+                  onChange={e => setWeaponSlot(idx, 'notes', e.target.value)}
+                  rows={1}
+                />
+
                 {def.special && (
                   <div className="ws-special" title={def.special}>{expandSpecial(def.special)}</div>
                 )}
