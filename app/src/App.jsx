@@ -107,12 +107,16 @@ export default function App() {
     if (i < _SCALES.length - 1) applyFont(_SCALES[i + 1])
   }
 
-  const [combatInternalOrder, moveCombatInternal] = useSectionOrder('pf1_combat_internal_order', COMBAT_INTERNAL_DEFAULT)
-  const [combatOuterOrder,    moveCombatOuter]    = useSectionOrder('pf1_combat_outer_order',    COMBAT_OUTER_DEFAULT)
-  const [attrOrder,           moveAttr]           = useSectionOrder('pf1_attr_order',            ATTR_DEFAULT)
+  const [combatOrder, moveCombat] = useSectionOrder('pf1_combat_order', COMBAT_ALL_DEFAULT)
+  const [attrOrder,   moveAttr]   = useSectionOrder('pf1_attr_order',   ATTR_DEFAULT)
 
   const [combatCollapsed, setCombatCollapsed] = useState(() => {
-    try { return new Set(JSON.parse(localStorage.getItem('pf1_combat_collapsed') ?? '[]')) }
+    try {
+      // Merge both old keys on first load
+      const a = new Set(JSON.parse(localStorage.getItem('pf1_combat_collapsed') ?? '[]'))
+      const b = new Set(JSON.parse(localStorage.getItem('pf1_outer_collapsed')  ?? '[]'))
+      return new Set([...a, ...b])
+    }
     catch { return new Set() }
   })
   const toggleCombatCollapse = (id) => {
@@ -120,19 +124,6 @@ export default function App() {
       const next = new Set(prev)
       if (next.has(id)) next.delete(id); else next.add(id)
       localStorage.setItem('pf1_combat_collapsed', JSON.stringify([...next]))
-      return next
-    })
-  }
-
-  const [outerCollapsed, setOuterCollapsed] = useState(() => {
-    try { return new Set(JSON.parse(localStorage.getItem('pf1_outer_collapsed') ?? '[]')) }
-    catch { return new Set() }
-  })
-  const toggleOuterCollapse = (id) => {
-    setOuterCollapsed(prev => {
-      const next = new Set(prev)
-      if (next.has(id)) next.delete(id); else next.add(id)
-      localStorage.setItem('pf1_outer_collapsed', JSON.stringify([...next]))
       return next
     })
   }
