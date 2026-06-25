@@ -10,7 +10,7 @@
 }
 
 .gist-panel {
-  background: var(--surface1);
+  background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 12px;
   width: min(420px, calc(100vw - 24px));
@@ -27,7 +27,7 @@
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: var(--surface1);
+  background: var(--surface2);
   z-index: 1;
 }
 .gist-title {
