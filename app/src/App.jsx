@@ -27,7 +27,7 @@ import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
 
 // Apply saved font scale before first paint
-const _SCALES = ['m', 'l', 'xl', 's']
+const _SCALES = ['s', 'm', 'l', 'xl']
 const _initScale = localStorage.getItem('pf1_font_scale') ?? 'm'
 if (_initScale !== 'm') document.documentElement.classList.add(`fs-${_initScale}`)
 
