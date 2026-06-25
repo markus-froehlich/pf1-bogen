@@ -136,8 +136,10 @@ function SpellLookup({ lang, onPrepare }) {
               onClick={() => setExpanded(isOpen ? null : spell.id)}>
               <div className="spell-main">
                 <LevelBadge level={level} />
-                <span className="spell-name">{(L ? spell.name.de : spell.name.en) ?? spell.name.de}</span>
-                <RefLink name={spell.name.de} page={spell.page} />
+                <span className="spell-name-wrap">
+                  <span className="spell-name">{(L ? spell.name.de : spell.name.en) ?? spell.name.de}</span>
+                  <RefLink name={spell.name.de} page={spell.page} />
+                </span>
                 <span className="spell-school">{spell.school}</span>
                 {spell.page && <span className="spell-page">{spell.page}</span>}
                 {onPrepare && (
