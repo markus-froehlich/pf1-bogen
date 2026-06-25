@@ -3,7 +3,7 @@ import './InventoryTab.css'
 
 function genId() { return 'itm_' + Math.random().toString(36).slice(2, 10) }
 
-const EMPTY_ITEM = { id: '', name: '', qty: 1, weight: 0, gp: 0, notes: '' }
+const EMPTY_ITEM = { id: '', name: '', qty: 1, weight: 0, gp: 0, notes: '', bag: '' }
 
 const COIN_ORDER = ['pp', 'gp', 'sp', 'cp']
 const COIN_LABEL = { pp: 'PP', gp: 'GP', sp: 'SP', cp: 'CP' }
