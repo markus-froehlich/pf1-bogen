@@ -260,6 +260,22 @@
 }
 .sb-remove-btn:active { color: #c96e6e; }
 
+.sb-bloodline-btn {
+  background: none;
+  border: none;
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0 2px;
+  opacity: 0.25;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.sb-bloodline-btn.active { opacity: 1; }
+.sb-spell-bloodline {
+  background: color-mix(in srgb, #a33 12%, var(--surface3));
+  border: 1px solid color-mix(in srgb, #c44 30%, var(--border));
+}
+
 /* Filters */
 .spell-filters { display: flex; gap: 8px; }
 .spell-class-select {
