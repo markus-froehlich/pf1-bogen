@@ -250,11 +250,26 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
                 onChange={e => setHp('temp', e.target.value)} />
             </label>
             <label className="hp-field">
-              <span>{L ? 'NL-Schaden' : 'NL Dmg'}</span>
+              <span>NL</span>
               <input type="number" min={0} className="hp-input"
                 value={nlDmg}
                 onChange={e => setNlDamage?.(e.target.value)} />
             </label>
+          </div>
+          <div className="hp-dmg-row">
+            <span className="hp-dmg-label">{L ? 'Schaden' : 'Damage'}</span>
+            <input className="hp-dmg-input" type="number" min={0} placeholder="0"
+              value={dmgInput} onChange={e => setDmgInput(e.target.value)} />
+            <button className="hp-dmg-btn" onClick={() => {
+              const v = parseInt(dmgInput) || 0; if (v > 0) { setHp('current', hp.current - v); setDmgInput('') }
+            }}>−TP</button>
+            <span className="hp-dmg-sep" />
+            <span className="hp-dmg-label">NL</span>
+            <input className="hp-dmg-input" type="number" min={0} placeholder="0"
+              value={nlInput} onChange={e => setNlInput(e.target.value)} />
+            <button className="hp-dmg-btn" onClick={() => {
+              const v = parseInt(nlInput) || 0; if (v > 0) { setNlDamage?.(nlDmg + v); setNlInput('') }
+            }}>+NL</button>
           </div>
           {nlDmg > 0 && (
             <div className="hp-nl-row">
