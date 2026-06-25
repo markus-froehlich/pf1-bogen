@@ -348,6 +348,19 @@ Engine-Gerüst.
   `gear-enh-label { flex-direction: row }` → Verz. inline;
   `stat-value-row { flex-wrap: wrap }` → Buff-Badges wrappen nach unten
 
+- **Bewegung neu strukturiert** — 2×2-Grid (FLIEGEN/SCHWIMMEN/KLETTERN/GRABEN) + MANÖVER
+  als eigene volle Zeile darunter; kein horizontales Overflow mehr bei XL-Font
+
+- **Topbar ⚙-Menü** — 4 Buttons (Export/Import/Druck/Homebrew) in ein Dropdown konsolidiert;
+  Fix: `.app-menu` als Sibling von `.app-menu-backdrop` (nicht Child) + `.topbar { overflow: visible }`
+  damit das Dropdown nicht vom Topbar geclippt wird
+
+- **Ressourcen-Formular Icon-Buttons** — Text "Löschen/Abbrechen/Speichern" → 🗑/✕/✓ Icons
+  mit title-Tooltip; 40×40px touch targets
+
+- **Zauber ↗-Pfeil** — direkt nach dem Zaubernamen (wie bei Fertigkeiten);
+  `spell-name-wrap` flex-container mit Name + RefLink nebeneinander
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
