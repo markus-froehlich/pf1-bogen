@@ -419,6 +419,7 @@
 .gear-label { font-size: 0.62rem; color: var(--text-muted); min-width: 52px; flex-shrink: 0; }
 .gear-select {
   flex: 1;
+  min-width: 0;
   background: var(--surface3);
   border: 1px solid var(--border);
   border-radius: 6px;
