@@ -218,41 +218,47 @@ export default function App() {
             <span className="topbar-level">{lang === 'de' ? 'Stufe' : 'Lvl'} {baseValues.totalLevel}</span>
           )}
           <div className="topbar-actions">
-            <button
-              className="topbar-icon-btn"
-              title={lang === 'de' ? 'Charakter exportieren' : 'Export character'}
-              onClick={() => {
-                const name = char.meta.name?.trim() || 'charakter'
-                const slug = name.toLowerCase().replace(/[^a-z0-9äöü]/gi, '_').replace(/_+/g, '_')
-                const blob = new Blob([JSON.stringify(char, null, 2)], { type: 'application/json' })
-                const url  = URL.createObjectURL(blob)
-                const a    = document.createElement('a')
-                a.href = url; a.download = `${slug}.json`
-                a.click()
-                URL.revokeObjectURL(url)
-              }}
-            >⬇</button>
-            <label className="topbar-icon-btn" title={lang === 'de' ? 'Charakter importieren' : 'Import character'}>
-              ⬆
-              <input
-                type="file" accept=".json" style={{ display: 'none' }}
-                onChange={e => {
-                  const file = e.target.files?.[0]
-                  if (!file) return
-                  const reader = new FileReader()
-                  reader.onload = ev => {
-                    try {
-                      const data = JSON.parse(ev.target.result)
-                      importChar(data)
-                    } catch { alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file') }
-                  }
-                  reader.readAsText(file)
-                  e.target.value = ''
-                }}
-              />
-            </label>
-            <button className="topbar-icon-btn" title={lang === 'de' ? 'Drucken' : 'Print'} onClick={() => setPrintOpen(true)}>🖨</button>
-            <button className="topbar-icon-btn" title="Homebrew" onClick={() => setHbOpen(true)}>⚙</button>
+            <div className="app-menu-wrap">
+              <button className="topbar-icon-btn" title="Menü" onClick={() => setAppMenuOpen(v => !v)}>⚙</button>
+              {appMenuOpen && (
+                <div className="app-menu-backdrop" onClick={() => setAppMenuOpen(false)}>
+                  <div className="app-menu" onClick={e => e.stopPropagation()}>
+                    <button className="app-menu-item" onClick={() => {
+                      const name = char.meta.name?.trim() || 'charakter'
+                      const slug = name.toLowerCase().replace(/[^a-z0-9äöü]/gi, '_').replace(/_+/g, '_')
+                      const blob = new Blob([JSON.stringify(char, null, 2)], { type: 'application/json' })
+                      const url  = URL.createObjectURL(blob)
+                      const a    = document.createElement('a')
+                      a.href = url; a.download = `${slug}.json`; a.click()
+                      URL.revokeObjectURL(url)
+                      setAppMenuOpen(false)
+                    }}>⬇ {lang === 'de' ? 'Exportieren' : 'Export'}</button>
+                    <label className="app-menu-item">
+                      ⬆ {lang === 'de' ? 'Importieren' : 'Import'}
+                      <input type="file" accept=".json" style={{ display: 'none' }}
+                        onChange={e => {
+                          const file = e.target.files?.[0]
+                          if (!file) return
+                          const reader = new FileReader()
+                          reader.onload = ev => {
+                            try { importChar(JSON.parse(ev.target.result)) }
+                            catch { alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file') }
+                          }
+                          reader.readAsText(file)
+                          e.target.value = ''
+                          setAppMenuOpen(false)
+                        }} />
+                    </label>
+                    <button className="app-menu-item" onClick={() => { setPrintOpen(true); setAppMenuOpen(false) }}>
+                      🖨 {lang === 'de' ? 'Drucken' : 'Print'}
+                    </button>
+                    <button className="app-menu-item" onClick={() => { setHbOpen(true); setAppMenuOpen(false) }}>
+                      ✦ Homebrew
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
             <div className="font-scale-stepper" title="Schriftgröße">
               <button className="fss-btn" onClick={fontDown} disabled={fontScale === _SCALES[0]}>−</button>
               <span className="fss-label">Aa</span>
