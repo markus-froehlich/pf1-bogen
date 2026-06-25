@@ -29,6 +29,7 @@ const MAGIC_SLOTS = [
 
 export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThresholds }) {
   const L = lang === 'de'
+  const COIN_LABEL = L ? COIN_LABEL_DE : COIN_LABEL_EN
   const [editId, setEditId] = useState(null)
   const [draft, setDraft]   = useState(EMPTY_ITEM)
   const [convOpen, setConvOpen] = useState(false)
