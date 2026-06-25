@@ -300,7 +300,7 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
             {L ? 'Spontan' : 'Spont.'}
           </span>
         )}
-        {sb.class_id && getSpellSlots(sb.class_id, classLevel) && (
+        {sb.class_id && getSpellSlots(effectiveClassId, classLevel) && (
           <button className="sb-auto-btn" onClick={autoFillSlots}
             title={L ? `Slots für Stufe ${classLevel} auto-befüllen` : `Auto-fill slots for level ${classLevel}`}>
             ⟳ Auto
