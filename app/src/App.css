@@ -150,20 +150,34 @@
 }
 .nav-collapse-handle:hover { opacity: 1; color: var(--accent); }
 
-.font-scale-btn {
+.font-scale-stepper {
+  display: flex;
+  align-items: center;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.fss-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 5px 7px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+.fss-btn:not(:disabled):active { background: var(--surface2); color: var(--accent); }
+.fss-btn:disabled { opacity: 0.2; cursor: default; }
+.fss-label {
   font-size: 0.78rem;
   font-weight: 700;
-  gap: 2px;
-  display: flex;
-  align-items: baseline;
-  padding: 6px 7px;
-}
-.fs-badge {
-  font-size: 0.55rem;
-  color: var(--accent);
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  line-height: 1;
+  color: var(--text-muted);
+  padding: 0 2px;
+  pointer-events: none;
+  user-select: none;
 }
 
 .app-version {
