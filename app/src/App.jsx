@@ -89,14 +89,19 @@ export default function App() {
     })
   }
 
-  function cycleFont() {
-    setFontScale(f => {
-      const next = _SCALES[(_SCALES.indexOf(f) + 1) % _SCALES.length]
-      localStorage.setItem('pf1_font_scale', next)
-      document.documentElement.classList.remove('fs-s', 'fs-l', 'fs-xl')
-      if (next !== 'm') document.documentElement.classList.add(`fs-${next}`)
-      return next
-    })
+  function applyFont(scale) {
+    localStorage.setItem('pf1_font_scale', scale)
+    document.documentElement.classList.remove('fs-s', 'fs-l', 'fs-xl')
+    if (scale !== 'm') document.documentElement.classList.add(`fs-${scale}`)
+    setFontScale(scale)
+  }
+  function fontDown() {
+    const i = _SCALES.indexOf(fontScale)
+    if (i > 0) applyFont(_SCALES[i - 1])
+  }
+  function fontUp() {
+    const i = _SCALES.indexOf(fontScale)
+    if (i < _SCALES.length - 1) applyFont(_SCALES[i + 1])
   }
 
   const [combatInternalOrder, moveCombatInternal] = useSectionOrder('pf1_combat_internal_order', COMBAT_INTERNAL_DEFAULT)
