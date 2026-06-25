@@ -229,7 +229,8 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
       const newLevels = {}
       for (let lv = 0; lv <= 9; lv++) {
         const base  = baseSlots[lv] ?? 0
-        const bonus = (lv >= 1 && base > 0 && lv <= abilityMod) ? 1 : 0
+        const bonus = (lv >= 1 && base > 0 && abilityMod >= lv)
+          ? Math.floor((abilityMod - lv) / 4) + 1 : 0
         const total = base + bonus
         if (total > 0 || (prev.levels[lv]?.prepared?.length ?? 0) > 0) {
           const existing = prev.levels[lv] ?? { total: 0, used: 0, prepared: [] }
