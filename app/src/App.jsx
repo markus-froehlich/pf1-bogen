@@ -274,6 +274,10 @@ export default function App() {
                     <button className="app-menu-item" onClick={() => { setHbOpen(true); setAppMenuOpen(false) }}>
                       ✦ Homebrew
                     </button>
+                    <button className="app-menu-item" onClick={() => { setGistOpen(true); setAppMenuOpen(false) }}>
+                      ☁ {lang === 'de' ? 'Backup' : 'Backup'}
+                      {gistSync.connected && <span className="app-menu-sync-indicator" />}
+                    </button>
                   </div>
                 </>
               )}
