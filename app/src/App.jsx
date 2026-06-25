@@ -221,8 +221,9 @@ export default function App() {
             <div className="app-menu-wrap">
               <button className="topbar-icon-btn" title="Menü" onClick={() => setAppMenuOpen(v => !v)}>⚙</button>
               {appMenuOpen && (
-                <div className="app-menu-backdrop" onClick={() => setAppMenuOpen(false)}>
-                  <div className="app-menu" onClick={e => e.stopPropagation()}>
+                <>
+                <div className="app-menu-backdrop" onClick={() => setAppMenuOpen(false)} />
+                <div className="app-menu" onClick={e => e.stopPropagation()}>
                     <button className="app-menu-item" onClick={() => {
                       const name = char.meta.name?.trim() || 'charakter'
                       const slug = name.toLowerCase().replace(/[^a-z0-9äöü]/gi, '_').replace(/_+/g, '_')
