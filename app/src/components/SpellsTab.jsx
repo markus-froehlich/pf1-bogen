@@ -273,8 +273,18 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
 
   function removeSpell(lv, spellId) {
     setSpellbook(prev => {
-      const lvData = { total: 0, used: 0, prepared: [], ...(prev.levels[lv] ?? {}) }
+      const lvData = { total: 0, used: 0, prepared: [], bloodline_ids: [], ...(prev.levels[lv] ?? {}) }
       lvData.prepared = lvData.prepared.filter(id => id !== spellId)
+      lvData.bloodline_ids = (lvData.bloodline_ids ?? []).filter(id => id !== spellId)
+      return { ...prev, levels: { ...prev.levels, [lv]: lvData } }
+    })
+  }
+
+  function toggleBloodline(lv, spellId) {
+    setSpellbook(prev => {
+      const lvData = { total: 0, used: 0, prepared: [], bloodline_ids: [], ...(prev.levels[lv] ?? {}) }
+      const ids = lvData.bloodline_ids ?? []
+      lvData.bloodline_ids = ids.includes(spellId) ? ids.filter(id => id !== spellId) : [...ids, spellId]
       return { ...prev, levels: { ...prev.levels, [lv]: lvData } }
     })
   }
