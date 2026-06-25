@@ -270,6 +270,10 @@ export function useCharacters() {
     patchChar(prev => ({ ...prev, active_buffs: fn(prev.active_buffs ?? []) }))
   }, [patchChar])
 
+  const setWands = useCallback((fn) => {
+    patchChar(prev => ({ ...prev, wands: fn(prev.wands ?? []) }))
+  }, [patchChar])
+
   const getBackupData = useCallback(() => {
     const chars = {}
     for (const entry of state.index) {
