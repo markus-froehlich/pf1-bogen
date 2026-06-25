@@ -509,7 +509,7 @@ export default function App() {
         )}
 
         {tab === 'spells' && (
-          <SpellsTab char={char} setSpellbook={setSpellbook} attrs={computed} lang={lang} />
+          <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} attrs={computed} lang={lang} />
         )}
 
         {tab === 'feats' && (
