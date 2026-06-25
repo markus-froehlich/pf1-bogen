@@ -352,6 +352,7 @@
 .lvl-8 { background: color-mix(in srgb, #c96e6e 20%, var(--surface3)); color: #c96e6e; }
 .lvl-9 { background: color-mix(in srgb, #9e6ec9 20%, var(--surface3)); color: #9e6ec9; }
 
+.spell-name-wrap { flex: 1; min-width: 0; display: flex; align-items: center; gap: 3px; overflow: hidden; }
 .spell-name  { flex: 1; min-width: 0; font-size: 0.85rem; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .spell-school { font-size: 0.6rem; color: var(--text-muted); min-width: 24px; text-align: right; }
 .spell-page  { font-size: 0.58rem; color: var(--text-muted); min-width: 36px; text-align: right; }
