@@ -184,9 +184,13 @@ export function useCharacters() {
 
   const importChar = useCallback((data) => {
     try {
-      patchChar(() => ({ ...DEFAULT_CHAR, ...data }))
-      return true
-    } catch { return false }
+      // Support both old format (raw char object) and new format ({version, char, homebrew})
+      const charData = data?.char ?? data
+      const hbData   = data?.homebrew ?? null
+      if (hbData) localStorage.setItem(HOMEBREW_KEY, JSON.stringify(hbData))
+      patchChar(() => deepMerge(DEFAULT_CHAR, charData))
+      return { ok: true, hasHomebrew: Boolean(hbData) }
+    } catch { return { ok: false } }
   }, [patchChar])
 
   // ── Multi-character management ────────────────────────────────────────────
