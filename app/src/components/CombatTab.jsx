@@ -199,6 +199,8 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const gear = char.gear ?? {}
   const hp   = char.hp ?? { max: 0, current: 0, temp: 0 }
   const nlDmg = char.nl_damage ?? 0
+  const [dmgInput, setDmgInput]   = useState('')
+  const [nlInput,  setNlInput]    = useState('')
   const hpPct = hp.max > 0 ? Math.max(0, Math.min(1, hp.current / hp.max)) : 0
 
   const RACE_MAP = { ...RACE_MAP_BASE, ...Object.fromEntries(hbRaces.map(r => [r.id, r])) }
