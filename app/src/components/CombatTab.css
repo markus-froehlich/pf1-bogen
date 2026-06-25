@@ -365,7 +365,7 @@
 .dr-input::placeholder { color: var(--text-muted); font-style: italic; font-size: 0.75rem; }
 
 /* Stat boxes */
-.stat-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.stat-row { display: flex; gap: 5px; flex-wrap: wrap; }
 .stat-box {
   flex: 1;
   min-width: 55px;
