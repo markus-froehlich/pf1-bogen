@@ -303,7 +303,12 @@ export function useCharacters() {
       const c = loadChar(entry.id)
       if (c) chars[entry.id] = c
     }
-    return { version: 1, index: state.index, chars, activeId: state.activeId }
+    let homebrew = null
+    try {
+      const s = localStorage.getItem(HOMEBREW_KEY)
+      if (s) homebrew = JSON.parse(s)
+    } catch {}
+    return { version: 2, index: state.index, chars, activeId: state.activeId, homebrew }
   }, [state])
 
   const reinitialize = useCallback(() => {
