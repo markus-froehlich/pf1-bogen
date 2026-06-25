@@ -550,13 +550,13 @@
   align-items: center;
   justify-content: center;
   gap: 2px;
-  padding: 8px 2px;
+  padding: 6px 2px;
   background: none;
   border: none;
   color: var(--text-muted);
   cursor: pointer;
   transition: color 0.15s;
-  min-height: 48px;
+  min-height: 40px;
 }
 .nav-btn.active { color: var(--accent); }
 .nav-btn:active { opacity: 0.7; }
