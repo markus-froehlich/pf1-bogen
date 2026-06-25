@@ -184,25 +184,19 @@
 }
 .bt-form-stat-input:focus { outline: none; border-color: #4a9a5a; }
 
-.bt-form-actions { display: flex; gap: 7px; }
-.bt-form-save {
-  background: #4a9a5a;
-  border: none;
-  border-radius: 6px;
-  color: #fff;
-  font-size: 0.75rem;
+.bt-form-actions { display: flex; gap: 7px; align-items: center; }
+.bt-form-save, .bt-form-cancel, .bt-form-del {
+  border-radius: 8px;
+  width: 40px; height: 40px;
+  font-size: 1.1rem;
   font-weight: 700;
-  padding: 6px 14px;
   cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
   font-family: inherit;
 }
-.bt-form-cancel {
-  background: var(--surface3);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  padding: 6px 14px;
-  cursor: pointer;
-  font-family: inherit;
-}
+.bt-form-save   { background: var(--accent); border: none; color: var(--bg); }
+.bt-form-save:disabled { opacity: 0.4; cursor: default; }
+.bt-form-cancel { background: var(--surface2); border: 1px solid var(--border); color: var(--text-muted); }
+.bt-form-del    { background: none; border: 1px solid #c96e6e; color: #c96e6e; margin-right: auto; font-size: 0.95rem; }
