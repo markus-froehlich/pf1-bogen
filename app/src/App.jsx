@@ -198,8 +198,7 @@ export default function App() {
       if (data?.index?.length && data?.chars) {
         const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
         const localMax  = Math.max(...indexRef.current.map(e => e.updated ?? 0))
-        const countChanged = data.index.length !== indexRef.current.length
-        if (countChanged || remoteMax > localMax) {
+        if (remoteMax > localMax) {
           for (const [id, charData] of Object.entries(data.chars)) {
             localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
           }
