@@ -84,7 +84,8 @@ export function GistSyncPanel({ gistSync, onClose }) {
 
           {!connected && (
             <div className="gist-connect-form">
-              <label className="gist-label">GitHub Personal Access Token (gist scope)</label>
+              <label className="gist-label">Gruppen-Token eingeben</label>
+              <p className="gist-hint">Token vom Spielleiter / aus dem Gruppenchat einfügen:</p>
               <input
                 className="gist-token-input"
                 type="password"
@@ -94,16 +95,19 @@ export function GistSyncPanel({ gistSync, onClose }) {
                 autoComplete="off"
                 onKeyDown={e => { if (e.key === 'Enter') handleConnect() }}
               />
-              <a className="gist-help-btn"
-                href="https://github.com/settings/tokens/new?scopes=gist&description=PF1+Bogen"
-                target="_blank" rel="noreferrer">
-                ↗ Token auf GitHub erstellen
-                <span className="gist-help-hint">(nur „gist" ankreuzen, dann kopieren)</span>
-              </a>
               <button className="gist-connect-btn" onClick={handleConnect}
                 disabled={!inputToken.trim() || working}>
                 {working ? 'Verbinde…' : 'Verbinden'}
               </button>
+              <details className="gist-create-details">
+                <summary>Noch kein Token? Neuen erstellen (nur einmal nötig)</summary>
+                <a className="gist-help-btn"
+                  href="https://github.com/settings/tokens/new?scopes=gist&description=PF1+Bogen"
+                  target="_blank" rel="noreferrer">
+                  ↗ Token auf GitHub erstellen
+                  <span className="gist-help-hint">(nur „gist" ankreuzen, dann mit Gruppe teilen)</span>
+                </a>
+              </details>
             </div>
           )}
 
