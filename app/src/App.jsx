@@ -71,6 +71,7 @@ export default function App() {
   const [hbOpen, setHbOpen] = useState(false)
   const [printOpen, setPrintOpen] = useState(false)
   const [appMenuOpen, setAppMenuOpen] = useState(false)
+  const [gistOpen, setGistOpen] = useState(false)
   const [fontScale, setFontScale] = useState(_initScale)
   const [topbarCollapsed, setTopbarCollapsed] = useState(() =>
     localStorage.getItem('pf1_topbar_collapsed') === '1')
