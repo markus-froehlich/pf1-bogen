@@ -180,24 +180,53 @@ export default function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // Refs so the sync handler always sees current values (avoids stale closures)
+  const pullRef      = useRef(gistSync.pull)
+  const indexRef     = useRef(index)
+  const getDataRef   = useRef(getBackupData)
+  const pushReadyRef = useRef(false)   // only push after initial pull completes
+  useEffect(() => { pullRef.current    = gistSync.pull },    [gistSync.pull])
+  useEffect(() => { indexRef.current   = index },            [index])
+  useEffect(() => { getDataRef.current = getBackupData },    [getBackupData])
+
+  // On startup: pull first, then enable push (prevents overwriting remote with stale local)
+  useEffect(() => {
+    if (!gistSync.connected) return
+    pushReadyRef.current = false
+    async function init() {
+      const data = await pullRef.current()
+      if (data?.index?.length && data?.chars) {
+        const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
+        const localMax  = Math.max(...indexRef.current.map(e => e.updated ?? 0))
+        const countChanged = data.index.length !== indexRef.current.length
+        if (countChanged || remoteMax > localMax) {
+          for (const [id, charData] of Object.entries(data.chars)) {
+            localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+          }
+          localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+          if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
+          window.location.reload()
+          return
+        }
+      }
+      pushReadyRef.current = true
+    }
+    init()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gistSync.connected])
+
   // Auto-push to Gist whenever any character changes (debounced 3 s)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (gistSync.connected) gistSync.schedulePush(getBackupData)
+    if (gistSync.connected && pushReadyRef.current) gistSync.schedulePush(getBackupData)
   }, [index])
-
-  // Refs so the sync handler always sees current values (avoids stale closures)
-  const pullRef  = useRef(gistSync.pull)
-  const indexRef = useRef(index)
-  useEffect(() => { pullRef.current  = gistSync.pull }, [gistSync.pull])
-  useEffect(() => { indexRef.current = index },         [index])
 
   // Poll Gist every 20 s + on visibilitychange — reload if remote is newer
   useEffect(() => {
     if (!gistSync.connected) return
     let reloading = false
     async function checkRemote() {
-      if (reloading) return
+      if (reloading || !pushReadyRef.current) return
       const data = await pullRef.current()
       if (!data?.index?.length || !data?.chars) return
       const remoteMax    = Math.max(...data.index.map(e => e.updated ?? 0))
