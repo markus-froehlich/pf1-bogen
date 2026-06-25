@@ -104,6 +104,11 @@
   text-align: center; padding: 16px 0;
 }
 .inv-list { display: flex; flex-direction: column; gap: 5px; }
+.inv-bag-header {
+  font-size: 0.72rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 8px 2px 3px; border-bottom: 1px solid var(--border); margin-bottom: 2px;
+}
 .inv-item {
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: 8px; padding: 8px 12px; cursor: pointer;
