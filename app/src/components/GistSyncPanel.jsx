@@ -80,7 +80,6 @@ export function GistSyncPanel({ gistSync, onClose }) {
           {!connected && (
             <div className="gist-connect-form">
               <label className="gist-label">Gruppen-Token eingeben</label>
-              <p className="gist-hint">Token vom Spielleiter / aus dem Gruppenchat einfügen:</p>
               <input
                 className="gist-token-input"
                 type="password"
