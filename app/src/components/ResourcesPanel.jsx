@@ -194,14 +194,10 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
           </div>
           <div className="res-form-actions">
             {editId !== '__new__' && (
-              <button className="res-del-btn" onClick={() => del(editId)}>
-                {L ? 'Löschen' : 'Delete'}
-              </button>
+              <button className="res-del-btn" onClick={() => del(editId)} title={L ? 'Löschen' : 'Delete'}>🗑</button>
             )}
-            <button className="res-cancel-btn" onClick={cancel}>{L ? 'Abbrechen' : 'Cancel'}</button>
-            <button className="res-save-btn" onClick={save} disabled={!draft.name.trim()}>
-              {L ? 'Speichern' : 'Save'}
-            </button>
+            <button className="res-cancel-btn" onClick={cancel} title={L ? 'Abbrechen' : 'Cancel'}>✕</button>
+            <button className="res-save-btn" onClick={save} disabled={!draft.name.trim()} title={L ? 'Speichern' : 'Save'}>✓</button>
           </div>
         </div>
       )}
