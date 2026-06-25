@@ -217,7 +217,8 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const speedFinal  = encumbered ? Math.min(speedRaw ?? Infinity, encumberedSpeed(baseSpeedM)) : speedRaw
   const speedLabel  = speedFinal != null ? `${speedFinal} m` : '—'
 
-  const order_ = (sectionOrder ?? INTERNAL_DEFAULT).filter(id => INTERNAL_DEFAULT.includes(id))
+  const allKnownIds = [...INTERNAL_DEFAULT, ...Object.keys(extraPanels)]
+  const order_ = (sectionOrder ?? INTERNAL_DEFAULT).filter(id => allKnownIds.includes(id))
 
   const renderSection = (id, idx) => {
     const count = order_.length
