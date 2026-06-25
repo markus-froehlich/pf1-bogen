@@ -36,20 +36,6 @@ if (_initScale !== 'm') document.documentElement.classList.add(`fs-${_initScale}
 const COMBAT_ALL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr', 'features', 'conditions', 'buffs', 'resources', 'weapons']
 const ATTR_DEFAULT            = ['race', 'class', 'attrs', 'xp', 'bio']
 
-function SortBar({ id, idx, total, label, onMove, collapsed, onToggle }) {
-  return (
-    <div className="sort-bar">
-      <button className="sort-bar-collapse" onClick={() => onToggle?.(id)} title={collapsed ? 'Aufklappen' : 'Zuklappen'}>
-        {collapsed ? '▶' : '▼'}
-      </button>
-      <span className="sort-bar-label">{label}</span>
-      <div className="sort-bar-btns">
-        <button className="sort-bar-btn" disabled={idx === 0} onClick={() => onMove(id, -1)} title="Nach oben">↑</button>
-        <button className="sort-bar-btn" disabled={idx === total - 1} onClick={() => onMove(id, 1)} title="Nach unten">↓</button>
-      </div>
-    </div>
-  )
-}
 
 const TABS = [
   { id: 'attr',      de: 'Char',      en: 'Char'      },
