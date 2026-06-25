@@ -344,7 +344,7 @@ export default function App() {
         <input
           className="player-name-input"
           type="text"
-          placeholder={lang === 'de' ? 'Spieler' : 'Player'}
+          placeholder={lang === 'de' ? 'Spielende Person' : 'Player'}
           value={char.meta.player ?? ''}
           onChange={e => setMeta('player', e.target.value)}
         />
