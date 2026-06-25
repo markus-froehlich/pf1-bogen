@@ -521,6 +521,13 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
         </>}
       </section>
     )
+    // Extra (outer) panels passed from App.jsx
+    if (extraPanels[id]) return (
+      <section key={id} className="ct-section">
+        <SectionHead id={id} label={extraLabels[id] ?? id} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        {!isCollapsed && extraPanels[id]}
+      </section>
+    )
     return null
   }
 
