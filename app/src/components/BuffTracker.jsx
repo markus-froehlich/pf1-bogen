@@ -112,8 +112,11 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
                 ))}
               </div>
               <div className="bt-form-actions">
-                <button className="bt-form-save" onClick={save}>{L ? 'Speichern' : 'Save'}</button>
-                <button className="bt-form-cancel" onClick={() => setEditing(null)}>{L ? 'Abbrechen' : 'Cancel'}</button>
+                {editing !== 'new' && (
+                  <button className="bt-form-del" onClick={() => { del(editing); setEditing(null) }} title={L ? 'Löschen' : 'Delete'}>🗑</button>
+                )}
+                <button className="bt-form-cancel" onClick={() => setEditing(null)} title={L ? 'Abbrechen' : 'Cancel'}>✕</button>
+                <button className="bt-form-save" onClick={save} disabled={!form.name.trim()} title={L ? 'Speichern' : 'Save'}>✓</button>
               </div>
             </div>
           ) : (
