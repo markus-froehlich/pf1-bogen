@@ -204,7 +204,8 @@ export default function App() {
             localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
           }
           localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
-          window.location.reload()
+          reinitialize()
+          pushReadyRef.current = true
           return
         }
       }
