@@ -23,7 +23,7 @@ export function GistSyncPanel({ gistSync, onClose }) {
     if (!res.existed) { setWorking(false); setMsg('Neuer Gist erstellt — Backup läuft automatisch.'); return }
     // Existing gist found — immediately pull data
     setMsg('Vorhandenen Gist gefunden, lade Daten…')
-    const data = await pull()
+    const data = await pull(inputToken.trim(), res.gistId)
     setWorking(false)
     if (!data || !data.index || !data.chars) {
       setMsg('Verbunden. Gist noch leer — Backup läuft automatisch.')
