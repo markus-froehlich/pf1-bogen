@@ -361,6 +361,25 @@ Engine-Gerüst.
 - **Zauber ↗-Pfeil** — direkt nach dem Zaubernamen (wie bei Fertigkeiten);
   `spell-name-wrap` flex-container mit Name + RefLink nebeneinander
 
+- **Gifte ↗-Links** — NotesTab: `PoisonRefLink` für Gifte mit Seite "G*" auf
+  `prd.5footstep.de/Grundregelwerk/…/Gifte/<slug>`; Slug: ä→ae/ö→oe/ü→ue/ß→ss
+
+- **Talente-Karten ↗-Link** — `source`-Feld beim DB-Eintrag-Auswahl gespeichert;
+  `FeatRefLink` zeigt ↗ in der Karte auch nach Speichern
+
+- **Stat-Row Fix** — NAHKAMPF/FERNKAMPF gleich groß wie andere Boxes (Desktop):
+  `flex-wrap` entfernt, `min-width: 55px` → `min-width: 0`
+
+- **Spieler-Feld** — `char.meta.player`; kleines Eingabefeld unterhalb Charaktername
+  in Topbar; player-Name erscheint als erstes in der Charakterliste-Schublade (`CharacterDrawer.jsx`);
+  `indexEntry()` enthält `player`-Feld
+
+- **GitHub Gist Backup** — `useGistSync.js` Hook; `GistSyncPanel.jsx` Modal;
+  ⚙-Menü neuer Eintrag "☁ Backup"; Token einmalig eingeben → privater Gist wird angelegt
+  oder vorhandener erkannt; alle Änderungen 3 s debounced auto-gepusht;
+  "⬇ Daten laden" restored alle Chars aus Gist (localStorage-Restore + reload);
+  grüner Punkt am ⚙-Button wenn verbunden; kostenlos (GitHub Free, 5000 req/h)
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
