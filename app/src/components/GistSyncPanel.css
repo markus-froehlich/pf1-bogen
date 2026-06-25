@@ -201,6 +201,13 @@
 .gist-create-details summary:hover { color: var(--text); }
 .gist-create-details[open] summary { margin-bottom: 8px; }
 
+.gist-create-hint {
+  font-size: 0.6rem;
+  color: var(--border);
+  line-height: 1.4;
+  margin: 0;
+}
+
 .gist-error {
   background: color-mix(in srgb, #c96e6e 12%, var(--surface2));
   border: 1px solid #c96e6e;
