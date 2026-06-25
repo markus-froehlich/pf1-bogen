@@ -429,11 +429,12 @@
 .gear-select:focus { outline: none; border-color: var(--accent); }
 .gear-enh-label {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+  flex-shrink: 0;
 }
-.gear-enh-label span { font-size: 0.52rem; color: var(--text-muted); }
+.gear-enh-label span { font-size: 9px; color: var(--text-muted); white-space: nowrap; }
 .gear-enh {
   width: 40px;
   background: var(--surface3);
