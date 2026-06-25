@@ -256,6 +256,19 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
                 onChange={e => setNlDamage?.(e.target.value)} />
             </label>
           </div>
+          {(baseValues?.totalLevel ?? 0) > 0 && (() => {
+            const koMod   = attrs?.KO?.mod ?? 0
+            const lvls    = baseValues.totalLevel
+            const contrib = koMod * lvls
+            return (
+              <div className="hp-ko-hint"
+                title={`KO-Mod ${koMod >= 0 ? '+' : ''}${koMod} × ${lvls} Stufen = ${contrib >= 0 ? '+' : ''}${contrib} Max-TP`}>
+                <span className="hp-ko-label">KO</span>
+                <span className="hp-ko-eq">{koMod >= 0 ? '+' : ''}{koMod} × {lvls} Stf</span>
+                <span className={`hp-ko-val ${contrib < 0 ? 'neg' : ''}`}>{contrib >= 0 ? '+' : ''}{contrib} TP</span>
+              </div>
+            )
+          })()}
           <div className="hp-dmg-row">
             <span className="hp-dmg-label">{L ? 'Schaden' : 'Damage'}</span>
             <input className="hp-dmg-input" type="number" min={0} placeholder="0"
