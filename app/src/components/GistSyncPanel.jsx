@@ -99,6 +99,9 @@ export function GistSyncPanel({ gistSync, onClose }) {
                 disabled={!inputToken.trim() || working}>
                 {working ? 'Verbinde…' : 'Verbinden'}
               </button>
+              <p className="gist-create-hint">
+                Token neu erstellen: github.com → Settings → Developer Settings → Personal access tokens → Tokens (classic) → nur „gist" ankreuzen
+              </p>
             </div>
           )}
 
