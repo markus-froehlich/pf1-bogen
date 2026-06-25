@@ -281,6 +281,7 @@
 .class-row { display: flex; gap: 8px; align-items: center; }
 .class-select {
   flex: 1;
+  min-width: 0;
   background: var(--surface3);
   border: 1px solid var(--border);
   border-radius: 6px;
