@@ -380,6 +380,40 @@ Engine-Gerüst.
   "⬇ Daten laden" restored alle Chars aus Gist (localStorage-Restore + reload);
   grüner Punkt am ⚙-Button wenn verbunden; kostenlos (GitHub Free, 5000 req/h)
 
+- **Gist-Sync Race-Condition Fix** — `pushReadyRef` blockiert Push bis initialer Pull fertig;
+  `countChanged`-Check entfernt (nur Timestamps zählen); verhindert dass Multi-Device-Sync
+  ältere Daten überschreibt wenn Debounce noch läuft
+  Verifiziert: Mac-Charakter bleibt nach iPhone-Sync erhalten ✓
+
+- **Homebrew in Backup + Export** — Gist-Backup enthält `homebrew`-Key (version 2);
+  Single-Char-Export enthält Homebrew wenn vorhanden; Import ruft `reloadHB()` auf;
+  `getBackupData()` in useCharacters.js; `reloadHB()` in useHomebrew.js
+
+- **Deep-Merge beim Import** — `deepMerge(base, override)` rekursiv in useCharacters.js;
+  `loadChar` + `importChar` nutzen deepMerge statt flachem Spread → neue Sub-Felder
+  (z.B. `bio.alignment`) bleiben nie undefined nach Import älterer Char-Dateien
+
+- **Buff-Tracker Icon-Buttons** — Formular-Aktionen: 🗑/✕/✓ Icons (40×40px touch targets),
+  analog zu ResourcesPanel; `BuffTracker.css` neue Button-Styles
+
+- **KO-Mod Hinweis bei Max-TP** — Kampf-Tab HP-Sektion: "KO +X × N Stf = +Y TP" Zeile
+  zwischen Max-TP und NL-Schaden; `CombatTab.jsx` + `CombatTab.css` (`.hp-ko-hint`)
+
+- **Spell Auto Fix (Hexenmeister/Magier)** — `SPELLBOOK_TO_CHAR_ID` Alias-Map in SpellsTab;
+  `hxm_magier` (spells.json ID) → `hexenmeister`/`magier` (classes.json IDs);
+  `effectiveClassId` für Slot-Typ-Lookup; Hexenmeister korrekt als Spontanwirker (CH)
+  Verifiziert: Hexenmeister Stufe 10 → Auto füllt alle Stufen korrekt ✓
+
+- **Spinner-Pfeil Fix (Zauberbuch Max-Feld)** — `.sb-total-input`: `-webkit-appearance: none`,
+  `-moz-appearance: textfield` → keine überlappenden Spinner-Pfeile auf iOS/Android
+
+- **Zauber Stufen-Tabs scrollbar** — `.spell-level-tabs`: `flex-wrap: nowrap; overflow-x: auto;
+  scrollbar-width: none` → kein Umbruch auf 2 Zeilen bei vielen Stufen (Mobile)
+
+- **Zauber ↗-Pfeil neben Namen (Nachschlagen)** — `spell-name-wrap` flex mit `align-items: baseline`;
+  `spell-name` hat `min-width: 0` + text-overflow ellipsis; `spell-ref-link` hat `flex-shrink: 0`
+  → Pfeil immer direkt nach Name sichtbar, auch bei langen Namen
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
