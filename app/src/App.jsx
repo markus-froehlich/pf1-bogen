@@ -228,10 +228,9 @@ export default function App() {
       if (reloading || !pushReadyRef.current) return
       const data = await pullRef.current()
       if (!data?.index?.length || !data?.chars) return
-      const remoteMax    = Math.max(...data.index.map(e => e.updated ?? 0))
-      const localMax     = Math.max(...indexRef.current.map(e => e.updated ?? 0))
-      const countChanged = data.index.length !== indexRef.current.length
-      if (!countChanged && remoteMax <= localMax) return
+      const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
+      const localMax  = Math.max(...indexRef.current.map(e => e.updated ?? 0))
+      if (remoteMax <= localMax) return
       reloading = true
       for (const [id, charData] of Object.entries(data.chars)) {
         localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
