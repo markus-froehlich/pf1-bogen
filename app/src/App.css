@@ -533,7 +533,7 @@
   background: var(--surface2);
   border-top: 1px solid var(--border);
   padding-bottom: env(safe-area-inset-bottom);
-  max-height: 80px;
+  max-height: 56px;
   overflow: hidden;
   transition: max-height 0.28s ease, opacity 0.2s ease;
 }
