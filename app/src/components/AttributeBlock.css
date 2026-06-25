@@ -5,8 +5,8 @@
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 7px;
-  padding: 5px 8px;
-  gap: 7px;
+  padding: 5px 6px;
+  gap: 5px;
 }
 
 .attr-label {
