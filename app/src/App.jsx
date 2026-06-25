@@ -51,7 +51,7 @@ function SortBar({ id, idx, total, label, onMove, collapsed, onToggle }) {
 }
 
 const TABS = [
-  { id: 'attr',      de: 'Attribute', en: 'Attribute' },
+  { id: 'attr',      de: 'Char',      en: 'Char'      },
   { id: 'combat',    de: 'Kampf',     en: 'Combat'  },
   { id: 'skills',    de: 'Fähigk.',   en: 'Skills'  },
   { id: 'spells',    de: 'Zauber',    en: 'Spells'  },
