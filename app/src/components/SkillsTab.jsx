@@ -119,8 +119,8 @@ export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalF
       )}
       <p className="skills-note">
         {L
-          ? '◆ = Klassenfertigkeit (+3 wenn Ränge > 0)  ·  Ü = Nur geübt einsetzbar  ·  Tipp auf ◇ zum Umschalten'
-          : '◆ = Class skill (+3 if ranks > 0)  ·  Ü = Trained only  ·  Tap ◇ to toggle'}
+          ? '◆ = Klassenfertigkeit (+3 wenn Ränge > 0)  ·  Ü = Nur geübt einsetzbar'
+          : '◆ = Class skill (+3 if ranks > 0)  ·  Ü = Trained only'}
       </p>
     </div>
   )
