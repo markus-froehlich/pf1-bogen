@@ -19,9 +19,23 @@ export function GistSyncPanel({ gistSync, onClose }) {
   async function handleConnect() {
     setError(''); setMsg(''); setWorking(true)
     const res = await connect(inputToken.trim())
+    if (!res.ok) { setWorking(false); setError(res.error); return }
+    if (!res.existed) { setWorking(false); setMsg('Neuer Gist erstellt — Backup läuft automatisch.'); return }
+    // Existing gist found — immediately pull data
+    setMsg('Vorhandenen Gist gefunden, lade Daten…')
+    const data = await pull()
     setWorking(false)
-    if (res.ok) setMsg(res.existed ? 'Vorhandenen Gist gefunden.' : 'Neuer Gist erstellt.')
-    else setError(res.error)
+    if (!data || !data.index || !data.chars) {
+      setMsg('Verbunden. Gist noch leer — Backup läuft automatisch.')
+      return
+    }
+    for (const [id, charData] of Object.entries(data.chars)) {
+      localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+    }
+    localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+    if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
+    setMsg('Daten geladen — Seite wird neu geladen…')
+    setTimeout(() => window.location.reload(), 700)
   }
 
   async function handlePull() {
