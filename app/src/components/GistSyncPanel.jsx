@@ -78,10 +78,11 @@ export function GistSyncPanel({ gistSync, onClose }) {
                 autoComplete="off"
                 onKeyDown={e => { if (e.key === 'Enter') handleConnect() }}
               />
-              <a className="gist-help-link"
+              <a className="gist-help-btn"
                 href="https://github.com/settings/tokens/new?scopes=gist&description=PF1+Bogen"
                 target="_blank" rel="noreferrer">
-                → Token auf GitHub erstellen (nur „gist" ankreuzen)
+                ↗ Token auf GitHub erstellen
+                <span className="gist-help-hint">(nur „gist" ankreuzen, dann kopieren)</span>
               </a>
               <button className="gist-connect-btn" onClick={handleConnect}
                 disabled={!inputToken.trim() || working}>
