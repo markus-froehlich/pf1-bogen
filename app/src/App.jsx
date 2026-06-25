@@ -33,8 +33,7 @@ const _SCALES = ['s', 'm', 'l', 'xl']
 const _initScale = localStorage.getItem('pf1_font_scale') ?? 'm'
 if (_initScale !== 'm') document.documentElement.classList.add(`fs-${_initScale}`)
 
-const COMBAT_INTERNAL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr']
-const COMBAT_OUTER_DEFAULT    = ['features', 'conditions', 'buffs', 'resources', 'weapons']
+const COMBAT_ALL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr', 'features', 'conditions', 'buffs', 'resources', 'weapons']
 const ATTR_DEFAULT            = ['race', 'class', 'attrs', 'xp', 'bio']
 
 function SortBar({ id, idx, total, label, onMove, collapsed, onToggle }) {
