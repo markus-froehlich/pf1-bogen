@@ -404,7 +404,7 @@
 
 .carry-coin-toggle {
   margin-left: auto;
-  font-size: 0.85rem;
+  font-size: 14px;
   background: none;
   border: 1px solid var(--border);
   border-radius: 5px;
