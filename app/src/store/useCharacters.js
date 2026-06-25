@@ -270,6 +270,15 @@ export function useCharacters() {
     patchChar(prev => ({ ...prev, active_buffs: fn(prev.active_buffs ?? []) }))
   }, [patchChar])
 
+  const getBackupData = useCallback(() => {
+    const chars = {}
+    for (const entry of state.index) {
+      const c = loadChar(entry.id)
+      if (c) chars[entry.id] = c
+    }
+    return { version: 1, index: state.index, chars, activeId: state.activeId }
+  }, [state])
+
   return {
     char, index, activeId,
     update, setAttr, setBuff, setMeta, setCombatMisc,
