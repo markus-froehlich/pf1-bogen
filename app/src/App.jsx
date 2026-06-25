@@ -326,7 +326,9 @@ export default function App() {
                     <button className="app-menu-item" onClick={() => {
                       const name = char.meta.name?.trim() || 'charakter'
                       const slug = name.toLowerCase().replace(/[^a-z0-9äöü]/gi, '_').replace(/_+/g, '_')
-                      const blob = new Blob([JSON.stringify(char, null, 2)], { type: 'application/json' })
+                      const hasHB = Object.values(hb).some(arr => arr.length > 0)
+                      const exportData = hasHB ? { version: 2, char, homebrew: hb } : char
+                      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
                       const url  = URL.createObjectURL(blob)
                       const a    = document.createElement('a')
                       a.href = url; a.download = `${slug}.json`; a.click()
@@ -341,7 +343,10 @@ export default function App() {
                           if (!file) return
                           const reader = new FileReader()
                           reader.onload = ev => {
-                            try { importChar(JSON.parse(ev.target.result)) }
+                            try {
+                              const result = importChar(JSON.parse(ev.target.result))
+                              if (result?.hasHomebrew) reloadHB()
+                            }
                             catch { alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file') }
                           }
                           reader.readAsText(file)
