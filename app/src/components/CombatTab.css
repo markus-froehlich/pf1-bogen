@@ -211,6 +211,7 @@
 .es-unit {
   font-size: 0.6rem;
   color: var(--text-muted);
+  flex-shrink: 0;
 }
 .es-maneuver-sel {
   background: var(--surface3);
