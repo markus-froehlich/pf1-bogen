@@ -6,7 +6,8 @@ function genId() { return 'itm_' + Math.random().toString(36).slice(2, 10) }
 const EMPTY_ITEM = { id: '', name: '', qty: 1, weight: 0, gp: 0, notes: '', bag: '' }
 
 const COIN_ORDER = ['pp', 'gp', 'sp', 'cp']
-const COIN_LABEL = { pp: 'PP', gp: 'GP', sp: 'SP', cp: 'CP' }
+const COIN_LABEL_DE = { pp: 'PM', gp: 'GM', sp: 'SM', cp: 'KM' }
+const COIN_LABEL_EN = { pp: 'PP', gp: 'GP', sp: 'SP', cp: 'CP' }
 const COIN_COLOR = { pp: '#b0c4de', gp: '#c9a96e', sp: '#aaaaaa', cp: '#c87941' }
 // Gold-Umrechnungskurs: 1 PP=10 GP, 1 GP=1 GP, 1 SP=0.1 GP, 1 CP=0.01 GP
 const TO_GP = { pp: 10, gp: 1, sp: 0.1, cp: 0.01 }
