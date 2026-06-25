@@ -90,7 +90,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const gabRanged = bab + effGEmod + Number(misc.gab_ranged_misc ?? 0) + cond.attack + Number(bt.attack ?? 0)
 
   const kmb = bab + effSTmod + sizeModKMB + Number(misc.kmb_misc ?? 0)
-  const kmv = 10 + kmb
+  const kmv = 10 + kmb + effGEmod
 
   const meleeAttacks  = attackString(gabMelee,  bab)
   const rangedAttacks = attackString(gabRanged, bab)
