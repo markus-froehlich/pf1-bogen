@@ -28,8 +28,10 @@ export function GistSyncPanel({ gistSync, onClose }) {
     setError(''); setMsg(''); setWorking(true)
     const data = await pull()
     setWorking(false)
-    if (!data) { setError('Keine Daten im Gist gefunden.'); return }
-    if (!data.index || !data.chars) { setError('Ungültige Gist-Daten.'); return }
+    if (!data || !data.index || !data.chars) {
+      setError('Gist noch leer — Backup wird automatisch gespeichert sobald du etwas änderst.')
+      return
+    }
     for (const [id, charData] of Object.entries(data.chars)) {
       localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
     }
