@@ -341,9 +341,10 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
       )}
 
       {LEVELS.filter(lv => (sb.levels[lv]?.total ?? 0) > 0 || (sb.levels[lv]?.prepared?.length ?? 0) > 0).map(lv => {
-        const lvData = sb.levels[lv] ?? { total: 0, used: 0, prepared: [] }
+        const lvData = sb.levels[lv] ?? { total: 0, used: 0, prepared: [], bloodline_ids: [] }
         const remaining = lvData.total - lvData.used
-        const knownCount = lvData.prepared?.length ?? 0
+        const bloodlineIds = lvData.bloodline_ids ?? []
+        const knownCount = (lvData.prepared?.length ?? 0) - bloodlineIds.filter(id => lvData.prepared?.includes(id)).length
         const maxKnown   = knownMax[lv] ?? null
         return (
           <div key={lv} className="sb-level">
