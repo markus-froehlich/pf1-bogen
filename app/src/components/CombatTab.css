@@ -115,6 +115,24 @@
 .hp-heal { background: color-mix(in srgb, #6ec96e 15%, var(--surface3)); color: #6ec96e; }
 .hp-dmg  { background: color-mix(in srgb, #c96e6e 15%, var(--surface3)); color: #c96e6e; }
 .hp-note { font-size: 0.58rem; color: var(--text-muted); font-style: italic; }
+.hp-dmg-row {
+  display: flex; align-items: center; gap: 5px; margin-top: 6px; flex-wrap: wrap;
+}
+.hp-dmg-label { font-size: 0.65rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.hp-dmg-input {
+  width: 52px; background: var(--surface3); border: 1px solid var(--border);
+  border-radius: 5px; color: var(--text); font-size: 0.85rem; font-weight: 700;
+  padding: 4px 6px; text-align: center; -moz-appearance: textfield;
+}
+.hp-dmg-input::-webkit-outer-spin-button,
+.hp-dmg-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.hp-dmg-input:focus { outline: none; border-color: var(--accent); }
+.hp-dmg-btn {
+  background: var(--surface3); border: 1px solid var(--border); border-radius: 5px;
+  color: var(--text); font-size: 0.72rem; font-weight: 700; padding: 4px 8px; cursor: pointer;
+}
+.hp-dmg-btn:active { background: var(--accent); color: var(--bg); }
+.hp-dmg-sep { width: 1px; height: 18px; background: var(--border); margin: 0 2px; }
 .hp-nl-row { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
 .hp-nl-info { font-size: 0.65rem; color: #c9a96e; flex: 1; }
 .hp-nl-clear {
