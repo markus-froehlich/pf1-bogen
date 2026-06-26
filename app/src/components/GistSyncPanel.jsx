@@ -9,9 +9,18 @@ const STATUS_LABEL = {
   error:      { text: 'Fehler',          color: '#c96e6e' },
 }
 
+function profileStorageKeys(profile) {
+  const gm = profile === 'gm'
+  return {
+    charKey: id => gm ? `pf1_char_gm_${id}` : `pf1_char_${id}`,
+    indexKey: gm ? 'pf1_chars_index_gm' : 'pf1_chars_index',
+  }
+}
+
 export function GistSyncPanel({ gistSync, onClose, profile = 'player' }) {
   const { token, gistId, connected, status, lastSync, connect, pull, disconnect } = gistSync
   const profileLabel = profile === 'gm' ? 'SL-Backup' : 'Spieler-Backup'
+  const { charKey, indexKey } = profileStorageKeys(profile)
   const [inputToken, setInputToken] = useState(token)
   const [error, setError] = useState('')
   const [msg, setMsg] = useState('')
