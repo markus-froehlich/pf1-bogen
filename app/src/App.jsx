@@ -362,6 +362,14 @@ export default function App() {
                       ☁ {lang === 'de' ? 'Backup' : 'Backup'}
                       {gistSync.connected && <span className="app-menu-sync-indicator" />}
                     </button>
+                    <div className="app-menu-divider" />
+                    <div className="app-menu-profile-row">
+                      <span className="app-menu-profile-label">{lang === 'de' ? 'Profil:' : 'Profile:'}</span>
+                      <div className="profile-toggle">
+                        <button className={`profile-btn${profile === 'player' ? ' active' : ''}`} onClick={() => { switchProfile('player'); setAppMenuOpen(false) }}>SP</button>
+                        <button className={`profile-btn${profile === 'gm' ? ' active' : ''}`} onClick={() => { switchProfile('gm'); setAppMenuOpen(false) }}>SL</button>
+                      </div>
+                    </div>
                   </div>
                 </>
               )}
