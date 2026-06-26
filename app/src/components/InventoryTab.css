@@ -144,7 +144,7 @@
   margin-top: -1px;
 }
 .inv-magic-cell {
-  display: flex; flex-direction: column; gap: 2px;
+  display: flex; flex-direction: column; gap: 2px; min-width: 0;
 }
 .inv-magic-label {
   font-size: 0.58rem; font-weight: 700; color: var(--accent);
