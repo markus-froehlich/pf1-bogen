@@ -66,26 +66,47 @@ function genId() {
   return Math.random().toString(36).slice(2, 10)
 }
 
-function saveChar(id, data) {
-  localStorage.setItem(CHAR_KEY(id), JSON.stringify(data))
-}
+function makeHelpers(profile) {
+  const { INDEX_KEY, ACTIVE_KEY, CHAR_KEY, LEGACY_KEY } = profileKeys(profile)
 
-function loadChar(id) {
-  try {
-    const s = localStorage.getItem(CHAR_KEY(id))
-    return s ? deepMerge(DEFAULT_CHAR, JSON.parse(s)) : null
-  } catch { return null }
-}
-
-function saveIndex(index) {
-  localStorage.setItem(INDEX_KEY, JSON.stringify(index))
-}
-
-function loadIndex() {
-  try {
-    const s = localStorage.getItem(INDEX_KEY)
-    return s ? JSON.parse(s) : null
-  } catch { return null }
+  function saveChar(id, data) {
+    localStorage.setItem(CHAR_KEY(id), JSON.stringify(data))
+  }
+  function loadChar(id) {
+    try {
+      const s = localStorage.getItem(CHAR_KEY(id))
+      return s ? deepMerge(DEFAULT_CHAR, JSON.parse(s)) : null
+    } catch { return null }
+  }
+  function saveIndex(index) {
+    localStorage.setItem(INDEX_KEY, JSON.stringify(index))
+  }
+  function loadIndex() {
+    try {
+      const s = localStorage.getItem(INDEX_KEY)
+      return s ? JSON.parse(s) : null
+    } catch { return null }
+  }
+  function initialize() {
+    let index = loadIndex()
+    if (!index) {
+      // Player: migrate legacy single-char; GM: start fresh
+      const legacyStr = profile !== 'gm' ? localStorage.getItem(LEGACY_KEY) : null
+      const legacy = legacyStr ? (() => { try { return JSON.parse(legacyStr) } catch { return null } })() : null
+      const id = genId()
+      const char = legacy ? { ...DEFAULT_CHAR, ...legacy } : { ...DEFAULT_CHAR }
+      saveChar(id, char)
+      index = [indexEntry(id, char)]
+      saveIndex(index)
+      localStorage.setItem(ACTIVE_KEY, id)
+      return { index, activeId: id, char }
+    }
+    let activeId = localStorage.getItem(ACTIVE_KEY) || index[0]?.id
+    if (!index.find(e => e.id === activeId)) activeId = index[0]?.id
+    const char = loadChar(activeId) ?? { ...DEFAULT_CHAR }
+    return { index, activeId, char }
+  }
+  return { saveChar, loadChar, saveIndex, loadIndex, initialize, ACTIVE_KEY, CHAR_KEY }
 }
 
 function indexEntry(id, char) {
@@ -95,29 +116,8 @@ function indexEntry(id, char) {
   return { id, name: char.meta?.name || '—', race: char.meta?.race || '', classes, campaign: char.bio?.campaign || '', player: char.meta?.player || '', updated: Date.now() }
 }
 
-function initialize() {
-  let index = loadIndex()
-
-  if (!index) {
-    // Migrate legacy single-char if present
-    const legacyStr = localStorage.getItem(LEGACY_KEY)
-    const legacy = legacyStr ? (() => { try { return JSON.parse(legacyStr) } catch { return null } })() : null
-    const id = genId()
-    const char = legacy ? { ...DEFAULT_CHAR, ...legacy } : { ...DEFAULT_CHAR }
-    saveChar(id, char)
-    index = [indexEntry(id, char)]
-    saveIndex(index)
-    localStorage.setItem(ACTIVE_KEY, id)
-    return { index, activeId: id, char }
-  }
-
-  let activeId = localStorage.getItem(ACTIVE_KEY) || index[0]?.id
-  if (!index.find(e => e.id === activeId)) activeId = index[0]?.id
-  const char = loadChar(activeId) ?? { ...DEFAULT_CHAR }
-  return { index, activeId, char }
-}
-
-export function useCharacters() {
+export function useCharacters(profile = 'player') {
+  const { saveChar, loadChar, saveIndex, loadIndex, initialize, ACTIVE_KEY, CHAR_KEY } = makeHelpers(profile)
   const init = () => initialize()
   const [state, setState] = useState(init)
 
