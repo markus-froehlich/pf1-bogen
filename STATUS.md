@@ -421,6 +421,18 @@ Engine-Gerüst.
   `bloodline_ids[]` per Level in `char.spellbook.levels[lv]`; rückwärtskompatibel
   Verifiziert: Arkanes Siegel ✦ aktiv → 0/4 bekannt ✓
 
+- **Panel-Sortier-Grenze gefixt** — Kampf-Tab hatte 2 getrennte Sort-Listen (intern:
+  hp/combat/speed/ac/saves/dr + außen: features/conditions/buffs/resources/weapons);
+  Panels konnten nicht über die Grenze hinaus verschoben werden; gefixt durch Zusammenführung
+  in eine einheitliche Liste `COMBAT_ALL_DEFAULT` (11 Sektionen); `extraPanels`/`extraLabels`
+  Props an `CombatTab`; Speicherschlüssel `pf1_combat_order` (war zwei Keys); Migration der
+  alten collapsed-Keys (`pf1_combat_internal_collapsed` + `pf1_outer_collapsed`) in einen Key
+  Verifiziert: WAFFEN kann frei über alle 11 Sektionen geschoben werden ✓
+
+- **Preferences im Gist-Backup** — Panel-Anordnung (combat/attr order + collapsed-State) wird
+  in Gist-Backup als `preferences`-Key gespeichert und beim Pull wiederhergestellt;
+  `PREF_KEYS` in `useCharacters.js`; `GistSyncPanel.jsx` schreibt preferences bei Pull
+
 ## Nächste Schritte
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
 - Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
