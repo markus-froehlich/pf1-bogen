@@ -381,7 +381,7 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
                   const spell = SPELL_MAP[spellId]
                   const isBloodline = bloodlineIds.includes(spellId)
                   return (
-                    <div key={spellId} className={`sb-spell${isBloodline ? ' sb-spell-bloodline' : ''}`}>
+                    <div key={spellId} className="sb-spell">
                       <button
                         className={`sb-bloodline-btn${isBloodline ? ' active' : ''}`}
                         onClick={() => toggleBloodline(lv, spellId)}
@@ -389,6 +389,7 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
                         ✦
                       </button>
                       <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? spellId}</span>
+                      {isBloodline && <span className="sb-bonus-tag">{L ? 'Bonus' : 'Bonus'}</span>}
                       {spell && <RefLink name={spell.name.de} page={spell.page} />}
                       {spell?.school && <span className="sb-spell-school">{spell.school}</span>}
                       <button className="sb-remove-btn" onClick={() => removeSpell(lv, spellId)}>✕</button>
