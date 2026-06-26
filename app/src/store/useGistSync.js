@@ -1,10 +1,16 @@
 import { useState, useRef } from 'react'
 
-const API      = 'https://api.github.com'
-const FILENAME = 'pf1-bogen.json'
-const LS_TOKEN = 'pf1_gist_token'
-const LS_GIST  = 'pf1_gist_id'
-const LS_LAST  = 'pf1_gist_last'
+const API = 'https://api.github.com'
+
+function profileKeys(profile) {
+  const gm = profile === 'gm'
+  return {
+    LS_TOKEN: gm ? 'pf1_gist_token_gm' : 'pf1_gist_token',
+    LS_GIST:  gm ? 'pf1_gist_id_gm'   : 'pf1_gist_id',
+    LS_LAST:  gm ? 'pf1_gist_last_gm'  : 'pf1_gist_last',
+    FILENAME: gm ? 'pf1-bogen-gm.json' : 'pf1-bogen.json',
+  }
+}
 
 function ghHeaders(token) {
   return {
@@ -15,7 +21,9 @@ function ghHeaders(token) {
   }
 }
 
-export function useGistSync() {
+export function useGistSync(profile = 'player') {
+  const { LS_TOKEN, LS_GIST, LS_LAST, FILENAME } = profileKeys(profile)
+
   const [token,    setTokenState]  = useState(() => localStorage.getItem(LS_TOKEN) ?? '')
   const [gistId,   setGistIdState] = useState(() => localStorage.getItem(LS_GIST)  ?? '')
   const [status,   setStatus]      = useState('idle')
@@ -43,10 +51,11 @@ export function useGistSync() {
         persistToken(t); persistGistId(existing.id); setStatus('ok')
         return { ok: true, gistId: existing.id, existed: true }
       }
+      const desc = profile === 'gm' ? 'PF1 SL-Backup' : 'PF1 Charakterbogen Backup'
       const createRes = await fetch(`${API}/gists`, {
         method: 'POST', headers,
         body: JSON.stringify({
-          description: 'PF1 Charakterbogen Backup',
+          description: desc,
           public: false,
           files: { [FILENAME]: { content: '{"version":1}' } }
         })
