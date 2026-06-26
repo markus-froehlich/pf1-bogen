@@ -68,7 +68,7 @@ export function GistSyncPanel({ gistSync, onClose, profile = 'player' }) {
     <div className="gist-overlay" onClick={onClose}>
       <div className="gist-panel" onClick={e => e.stopPropagation()}>
         <div className="gist-header">
-          <span className="gist-title">☁ Cloud-Backup (GitHub Gist)</span>
+          <span className="gist-title">☁ {profileLabel} (GitHub Gist)</span>
           <button className="gist-close" onClick={onClose}>✕</button>
         </div>
 
