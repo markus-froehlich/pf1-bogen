@@ -371,6 +371,18 @@ export default function App() {
               <span className="fss-label">Aa</span>
               <button className="fss-btn" onClick={fontUp} disabled={fontScale === _SCALES[_SCALES.length-1]}>+</button>
             </div>
+            <div className="profile-toggle" title={profile === 'gm' ? 'SL-Modus aktiv' : 'Spieler-Modus aktiv'}>
+              <button
+                className={`profile-btn${profile === 'player' ? ' active' : ''}`}
+                onClick={() => switchProfile('player')}
+                title="Spieler"
+              >SP</button>
+              <button
+                className={`profile-btn${profile === 'gm' ? ' active' : ''}`}
+                onClick={() => switchProfile('gm')}
+                title="Spielleiter"
+              >SL</button>
+            </div>
             <button className="lang-btn" onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}>
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
