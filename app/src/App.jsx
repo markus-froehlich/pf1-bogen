@@ -227,9 +227,9 @@ export default function App() {
       if (remoteMax <= localMax) return
       reloading = true
       for (const [id, charData] of Object.entries(data.chars)) {
-        localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+        localStorage.setItem(CHAR_KEY_LS(id), JSON.stringify(charData))
       }
-      localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
+      localStorage.setItem(CHARS_INDEX_LS, JSON.stringify(data.index))
       if (data.homebrew) { localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew)); reloadHB() }
       if (data.preferences) {
         for (const [k, v] of Object.entries(data.preferences)) {
