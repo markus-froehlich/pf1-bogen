@@ -9,8 +9,9 @@ const STATUS_LABEL = {
   error:      { text: 'Fehler',          color: '#c96e6e' },
 }
 
-export function GistSyncPanel({ gistSync, onClose }) {
+export function GistSyncPanel({ gistSync, onClose, profile = 'player' }) {
   const { token, gistId, connected, status, lastSync, connect, pull, disconnect } = gistSync
+  const profileLabel = profile === 'gm' ? 'SL-Backup' : 'Spieler-Backup'
   const [inputToken, setInputToken] = useState(token)
   const [error, setError] = useState('')
   const [msg, setMsg] = useState('')
