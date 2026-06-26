@@ -142,9 +142,14 @@ export default function App() {
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
     importChar, newChar, switchChar, deleteChar,
     getBackupData, reinitialize,
-  } = useCharacters()
+  } = useCharacters(profile)
 
-  const gistSync = useGistSync()
+  const gistSync = useGistSync(profile)
+
+  // Profile-specific localStorage keys (used in sync effects)
+  const CHARS_INDEX_LS = profile === 'gm' ? 'pf1_chars_index_gm'  : 'pf1_chars_index'
+  const ACTIVE_CHAR_LS = profile === 'gm' ? 'pf1_active_char_gm'  : 'pf1_active_char'
+  const CHAR_KEY_LS    = id => profile === 'gm' ? `pf1_char_gm_${id}` : `pf1_char_${id}`
 
   // Auto-restore from Gist on startup when localStorage is empty (e.g. after cache clear)
   useEffect(() => {
