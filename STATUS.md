@@ -396,7 +396,7 @@ Engine-Gerüst.
 - **Buff-Tracker Icon-Buttons** — Formular-Aktionen: 🗑/✕/✓ Icons (40×40px touch targets),
   analog zu ResourcesPanel; `BuffTracker.css` neue Button-Styles
 
-- **KO-Mod Hinweis bei Max-TP** — Kampf-Tab HP-Sektion: "KO +X × N Stf = +Y TP" Zeile
+- **KO-Mod Hinweis bei Max-TP** — Kampf-Tab HP-Sektion: "KO +X × N Stufen = +Y TP" Zeile
   zwischen Max-TP und NL-Schaden; `CombatTab.jsx` + `CombatTab.css` (`.hp-ko-hint`)
 
 - **Spell Auto Fix (Hexenmeister/Magier)** — `SPELLBOOK_TO_CHAR_ID` Alias-Map in SpellsTab;
