@@ -1,9 +1,17 @@
 import { useState, useCallback } from 'react'
 
-const INDEX_KEY    = 'pf1_chars_index'
-const ACTIVE_KEY   = 'pf1_active_char'
-const CHAR_KEY     = id => `pf1_char_${id}`
-const LEGACY_KEY   = 'pf1_character'
+// Player profile uses legacy (unsuffixed) keys for backward compat.
+// GM profile uses _gm-suffixed keys — completely separate data.
+function profileKeys(profile) {
+  const gm = profile === 'gm'
+  return {
+    INDEX_KEY:  gm ? 'pf1_chars_index_gm'  : 'pf1_chars_index',
+    ACTIVE_KEY: gm ? 'pf1_active_char_gm'  : 'pf1_active_char',
+    CHAR_KEY:   id => gm ? `pf1_char_gm_${id}` : `pf1_char_${id}`,
+    LEGACY_KEY: 'pf1_character', // only used for player migration
+  }
+}
+
 const HOMEBREW_KEY = 'pf1_homebrew'
 const PREF_KEYS = [
   'pf1_combat_order',
