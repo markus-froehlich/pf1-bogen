@@ -232,6 +232,12 @@
 }
 .app-menu-item:last-child { border-bottom: none; }
 .app-menu-item:active { background: var(--surface3); color: var(--accent); }
+.app-menu-divider { height: 1px; background: var(--border); margin: 2px 0; }
+.app-menu-profile-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 14px; gap: 10px;
+}
+.app-menu-profile-label { font-size: 0.75rem; color: var(--text-muted); }
 
 /* Gist sync status indicators */
 .gist-status-badge {
