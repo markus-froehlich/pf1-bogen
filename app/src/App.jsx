@@ -419,7 +419,7 @@ export default function App() {
       )}
 
       {gistOpen && (
-        <GistSyncPanel gistSync={gistSync} onClose={() => setGistOpen(false)} />
+        <GistSyncPanel gistSync={gistSync} onClose={() => setGistOpen(false)} profile={profile} />
       )}
 
       {drawerOpen && (
