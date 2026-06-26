@@ -159,10 +159,10 @@ export default function App() {
     gistSync.pull().then(data => {
       if (!data?.index?.length || !data?.chars) return
       for (const [id, charData] of Object.entries(data.chars)) {
-        localStorage.setItem(`pf1_char_${id}`, JSON.stringify(charData))
+        localStorage.setItem(CHAR_KEY_LS(id), JSON.stringify(charData))
       }
-      localStorage.setItem('pf1_chars_index', JSON.stringify(data.index))
-      if (data.activeId) localStorage.setItem('pf1_active_char', data.activeId)
+      localStorage.setItem(CHARS_INDEX_LS, JSON.stringify(data.index))
+      if (data.activeId) localStorage.setItem(ACTIVE_CHAR_LS, data.activeId)
       window.location.reload()
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
