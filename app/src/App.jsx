@@ -58,6 +58,13 @@ export default function App() {
   const [appMenuOpen, setAppMenuOpen] = useState(false)
   const [gistOpen, setGistOpen] = useState(false)
   const [fontScale, setFontScale] = useState(_initScale)
+  const [profile, setProfile] = useState(() => localStorage.getItem('pf1_profile') ?? 'player')
+
+  function switchProfile(p) {
+    if (p === profile) return
+    localStorage.setItem('pf1_profile', p)
+    window.location.reload()
+  }
   const [topbarCollapsed, setTopbarCollapsed] = useState(() =>
     localStorage.getItem('pf1_topbar_collapsed') === '1')
   const [navCollapsed, setNavCollapsed] = useState(() =>
