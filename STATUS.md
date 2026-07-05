@@ -433,9 +433,29 @@ Engine-Gerüst.
   in Gist-Backup als `preferences`-Key gespeichert und beim Pull wiederhergestellt;
   `PREF_KEYS` in `useCharacters.js`; `GistSyncPanel.jsx` schreibt preferences bei Pull
 
+- **SP/SL-Profile** — zwei völlig getrennte Charakterlisten + Gist-Backups; SP nutzt
+  bestehende LS-Keys, SL nutzt `_gm`-suffixierte Keys (`pf1_chars_index_gm`, `pf1_char_gm_<id>`
+  etc.); Profil-Toggle im ⚙-Menü (SP|SL); Wechsel triggert `window.location.reload()`;
+  Gist: gleicher Token, getrennte Dateien (`pf1-bogen.json` / `pf1-bogen-gm.json`);
+  `useCharacters(profile)` + `useGistSync(profile)` per `profileKeys()`-Factory
+  Verifiziert: SL → leere Charakterliste, SP-Daten unangetastet ✓
+
+- **Magische Ausrüstungsslots Mobile-Fix** — rechte Spalte (STIRN/SCHULTERN/…) war auf
+  Mobilgeräten abgeschnitten; Ursache: fehlende `min-width: 0` auf `.inv-magic-cell`;
+  behoben → beide Spalten auf 375px Portrait + Landscape sichtbar ✓
+
+- **Bonuszauber-Label** — ✦-Button markiert Zauber als Blutlinie/Mysterium/Patron;
+  statt Zeilen-Highlight jetzt kleines "BONUS"-Tag direkt neben dem Zaubernamen;
+  `.sb-bonus-tag` (0.6rem, accent-Farbe, uppercase); SpellsTab.jsx + SpellsTab.css
+
+- **GistSyncPanel Profil-Bugfix** — `handleConnect` + `handlePull` schrieben restore-Daten
+  in hardcodierte SP-LS-Keys (`pf1_char_${id}`, `pf1_chars_index`), auch im SL-Profil;
+  gefixt: `profileStorageKeys(profile)` → `charKey(id)` / `indexKey` korrekt je Profil
+
 ## Nächste Schritte
+- Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
-- Waffe zweihändig halten: Tooltip/Toggle für 1-Hand-Waffe mit 2 Händen → ×1,5 ST
+- Gefährten/Beschwörungen: eigener Mini-Bogen für Tierbegleiter/Vertraute (deferred)
 
 ## Hinweise
 - Dump-Erzeugung braucht venv + openpyxl 3.1.5 (im Scratchpad; bei Bedarf neu
