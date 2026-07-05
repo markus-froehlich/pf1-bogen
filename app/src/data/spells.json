@@ -1745,7 +1745,7 @@
     {
       "id": "aura_d_maechtigen_tapferkeit",
       "name": {
-        "de": "Aura d. mächtigen Tapferkeit",
+        "de": "Aura der mächtigen Tapferkeit",
         "en": null
       },
       "school": "Ba",
@@ -17746,7 +17746,7 @@
     {
       "id": "m_belagerungsenergiegeschoss",
       "name": {
-        "de": "M. Belagerungsenergiegeschoss",
+        "de": "Mächtiges Belagerungsenergiegeschoss",
         "en": null
       },
       "school": "Vw",
@@ -19033,7 +19033,7 @@
     {
       "id": "massen_segen_d_gluecks_entschlossenheit_hal",
       "name": {
-        "de": "Massen-Segen d. Glücks+Entschlossenheit Hal",
+        "de": "Massen-Segen des Glücks+Entschlossenheit Hal",
         "en": null
       },
       "school": "Vz",
@@ -27554,7 +27554,7 @@
     {
       "id": "segen_d_gluecks_entschlossenheit_hal",
       "name": {
-        "de": "Segen d. Glücks+Entschlossenheit *Hal",
+        "de": "Segen des Glücks+Entschlossenheit *Hal",
         "en": null
       },
       "school": "Vz",
