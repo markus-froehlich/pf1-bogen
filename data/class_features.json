@@ -13309,8 +13309,8 @@
       "desc": "RK+4, RW+4 > Angriffe/Effekte Böser, nicht bannbarer Schut vor Bösem"
     },
     {
-      "name": "Himmlisches Verbessertes herbeizaubern (ZF)",
-      "trait": "Himmlisches Verbessertes herbeizaubern (ZF)",
+      "name": "Himmlischen Verbündeten herbeizaubern (ZF)",
+      "trait": "Himmlischen Verbündeten herbeizaubern (ZF)",
       "source": "",
       "desc": "CHMod /Tag: CeleSt Kreatur, Archonten od. Engel (wie Monster herbeiz. I); je 2 St 1 Zaubergrad mehr"
     },
@@ -20965,14 +20965,14 @@
       "desc": "Mächtigere Untote erschaffen als Extrakt des 5. Grades in's Formelbuch"
     },
     {
-      "name": "Mächtiges Verbessertes schützen (BF) Bms",
-      "trait": "Mächtiges Verbessertes schützen (BF) Bms",
+      "name": "Mächtiges Verbündeten schützen (BF) Bms",
+      "trait": "Mächtiges Verbündeten schützen (BF) Bms",
       "source": "",
       "desc": "Brutmeister/Verbündeter kann Boni nur 1x erhalten, egal wie viele Eidola sich in Reichweite"
     },
     {
-      "name": "Mächtiges Verbessertes schützen (ÜF) Pak",
-      "trait": "Mächtiges Verbessertes schützen (ÜF) Pak",
+      "name": "Mächtiges Verbündeten schützen (ÜF) Pak",
+      "trait": "Mächtiges Verbündeten schützen (ÜF) Pak",
       "source": "",
       "desc": "mit Eidolon: 1 Verbündeter RK/RW+2, oder Paktmagier RK/RW+4"
     },
@@ -30817,20 +30817,20 @@
       "desc": "Kein Malus auf Akrobatik beim Durchqueren bedr. Felder bei voller Bewegungsrate"
     },
     {
-      "name": "Verbessertes des Meeres herbeizaubern (ZF)",
-      "trait": "Verbessertes des Meeres herbeizaubern (ZF)",
+      "name": "Verbündeten des Meeres herbeizaubern (ZF)",
+      "trait": "Verbündeten des Meeres herbeizaubern (ZF)",
       "source": "",
       "desc": "VA: 1/Tag Verb. Herbeiz. (Unterart Aquatisch od. Wasser) Verb. Nat. herbeizaubern III (11: IV, 14 V, 17 VI, 20 VII)"
     },
     {
-      "name": "Verbessertes der Natur herbeizaubern Bar (BF)",
-      "trait": "Verbessertes der Natur herbeizaubern Bar (BF)",
+      "name": "Verbündeten der Natur herbeizaubern Bar (BF)",
+      "trait": "Verbündeten der Natur herbeizaubern Bar (BF)",
       "source": "",
       "desc": "Verb. der Natur herbeizaubern in Liste: St1: I, St4: II, St7: II, St10: IV, St13; V, St16: VI"
     },
     {
-      "name": "Verbessertes der Natur herbeizaubern WP",
-      "trait": "Verbessertes der Natur herbeizaubern WP",
+      "name": "Verbündeten der Natur herbeizaubern WP",
+      "trait": "Verbündeten der Natur herbeizaubern WP",
       "source": "",
       "desc": "Veründeten der Natur herbeizaubern statt Monster herbeizaubern"
     },
@@ -31021,8 +31021,8 @@
       "desc": "Statt Ninjatrick einen Trick der Liste Verb. Schurkentricks"
     },
     {
-      "name": "Verbessertes schützen (AF) Pak Bms",
-      "trait": "Verbessertes schützen (AF) Pak Bms",
+      "name": "Verbündeten schützen (AF) Pak Bms",
+      "trait": "Verbündeten schützen (AF) Pak Bms",
       "source": "",
       "desc": "1/Brut: RK/RW+2, nicht, wenn Eidolon: Ringkampf verwickelt/hilflos/gelähmt/betäubt/bewusstlos"
     },
