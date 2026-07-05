@@ -409,8 +409,8 @@
       "desc": ""
     },
     {
-      "name": "-- Verb. Schurkentricks --",
-      "trait": "-- Verb. Schurkentricks --",
+      "name": "-- Verbesserte Schurkentricks --",
+      "trait": "-- Verbesserte Schurkentricks --",
       "source": "",
       "desc": ""
     },
@@ -835,14 +835,14 @@
       "desc": "Bonustalent Elementarfaust, Schaden +w6/5St"
     },
     {
-      "name": "2KI: Mäch. Blind kämpfen",
-      "trait": "2KI: Mäch. Blind kämpfen",
+      "name": "2KI: Mächtiges Blind kämpfen",
+      "trait": "2KI: Mächtiges Blind kämpfen",
       "source": "",
       "desc": "Gegner: vollständige Tarnung=>normale Tarnung, sonst keine, entdeckter unsichtb.: keine Vorteile"
     },
     {
-      "name": "2KI: Mäch. Entwaffnen",
-      "trait": "2KI: Mäch. Entwaffnen",
+      "name": "2KI: Mächtiges Entwaffnen",
+      "trait": "2KI: Mächtiges Entwaffnen",
       "source": "",
       "desc": "+2 auf Entwaffnen, Gegnerwaffe wird 5m geschleudert"
     },
@@ -895,14 +895,14 @@
       "desc": "für 2 KI Pkt: TP +St heilen"
     },
     {
-      "name": "2KI: Verb. Ki-Wurf",
-      "trait": "2KI: Verb. Ki-Wurf",
+      "name": "2KI: Verbesserter Ki-Wurf",
+      "trait": "2KI: Verbesserter Ki-Wurf",
       "source": "",
       "desc": "mit KI-Wurf Gegner in beliebiges bedrohtes Feld werfen"
     },
     {
-      "name": "2KI: Verb. Konz. Schlag",
-      "trait": "2KI: Verb. Konz. Schlag",
+      "name": "2KI: Verbesserter Konzentrierter Schlag",
+      "trait": "2KI: Verbesserter Konzentrierter Schlag",
       "source": "",
       "desc": "Angriff nit höchstem GAB: 3 x Schaden würfeln ohne Bonus"
     },
@@ -955,32 +955,32 @@
       "desc": "Ziel erleidet 1W6 Schallschaden/Stufe und ist betäubt =A ~vg >7,5m+1,5m/2St *1 Kreatur #sofort RZ"
     },
     {
-      "name": "3KI: Krit. Treffer (blutend)",
-      "trait": "3KI: Krit. Treffer (blutend)",
+      "name": "3KI: Kritischer Treffer (blutend)",
+      "trait": "3KI: Kritischer Treffer (blutend)",
       "source": "",
       "desc": "Bei Krit (Hieb/Stich): Gegner 2w6 Schaden/Rd Blutung (bis Heilkunde SG15/mag. Heilung)"
     },
     {
-      "name": "3KI: Krit. Treffer blind",
-      "trait": "3KI: Krit. Treffer blind",
+      "name": "3KI: Kritischer Treffer blind",
+      "trait": "3KI: Kritischer Treffer blind",
       "source": "",
       "desc": "Bei Krit: Gegner permanent Blind (Zähigkeitswurf: geblendet), max. 2 Augen"
     },
     {
-      "name": "3KI: Krit. Treffer erschöpft",
-      "trait": "3KI: Krit. Treffer erschöpft",
+      "name": "3KI: Kritischer Treffer erschöpft",
+      "trait": "3KI: Kritischer Treffer erschöpft",
       "source": "",
       "desc": "Bei Krit: Gegner 1w4Rd erschöpft"
     },
     {
-      "name": "3KI: Krit.Treffer gelähmt",
-      "trait": "3KI: Krit.Treffer gelähmt",
+      "name": "3KI: Kritischer Treffer gelähmt",
+      "trait": "3KI: Kritischer Treffer gelähmt",
       "source": "",
       "desc": "Krit: Bewegungsrate Gegner 1min ½, RW Zäh ok: 1w4 Rd"
     },
     {
-      "name": "3KI: Krit.Treffer taub",
-      "trait": "3KI: Krit.Treffer taub",
+      "name": "3KI: Kritischer Treffer taub",
+      "trait": "3KI: Kritischer Treffer taub",
       "source": "",
       "desc": "Bei Krit: Gegner permanent Taub (Zähigkeitswurf: 1Rd Taub)"
     },
@@ -991,8 +991,8 @@
       "desc": "für 3 KI Pkt: für 1 Min in ätherischen Zustand versetzen, wie Zauber Ätherische Gestalten"
     },
     {
-      "name": "3KI: Mäch. Durchschlagender Hieb",
-      "trait": "3KI: Mäch. Durchschlagender Hieb",
+      "name": "3KI: Mächtiger Durchschlagender Hieb",
+      "trait": "3KI: Mächtiger Durchschlagender Hieb",
       "source": "",
       "desc": "Waffe ignoriert 10 Punkte Schadensreduzierung (ohne Angabe 5 Punkte)"
     },
@@ -2329,8 +2329,8 @@
       "desc": "A: zerstörten Gegenstand durch Berührung reparieren (keine Gelegenheitsangriffe)"
     },
     {
-      "name": "Augenblick d. Triumphes (AF) OF",
-      "trait": "Augenblick d. Triumphes (AF) OF",
+      "name": "Augenblick des Triumphes (AF) OF",
+      "trait": "Augenblick des Triumphes (AF) OF",
       "source": "",
       "desc": "RK/AttW/TW/SW/RW/FW +CHMod, alle Krit automatisch bestätigt =FA #1Rd ^1/Tag"
     },
@@ -2347,92 +2347,92 @@
       "desc": "Strahlt entsprechende Gesinnungs-Aura aus"
     },
     {
-      "name": "Aura d. Bedrohung (ÜF)",
-      "trait": "Aura d. Bedrohung (ÜF)",
+      "name": "Aura der Bedrohung (ÜF)",
+      "trait": "Aura der Bedrohung (ÜF)",
       "source": "",
       "desc": "Feinde: -2 RK/TW/RW =SA \"Rad 9m ^St*Rd/Tag"
     },
     {
-      "name": "Aura d. Energieresistenz Kri",
-      "trait": "Aura d. Energieresistenz Kri",
+      "name": "Aura der Energieresistenz Kri",
+      "trait": "Aura der Energieresistenz Kri",
       "source": "",
       "desc": "als A für 1Min: Rad 9m, alle Verbündeten Resistenz 10 Elektrizität/Feuer/Kälte/Säure/Schall, St15: 20"
     },
     {
-      "name": "Aura d. Entschlossenheit (ÜF) Pal",
-      "trait": "Aura d. Entschlossenheit (ÜF) Pal",
+      "name": "Aura der Entschlossenheit (ÜF) Pal",
+      "trait": "Aura der Entschlossenheit (ÜF) Pal",
       "source": "",
       "desc": "Immun > Bezauberungsmagie, Verbündetet innerhalb 3m RW+4"
     },
     {
-      "name": "Aura d. Furcht (ÜF) Leichnahm",
-      "trait": "Aura d. Furcht (ÜF) Leichnahm",
+      "name": "Aura der Furcht (ÜF) Leichnahm",
+      "trait": "Aura der Furcht (ÜF) Leichnahm",
       "source": "",
       "desc": "Kreaturen<5TW: 1Rd/TW Verängstigt (ab 5TW Erschüttert) \"Rad18m RW"
     },
     {
-      "name": "Aura d. Gerechtigkeit (ÜF) Pal",
-      "trait": "Aura d. Gerechtigkeit (ÜF) Pal",
+      "name": "Aura der Gerechtigkeit (ÜF) Pal",
+      "trait": "Aura der Gerechtigkeit (ÜF) Pal",
       "source": "",
       "desc": "2*Bösen niederstrecken einsetzen: Verbündetet Rad3m bekommen Böses niederst. für 1Rd =FA"
     },
     {
-      "name": "Aura d. Heilung (ÜF) Pal",
-      "trait": "Aura d. Heilung (ÜF) Pal",
+      "name": "Aura der Heilung (ÜF) Pal",
+      "trait": "Aura der Heilung (ÜF) Pal",
       "source": "",
       "desc": "P-Energie: Aura Rad9m: Volle Rd: +1TW TP, RW>Gebrechen, Automatisch Stabil, Immun>Blutung"
     },
     {
-      "name": "Aura d. Rechtschaffenheit (ÜF)",
-      "trait": "Aura d. Rechtschaffenheit (ÜF)",
+      "name": "Aura der Rechtschaffenheit (ÜF)",
+      "trait": "Aura der Rechtschaffenheit (ÜF)",
       "source": "",
       "desc": "Immun>Verzauberung: Zwang, SR 5/Böses, Verbündete innerhalb 3m +4>diese Effekte"
     },
     {
-      "name": "Aura d. Reinheit Pal (ÜF) Verd",
-      "trait": "Aura d. Reinheit Pal (ÜF) Verd",
+      "name": "Aura der Reinheit Pal (ÜF) Verd",
+      "trait": "Aura der Reinheit Pal (ÜF) Verd",
       "source": "",
       "desc": "heiliger Bonus+4 auf RW > Zauber & Effekte von Aberrationen, Verb. Umkr. 3m+1"
     },
     {
-      "name": "Aura d. Tapferkeit (ÜF) Pal",
-      "trait": "Aura d. Tapferkeit (ÜF) Pal",
+      "name": "Aura der Tapferkeit (ÜF) Pal",
+      "trait": "Aura der Tapferkeit (ÜF) Pal",
       "source": "",
       "desc": "Immun>Furcht, Verbündete innerhalb 3m: RW>Furcht +4"
     },
     {
-      "name": "Aura d. Umsicht Pal (ÜF)",
-      "trait": "Aura d. Umsicht Pal (ÜF)",
+      "name": "Aura der Umsicht Pal (ÜF)",
+      "trait": "Aura der Umsicht Pal (ÜF)",
       "source": "",
       "desc": "keine Blockierung durch Deckung durch Verb. innerh. von 3m."
     },
     {
-      "name": "Aura d. Verbannung (ÜF) Mag",
-      "trait": "Aura d. Verbannung (ÜF) Mag",
+      "name": "Aura der Verbannung (ÜF) Mag",
+      "trait": "Aura der Verbannung (ÜF) Mag",
       "source": "",
       "desc": "herbeigez./beschw. Kreatur 1.RW: Wankend, 2.RW: zurück Heimatebene \"Rad9m ^St*Rd"
     },
     {
-      "name": "Aura d. Verwesung (ÜF)",
-      "trait": "Aura d. Verwesung (ÜF)",
+      "name": "Aura der Verwesung (ÜF)",
+      "trait": "Aura der Verwesung (ÜF)",
       "source": "",
       "desc": "Fleisch verfault 1w6/Rd, ST-1 (Pflanzen 2w6) \"Rad 9m ^St*Rd"
     },
     {
-      "name": "Aura d. Verzweiflung (ÜF) Mag",
-      "trait": "Aura d. Verzweiflung (ÜF) Mag",
+      "name": "Aura der Verzweiflung (ÜF) Mag",
+      "trait": "Aura der Verzweiflung (ÜF) Mag",
       "source": "",
       "desc": "Feinde: AttW/TW/SW/RW/FW -2 \"Rad 9m ^St*Rd"
     },
     {
-      "name": "Aura d. Wiederholung (ÜF)",
-      "trait": "Aura d. Wiederholung (ÜF)",
+      "name": "Aura der Wiederholung (ÜF)",
+      "trait": "Aura der Wiederholung (ÜF)",
       "source": "",
       "desc": "Ziele müssen Aktion wiederholen \"Rad 9m ^St*RdTag"
     },
     {
-      "name": "Aura d. Zerstörung (ÜF)",
-      "trait": "Aura d. Zerstörung (ÜF)",
+      "name": "Aura der Zerstörung (ÜF)",
+      "trait": "Aura der Zerstörung (ÜF)",
       "source": "",
       "desc": "Im Rad. alle Schaden +½St, alle Bedrohungen aut. Bestätigt \"Rad 9m ^St*Rd/Tag"
     },
@@ -2629,8 +2629,8 @@
       "desc": "vor suchender Magie verbergen (dauerh. Zauber Unauffindbarkeit), mit BA beendbar&wiederherstellbar"
     },
     {
-      "name": "Aus d. Gleichgewicht bringen(AF)",
-      "trait": "Aus d. Gleichgewicht bringen(AF)",
+      "name": "Aus dem Gleichgewicht bringen (AF)",
+      "trait": "Aus dem Gleichgewicht bringen (AF)",
       "source": "",
       "desc": "als BA Entwaffnen/zu Fall bringen: Ziel auf falschem Fuß bis es Schaden erleidet oder 1Rd"
     },
@@ -2653,8 +2653,8 @@
       "desc": "Fesseln durchnagen, Riegel öffnen, Schlüssel bringen"
     },
     {
-      "name": "Ausdauer d. Dschungels (AF) Dru",
-      "trait": "Ausdauer d. Dschungels (AF) Dru",
+      "name": "Ausdauer des Dschungels (AF) Dru",
+      "trait": "Ausdauer des Dschungels (AF) Dru",
       "source": "",
       "desc": "heißes Klima ignorieren wie Elemente trotzen, RW+4>Krankheiten, AF von Tieren+mag. Bestien"
     },
@@ -3139,8 +3139,8 @@
       "desc": "Säurestrahl w6+1/2St >9m"
     },
     {
-      "name": "BE: Aquatische: Hauch d. Austrocknung",
-      "trait": "BE: Aquatische: Hauch d. Austrocknung",
+      "name": "BE: Aquatische: Hauch der Austrocknung",
+      "trait": "BE: Aquatische: Hauch der Austrocknung",
       "source": "",
       "desc": "w6+1/2St NT, Schlicke/Pflanzen/Aquatisch/Wasser tödlich *BerührungsAG"
     },
@@ -4003,8 +4003,8 @@
       "desc": "St1,2,4,6,8,10, im Gelände: +2 INI,Heimlichk.,Überleben,Wahrnehmung,Geo,keine Spuren (+2/Gel.>1)"
     },
     {
-      "name": "Bew. a. d. Schlachtfeld Rit (AF)",
-      "trait": "Bew. a. d. Schlachtfeld Rit (AF)",
+      "name": "Bewegung auf dem Schlachtfeld Rit (AF)",
+      "trait": "Bewegung auf dem Schlachtfeld Rit (AF)",
       "source": "",
       "desc": "Gesandte und Reittier erhalten Bonustalent Beweglichkeit"
     },
@@ -4837,8 +4837,8 @@
       "desc": "Bonustalent laut Liste St9+1/4St"
     },
     {
-      "name": "Bonustalent Verb. Gegenzauber",
-      "trait": "Bonustalent Verb. Gegenzauber",
+      "name": "Bonustalent Verbesserter Gegenzauber",
+      "trait": "Bonustalent Verbesserter Gegenzauber",
       "source": "",
       "desc": "Bonustalent Verbesserter Gegenzauber"
     },
@@ -5353,8 +5353,8 @@
       "desc": "Abyssisch, Gemeinsprache, Infernalisch, Telepathie 30 m"
     },
     {
-      "name": "Cac: Zauberä. Fähigkeiten",
-      "trait": "Cac: Zauberä. Fähigkeiten",
+      "name": "Cac: Zauberähnliche Fähigkeiten",
+      "trait": "Cac: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, Immer:Gut/Magie entdecken, ∞:Unsichtbar, 3/Tg: Schwä. Verwirr. SG12, 1/W:Heil. Gespräch ZS12 6 Fragen"
     },
@@ -5383,8 +5383,8 @@
       "desc": "kann sich an alles erinnern, was sie gesehen oder gehört hat"
     },
     {
-      "name": "Cas Schw. Schutzaura (ÜF)",
-      "trait": "Cas Schw. Schutzaura (ÜF)",
+      "name": "Cas Schwache Schutzaura (ÜF)",
+      "trait": "Cas Schwache Schutzaura (ÜF)",
       "source": "",
       "desc": "1Min konzentrieren: RK/RW+2>Böse, 1,5m incl. 1 Kreatur, 1Treffer/Fehlwurf: Aura vergeht"
     },
@@ -5395,8 +5395,8 @@
       "desc": "Celestisch, Drakonisch, Infernalisch, Wahre Sprache"
     },
     {
-      "name": "Cas Zauberä. Fähigkeiten",
-      "trait": "Cas Zauberä. Fähigkeiten",
+      "name": "Cas Zauberähnliche Fähigkeiten",
+      "trait": "Cas Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, Immer:Böses entdecken, Richtung wissen, 1/Tg:Beistand, Tageslicht,1/W,Heil. Gespräch 6 Fragen ZS12"
     },
@@ -5533,8 +5533,8 @@
       "desc": "Abyssisch, Telepathie (Berührung)"
     },
     {
-      "name": "Cyt: Zauberä. Fähigkeiten",
-      "trait": "Cyt: Zauberä. Fähigkeiten",
+      "name": "Cyt: Zauberähnliche Fähigkeiten",
+      "trait": "Cyt: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, Immer:Fliegen, Magie/Rechtsch. Entd., 1/Tg:Erde+Gestein erw., Holz krümmen,1/W,Heil. Gespräch 6 Fr. ZS12"
     },
@@ -5671,8 +5671,8 @@
       "desc": "9m Kegel/18m Linie : Pflanzen + Schlicke w6/St Feuer/Stichschaden (max 10W6)"
     },
     {
-      "name": "Der Wahre Pfad d. Gerechtigkeit (ZF)",
-      "trait": "Der Wahre Pfad d. Gerechtigkeit (ZF)",
+      "name": "Der Wahre Pfad der Gerechtigkeit (ZF)",
+      "trait": "Der Wahre Pfad der Gerechtigkeit (ZF)",
       "source": "",
       "desc": "WEMod+3x tägl: =SA Kreatur berühren: + ½ St Bonus auf einen Ang.-, Fertigkeits-, Attr.- oder Rettungswurf"
     },
@@ -5887,8 +5887,8 @@
       "desc": "in Wolke: Taub, 2w6 Elektrizitätsschaden/Rd =A ^St*Rd"
     },
     {
-      "name": "Dopp. Schw. Verletzung (AF) Trick Sch",
-      "trait": "Dopp. Schw. Verletzung (AF) Trick Sch",
+      "name": "Doppelte Schwache Verletzung (AF) Trick Sch",
+      "trait": "Doppelte Schwache Verletzung (AF) Trick Sch",
       "source": "",
       "desc": "Mit schwächende Verletzung 2 Mali wählen"
     },
@@ -5977,14 +5977,14 @@
       "desc": "für Blutlinie: HxmSt+DraSt, kein Hxm: drakonischen Blutlinien Kräfte"
     },
     {
-      "name": "Drachenblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Drachenblut, Mächt. (ÜF) KK Bbr",
+      "name": "Drachenblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Drachenblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: im KR Odemwaffe 2/Tag: 1w6/2St, Ref SG 10+½St+KOMod, f/K: 9m Kegel, E/S 18m Linie"
     },
     {
-      "name": "Drachenblut, Schw. (ÜF) KK Bbr",
-      "trait": "Drachenblut, Schw. (ÜF) KK Bbr",
+      "name": "Drachenblut, Schwächer (ÜF) KK Bbr",
+      "trait": "Drachenblut, Schwächer (ÜF) KK Bbr",
       "source": "",
       "desc": "Im KR: 2 Klauenangriffe, Primär mit vollem GAB, MG: 1w6 Hieb + STMod, Klein1w4"
     },
@@ -6409,14 +6409,14 @@
       "desc": "ab St6: 1/Tag im KR um 1 GröKat wachsen wie Personen vergrößern"
     },
     {
-      "name": "Dämonenblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Dämonenblut, Mächt. (ÜF) KK Bbr",
+      "name": "Dämonenblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Dämonenblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: Im KR: Resistenz Feuer 5, Kälte 5 und Säure 5"
     },
     {
-      "name": "Dämonenblut, Schw. (ÜF) KK Bbr",
-      "trait": "Dämonenblut, Schw. (ÜF) KK Bbr",
+      "name": "Dämonenblut, Schwächer (ÜF) KK Bbr",
+      "trait": "Dämonenblut, Schwächer (ÜF) KK Bbr",
       "source": "",
       "desc": "Im KR: 2 Klauenangriffe, Primär mit vollem GAB, MG: 1w6 Hieb + STMod, Klein1w4"
     },
@@ -6757,8 +6757,8 @@
       "desc": "Das Eidolon kann nicht alle Evolutionen wählen, gem. Liste V134"
     },
     {
-      "name": "Einh. d. Weltenschlangentotems KK Bbr",
-      "trait": "Einh. d. Weltenschlangentotems KK Bbr",
+      "name": "Einheit des Weltenschlangentotems KK Bbr",
+      "trait": "Einheit des Weltenschlangentotems KK Bbr",
       "source": "",
       "desc": "2x Bonus Schnelle Bewegung; nicht zu Boden gew. werden, 2x RK Bonus Best. krit. T. Extern. & Aberrationen"
     },
@@ -6841,8 +6841,8 @@
       "desc": "Bonustalent Einschüchternde Kraft (+STMod auf Einschüchtern)"
     },
     {
-      "name": "Einsichten d. Wanderm. (AF) Mön",
-      "trait": "Einsichten d. Wanderm. (AF) Mön",
+      "name": "Einsichten des Wandermönchs (AF) Mön",
+      "trait": "Einsichten des Wandermönchs (AF) Mön",
       "source": "",
       "desc": "als SA: 2KI Pkt: Lied des Mutes/Erfolgs (BarSt=MönSt), 1 Kreatur 9m, WE-Mod = Rd."
     },
@@ -7213,14 +7213,14 @@
       "desc": "ab St6: im KR Energieresistenz 10 gegen die für die Blutwutkraft Schwaches Elementarblut gewählt Energieart"
     },
     {
-      "name": "Elementarblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Elementarblut, Mächt. (ÜF) KK Bbr",
+      "name": "Elementarblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Elementarblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: im KR BR/Bonus: E: Fliegen gut 18m, F: Land+9m, K: Schwimmen18m, S: Graben 9m"
     },
     {
-      "name": "Elementarblut, Schw. (ÜF) KK Bbr",
-      "trait": "Elementarblut, Schw. (ÜF) KK Bbr",
+      "name": "Elementarblut, Schwächer (ÜF) KK Bbr",
+      "trait": "Elementarblut, Schwächer (ÜF) KK Bbr",
       "source": "",
       "desc": "Wähle : Elektrizität/Feuer/Kälte/Säure, im KR als SA NK aufladen: 1Rd + 1w6 Energie"
     },
@@ -8365,14 +8365,14 @@
       "desc": "ab St6: im KR bei Sturmangriffen Schwieriges Gelände ignorieren"
     },
     {
-      "name": "Feenblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Feenblut, Mächt. (ÜF) KK Bbr",
+      "name": "Feenblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Feenblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: im KR bei min. 3m Bewegung: Verschwimmen (Tarnung: Fehlschlagchance 20%)"
     },
     {
-      "name": "Feenblut, Schw. (ÜF) KK Bbr",
-      "trait": "Feenblut, Schw. (ÜF) KK Bbr",
+      "name": "Feenblut, Schwächer (ÜF) KK Bbr",
+      "trait": "Feenblut, Schwächer (ÜF) KK Bbr",
       "source": "",
       "desc": "im KR: bei Krit: Ziel Wil SG 10+½St+KOMod > 1Rd Verwirrt"
     },
@@ -8467,14 +8467,14 @@
       "desc": "Celestisch, Drakonisch, Infernalisch; Mit Tieren sprechen, Wahre Sprache"
     },
     {
-      "name": "Fel: Zauberä. Fähigkeiten 1",
-      "trait": "Fel: Zauberä. Fähigkeiten 1",
+      "name": "Fel: Zauberähnliche Fähigkeiten 1",
+      "trait": "Fel: Zauberähnliche Fähigkeiten 1",
       "source": "",
       "desc": "ZS6; Immer:Mit Tieren sprechen, Richtung wissen.; Beliebig: Stabilisieren, Tanzende Lichter, Zaubertrick"
     },
     {
-      "name": "Fel: Zauberä. Fähigkeiten 2",
-      "trait": "Fel: Zauberä. Fähigkeiten 2",
+      "name": "Fel: Zauberähnliche Fähigkeiten 2",
+      "trait": "Fel: Zauberähnliche Fähigkeiten 2",
       "source": "",
       "desc": "1/Tg:Dimensionstür Sich+5#; 1/W;Heil. Gespräch 6 Fr. ZS13"
     },
@@ -8989,8 +8989,8 @@
       "desc": "Entdeckung ohne Feuerschaden: Aufteilung Primärschadenstyp und W6 Punkte Feuerschaden (SG -2)"
     },
     {
-      "name": "Fi Fluch d. Dunkelheit (ÜF) H Sha",
-      "trait": "Fi Fluch d. Dunkelheit (ÜF) H Sha",
+      "name": "Fi Fluch der Dunkelheit (ÜF) H Sha",
+      "trait": "Fi Fluch der Dunkelheit (ÜF) H Sha",
       "source": "",
       "desc": "als SA Rad 9m: 1 Kreatur behandelt Lich wie 2 Stufen dunkler für 1Rd/St, RW keine Wirkung, 1/24h/Ziel"
     },
@@ -10063,8 +10063,8 @@
       "desc": "Zauber mit Trefferpunktschaden verursachen 2 zusätzliche Schadenspunkte"
     },
     {
-      "name": "Geheimnis d. Mariden Hxm",
-      "trait": "Geheimnis d. Mariden Hxm",
+      "name": "Geheimnis der Mariden Hxm",
+      "trait": "Geheimnis der Mariden Hxm",
       "source": "",
       "desc": "Energieschaden von Zaubern änderbar in Kälteschaden (verändert auch die Kat. des Zaubers)"
     },
@@ -11461,8 +11461,8 @@
       "desc": "Attw/TW/RW/FW wiederholen, besseres nehmen, nur1/24h/Ziel =A \"9m *Kreatur #1Rd/8St"
     },
     {
-      "name": "Glück d. Fremden Stz (AF) GFr",
-      "trait": "Glück d. Fremden Stz (AF) GFr",
+      "name": "Glück des Fremden Stz (AF) GFr",
+      "trait": "Glück des Fremden Stz (AF) GFr",
       "source": "",
       "desc": "FA: Fehlzündungen in Höhe des CHMod ignorieren"
     },
@@ -11587,8 +11587,8 @@
       "desc": "ab St6: im KR alle NK-Angriffe wie Geisterhafte Berührung (normalen Schaden bei Körperlosen Kreaturen)"
     },
     {
-      "name": "Grabesblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Grabesblut, Mächt. (ÜF) KK Bbr",
+      "name": "Grabesblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Grabesblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: im KR Kälteresistenz 10 und SR 10/- gegen Nichttödlichen Schaden"
     },
@@ -12433,20 +12433,20 @@
       "desc": "+ halber Erzfeindbonus auf SG jeder Kampfrauschkraft gegen einen Erzfeind"
     },
     {
-      "name": "Hauch d. Benommenheit (ZF)",
-      "trait": "Hauch d. Benommenheit (ZF)",
+      "name": "Hauch der Benommenheit (ZF)",
+      "trait": "Hauch der Benommenheit (ZF)",
       "source": "",
       "desc": "Ziel wird benommen >Berührungangriff *Kreatur ^3+INMod"
     },
     {
-      "name": "Hauch d. Todes widerst. (AF) Wie",
-      "trait": "Hauch d. Todes widerst. (AF) Wie",
+      "name": "Hauch des Todes widerstehen (AF) Wie",
+      "trait": "Hauch des Todes widerstehen (AF) Wie",
       "source": "",
       "desc": "RW+4 Todeseffekte,Lebenskraftentzug,nekrom. Effekte,Stabilisierungswürfe, wenn im Sterben"
     },
     {
-      "name": "Hauch d. Verzerrung Hxm (ZF)",
-      "trait": "Hauch d. Verzerrung Hxm (ZF)",
+      "name": "Hauch der Verzerrung Hxm (ZF)",
+      "trait": "Hauch der Verzerrung Hxm (ZF)",
       "source": "",
       "desc": "CHMod+3/Tag: kurze verwirr. Veränd. in Gestalt 1 Kreatur innerh. 9m; 1 Rd ben. (SG: 10+½St+CHMod)"
     },
@@ -12595,14 +12595,14 @@
       "desc": "+2 gegen Illusionen, SR 5/Kaltes Eisen; ZR 12"
     },
     {
-      "name": "Hei: Zauberä. Fähigkeiten 1",
-      "trait": "Hei: Zauberä. Fähigkeiten 1",
+      "name": "Hei: Zauberähnliche Fähigkeiten 1",
+      "trait": "Hei: Zauberähnliche Fähigkeiten 1",
       "source": "",
       "desc": "ZS7; Beliebig: Ausbessern, Tanzende Lichter, Zaubertrick"
     },
     {
-      "name": "Hei: Zauberä. Fähigkeiten 2",
-      "trait": "Hei: Zauberä. Fähigkeiten 2",
+      "name": "Hei: Zauberähnliche Fähigkeiten 2",
+      "trait": "Hei: Zauberähnliche Fähigkeiten 2",
       "source": "",
       "desc": "1/Tag: Bauchreden SG14, Dimensionstür nur sich, Schwächere Verwirrung SG14, Spiegelbilder"
     },
@@ -13243,14 +13243,14 @@
       "desc": "ab St6: im KR Resistenz Kälte 5 und Säure 5"
     },
     {
-      "name": "Himmelsblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Himmelsblut, Mächt. (ÜF) KK Bbr",
+      "name": "Himmelsblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Himmelsblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: im KR 1/Tag: einen AttW/FW/RW wiederholen"
     },
     {
-      "name": "Himmelsblut, Schw. (ÜF) KK Bbr",
-      "trait": "Himmelsblut, Schw. (ÜF) KK Bbr",
+      "name": "Himmelsblut, Schwächer (ÜF) KK Bbr",
+      "trait": "Himmelsblut, Schwächer (ÜF) KK Bbr",
       "source": "",
       "desc": "im KR alle NK Angriife > SR wie gute Gesinnung, gegen Externare +1w6"
     },
@@ -13309,8 +13309,8 @@
       "desc": "RK+4, RW+4 > Angriffe/Effekte Böser, nicht bannbarer Schut vor Bösem"
     },
     {
-      "name": "Himml. Verb. herbeizaubern (ZF)",
-      "trait": "Himml. Verb. herbeizaubern (ZF)",
+      "name": "Himmlisches Verbessertes herbeizaubern (ZF)",
+      "trait": "Himmlisches Verbessertes herbeizaubern (ZF)",
       "source": "",
       "desc": "CHMod /Tag: CeleSt Kreatur, Archonten od. Engel (wie Monster herbeiz. I); je 2 St 1 Zaubergrad mehr"
     },
@@ -13789,8 +13789,8 @@
       "desc": "In Baum hineintreten und zu anderen teleportiert werden (wie Hölzerner Weg)"
     },
     {
-      "name": "Hülle d. Geisterh. Berührung (ÜF)",
-      "trait": "Hülle d. Geisterh. Berührung (ÜF)",
+      "name": "Hülle der Geisterhaften Berührung (ÜF)",
+      "trait": "Hülle der Geisterhaften Berührung (ÜF)",
       "source": "",
       "desc": "Rüstung: wie Geisterhafte Berührung (keine Ausw. auf Kosten od. Effekte andere Eig.), St9 auch Schild"
     },
@@ -13825,8 +13825,8 @@
       "desc": "Ort (+2 Angr. Verteidung des Ortes)/Geheimnis (RW+2+konk. FW Preisgabe erzw.) tägl. wählen"
     },
     {
-      "name": "I. d. Menge untertauchen A Bar",
-      "trait": "I. d. Menge untertauchen A Bar",
+      "name": "In der Menge untertauchen A Bar",
+      "trait": "In der Menge untertauchen A Bar",
       "source": "",
       "desc": "Ziel in Menge: wie mächtige Unsichtbarkeit"
     },
@@ -13927,8 +13927,8 @@
       "desc": "Immun gegen Gifte"
     },
     {
-      "name": "Immunität des Schw. Blutes (ÜF)",
-      "trait": "Immunität des Schw. Blutes (ÜF)",
+      "name": "Immunität des Schwachen Blutes (ÜF)",
+      "trait": "Immunität des Schwachen Blutes (ÜF)",
       "source": "",
       "desc": "Immun > Kälte/NT-Schaden/Kritische Treffer, Hinterhältige Angriffe"
     },
@@ -13987,14 +13987,14 @@
       "desc": "Gemeinsprache, Infernalisch"
     },
     {
-      "name": "Imp: Zauberä. Fähigkeiten 1",
-      "trait": "Imp: Zauberä. Fähigkeiten 1",
+      "name": "Imp: Zauberähnliche Fähigkeiten 1",
+      "trait": "Imp: Zauberähnliche Fähigkeiten 1",
       "source": "",
       "desc": "Immer: Gutes entdecken, Magie entdecken; Beliebig: Unsichtbarkeit (nur sich)"
     },
     {
-      "name": "Imp: Zauberä. Fähigkeiten 2",
-      "trait": "Imp: Zauberä. Fähigkeiten 2",
+      "name": "Imp: Zauberähnliche Fähigkeiten 2",
+      "trait": "Imp: Zauberähnliche Fähigkeiten 2",
       "source": "",
       "desc": "1/Tag: Einflüsterung SG15, Vorahnung, 1/W: Heiliges Gespräch 6 Fr. ZS12"
     },
@@ -14209,8 +14209,8 @@
       "desc": "Inspirationsvorrat (IV)+½St+INMod, RK+2, ST/KO-2, 1IV als FA: FW/AttW+w6, Ende: ST/GE-2"
     },
     {
-      "name": "Insp. Mag. Gegenst. benutzen (AF) T Erm",
-      "trait": "Insp. Mag. Gegenst. benutzen (AF) T Erm",
+      "name": "Inspiriertes Magischen Gegenstand benutzen (AF) T Erm",
+      "trait": "Inspiriertes Magischen Gegenstand benutzen (AF) T Erm",
       "source": "",
       "desc": "Magischen Gegenstand benutzen auch ungeübt anwenden, geübt: Inspiration ohne IV"
     },
@@ -14929,8 +14929,8 @@
       "desc": "hat Kiemen und kann unbegrenzt unter Wasser atmen"
     },
     {
-      "name": "Kind d. Uralten Winters Hxm",
-      "trait": "Kind d. Uralten Winters Hxm",
+      "name": "Kind des Uralten Winters Hxm",
+      "trait": "Kind des Uralten Winters Hxm",
       "source": "",
       "desc": "Hxm ist Unterart Kälte, Immun Ermüdung/Erschöpfung/Hinterhältige Angriffe/Krit, Empfindlich>Feuer"
     },
@@ -15619,14 +15619,14 @@
       "desc": "Waffe/50 Munition: Verderben> Erde/Schlicke/Konstrukte Stein/Metall, #1Min, St9:1x, 17:2x, 20:3x"
     },
     {
-      "name": "Krit. Perfektion Kma (AF)",
-      "trait": "Krit. Perfektion Kma (AF)",
+      "name": "Kritische Perfektion Kma (AF)",
+      "trait": "Kritische Perfektion Kma (AF)",
       "source": "",
       "desc": "addiert IN-Mod auf Bestätigung Krit Treffer; KampfmagusSt statt GA für Krit Trefferfokus & abh. Tal."
     },
     {
-      "name": "Krit. Treffer Verwirrt (ÜF) Blu",
-      "trait": "Krit. Treffer Verwirrt (ÜF) Blu",
+      "name": "Kritischer Treffer Verwirrt (ÜF) Blu",
+      "trait": "Kritischer Treffer Verwirrt (ÜF) Blu",
       "source": "",
       "desc": "bei Krit WIL SG10+St+KOMod > 1Rd Verwirrt"
     },
@@ -16003,8 +16003,8 @@
       "desc": "1LK + 10Min Ansprache: Verb. Rad 9m Temp-TP LSt+CHMod (<¼: TPx2), RW>Furch +½LSt, 1/24h"
     },
     {
-      "name": "L1 Augenblick d. Zorns (AF) Str",
-      "trait": "L1 Augenblick d. Zorns (AF) Str",
+      "name": "L1 Augenblick des Zorns (AF) Str",
+      "trait": "L1 Augenblick des Zorns (AF) Str",
       "source": "",
       "desc": "Du/9m Verb. Krit: nächster Zug als FA Kampfrausch 1Rd/LSt, kein Erschöpfung, auch FK Konz, 1.Krit: Dauer neu"
     },
@@ -16069,8 +16069,8 @@
       "desc": "geb.Reittier/Tiergef. Reiten: alle Gegner in Zange, Kraftschub: RT heilt KSW+LSt, Sturmangriff+1LK: Schaden x2, Lanze:x3"
     },
     {
-      "name": "L1 Berüh.d. Wanderers (ÜF) Göt",
-      "trait": "L1 Berüh.d. Wanderers (ÜF) Göt",
+      "name": "L1 Berührung des Wanderers (ÜF) Göt",
+      "trait": "L1 Berührung des Wanderers (ÜF) Göt",
       "source": "",
       "desc": "1LK als SA: Waffe Rückkehr/Werfen, 1Rd/LSt, als VA werfen>mehrere Gegner, nur Desna"
     },
@@ -16243,8 +16243,8 @@
       "desc": "Auftritt ohne Aktion aufrechterhalten, Rd zählen aber weiter, nach beenden 1Rd/LSt weiter"
     },
     {
-      "name": "L1 Geistesb. d. Allwissen. (AF) Erz",
-      "trait": "L1 Geistesb. d. Allwissen. (AF) Erz",
+      "name": "L1 Geistesblitz des Allwissenden (AF) Erz",
+      "trait": "L1 Geistesblitz des Allwissenden (AF) Erz",
       "source": "",
       "desc": "Int-FW +LSt, für 1LK alsFA: 1 Frage wie Weissagung 70%,+ZS+LSt, nie Rätselhaft, nicht erneut bei Fehl"
     },
@@ -16465,104 +16465,104 @@
       "desc": "in Ringkampf: Du Ziel NK/FK: als AAKMB>KMV: Erfolg: Gegner Ziel des Treffers, Fehl: Gegner befreit, Du Ziel"
     },
     {
-      "name": "L1 Leg. Blutlinie (ÜF) Erz",
-      "trait": "L1 Leg. Blutlinie (ÜF) Erz",
+      "name": "L1 Legendäre Blutlinie (ÜF) Erz",
+      "trait": "L1 Legendäre Blutlinie (ÜF) Erz",
       "source": "",
       "desc": "Blutlinienfähigkeiten: eff. St+4, nur für Wirkung, Anzahl Hxm-Blutliniefähikkeiten/Tag +½LSt"
     },
     {
-      "name": "L1 Leg. Domäne (ÜF) Hie",
-      "trait": "L1 Leg. Domäne (ÜF) Hie",
+      "name": "L1 Legendäre Domäne (ÜF) Hie",
+      "trait": "L1 Legendäre Domäne (ÜF) Hie",
       "source": "",
       "desc": "Domänenfähigkeit Effekte +4St, 1/Tag 1LK als SA: alle Dom.Fähigkeiten zurück wie 8h Schlaf"
     },
     {
-      "name": "L1 Leg. Faszination (ÜF) Mar",
-      "trait": "L1 Leg. Faszination (ÜF) Mar",
+      "name": "L1 Legendäre Faszination (ÜF) Mar",
+      "trait": "L1 Legendäre Faszination (ÜF) Mar",
       "source": "",
       "desc": "Einflüsterung/Faszinieren: NLg RW-½LS, 1LK: auch Legendäre"
     },
     {
-      "name": "L1 Leg. Gefährte (ÜF) Hie",
-      "trait": "L1 Leg. Gefährte (ÜF) Hie",
+      "name": "L1 Legendärer Gefährte (ÜF) Hie",
+      "trait": "L1 Legendärer Gefährte (ÜF) Hie",
       "source": "",
       "desc": "1 TG/GF/Vert./Eid/Geb.Reitt.: Kraftschub 1/Tag/LSt, Bonuswürfel wie Du"
     },
     {
-      "name": "L1 Leg. Gefährte (ÜF) Wäc",
-      "trait": "L1 Leg. Gefährte (ÜF) Wäc",
+      "name": "L1 Legendärer Gefährte (ÜF) Wäc",
+      "trait": "L1 Legendärer Gefährte (ÜF) Wäc",
       "source": "",
       "desc": "1 TG/GF/Vert./Eid/Geb.Reitt.: Kraftschub 1/Tag/LSt, Bonuswürfel wie Du"
     },
     {
-      "name": "L1 Leg. Gegenstand (AF) All",
-      "trait": "L1 Leg. Gegenstand (AF) All",
+      "name": "L1 Legendärer Gegenstand (AF) All",
+      "trait": "L1 Legendärer Gegenstand (AF) All",
       "source": "",
       "desc": "1Lg. Gegenstand, 1Fähigkeit/LSt max 3, LSt3: Wahl: 6 FK, Artefakt, LSt6: 10FK, LSt10: mächtiges Artefakt"
     },
     {
-      "name": "L1 Leg. Gnade (ÜF) Wäc",
-      "trait": "L1 Leg. Gnade (ÜF) Wäc",
+      "name": "L1 Legendäre Gnade (ÜF) Wäc",
+      "trait": "L1 Legendäre Gnade (ÜF) Wäc",
       "source": "",
       "desc": "mit Gnade: alle ZS-Würfe auto ok > nLg Flüche/Gifte/Krankheiten, 1LK: ZS=Pal-St: Verzauberung brechen"
     },
     {
-      "name": "L1 Leg. Handwerkskunst (AF) All",
-      "trait": "L1 Leg. Handwerkskunst (AF) All",
+      "name": "L1 Legendäre Handwerkskunst (AF) All",
+      "trait": "L1 Legendäre Handwerkskunst (AF) All",
       "source": "",
       "desc": "Ggst. Herstellen Fortschritt bei jedem Wurf x2, Meisterarbeit ohne FW, mag,. Ggst: FW+LSt"
     },
     {
-      "name": "L1 Leg. Hexereien (ÜF) Erz",
-      "trait": "L1 Leg. Hexereien (ÜF) Erz",
+      "name": "L1 Legendäre Hexereien (ÜF) Erz",
+      "trait": "L1 Legendäre Hexereien (ÜF) Erz",
       "source": "",
       "desc": "Hexerei mit RW>NLg:1 Rd automatisch Effekt, zählt nicht zur Dauer, 2 x wählen: auch mächt. Hexerei"
     },
     {
-      "name": "L1 Leg. Kampfrausch (ÜF) Str",
-      "trait": "L1 Leg. Kampfrausch (ÜF) Str",
+      "name": "L1 Legendärer Kampfrausch (ÜF) Str",
+      "trait": "L1 Legendärer Kampfrausch (ÜF) Str",
       "source": "",
       "desc": "1LK als FA: ¼ max Kampfrausch Rd zurück, min 4Rd, Rest des Zuges: alle Angriffe im KR umgehen SR"
     },
     {
-      "name": "L1 Leg. Ki (ÜF) Str",
-      "trait": "L1 Leg. Ki (ÜF) Str",
+      "name": "L1 Legendäres Ki (ÜF) Str",
+      "trait": "L1 Legendäres Ki (ÜF) Str",
       "source": "",
       "desc": "1LK als FA: 2 Pkt KI zurück, Rest des Zuges: alle waffenlosen/Mönchswaffen Angriffe umgehen SR"
     },
     {
-      "name": "L1 Leg. Niederstrecken (ÜF) Str",
-      "trait": "L1 Leg. Niederstrecken (ÜF) Str",
+      "name": "L1 Legendäres Niederstrecken (ÜF) Str",
+      "trait": "L1 Legendäres Niederstrecken (ÜF) Str",
       "source": "",
       "desc": "1LK als FA: 1 Böses Niederstrecken zurück, Rest des Zuges: alle Angriffe gegen Böse umgehen SR"
     },
     {
-      "name": "L1 Leg. Schule (ÜF) Erz",
-      "trait": "L1 Leg. Schule (ÜF) Erz",
+      "name": "L1 Legendäre Schule (ÜF) Erz",
+      "trait": "L1 Legendäre Schule (ÜF) Erz",
       "source": "",
       "desc": "Effekte ark. Schule St+4, nur Effkete, Schulfähigkeiten mit Anzahl/Tag: Anzahl +½LSt"
     },
     {
-      "name": "L1 Leg. Selbstversorgung (ÜF) All",
-      "trait": "L1 Leg. Selbstversorgung (ÜF) All",
+      "name": "L1 Legendäre Selbstversorgung (ÜF) All",
+      "trait": "L1 Legendäre Selbstversorgung (ÜF) All",
       "source": "",
       "desc": "Nicht mehr Essen/Trinken/Atmen, Immun>inhalierte Gifte+Atemeffekte, Nahrungs/Getränkegifte wirken"
     },
     {
-      "name": "L1 Leg. Tiergestalt (ÜF) Hie",
-      "trait": "L1 Leg. Tiergestalt (ÜF) Hie",
+      "name": "L1 Legendäre Tiergestalt (ÜF) Hie",
+      "trait": "L1 Legendäre Tiergestalt (ÜF) Hie",
       "source": "",
       "desc": "wähle eine Deiner Tiergestalten: verbraucht keine tägliche Anwendung mehr, 1 Wahl/Tiergestalt"
     },
     {
-      "name": "L1 Leg. Waffentraining (AF) Str",
-      "trait": "L1 Leg. Waffentraining (AF) Str",
+      "name": "L1 Legendäres Waffentraining (AF) Str",
+      "trait": "L1 Legendäres Waffentraining (AF) Str",
       "source": "",
       "desc": "Wähle Waffengruppe des Kämpfer: geübt, geeignet für Talente, KMV>Entwaffnen/Zerschmettern mit Waffe: +LSt"
     },
     {
-      "name": "L1 Leg. Zauberkunst (AF) All",
-      "trait": "L1 Leg. Zauberkunst (AF) All",
+      "name": "L1 Legendäre Zauberkunst (AF) All",
+      "trait": "L1 Legendäre Zauberkunst (AF) All",
       "source": "",
       "desc": "1 Lg Zauber/LSt lernen, max 3x wählen, nLg Zauber muß bekannt sein, Zauber + 1LK = Lg Zauber"
     },
@@ -16609,38 +16609,38 @@
       "desc": "1LK+w4h: Lied.. Für Botschaft; verbreitet sich für 1Tag/LSt, Dipl/Einsch/Motiv-1>Dich, 6LSt: auch über Sprachbarrieren"
     },
     {
-      "name": "L1 Mag. Bresche (ÜF) Erz",
-      "trait": "L1 Mag. Bresche (ÜF) Erz",
+      "name": "L1 Magische Bresche (ÜF) Erz",
+      "trait": "L1 Magische Bresche (ÜF) Erz",
       "source": "",
       "desc": "Wurf ZS> ZR / zu sehen, ob Magie auf Ziel wirkt: besseres von 2 x würfeln"
     },
     {
-      "name": "L1 Mag. Geg. verbessern (AF) Erz",
-      "trait": "L1 Mag. Geg. verbessern (AF) Erz",
+      "name": "L1 Magischen Gegenstand verbessern (AF) Erz",
+      "trait": "L1 Magischen Gegenstand verbessern (AF) Erz",
       "source": "",
       "desc": "Schriftrollen, Zauberstäben, -stecken und -tränken: +½ZS, möglich: 1LK statt Ladung nutzen"
     },
     {
-      "name": "L1 Mag. Geg. verbessern (AF) Hie",
-      "trait": "L1 Mag. Geg. verbessern (AF) Hie",
+      "name": "L1 Magischen Gegenstand verbessern (AF) Hie",
+      "trait": "L1 Magischen Gegenstand verbessern (AF) Hie",
       "source": "",
       "desc": "Schriftrollen, Zauberstäben, -stecken und -tränken: +½ZS, möglich: 1LK statt Ladung nutzen"
     },
     {
-      "name": "L1 Mag. Gegenst. verb. (AF) Tri",
-      "trait": "L1 Mag. Gegenst. verb. (AF) Tri",
+      "name": "L1 Magischen Gegenstand verbessern (AF) Tri",
+      "trait": "L1 Magischen Gegenstand verbessern (AF) Tri",
       "source": "",
       "desc": "Schriftrollen, Zauberstäben, -stecken und -tränken: Effekt +½ZS, auch 1LK statt Ladung"
     },
     {
-      "name": "L1 Mag. Handw.Meister. (AF) Erz",
-      "trait": "L1 Mag. Handw.Meister. (AF) Erz",
+      "name": "L1 Magische Handwerksmeisterschaft (AF) Erz",
+      "trait": "L1 Magische Handwerksmeisterschaft (AF) Erz",
       "source": "",
       "desc": "Ohne Talent mag. Ggst. Herstellen, mit Talent: besserer von 2 FW, dopplet so schnell"
     },
     {
-      "name": "L1 Mag. Verständnis (ÜF) Göt",
-      "trait": "L1 Mag. Verständnis (ÜF) Göt",
+      "name": "L1 Magisches Verständnis (ÜF) Göt",
+      "trait": "L1 Magisches Verständnis (ÜF) Göt",
       "source": "",
       "desc": "metamag. Zauber: SG nach mod. ZG, 1Lk: metamag. Tal tauschen, nur Nethys"
     },
@@ -16681,20 +16681,20 @@
       "desc": "Zauber/Effekt. Betäubt/Gelähmt/Haltegriff/Ringkampf/Verstrickt/Wankend: 1/Rd als FA: RW SG RW Zauber"
     },
     {
-      "name": "L1 Meist. d. Formwandels (ÜF) Erz",
-      "trait": "L1 Meist. d. Formwandels (ÜF) Erz",
+      "name": "L1 Meister des Formwandels (ÜF) Erz",
+      "trait": "L1 Meister des Formwandels (ÜF) Erz",
       "source": "",
       "desc": "Gestaltwechselzauber: Ziel 1Min Dauer für als A Gestalt wechseln, selber mit SA, 1LK: wie Verwandlung"
     },
     {
-      "name": "L1 Meist. Mag. Fallen (AF) Tri",
-      "trait": "L1 Meist. Mag. Fallen (AF) Tri",
+      "name": "L1 Meisterhafte Magische Fallen (AF) Tri",
+      "trait": "L1 Meisterhafte Magische Fallen (AF) Tri",
       "source": "",
       "desc": "Entschärfen mag. Fallen mit Mag. Gegenst. benutzen, FW ab+5: Falle so lassen, Ziel einstellen, 1LK 30m bewegen"
     },
     {
-      "name": "L1 Meister d. Telekinese (ÜF) Erz",
-      "trait": "L1 Meister d. Telekinese (ÜF) Erz",
+      "name": "L1 Meister der Telekinese (ÜF) Erz",
+      "trait": "L1 Meister der Telekinese (ÜF) Erz",
       "source": "",
       "desc": "Magierhand + Öffnen/Schließen +5#/LSt, Schweben/Telekinese+ ähnliche: ZS+2"
     },
@@ -16729,14 +16729,14 @@
       "desc": "Fähigkeit eines anderen Legendenpfades, Voraussetzung muß erfüllt sein"
     },
     {
-      "name": "L1 Mäch. Kraftschub (ÜF) Mar",
-      "trait": "L1 Mäch. Kraftschub (ÜF) Mar",
+      "name": "L1 Mächtiger Kraftschub (ÜF) Mar",
+      "trait": "L1 Mächtiger Kraftschub (ÜF) Mar",
       "source": "",
       "desc": "Kraftschub: LSt +3 für Würfel, ab LSt 10: 2w8"
     },
     {
-      "name": "L1 Mäch. Vertrautenband (AF) Erz",
-      "trait": "L1 Mäch. Vertrautenband (AF) Erz",
+      "name": "L1 Mächtiges Vertrautenband (AF) Erz",
+      "trait": "L1 Mächtiges Vertrautenband (AF) Erz",
       "source": "",
       "desc": "Du/Vertrauter Schaden: gleichmäßig aufteilen wie anderen Schützen"
     },
@@ -17131,14 +17131,14 @@
       "desc": "1/Rd als FA+1LK: RW > 1 Effekt, auch wenn kein RW erlaubt (Verw/Bez/Zwang/Ill/Kontrolle)"
     },
     {
-      "name": "L1 Verb. Erzmagier-Ark. (AF) Erz",
-      "trait": "L1 Verb. Erzmagier-Ark. (AF) Erz",
+      "name": "L1 Verbesserter Erzmagier-Ark. (AF) Erz",
+      "trait": "L1 Verbesserter Erzmagier-Ark. (AF) Erz",
       "source": "",
       "desc": "als A/BA/SA Schul/Blutlinie/Hexerei/Auftritt/Arkamun: als FA LK-Fähigkeit selber Art, die min. gleich schnell ist"
     },
     {
-      "name": "L1 Verb. Mech. Aussch. (AF) Tri",
-      "trait": "L1 Verb. Mech. Aussch. (AF) Tri",
+      "name": "L1 Verbesserter Mechanismus Ausschalten (AF) Tri",
+      "trait": "L1 Verbesserter Mechanismus Ausschalten (AF) Tri",
       "source": "",
       "desc": "Mechanismus ausschalten>Falle / Schloss öffnen als BA ohne Gga zu provozieren"
     },
@@ -17293,8 +17293,8 @@
       "desc": "1LK als FA: WE-Wurf +20"
     },
     {
-      "name": "L1 Zusätz. Leg. Talent (AF) All",
-      "trait": "L1 Zusätz. Leg. Talent (AF) All",
+      "name": "L1 Zusätzliches Legendäres Talent (AF) All",
+      "trait": "L1 Zusätzliches Legendäres Talent (AF) All",
       "source": "",
       "desc": "Ein legendäres Talent zusätzlich, max 1/2LSt wählen"
     },
@@ -17383,14 +17383,14 @@
       "desc": "ein Attribut dauerhaft +2"
     },
     {
-      "name": "L3 Aura d. Beharrlichkeit (AF) Mar",
-      "trait": "L3 Aura d. Beharrlichkeit (AF) Mar",
+      "name": "L3 Aura der Beharrlichkeit (AF) Mar",
+      "trait": "L3 Aura der Beharrlichkeit (AF) Mar",
       "source": "",
       "desc": "Verb. Rad9m >0TP nicht bewusstlos, 1LK Rad9m Stabilisieren +1Rd/LSt Wankend ignorieren"
     },
     {
-      "name": "L3 Aura d. Pflanzenwachst. (ZF) Hie",
-      "trait": "L3 Aura d. Pflanzenwachst. (ZF) Hie",
+      "name": "L3 Aura des Pflanzenwachstums (ZF) Hie",
+      "trait": "L3 Aura des Pflanzenwachstums (ZF) Hie",
       "source": "",
       "desc": "1LK als A: Pflanzen Rad 18m: Pflanzenwachstum ZS=St, 1Min/LSt, als FA beenden, 1Verb./LSt rausnehmen"
     },
@@ -17605,8 +17605,8 @@
       "desc": "1 Komponente v/g/m/F ignorieren, Material 100GM/LSt, nochmal wählen: +1 weitere Komponente"
     },
     {
-      "name": "L3 Krit. Tref. abschütteln (AF) Wäc",
-      "trait": "L3 Krit. Tref. abschütteln (AF) Wäc",
+      "name": "L3 Kritischen Treffer abschütteln (AF) Wäc",
+      "trait": "L3 Kritischen Treffer abschütteln (AF) Wäc",
       "source": "",
       "desc": "1LK als AA: Krit > Dich/TG/Eidolon/Vertr./Geb. RT: nur normaler Treffer"
     },
@@ -17623,8 +17623,8 @@
       "desc": "Wunden heilen/verursachen/pos/neg fokussieren.: jede 1=2, max 4x wählen: 2=1+2=3, 3=1-3=4, 4=1-4=5"
     },
     {
-      "name": "L3 Leg. Zauberkraft (ZF) Erz",
-      "trait": "L3 Leg. Zauberkraft (ZF) Erz",
+      "name": "L3 Legendäre Zauberkraft (ZF) Erz",
+      "trait": "L3 Legendäre Zauberkraft (ZF) Erz",
       "source": "",
       "desc": "2/Tag legendären Zauber ohne LK wirken max 3x wählen, jeweils +2 Zauber"
     },
@@ -17647,8 +17647,8 @@
       "desc": "als VA: vor oder nach Angriffen um max BR Bewegen, prov. Gga"
     },
     {
-      "name": "L3 Mag. Flug (ÜF, ZF) Erz",
-      "trait": "L3 Mag. Flug (ÜF, ZF) Erz",
+      "name": "L3 Magischer Flug (ÜF, ZF) Erz",
+      "trait": "L3 Magischer Flug (ÜF, ZF) Erz",
       "source": "",
       "desc": "FW Fliegen +LSt, 1LK als A: 1Min/LSt Fliegen 18m, MS/S Last 12m"
     },
@@ -17659,14 +17659,14 @@
       "desc": "Kampfmanöver prov. keine Gga, 1LK als FA: KMB +Verbesserten/Mächtigen Talentversion"
     },
     {
-      "name": "L3 Max. Krit. Treff.sch. (AF) Str",
-      "trait": "L3 Max. Krit. Treff.sch. (AF) Str",
+      "name": "L3 Maximaler Kritischer Trefferschaden (AF) Str",
+      "trait": "L3 Maximaler Kritischer Trefferschaden (AF) Str",
       "source": "",
       "desc": "Krit: max. möglicher Waffenschaden (nicht Hinterhältig/Aufflammen usw)"
     },
     {
-      "name": "L3 Meister d. Schatten (AF) Mar",
-      "trait": "L3 Meister d. Schatten (AF) Mar",
+      "name": "L3 Meister der Schatten (AF) Mar",
+      "trait": "L3 Meister der Schatten (AF) Mar",
       "source": "",
       "desc": "Du/Verb. Ra9m: Heimlichkeit besseres von 2 Würfen, 1LK als SA: 1 Verb. Rad9m: 1min Heimlichkeit +LSt"
     },
@@ -17683,8 +17683,8 @@
       "desc": "1LK: Gruppe Rad6m*LSt sehen/hören: Wut/Gefühle besänftigen ZS=St, 2LK: Verwirrung/Massen-Einflüsterung"
     },
     {
-      "name": "L3 Mäch. Schleuderer (AF) Str",
-      "trait": "L3 Mäch. Schleuderer (AF) Str",
+      "name": "L3 Mächtiger Schleuderer (AF) Str",
+      "trait": "L3 Mächtiger Schleuderer (AF) Str",
       "source": "",
       "desc": "Felsen fangen/werfen, RW 3m*LSt3*wählbar: RW+10m/LSt + 1 GröKat"
     },
@@ -17929,8 +17929,8 @@
       "desc": "Dru/Kle: wähle 3 Zauber 1.Grad Hxm/Mag/Bar: wie auf Deiner Liste, nochmal wählen: +3 Zauber gl. Liste Grad+1"
     },
     {
-      "name": "L6 Auf d. Beinen halten (ÜF) Mar",
-      "trait": "L6 Auf d. Beinen halten (ÜF) Mar",
+      "name": "L6 Auf den Beinen halten (ÜF) Mar",
+      "trait": "L6 Auf den Beinen halten (ÜF) Mar",
       "source": "",
       "desc": "1LK als AA: Kreatur unter 0TP max 9m bleibt am leben bis Beginn Deiner nächsten Rd, 1LK als FA: +1Rd"
     },
@@ -17947,8 +17947,8 @@
       "desc": "HH-Schaden: 1LK als SA: +w6/Rd max1w6/LSt,"
     },
     {
-      "name": "L6 Diener d. Gleichgew. (ÜF) Hie",
-      "trait": "L6 Diener d. Gleichgew. (ÜF) Hie",
+      "name": "L6 Diener des Gleichgewichts (ÜF) Hie",
+      "trait": "L6 Diener des Gleichgewichts (ÜF) Hie",
       "source": "",
       "desc": "Krit>Dich: nur normaler Schaden, Effekte wirken normal, z.B. Flammeninferno"
     },
@@ -18031,14 +18031,14 @@
       "desc": "Zaubertrank/Elexier/Extrakt mit min 10Min Wirkung: Wirkung 1Tag, nur einer, LSt9: 2.Wahl: ab Wirkung 1Min"
     },
     {
-      "name": "L6 Leg. Entschlusskraft (ÜF) Wäc",
-      "trait": "L6 Leg. Entschlusskraft (ÜF) Wäc",
+      "name": "L6 Legendäre Entschlusskraft (ÜF) Wäc",
+      "trait": "L6 Legendäre Entschlusskraft (ÜF) Wäc",
       "source": "",
       "desc": "1LK ohne Aktion: RW wiederholen, auch mehrfach und bestes behalten"
     },
     {
-      "name": "L6 Leg. Sinneswahr. (ZF) All",
-      "trait": "L6 Leg. Sinneswahr. (ZF) All",
+      "name": "L6 Legendäre Sinneswahrnehmung (ZF) All",
+      "trait": "L6 Legendäre Sinneswahrnehmung (ZF) All",
       "source": "",
       "desc": "Blindgespür 9m, 2.Wahl: Wahrer Blick > Illusion/Täuschung (nur nLg), gebannt: als FA aktivieren"
     },
@@ -18061,8 +18061,8 @@
       "desc": "Veb. Rad9m: RW+2>Furcht/Gefühlseff., Stabil+4, Heilen+LSt, 1/Tag 1Lk als A: Arua aus 24h + Heilen w6/LSt Rad9m"
     },
     {
-      "name": "L6 Meister Krit. Treffer (AF) Str",
-      "trait": "L6 Meister Krit. Treffer (AF) Str",
+      "name": "L6 Meister Kritischer Treffer (AF) Str",
+      "trait": "L6 Meister Kritischer Treffer (AF) Str",
       "source": "",
       "desc": "Krit > NLg: automatisch Bestätigung + max Schaden, 2.Wahl: auch Lg"
     },
@@ -18091,8 +18091,8 @@
       "desc": "1LK + 1 Angriff max GAB: Schaden x2, umgeht Härte/SR, Krit: Multiplikator+1, auch mit Streiterschlag"
     },
     {
-      "name": "L6 Präzise Krit. Treffer (AF) Tri",
-      "trait": "L6 Präzise Krit. Treffer (AF) Tri",
+      "name": "L6 Präzise Kritischer Treffer (AF) Tri",
+      "trait": "L6 Präzise Kritischer Treffer (AF) Tri",
       "source": "",
       "desc": "Krit: Doppelte Menge Würfel für Präzisionsschaden (nicht mit Krit multipiziert)"
     },
@@ -18439,8 +18439,8 @@
       "desc": "Dämmersicht sowie Feuer- und Kälteresistenz 5, St9: keine Atmung nötig wie Anpassungshalskette"
     },
     {
-      "name": "Leg. Rettungswürfe L",
-      "trait": "Leg. Rettungswürfe L",
+      "name": "Legendäre Rettungswürfe L",
+      "trait": "Legendäre Rettungswürfe L",
       "source": "",
       "desc": "RW ok: keine Effekte aus nicht Legendären Quellen"
     },
@@ -18751,14 +18751,14 @@
       "desc": "nach Schwanzschlag Will SG12 oder 1Rd verwirrt"
     },
     {
-      "name": "Lim: Zauberä. Fähigkeiten 1",
-      "trait": "Lim: Zauberä. Fähigkeiten 1",
+      "name": "Lim: Zauberähnliche Fähigkeiten 1",
+      "trait": "Lim: Zauberähnliche Fähigkeiten 1",
       "source": "",
       "desc": "Immer – Rechtschaffenes entdecken, Beliebig: Geisterh. Geräusch SG12, Tanzende Lichter, Zaubertrick"
     },
     {
-      "name": "Lim: Zauberä. Fähigkeiten 2",
-      "trait": "Lim: Zauberä. Fähigkeiten 2",
+      "name": "Lim: Zauberähnliche Fähigkeiten 2",
+      "trait": "Lim: Zauberähnliche Fähigkeiten 2",
       "source": "",
       "desc": "3/T: Verhüllender Nebel, Verschwimmen nur selbst 1/W: Heiliges Gespräch 6 Fr. ZS12"
     },
@@ -18901,14 +18901,14 @@
       "desc": "1/Tag Tor, bei herbeirufen von Kreaturen Geschenke für 10.000 GM für Unterstützung"
     },
     {
-      "name": "Lockruf d. Natur widerst. (AF) Dru",
-      "trait": "Lockruf d. Natur widerst. (AF) Dru",
+      "name": "Lockruf der Natur widerstehen (AF) Dru",
+      "trait": "Lockruf der Natur widerstehen (AF) Dru",
       "source": "",
       "desc": "RW+4>Zauber von Feenwesen / Zauber die Pflanzen betreffen"
     },
     {
-      "name": "Lockruf d. Wassers widerst. (ÜF) Dru",
-      "trait": "Lockruf d. Wassers widerst. (ÜF) Dru",
+      "name": "Lockruf des Wassers widerstehen (ÜF) Dru",
+      "trait": "Lockruf des Wassers widerstehen (ÜF) Dru",
       "source": "",
       "desc": "+4 RW ZF und ÜF von Externaren & Feenwesen Aquatisch oder Wasser, und Zauber/Effekten der Kat. Wasser"
     },
@@ -19039,20 +19039,20 @@
       "desc": "Mit jeder Kreatur kommunizieren, die nicht geistlos ist"
     },
     {
-      "name": "Lyk: Zauberä. Fähigkeiten 1",
-      "trait": "Lyk: Zauberä. Fähigkeiten 1",
+      "name": "Lyk: Zauberähnliche Fähigkeiten 1",
+      "trait": "Lyk: Zauberähnliche Fähigkeiten 1",
       "source": "",
       "desc": "ZS3; Immer: Bewegungsfr., Böses+Magie entdecken; Beliebig; Bauchreden SG16, Benommenheit SG15"
     },
     {
-      "name": "Lyk: Zauberä. Fähigkeiten 2",
-      "trait": "Lyk: Zauberä. Fähigkeiten 2",
+      "name": "Lyk: Zauberähnliche Fähigkeiten 2",
+      "trait": "Lyk: Zauberähnliche Fähigkeiten 2",
       "source": "",
       "desc": "Instrument herbeiz., Tanz. Lichter; 1/T: LW heilen, Schwäch. Verwirrung SG16, Still.Trugbild SG16"
     },
     {
-      "name": "Lyk: Zauberä. Fähigkeiten 3",
-      "trait": "Lyk: Zauberä. Fähigkeiten 3",
+      "name": "Lyk: Zauberähnliche Fähigkeiten 3",
+      "trait": "Lyk: Zauberähnliche Fähigkeiten 3",
       "source": "",
       "desc": "1/W Heil. Gespräch 6Fr.ZS12)"
     },
@@ -19135,8 +19135,8 @@
       "desc": "Immunität: Feuer, SR 5/Magie, Schnelle Heilung 2 nur in kochendem Wasser oder Dampf"
     },
     {
-      "name": "M-Da: Zauberä. Fähigkeiten",
-      "trait": "M-Da: Zauberä. Fähigkeiten",
+      "name": "M-Da: Zauberähnliche Fähigkeiten",
+      "trait": "M-Da: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h Verschwimmen"
     },
@@ -19165,8 +19165,8 @@
       "desc": "Immunität: Kälte, SR 5/Magie, Schnelle Heilung 2 nur in nur in Bereichen, in denen es friert"
     },
     {
-      "name": "M-Ei: Zauberä. Fähigkeiten",
-      "trait": "M-Ei: Zauberä. Fähigkeiten",
+      "name": "M-Ei: Zauberähnliche Fähigkeiten",
+      "trait": "M-Ei: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h Mag Geschoss, 1/T Metall kühlen SG14"
     },
@@ -19195,8 +19195,8 @@
       "desc": "SR 5/Magie, Schnelle Heilung 2 nur unterirdisch"
     },
     {
-      "name": "M-Er: Zauberä. Fähigkeiten",
-      "trait": "M-Er: Zauberä. Fähigkeiten",
+      "name": "M-Er: Zauberähnliche Fähigkeiten",
+      "trait": "M-Er: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/T: Erde und Gestein erweichen"
     },
@@ -19225,8 +19225,8 @@
       "desc": "Immunität: Feuer, SR 5/Magie, Schnelle Heilung 2 nur in Kontakt mit Feuer"
     },
     {
-      "name": "M-Fe: Zauberä. Fähigkeiten",
-      "trait": "M-Fe: Zauberä. Fähigkeiten",
+      "name": "M-Fe: Zauberähnliche Fähigkeiten",
+      "trait": "M-Fe: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h: Seng. Strahl 1/Stunde, 1/T: Metall erhitzen SG14"
     },
@@ -19249,8 +19249,8 @@
       "desc": "SR 5/Magie, Schnelle Heilung 2 nur in stürmischen oder windigen Bereichen"
     },
     {
-      "name": "M-Lu: Zauberä. Fähigkeiten",
-      "trait": "M-Lu: Zauberä. Fähigkeiten",
+      "name": "M-Lu: Zauberähnliche Fähigkeiten",
+      "trait": "M-Lu: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h: Verschwimmen, 1/T: Windstoß"
     },
@@ -19285,8 +19285,8 @@
       "desc": "Immunität: Feuer, SR 5/Magie, Schnelle Heilung 2 nur in nur in Kontakt mit Lava oder Magma"
     },
     {
-      "name": "M-Ma: Zauberä. Fähigkeiten",
-      "trait": "M-Ma: Zauberä. Fähigkeiten",
+      "name": "M-Ma: Zauberähnliche Fähigkeiten",
+      "trait": "M-Ma: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/Tag: Feuerwerk"
     },
@@ -19315,8 +19315,8 @@
       "desc": "SR 5/Magie, Schnelle Heilung 2 nur in trockener Umgebung"
     },
     {
-      "name": "M-Sa: Zauberä. Fähigkeiten",
-      "trait": "M-Sa: Zauberä. Fähigkeiten",
+      "name": "M-Sa: Zauberähnliche Fähigkeiten",
+      "trait": "M-Sa: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h: Glitzerstaub"
     },
@@ -19339,8 +19339,8 @@
       "desc": "SR 5/Magie, Schnelle Heilung 2 nur in nur in nasser oder schlammiger Umgebung"
     },
     {
-      "name": "M-Sc: Zauberä. Fähigkeiten",
-      "trait": "M-Sc: Zauberä. Fähigkeiten",
+      "name": "M-Sc: Zauberähnliche Fähigkeiten",
+      "trait": "M-Sc: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h: Säurepfeil, 1/Tag: Stinkende Wolke SG15"
     },
@@ -19363,8 +19363,8 @@
       "desc": "SR 5/Magie, Schnelle Heilung 2 nur in staubiger Umgebung"
     },
     {
-      "name": "M-St: Zauberä. Fähigkeiten",
-      "trait": "M-St: Zauberä. Fähigkeiten",
+      "name": "M-St: Zauberähnliche Fähigkeiten",
+      "trait": "M-St: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h: Verschwimmen, 1/T: Windwall"
     },
@@ -19387,14 +19387,14 @@
       "desc": "SR 5/Magie, Schnelle Heilung 2 nur, wenn der Mephit sich unter Wasser befindet"
     },
     {
-      "name": "M-Wa: Zauberä. Fähigkeiten",
-      "trait": "M-Wa: Zauberä. Fähigkeiten",
+      "name": "M-Wa: Zauberähnliche Fähigkeiten",
+      "trait": "M-Wa: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS6, 1/T: Herbeizaubern (2. ZG, 1 Mephit gleicher Art 25%), 1/h: Säurepfeil, 1/T: Stinkende Wolke SG15"
     },
     {
-      "name": "M. d. eig. Schicksals (AF) Sam",
-      "trait": "M. d. eig. Schicksals (AF) Sam",
+      "name": "Meister des eigenen Schicksals (AF) Sam",
+      "trait": "Meister des eigenen Schicksals (AF) Sam",
       "source": "",
       "desc": "RW>Bezaub/Zwang 2x: besseres nehmen, 1/Tag: Wurf als 20 behandeln"
     },
@@ -19501,20 +19501,20 @@
       "desc": "+2 KO, zusätzlicher Malus -1 GE bei Malus auf RW und IN"
     },
     {
-      "name": "Mag. Begabung (AF) Bar",
-      "trait": "Mag. Begabung (AF) Bar",
+      "name": "Magische Begabung (AF) Bar",
+      "trait": "Magische Begabung (AF) Bar",
       "source": "",
       "desc": "+½St Mag.Gegenstand benutzen/Arkanes/Zauberkunde"
     },
     {
-      "name": "Mag. Gegenst. ausbeuten (ÜF) T Ark",
-      "trait": "Mag. Gegenst. ausbeuten (ÜF) T Ark",
+      "name": "Magischen Gegenstand ausbeuten (ÜF) T Ark",
+      "trait": "Magischen Gegenstand ausbeuten (ÜF) T Ark",
       "source": "",
       "desc": "BA: Tränke/Schriftr./Stecken/Stäbe: AR + ½ ZS, Rolle/Trank zerstört, Stab-5 Lad., Steck-1, CHMod/Tag (1x)"
     },
     {
-      "name": "Mag. Waffen/Rüst. herstellen Kle",
-      "trait": "Mag. Waffen/Rüst. herstellen Kle",
+      "name": "Magische Waffen/Rüstungen herstellen Kle",
+      "trait": "Magische Waffen/Rüstungen herstellen Kle",
       "source": "",
       "desc": "Bonustalent Magische Waffen und Rüstungen herstellen"
     },
@@ -19909,26 +19909,26 @@
       "desc": "+2 Volksbonus Sprachenkunde (Klassenfertigkeit), Bonussprache"
     },
     {
-      "name": "Meister d. Geländes (AF) Will",
-      "trait": "Meister d. Geländes (AF) Will",
+      "name": "Meister des Geländes (AF) Will",
+      "trait": "Meister des Geländes (AF) Will",
       "source": "",
       "desc": "1. St erstes bevorzugtes Gelände, weiteres auf 3. St und alle 5 weiteren"
     },
     {
-      "name": "Meister d. Geländes (AF) WS",
-      "trait": "Meister d. Geländes (AF) WS",
+      "name": "Meister des Geländes (AF) WS",
+      "trait": "Meister des Geländes (AF) WS",
       "source": "",
       "desc": "Hetzangriff auch gegen Kreaturen, die keine Erzfeinde sind od. 2 Erzfeinde als gehetzte Ziele durch SA"
     },
     {
-      "name": "Meister d. Gestaltwandelns (ÜF)",
-      "trait": "Meister d. Gestaltwandelns (ÜF)",
+      "name": "Meister des Gestaltwandelns (ÜF)",
+      "trait": "Meister des Gestaltwandelns (ÜF)",
       "source": "",
       "desc": "die wahre Gestalt von Bestien annehmen"
     },
     {
-      "name": "Meister d. Freien Stils eMön 7",
-      "trait": "Meister d. Freien Stils eMön 7",
+      "name": "Meister des Freien Stils eMön 7",
+      "trait": "Meister des Freien Stils eMön 7",
       "source": "",
       "desc": "kein Kampfkunsttal. + AA 1 KI Pkt: Geg. mit KKT: RK+4, TW+4, SW+St bis Ende n. Zug. 3 KI + Zor. Vert."
     },
@@ -20167,8 +20167,8 @@
       "desc": "Gelände wählen in dem er sich mit Heimlichkeit verstecken kann (selbst wenn er beobachtet wird)"
     },
     {
-      "name": "Meistersch. d. Kampfkünste (AF)",
-      "trait": "Meistersch. d. Kampfkünste (AF)",
+      "name": "Meisterschaft der Kampfkünste (AF)",
+      "trait": "Meisterschaft der Kampfkünste (AF)",
       "source": "",
       "desc": "Kämpferstufe=Mönchsstufe für Talente, die für Mönchswaffen od. waffenlosen Kampf relevant sind"
     },
@@ -20731,302 +20731,302 @@
       "desc": "Geschoß aus mag. Energie: 9m W8 Energie + 1/2St, St10 18m, ChMod+3/Tag (3x)"
     },
     {
-      "name": "Mäch. Alch. Simulakrum (ÜF) E Alc",
-      "trait": "Mäch. Alch. Simulakrum (ÜF) E Alc",
+      "name": "Mächtiges Alchemistisches Simulakrum (ÜF) E Alc",
+      "trait": "Mächtiges Alchemistisches Simulakrum (ÜF) E Alc",
       "source": "",
       "desc": "wie Zauber Simulakrum mit 100 GM/TW; 24h zum Wachsen"
     },
     {
-      "name": "Mäch. Ark. Blutwut (ZF) Blu",
-      "trait": "Mäch. Ark. Blutwut (ZF) Blu",
+      "name": "Mächtige Arkane Blutwut (ZF) Blu",
+      "trait": "Mächtige Arkane Blutwut (ZF) Blu",
       "source": "",
       "desc": "während Ark. Blutwut auch: Hast / Standort vortäuschen"
     },
     {
-      "name": "Mäch. Arkanes Bollwerk (ÜF) AE",
-      "trait": "Mäch. Arkanes Bollwerk (ÜF) AE",
+      "name": "Mächtiges Arkanes Bollwerk (ÜF) AE",
+      "trait": "Mächtiges Arkanes Bollwerk (ÜF) AE",
       "source": "",
       "desc": "bei Arkanes Bollwert: +1AV: Ref-Würfe+Schildbonus; +2AV Reflexbewegung; +4AV Verb. R."
     },
     {
-      "name": "Mäch. Aufgeladener Schuss (ÜF) Hsc",
-      "trait": "Mäch. Aufgeladener Schuss (ÜF) Hsc",
+      "name": "Mächtiger Aufgeladener Schuss (ÜF) Hsc",
+      "trait": "Mächtiger Aufgeladener Schuss (ÜF) Hsc",
       "source": "",
       "desc": "+2 Anwendungen Aufgeladener Schuss täglich"
     },
     {
-      "name": "Mäch. Ausweichrolle Mön (AF)",
-      "trait": "Mäch. Ausweichrolle Mön (AF)",
+      "name": "Mächtige Ausweichrolle Mön (AF)",
+      "trait": "Mächtige Ausweichrolle Mön (AF)",
       "source": "",
       "desc": "kein Schaden bei erfolgreicher Ausweichrolle, nur halber Schaden bei misslungenem Reflexwurf"
     },
     {
-      "name": "Mäch. Banner (AF) Rit",
-      "trait": "Mäch. Banner (AF) Rit",
+      "name": "Mächtiges Banner (AF) Rit",
+      "trait": "Mächtiges Banner (AF) Rit",
       "source": "",
       "desc": "Verbündete Rad 18m: RW+2>Zwang, Banner schwenken (A): + 1RW>Zauber ^1/Verbündeter/Tag"
     },
     {
-      "name": "Mäch. Banner (AF) Sam",
-      "trait": "Mäch. Banner (AF) Sam",
+      "name": "Mächtiges Banner (AF) Sam",
+      "trait": "Mächtiges Banner (AF) Sam",
       "source": "",
       "desc": "Banner sichtbar: Verbündetet 18m: RW+2>Bezaub/Zwang, ala A Banner schwenken: +1RW>Zauber"
     },
     {
-      "name": "Mäch. Beschütztes Leben (AF) KK Bbr",
-      "trait": "Mäch. Beschütztes Leben (AF) KK Bbr",
+      "name": "Mächtiges Beschütztes Leben (AF) KK Bbr",
+      "trait": "Mächtiges Beschütztes Leben (AF) KK Bbr",
       "source": "",
       "desc": "Bei Einsatz von KRK Beschütztes Leben zus. 1 Schadenspunkt/St. in nichttödl. Schaden umgewandelt"
     },
     {
-      "name": "Mäch. Bestientotem (ÜP) KK Bbr",
-      "trait": "Mäch. Bestientotem (ÜP) KK Bbr",
+      "name": "Mächtiges Bestientotem (ÜP) KK Bbr",
+      "trait": "Mächtiges Bestientotem (ÜP) KK Bbr",
       "source": "",
       "desc": "Anspringen: nach SturmAG Voller AG, Klauen 1w8 (Krit x3) #Kampfrausch"
     },
     {
-      "name": "Mäch. Bodenbrecher (AF) KK Bbr",
-      "trait": "Mäch. Bodenbrecher (AF) KK Bbr",
+      "name": "Mächtiger Bodenbrecher (AF) KK Bbr",
+      "trait": "Mächtiger Bodenbrecher (AF) KK Bbr",
       "source": "",
       "desc": "Effektradius der KRK Bodenbrecher +1,5m (kumulativ, 3x wählbar)"
     },
     {
-      "name": "Mäch. Chamäleonmutagen E Sab",
-      "trait": "Mäch. Chamäleonmutagen E Sab",
+      "name": "Mächtiges Chamäleonmutagen E Sab",
+      "trait": "Mächtiges Chamäleonmutagen E Sab",
       "source": "",
       "desc": "Fähigkeit Meisterliches Verstecken (WAL) in jeder Art Gelände"
     },
     {
-      "name": "Mäch. Chaostotem (ÜF) KK Bbr",
-      "trait": "Mäch. Chaostotem (ÜF) KK Bbr",
+      "name": "Mächtiges Chaostotem (ÜF) KK Bbr",
+      "trait": "Mächtiges Chaostotem (ÜF) KK Bbr",
       "source": "",
       "desc": "SR/Rechtschaffen ½St, Waffe=Chaotisch #Kampfrausch"
     },
     {
-      "name": "Mäch. Element. Zorn (ÜF) KK Bbr",
-      "trait": "Mäch. Element. Zorn (ÜF) KK Bbr",
+      "name": "Mächtiger Elementarer Zorn (ÜF) KK Bbr",
+      "trait": "Mächtiger Elementarer Zorn (ÜF) KK Bbr",
       "source": "",
       "desc": "NK Krit +1w10 Energieschaden, '(Krit*3=2w10, *4=3w10) #Kampfrausch"
     },
     {
-      "name": "Mäch. Emp. Verbindung (ÜF) Jäg",
-      "trait": "Mäch. Emp. Verbindung (ÜF) Jäg",
+      "name": "Mächtige Empathische Verbindung (ÜF) Jäg",
+      "trait": "Mächtige Empathische Verbindung (ÜF) Jäg",
       "source": "",
       "desc": "Emphatische Verbindung auf 15km, bis 1,5km telepathisch kommunizieren"
     },
     {
-      "name": "Mäch. Energieresist. (AF) KK Bbr",
-      "trait": "Mäch. Energieresist. (AF) KK Bbr",
+      "name": "Mächtige Energieresistenz (AF) KK Bbr",
+      "trait": "Mächtige Energieresistenz (AF) KK Bbr",
       "source": "",
       "desc": "Schaden mit Energieresistenz halbieren, dann Energieresistenz #Kampfrausch"
     },
     {
-      "name": "Mäch. Entschlossenheit (AF)",
-      "trait": "Mäch. Entschlossenheit (AF)",
+      "name": "Mächtige Entschlossenheit (AF)",
+      "trait": "Mächtige Entschlossenheit (AF)",
       "source": "",
       "desc": "Entschlossenheit nutzen um Krit als normalen Treffer zu behandeln"
     },
     {
-      "name": "Mäch. Epische Geschichten (ÜF)",
-      "trait": "Mäch. Epische Geschichten (ÜF)",
+      "name": "Mächtige Epische Geschichten (ÜF)",
+      "trait": "Mächtige Epische Geschichten (ÜF)",
       "source": "",
       "desc": "beim laut vorlesen tritt Bardenauftritt in Kraft"
     },
     {
-      "name": "Mäch. Faustkämpfer (AF) KK Bbr",
-      "trait": "Mäch. Faustkämpfer (AF) KK Bbr",
+      "name": "Mächtiger Faustkämpfer (AF) KK Bbr",
+      "trait": "Mächtiger Faustkämpfer (AF) KK Bbr",
       "source": "",
       "desc": "im KR: Talent Kampf mit zwei Waffen #Kampfrausch"
     },
     {
-      "name": "Mäch. Gegenzauber (ÜF) MT Ark",
-      "trait": "Mäch. Gegenzauber (ÜF) MT Ark",
+      "name": "Mächtiger Gegenzauber (ÜF) MT Ark",
+      "trait": "Mächtiger Gegenzauber (ÜF) MT Ark",
       "source": "",
       "desc": "Gegenzauber: mit Zauber gleichen Grades"
     },
     {
-      "name": "Mäch. Geistertotem (ÜF) KK Bbr",
-      "trait": "Mäch. Geistertotem (ÜF) KK Bbr",
+      "name": "Mächtiges Geistertotem (ÜF) KK Bbr",
+      "trait": "Mächtiges Geistertotem (ÜF) KK Bbr",
       "source": "",
       "desc": "Gegner Nebenfeld bei Zuganfang 1w8, Geisterfetzen: Reichweite 4,5m - 1w6 #Kampfrausch"
     },
     {
-      "name": "Mäch. Gesch. Verschmelzung (BF)",
-      "trait": "Mäch. Gesch. Verschmelzung (BF)",
+      "name": "Mächtige Geschützte Verschmelzung (BF)",
+      "trait": "Mächtige Geschützte Verschmelzung (BF)",
       "source": "",
       "desc": "Während Verschmelzung+4 auf RK und Situationsbonus+4 auf RW"
     },
     {
-      "name": "Mäch. Heftiger Angriff (AF) Käm",
-      "trait": "Mäch. Heftiger Angriff (AF) Käm",
+      "name": "Mächtiger Heftiger Angriff (AF) Käm",
+      "trait": "Mächtiger Heftiger Angriff (AF) Käm",
       "source": "",
       "desc": "Schadensbonus durch Heftiger Angriff bei einer Zweihandwaffe verdoppelt (+100% statt +50%)"
     },
     {
-      "name": "Mäch. Heilen (ÜF) MH Hex",
-      "trait": "Mäch. Heilen (ÜF) MH Hex",
+      "name": "Mächtiges Heilen (ÜF) MH Hex",
+      "trait": "Mächtiges Heilen (ÜF) MH Hex",
       "source": "",
       "desc": "schwere Wunden heilen, St15: kritische Wunden heilen =A ^1/Tag/Ziel"
     },
     {
-      "name": "Mäch. Insp. Kognatogen (ÜF) E Alc",
-      "trait": "Mäch. Insp. Kognatogen (ÜF) E Alc",
+      "name": "Mächtiges Inspiriertes Kognatogen (ÜF) E Alc",
+      "trait": "Mächtiges Inspiriertes Kognatogen (ÜF) E Alc",
       "source": "",
       "desc": "RK/REF+2, ST/KO-4, Ermittlertricks Beeind. Inspiration, Gedächtniskünstler und Umfassende Inspiration"
     },
     {
-      "name": "Mäch. Kognatogen (ÜF) E Alc",
-      "trait": "Mäch. Kognatogen (ÜF) E Alc",
+      "name": "Mächtiges Kognatogen (ÜF) E Alc",
+      "trait": "Mächtiges Kognatogen (ÜF) E Alc",
       "source": "",
       "desc": "nat.Rüst+4., +6/+4 IN/WE/CH); -2 auf entspr. körperl. Attr., Ende: 2 Pkt. Attr.schaden körp. Attr."
     },
     {
-      "name": "Mäch. Kämpf. Inspiration (AF) T Erm",
-      "trait": "Mäch. Kämpf. Inspiration (AF) T Erm",
+      "name": "Mächtige Kämpferische Inspiration (AF) T Erm",
+      "trait": "Mächtige Kämpferische Inspiration (AF) T Erm",
       "source": "",
       "desc": "Waffenart wählen: min. 1 IV: Inspiration für TW ohne IV nutzen"
     },
     {
-      "name": "Mäch. Mehrfachtrick (AF) Trick Sch",
-      "trait": "Mäch. Mehrfachtrick (AF) Trick Sch",
+      "name": "Mächtiger Mehrfachtrick (AF) Trick Sch",
+      "trait": "Mächtiger Mehrfachtrick (AF) Trick Sch",
       "source": "",
       "desc": "+ 1/Tag Schurkentrick"
     },
     {
-      "name": "Mäch. Metam. Kenntnisse MT Ark",
-      "trait": "Mäch. Metam. Kenntnisse MT Ark",
+      "name": "Mächtige Metamagische Kenntnisse MT Ark",
+      "trait": "Mächtige Metamagische Kenntnisse MT Ark",
       "source": "",
       "desc": "ein Metam. Talent als Bonustalent, Morgens für 1AR anderes Talent wählen"
     },
     {
-      "name": "Mäch. Mutagen (AF) VM Mut",
-      "trait": "Mäch. Mutagen (AF) VM Mut",
+      "name": "Mächtiges Mutagen (AF) VM Mut",
+      "trait": "Mächtiges Mutagen (AF) VM Mut",
       "source": "",
       "desc": "RK+4, 1. Att+6/-2, 2. Att+4/-2 (ST/IN, GE/WE, KO/CH) (ab St.12)"
     },
     {
-      "name": "Mäch. Mutagen E Alc",
-      "trait": "Mäch. Mutagen E Alc",
+      "name": "Mächtiges Mutagen E Alc",
+      "trait": "Mächtiges Mutagen E Alc",
       "source": "",
       "desc": "RK+4, 1. Att+6/-2, 2. Att+4/-2 (ST/IN, GE/WE, KO/CH) (ab St.12)"
     },
     {
-      "name": "Mäch. Nat. Wildheit (AF) Käm",
-      "trait": "Mäch. Nat. Wildheit (AF) Käm",
+      "name": "Mächtige Natürliche Wildheit (AF) Käm",
+      "trait": "Mächtige Natürliche Wildheit (AF) Käm",
       "source": "",
       "desc": "bei Sturmangriff: Malus ¼ St, auch durch von verb. besetzte Felder und schwieriges Gelände"
     },
     {
-      "name": "Mäch. Paktevolution (ÜF) Pak",
-      "trait": "Mäch. Paktevolution (ÜF) Pak",
+      "name": "Mächtige Paktevolution (ÜF) Pak",
+      "trait": "Mächtige Paktevolution (ÜF) Pak",
       "source": "",
       "desc": "6 Evolutionspunkte verwenden, um sich selbst Evolutionsfähigkeiten zu geben, Eidolon -1Pkt/2Pkt"
     },
     {
-      "name": "Mäch. Scheusaltotem (ÜF) KK Bbr",
-      "trait": "Mäch. Scheusaltotem (ÜF) KK Bbr",
+      "name": "Mächtiges Scheusaltotem (ÜF) KK Bbr",
+      "trait": "Mächtiges Scheusaltotem (ÜF) KK Bbr",
       "source": "",
       "desc": "Aura: Angrenzende Gute: Erschüttert+2w6, Neutale: Erschüttert #Kampfrausch"
     },
     {
-      "name": "Mäch. Schleudern (AF) KK Bbr",
-      "trait": "Mäch. Schleudern (AF) KK Bbr",
+      "name": "Mächtiges Schleudern (AF) KK Bbr",
+      "trait": "Mächtiges Schleudern (AF) KK Bbr",
       "source": "",
       "desc": "Schleudern +9m oder +2 GröKat #Kampfrausch"
     },
     {
-      "name": "Mäch. Schwinger (AF) OD",
-      "trait": "Mäch. Schwinger (AF) OD",
+      "name": "Mächtiger Schwinger (AF) OD",
+      "trait": "Mächtiger Schwinger (AF) OD",
       "source": "",
       "desc": "Waffenlose Nichttödliche Angriffe: keine Gelegenheitsangriffe, Schaden wie Mönch"
     },
     {
-      "name": "Mäch. Sturmangriff (AF) Rit",
-      "trait": "Mäch. Sturmangriff (AF) Rit",
+      "name": "Mächtiger Sturmangriff (AF) Rit",
+      "trait": "Mächtiger Sturmangriff (AF) Rit",
       "source": "",
       "desc": "Bedrohung Krit x2, Erfolgreicher StrumAG: Ansturm, Entwaffnen,Zerschmettern,Zu-Fall-bringen"
     },
     {
-      "name": "Mäch. Tanz d. Entrinnens (ÜF)",
-      "trait": "Mäch. Tanz d. Entrinnens (ÜF)",
+      "name": "Mächtiger Tanz des Entrinnens (ÜF)",
+      "trait": "Mächtiger Tanz des Entrinnens (ÜF)",
       "source": "",
       "desc": "+4 Verständnisbonus auf Rüstungsklasse (leichte od. keine Rüstung)"
     },
     {
-      "name": "Mäch. Telep. kontern Klu",
-      "trait": "Mäch. Telep. kontern Klu",
+      "name": "Mächtiges Telepathisch kontern Klu",
+      "trait": "Mächtiges Telepathisch kontern Klu",
       "source": "",
       "desc": "Als AA kontern ohne vorbereitung, 2xPLa.Fokus.: Ziel zurückrufen + Schaden Pla.Fokus."
     },
     {
-      "name": "Mäch. Untote erschaffen Alc",
-      "trait": "Mäch. Untote erschaffen Alc",
+      "name": "Mächtiges Untote erschaffen Alc",
+      "trait": "Mächtiges Untote erschaffen Alc",
       "source": "",
       "desc": "Mächtigere Untote erschaffen als Extrakt des 5. Grades in's Formelbuch"
     },
     {
-      "name": "Mäch. Verb. schützen (BF) Bms",
-      "trait": "Mäch. Verb. schützen (BF) Bms",
+      "name": "Mächtiges Verbessertes schützen (BF) Bms",
+      "trait": "Mächtiges Verbessertes schützen (BF) Bms",
       "source": "",
       "desc": "Brutmeister/Verbündeter kann Boni nur 1x erhalten, egal wie viele Eidola sich in Reichweite"
     },
     {
-      "name": "Mäch. Verb. schützen (ÜF) Pak",
-      "trait": "Mäch. Verb. schützen (ÜF) Pak",
+      "name": "Mächtiges Verbessertes schützen (ÜF) Pak",
+      "trait": "Mächtiges Verbessertes schützen (ÜF) Pak",
       "source": "",
       "desc": "mit Eidolon: 1 Verbündeter RK/RW+2, oder Paktmagier RK/RW+4"
     },
     {
-      "name": "Mäch. Verderben (ÜF) Inq",
-      "trait": "Mäch. Verderben (ÜF) Inq",
+      "name": "Mächtiges Verderben (ÜF) Inq",
+      "trait": "Mächtiges Verderben (ÜF) Inq",
       "source": "",
       "desc": "Zusatzschaden Verderben: 4w6"
     },
     {
-      "name": "Mäch. wildes Reittier (AF) KK Bbr",
-      "trait": "Mäch. wildes Reittier (AF) KK Bbr",
+      "name": "Mächtiges wildes Reittier (AF) KK Bbr",
+      "trait": "Mächtiges wildes Reittier (AF) KK Bbr",
       "source": "",
       "desc": "Reittier erhält Kampfrauschvorteile +Kräfte ohne Aktivierung #Kampfrausch"
     },
     {
-      "name": "Mäch. wildes Trampeln (AF) KK Bbr",
-      "trait": "Mäch. wildes Trampeln (AF) KK Bbr",
+      "name": "Mächtiges wildes Trampeln (AF) KK Bbr",
+      "trait": "Mächtiges wildes Trampeln (AF) KK Bbr",
       "source": "",
       "desc": "Reittier: Trampelangriff bis gleiche Größe + Überrennen #Kampfrausch"
     },
     {
-      "name": "Mäch. Wildwandlermutagen Alc",
-      "trait": "Mäch. Wildwandlermutagen Alc",
+      "name": "Mächtiges Wildwandlermutagen Alc",
+      "trait": "Mächtiges Wildwandlermutagen Alc",
       "source": "",
       "desc": "erhält drei der Fähigkeiten und Wahlmöglichkeiten von Bestiengestalt II seiner Wahl"
     },
     {
-      "name": "Mäch. Wissen Rit (AF)",
-      "trait": "Mäch. Wissen Rit (AF)",
+      "name": "Mächtiges Wissen Rit (AF)",
+      "trait": "Mächtiges Wissen Rit (AF)",
       "source": "",
       "desc": "Zauber v. Schriftr. wirk.(ZS=St4); Sprachk>lesen., Att+1 ZG (Ark: IN /Rel: WE), St10:+2, 15+3, 20+4"
     },
     {
-      "name": "Mäch. Zaubereffekt stören (ÜF) MT Ark",
-      "trait": "Mäch. Zaubereffekt stören (ÜF) MT Ark",
+      "name": "Mächtiges Zaubereffekt stören (ÜF) MT Ark",
+      "trait": "Mächtiges Zaubereffekt stören (ÜF) MT Ark",
       "source": "",
       "desc": "für 1AR: Zaubereffekt/mag. Gegenstand unterbrechen, gez. Magie bannen RW BÜ, Bannwurf +CHMod"
     },
     {
-      "name": "Mäch. Zauberresistenz (ÜF) MT Ark",
-      "trait": "Mäch. Zauberresistenz (ÜF) MT Ark",
+      "name": "Mächtige Zauberresistenz (ÜF) MT Ark",
+      "trait": "Mächtige Zauberresistenz (ÜF) MT Ark",
       "source": "",
       "desc": "Zauberresistenz in Höhe Arkanistenstufe +11"
     },
     {
-      "name": "Mäch.Geländemeistersch. (AF) Tr Sch",
-      "trait": "Mäch.Geländemeistersch. (AF) Tr Sch",
+      "name": "Mächtige Geländemeisterschaft (AF) Tr Sch",
+      "trait": "Mächtige Geländemeisterschaft (AF) Tr Sch",
       "source": "",
       "desc": "Boni +4, ST13, +6, St18 +8"
     },
     {
-      "name": "Mächt. Kampfzauberei (AF)",
-      "trait": "Mächt. Kampfzauberei (AF)",
+      "name": "Mächtige Kampfzauberei (AF)",
+      "trait": "Mächtige Kampfzauberei (AF)",
       "source": "",
       "desc": "TW- X= Konz+X x2"
     },
@@ -21037,14 +21037,14 @@
       "desc": "Bewegung x2, dann NK-Angriff TW+2, RK-2, plus Extraschaden"
     },
     {
-      "name": "Mächt. Zaubert. Schild (ÜF) Ski",
-      "trait": "Mächt. Zaubert. Schild (ÜF) Ski",
+      "name": "Mächtiger Zaubertragender Schild (ÜF) Ski",
+      "trait": "Mächtiger Zaubertragender Schild (ÜF) Ski",
       "source": "",
       "desc": "Mit AA gespeicherten Schildzauber aktivieren, nachdem Skirnir getroffen wurde"
     },
     {
-      "name": "Mächt. Zugang-Zaubern (ÜF)",
-      "trait": "Mächt. Zugang-Zaubern (ÜF)",
+      "name": "Mächtiges Zugang-Zaubern (ÜF)",
+      "trait": "Mächtiges Zugang-Zaubern (ÜF)",
       "source": "",
       "desc": "sofort 2 Zauber er Grade 0-6 von der Magierliste als Kampfmaguszauber, Gesten werden ignoriert"
     },
@@ -21607,8 +21607,8 @@
       "desc": "SR 5/Kaltes Eisen; ZR 13"
     },
     {
-      "name": "Nug: Zauberä. Fähigkeiten",
-      "trait": "Nug: Zauberä. Fähigkeiten",
+      "name": "Nug: Zauberähnliche Fähigkeiten",
+      "trait": "Nug: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS 3, Beliebig: Zaubertrick, 1/h: Metall erhitzen, Schlinge, Schockgriff"
     },
@@ -21811,8 +21811,8 @@
       "desc": "Gedankenbild: kommunizieren auf eine wortlose und nahezu unverständliche Weise mit Bildern"
     },
     {
-      "name": "Par: Zauberä. Fähigkeiten",
-      "trait": "Par: Zauberä. Fähigkeiten",
+      "name": "Par: Zauberähnliche Fähigkeiten",
+      "trait": "Par: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS 3, Beliebig: Heiligtum SG12, 3/T: Gefühle besänftigen SG13, 1/W Heil. Gespräch 6Fr., ZS12"
     },
@@ -22399,8 +22399,8 @@
       "desc": "Abyssisch, Celestisch; Telepathie (Berührung)"
     },
     {
-      "name": "Qua: Zauberä. Fähigkeiten",
-      "trait": "Qua: Zauberä. Fähigkeiten",
+      "name": "Qua: Zauberähnliche Fähigkeiten",
+      "trait": "Qua: Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "Beliebig: Gutes/Magie entdeck., Unsichtb. nur sich, 1/T: Furcht auslösen Rad9m SG11, 1/W: Heil. Gespräch 6Fr"
     },
@@ -22891,8 +22891,8 @@
       "desc": "Humaoide (Reptilisch)"
     },
     {
-      "name": "Requiem d. Gef. Priesterkönigs",
-      "trait": "Requiem d. Gef. Priesterkönigs",
+      "name": "Requiem des Gefallenen Priesterkönigs",
+      "trait": "Requiem des Gefallenen Priesterkönigs",
       "source": "",
       "desc": "# 10 Min.: nichtmagische Aktion als SA die normalerweise A od. BA ist; +1 Rd Auftritt pro Verb."
     },
@@ -22921,8 +22921,8 @@
       "desc": "RW+2 >Energie fokussieren & alles was mit pos./neg. Energie zu tun hat, ST7. +4 für zus. 2 Epkt"
     },
     {
-      "name": "Resistenz des Schw. Blutes (ÜF)",
-      "trait": "Resistenz des Schw. Blutes (ÜF)",
+      "name": "Resistenz des Schwachen Blutes (ÜF)",
+      "trait": "Resistenz des Schwachen Blutes (ÜF)",
       "source": "",
       "desc": "Resistenz: Kälte 5, RW+2>Att-Entzug/Gift/Krankheit/Lähmung/Lebenskraftentzug/Todeseffekte, St16: 10/+4"
     },
@@ -23083,8 +23083,8 @@
       "desc": "In Zange nehmen: Nachbarfeld bestimmen = FA; Normal in Zange+WEBon ^WEMod+3/Tag (3x)"
     },
     {
-      "name": "Ruf d. Wildnis widerst. (AF) Mon",
-      "trait": "Ruf d. Wildnis widerst. (AF) Mon",
+      "name": "Ruf der Wildnis widerstehen (AF) Mon",
+      "trait": "Ruf der Wildnis widerstehen (AF) Mon",
       "source": "",
       "desc": "RW+4>Benomm./Schwachs./Verwirr./Wahnsinnseff.; zauberähn.+übernat. Fähig. Gestaltwandlern"
     },
@@ -23395,8 +23395,8 @@
       "desc": "Mit jeder Kreatur kommunizieren, die nicht geistlos ist"
     },
     {
-      "name": "Sch Zauberä. Fähigkeiten",
-      "trait": "Sch Zauberä. Fähigkeiten",
+      "name": "Sch Zauberähnliche Fähigkeiten",
+      "trait": "Sch Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "ZS2, Immer: Chaos entdecken, 3/Tg: Befehl SG13, Reparieren, Schutz v. Chaos, 1/W: Heil. Gespräch ZS12 6 Fragen"
     },
@@ -23731,8 +23731,8 @@
       "desc": "3/Tag als FA: TW + ½ St, ST12: 5x"
     },
     {
-      "name": "Schild d. Lehnsherren (AF) OF",
-      "trait": "Schild d. Lehnsherren (AF) OF",
+      "name": "Schild des Lehnsherren (AF) OF",
+      "trait": "Schild des Lehnsherren (AF) OF",
       "source": "",
       "desc": "Verbündete im Nebenfeld: RK+2, Angriff auf Verbündeten im Nebenfeld auf sich umlenken"
     },
@@ -23893,8 +23893,8 @@
       "desc": "Angriffe passieren Stein/Metall; 2xSteinhieb=ign. Deckung (außer vollst.)/RK-Boni steinerer/metall. Schilde"
     },
     {
-      "name": "Schlag i. d. Magengrube Käm (AF)",
-      "trait": "Schlag i. d. Magengrube Käm (AF)",
+      "name": "Schlag in die Magengrube Käm (AF)",
+      "trait": "Schlag in die Magengrube Käm (AF)",
       "source": "",
       "desc": "Gegner kein GE Bonus auf RK od. im Ringkampf: mit SA Kampfmanöver Schm. Trick od. Zu Fall bringen"
     },
@@ -23941,8 +23941,8 @@
       "desc": "Biss, Klettern, Reichweite (Biss), Schwanz, Schwanzhieb (5Pkt)"
     },
     {
-      "name": "Schlange i. d. Sonne (ÜF) O",
-      "trait": "Schlange i. d. Sonne (ÜF) O",
+      "name": "Schlange in der Sonne (ÜF) O",
+      "trait": "Schlange in der Sonne (ÜF) O",
       "source": "",
       "desc": "4h Sonne/Tg: -Essen RW+2>Krank, St5: I>K, -Wasser, St10: I>mag. K, +2Gift, ½Schlaf, St15: I>Gift/Erschöpfung"
     },
@@ -24817,56 +24817,56 @@
       "desc": "RK+RW +2+1/8St =A *Kreatur (nicht Hexe) #bis getroffen/RW fehlgeschlagen"
     },
     {
-      "name": "Schw. Bestientotem (ÜF) KK Bbr",
-      "trait": "Schw. Bestientotem (ÜF) KK Bbr",
+      "name": "Schwaches Bestientotem (ÜF) KK Bbr",
+      "trait": "Schwaches Bestientotem (ÜF) KK Bbr",
       "source": "",
       "desc": "2 Klauenangriffe, voller GAB, je 1w6-STBon Hiebschaden #Kampfrausch"
     },
     {
-      "name": "Schw. Blut übertragen (ÜF)",
-      "trait": "Schw. Blut übertragen (ÜF)",
+      "name": "Schwaches Blut übertragen (ÜF)",
+      "trait": "Schwaches Blut übertragen (ÜF)",
       "source": "",
       "desc": "Krit: Blut übertragen: bei nächster Heilung durch pos.Energie: nur Blut entfernen, auch Heilung SG25 entfernt"
     },
     {
-      "name": "Schw. Chaostotem (ÜF) KK Bbr",
-      "trait": "Schw. Chaostotem (ÜF) KK Bbr",
+      "name": "Schwaches Chaostotem (ÜF) KK Bbr",
+      "trait": "Schwaches Chaostotem (ÜF) KK Bbr",
       "source": "",
       "desc": "RK+1>Rechtsch., RW+1>Verwirrung/Wahnsinn/Verw./rechtsch. Effekte (+1/Totem) #Kampfrausch"
     },
     {
-      "name": "Schw. Eidolon",
-      "trait": "Schw. Eidolon",
+      "name": "Schwaches Eidolon",
+      "trait": "Schwaches Eidolon",
       "source": "",
       "desc": "Klassenstufe Meisterbeschwörer/2 (min1) für Eidolon (Evolutionsvorrat, Fähigkeiten, TW usw)"
     },
     {
-      "name": "Schw. Elementarer Zom (ÜF) KK Bbr",
-      "trait": "Schw. Elementarer Zom (ÜF) KK Bbr",
+      "name": "Schwacher Elementarer Zorn (ÜF) KK Bbr",
+      "trait": "Schwacher Elementarer Zorn (ÜF) KK Bbr",
       "source": "",
       "desc": "NK Angriffe +1w6 Energie =SA #1Rd ^1/Kampfrausch"
     },
     {
-      "name": "Schw. Geistertotem (ÜF) KK Bbr",
-      "trait": "Schw. Geistertotem (ÜF) KK Bbr",
+      "name": "Schwaches Geistertotem (ÜF) KK Bbr",
+      "trait": "Schwaches Geistertotem (ÜF) KK Bbr",
       "source": "",
       "desc": "Geisterfetzen: 1w4 Hieb/Rd (TW: GAB+CHMod) #Kampfrausch"
     },
     {
-      "name": "Schw. Scheusaltotem (ÜF) KK Bbr",
-      "trait": "Schw. Scheusaltotem (ÜF) KK Bbr",
+      "name": "Schwaches Scheusaltotem (ÜF) KK Bbr",
+      "trait": "Schwaches Scheusaltotem (ÜF) KK Bbr",
       "source": "",
       "desc": "Hörner: Angriff duchboren 1w8+STMod #Kampfrausch"
     },
     {
-      "name": "Schw. Schleudern (AF) KK Bbr",
-      "trait": "Schw. Schleudern (AF) KK Bbr",
+      "name": "Schwaches Schleudern (AF) KK Bbr",
+      "trait": "Schwaches Schleudern (AF) KK Bbr",
       "source": "",
       "desc": "Kleinere Gegner schleudern =VA >3m #Kampfrausch"
     },
     {
-      "name": "Schw. Simulakrum Alc",
-      "trait": "Schw. Simulakrum Alc",
+      "name": "Schwaches Simulakrum Alc",
+      "trait": "Schwaches Simulakrum Alc",
       "source": "",
       "desc": "Schw. Simulakrumals Extrakt des 3. Grades zusätzl. im Formelbuch"
     },
@@ -25081,20 +25081,20 @@
       "desc": "als FA Schwingen wachsen lassen, Bewegungsrate 18m, durchschnittliche Manövrierfähigkeit"
     },
     {
-      "name": "Schwingen d. Abyss Hxm (ÜF)",
-      "trait": "Schwingen d. Abyss Hxm (ÜF)",
+      "name": "Schwingen des Abyss Hxm (ÜF)",
+      "trait": "Schwingen des Abyss Hxm (ÜF)",
       "source": "",
       "desc": "Flügel wachsen lassen;/Tag Anzahl/Minuten gemäß Hexenmeisterstufe fliegen"
     },
     {
-      "name": "Schwingen d. Drachentotems KK Bbr",
-      "trait": "Schwingen d. Drachentotems KK Bbr",
+      "name": "Schwingen des Drachentotems KK Bbr",
+      "trait": "Schwingen des Drachentotems KK Bbr",
       "source": "",
       "desc": "Fliegen als Klassenfähigkeit; =A Drachenschwingen Flug BR = Land BR; 1 Rd. Mit Schwingen = 2 Rd KR"
     },
     {
-      "name": "Schwingen d. Himmels (ÜF) Blu",
-      "trait": "Schwingen d. Himmels (ÜF) Blu",
+      "name": "Schwingen des Himmels (ÜF) Blu",
+      "trait": "Schwingen des Himmels (ÜF) Blu",
       "source": "",
       "desc": "bei Blutwut Wahl: Schwingen, Fliegen 18m duchschnitt, St20: 24m"
     },
@@ -25189,8 +25189,8 @@
       "desc": "Schützling angegriffen vom Ziel der Herausdf. AA: mit BR fortbewegen: Ziel angr. (Sturmangr. mögl)"
     },
     {
-      "name": "Schütze d. Schwachen (AF) OF",
-      "trait": "Schütze d. Schwachen (AF) OF",
+      "name": "Schütze der Schwachen (AF) OF",
+      "trait": "Schütze der Schwachen (AF) OF",
       "source": "",
       "desc": "BA: Aktion des Feindes unterbrechen (als AA Bewegungsrate+NK-Angriff), nächste Rd wankend"
     },
@@ -25753,626 +25753,626 @@
       "desc": "Wählen: Arkanes/Religion (in Talente); Wurf auf niedergeschr. Wissen: Bonus+½St"
     },
     {
-      "name": "Spezial. Akrobatik 10",
-      "trait": "Spezial. Akrobatik 10",
+      "name": "Spezialisierung Akrobatik 10",
+      "trait": "Spezialisierung Akrobatik 10",
       "source": "",
       "desc": "Akrobatik FW-10=KMV>ZuFallB,Akr.-10 statt REF>Sturz, Akr. SG20: Sturz-3m, -3m/SG 10 über"
     },
     {
-      "name": "Spezial. Akrobatik 15",
-      "trait": "Spezial. Akrobatik 15",
+      "name": "Spezialisierung Akrobatik 15",
+      "trait": "Spezialisierung Akrobatik 15",
       "source": "",
       "desc": "aus liegend Aufstehen provoziert kein Gelegenheitsangriff"
     },
     {
-      "name": "Spezial. Akrobatik 20",
-      "trait": "Spezial. Akrobatik 20",
+      "name": "Spezialisierung Akrobatik 20",
+      "trait": "Spezialisierung Akrobatik 20",
       "source": "",
       "desc": "FW für Springen: Ergebnis x 2, bei Sturz niemals liegend (bei Bewusstsein)"
     },
     {
-      "name": "Spezial. Akrobatik 5",
-      "trait": "Spezial. Akrobatik 5",
+      "name": "Spezialisierung Akrobatik 5",
+      "trait": "Spezialisierung Akrobatik 5",
       "source": "",
       "desc": "SG+5 (statt 10): mit norm BR durch bedrohte Felder ohne GGA, Wurf <SG20: GEMod auf RK"
     },
     {
-      "name": "Spezial. Auftreten 10",
-      "trait": "Spezial. Auftreten 10",
+      "name": "Spezialisierung Auftreten 10",
+      "trait": "Spezialisierung Auftreten 10",
       "source": "",
       "desc": "Zauber Kat Gefühl/Spachabhängig: Auftreten SG25: RW des Zaubers +1"
     },
     {
-      "name": "Spezial. Auftreten 15",
-      "trait": "Spezial. Auftreten 15",
+      "name": "Spezialisierung Auftreten 15",
+      "trait": "Spezialisierung Auftreten 15",
       "source": "",
       "desc": "Zauber Kat Spachabhängig: Auftreten SG30: Zauberstufe +1 (nicht gleichzeitig mit Auftreten 10)"
     },
     {
-      "name": "Spezial. Auftreten 20",
-      "trait": "Spezial. Auftreten 20",
+      "name": "Spezialisierung Auftreten 20",
+      "trait": "Spezialisierung Auftreten 20",
       "source": "",
       "desc": "wähle Bluffen/Diplomatie/Einschüchtern: FW Wurf: plus Wurf Auftreten, besseres Ergebnis nehmen"
     },
     {
-      "name": "Spezial. Auftreten 5",
-      "trait": "Spezial. Auftreten 5",
+      "name": "Spezialisierung Auftreten 5",
+      "trait": "Spezialisierung Auftreten 5",
       "source": "",
       "desc": "FW Bluffen/Diplo/Einschüch./Mit Tieren umgehen: Auftreten SG20: Wurf +2"
     },
     {
-      "name": "Spezial. Beruf 10",
-      "trait": "Spezial. Beruf 10",
+      "name": "Spezialisierung Beruf 10",
+      "trait": "Spezialisierung Beruf 10",
       "source": "",
       "desc": "FW 2 x, besseres nehmen, bei Fragen zu Beruf immer 10 nehmen"
     },
     {
-      "name": "Spezial. Beruf 15",
-      "trait": "Spezial. Beruf 15",
+      "name": "Spezialisierung Beruf 15",
+      "trait": "Spezialisierung Beruf 15",
       "source": "",
       "desc": "Einkommen 1/Tag statt 1/Woche"
     },
     {
-      "name": "Spezial. Beruf 20",
-      "trait": "Spezial. Beruf 20",
+      "name": "Spezialisierung Beruf 20",
+      "trait": "Spezialisierung Beruf 20",
       "source": "",
       "desc": "bei FW Beruf: statt 2x würfeln 1x, Ergebnis <10: Ergebnis 10, Fragen zu Beruf: 20 nehmen"
     },
     {
-      "name": "Spezial. Beruf 5",
-      "trait": "Spezial. Beruf 5",
+      "name": "Spezialisierung Beruf 5",
+      "trait": "Spezialisierung Beruf 5",
       "source": "",
       "desc": "Wurf Einkommen: Ergebniss = Goldstücke pro Woche"
     },
     {
-      "name": "Spezial. Bluffen 10",
-      "trait": "Spezial. Bluffen 10",
+      "name": "Spezialisierung Bluffen 10",
+      "trait": "Spezialisierung Bluffen 10",
       "source": "",
       "desc": "kein Malus bei Fehlschlag Bluffen (<5)"
     },
     {
-      "name": "Spezial. Bluffen 15",
-      "trait": "Spezial. Bluffen 15",
+      "name": "Spezialisierung Bluffen 15",
+      "trait": "Spezialisierung Bluffen 15",
       "source": "",
       "desc": "für mag. Deine Gedanken lesen/Gesinnung erkennen/Lügen feststellen: Wurf ZS SG11+Ränge Bluffen"
     },
     {
-      "name": "Spezial. Bluffen 20",
-      "trait": "Spezial. Bluffen 20",
+      "name": "Spezialisierung Bluffen 20",
+      "trait": "Spezialisierung Bluffen 20",
       "source": "",
       "desc": "Als VA Einflüsterung (max. 1h, RW 9m, 1Krea., WIL SG15+CHMod), dann 24h immun,"
     },
     {
-      "name": "Spezial. Bluffen 5",
-      "trait": "Spezial. Bluffen 5",
+      "name": "Spezialisierung Bluffen 5",
+      "trait": "Spezialisierung Bluffen 5",
       "source": "",
       "desc": "Malus bei Fehlschlag Bluffen (<5) halbiert"
     },
     {
-      "name": "Spezial. Diplomatie 10",
-      "trait": "Spezial. Diplomatie 10",
+      "name": "Spezialisierung Diplomatie 10",
+      "trait": "Spezialisierung Diplomatie 10",
       "source": "",
       "desc": "Einstellung Beeinflussen: SG +10 in 1Rd, bei 1 min: Veränderung Stufen + CHMod"
     },
     {
-      "name": "Spezial. Diplomatie 15",
-      "trait": "Spezial. Diplomatie 15",
+      "name": "Spezialisierung Diplomatie 15",
+      "trait": "Spezialisierung Diplomatie 15",
       "source": "",
       "desc": "Einstellung Beeinflussen in 1Rd ohne Malus, bei 1 min: Veränderung Tage statt h, Infos: Malus -5: in 10 min"
     },
     {
-      "name": "Spezial. Diplomatie 20",
-      "trait": "Spezial. Diplomatie 20",
+      "name": "Spezialisierung Diplomatie 20",
+      "trait": "Spezialisierung Diplomatie 20",
       "source": "",
       "desc": "Einstellung Beeinflussen: bei 1 min: Veränderung Wochen statt Tage, Infos: in w4 Minuten ohne Malus"
     },
     {
-      "name": "Spezial. Diplomatie 5",
-      "trait": "Spezial. Diplomatie 5",
+      "name": "Spezialisierung Diplomatie 5",
+      "trait": "Spezialisierung Diplomatie 5",
       "source": "",
       "desc": "Zeit für Beeinflussen Einstellung/Infos sammen: halbiert"
     },
     {
-      "name": "Spezial. Einschüchtern 10",
-      "trait": "Spezial. Einschüchtern 10",
+      "name": "Spezialisierung Einschüchtern 10",
+      "trait": "Spezialisierung Einschüchtern 10",
       "source": "",
       "desc": "Demoralisieren SG>+10: Ziel 1Rd Panisch/w4Rd Verängstigt, dann Erschüttert, WIL SG10+Ränge > P/E"
     },
     {
-      "name": "Spezial. Einschüchtern 15",
-      "trait": "Spezial. Einschüchtern 15",
+      "name": "Spezialisierung Einschüchtern 15",
+      "trait": "Spezialisierung Einschüchtern 15",
       "source": "",
       "desc": "Demoralisieren SG>+20: Ziel 1Rd Kauernd/w4Rd Panisch, dann Erschüttert, WIL SG10+Ränge > K/P"
     },
     {
-      "name": "Spezial. Einschüchtern 20",
-      "trait": "Spezial. Einschüchtern 20",
+      "name": "Spezialisierung Einschüchtern 20",
+      "trait": "Spezialisierung Einschüchtern 20",
       "source": "",
       "desc": "Demoralisieren SG>+20: Ziel w4 Rd Kauernd, dann Panisch, WIL SG10+Ränge > K/P, bleibt erschüttertt"
     },
     {
-      "name": "Spezial. Einschüchtern 5",
-      "trait": "Spezial. Einschüchtern 5",
+      "name": "Spezialisierung Einschüchtern 5",
+      "trait": "Spezialisierung Einschüchtern 5",
       "source": "",
       "desc": "Demoralisieren SG>+10: Ziel 1Rd Verängstigt, dann Erschüttert, WIL SG10+Ränge > Verängstigt"
     },
     {
-      "name": "Spezial. Entfesselungskunst 10",
-      "trait": "Spezial. Entfesselungskunst 10",
+      "name": "Spezialisierung Entfesselungskunst 10",
+      "trait": "Spezialisierung Entfesselungskunst 10",
       "source": "",
       "desc": "aus Verstrickt entkommen=A mit FW SG=RW+10, als BA FW zum Entkommen, als VA Bonus +10"
     },
     {
-      "name": "Spezial. Entfesselungskunst 15",
-      "trait": "Spezial. Entfesselungskunst 15",
+      "name": "Spezialisierung Entfesselungskunst 15",
+      "trait": "Spezialisierung Entfesselungskunst 15",
       "source": "",
       "desc": "Verlangsamen/Lähmung unterdrücken: als A SG=RW+20, Erfolg 1Rd+1/5Pkt>SG"
     },
     {
-      "name": "Spezial. Entfesselungskunst 20",
-      "trait": "Spezial. Entfesselungskunst 20",
+      "name": "Spezialisierung Entfesselungskunst 20",
+      "trait": "Spezialisierung Entfesselungskunst 20",
       "source": "",
       "desc": "als AA: FW SG=RW+10 > Haltegriff/Ringend/Verstrickt, Verl/Läh underücken: SG= A+10, BA+15, AA+20"
     },
     {
-      "name": "Spezial. Entfesselungskunst 5",
-      "trait": "Spezial. Entfesselungskunst 5",
+      "name": "Spezialisierung Entfesselungskunst 5",
+      "trait": "Spezialisierung Entfesselungskunst 5",
       "source": "",
       "desc": "SG+10: Zeit halbiert, Entkommen Ringkmapf/Haltegriff=BA, Netz/Pflanzen bef/kontoll./Seil beleben=A"
     },
     {
-      "name": "Spezial. Fingerfertigkeit 10",
-      "trait": "Spezial. Fingerfertigkeit 10",
+      "name": "Spezialisierung Fingerfertigkeit 10",
+      "trait": "Spezialisierung Fingerfertigkeit 10",
       "source": "",
       "desc": "FW Fingerfertigkeit als BA: Malus nur -10"
     },
     {
-      "name": "Spezial. Fingerfertigkeit 15",
-      "trait": "Spezial. Fingerfertigkeit 15",
+      "name": "Spezialisierung Fingerfertigkeit 15",
+      "trait": "Spezialisierung Fingerfertigkeit 15",
       "source": "",
       "desc": "FW Fingerfertigkeit als SA mit Malus -20"
     },
     {
-      "name": "Spezial. Fingerfertigkeit 20",
-      "trait": "Spezial. Fingerfertigkeit 20",
+      "name": "Spezialisierung Fingerfertigkeit 20",
+      "trait": "Spezialisierung Fingerfertigkeit 20",
       "source": "",
       "desc": "FW Fingerfertigkeit als BA ohne Malus, als SA mit Malus -10"
     },
     {
-      "name": "Spezial. Fingerfertigkeit 5",
-      "trait": "Spezial. Fingerfertigkeit 5",
+      "name": "Spezialisierung Fingerfertigkeit 5",
+      "trait": "Spezialisierung Fingerfertigkeit 5",
       "source": "",
       "desc": "Kampfmanöver Entreißen/Entwaffnen: Wurf auf Fingerfertigkeit > KMV Ziel: Bonus +2"
     },
     {
-      "name": "Spezial. Fliegen 10",
-      "trait": "Spezial. Fliegen 10",
+      "name": "Spezialisierung Fliegen 10",
+      "trait": "Spezialisierung Fliegen 10",
       "source": "",
       "desc": "FW SG30: 45° Wende mit voller BR, bei zusammenstoß: FW SG10: Sturz verkürzen um 3m + 3m/+10Pkt"
     },
     {
-      "name": "Spezial. Fliegen 15",
-      "trait": "Spezial. Fliegen 15",
+      "name": "Spezialisierung Fliegen 15",
+      "trait": "Spezialisierung Fliegen 15",
       "source": "",
       "desc": "FW SG30: 90° Wende ohne einen Teil der BR aufzuwenden, 180° Wende mit 1,5m, FW Winde: 1 Kat größer"
     },
     {
-      "name": "Spezial. Fliegen 20",
-      "trait": "Spezial. Fliegen 20",
+      "name": "Spezialisierung Fliegen 20",
+      "trait": "Spezialisierung Fliegen 20",
       "source": "",
       "desc": "FW SG35: volle BR aufwärts, FW Winde: 2 Kat größer"
     },
     {
-      "name": "Spezial. Fliegen 5",
-      "trait": "Spezial. Fliegen 5",
+      "name": "Spezialisierung Fliegen 5",
+      "trait": "Spezialisierung Fliegen 5",
       "source": "",
       "desc": "FW SG20: 45° Wende ohne einen Teil der BR aufzuwenden"
     },
     {
-      "name": "Spezial. Handwerk 10",
-      "trait": "Spezial. Handwerk 10",
+      "name": "Spezialisierung Handwerk 10",
+      "trait": "Spezialisierung Handwerk 10",
       "source": "",
       "desc": "Rohmaterialiern werden nur zerstört bei FW fehl > 10"
     },
     {
-      "name": "Spezial. Handwerk 15",
-      "trait": "Spezial. Handwerk 15",
+      "name": "Spezialisierung Handwerk 15",
+      "trait": "Spezialisierung Handwerk 15",
       "source": "",
       "desc": "Fortschritt bestimmen: Ergebnis in Silber nicht mehr wöchentlich, sondern täglich"
     },
     {
-      "name": "Spezial. Handwerk 20",
-      "trait": "Spezial. Handwerk 20",
+      "name": "Spezialisierung Handwerk 20",
+      "trait": "Spezialisierung Handwerk 20",
       "source": "",
       "desc": "mag. Rüstung/Waffen/Ringe/Wundersame Gegenstände mittel normaler Handwerksregeln herstellen"
     },
     {
-      "name": "Spezial. Handwerk 5",
-      "trait": "Spezial. Handwerk 5",
+      "name": "Spezialisierung Handwerk 5",
+      "trait": "Spezialisierung Handwerk 5",
       "source": "",
       "desc": "wöchentlicher Fortschritt: FW x2 vor multiplizieren"
     },
     {
-      "name": "Spezial. Heilkunde 10",
-      "trait": "Spezial. Heilkunde 10",
+      "name": "Spezialisierung Heilkunde 10",
+      "trait": "Spezialisierung Heilkunde 10",
       "source": "",
       "desc": "bei tödl. Wunden behandeln: Ziel erhält TP/Attributs-Pkt zurück wie bei 1 Tag Langzeitbehandlung"
     },
     {
-      "name": "Spezial. Heilkunde 15",
-      "trait": "Spezial. Heilkunde 15",
+      "name": "Spezialisierung Heilkunde 15",
+      "trait": "Spezialisierung Heilkunde 15",
       "source": "",
       "desc": "bei tödl. Wunden behandeln: Ziel erhält TP/Attributs-Pkt zurück wie bei 3 Tage ausruhen"
     },
     {
-      "name": "Spezial. Heilkunde 20",
-      "trait": "Spezial. Heilkunde 20",
+      "name": "Spezialisierung Heilkunde 20",
+      "trait": "Spezialisierung Heilkunde 20",
       "source": "",
       "desc": "bei tödl. Wunden behandeln: Ziel erhält TP/Attributs-Pkt zurück wie bei 3 Tagen Langzeitbehandlung"
     },
     {
-      "name": "Spezial. Heilkunde 5",
-      "trait": "Spezial. Heilkunde 5",
+      "name": "Spezialisierung Heilkunde 5",
+      "trait": "Spezialisierung Heilkunde 5",
       "source": "",
       "desc": "bei tödl. Wunden behandeln: Ziel erhält TP/Attributs-Pkt zurück wie bei 1 Tag ausruhen"
     },
     {
-      "name": "Spezial. Heimlichkeit 10",
-      "trait": "Spezial. Heimlichkeit 10",
+      "name": "Spezialisierung Heimlichkeit 10",
+      "trait": "Spezialisierung Heimlichkeit 10",
       "source": "",
       "desc": "Mali Heimlichkeit bei schneller Bewegung: halbiert, auch Bewegung mit voller BR und Tarnung nach Ablenkung"
     },
     {
-      "name": "Spezial. Heimlichkeit 15",
-      "trait": "Spezial. Heimlichkeit 15",
+      "name": "Spezialisierung Heimlichkeit 15",
+      "trait": "Spezialisierung Heimlichkeit 15",
       "source": "",
       "desc": "Erfolgreich Heimlichkeit + Angriff: Ziel kein GEBon auf RK > Deine Angriffe bis Ende Deines Zuges"
     },
     {
-      "name": "Spezial. Heimlichkeit 20",
-      "trait": "Spezial. Heimlichkeit 20",
+      "name": "Spezialisierung Heimlichkeit 20",
+      "trait": "Spezialisierung Heimlichkeit 20",
       "source": "",
       "desc": "Erfolgreich Heimlichkeit + Angriff: Ziel kein GEBon auf RK > Deine Angriffe bis Beginn Deines nächsten  Zuges"
     },
     {
-      "name": "Spezial. Heimlichkeit 5",
-      "trait": "Spezial. Heimlichkeit 5",
+      "name": "Spezialisierung Heimlichkeit 5",
+      "trait": "Spezialisierung Heimlichkeit 5",
       "source": "",
       "desc": "Heimlichkeit: Schuss aus dem Hinterhalt: Malus -10"
     },
     {
-      "name": "Spezial. Klettern 10",
-      "trait": "Spezial. Klettern 10",
+      "name": "Spezialisierung Klettern 10",
+      "trait": "Spezialisierung Klettern 10",
       "source": "",
       "desc": "BR Klettern 3m bei Oberflächen max SG20"
     },
     {
-      "name": "Spezial. Klettern 15",
-      "trait": "Spezial. Klettern 15",
+      "name": "Spezialisierung Klettern 15",
+      "trait": "Spezialisierung Klettern 15",
       "source": "",
       "desc": "BR Klettern = BR Land bei Oberflächen max SG20, darüber BR Klettern 3m"
     },
     {
-      "name": "Spezial. Klettern 20",
-      "trait": "Spezial. Klettern 20",
+      "name": "Spezialisierung Klettern 20",
+      "trait": "Spezialisierung Klettern 20",
       "source": "",
       "desc": "BR Klettern = BR Land bei allen Oberflächen, beide Hände frei: Volksbonus Klettern +8"
     },
     {
-      "name": "Spezial. Klettern 5",
-      "trait": "Spezial. Klettern 5",
+      "name": "Spezialisierung Klettern 5",
+      "trait": "Spezialisierung Klettern 5",
       "source": "",
       "desc": "Klettern mit GEBon auf RK"
     },
     {
-      "name": "Spezial. Mag. Gegenst. benutzen 10",
-      "trait": "Spezial. Mag. Gegenst. benutzen 10",
+      "name": "Spezialisierung Magischen Gegenstand benutzen 10",
+      "trait": "Spezialisierung Magischen Gegenstand benutzen 10",
       "source": "",
       "desc": "bei Aktivieren nat 1: 24h nur Malus -10 (kumulativ)"
     },
     {
-      "name": "Spezial. Mag. Gegenst. benutzen 15",
-      "trait": "Spezial. Mag. Gegenst. benutzen 15",
+      "name": "Spezialisierung Magischen Gegenstand benutzen 15",
+      "trait": "Spezialisierung Magischen Gegenstand benutzen 15",
       "source": "",
       "desc": "Zugehörigkeit zu 2 Völkern/Gesinnungen gleichzeitig simulieren"
     },
     {
-      "name": "Spezial. Mag. Gegenst. benutzen 20",
-      "trait": "Spezial. Mag. Gegenst. benutzen 20",
+      "name": "Spezialisierung Magischen Gegenstand benutzen 20",
+      "trait": "Spezialisierung Magischen Gegenstand benutzen 20",
       "source": "",
       "desc": "bei Aktivieren nat 1: Wurf mit -10 wiederholen, zweiter Wurf zählt"
     },
     {
-      "name": "Spezial. Mag. Gegenst. benutzen 5",
-      "trait": "Spezial. Mag. Gegenst. benutzen 5",
+      "name": "Spezialisierung Magischen Gegenstand benutzen 5",
+      "trait": "Spezialisierung Magischen Gegenstand benutzen 5",
       "source": "",
       "desc": "FW > SG Gegenstand: Jemand anderem helfen bei mag. Gegenstand benutzen"
     },
     {
-      "name": "Spezial. Mech. ausschalten 10",
-      "trait": "Spezial. Mech. ausschalten 10",
+      "name": "Spezialisierung Mech. ausschalten 10",
+      "trait": "Spezialisierung Mech. ausschalten 10",
       "source": "",
       "desc": "Ohne Fallen finden: mag. Fallen entschärfen mit -10, mit FF: mag. F niemals auslösen beim Entschärfen"
     },
     {
-      "name": "Spezial. Mech. ausschalten 15",
-      "trait": "Spezial. Mech. ausschalten 15",
+      "name": "Spezialisierung Mech. ausschalten 15",
+      "trait": "Spezialisierung Mech. ausschalten 15",
       "source": "",
       "desc": "Angriff durch Fall: als AA FW>TW/SG: halber Schaden, FW>+10: kein Schaden"
     },
     {
-      "name": "Spezial. Mech. ausschalten 20",
-      "trait": "Spezial. Mech. ausschalten 20",
+      "name": "Spezialisierung Mech. ausschalten 20",
+      "trait": "Spezialisierung Mech. ausschalten 20",
       "source": "",
       "desc": "wie bei 5 mit halben Mali, mit FF und -20 bei 15 Rgalle nahen Verb. Vorteil, Fall als AA entschärfen bei SG+10"
     },
     {
-      "name": "Spezial. Mech. ausschalten 5",
-      "trait": "Spezial. Mech. ausschalten 5",
+      "name": "Spezialisierung Mech. ausschalten 5",
+      "trait": "Spezialisierung Mech. ausschalten 5",
       "source": "",
       "desc": "Zeit reduzieren mit -5/Schritt: 2w4Rd, 1w4Rd, 1Rd, A, BA, SA"
     },
     {
-      "name": "Spezial. Mit Tieren umgehen 10",
-      "trait": "Spezial. Mit Tieren umgehen 10",
+      "name": "Spezialisierung Mit Tieren umgehen 10",
+      "trait": "Spezialisierung Mit Tieren umgehen 10",
       "source": "",
       "desc": "ausgebildete Kreaturen (Rad 9m, klar sichtbar): WIL+2, 1 Trick in 1 Tag beibringen mit SG+20"
     },
     {
-      "name": "Spezial. Mit Tieren umgehen 15",
-      "trait": "Spezial. Mit Tieren umgehen 15",
+      "name": "Spezialisierung Mit Tieren umgehen 15",
+      "trait": "Spezialisierung Mit Tieren umgehen 15",
       "source": "",
       "desc": "in 1 Woche mit FW Tier verstehen beibringen, 1 Trick in 1 Tag  mit SG+10, in 1 h mit SG+20"
     },
     {
-      "name": "Spezial. Mit Tieren umgehen 20",
-      "trait": "Spezial. Mit Tieren umgehen 20",
+      "name": "Spezialisierung Mit Tieren umgehen 20",
+      "trait": "Spezialisierung Mit Tieren umgehen 20",
       "source": "",
       "desc": "Tier versteht für 1 Tag mit FW SG30 (mag./Ungeziefer SG40), Trick in 1h mit SG+10, in 1 Min mit SG+20"
     },
     {
-      "name": "Spezial. Mit Tieren umgehen 5",
-      "trait": "Spezial. Mit Tieren umgehen 5",
+      "name": "Spezialisierung Mit Tieren umgehen 5",
+      "trait": "Spezialisierung Mit Tieren umgehen 5",
       "source": "",
       "desc": "ausgebildete, angrenzende Kreaturen: WIL+2"
     },
     {
-      "name": "Spezial. Motiv erkennen 10",
-      "trait": "Spezial. Motiv erkennen 10",
+      "name": "Spezialisierung Motiv erkennen 10",
+      "trait": "Spezialisierung Motiv erkennen 10",
       "source": "",
       "desc": "nach 1 min RedenFW -20 > Bluffen für oberflächliche Gedanken erkennen (Gedanken wahrnehmen)"
     },
     {
-      "name": "Spezial. Motiv erkennen 15",
-      "trait": "Spezial. Motiv erkennen 15",
+      "name": "Spezialisierung Motiv erkennen 15",
+      "trait": "Spezialisierung Motiv erkennen 15",
       "source": "",
       "desc": "wie 10 nach 1Rd, bei Angriff als AA FW> TW für 1 Min RK+2 > Angreifer"
     },
     {
-      "name": "Spezial. Motiv erkennen 20",
-      "trait": "Spezial. Motiv erkennen 20",
+      "name": "Spezialisierung Motiv erkennen 20",
+      "trait": "Spezialisierung Motiv erkennen 20",
       "source": "",
       "desc": "wie 10 nals A, bei Angriff als AA FW> TW für 1 Min RK+2 > Angreifer + Angriff schlägt fehl"
     },
     {
-      "name": "Spezial. Motiv erkennen 5",
-      "trait": "Spezial. Motiv erkennen 5",
+      "name": "Spezialisierung Motiv erkennen 5",
+      "trait": "Spezialisierung Motiv erkennen 5",
       "source": "",
       "desc": "Gegner bemerkt von INI: FW>SG11+Gegner Bluffen oder SG15 für INI+1 + 1/>5Pkt"
     },
     {
-      "name": "Spezial. Reiten 10",
-      "trait": "Spezial. Reiten 10",
+      "name": "Spezialisierung Reiten 10",
+      "trait": "Spezialisierung Reiten 10",
       "source": "",
       "desc": "Reittier: mit Sporen BR +6m, REF+2, Ausweichbonus RK+2"
     },
     {
-      "name": "Spezial. Reiten 15",
-      "trait": "Spezial. Reiten 15",
+      "name": "Spezialisierung Reiten 15",
+      "trait": "Spezialisierung Reiten 15",
       "source": "",
       "desc": "Ziel KMB Ansturm7Überrennen/Versetzen/Zerren/Zu-Fall-Bringen: KMV Reittier durch FW ersetzen"
     },
     {
-      "name": "Spezial. Reiten 20",
-      "trait": "Spezial. Reiten 20",
+      "name": "Spezialisierung Reiten 20",
+      "trait": "Spezialisierung Reiten 20",
       "source": "",
       "desc": "Reittier: mit Sporen BR +9m, REF+4, Ausweichbonus RK+4"
     },
     {
-      "name": "Spezial. Reiten 5",
-      "trait": "Spezial. Reiten 5",
+      "name": "Spezialisierung Reiten 5",
+      "trait": "Spezialisierung Reiten 5",
       "source": "",
       "desc": "Reittier: ZÄH + KO +2 > Erschöpfung/Entkräftung, +1/5Ränge in Reiten"
     },
     {
-      "name": "Spezial. Schwimmen 10",
-      "trait": "Spezial. Schwimmen 10",
+      "name": "Spezialisierung Schwimmen 10",
+      "trait": "Spezialisierung Schwimmen 10",
       "source": "",
       "desc": "BR Schwimmen = Land BR in Gewässern max SG15, über SG15 BR Schwimmen 3m"
     },
     {
-      "name": "Spezial. Schwimmen 15",
-      "trait": "Spezial. Schwimmen 15",
+      "name": "Spezialisierung Schwimmen 15",
+      "trait": "Spezialisierung Schwimmen 15",
       "source": "",
       "desc": "unter Wasser Hieb/Wuchtwaffen ohne Malus (wie Bewegungsfreiheit)"
     },
     {
-      "name": "Spezial. Schwimmen 20",
-      "trait": "Spezial. Schwimmen 20",
+      "name": "Spezialisierung Schwimmen 20",
+      "trait": "Spezialisierung Schwimmen 20",
       "source": "",
       "desc": "BR Schwimmen = Land BR in allen Gewässern, Hände frei: Schwimmen +8"
     },
     {
-      "name": "Spezial. Schwimmen 5",
-      "trait": "Spezial. Schwimmen 5",
+      "name": "Spezialisierung Schwimmen 5",
+      "trait": "Spezialisierung Schwimmen 5",
       "source": "",
       "desc": "BR Schwimmen 3m in Gewässern max SG15"
     },
     {
-      "name": "Spezial. Schätzen 10",
-      "trait": "Spezial. Schätzen 10",
+      "name": "Spezialisierung Schätzen 10",
+      "trait": "Spezialisierung Schätzen 10",
       "source": "",
       "desc": "als A SG20: teuersten getragenen Gegenstand erkennen (Würfel 1,5m)"
     },
     {
-      "name": "Spezial. Schätzen 15",
-      "trait": "Spezial. Schätzen 15",
+      "name": "Spezialisierung Schätzen 15",
+      "trait": "Spezialisierung Schätzen 15",
       "source": "",
       "desc": "wie 10 als BA, WIL>Illusion (einbildung/Fehlgefühl) durch FW-10 ersetzen"
     },
     {
-      "name": "Spezial. Schätzen 20",
-      "trait": "Spezial. Schätzen 20",
+      "name": "Spezialisierung Schätzen 20",
+      "trait": "Spezialisierung Schätzen 20",
       "source": "",
       "desc": "wie 10 als BA, Erfolg: 1Min KMV+2 für entreißen/entwaffnen"
     },
     {
-      "name": "Spezial. Schätzen 5",
-      "trait": "Spezial. Schätzen 5",
+      "name": "Spezialisierung Schätzen 5",
+      "trait": "Spezialisierung Schätzen 5",
       "source": "",
       "desc": "FW SG20: mag. Erkennen, SG25+ZS: Eigenschaften erkennen, Schätzen für Fälschungen erkennen (nicht Schrift)"
     },
     {
-      "name": "Spezial. Sprachenkunde 10",
-      "trait": "Spezial. Sprachenkunde 10",
+      "name": "Spezialisierung Sprachenkunde 10",
+      "trait": "Spezialisierung Sprachenkunde 10",
       "source": "",
       "desc": "FW SG10: genaue Bedeutung statt allg. Inhalt, Fehl: keine Fehlschlüsse, SG30 bed. Worte, 30 w4 Infos, 40 alles"
     },
     {
-      "name": "Spezial. Sprachenkunde 15",
-      "trait": "Spezial. Sprachenkunde 15",
+      "name": "Spezialisierung Sprachenkunde 15",
+      "trait": "Spezialisierung Sprachenkunde 15",
       "source": "",
       "desc": "SG25+ZS: mag. Schrifte wie Mag. Lesen, bei mag. Falle dann +2 Mech. Ausschalten"
     },
     {
-      "name": "Spezial. Sprachenkunde 20",
-      "trait": "Spezial. Sprachenkunde 20",
+      "name": "Spezialisierung Sprachenkunde 20",
+      "trait": "Spezialisierung Sprachenkunde 20",
       "source": "",
       "desc": "mag./nichtmag. Mit 1Seite/Rd entziffern, bei 1 Min/Seite 2 x würfeln, besseres nehmen"
     },
     {
-      "name": "Spezial. Sprachenkunde 5",
-      "trait": "Spezial. Sprachenkunde 5",
+      "name": "Spezialisierung Sprachenkunde 5",
+      "trait": "Spezialisierung Sprachenkunde 5",
       "source": "",
       "desc": "Sprachenkunde statt Motiv erkennen für Geheimnachrichten, Wahr+1 schriftliche Fallen +1/5Ränge"
     },
     {
-      "name": "Spezial. Verkleiden 10",
-      "trait": "Spezial. Verkleiden 10",
+      "name": "Spezialisierung Verkleiden 10",
+      "trait": "Spezialisierung Verkleiden 10",
       "source": "",
       "desc": "Verkleiden in w3 Rd, normale Zeit: keine Mali für Geschlecht/Volk/Alter ändern"
     },
     {
-      "name": "Spezial. Verkleiden 15",
-      "trait": "Spezial. Verkleiden 15",
+      "name": "Spezialisierung Verkleiden 15",
+      "trait": "Spezialisierung Verkleiden 15",
       "source": "",
       "desc": "Verkleiden mit Voller Aktion"
     },
     {
-      "name": "Spezial. Verkleiden 20",
-      "trait": "Spezial. Verkleiden 20",
+      "name": "Spezialisierung Verkleiden 20",
+      "trait": "Spezialisierung Verkleiden 20",
       "source": "",
       "desc": "Verkleiden als A, als VA: FW Bluffen für Ablenkung für verstecken"
     },
     {
-      "name": "Spezial. Verkleiden 5",
-      "trait": "Spezial. Verkleiden 5",
+      "name": "Spezialisierung Verkleiden 5",
+      "trait": "Spezialisierung Verkleiden 5",
       "source": "",
       "desc": "Verkleiden in w3 Minuten"
     },
     {
-      "name": "Spezial. Wahrnehmung 10",
-      "trait": "Spezial. Wahrnehmung 10",
+      "name": "Spezialisierung Wahrnehmung 10",
+      "trait": "Spezialisierung Wahrnehmung 10",
       "source": "",
       "desc": "EntfernungsMod +1/9m, , Bonus +5 > unsichtbare"
     },
     {
-      "name": "Spezial. Wahrnehmung 15",
-      "trait": "Spezial. Wahrnehmung 15",
+      "name": "Spezialisierung Wahrnehmung 15",
+      "trait": "Spezialisierung Wahrnehmung 15",
       "source": "",
       "desc": "FW im Schlaf ohne Malus, EntfernungsMod +1/12m"
     },
     {
-      "name": "Spezial. Wahrnehmung 20",
-      "trait": "Spezial. Wahrnehmung 20",
+      "name": "Spezialisierung Wahrnehmung 20",
+      "trait": "Spezialisierung Wahrnehmung 20",
       "source": "",
       "desc": "EntfernungsMod +1/18m, , Bonus +10 > unsichtbare"
     },
     {
-      "name": "Spezial. Wahrnehmung 5",
-      "trait": "Spezial. Wahrnehmung 5",
+      "name": "Spezialisierung Wahrnehmung 5",
+      "trait": "Spezialisierung Wahrnehmung 5",
       "source": "",
       "desc": "FW im Schlaf: Malus halbiert, EntfernungsMod +1/6m"
     },
     {
-      "name": "Spezial. Wissen 10",
-      "trait": "Spezial. Wissen 10",
+      "name": "Spezialisierung Wissen 10",
+      "trait": "Spezialisierung Wissen 10",
       "source": "",
       "desc": "Kreatur identifizieren: 1 Min +1 TW/FW/AttW/ZauberStW/, +1/5Ränge>10"
     },
     {
-      "name": "Spezial. Wissen 15",
-      "trait": "Spezial. Wissen 15",
+      "name": "Spezialisierung Wissen 15",
+      "trait": "Spezialisierung Wissen 15",
       "source": "",
       "desc": "FW fehl: mit -10 wiederholen, Bonus wie 10auch: AF/ÜF/ZF"
     },
     {
-      "name": "Spezial. Wissen 20",
-      "trait": "Spezial. Wissen 20",
+      "name": "Spezialisierung Wissen 20",
+      "trait": "Spezialisierung Wissen 20",
       "source": "",
       "desc": "FW Wissen: 2x würfeln, besseres behalten"
     },
     {
-      "name": "Spezial. Wissen 5",
-      "trait": "Spezial. Wissen 5",
+      "name": "Spezialisierung Wissen 5",
+      "trait": "Spezialisierung Wissen 5",
       "source": "",
       "desc": "Kreatur identifizieren: +1 Info/5Ränge"
     },
     {
-      "name": "Spezial. Zauberkunde 10",
-      "trait": "Spezial. Zauberkunde 10",
+      "name": "Spezialisierung Zauberkunde 10",
+      "trait": "Spezialisierung Zauberkunde 10",
       "source": "",
       "desc": "mag, Gegenstände ohne Magie entdecken identifizieren mit SG+10"
     },
     {
-      "name": "Spezial. Zauberkunde 15",
-      "trait": "Spezial. Zauberkunde 15",
+      "name": "Spezialisierung Zauberkunde 15",
+      "trait": "Spezialisierung Zauberkunde 15",
       "source": "",
       "desc": "mag. Identifizieren: 1 Standard Aktion, Zauber aus Zauberbuch lernen: 1Min/Grad"
     },
     {
-      "name": "Spezial. Zauberkunde 20",
-      "trait": "Spezial. Zauberkunde 20",
+      "name": "Spezialisierung Zauberkunde 20",
+      "trait": "Spezialisierung Zauberkunde 20",
       "source": "",
       "desc": "Wurf Zauberstufe: FW-20Ygleichen SG: Erfolg: Wurf Zauberstufe +2"
     },
     {
-      "name": "Spezial. Zauberkunde 5",
-      "trait": "Spezial. Zauberkunde 5",
+      "name": "Spezialisierung Zauberkunde 5",
+      "trait": "Spezialisierung Zauberkunde 5",
       "source": "",
       "desc": "mag. Identifizieren: 1 Volle Aktion, Zauber aus Zauberbuch lernen: Zeit halbiert"
     },
     {
-      "name": "Spezial. Überlebenskunst 10",
-      "trait": "Spezial. Überlebenskunst 10",
+      "name": "Spezialisierung Überlebenskunst 10",
+      "trait": "Spezialisierung Überlebenskunst 10",
       "source": "",
       "desc": "FW-20 Spuren lesen bei Kreaturen ohne Spuren/fliegend/schwimmend/Spurlos gehen"
     },
     {
-      "name": "Spezial. Überlebenskunst 15",
-      "trait": "Spezial. Überlebenskunst 15",
+      "name": "Spezialisierung Überlebenskunst 15",
+      "trait": "Spezialisierung Überlebenskunst 15",
       "source": "",
       "desc": "1/Tag 1h + FW SG30: 24h Feuer/Kälte Resistenz 5, pro 5Pkt>FW auch für 1 Verbündeten"
     },
     {
-      "name": "Spezial. Überlebenskunst 20",
-      "trait": "Spezial. Überlebenskunst 20",
+      "name": "Spezialisierung Überlebenskunst 20",
+      "trait": "Spezialisierung Überlebenskunst 20",
       "source": "",
       "desc": "FW-10 Spuren lesen bei Kreaturen ohne Spuren/fliegend/schwimmend/Spurlos gehen"
     },
     {
-      "name": "Spezial. Überlebenskunst 5",
-      "trait": "Spezial. Überlebenskunst 5",
+      "name": "Spezialisierung Überlebenskunst 5",
+      "trait": "Spezialisierung Überlebenskunst 5",
       "source": "",
       "desc": "NT-Schaden durch Hitze/Kälte/Hunger/Durst -1/5Ränge"
     },
@@ -27805,8 +27805,8 @@
       "desc": "1/Tag+1/3St>4: TW>Böse+CHMod + SW+½St #Rd/2St; Verb.9m:TW+½CHMod,SW+1+1/5St>getr.Kreatur"
     },
     {
-      "name": "Streiter geg. d. Ungerechtigkeit (ÜF)",
-      "trait": "Streiter geg. d. Ungerechtigkeit (ÜF)",
+      "name": "Streiter gegen die Ungerechtigkeit (ÜF)",
+      "trait": "Streiter gegen die Ungerechtigkeit (ÜF)",
       "source": "",
       "desc": "als A Richtspruch: Klinge stopp oder trifft automatisch, ja nach Schuld"
     },
@@ -28063,8 +28063,8 @@
       "desc": "Restistenz 5 > 1 Energietyp (St11: 10, St20:Immun)"
     },
     {
-      "name": "SV: Beschw. 2: Charme d. Beschwörers",
-      "trait": "SV: Beschw. 2: Charme d. Beschwörers",
+      "name": "SV: Beschwörung 2: Charme des Beschwörers",
+      "trait": "SV: Beschwörung 2: Charme des Beschwörers",
       "source": "",
       "desc": "Herbeizaubern+½St/Rd Dauer, ab St20 Monster herbeizaubern permanent"
     },
@@ -28087,8 +28087,8 @@
       "desc": "bei Bodenberührung: KMV+2+1/St>Ansturm/Versetzen/Zerren, TW/SW+1, St20: Schußlinie (lesen)"
     },
     {
-      "name": "SV: Erkenntnis 1: Glück d. Wahrsagers",
-      "trait": "SV: Erkenntnis 1: Glück d. Wahrsagers",
+      "name": "SV: Erkenntnis 1: Glück des Wahrsagers",
+      "trait": "SV: Erkenntnis 1: Glück des Wahrsagers",
       "source": "",
       "desc": "TW/FW/AttW/RW +½St =A >Berührung *Kreatur #1Rd ^3+CHMod"
     },
@@ -28195,8 +28195,8 @@
       "desc": "ST/GE/KO +1/5St, bei Zaubervorbereitung verschiebbar, St20: 2 Attribute"
     },
     {
-      "name": "SV: Verzaub. 1: Hauch d. Benommenheit",
-      "trait": "SV: Verzaub. 1: Hauch d. Benommenheit",
+      "name": "SV: Verzauberung 1: Hauch der Benommenheit",
+      "trait": "SV: Verzauberung 1: Hauch der Benommenheit",
       "source": "",
       "desc": "Ziel (=<St/TW) wird benommen \"Berührungsangriff *Kreatur #1Rd ^3+CHMod/Tag"
     },
@@ -28687,14 +28687,14 @@
       "desc": "ab St6: Feuerresistenz 5 und einen Bonus von +2 auf Rettungswürfe gegen Gifte"
     },
     {
-      "name": "Teufelsblut, Mächt. (ÜF) KK Bbr",
-      "trait": "Teufelsblut, Mächt. (ÜF) KK Bbr",
+      "name": "Teufelsblut, Mächtiger (ÜF) KK Bbr",
+      "trait": "Teufelsblut, Mächtiger (ÜF) KK Bbr",
       "source": "",
       "desc": "ab St10: im KR +4 gegen Furcht- und Verzauberungseffekte"
     },
     {
-      "name": "Teufelsblut, Schw. (ÜF) KK Bbr",
-      "trait": "Teufelsblut, Schw. (ÜF) KK Bbr",
+      "name": "Teufelsblut, Schwächer (ÜF) KK Bbr",
+      "trait": "Teufelsblut, Schwächer (ÜF) KK Bbr",
       "source": "",
       "desc": "im KR als SA 3/Tag Angriffe mit Höllenfeuer aufladen für 1Rd: Aufflammen (+w6 Feuer)"
     },
@@ -30637,8 +30637,8 @@
       "desc": "für 2 KI Pkt: TP +St heilen"
     },
     {
-      "name": "Unversehrtheit d. Körpers eMön",
-      "trait": "Unversehrtheit d. Körpers eMön",
+      "name": "Unversehrtheit des Körpers eMön",
+      "trait": "Unversehrtheit des Körpers eMön",
       "source": "",
       "desc": "als A 2 KI Pkt: heilt sich 1w8 + St"
     },
@@ -30763,374 +30763,374 @@
       "desc": "BT: Verbessertes Gegenstand zerschmettern, Bei Schaden: SW+½St, bei Beschädigt: TW+2"
     },
     {
-      "name": "Verb. Anführen (AF) KrH",
-      "trait": "Verb. Anführen (AF) KrH",
+      "name": "Verbessertes Anführen (AF) KrH",
+      "trait": "Verbessertes Anführen (AF) KrH",
       "source": "",
       "desc": "mit Talent Anführen: Anführerwert + Signalbonus"
     },
     {
-      "name": "Verb. Balance (AF) Käm",
-      "trait": "Verb. Balance (AF) Käm",
+      "name": "Verbesserte Balance (AF) Käm",
+      "trait": "Verbesserte Balance (AF) Käm",
       "source": "",
       "desc": "die Mali werden im Kampf mit zwei Waffen um -1 gesenkt, Einhandwaffe in Zweithand als leichte"
     },
     {
-      "name": "Verb. Bastion Pal (BF)",
-      "trait": "Verb. Bastion Pal (BF)",
+      "name": "Verbesserte Bastion Pal (BF)",
+      "trait": "Verbesserte Bastion Pal (BF)",
       "source": "",
       "desc": "Radius von Bastion des Guten steigt auf 6m"
     },
     {
-      "name": "Verb. beistehen (AF) OF Rit",
-      "trait": "Verb. beistehen (AF) OF Rit",
+      "name": "Verbessertes beistehen (AF) OF Rit",
+      "trait": "Verbessertes beistehen (AF) OF Rit",
       "source": "",
       "desc": "bei Aktion Jemand-anderem-helfen: Verbündeter: RK/TW/RW/FW+3, St8: +4, 12:+5, 16:+6, 20:+7"
     },
     {
-      "name": "Verb. Bestienmutagen (AF) VM Mut",
-      "trait": "Verb. Bestienmutagen (AF) VM Mut",
+      "name": "Verbessertes Bestienmutagen (AF) VM Mut",
+      "trait": "Verbessertes Bestienmutagen (AF) VM Mut",
       "source": "",
       "desc": "Schadenswürfel für die Biss/Klauenangriffe des Bestienmutagens: +1Stufe, (ab St11)"
     },
     {
-      "name": "Verb. Beute (AF) att",
-      "trait": "Verb. Beute (AF) att",
+      "name": "Verbesserte Beute (AF) att",
+      "trait": "Verbesserte Beute (AF) att",
       "source": "",
       "desc": "als FA Gegner zu Beute: Spur verfolgen: 20 nehmen bei norm. Bew, TW: +4, nach 10min neue Beute"
     },
     {
-      "name": "Verb. Beute (AF) Wal",
-      "trait": "Verb. Beute (AF) Wal",
+      "name": "Verbesserte Beute (AF) Wal",
+      "trait": "Verbesserte Beute (AF) Wal",
       "source": "",
       "desc": "als FA Erzfeind zu Beute: Spur verfolgen: 20 nehmen bei norm. Bew, TW: +4"
     },
     {
-      "name": "Verb. Beweglichkeit (AF) Due",
-      "trait": "Verb. Beweglichkeit (AF) Due",
+      "name": "Verbesserte Beweglichkeit (AF) Due",
+      "trait": "Verbesserte Beweglichkeit (AF) Due",
       "source": "",
       "desc": "kein/L-Rüstung: RK+4>Gelegenheitsangriffe"
     },
     {
-      "name": "Verb. Bodenverteidigung (AF) Mön",
-      "trait": "Verb. Bodenverteidigung (AF) Mön",
+      "name": "Verbesserte Bodenverteidigung (AF) Mön",
+      "trait": "Verbesserte Bodenverteidigung (AF) Mön",
       "source": "",
       "desc": "Kein Malus auf Akrobatik beim Durchqueren bedr. Felder bei voller Bewegungsrate"
     },
     {
-      "name": "Verb. d. Meeres herbeiz. (ZF)",
-      "trait": "Verb. d. Meeres herbeiz. (ZF)",
+      "name": "Verbessertes des Meeres herbeizaubern (ZF)",
+      "trait": "Verbessertes des Meeres herbeizaubern (ZF)",
       "source": "",
       "desc": "VA: 1/Tag Verb. Herbeiz. (Unterart Aquatisch od. Wasser) Verb. Nat. herbeizaubern III (11: IV, 14 V, 17 VI, 20 VII)"
     },
     {
-      "name": "Verb. d. Natur herbeizaub. Bar (BF)",
-      "trait": "Verb. d. Natur herbeizaub. Bar (BF)",
+      "name": "Verbessertes der Natur herbeizaubern Bar (BF)",
+      "trait": "Verbessertes der Natur herbeizaubern Bar (BF)",
       "source": "",
       "desc": "Verb. der Natur herbeizaubern in Liste: St1: I, St4: II, St7: II, St10: IV, St13; V, St16: VI"
     },
     {
-      "name": "Verb. D. Natur herbeizaubern WP",
-      "trait": "Verb. D. Natur herbeizaubern WP",
+      "name": "Verbessertes der Natur herbeizaubern WP",
+      "trait": "Verbessertes der Natur herbeizaubern WP",
       "source": "",
       "desc": "Veründeten der Natur herbeizaubern statt Monster herbeizaubern"
     },
     {
-      "name": "Verb. Emp. Verbindung (AF) Jäg",
-      "trait": "Verb. Emp. Verbindung (AF) Jäg",
+      "name": "Verbesserte Empathische Verbindung (AF) Jäg",
+      "trait": "Verbesserte Empathische Verbindung (AF) Jäg",
       "source": "",
       "desc": "auf 1,5Km mit TG kommunizieren, nur Gefühlsinhalte, als SA duch Augen sehen, solange Blind"
     },
     {
-      "name": "Verb. Emp. Verbindung (ÜF) Rud",
-      "trait": "Verb. Emp. Verbindung (ÜF) Rud",
+      "name": "Verbesserte Empathische Verbindung (ÜF) Rud",
+      "trait": "Verbesserte Empathische Verbindung (ÜF) Rud",
       "source": "",
       "desc": "empathische Verbindung zu allen Tiergefährten; als SA: Wahrnehmung auf 1 Tiergefährten"
     },
     {
-      "name": "Verb. emp. Verbindung (ÜF) Wal",
-      "trait": "Verb. emp. Verbindung (ÜF) Wal",
+      "name": "Verbesserte Empathische Verbindung (ÜF) Wal",
+      "trait": "Verbesserte Empathische Verbindung (ÜF) Wal",
       "source": "",
       "desc": "emp. Verbindung mit Gefährten + als FA durch seine Augen sehen (max 1,6Km, solange Blind)"
     },
     {
-      "name": "Verb. Entreißen (AF) Trick Sch",
-      "trait": "Verb. Entreißen (AF) Trick Sch",
+      "name": "Verbessertes Entreißen (AF) Trick Sch",
+      "trait": "Verbessertes Entreißen (AF) Trick Sch",
       "source": "",
       "desc": "Bonustalent Verb. Entreißen"
     },
     {
-      "name": "Verb. Entrinnen (AF)",
-      "trait": "Verb. Entrinnen (AF)",
+      "name": "Verbessertes Entrinnen (AF)",
+      "trait": "Verbessertes Entrinnen (AF)",
       "source": "",
       "desc": "bei Reflexwurf für ½Schaden: kein Schaden, bei Fehlschlag: ½Schaden"
     },
     {
-      "name": "Verb. Entrinnen (AF) Mön",
-      "trait": "Verb. Entrinnen (AF) Mön",
+      "name": "Verbessertes Entrinnen (AF) Mön",
+      "trait": "Verbessertes Entrinnen (AF) Mön",
       "source": "",
       "desc": "bei Reflexwurf für ½Schaden: kein Schaden, bei Fehlschlag: ½Schaden"
     },
     {
-      "name": "Verb. Entrinnen (AF) STä",
-      "trait": "Verb. Entrinnen (AF) STä",
+      "name": "Verbessertes Entrinnen (AF) STä",
+      "trait": "Verbessertes Entrinnen (AF) STä",
       "source": "",
       "desc": "bei Reflexwurf für ½Schaden: kein Schaden, bei Fehlschlag: ½Schaden"
     },
     {
-      "name": "Verb. Entrinnen (AF) v-Trick Sch",
-      "trait": "Verb. Entrinnen (AF) v-Trick Sch",
+      "name": "Verbessertes Entrinnen (AF) v-Trick Sch",
+      "trait": "Verbessertes Entrinnen (AF) v-Trick Sch",
       "source": "",
       "desc": "bei Reflexwurf für ½Schaden: kein Schaden, bei Fehlschlag: ½Schaden"
     },
     {
-      "name": "Verb. Entrinnen (AF) Wal",
-      "trait": "Verb. Entrinnen (AF) Wal",
+      "name": "Verbessertes Entrinnen (AF) Wal",
+      "trait": "Verbessertes Entrinnen (AF) Wal",
       "source": "",
       "desc": "bei Reflexwurf für ½Schaden: kein Schaden, bei Fehlschlag: ½Schaden"
     },
     {
-      "name": "Verb. Feuerkörper (AF) Fbw",
-      "trait": "Verb. Feuerkörper (AF) Fbw",
+      "name": "Verbesserter Feuerkörper (AF) Fbw",
+      "trait": "Verbesserter Feuerkörper (AF) Fbw",
       "source": "",
       "desc": "Elementarkörper II auf Liste der Extrakte 4. Grad"
     },
     {
-      "name": "Verb. Gegenzauber (BT) Bar",
-      "trait": "Verb. Gegenzauber (BT) Bar",
+      "name": "Verbesserter Gegenzauber (BT) Bar",
+      "trait": "Verbesserter Gegenzauber (BT) Bar",
       "source": "",
       "desc": "Verb. Gegenzauber als Bonustalent"
     },
     {
-      "name": "Verb. Gep. Schnelligkeit (AF) Bbr",
-      "trait": "Verb. Gep. Schnelligkeit (AF) Bbr",
+      "name": "Verbesserte Gep. Schnelligkeit (AF) Bbr",
+      "trait": "Verbesserte Gep. Schnelligkeit (AF) Bbr",
       "source": "",
       "desc": "Bewegungsrate+3m (außer schwer belastet) kumulativ"
     },
     {
-      "name": "Verb. Gestalt (ÜF) Dru",
-      "trait": "Verb. Gestalt (ÜF) Dru",
+      "name": "Verbesserte Gestalt (ÜF) Dru",
+      "trait": "Verbesserte Gestalt (ÜF) Dru",
       "source": "",
       "desc": "Ab 9. St. + je 4 weitere St.: Fähigkeit zur Verbesserung Nagagestalt raussuchen."
     },
     {
-      "name": "Verb. Glück des Waldläufers (AF) Wal",
-      "trait": "Verb. Glück des Waldläufers (AF) Wal",
+      "name": "Verbessertes Glück des Waldläufers (AF) Wal",
+      "trait": "Verbessertes Glück des Waldläufers (AF) Wal",
       "source": "",
       "desc": "TW mit +4 wiederholen/Gegner muß TW mit -4 wiederholen, St16: 2/Tag, 19: 3x"
     },
     {
-      "name": "Verb. Heilung Bar (BF)",
-      "trait": "Verb. Heilung Bar (BF)",
+      "name": "Verbesserte Heilung Bar (BF)",
+      "trait": "Verbesserte Heilung Bar (BF)",
       "source": "",
       "desc": "CHMod/Tag Heilungseffekt 1 Zaubers od. Zauber ausl. Gegenst. auf Zauberst. In Höhe der Bardenst."
     },
     {
-      "name": "Verb. Heilzauber (ÜF) O Mys",
-      "trait": "Verb. Heilzauber (ÜF) O Mys",
+      "name": "Verbesserter Heilzauber (ÜF) O Mys",
+      "trait": "Verbesserter Heilzauber (ÜF) O Mys",
       "source": "",
       "desc": "Heilzauber +St : z.B. St11: Leichte Wunden Heilen w8+11 statt w8+5"
     },
     {
-      "name": "Verb. Jemandem helfen (AF) KCh",
-      "trait": "Verb. Jemandem helfen (AF) KCh",
+      "name": "Verbessertes Jemandem helfen (AF) KCh",
+      "trait": "Verbessertes Jemandem helfen (AF) KCh",
       "source": "",
       "desc": "Aktion Jemandem Helfen verleiht Bonus von +4 statt nur von +2"
     },
     {
-      "name": "Verb. Kampfzauberei (AF)",
-      "trait": "Verb. Kampfzauberei (AF)",
+      "name": "Verbesserte Kampfzauberei (AF)",
+      "trait": "Verbesserte Kampfzauberei (AF)",
       "source": "",
       "desc": "Konzentrationswürfe +2 bei Kampfzauberei"
     },
     {
-      "name": "Verb. Mutagen (ÜF) Mut",
-      "trait": "Verb. Mutagen (ÜF) Mut",
+      "name": "Verbessertes Mutagen (ÜF) Mut",
+      "trait": "Verbessertes Mutagen (ÜF) Mut",
       "source": "",
       "desc": "ein Verb. Mutagen auf der 4., 6., 8. und 10. Stufe, jedes nur 1 mal"
     },
     {
-      "name": "Verb. Nat. Rüstung (AF) E1 Pak",
-      "trait": "Verb. Nat. Rüstung (AF) E1 Pak",
+      "name": "Verbesserte Natürliche Rüstung (AF) E1 Pak",
+      "trait": "Verbesserte Natürliche Rüstung (AF) E1 Pak",
       "source": "",
       "desc": "dichtes Fell, feste Schuppen oder Knochenplatten: RK+2 (Evolution max 1/5St)"
     },
     {
-      "name": "Verb. Reaktion (AF) Due",
-      "trait": "Verb. Reaktion (AF) Due",
+      "name": "Verbesserte Reaktion (AF) Due",
+      "trait": "Verbesserte Reaktion (AF) Due",
       "source": "",
       "desc": "INI+2, St8: Ini +4"
     },
     {
-      "name": "Verb. Reflexbew. (AF) Nin",
-      "trait": "Verb. Reflexbew. (AF) Nin",
+      "name": "Verbesserte Reflexbewegung (AF) Nin",
+      "trait": "Verbesserte Reflexbewegung (AF) Nin",
       "source": "",
       "desc": "kann nicht in Zange genommen werden, HH Schaden nur durch Gegner min. 4 St mehr"
     },
     {
-      "name": "Verb. Reflexbewegung (AF) Ass",
-      "trait": "Verb. Reflexbewegung (AF) Ass",
+      "name": "Verbesserte Reflexbewegung (AF) Ass",
+      "trait": "Verbesserte Reflexbewegung (AF) Ass",
       "source": "",
       "desc": "kein in die Zangen nehmen möglich, Schurken nur mit 4 St mehr hinterhältiger Angriff"
     },
     {
-      "name": "Verb. Reflexbewegung (AF) Bbr",
-      "trait": "Verb. Reflexbewegung (AF) Bbr",
+      "name": "Verbesserte Reflexbewegung (AF) Bbr",
+      "trait": "Verbesserte Reflexbewegung (AF) Bbr",
       "source": "",
       "desc": "kann nicht in die Zange genommen werden"
     },
     {
-      "name": "Verb. Reflexbewegung (AF) Sch",
-      "trait": "Verb. Reflexbewegung (AF) Sch",
+      "name": "Verbesserte Reflexbewegung (AF) Sch",
+      "trait": "Verbesserte Reflexbewegung (AF) Sch",
       "source": "",
       "desc": "kann nicht mehr in die Zange genommen werden"
     },
     {
-      "name": "Verb. Reflexbewegung (AF) Ska",
-      "trait": "Verb. Reflexbewegung (AF) Ska",
+      "name": "Verbesserte Reflexbewegung (AF) Ska",
+      "trait": "Verbesserte Reflexbewegung (AF) Ska",
       "source": "",
       "desc": "kann nicht in Zange genommen werden, HH Schaden nur durch Gegner min. 4 St mehr"
     },
     {
-      "name": "Verb. Reflexbewegung (AF) StV",
-      "trait": "Verb. Reflexbewegung (AF) StV",
+      "name": "Verbesserte Reflexbewegung (AF) StV",
+      "trait": "Verbesserte Reflexbewegung (AF) StV",
       "source": "",
       "desc": "kann nicht mehr in die Zange genommen werden"
     },
     {
-      "name": "Verb. Reflexbewegung (AF) STä",
-      "trait": "Verb. Reflexbewegung (AF) STä",
+      "name": "Verbesserte Reflexbewegung (AF) STä",
+      "trait": "Verbesserte Reflexbewegung (AF) STä",
       "source": "",
       "desc": "kein in die Zangen nehmen möglich, Schurken nur mit 4 St mehr hinterhältiger Angriff"
     },
     {
-      "name": "Verb. Schaden (AF) E1 Pak",
-      "trait": "Verb. Schaden (AF) E1 Pak",
+      "name": "Verbesserter Schaden (AF) E1 Pak",
+      "trait": "Verbesserter Schaden (AF) E1 Pak",
       "source": "",
       "desc": "Wähle 1 natürliche Angriffsart: Schadenswürfel +1 Kategorie"
     },
     {
-      "name": "Verb. Schurkentricks Bar (BF)",
-      "trait": "Verb. Schurkentricks Bar (BF)",
+      "name": "Verbesserte Schurkentricks Bar (BF)",
+      "trait": "Verbesserte Schurkentricks Bar (BF)",
       "source": "",
       "desc": "statt Schurkentrick Veresserten Schurkentrick"
     },
     {
-      "name": "Verb. Schurkentricks Nin",
-      "trait": "Verb. Schurkentricks Nin",
+      "name": "Verbesserte Schurkentricks Nin",
+      "trait": "Verbesserte Schurkentricks Nin",
       "source": "",
       "desc": "Statt Ninjatrick einen Trick der Liste Verb. Schurkentricks"
     },
     {
-      "name": "Verb. schützen (AF) Pak Bms",
-      "trait": "Verb. schützen (AF) Pak Bms",
+      "name": "Verbessertes schützen (AF) Pak Bms",
+      "trait": "Verbessertes schützen (AF) Pak Bms",
       "source": "",
       "desc": "1/Brut: RK/RW+2, nicht, wenn Eidolon: Ringkampf verwickelt/hilflos/gelähmt/betäubt/bewusstlos"
     },
     {
-      "name": "Verb. Spurenlesen Wal (AF) Gro",
-      "trait": "Verb. Spurenlesen Wal (AF) Gro",
+      "name": "Verbessertes Spurenlesen Wal (AF) Gro",
+      "trait": "Verbessertes Spurenlesen Wal (AF) Gro",
       "source": "",
       "desc": "Überlebenskunst+2 (Spuren ident./folgen); Natur SG15: Zustand des Tieres/mag. Bestie"
     },
     {
-      "name": "Verb. Spurenlesen Wal (AF) Gwj",
-      "trait": "Verb. Spurenlesen Wal (AF) Gwj",
+      "name": "Verbessertes Spurenlesen Wal (AF) Gwj",
+      "trait": "Verbessertes Spurenlesen Wal (AF) Gwj",
       "source": "",
       "desc": "Überlebenskunst+2 (Spuren ident./folgen); Natur SG15: Zustand des Tieres/mag. Bestie"
     },
     {
-      "name": "Verb. Sturmangriff (AF) Rit",
-      "trait": "Verb. Sturmangriff (AF) Rit",
+      "name": "Verbesserter Sturmangriff (AF) Rit",
+      "trait": "Verbesserter Sturmangriff (AF) Rit",
       "source": "",
       "desc": "auf alle Nahkampfangriffe während eines berittenen Sturmangriffes +4, keine Mali auf RK"
     },
     {
-      "name": "Verb. Tartschenverteid. Käm (AF)",
-      "trait": "Verb. Tartschenverteid. Käm (AF)",
+      "name": "Verbesserte Tartschenverteidigung Käm (AF)",
+      "trait": "Verbesserte Tartschenverteidigung Käm (AF)",
       "source": "",
       "desc": "Zweih. Kampf: kein Verlust des Schildbonus mehr"
     },
     {
-      "name": "Verb. Telep. kontern Klu",
-      "trait": "Verb. Telep. kontern Klu",
+      "name": "Verbessertes Telepathisch kontern Klu",
+      "trait": "Verbessertes Telepathisch kontern Klu",
       "source": "",
       "desc": "Ziel wird umgeleitet Rad 9m, w6/St Schaden, ZÄH SG 10+St+CHMod für  50% Schaden +  keine Umleitung"
     },
     {
-      "name": "Verb. Toleranz (AF) Bbr",
-      "trait": "Verb. Toleranz (AF) Bbr",
+      "name": "Verbesserte Toleranz (AF) Bbr",
+      "trait": "Verbesserte Toleranz (AF) Bbr",
       "source": "",
       "desc": "Toleranz auch auf Effekte die Benommen, Verängstigt, Erschüttert oder Betäubt machen"
     },
     {
-      "name": "Verb. Tricks Sch",
-      "trait": "Verb. Tricks Sch",
+      "name": "Verbesserte Tricks Sch",
+      "trait": "Verbesserte Tricks Sch",
       "source": "",
       "desc": "Verbesserten Trick statt normalen Trick lernen"
     },
     {
-      "name": "Verb. Verbeißen (AF) Bbr",
-      "trait": "Verb. Verbeißen (AF) Bbr",
+      "name": "Verbessertes Verbeißen (AF) Bbr",
+      "trait": "Verbessertes Verbeißen (AF) Bbr",
       "source": "",
       "desc": "Ringkampf mit Verbeißenangriff kontrolliert = nicht im Ringkampf verstrickt; nicht bewegen od. Mund benutz."
     },
     {
-      "name": "Verb. Verteidigung Kri",
-      "trait": "Verb. Verteidigung Kri",
+      "name": "Verbesserte Verteidigung Kri",
+      "trait": "Verbesserte Verteidigung Kri",
       "source": "",
       "desc": "als A für 1Min RW/RK+1, St10: +2, St20: +3"
     },
     {
-      "name": "Verb. Vertrauter Hex (ÜF)",
-      "trait": "Verb. Vertrauter Hex (ÜF)",
+      "name": "Verbesserter Vertrauter Hex (ÜF)",
+      "trait": "Verbesserter Vertrauter Hex (ÜF)",
       "source": "",
       "desc": "Um Kräfte und Fähig. des Vertrauten zu bestimmen steigt die Hexenstufe um 1"
     },
     {
-      "name": "Verb. Waffenloser Schlag Wl",
-      "trait": "Verb. Waffenloser Schlag Wl",
+      "name": "Verbesserter Waffenloser Schlag Wl",
+      "trait": "Verbesserter Waffenloser Schlag Wl",
       "source": "",
       "desc": "Bonustalent Verbesserter Waffenloser Schlag"
     },
     {
-      "name": "Verb. Wilder Ringkampf (AF) Bbr",
-      "trait": "Verb. Wilder Ringkampf (AF) Bbr",
+      "name": "Verbesserter Wilder Ringkampf (AF) Bbr",
+      "trait": "Verbesserter Wilder Ringkampf (AF) Bbr",
       "source": "",
       "desc": "keine Mali bei Ringkampf, +1GröKat bei Ergreifen"
     },
     {
-      "name": "Verb. Wuch. Schlag (AF) Rau",
-      "trait": "Verb. Wuch. Schlag (AF) Rau",
+      "name": "Verbesserter Wuchtiger Schlag (AF) Rau",
+      "trait": "Verbesserter Wuchtiger Schlag (AF) Rau",
       "source": "",
       "desc": "gegen jede Größe, als Angriffsaktion, bei nat20 ebenso bestätige: Schaden x2, bie Hindernis x2"
     },
     {
-      "name": "Verb. Zaubern v. Schriftrollen",
-      "trait": "Verb. Zaubern v. Schriftrollen",
+      "name": "Verbessertes Zaubern von Schriftrollen",
+      "trait": "Verbessertes Zaubern von Schriftrollen",
       "source": "",
       "desc": "Magierzauber von Schriftr. wirken & SG des Zaubers mit IN-wert & rel. Talenten bestimmen"
     },
     {
-      "name": "Verb. Zauberrückruf (ÜF)",
-      "trait": "Verb. Zauberrückruf (ÜF)",
+      "name": "Verbesserter Zauberrückruf (ÜF)",
+      "trait": "Verbesserter Zauberrückruf (ÜF)",
       "source": "",
       "desc": "als SA für ½Pkt Zauber zurück rufen, für 1Pkt anderen Zauber des selben Grades vorbereiten (ohne Buch)"
     },
     {
-      "name": "Verb. Zu-Fall-bringen WolD",
-      "trait": "Verb. Zu-Fall-bringen WolD",
+      "name": "Verbessertes Zu-Fall-bringen WolD",
+      "trait": "Verbessertes Zu-Fall-bringen WolD",
       "source": "",
       "desc": "Bonustalent Verb. Zu-Fall-bringen"
     },
     {
-      "name": "Verb.Reflexbewegung (AF) Blu",
-      "trait": "Verb.Reflexbewegung (AF) Blu",
+      "name": "Verbesserte Reflexbewegung (AF) Blu",
+      "trait": "Verbesserte Reflexbewegung (AF) Blu",
       "source": "",
       "desc": "kein in die Zangen nehmen möglich, Schurken nur mit 4 St mehr hinterhältiger Angriff"
     },
     {
-      "name": "Verb.s Wildwandlermutagen Alc",
-      "trait": "Verb.s Wildwandlermutagen Alc",
+      "name": "Verbessertes Wildwandlermutagen Alc",
+      "trait": "Verbessertes Wildwandlermutagen Alc",
       "source": "",
       "desc": "erhält zwei der Fähigkeiten und Wahlmöglichkeiten von Bestiengestalt I seiner Wahl"
     },
@@ -31417,8 +31417,8 @@
       "desc": "wie Selbstverkleidung =A ^1h/St"
     },
     {
-      "name": "Verkrüpp. Krit. Treffer (AF) Due",
-      "trait": "Verkrüpp. Krit. Treffer (AF) Due",
+      "name": "Verkrüppelnder Kritischer Treffer (AF) Due",
+      "trait": "Verkrüppelnder Kritischer Treffer (AF) Due",
       "source": "",
       "desc": "Krit mit L oder EH Stichwaffe: oder: Bewegung-3m/w4ST+GE/RW-4/RK-4/2w6Blutverlust #1Min"
     },
@@ -33457,14 +33457,14 @@
       "desc": "als FA 1/Tag: Waffe berühren: 1Min glüht: Abberationen/Untote +w6 Schaden, St16: 2/Tag"
     },
     {
-      "name": "Widerst. d. Drachentotems KK Bbr",
-      "trait": "Widerst. d. Drachentotems KK Bbr",
+      "name": "Widerstand des Drachentotems KK Bbr",
+      "trait": "Widerstand des Drachentotems KK Bbr",
       "source": "",
       "desc": "Energieresistent gem. Drachentotem in Höhe doppelter SR/-; +2 SR je weitere KRK Drachentotem"
     },
     {
-      "name": "Widerst. d. Weltenschlange KK Bbr",
-      "trait": "Widerst. d. Weltenschlange KK Bbr",
+      "name": "Widerstand der Weltenschlange KK Bbr",
+      "trait": "Widerstand der Weltenschlange KK Bbr",
       "source": "",
       "desc": "Waffe für SR Böse, Chaot., Gut & Rechtsch.; +1 RW Zauber Gesinn. od. Ext./Aber. +1/weitere KRK Weltenschl."
     },
@@ -34591,32 +34591,32 @@
       "desc": "1/Tag Barden/Hexenmeister/Magier/Kleriker Zauber wirken als VA, St11: 2x, St17: 3x"
     },
     {
-      "name": "Zauberä. Fähigkeit A",
-      "trait": "Zauberä. Fähigkeit A",
+      "name": "Zauberähnliche Fähigkeit A",
+      "trait": "Zauberähnliche Fähigkeit A",
       "source": "",
       "desc": "1/Tag Tageslicht als ZF"
     },
     {
-      "name": "Zauberä. Fähigkeit D",
-      "trait": "Zauberä. Fähigkeit D",
+      "name": "Zauberähnliche Fähigkeit D",
+      "trait": "Zauberähnliche Fähigkeit D",
       "source": "",
       "desc": "1/Tag: Dunkelheit, Feenfeuer und Tanzende Lichter (Zauberstufe = Charakterstufe)"
     },
     {
-      "name": "Zauberä. Fähigkeit Ges",
-      "trait": "Zauberä. Fähigkeit Ges",
+      "name": "Zauberähnliche Fähigkeit Ges",
+      "trait": "Zauberähnliche Fähigkeit Ges",
       "source": "",
       "desc": "1/Tag: Selbstverkleidung; 9 St: 1/Tag Schattenreise: 13: Ebenenwechsel"
     },
     {
-      "name": "Zauberä. Fähigkeit HV",
-      "trait": "Zauberä. Fähigkeit HV",
+      "name": "Zauberähnliche Fähigkeit HV",
+      "trait": "Zauberähnliche Fähigkeit HV",
       "source": "",
       "desc": "3/Tag Untote entdecken als ZF"
     },
     {
-      "name": "Zauberä. Fähigkeiten",
-      "trait": "Zauberä. Fähigkeiten",
+      "name": "Zauberähnliche Fähigkeiten",
+      "trait": "Zauberähnliche Fähigkeiten",
       "source": "",
       "desc": "Zauberähnliche Fähigkeiten wie Zauber"
     },
@@ -34825,8 +34825,8 @@
       "desc": "Rad 9m: WEMod x Rd : TW +2, RW+2>Furcht, ST3: +3, St16: +4, nur 1/24h/Ziel"
     },
     {
-      "name": "Zorn d. Meeres widerst. (AF) Dru",
-      "trait": "Zorn d. Meeres widerst. (AF) Dru",
+      "name": "Zorn des Meeres widerstehen (AF) Dru",
+      "trait": "Zorn des Meeres widerstehen (AF) Dru",
       "source": "",
       "desc": "RW +4 > AF/ÜF/ZF von Aquatischen/aquatische Zauber"
     },
