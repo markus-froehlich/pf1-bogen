@@ -53,7 +53,7 @@ export const DEFAULT_CHAR = {
   feats: [],
   xp: { current: 0, track: 'mittel' },
   conditions: [],
-  inventory: { coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: [] },
+  inventory: { coins: { pp: 0, gp: 0, sp: 0, cp: 0 }, items: [], count_coin_weight: false },
   bio: { languages: '', appearance: '', background: '' },
   active_buffs: [],
   specials: [],
