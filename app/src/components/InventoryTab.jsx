@@ -274,16 +274,10 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
           </div>
           <div className="invf-actions">
             {editId !== '__new__' && (
-              <button className="invf-del-btn" onClick={() => deleteItem(editId)}>
-                {L ? 'Löschen' : 'Delete'}
-              </button>
+              <button className="invf-del-btn" onClick={() => deleteItem(editId)} title={L ? 'Löschen' : 'Delete'}>🗑</button>
             )}
-            <button className="invf-cancel-btn" onClick={() => setEditId(null)}>
-              {L ? 'Abbrechen' : 'Cancel'}
-            </button>
-            <button className="invf-save-btn" onClick={saveDraft} disabled={!draft.name.trim()}>
-              {L ? 'Speichern' : 'Save'}
-            </button>
+            <button className="invf-cancel-btn" onClick={() => setEditId(null)} title={L ? 'Abbrechen' : 'Cancel'}>✕</button>
+            <button className="invf-save-btn" onClick={saveDraft} disabled={!draft.name.trim()} title={L ? 'Speichern' : 'Save'}>✓</button>
           </div>
         </div>
       )}
