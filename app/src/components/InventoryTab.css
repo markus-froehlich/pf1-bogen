@@ -91,12 +91,19 @@
 .invf-small::-webkit-inner-spin-button { -webkit-appearance: none; }
 .invf-actions { display: flex; gap: 6px; justify-content: flex-end; padding-top: 2px; }
 .invf-save-btn, .invf-cancel-btn, .invf-del-btn {
-  border-radius: 6px; padding: 5px 12px; font-size: 0.75rem; font-weight: 700; cursor: pointer;
+  border-radius: 8px;
+  width: 40px; height: 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
 }
 .invf-save-btn   { background: var(--accent); border: none; color: var(--bg); }
 .invf-save-btn:disabled { opacity: 0.4; cursor: default; }
 .invf-cancel-btn { background: var(--surface3); border: 1px solid var(--border); color: var(--text-muted); }
-.invf-del-btn    { background: none; border: 1px solid #c96e6e; color: #c96e6e; margin-right: auto; }
+.invf-del-btn    { background: none; border: 1px solid #c96e6e; color: #c96e6e; margin-right: auto; font-size: 0.95rem; }
 
 /* Items list */
 .inv-empty {
