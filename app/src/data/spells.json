@@ -10,7 +10,7 @@
         "de": "Druide"
       },
       "hxm_magier": {
-        "de": "Hexenmeister/Magier"
+        "de": "Hxm./Magier"
       },
       "kleriker": {
         "de": "Kleriker"
@@ -20345,7 +20345,7 @@
     {
       "id": "maech_engelsaspekt",
       "name": {
-        "de": "Mäch. Engelsaspekt",
+        "de": "Mächtiger Engelsaspekt",
         "en": null
       },
       "school": "Vw",
@@ -26536,7 +26536,7 @@
     {
       "id": "schw_engelsaspekt",
       "name": {
-        "de": "Schw.. Engelsaspekt",
+        "de": "Schwacher Engelsaspekt",
         "en": null
       },
       "school": "Vw",

@@ -187,7 +187,7 @@
       "desc": "keine zusätzlichen Waffen"
     },
     {
-      "name": "Aufstieg   Kämpfer",
+      "name": "Aufstieg Kämpfer",
       "trait": "Aufstieg",
       "source": "Kämpfer",
       "desc": "1TP / 1FP / +1 KMV auf Kampfmanöver der Wahl"
@@ -1045,8 +1045,8 @@
       "desc": "Trefferwürfe +2"
     },
     {
-      "name": "7 Geheimnis des Ausweichens  Geh WHü",
-      "trait": "7 Geheimnis des Ausweichens  Geh WHü",
+      "name": "7 Geheimnis des Ausweichens Geh WHü",
+      "trait": "7 Geheimnis des Ausweichens Geh WHü",
       "source": "",
       "desc": "RK +2"
     },
@@ -1651,8 +1651,8 @@
       "desc": "nach einem Sturmangriff einen Vollen Angriff ausführen, nur vierbeinige Grundform"
     },
     {
-      "name": "Anspringen AF) SteD",
-      "trait": "Anspringen AF) SteD",
+      "name": "Anspringen (AF) SteD",
+      "trait": "Anspringen (AF) SteD",
       "source": "",
       "desc": "Ab 6. St 1x täglich besonderer Angriff Anspringen (alle weitere 3 St Einmal täglich mehr)"
     },
@@ -2011,8 +2011,8 @@
       "desc": "Armbrüste: TW/Schaden +1 +1/4St über 5"
     },
     {
-      "name": "Armbrusttraining (AF )",
-      "trait": "Armbrusttraining (AF )",
+      "name": "Armbrusttraining (AF)",
+      "trait": "Armbrusttraining (AF)",
       "source": "",
       "desc": "Art Armbrust wählen: Schaden + GE-Mod, bei Krit: Krit x+1, ST 9/13/17 weitere Armbrust Art"
     },
@@ -3829,14 +3829,14 @@
       "desc": "RK+1+1/4St #Kampfrausch"
     },
     {
-      "name": "Bestienzorn  (ÜF) Hie",
-      "trait": "Bestienzorn  (ÜF) Hie",
+      "name": "Bestienzorn (ÜF) Hie",
+      "trait": "Bestienzorn (ÜF) Hie",
       "source": "",
       "desc": "1LK als SA: GF./TG/RT…: als AA max BR bewegen, +1 Angriff mit 1 nat. Waffe, TW 2x besseres, umgeht SR"
     },
     {
-      "name": "Bestienzorn  (ÜF) Wäc",
-      "trait": "Bestienzorn  (ÜF) Wäc",
+      "name": "Bestienzorn (ÜF) Wäc",
+      "trait": "Bestienzorn (ÜF) Wäc",
       "source": "",
       "desc": "1LK als SA: GF./TG/RT…: als AA max BR bewegen, +1 Angriff mit 1 nat. Waffe, TW 2x besseres, umgeht SR"
     },
@@ -6427,8 +6427,8 @@
       "desc": "nat RK+4,St7/11/15/19: je +2, St13: Sr5/Kaltes Eisen, 1h/St"
     },
     {
-      "name": "Dämonenlicht (ZF ) Trick Sch",
-      "trait": "Dämonenlicht (ZF ) Trick Sch",
+      "name": "Dämonenlicht (ZF) Trick Sch",
+      "trait": "Dämonenlicht (ZF) Trick Sch",
       "source": "",
       "desc": "Tanzende Lichter: statt 4 Lichter 1 Däm.Licht: wie Hypnotisches Muster, fasziniert 1 Ziel-TW=St"
     },
@@ -9817,8 +9817,8 @@
       "desc": "RK+8, ST/KO/GE alle +8, -2IN/WE/CH alle -3"
     },
     {
-      "name": "Geb. Heiliges Symbol (ÜF )",
-      "trait": "Geb. Heiliges Symbol (ÜF )",
+      "name": "Geb. Heiliges Symbol (ÜF)",
+      "trait": "Geb. Heiliges Symbol (ÜF)",
       "source": "",
       "desc": "Wie Fokus Magier: nicht vorbereiteten Zauber sprechen ^1/Tag, kann mag. Fähigkeiten bekommen"
     },
@@ -10801,8 +10801,8 @@
       "desc": "+2 Volksbonus Heimlichkeit (+4 unterirdisch); +2 Handwerk (Alchemie) und Wahrnehmung"
     },
     {
-      "name": "Geschwinde Finger (AF ) Trick Sch",
-      "trait": "Geschwinde Finger (AF ) Trick Sch",
+      "name": "Geschwinde Finger (AF) Trick Sch",
+      "trait": "Geschwinde Finger (AF) Trick Sch",
       "source": "",
       "desc": "1/Tag+1/5St bei Fingerfertigkeit 2 x würfeln, vorher ankündigen"
     },
@@ -10879,8 +10879,8 @@
       "desc": "Dunkelsicht 27m"
     },
     {
-      "name": "Gest. Zauber umwandeln  (ÜF) MT Ark",
-      "trait": "Gest. Zauber umwandeln  (ÜF) MT Ark",
+      "name": "Gest. Zauber umwandeln (ÜF) MT Ark",
+      "trait": "Gest. Zauber umwandeln (ÜF) MT Ark",
       "source": "",
       "desc": "bei Mäch. Zaubereffekt stören: ZS=Zauber + Bannwurf > +5: 1AR, +10 2AR, nicht bei Gegenständen"
     },
@@ -11743,8 +11743,8 @@
       "desc": "1/Tag (St17:2x, 20:3x) Knöcherne Arme w6 \"Rad 9m #1Rd RR"
     },
     {
-      "name": "Grillentanz ( ÜF ) Trick Sch",
-      "trait": "Grillentanz ( ÜF ) Trick Sch",
+      "name": "Grillentanz (ÜF) Trick Sch",
+      "trait": "Grillentanz (ÜF) Trick Sch",
       "source": "",
       "desc": "1/Tag+1/5St als VA FW Tanzen: Wil SG FW > beginnt Tanzen"
     },
@@ -13579,8 +13579,8 @@
       "desc": "auf St 18 und 20 kann statt einer Hexerei ein Hohe Hexerei gewählt werden"
     },
     {
-      "name": "Hohe Zugkraft  (AF) Bar",
-      "trait": "Hohe Zugkraft  (AF) Bar",
+      "name": "Hohe Zugkraft (AF) Bar",
+      "trait": "Hohe Zugkraft (AF) Bar",
       "source": "",
       "desc": "Bonustalent Hohe Zugkraft, St11: ST+3, St20: +4"
     },
@@ -13933,8 +13933,8 @@
       "desc": "Immun > Kälte/NT-Schaden/Kritische Treffer, Hinterhältige Angriffe"
     },
     {
-      "name": "Immunität gegen Gifte  (AF) SchD",
-      "trait": "Immunität gegen Gifte  (AF) SchD",
+      "name": "Immunität gegen Gifte (AF) SchD",
+      "trait": "Immunität gegen Gifte (AF) SchD",
       "source": "",
       "desc": "Immunität > Gifte: Schlangen/Reptilien/Unterart Reptilien, St12: alle Gifte"
     },
@@ -14695,14 +14695,14 @@
       "desc": "als AA: 1. TP>0: 1TP, 2. Bestätigung Krit wiederholen, FW im Kampf: 10 nehmen"
     },
     {
-      "name": "KF Perfekter  Treffer  (AF)",
-      "trait": "KF Perfekter  Treffer  (AF)",
+      "name": "KF Perfekter Treffer (AF)",
+      "trait": "KF Perfekter Treffer (AF)",
       "source": "",
       "desc": "als A 1/TagTreffer auto. Krit (Bestätigung), max Schaden, Ignoriert SR, w4 Blind/Taub/Krank/Wankend"
     },
     {
-      "name": "KF Stärke  durch  Ehre  (AF)",
-      "trait": "KF Stärke  durch  Ehre  (AF)",
+      "name": "KF Stärke durch Ehre (AF)",
+      "trait": "KF Stärke durch Ehre (AF)",
       "source": "",
       "desc": "1/Tag+1/4St: als FA: FW/RW +4"
     },
@@ -15691,8 +15691,8 @@
       "desc": "bei PS Schaden: Ziel Kränkelnd"
     },
     {
-      "name": "Kränkelndmachender Schlag (ÜF",
-      "trait": "Kränkelndmachender Schlag (ÜF",
+      "name": "Kränkelndmachender Schlag (ÜF)",
+      "trait": "Kränkelndmachender Schlag (ÜF)",
       "source": "",
       "desc": "Krit: Ziel kränkeld für ½Rd/St, für Zauber Konz-Wurf SG15+ZG"
     },
@@ -16069,8 +16069,8 @@
       "desc": "geb.Reittier/Tiergef. Reiten: alle Gegner in Zange, Kraftschub: RT heilt KSW+LSt, Sturmangriff+1LK: Schaden x2, Lanze:x3"
     },
     {
-      "name": "L1 Berüh.d. Wanderers (ÜF ) Göt",
-      "trait": "L1 Berüh.d. Wanderers (ÜF ) Göt",
+      "name": "L1 Berüh.d. Wanderers (ÜF) Göt",
+      "trait": "L1 Berüh.d. Wanderers (ÜF) Göt",
       "source": "",
       "desc": "1LK als SA: Waffe Rückkehr/Werfen, 1Rd/LSt, als VA werfen>mehrere Gegner, nur Desna"
     },
@@ -16663,8 +16663,8 @@
       "desc": "Akrobatik: schm. Kanten.FW auto, volle BR: kein Abzug für uneben/geneigt/rutschig/Hindern., KMV+10>zu Fall"
     },
     {
-      "name": "L1 Mantel der Erbin (ÜF )",
-      "trait": "L1 Mantel der Erbin (ÜF )",
+      "name": "L1 Mantel der Erbin (ÜF)",
+      "trait": "L1 Mantel der Erbin (ÜF)",
       "source": "",
       "desc": "1LK als SA: 1 Furcht/Gift/Krankheitseffekt beenden, 1LK als A: 1 Verb. Rad 9m, nur Iomedae"
     },
@@ -16849,8 +16849,8 @@
       "desc": "FK ohne Gga, 1LK als A: 1Rd schiessen aus dem Hinterhalt ohne Mali auf Heimlichkeit"
     },
     {
-      "name": "L1 Schatten d.1.Schatzkam. (AF ) Göt",
-      "trait": "L1 Schatten d.1.Schatzkam. (AF ) Göt",
+      "name": "L1 Schatten d.1.Schatzkam. (AF) Göt",
+      "trait": "L1 Schatten d.1.Schatzkam. (AF) Göt",
       "source": "",
       "desc": "Stecken/Tränke/Zauberstäbe ZS+½LSt, 1LK/Grad als FA: +metamag.Talent, nur Abadar"
     },
@@ -19399,8 +19399,8 @@
       "desc": "RW>Bezaub/Zwang 2x: besseres nehmen, 1/Tag: Wurf als 20 behandeln"
     },
     {
-      "name": "Macht  der  Schaitane Hxm (ÜF)",
-      "trait": "Macht  der  Schaitane Hxm (ÜF)",
+      "name": "Macht der Schaitane Hxm (ÜF)",
+      "trait": "Macht der Schaitane Hxm (ÜF)",
       "source": "",
       "desc": "1x/Tag Begrenzter Wunsch ZF; immun > Säureschaden; 1x/Tag Ebenenwechsel (Erde)"
     },
@@ -19507,8 +19507,8 @@
       "desc": "+½St Mag.Gegenstand benutzen/Arkanes/Zauberkunde"
     },
     {
-      "name": "Mag. Gegenst. ausbeuten  (ÜF) T Ark",
-      "trait": "Mag. Gegenst. ausbeuten  (ÜF) T Ark",
+      "name": "Mag. Gegenst. ausbeuten (ÜF) T Ark",
+      "trait": "Mag. Gegenst. ausbeuten (ÜF) T Ark",
       "source": "",
       "desc": "BA: Tränke/Schriftr./Stecken/Stäbe: AR + ½ ZS, Rolle/Trank zerstört, Stab-5 Lad., Steck-1, CHMod/Tag (1x)"
     },
@@ -19597,8 +19597,8 @@
       "desc": "+2 Zauberkunde (Zauber identifizieren); +1 Volksbonus Angr. gegen ark. Zauberkundige"
     },
     {
-      "name": "Magierschlag  (ÜF) Erz",
-      "trait": "Magierschlag  (ÜF) Erz",
+      "name": "Magierschlag (ÜF) Erz",
+      "trait": "Magierschlag (ÜF) Erz",
       "source": "",
       "desc": "1LK als SA: zusätzlicher NK-Angriff, +Zauberplazt=TW+ZSx2, SW+2w6 Energie/ZS, SW umgeht SR, Energie nicht"
     },
@@ -20893,8 +20893,8 @@
       "desc": "+ 1/Tag Schurkentrick"
     },
     {
-      "name": "Mäch. Metam.  Kenntnisse MT Ark",
-      "trait": "Mäch. Metam.  Kenntnisse MT Ark",
+      "name": "Mäch. Metam. Kenntnisse MT Ark",
+      "trait": "Mäch. Metam. Kenntnisse MT Ark",
       "source": "",
       "desc": "ein Metam. Talent als Bonustalent, Morgens für 1AR anderes Talent wählen"
     },
@@ -21079,8 +21079,8 @@
       "desc": "auf St 10, 12, 14, 16, 18, 20 kann statt einer Hexerei ein Mächtige Hexerei gewählt werden"
     },
     {
-      "name": "Mächtige Magie  (ÜF) T Ark",
-      "trait": "Mächtige Magie  (ÜF) T Ark",
+      "name": "Mächtige Magie (ÜF) T Ark",
+      "trait": "Mächtige Magie (ÜF) T Ark",
       "source": "",
       "desc": "wenn 1 Pkt ausgegeben wird, um ZS oder SG um 1anzuheben, stiegt ZS oder SG um 2"
     },
@@ -21097,8 +21097,8 @@
       "desc": "zusätzlichen Schaden/Effekt eines Krit/hinterhältigen AG ignorieren, 1/Verteidigungshaltung (ab St6)"
     },
     {
-      "name": "Mächtiger  Heiler",
-      "trait": "Mächtiger  Heiler",
+      "name": "Mächtiger Heiler",
+      "trait": "Mächtiger Heiler",
       "source": "",
       "desc": "als SA: Zauber mit \"Wunden heilen\" verstärken +50%"
     },
@@ -21121,8 +21121,8 @@
       "desc": "Elementarkörper IV auf Liste der Extrakte 5. Grad"
     },
     {
-      "name": "Mächtiger Gegenzauber (ÜF)) Ska",
-      "trait": "Mächtiger Gegenzauber (ÜF)) Ska",
+      "name": "Mächtiger Gegenzauber (ÜF) Ska",
+      "trait": "Mächtiger Gegenzauber (ÜF) Ska",
       "source": "",
       "desc": "Vielseitigkeit für Zauber bannen"
     },
@@ -21505,8 +21505,8 @@
       "desc": "Krit mit Zauber mit TW: sal SA den Gegner zu Fall bringen"
     },
     {
-      "name": "Niederprügelnder Sturmangriﬀ  (AF)",
-      "trait": "Niederprügelnder Sturmangriﬀ  (AF)",
+      "name": "Niederprügelnder Sturmangriﬀ (AF)",
+      "trait": "Niederprügelnder Sturmangriﬀ (AF)",
       "source": "",
       "desc": "Bei Treffer: als FA Sturmangriff beginnen, bei Krit: Zäh SG 18 oder 1Rd Wankend"
     },
@@ -21775,8 +21775,8 @@
       "desc": "+1 natürlicher Rüstungsbonus"
     },
     {
-      "name": "Papier. Diebeswerkzeug (AF )  Trick Sch",
-      "trait": "Papier. Diebeswerkzeug (AF )  Trick Sch",
+      "name": "Papier. Diebeswerkzeug (AF) Trick Sch",
+      "trait": "Papier. Diebeswerkzeug (AF) Trick Sch",
       "source": "",
       "desc": "mit Spielkarte FW Mechanismus ausschalten wie mit Diebeswerkzeug, mit Turmkarte +2 wie Meisterarbeit"
     },
@@ -21841,8 +21841,8 @@
       "desc": "geübt mit Peitsche; +1 Volksbonus Entwaffnen & Zu-Fall bringen mit Peitsche"
     },
     {
-      "name": "Perfekte  Stimme Hxm (ÜF)",
-      "trait": "Perfekte  Stimme Hxm (ÜF)",
+      "name": "Perfekte Stimme Hxm (ÜF)",
+      "trait": "Perfekte Stimme Hxm (ÜF)",
       "source": "",
       "desc": "Kommunikation über Töne mit allen Kreaturen, die mind. 1 Sprache sprechen; SG sprachabh. Zauber+1"
     },
@@ -22159,8 +22159,8 @@
       "desc": "Brutmeister tauscht seinen Platz mit einem Eidolon seiner Brut bei jedem Einsatz dieser Fähigkeit"
     },
     {
-      "name": "Plötzliche  Parade  (ÜF) Wäc",
-      "trait": "Plötzliche  Parade  (ÜF) Wäc",
+      "name": "Plötzliche Parade (ÜF) Wäc",
+      "trait": "Plötzliche Parade (ÜF) Wäc",
       "source": "",
       "desc": "1LK als AA: 1 NK>Dich/Angrenz. Verb: RK+LSt , Angreifer TW 2x schlechteres, DU/Verb. NK> Angreifer, umgeht SR"
     },
@@ -22171,8 +22171,8 @@
       "desc": "1/Tag+je 4 St ab St5: Blick in unmittelb. Zukunft; Verständnisb. Angriffs-, Rettungs-,Fert-wurf od. RK"
     },
     {
-      "name": "Plötzlicher Angriff  (AF) Str",
-      "trait": "Plötzlicher Angriff  (AF) Str",
+      "name": "Plötzlicher Angriff (AF) Str",
+      "trait": "Plötzlicher Angriff (AF) Str",
       "source": "",
       "desc": "1LK als SA: +1 NK mit höchstem GAB, TW 2x +LSt (höheres), umgeht SR"
     },
@@ -22375,8 +22375,8 @@
       "desc": "eine Kraft des Qinggong Mönches wählen"
     },
     {
-      "name": "Qua:  Immunitäten",
-      "trait": "Qua:  Immunitäten",
+      "name": "Qua: Immunitäten",
+      "trait": "Qua: Immunitäten",
       "source": "",
       "desc": "Elektrizität, Gift; Resistenzen Feuer 10, Kälte 10, Säure 10; SR 5/Gutes oder Kaltes Eisen"
     },
@@ -22561,8 +22561,8 @@
       "desc": "als VA: Kampf mit 2 Waffen (Waffenlos/Mönch/Mahbereich), voller STMod, KMV's, ST8: Verb Km2W"
     },
     {
-      "name": "Raureif  (ÜF) MH Hex",
-      "trait": "Raureif  (ÜF) MH Hex",
+      "name": "Raureif (ÜF) MH Hex",
+      "trait": "Raureif (ÜF) MH Hex",
       "source": "",
       "desc": "1 Punkt KO-Schaden pro Min, 1 RW ZÄH pro Min"
     },
@@ -22675,8 +22675,8 @@
       "desc": "nie auf falschem Fuß (mit vorhandener Reflexbewegung: Verb. Reflexbewegung)"
     },
     {
-      "name": "Reflexbewegung (AF)  Sch",
-      "trait": "Reflexbewegung (AF)  Sch",
+      "name": "Reflexbewegung (AF) Sch",
+      "trait": "Reflexbewegung (AF) Sch",
       "source": "",
       "desc": "nie auf falschem Fuß (mit vorhandener Reflexbewegung: Verb. Reflexbewegung)"
     },
@@ -23257,8 +23257,8 @@
       "desc": "In Rüstung SR 5/-"
     },
     {
-      "name": "Rüstungsmeisterschaft  (AF) O",
-      "trait": "Rüstungsmeisterschaft  (AF) O",
+      "name": "Rüstungsmeisterschaft (AF) O",
+      "trait": "Rüstungsmeisterschaft (AF) O",
       "source": "",
       "desc": "norm. Bewegungsrate in MS Rüstung; ab 5. St & je weitere 5 St -1 Rüstungsmalus,+1 max, GE Bonus"
     },
@@ -23875,8 +23875,8 @@
       "desc": "1 Kreatur in Reichweite Nah schläft ein wie Zauber Tiefschlaf, solange Auftritt andauert"
     },
     {
-      "name": "Schlag  absorbieren  (ÜF) Wäc",
-      "trait": "Schlag  absorbieren  (ÜF) Wäc",
+      "name": "Schlag absorbieren (ÜF) Wäc",
+      "trait": "Schlag absorbieren (ÜF) Wäc",
       "source": "",
       "desc": "1LK als AA: Schaden aus 1 Quelle um 5TP/LSt reduzieren, für 10TP 1Min SR1/episch+SR5 Feuer/Kälte/Elektro/Schall"
     },
@@ -24223,8 +24223,8 @@
       "desc": "Sicht nicht behindert durch Schnee-/Eissturm, Feuerzauber als Kältezauber"
     },
     {
-      "name": "Schneid  (ÜF) Arm",
-      "trait": "Schneid  (ÜF) Arm",
+      "name": "Schneid (ÜF) Arm",
+      "trait": "Schneid (ÜF) Arm",
       "source": "",
       "desc": "WEmod x Schneidpunkte/Tag, +1/Krit/Tödlich mit Armbrust (max WEmod)"
     },
@@ -24727,8 +24727,8 @@
       "desc": "Inspiration für Bluffen, Einschüchtern, Fingerfertigkeit, Mechanismus, Verkleiden ohne IV, wenn geübt"
     },
     {
-      "name": "Schusshagel  (AF) Str",
-      "trait": "Schusshagel  (AF) Str",
+      "name": "Schusshagel (AF) Str",
+      "trait": "Schusshagel (AF) Str",
       "source": "",
       "desc": "1LK als SA: +1 FK mit höchstem GAB, TW+LSt höheres, ignoriert Tarnung/Deckung (nicht vollst.), umgeht SR"
     },
@@ -24949,8 +24949,8 @@
       "desc": "Intelligente Waffe, Ausbauregeln Magie Seite 55"
     },
     {
-      "name": "Schwarzklingenschlag  (ZF)",
-      "trait": "Schwarzklingenschlag  (ZF)",
+      "name": "Schwarzklingenschlag (ZF)",
+      "trait": "Schwarzklingenschlag (ZF)",
       "source": "",
       "desc": "Klinge: für 1 AV der Klinge als FA 1min Schaden +1 +1/4St>1"
     },
@@ -26677,8 +26677,8 @@
       "desc": "als BA 1 Doppelgänger wie Spielgelbild, 1Rd/St"
     },
     {
-      "name": "Spielkarten schleudern ( ÜF ) Trick Sch",
-      "trait": "Spielkarten schleudern ( ÜF ) Trick Sch",
+      "name": "Spielkarten schleudern (ÜF) Trick Sch",
+      "trait": "Spielkarten schleudern (ÜF) Trick Sch",
       "source": "",
       "desc": "BT Spielkarten Schleudern ohne Voraussetzungen"
     },
@@ -28621,8 +28621,8 @@
       "desc": "kann mit jedem anderen Wesen mental kommunizieren"
     },
     {
-      "name": "Telepathie  (ÜF) Kma",
-      "trait": "Telepathie  (ÜF) Kma",
+      "name": "Telepathie (ÜF) Kma",
+      "trait": "Telepathie (ÜF) Kma",
       "source": "",
       "desc": "Klinge: Magier kann mit der Klinge kommunizieren"
     },
@@ -29629,8 +29629,8 @@
       "desc": "als SA Turmkarte ziehen: Aspekte auf Leib übertragen, Att der Karte +4, dauer: St x Min/Tag"
     },
     {
-      "name": "Turmkartenschlag (AF )  v-Trick Sch",
-      "trait": "Turmkartenschlag (AF )  v-Trick Sch",
+      "name": "Turmkartenschlag (AF) v-Trick Sch",
+      "trait": "Turmkartenschlag (AF) v-Trick Sch",
       "source": "",
       "desc": "1/Tag(+1 St15/20) bei HH: statt Schaden Turmkarte zeihen, 1 Att-Schaden/TW am Att der Karte"
     },
@@ -30085,8 +30085,8 @@
       "desc": "+2 Volksbonus RW gegen Furch und Verzweiflungseffekte; 1/Tag: W20 bei gewürfelter 1 wiederholen"
     },
     {
-      "name": "Unerschütterlichkeit  Rit (AF)",
-      "trait": "Unerschütterlichkeit  Rit (AF)",
+      "name": "Unerschütterlichkeit Rit (AF)",
+      "trait": "Unerschütterlichkeit Rit (AF)",
       "source": "",
       "desc": "bis zu 1,5m Schritt:+2 KMV Ansturm, Niederrennen, Stoßen, Ziehen & Zu-Fall-bringen"
     },
@@ -31141,8 +31141,8 @@
       "desc": "Fähigkeit Ergreifen für Bissangriff; Einsatz bis zu einer Kategorie größer"
     },
     {
-      "name": "Verbess. verändern  (ÜF) MT Ark",
-      "trait": "Verbess. verändern  (ÜF) MT Ark",
+      "name": "Verbess. verändern (ÜF) MT Ark",
+      "trait": "Verbess. verändern (ÜF) MT Ark",
       "source": "",
       "desc": "für 1AR als VA: bes. Waffen/Rüstungseigensch. für 1Min/CHMod > andere mit gleich. Kosten tauschen"
     },
@@ -31777,8 +31777,8 @@
       "desc": "1/Tag Ausspähung auf den Vertrauten"
     },
     {
-      "name": "Vertrauter  (AF) T Ark",
-      "trait": "Vertrauter  (AF) T Ark",
+      "name": "Vertrauter (AF) T Ark",
+      "trait": "Vertrauter (AF) T Ark",
       "source": "",
       "desc": "Vertrauter wie Magier"
     },
@@ -32047,8 +32047,8 @@
       "desc": "Ziel sieht mögliche Zukunft =1min"
     },
     {
-      "name": "Visionen  Hxm (ZF)",
-      "trait": "Visionen  Hxm (ZF)",
+      "name": "Visionen Hxm (ZF)",
+      "trait": "Visionen Hxm (ZF)",
       "source": "",
       "desc": "Im Schlaf: Informationen durch proph. Träume wie Erkenntniszauber. 9. St 1 Frage, 17. St 2; 20. St 3"
     },
@@ -32611,8 +32611,8 @@
       "desc": "Dolch, Kampfstab, Knüppel, L+S Armbrust, keine Rüstungen"
     },
     {
-      "name": "Waffenbeherrschung  (AF) O",
-      "trait": "Waffenbeherrschung  (AF) O",
+      "name": "Waffenbeherrschung (AF) O",
+      "trait": "Waffenbeherrschung (AF) O",
       "source": "",
       "desc": "Umgang mit allen Kriegswaffen und Schwerer Rüstung"
     },
@@ -33511,8 +33511,8 @@
       "desc": "1LK als SA: 1 gelernten Zauber ohne Platz verbrauchen, RW NLg Kreatur: 2 x niedrigeres, heilen: >2x höheres"
     },
     {
-      "name": "Wiederholung  (ÜF) O",
-      "trait": "Wiederholung  (ÜF) O",
+      "name": "Wiederholung (ÜF) O",
+      "trait": "Wiederholung (ÜF) O",
       "source": "",
       "desc": "AA: W20 Wurf wiederholen; jede 4. St (ab 7. St) 1 weiteres Mal/Tag"
     },
@@ -34123,8 +34123,8 @@
       "desc": "Verbündete: FW- oder TW+Signalbonus, bei in die Zange nehmen, Rk+Bon>Gel.AG durch Bewegung"
     },
     {
-      "name": "Zauber  umlenken  (ÜF) MT Ark",
-      "trait": "Zauber  umlenken  (ÜF) MT Ark",
+      "name": "Zauber umlenken (ÜF) MT Ark",
+      "trait": "Zauber umlenken (ÜF) MT Ark",
       "source": "",
       "desc": "für 1AR als SA: ZS-Wurf > kontoll. Zauberer: Erfolg: als FA Zauber 1 Rd kontrollieren, 1AR/Rd verlängerung"
     },
@@ -34243,8 +34243,8 @@
       "desc": "Verbündete: ZSt/KomWürfe/TW für Zauber +1, St5:+2,11:+3;17:+4 #Auftritt"
     },
     {
-      "name": "Zauberbastler  (ÜF) T Ark",
-      "trait": "Zauberbastler  (ÜF) T Ark",
+      "name": "Zauberbastler (ÜF) T Ark",
+      "trait": "Zauberbastler (ÜF) T Ark",
       "source": "",
       "desc": "für 1AR: auf Zauber im Nebenfeld/als Ziel (ohne zustimmung: BÜ im NK): Dauer 50% länger/kürzer"
     },
@@ -34279,8 +34279,8 @@
       "desc": "Gegner im bedrohten Bereich, die nicht defensiv Zaubern, prov. Gelegenheitsangriffe von dir"
     },
     {
-      "name": "Zauberdieb  (ÜF) MT Ark",
-      "trait": "Zauberdieb  (ÜF) MT Ark",
+      "name": "Zauberdieb (ÜF) MT Ark",
+      "trait": "Zauberdieb (ÜF) MT Ark",
       "source": "",
       "desc": "für 1AR: Einwirkenden Zauber stehlen, Wirkung geht auf Arkanist über"
     },
@@ -34549,8 +34549,8 @@
       "desc": "1/Zaubertanz als SA: Dimensionstür"
     },
     {
-      "name": "Zaubertragender Schild  (ÜF) Ski",
-      "trait": "Zaubertragender Schild  (ÜF) Ski",
+      "name": "Zaubertragender Schild (ÜF) Ski",
+      "trait": "Zaubertragender Schild (ÜF) Ski",
       "source": "",
       "desc": "A: Kampfmaguszauber Schild einlagern (pro Zaubergrad = 1 Pkt des ark. Vorrats, wie Zauberspeicher)"
     },
@@ -34573,8 +34573,8 @@
       "desc": "FW Zauberkunde ok: Zauber unterdrücken =AA #Auftritt"
     },
     {
-      "name": "Zauberverteidigung  (ZF) Kma",
-      "trait": "Zauberverteidigung  (ZF) Kma",
+      "name": "Zauberverteidigung (ZF) Kma",
+      "trait": "Zauberverteidigung (ZF) Kma",
       "source": "",
       "desc": "Klinge: für 1 AV der Klinge als FA: Magier: ZR = Ego der Klinge für 1Rd"
     },
