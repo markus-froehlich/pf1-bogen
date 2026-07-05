@@ -1,6 +1,6 @@
 # STATUS
 
-_Stand: 2026-06-26_
+_Stand: 2026-07-05_
 
 ## Wo wir stehen
 **Phase 1 (Bestandsaufnahme) abgeschlossen + freigegeben.** Entscheidungen geklärt.
