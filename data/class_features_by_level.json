@@ -37,7 +37,7 @@
           "Fallengespür (AF)"
         ],
         "5": [
-          "Verb. Reflexbewegung (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "7": [
           "Schadensreduzierung (AF)"
@@ -49,7 +49,7 @@
           "Unbeugsamer Wille (AF)"
         ],
         "17": [
-          "Unerm. Kampfrausch (AF)"
+          "Unermüdlicher Kampfrausch (AF)"
         ],
         "20": [
           "Mächtiger Kampfrausch (AF)"
@@ -90,7 +90,7 @@
           "Tausendsassa (AF)"
         ],
         "12": [
-          "Erfrisch. Auftritt (ÜF) A"
+          "Erfrischender Auftritt (ÜF) A"
         ],
         "14": [
           "Lied der Furcht (ZF) A"
@@ -123,7 +123,7 @@
           "Spurloser Schritt (AF)"
         ],
         "4": [
-          "Lockruf d. Natur widerst. (AF)",
+          "Lockruf der Natur widerstehen (AF)",
           "Tiergestalt (ÜF)"
         ],
         "9": [
@@ -176,7 +176,7 @@
           "Schlaghagel (AF)",
           "Waffenloser Schlag (BT)",
           "Bonustalente",
-          "Betäub. Schlag (AF)"
+          "Betäubender Schlag (AF)"
         ],
         "2": [
           "Entrinnen (AF)"
@@ -196,10 +196,10 @@
           "Reinheit des Körpers (AF)"
         ],
         "7": [
-          "Unvers. des Körpers (AF)"
+          "Unversehrtheit des Körpers (AF)"
         ],
         "9": [
-          "Verb. Entrinnen (AF)"
+          "Verbessertes Entrinnen (AF)"
         ],
         "11": [
           "Diamantkörper (ÜF)"
@@ -211,11 +211,11 @@
           "Diamantseele (AF)"
         ],
         "15": [
-          "Vibri. Handfläche (ÜF)"
+          "Vibrierende Handfläche (ÜF)"
         ],
         "17": [
           "Zeitloser Körper (AF)",
-          "Sprache v. Mond+Sonne (AF)"
+          "Sprache von Mond+Sonne (AF)"
         ],
         "19": [
           "Körper lösen (ÜF)"
@@ -238,27 +238,27 @@
           "Handauflegen (ÜF)"
         ],
         "3": [
-          "Aura d. Tapferkeit (ÜF)",
+          "Aura der Tapferkeit (ÜF)",
           "Göttliche Gesundheit (AF)",
           "Gnade (ÜF)"
         ],
         "4": [
-          "Pos. Energie fokuss. (ÜF)"
+          "Positive Energie fokussieren (ÜF)"
         ],
         "5": [
           "Göttlicher Bund (ZF)"
         ],
         "8": [
-          "Aura d. Entschlossenheit (ÜF)"
+          "Aura der Entschlossenheit (ÜF)"
         ],
         "11": [
-          "Aura d. Gerechtigkeit (ÜF)"
+          "Aura der Gerechtigkeit (ÜF)"
         ],
         "14": [
           "Aura des Glaubens (ÜF)"
         ],
         "17": [
-          "Aura d. Rechtschaffenheit (ÜF)"
+          "Aura der Rechtschaffenheit (ÜF)"
         ],
         "20": [
           "Heiliger Streiter (ÜF)"
@@ -284,7 +284,7 @@
           "Erholung L"
         ],
         "5": [
-          "Leg. Rettungswürfe L"
+          "Legendäre Rettungswürfe L"
         ],
         "6": [
           "Machtvoller Wille L"
@@ -312,7 +312,7 @@
           "Streiter wider die Tyrannei (ÜF)"
         ],
         "3": [
-          "Streiter geg. d. Ungerechtigkeit (ÜF)"
+          "Streiter gegen die Ungerechtigkeit (ÜF)"
         ]
       }
     },
@@ -334,13 +334,13 @@
           "Reflexbewegung (AF)"
         ],
         "8": [
-          "Verb. Reflexbewegung (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "10": [
-          "Verb. Tricks"
+          "Verbesserte Tricks"
         ],
         "20": [
-          "Meisterh. Angriff (AF)"
+          "Meisterhafter Angriff (AF)"
         ]
       }
     },
@@ -357,7 +357,7 @@
         ],
         "3": [
           "Ausdauer",
-          "Bev. Gelände (AF)"
+          "Bevorzugtes Gelände (AF)"
         ],
         "4": [
           "Bund des Jägers (AF)"
@@ -378,13 +378,13 @@
           "Tarnung (AF)"
         ],
         "16": [
-          "Verb. Entrinnen (AF)"
+          "Verbessertes Entrinnen (AF)"
         ],
         "17": [
-          "Meisterl. Verstecken (AF)"
+          "Meisterliches Verstecken (AF)"
         ],
         "19": [
-          "Verb. Beute (AF)"
+          "Verbesserte Beute (AF)"
         ],
         "20": [
           "Meisterjäger (AF)"
@@ -399,7 +399,7 @@
           "Bombe (ÜF)",
           "Trank brauen (AF)",
           "Mutagen (ÜF)",
-          "Imp. Fernkampf (AF)"
+          "Improvisierter Fernkampf (AF)"
         ],
         "2": [
           "Entdeckung (ÜF)",
@@ -457,7 +457,7 @@
           "Standhaft (AF)"
         ],
         "12": [
-          "Mäch. Verderben (ÜF)"
+          "Mächtiges Verderben (ÜF)"
         ],
         "14": [
           "Schwachstelle ausnutzen (AF)"
@@ -506,7 +506,7 @@
           "Paktevolution (ÜF)"
         ],
         "12": [
-          "Mäch. Verb. schützen (ÜF)"
+          "Mächtiges Verbündeten schützen (ÜF)"
         ],
         "14": [
           "Lebensbund (ÜF)"
@@ -515,7 +515,7 @@
           "Verschmelzen (ÜF)"
         ],
         "18": [
-          "Mäch. Paktevolution (ÜF)"
+          "Mächtige Paktevolution (ÜF)"
         ],
         "20": [
           "Zwillingseidolon (ÜF)"
@@ -531,10 +531,10 @@
           "Taktiker(AF)"
         ],
         "3": [
-          "Verb. Sturmangriff (AF)"
+          "Verbesserter Sturmangriff (AF)"
         ],
         "4": [
-          "Meisterl. Ausbilder (AF)"
+          "Meisterlicher Ausbilder (AF)"
         ],
         "5": [
           "Banner(AF)"
@@ -546,19 +546,19 @@
           "Mächtiger Taktiker (AF)"
         ],
         "11": [
-          "Mäch. Sturmangriff (AF)"
+          "Mächtiger Sturmangriff (AF)"
         ],
         "12": [
-          "Ansp. Herausforderung (AF)"
+          "Anspornende Herausforderung (AF)"
         ],
         "14": [
-          "Mäch. Banner (AF)"
+          "Mächtiges Banner (AF)"
         ],
         "17": [
           "Meistertaktiker (AF)"
         ],
         "20": [
-          "Überl. Sturmangriff (AF)"
+          "Überlegener Sturmangriff (AF)"
         ]
       }
     },
@@ -574,13 +574,13 @@
       "name": "Ark. Betrüger",
       "levels": {
         "1": [
-          "Weitr. Fingerfertigkeit (ÜF)"
+          "Weitreichende Fingerfertigkeit (ÜF)"
         ],
         "2": [
           "Hinterhältiger Angriff"
         ],
         "3": [
-          "Imp. Hinterh. Angriff (AF)"
+          "Improvisierter Hinterhältiger Angriff (AF)"
         ],
         "4": [
           "Zauberlist (ÜF)"
@@ -645,13 +645,13 @@
           "Wahrer Tod (AF)"
         ],
         "5": [
-          "Verb. Reflexbewegung (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "6": [
           "Lautloser Tod"
         ],
         "8": [
-          "Meisterl. Verstecken (ÜF)"
+          "Meisterliches Verstecken (ÜF)"
         ],
         "9": [
           "Schneller Tod"
@@ -666,7 +666,7 @@
       "levels": {
         "1": [
           "Drachenblut",
-          "Nat. Rüstungsbonus (AF)"
+          "Natürlicher Rüstungsbonus (AF)"
         ],
         "2": [
           "Attributserhöhung (AF)",
@@ -695,11 +695,11 @@
           "Präziser Schlag (AF)"
         ],
         "2": [
-          "Verb. Reaktion (AF)",
+          "Verbesserte Reaktion (AF)",
           "Parieren (AF)"
         ],
         "3": [
-          "Verb. Beweglichkeit (AF)"
+          "Verbesserte Beweglichkeit (AF)"
         ],
         "4": [
           "Kampfreflexe",
@@ -709,7 +709,7 @@
           "Riposte (AF)"
         ],
         "6": [
-          "Akrob. Sturmangriff (AF)"
+          "Akrobatischer Sturmangriff (AF)"
         ],
         "7": [
           "Ausgefeilte Parade (AF)"
@@ -719,7 +719,7 @@
           "Kein Rückzug (AF)"
         ],
         "10": [
-          "Verkrüpp. Krit. Treffer (AF)"
+          "Verkrüppelnder Kritischer Treffer (AF)"
         ]
       }
     },
@@ -750,7 +750,7 @@
       "name": "Schattentänzer",
       "levels": {
         "1": [
-          "Meisterl. Verstecken (ÜF)"
+          "Meisterliches Verstecken (ÜF)"
         ],
         "2": [
           "Entrinnen (AF)",
@@ -768,7 +768,7 @@
         ],
         "5": [
           "Ausweichrolle (AF)",
-          "Verb. Reflexbewegung (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "7": [
           "Entschlüpfender Geist (AF)"
@@ -777,7 +777,7 @@
           "Schattenmacht (ZF)"
         ],
         "10": [
-          "Verb. Entrinnen (AF)",
+          "Verbessertes Entrinnen (AF)",
           "Schattenmeister (ÜF)"
         ]
       }
@@ -823,7 +823,7 @@
           "Schutzgeist II (ZF)"
         ],
         "6": [
-          "Verl. Kampfrausch (ÜF)"
+          "Verlängerter Kampfrausch (ÜF)"
         ],
         "8": [
           "Zorniger Zauberkundiger (ÜF)"
@@ -854,10 +854,10 @@
         ],
         "5": [
           "Feuriges Blut (ÜF)",
-          "Fokus. Niederstrecken"
+          "Fokussiertes Niederstrecken"
         ],
         "6": [
-          "Vielfält. Fokussieren (ÜF)"
+          "Vielfältiges Fokussieren (ÜF)"
         ],
         "7": [
           "Göttliches Urteil (ZF)"
@@ -888,7 +888,7 @@
           "Silbermantel (ÜF)"
         ],
         "5": [
-          "Bevorz. Gelände (AF)",
+          "Bevorzugtes Gelände (AF)",
           "Überlebenskünstler (AF)"
         ],
         "6": [
@@ -915,10 +915,10 @@
         "1": [
           "Ruf des Mutes (AF)",
           "Stimme der Autorität (AF)",
-          "Verb. Anführen (AF)"
+          "Verbessertes Anführen (AF)"
         ],
         "2": [
-          "Erleich. Marschieren (AF)"
+          "Erleichtertes Marschieren (AF)"
         ],
         "4": [
           "Lied der Größe (AF)"
@@ -927,7 +927,7 @@
           "Banner (AF)"
         ],
         "7": [
-          "Ansp. Herausforderung (AF)"
+          "Anspornende Herausforderung (AF)"
         ],
         "8": [
           "Dauerhaftes Signal (AF)"
@@ -954,7 +954,7 @@
         ],
         "3": [
           "Magie verbergen (ZF)",
-          "Oberfl. Wissen (AF)"
+          "Oberflächliches Wissen (AF)"
         ],
         "4": [
           "Gedanken verbergen (ÜF)",
@@ -969,7 +969,7 @@
         ],
         "8": [
           "Todesangriff (AF)",
-          "Vorget. Bezauberung (ÜF)"
+          "Vorgetäuschte Bezauberung (ÜF)"
         ],
         "9": [
           "Versteckte Gedanken (ZF)"
@@ -988,7 +988,7 @@
           "Mutieren (ÜF)"
         ],
         "2": [
-          "Verb. Mutagen (ÜF)"
+          "Verbessertes Mutagen (ÜF)"
         ],
         "3": [
           "Brutalität (AF)"
@@ -1012,10 +1012,10 @@
           "Schadensreduzierung (AF)"
         ],
         "7": [
-          "Verb. Reflexbewegung (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "9": [
-          "Bew. Verteidigungshaltung (AF)"
+          "Bewegliche Verteidigungshaltung (AF)"
         ],
         "10": [
           "Das Letzte Wort (AF)"
@@ -1064,25 +1064,25 @@
           "Wissensvorrat (ÜF)"
         ],
         "8": [
-          "Verb. Kampfzauberei (AF)"
+          "Verbesserte Kampfzauberei (AF)"
         ],
         "10": [
           "Kämpferausbildung (AF)"
         ],
         "11": [
-          "Verb. Zauberrückruf (ÜF)"
+          "Verbesserter Zauberrückruf (ÜF)"
         ],
         "13": [
           "Schwere Rüstung (AF)"
         ],
         "14": [
-          "Mächt. Kampfzauberei (AF)"
+          "Mächtige Kampfzauberei (AF)"
         ],
         "16": [
           "Gegenschlag (AF)"
         ],
         "19": [
-          "Mächt. Zugang-Zaubern (ÜF)"
+          "Mächtiges Zugang-Zaubern (ÜF)"
         ],
         "20": [
           "Wahrer Kampfmagus (ÜF)"
@@ -1110,13 +1110,13 @@
           "Leichte Schritte (AF)"
         ],
         "8": [
-          "Verb. Reflexbew. (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "10": [
           "Meistertricks"
         ],
         "20": [
-          "Verbor. Meister (ÜF)"
+          "Verborgener Meister (ÜF)"
         ]
       }
     },
@@ -1176,7 +1176,7 @@
         "1": [
           "Zauber",
           "Versierte Aktivierung (AF)",
-          "Meisterl. Gelehrter (AF)"
+          "Meisterlicher Gelehrter (AF)"
         ],
         "2": [
           "Esoterische Magie (AF)",
@@ -1219,7 +1219,7 @@
         ],
         "2": [
           "Hand der Verderbnis (ÜF)",
-          "Unh. Widerstandskraft (ÜF)"
+          "Unheimliche Widerstandskraft (ÜF)"
         ],
         "3": [
           "Aura der Feigheit (ÜF)",
@@ -1227,7 +1227,7 @@
           "Seuchenträger (AF)"
         ],
         "4": [
-          "Neg. Energie fokuss. (ÜF)"
+          "Negative Energie fokussieren (ÜF)"
         ],
         "5": [
           "Dunkle Gunst (ZF)"
@@ -1253,7 +1253,7 @@
       "name": "Kluftwächter",
       "levels": {
         "1": [
-          "Gegenherbeiz.",
+          "Gegenherbeizaubern",
           "Planarer Führer"
         ],
         "2": [
@@ -1270,13 +1270,13 @@
           "Planare Plage"
         ],
         "7": [
-          "Verb. Telep. kontern"
+          "Verbessertes Telepathisch kontern"
         ],
         "8": [
           "Planare Säuberung"
         ],
         "10": [
-          "Mäch. Telep. kontern"
+          "Mächtiges Telepathisch kontern"
         ]
       }
     },
@@ -1351,7 +1351,7 @@
           "Erholung L"
         ],
         "5": [
-          "Leg. Rettungswürfe L"
+          "Legendäre Rettungswürfe L"
         ],
         "6": [
           "Machtvoller Wille L"
@@ -1387,7 +1387,7 @@
           "Erholung L"
         ],
         "5": [
-          "Leg. Rettungswürfe L"
+          "Legendäre Rettungswürfe L"
         ],
         "6": [
           "Machtvoller Wille L"
@@ -1423,7 +1423,7 @@
           "Erholung L"
         ],
         "5": [
-          "Leg. Rettungswürfe L"
+          "Legendäre Rettungswürfe L"
         ],
         "6": [
           "Machtvoller Wille L"
@@ -1459,7 +1459,7 @@
           "Erholung L"
         ],
         "5": [
-          "Leg. Rettungswürfe L"
+          "Legendäre Rettungswürfe L"
         ],
         "6": [
           "Machtvoller Wille L"
@@ -1495,7 +1495,7 @@
           "Erholung L"
         ],
         "5": [
-          "Leg. Rettungswürfe L"
+          "Legendäre Rettungswürfe L"
         ],
         "6": [
           "Machtvoller Wille L"
@@ -1539,13 +1539,13 @@
           "Attentätertrick"
         ],
         "3": [
-          "Hinterh. Angriff"
+          "Hinterhältiger Angriff"
         ],
         "7": [
           "Pirscher (AF)"
         ],
         "11": [
-          "Schn. Verfolger (AF)"
+          "Schneller Verfolger (AF)"
         ],
         "13": [
           "Schneller Schritt (AF)"
@@ -1554,7 +1554,7 @@
           "Beute (AF)"
         ],
         "19": [
-          "Verb. Beute (AF) att"
+          "Verbesserte Beute (AF) att"
         ],
         "20": [
           "Meisterattentäter"
@@ -1576,10 +1576,10 @@
         ],
         "4": [
           "Magie des Blutes (ÜF)",
-          "Materialkomp.los Zaubern"
+          "Materialkomponentenlos Zaubern"
         ],
         "5": [
-          "Verb.Reflexbewegung (AF)"
+          "Verbesserte Reflexbewegung (AF)"
         ],
         "7": [
           "Schadensreduzierung (AF)Blu"
@@ -1666,14 +1666,14 @@
         ],
         "2": [
           "Tiergefährte (AF)",
-          "Gen. Ausmanövrieren (AF)",
+          "Genaues Ausmanövrieren (AF)",
           "Spuren lesen (AF)"
         ],
         "3": [
           "Jägertaktiken (AF)"
         ],
         "4": [
-          "Verb. Emp. Verbindung (AF)"
+          "Verbesserte Empathische Verbindung (AF)"
         ],
         "5": [
           "Unterholz durchqueren (AF)"
@@ -1683,13 +1683,13 @@
           "Zweiter Tieraspekt (AF)"
         ],
         "10": [
-          "Toten Tiergef. Erwecken (ZF)"
+          "Toten Tiergefährten Erwecken (ZF)"
         ],
         "11": [
           "Mit Meister sprechen (AF)"
         ],
         "14": [
-          "Mäch. Emp. Verbindung (ÜF)"
+          "Mächtige Empathische Verbindung (ÜF)"
         ],
         "17": [
           "Eins mit der Wildnis (AF)"
@@ -1729,7 +1729,7 @@
       "levels": {
         "1": [
           "Kampfausbildung (AF)",
-          "Krieg.Anpass.fähigkeit (AF)",
+          "Kriegerische Anpassungsfähigkeit (AF)",
           "Schlägerschläue (AF)",
           "Waffenloser Schlag"
         ],
@@ -1745,14 +1745,14 @@
           "RK-Bonus (AF)"
         ],
         "5": [
-          "NB.Waffenmeistersch. (AF)",
+          "Nahbereichswaffenmeisterschaft (AF)",
           "Raufboldschlag (AF)"
         ],
         "16": [
           "Wuchtiger Schlag (AF)"
         ],
         "20": [
-          "Verb. Wuch. Schlag (AF)"
+          "Verbesserter Wuchtiger Schlag (AF)"
         ]
       }
     },
@@ -1808,7 +1808,7 @@
           "Lied der Stärke (ÜF)"
         ],
         "7": [
-          "Verb. Reflexbewegung (AF)",
+          "Verbesserte Reflexbewegung (AF)",
           "Gelehrter (AF)"
         ],
         "9": [
@@ -1829,12 +1829,12 @@
       "name": "Krieger",
       "levels": {
         "1": [
-          "Ark. Betrüger",
-          "Ark. Bogenschütze",
+          "Arkaner Betrüger",
+          "Arkaner Bogenschütze",
           "Assassine",
           "Drachenjünger",
           "Duellant",
-          "Kundsch.-Chronist",
+          "Kundschafter-Chronist",
           "Mystischer Ritter",
           "Mystischer Theurg",
           "Schattentänzer",
@@ -1845,17 +1845,17 @@
           "Kriegsherold",
           "Meisterspion",
           "Mutierter",
-          "Standh. Verteidiger",
+          "Standhafter Verteidiger",
           "Weltengänger",
           "Ulfengardist",
-          "Vollstrecker d. R. Legion",
-          "Kundsch.-Forscher",
+          "Vollstrecker der Roten Legion",
+          "Kundschafter-Forscher",
           "Kriegsgelehrter",
           "Göttlicher Spross",
           "Kryptomagier",
-          "Jünger d. Schmerzen",
-          "Agent d. Schattenhofes",
-          "Akolyth d. Gr. Glaubens",
+          "Jünger der Schmerzen",
+          "Agent des Schattenhofes",
+          "Akolyth des Großen Glaubens",
           "Dämmerblumen-Dissident",
           "Höllenritter-Signifer",
           "Prophet Von Kalistrade"
@@ -1876,17 +1876,17 @@
           "Kriegsherold",
           "Meisterspion",
           "Mutierter",
-          "Standh. Verteidiger",
+          "Standhafter Verteidiger",
           "Weltengänger",
           "Ulfengardist",
-          "Vollstrecker d. R. Legion",
-          "Kundsch.-Forscher",
+          "Vollstrecker der Roten Legion",
+          "Kundschafter-Forscher",
           "Kriegsgelehrter",
           "Göttlicher Spross",
           "Kryptomagier",
-          "Jünger d. Schmerzen",
-          "Agent d. Schattenhofes",
-          "Akolyth d. Gr. Glaubens",
+          "Jünger der Schmerzen",
+          "Agent des Schattenhofes",
+          "Akolyth des Großen Glaubens",
           "Dämmerblumen-Dissident",
           "Höllenritter-Signifer",
           "Prophet Von Kalistrade",
@@ -1929,8 +1929,8 @@
           "Kampfmagus Seelenklinge",
           "Ninja",
           "Schütze",
-          "Schütze Geh. Fremder",
-          "Schütze Gep. Schütze"
+          "Schütze Geheimer Fremder",
+          "Schütze Gepanzerter Schütze"
         ]
       }
     },
@@ -1963,8 +1963,8 @@
           "Kampfmagus Seelenklinge",
           "Ninja",
           "Schütze",
-          "Schütze Geh. Fremder",
-          "Schütze Gep. Schütze",
+          "Schütze Geheimer Fremder",
+          "Schütze Gepanzerter Schütze",
           "Schütze Musketenmeister"
         ]
       }

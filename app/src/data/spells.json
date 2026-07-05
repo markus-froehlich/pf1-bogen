@@ -24475,23 +24475,6 @@
       }
     },
     {
-      "id": "sch_za_verw_untote_brut_hva",
-      "name": {
-        "de": "Sch.Za.>Verw. untote Brut *HVa",
-        "en": null
-      },
-      "school": "Ne",
-      "school_de": "Ne",
-      "page": "V113",
-      "desc": "Resistent gegen Lebenskrafteffekte und Blutsaugen =A ~vg >Berührung *1 Kreatur #10Min/St RZ",
-      "class_levels": {
-        "inquisitor": 5,
-        "kriegspriester": 5,
-        "mystiker": 5,
-        "kleriker": 5
-      }
-    },
-    {
       "id": "schallgestalt",
       "name": {
         "de": "Schallgestalt",
