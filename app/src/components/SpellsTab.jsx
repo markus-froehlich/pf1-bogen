@@ -388,9 +388,11 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
                         title={isBloodline ? (L ? 'Bonuszauber — zählt nicht gegen bekannte Zauber (Blutlinie/Mysterium/Patron)' : 'Bonus spell — not counted against spells known') : (L ? 'Als Bonuszauber markieren (Blutlinie/Mysterium/Patron)' : 'Mark as bonus spell')}>
                         ✦
                       </button>
-                      <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? spellId}</span>
+                      <span className="sb-spell-name-wrap">
+                        <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? spellId}</span>
+                        {spell && <RefLink name={spell.name.de} page={spell.page} />}
+                      </span>
                       {isBloodline && <span className="sb-bonus-tag">{L ? 'Bonus' : 'Bonus'}</span>}
-                      {spell && <RefLink name={spell.name.de} page={spell.page} />}
                       {spell?.school && <span className="sb-spell-school">{spell.school}</span>}
                       <button className="sb-remove-btn" onClick={() => removeSpell(lv, spellId)}>✕</button>
                     </div>
