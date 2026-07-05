@@ -138,19 +138,70 @@ function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, o
 
 function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang }) {
   const L = lang === 'de'
+  const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(false)
+  const wrapRef = useRef(null)
+
   const def = selectedId ? (ARMOR_MAP[selectedId] ?? SHIELDS_MAP[selectedId]) : null
+  const selectedName = def ? def.name.de : ''
+
+  const q = query.toLowerCase()
+  const filtered = q ? items.filter(i => i.name.de.toLowerCase().includes(q)) : items
+
+  // Group by type
+  const groups = {}
+  filtered.forEach(item => {
+    const t = item.type || '—'
+    if (!groups[t]) groups[t] = []
+    groups[t].push(item)
+  })
+
+  function pick(id) { onSelect(id); setQuery(''); setOpen(false) }
+  function clear(e) { e.stopPropagation(); onSelect(''); setQuery(''); setOpen(false) }
+
   return (
     <div className="gear-selector">
       <div className="gear-row">
         <span className="gear-label">{label}</span>
-        <select className="gear-select" value={selectedId} onChange={e => onSelect(e.target.value)}>
-          <option value="">— {L ? 'keine' : 'none'} —</option>
-          {items.map(item => (
-            <option key={item.id} value={item.id}>
-              {item.name.de}
-            </option>
-          ))}
-        </select>
+        <div className="gear-search-wrap" ref={wrapRef}>
+          <input
+            className="gear-search-input"
+            type="text"
+            placeholder={open ? (L ? 'Suchen…' : 'Search…') : (selectedName || (L ? '— keine —' : '— none —'))}
+            value={open ? query : (selectedName ? '' : '')}
+            readOnly={!open}
+            onFocus={() => { setOpen(true); setQuery('') }}
+            onBlur={() => setTimeout(() => setOpen(false), 150)}
+            onChange={e => setQuery(e.target.value)}
+          />
+          {selectedId && !open && (
+            <span className="gear-search-val">{selectedName}</span>
+          )}
+          {selectedId && (
+            <button className="gear-clear-btn" onMouseDown={clear} tabIndex={-1}>×</button>
+          )}
+          {open && (
+            <div className="gear-dropdown">
+              <div className="gear-dd-none" onMouseDown={() => pick('')}>
+                — {L ? 'keine' : 'none'} —
+              </div>
+              {Object.entries(groups).map(([type, typeItems]) => (
+                <div key={type}>
+                  <div className="gear-dd-group">{type}</div>
+                  {typeItems.map(item => (
+                    <div key={item.id}
+                      className={`gear-dd-item${item.id === selectedId ? ' selected' : ''}`}
+                      onMouseDown={() => pick(item.id)}>
+                      <span className="gear-dd-name">{item.name.de}</span>
+                      <span className="gear-dd-bonus">+{item.bonus}</span>
+                    </div>
+                  ))}
+                </div>
+              ))}
+              {filtered.length === 0 && <div className="gear-dd-empty">{L ? 'Keine Treffer' : 'No results'}</div>}
+            </div>
+          )}
+        </div>
         <label className="gear-enh-label">
           <span>{L ? 'Verz.' : 'Enh.'}</span>
           <input
