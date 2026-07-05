@@ -1729,7 +1729,7 @@
     {
       "id": "augensch_verrat",
       "name": {
-        "de": "Augensch. Verrat",
+        "de": "Augenscheinlicher Verrat",
         "en": null
       },
       "school": "Vz",
@@ -3153,7 +3153,7 @@
     {
       "id": "blend_zwielichtgeschosse_ges",
       "name": {
-        "de": "Blend. Zwielichtgeschosse *Ges",
+        "de": "Blendende Zwielichtgeschosse *Ges",
         "en": null
       },
       "school": "Be",
@@ -3170,7 +3170,7 @@
     {
       "id": "blend_zwielichtgeschosse_ges_2",
       "name": {
-        "de": "Blend. Zwielichtgeschosse Ges",
+        "de": "Blendende Zwielichtgeschosse Ges",
         "en": null
       },
       "school": "Be",
@@ -3964,7 +3964,7 @@
     {
       "id": "brandmal_der_erkennb_gesinnung",
       "name": {
-        "de": "Brandmal der Erkennb. Gesinnung",
+        "de": "Brandmal der Erkennbaren Gesinnung",
         "en": null
       },
       "school": "Er",
@@ -4486,7 +4486,7 @@
     {
       "id": "chaot_boeses_gutes_rechtsch_entdecken",
       "name": {
-        "de": "Chaot./Böses/Gutes/Rechtsch. entdecken",
+        "de": "Chaotisches/Böses/Gutes/Rechtschaffenes entdecken",
         "en": null
       },
       "school": "Er",
@@ -4498,7 +4498,7 @@
     {
       "id": "chaot_boeses_gutes_rechtschs_bannen",
       "name": {
-        "de": "Chaot./Böses/Gutes/Rechtschs. bannen",
+        "de": "Chaotisches/Böses/Gutes/Rechtschaffenes bannen",
         "en": null
       },
       "school": "Ba",
@@ -6322,7 +6322,7 @@
     {
       "id": "elemen_reittier_herbeizaubern",
       "name": {
-        "de": "Elemen. Reittier herbeizaubern",
+        "de": "Elementares Reittier herbeizaubern",
         "en": null
       },
       "school": "Be",
@@ -7715,7 +7715,7 @@
     {
       "id": "evol_rueckverwandlung_dro",
       "name": {
-        "de": "Evol. Rückverwandlung Dro",
+        "de": "Evolutionäre Rückverwandlung Dro",
         "en": null
       },
       "school": "Vw",
@@ -10779,7 +10779,7 @@
     {
       "id": "gem_ameisenstaerke",
       "name": {
-        "de": "Gem. Ameisenstärke",
+        "de": "Gemeinschaftliche Ameisenstärke",
         "en": null
       },
       "school": "Vw",
@@ -10803,7 +10803,7 @@
     {
       "id": "gem_auf_wasser_gehen",
       "name": {
-        "de": "Gem. Auf Wasser gehen",
+        "de": "Gemeinschaftliches Auf Wasser gehen",
         "en": null
       },
       "school": "Vw",
@@ -10815,7 +10815,7 @@
     {
       "id": "gem_dunkelsicht",
       "name": {
-        "de": "Gem. Dunkelsicht",
+        "de": "Gemeinschaftliche Dunkelsicht",
         "en": null
       },
       "school": "Vw",
@@ -10834,7 +10834,7 @@
     {
       "id": "gem_elementen_trotzen",
       "name": {
-        "de": "Gem. Elementen trotzen",
+        "de": "Gemeinschaftliches Elementen trotzen",
         "en": null
       },
       "school": "Ba",
@@ -10858,7 +10858,7 @@
     {
       "id": "gem_energien_widerstehen",
       "name": {
-        "de": "Gem. Energien widerstehen",
+        "de": "Gemeinschaftliches Energien widerstehen",
         "en": null
       },
       "school": "Ba",
@@ -10884,7 +10884,7 @@
     {
       "id": "gem_gedankenleere",
       "name": {
-        "de": "Gem. Gedankenleere",
+        "de": "Gemeinschaftliche Gedankenleere",
         "en": null
       },
       "school": "Ba",
@@ -10900,7 +10900,7 @@
     {
       "id": "gem_geisterross",
       "name": {
-        "de": "Gem. Geisterross",
+        "de": "Gemeinschaftliches Geisterross",
         "en": null
       },
       "school": "Be",
@@ -10918,7 +10918,7 @@
     {
       "id": "gem_gift_verzoegern",
       "name": {
-        "de": "Gem. Gift verzögern",
+        "de": "Gemeinschaftliches Gift verzögern",
         "en": null
       },
       "school": "Be",
@@ -10944,7 +10944,7 @@
     {
       "id": "gem_immunitaet_gegen_zauber",
       "name": {
-        "de": "Gem. Immunität gegen Zauber",
+        "de": "Gemeinschaftliche Immunität gegen Zauber",
         "en": null
       },
       "school": "Ba",
@@ -10961,7 +10961,7 @@
     {
       "id": "gem_luftweg",
       "name": {
-        "de": "Gem. Luftweg",
+        "de": "Gemeinschaftlicher Luftweg",
         "en": null
       },
       "school": "Vw",
@@ -10981,7 +10981,7 @@
     {
       "id": "gem_reittier",
       "name": {
-        "de": "Gem. Reittier",
+        "de": "Gemeinschaftliches Reittier",
         "en": null
       },
       "school": "Be",
@@ -10999,7 +10999,7 @@
     {
       "id": "gem_schutz_vor_boesem",
       "name": {
-        "de": "Gem. Schutz vor Bösem",
+        "de": "Gemeinschaftlicher Schutz vor Bösem",
         "en": null
       },
       "school": "Ba",
@@ -11020,7 +11020,7 @@
     {
       "id": "gem_schutz_vor_chaos",
       "name": {
-        "de": "Gem. Schutz vor Chaos",
+        "de": "Gemeinschaftlicher Schutz vor Chaos",
         "en": null
       },
       "school": "Ba",
@@ -11041,7 +11041,7 @@
     {
       "id": "gem_schutz_vor_energien",
       "name": {
-        "de": "Gem. Schutz vor Energien",
+        "de": "Gemeinschaftlicher Schutz vor Energien",
         "en": null
       },
       "school": "Ba A",
@@ -11064,7 +11064,7 @@
     {
       "id": "gem_schutz_vor_gutem",
       "name": {
-        "de": "Gem. Schutz vor Gutem",
+        "de": "Gemeinschaftlicher Schutz vor Gutem",
         "en": null
       },
       "school": "Ba",
@@ -11085,7 +11085,7 @@
     {
       "id": "gem_schutz_vor_ordnung",
       "name": {
-        "de": "Gem. Schutz vor Ordnung",
+        "de": "Gemeinschaftlicher Schutz vor Ordnung",
         "en": null
       },
       "school": "Ba",
@@ -11106,7 +11106,7 @@
     {
       "id": "gem_schutz_vor_pfeilen",
       "name": {
-        "de": "Gem. Schutz vor Pfeilen",
+        "de": "Gemeinschaftlicher Schutz vor Pfeilen",
         "en": null
       },
       "school": "Ba",
@@ -11124,7 +11124,7 @@
     {
       "id": "gem_spinnenklettern",
       "name": {
-        "de": "Gem. Spinnenklettern",
+        "de": "Gemeinschaftliches Spinnenklettern",
         "en": null
       },
       "school": "Vw",
@@ -11144,7 +11144,7 @@
     {
       "id": "gem_sprache_weitergeben",
       "name": {
-        "de": "Gem. Sprache weitergeben",
+        "de": "Gemeinschaftliches Sprache weitergeben",
         "en": null
       },
       "school": "Er",
@@ -11166,7 +11166,7 @@
     {
       "id": "gem_steinhaut",
       "name": {
-        "de": "Gem. Steinhaut",
+        "de": "Gemeinschaftliche Steinhaut",
         "en": null
       },
       "school": "Ba Er",
@@ -11187,7 +11187,7 @@
     {
       "id": "gem_unauffindbarkeit",
       "name": {
-        "de": "Gem. Unauffindbarkeit",
+        "de": "Gemeinschaftliche Unauffindbarkeit",
         "en": null
       },
       "school": "Ba",
@@ -11202,7 +11202,7 @@
     {
       "id": "gem_waffe_ruestung_verstaerken",
       "name": {
-        "de": "Gem. Waffe/Rüstung verstärken",
+        "de": "Gemeinschaftliches Waffe/Rüstung verstärken",
         "en": null
       },
       "school": "Vw",
@@ -11220,7 +11220,7 @@
     {
       "id": "gem_waffengesinnung",
       "name": {
-        "de": "Gem. Waffengesinnung",
+        "de": "Gemeinschaftliche Waffengesinnung",
         "en": null
       },
       "school": "Vw",
@@ -11237,7 +11237,7 @@
     {
       "id": "gem_zauber_verbergen",
       "name": {
-        "de": "Gem. Zauber verbergen",
+        "de": "Gemeinschaftliches Zauber verbergen",
         "en": null
       },
       "school": "Il",
@@ -11251,7 +11251,7 @@
     {
       "id": "gem_zungen",
       "name": {
-        "de": "Gem. Zungen",
+        "de": "Gemeinschaftliche Zungen",
         "en": null
       },
       "school": "Er",
@@ -11275,7 +11275,7 @@
     {
       "id": "gem_zurueckkehrende_waffe",
       "name": {
-        "de": "Gem. Zurückkehrende Waffe",
+        "de": "Gemeinschaftliche Zurückkehrende Waffe",
         "en": null
       },
       "school": "Be",
@@ -11300,7 +11300,7 @@
     {
       "id": "gem_auf_wasser_gehen_2",
       "name": {
-        "de": "Gem. auf Wasser gehen",
+        "de": "Gemeinschaftliches auf Wasser gehen",
         "en": null
       },
       "school": "",
@@ -14721,7 +14721,7 @@
     {
       "id": "innewohn_magie_aufladen_gno",
       "name": {
-        "de": "Innewohn. Magie aufladen *Gno",
+        "de": "Innewohnende Magie aufladen *Gno",
         "en": null
       },
       "school": "Vw",
@@ -14733,7 +14733,7 @@
     {
       "id": "innewohn_magie_aufladen_gno_2",
       "name": {
-        "de": "Innewohn. Magie aufladen Gno",
+        "de": "Innewohnende Magie aufladen Gno",
         "en": null
       },
       "school": "Vw",
@@ -15326,7 +15326,7 @@
     {
       "id": "klagelied_d_sieg_ritters",
       "name": {
-        "de": "Klagelied d. Sieg. Ritters",
+        "de": "Klagelied des Siegreichen Ritters",
         "en": null
       },
       "school": "Il",
@@ -15340,7 +15340,7 @@
     {
       "id": "klagelied_d_sieg_ritters_lg",
       "name": {
-        "de": "Klagelied d. Sieg. Ritters Lg",
+        "de": "Klagelied des Siegreichen Ritters Lg",
         "en": null
       },
       "school": "Il",
@@ -16672,7 +16672,7 @@
     {
       "id": "lebensband_zum_verb",
       "name": {
-        "de": "Lebensband zum Verb.",
+        "de": "Lebensband zum Verbündeten",
         "en": null
       },
       "school": "Ne",
@@ -20243,7 +20243,7 @@
     {
       "id": "maech_aggressive_gewitterwolke",
       "name": {
-        "de": "Mäch. Aggressive Gewitterwolke",
+        "de": "Mächtige Aggressive Gewitterwolke",
         "en": null
       },
       "school": "Hv",
@@ -20261,7 +20261,7 @@
     {
       "id": "maech_baumkatapult",
       "name": {
-        "de": "Mäch. Baumkatapult",
+        "de": "Mächtiges Baumkatapult",
         "en": null
       },
       "school": "Vw",
@@ -20275,7 +20275,7 @@
     {
       "id": "maech_betaeubende_barriere",
       "name": {
-        "de": "Mäch. Betäubende Barriere",
+        "de": "Mächtige Betäubende Barriere",
         "en": null
       },
       "school": "Ba",
@@ -20295,7 +20295,7 @@
     {
       "id": "maech_brandzeichen",
       "name": {
-        "de": "Mäch. Brandzeichen",
+        "de": "Mächtiges Brandzeichen",
         "en": null
       },
       "school": "Vw",
@@ -20309,7 +20309,7 @@
     {
       "id": "maech_bruellen",
       "name": {
-        "de": "Mäch. Brüllen",
+        "de": "Mächtiges Brüllen",
         "en": null
       },
       "school": "Hv Lu",
@@ -20326,7 +20326,7 @@
     {
       "id": "maech_donnerndes_aufstampfen",
       "name": {
-        "de": "Mäch. Donnerndes Aufstampfen",
+        "de": "Mächtiges Donnerndes Aufstampfen",
         "en": null
       },
       "school": "Hv",
@@ -20361,7 +20361,7 @@
     {
       "id": "maech_falsches_leben",
       "name": {
-        "de": "Mäch. Falsches Leben",
+        "de": "Mächtiges Falsches Leben",
         "en": null
       },
       "school": "Ne",
@@ -20381,7 +20381,7 @@
     {
       "id": "maech_faust_der_erde_ore",
       "name": {
-        "de": "Mäch. Faust der Erde *Ore",
+        "de": "Mächtige Faust der Erde *Ore",
         "en": null
       },
       "school": "Be",
@@ -20399,7 +20399,7 @@
     {
       "id": "maech_faust_der_erde_lg",
       "name": {
-        "de": "Mäch. Faust der Erde Lg",
+        "de": "Mächtige Faust der Erde Lg",
         "en": null
       },
       "school": "Be",
@@ -20413,7 +20413,7 @@
     {
       "id": "maech_flammenkugel",
       "name": {
-        "de": "Mäch. Flammenkugel",
+        "de": "Mächtige Flammenkugel",
         "en": null
       },
       "school": "Hv",
@@ -20431,7 +20431,7 @@
     {
       "id": "maech_handlung_untersagen",
       "name": {
-        "de": "Mäch. Handlung untersagen",
+        "de": "Mächtiges Handlung untersagen",
         "en": null
       },
       "school": "Vz",
@@ -20448,7 +20448,7 @@
     {
       "id": "maech_hexereiglyphe_der_abwehr",
       "name": {
-        "de": "Mäch. Hexereiglyphe der Abwehr",
+        "de": "Mächtige Hexereiglyphe der Abwehr",
         "en": null
       },
       "school": "Ba",
@@ -20463,7 +20463,7 @@
     {
       "id": "maech_lange_schritte",
       "name": {
-        "de": "Mäch. Lange Schritte",
+        "de": "Mächtige Lange Schritte",
         "en": null
       },
       "school": "Vw",
@@ -20479,7 +20479,7 @@
     {
       "id": "maech_mag_belagerungsgeraet",
       "name": {
-        "de": "Mäch. Mag. Belagerungsgerät",
+        "de": "Mächtiges Magisches Belagerungsgerät",
         "en": null
       },
       "school": "Vw",
@@ -20499,7 +20499,7 @@
     {
       "id": "maech_magische_waffe_lg",
       "name": {
-        "de": "Mäch. Magische Waffe Lg",
+        "de": "Mächtige Magische Waffe Lg",
         "en": null
       },
       "school": "Vw Me",
@@ -20513,7 +20513,7 @@
     {
       "id": "maech_richtspruch_verleihen",
       "name": {
-        "de": "Mäch. Richtspruch verleihen",
+        "de": "Mächtiges Richtspruch verleihen",
         "en": null
       },
       "school": "Er",
@@ -20527,7 +20527,7 @@
     {
       "id": "maech_schild_des_bollwerks",
       "name": {
-        "de": "Mäch. Schild des Bollwerks",
+        "de": "Mächtiger Schild des Bollwerks",
         "en": null
       },
       "school": "Ba",
@@ -20545,7 +20545,7 @@
     {
       "id": "maech_schimmernder_pfad",
       "name": {
-        "de": "Mäch. Schimmernder Pfad",
+        "de": "Mächtiger Schimmernder Pfad",
         "en": null
       },
       "school": "Be",
@@ -20563,7 +20563,7 @@
     {
       "id": "maech_segen_des_chamaeleons",
       "name": {
-        "de": "Mäch. Segen des Chamäleons",
+        "de": "Mächtiger Segen des Chamäleons",
         "en": null
       },
       "school": "Il",
@@ -20578,7 +20578,7 @@
     {
       "id": "maech_teleportieren",
       "name": {
-        "de": "Mäch. Teleportieren",
+        "de": "Mächtiges Teleportieren",
         "en": null
       },
       "school": "Be",
@@ -20595,7 +20595,7 @@
     {
       "id": "maech_trugbild",
       "name": {
-        "de": "Mäch. Trugbild",
+        "de": "Mächtiges Trugbild",
         "en": null
       },
       "school": "Il",
@@ -20613,7 +20613,7 @@
     {
       "id": "maech_verhoer",
       "name": {
-        "de": "Mäch. Verhör",
+        "de": "Mächtiges Verhör",
         "en": null
       },
       "school": "Ne",
@@ -20627,7 +20627,7 @@
     {
       "id": "maech_zauberbruch",
       "name": {
-        "de": "Mäch. Zauberbruch",
+        "de": "Mächtiger Zauberbruch",
         "en": null
       },
       "school": "Ba",
@@ -20788,7 +20788,7 @@
     {
       "id": "maechtige_gem_imm_gegen_zauber",
       "name": {
-        "de": "Mächtige Gem. Imm. gegen Zauber",
+        "de": "Mächtige Gemeinschaftliche Immunität gegen Zauber",
         "en": null
       },
       "school": "Ba",
@@ -26424,7 +26424,7 @@
     {
       "id": "schutzzauber_geg_verwandlung_untote_brut_hva",
       "name": {
-        "de": "Schutzzauber geg. Verwandlung>untote Brut Hva",
+        "de": "Schutzzauber gegen Verwandlung>untote Brut Hva",
         "en": null
       },
       "school": "Ne",
@@ -26436,7 +26436,7 @@
     {
       "id": "schw_bindender_ruf",
       "name": {
-        "de": "Schw. Bindender Ruf",
+        "de": "Schwacher Bindender Ruf",
         "en": null
       },
       "school": "Be A",
@@ -26452,7 +26452,7 @@
     {
       "id": "schw_evolutionsschub",
       "name": {
-        "de": "Schw. Evolutionsschub",
+        "de": "Schwacher Evolutionsschub",
         "en": null
       },
       "school": "Vw",
@@ -26466,7 +26466,7 @@
     {
       "id": "schw_geas",
       "name": {
-        "de": "Schw. Geas",
+        "de": "Schwache Geas",
         "en": null
       },
       "school": "Vz",
@@ -26485,7 +26485,7 @@
     {
       "id": "schw_simulakrum",
       "name": {
-        "de": "Schw. Simulakrum",
+        "de": "Schwaches Simulakrum",
         "en": null
       },
       "school": "Il",
@@ -26500,7 +26500,7 @@
     {
       "id": "schw_tote_beleben",
       "name": {
-        "de": "Schw. Tote-Beleben",
+        "de": "Schwaches Tote-Beleben",
         "en": null
       },
       "school": "Ne",
@@ -26519,7 +26519,7 @@
     {
       "id": "schw_verbuendeter_aus_den_ebenen",
       "name": {
-        "de": "Schw. Verbündeter aus den Ebenen",
+        "de": "Schwacher Verbündeter aus den Ebenen",
         "en": null
       },
       "school": "Be",
@@ -33435,7 +33435,7 @@
     {
       "id": "verb_lebenskraftuebertragung",
       "name": {
-        "de": "Verb. Lebenskraftübertragung",
+        "de": "Verbesserte Lebenskraftübertragung",
         "en": null
       },
       "school": "Be",
@@ -33449,7 +33449,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_i",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern I",
+        "de": "Verbessertes der Natur herbeizaubern I",
         "en": null
       },
       "school": "Be",
@@ -33466,7 +33466,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_ii",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern II",
+        "de": "Verbessertes der Natur herbeizaubern II",
         "en": null
       },
       "school": "Be",
@@ -33483,7 +33483,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_iii",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern III",
+        "de": "Verbessertes der Natur herbeizaubern III",
         "en": null
       },
       "school": "Be",
@@ -33500,7 +33500,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_iv",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern IV",
+        "de": "Verbessertes der Natur herbeizaubern IV",
         "en": null
       },
       "school": "Be",
@@ -33517,7 +33517,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_iv_nur_tiere",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern IV nur Tiere",
+        "de": "Verbessertes der Natur herbeizaubern IV nur Tiere",
         "en": null
       },
       "school": "Be",
@@ -33529,7 +33529,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_ix",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern IX",
+        "de": "Verbessertes der Natur herbeizaubern IX",
         "en": null
       },
       "school": "Be",
@@ -33544,7 +33544,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_v",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern V",
+        "de": "Verbessertes der Natur herbeizaubern V",
         "en": null
       },
       "school": "Be",
@@ -33562,7 +33562,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_vi",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern VI",
+        "de": "Verbessertes der Natur herbeizaubern VI",
         "en": null
       },
       "school": "Be",
@@ -33578,7 +33578,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_vii",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern VII",
+        "de": "Verbessertes der Natur herbeizaubern VII",
         "en": null
       },
       "school": "Be",
@@ -33593,7 +33593,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_viii",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern VIII",
+        "de": "Verbessertes der Natur herbeizaubern VIII",
         "en": null
       },
       "school": "Be",
@@ -33608,7 +33608,7 @@
     {
       "id": "verb_d_natur_herbeizaubern_viii_nur_tiere",
       "name": {
-        "de": "Verb. d. Natur herbeizaubern VIII nur Tiere",
+        "de": "Verbessertes der Natur herbeizaubern VIII nur Tiere",
         "en": null
       },
       "school": "Be",
