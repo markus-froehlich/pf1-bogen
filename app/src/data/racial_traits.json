@@ -12,8 +12,8 @@
         "desc": "Gerruchssinn, aber -2 Malus auf Wahrnehmung (sicht- und gehörbasierend)"
       },
       {
-        "name": "Mäch. Seuchenbombe E Rattenvolk",
-        "trait": "Mäch. Seuchenbombe E",
+        "name": "Mächtige Seuchenbombe E Rattenvolk",
+        "trait": "Mächtige Seuchenbombe E",
         "desc": "Rauch = Mächtige Ansteckung statt Nebelwolke; Rauch = doppelter Explosionsradius für 1 Rd/St."
       },
       {
@@ -64,8 +64,8 @@
         "desc": "Gemeinspr. & Abyssisch/Diab. (Aby./Diab., Drak., Elfisch, Gnomisch, Gobl., Halbl., Orkisch od. Zwergisch)"
       },
       {
-        "name": "Zauberä. Fähigkeit Tiefling",
-        "trait": "Zauberä. Fähigkeit",
+        "name": "Zauberähnliche Fähigkeit Tiefling",
+        "trait": "Zauberähnliche Fähigkeit",
         "desc": "1/Tag Dunkelheit als ZF (ZS = St.)"
       }
     ],
@@ -96,8 +96,8 @@
         "desc": "Menschengestalt, Bissangriff nicht verwenden, +10 Volksbonus Verkleiden"
       },
       {
-        "name": "Nat. Waffen Kitsune",
-        "trait": "Nat. Waffen",
+        "name": "Natürliche Waffen Kitsune",
+        "trait": "Natürliche Waffen",
         "desc": "Bissangriff 1W4 Punkte Schaden"
       },
       {
@@ -265,8 +265,8 @@
     ],
     "sylphen": [
       {
-        "name": "Elem. Resistenz Sylphen",
-        "trait": "Elem. Resistenz",
+        "name": "Elementare Resistenz Sylphen",
+        "trait": "Elementare Resistenz",
         "desc": "Elektrizitätsresistenz 5"
       },
       {
@@ -280,20 +280,20 @@
         "desc": "+4 Volksbonus Heimlichkeit"
       },
       {
-        "name": "Zauberä. Fähigkeit Sylphen",
-        "trait": "Zauberä. Fähigkeit",
+        "name": "Zauberähnliche Fähigkeit Sylphen",
+        "trait": "Zauberähnliche Fähigkeit",
         "desc": "1/Tag Federfall (ZS = St.)"
       }
     ],
     "undine": [
       {
-        "name": "Elem. Resistenz Undine",
-        "trait": "Elem. Resistenz",
+        "name": "Elementare Resistenz Undine",
+        "trait": "Elementare Resistenz",
         "desc": "Kälteresistenz 5"
       },
       {
-        "name": "Elem. Verbundenheit Undine",
-        "trait": "Elem. Verbundenheit",
+        "name": "Elementare Verbundenheit Undine",
+        "trait": "Elementare Verbundenheit",
         "desc": "HXM Element. Blutlinie (Wasser) (CH +2 Berechnung); Domäne Wasser: +1 Zauberstufe"
       },
       {
@@ -307,15 +307,15 @@
         "desc": "Gemeinsprache und Aqual (Aural, Elfisch, Gnomisch, Halblingisch, Ignal, Terral und Zwergisch)"
       },
       {
-        "name": "Zauberä. Fähigkeit Undine",
-        "trait": "Zauberä. Fähigkeit",
+        "name": "Zauberähnliche Fähigkeit Undine",
+        "trait": "Zauberähnliche Fähigkeit",
         "desc": "1/Tag Wasserstrahl (ZS = St.)"
       }
     ],
     "pyrier": [
       {
-        "name": "Elem. Verbundenheit Pyrier",
-        "trait": "Elem. Verbundenheit",
+        "name": "Elementare Verbundenheit Pyrier",
+        "trait": "Elementare Verbundenheit",
         "desc": "HXM Element. Blutlinie (Feuer) (CH +2 Berechnung); Domäne Feuer: +1 Zauberstufe"
       },
       {
@@ -329,8 +329,8 @@
         "desc": "Gemeinsprache und Ignal (Aqual, Aural, Elfisch, Gnomisch, Halblingisch, Terral und Zwergisch)"
       },
       {
-        "name": "Zauberä. Fähigkeit Pyrier",
-        "trait": "Zauberä. Fähigkeit",
+        "name": "Zauberähnliche Fähigkeit Pyrier",
+        "trait": "Zauberähnliche Fähigkeit",
         "desc": "1/Tag Brennende Hände (ZS = St.)"
       }
     ],
@@ -488,8 +488,8 @@
         "desc": "Finsterländisch, Gemeinsprache & Zwergisch (Aklo, Drakonisch, Goblinisch, Orkisch, Riesisch und Terral)"
       },
       {
-        "name": "Zauberä. Fähigkeit Duergar",
-        "trait": "Zauberä. Fähigkeit",
+        "name": "Zauberähnliche Fähigkeit Duergar",
+        "trait": "Zauberähnliche Fähigkeit",
         "desc": "1/Tag Person vergrößern und Unsichtbarkeit auf sich selbst"
       }
     ],
@@ -500,8 +500,8 @@
         "desc": "2 Klauenangriffe 1W4"
       },
       {
-        "name": "Nat. Rüstung Wechselbalg",
-        "trait": "Nat. Rüstung",
+        "name": "Natürliche Rüstung Wechselbalg",
+        "trait": "Natürliche Rüstung",
         "desc": "+1 natürlicher Rüstungsbonus"
       },
       {
@@ -627,8 +627,8 @@
         "desc": "Gemeinsprache + Terrai (Aqual, Aural, Elfisch, Finsterländisch, Gnomisch, Halblingisch, Ignal & Zwergisch)"
       },
       {
-        "name": "Zauberä. Fähigkeit Oreade",
-        "trait": "Zauberä. Fähigkeit",
+        "name": "Zauberähnliche Fähigkeit Oreade",
+        "trait": "Zauberähnliche Fähigkeit",
         "desc": "Magischer Stein 1/Tag"
       }
     ],

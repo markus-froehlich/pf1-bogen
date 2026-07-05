@@ -5582,7 +5582,7 @@
     {
       "id": "elf_krummsaebel",
       "name": {
-        "de": "Elf. Krummsäbel",
+        "de": "Elfischer Krummsäbel",
         "en": null
       },
       "category": "",
@@ -5610,7 +5610,7 @@
     {
       "id": "elf_krummschwert",
       "name": {
-        "de": "Elf. Krummschwert",
+        "de": "Elfisches Krummschwert",
         "en": null
       },
       "category": "",
@@ -10286,7 +10286,7 @@
     {
       "id": "grabeshauch_sa_berueh",
       "name": {
-        "de": "Grabeshauch SA Berüh.",
+        "de": "Grabeshauch SA Berührung",
         "en": null
       },
       "category": "",

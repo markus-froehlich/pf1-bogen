@@ -68,8 +68,8 @@
     {
       "id": "l_holzschild",
       "name": {
-        "de": "L. Holzschild",
-        "en": "L. Holzschild"
+        "de": "Leichter Holzschild",
+        "en": "Leichter Holzschild"
       },
       "type": "Leicht",
       "bonus": 1,
@@ -81,8 +81,8 @@
     {
       "id": "l_stahlschild",
       "name": {
-        "de": "L. Stahlschild",
-        "en": "L. Stahlschild"
+        "de": "Leichter Stahlschild",
+        "en": "Leichter Stahlschild"
       },
       "type": "Leicht",
       "bonus": 1,
@@ -107,8 +107,8 @@
     {
       "id": "madu_leder",
       "name": {
-        "de": "Madu. Leder",
-        "en": "Madu. Leder"
+        "de": "Madu Leder",
+        "en": "Madu Leder"
       },
       "type": "Leicht",
       "bonus": 1,
@@ -120,8 +120,8 @@
     {
       "id": "sch_holzschild",
       "name": {
-        "de": "Sch. Holzschild",
-        "en": "Sch. Holzschild"
+        "de": "Schwerer Holzschild",
+        "en": "Schwerer Holzschild"
       },
       "type": "Schwer",
       "bonus": 2,
@@ -133,8 +133,8 @@
     {
       "id": "sch_stahlschild",
       "name": {
-        "de": "Sch. Stahlschild",
-        "en": "Sch. Stahlschild"
+        "de": "Schwerer Stahlschild",
+        "en": "Schwerer Stahlschild"
       },
       "type": "Schwer",
       "bonus": 2,
@@ -185,8 +185,8 @@
     {
       "id": "l_stachelschild_ma",
       "name": {
-        "de": "L. Stachelschild MA",
-        "en": "L. Stachelschild MA"
+        "de": "Leichter Stachelschild MA",
+        "en": "Leichter Stachelschild MA"
       },
       "type": "Leicht",
       "bonus": 1,

@@ -2682,7 +2682,7 @@
       "id": "ark_betrueger",
       "kla_nr": 20,
       "name": {
-        "de": "Ark. Betrüger",
+        "de": "Arkaner Betrüger",
         "en": null
       },
       "hit_die": "W6",
@@ -2839,7 +2839,7 @@
       "id": "ark_bogenschuetze",
       "kla_nr": 21,
       "name": {
-        "de": "Ark. Bogenschütze",
+        "de": "Arkaner Bogenschütze",
         "en": null
       },
       "hit_die": "W10",
@@ -3467,7 +3467,7 @@
       "id": "kundsch_chronist",
       "kla_nr": 25,
       "name": {
-        "de": "Kundsch.-Chronist",
+        "de": "Kundschafter-Chronist",
         "en": null
       },
       "hit_die": "W8",
@@ -5194,7 +5194,7 @@
       "id": "standh_verteidiger",
       "kla_nr": 36,
       "name": {
-        "de": "Standh. Verteidiger",
+        "de": "Standhafter Verteidiger",
         "en": null
       },
       "hit_die": "W10",
@@ -6921,7 +6921,7 @@
       "id": "kundsch_geleh",
       "kla_nr": 48,
       "name": {
-        "de": "Kundsch.-Geleh.",
+        "de": "Kundschafter-Gelehrter",
         "en": null
       },
       "hit_die": "W6",
