@@ -9,14 +9,10 @@
 .notes-mode-toggle {
   display: flex;
   gap: 4px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
-.notes-mode-toggle::-webkit-scrollbar { display: none; }
 .nmt-btn {
-  flex-shrink: 0;
+  flex: 1 1 auto;
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 7px;
