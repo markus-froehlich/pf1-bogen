@@ -484,7 +484,9 @@
   position: absolute;
   top: calc(100% + 3px);
   left: 0;
-  right: 0;
+  min-width: 100%;
+  width: max-content;
+  max-width: min(280px, 90vw);
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 8px;
