@@ -306,7 +306,8 @@
 }
 .spell-class-select:focus { outline: none; border-color: var(--accent); }
 .spell-search {
-  width: 110px;
+  flex: 1.4;
+  min-width: 0;
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
