@@ -2,6 +2,9 @@
 Version 6.61/
 extraction/
 
+# Regelwerk-PDFs (Copyright, nur lokale Referenz)
+*.pdf
+
 # Python
 __pycache__/
 *.pyc
