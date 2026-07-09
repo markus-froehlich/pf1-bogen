@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import skillsData from '../data/skills.json'
 import { computeAllSkills, buildClassSkillSet } from '../engine/skills.js'
 import { getConditionMods } from '../engine/conditions.js'
+import { condAnnot, CondTag } from './DetailTag.jsx'
 import './SkillsTab.css'
 
 const SKILLS = skillsData.skills
