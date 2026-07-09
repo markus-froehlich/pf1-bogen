@@ -75,7 +75,7 @@ export function ConditionsPanel({ char, setConditions, lang, hideTitle = false }
           target="_blank" rel="noopener noreferrer" title={L ? 'Regelreferenz Zustände' : 'Conditions reference'}>?</a>
       </div>
       <div className="cond-grid">
-        {CONDITIONS.map(c => {
+        {sortedConditions.map(c => {
           const isActive = active.has(c.id)
           return (
             <button
