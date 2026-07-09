@@ -28,7 +28,7 @@ export const CONDITIONS = [
   { id: 'sterbend',      de: 'Im Sterben',      en: 'Dying',        effect: 'de: bewusstlos, −1 TP/Rd' },
   { id: 'erschoepft',    de: 'Erschöpft',       en: 'Fatigued',     effect: 'de: −2 ST & GE, kein Rennen/Ansturm' },
   { id: 'ermuedtet',     de: 'Entkräftet',      en: 'Exhausted',    effect: 'de: −6 ST & GE, halbe Bewegung, kein Rennen/Ansturm' },
-  { id: 'verängstigt',   de: 'Verängstigt',     en: 'Frightened',   effect: 'de: −2 Angriff/RW/Fertigk., muss fliehen' },
+  { id: 'verängstigt',   de: 'Verängstigt',     en: 'Frightened',   effect: 'de: −2 Angriff/RW/Fertigk./Attributswürfe, muss fliehen' },
   { id: 'festgehalten',  de: 'Ringend',         en: 'Grappled',     effect: 'de: −4 GE, −2 Angriff, kein Bewegen' },
   { id: 'hilflos',       de: 'Hilflos',         en: 'Helpless',     effect: 'de: GE=0, Gnadenangriffe möglich' },
   { id: 'unsichtbar',    de: 'Unsichtbar',       en: 'Invisible',    effect: 'de: +2 Angriff, Gegner verliert GE-Bonus auf RK' },
