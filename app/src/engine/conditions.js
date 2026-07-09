@@ -93,10 +93,10 @@ export function getConditionMods(conditions) {
     bump('ref_flat', -2, 'verängstigt'); bump('will', -2, 'verängstigt'); bump('skill_penalty', -2, 'verängstigt')
   }
 
-  // Panisch: -2 attack/saves
+  // In Panik: RAW gives -2 saves/skills/ability checks — NOT attack
   if (c.has('panisch')) {
-    bump('attack', -2, 'panisch'); bump('fort', -2, 'panisch')
-    bump('ref_flat', -2, 'panisch'); bump('will', -2, 'panisch')
+    bump('fort', -2, 'panisch'); bump('ref_flat', -2, 'panisch')
+    bump('will', -2, 'panisch'); bump('skill_penalty', -2, 'panisch')
   }
 
   // Niedergestreckt: -4 to melee attacks (applied to general attack for simplicity)
