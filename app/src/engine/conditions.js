@@ -75,6 +75,9 @@ export function getConditionMods(conditions) {
     bump('str_mod_delta', -999, 'gelähmt')
   }
 
+  // Hilflos: treated as DEX 0 (mod -5)
+  if (c.has('hilflos')) bump('dex_mod_delta', -999, 'hilflos')
+
   // Schütteln: -2 attack/saves/skills
   if (c.has('schütteln')) {
     bump('attack', -2, 'schütteln'); bump('fort', -2, 'schütteln')
