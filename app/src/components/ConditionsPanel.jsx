@@ -33,7 +33,7 @@ export const CONDITIONS = [
   { id: 'hilflos',       de: 'Hilflos',         en: 'Helpless',     effect: 'de: GE=0, Gnadenangriffe möglich' },
   { id: 'unsichtbar',    de: 'Unsichtbar',       en: 'Invisible',    effect: 'de: +2 Angriff, Gegner −2 RK' },
   { id: 'gelähmt',       de: 'Gelähmt',         en: 'Paralyzed',    effect: 'de: ST & GE effektiv 0, hilflos' },
-  { id: 'panisch',       de: 'Panisch',         en: 'Panicked',     effect: 'de: −2 Angriff/RW, muss fliehen, lässt Sachen fallen' },
+  { id: 'panisch',       de: 'Panisch',         en: 'Panicked',     effect: 'de: −2 RW/Fertigk./Attributswürfe, muss fliehen, lässt Sachen fallen' },
   { id: 'niedergestreckt', de: 'Liegend',       en: 'Prone',        effect: 'de: −4 Nahkampf-Angr., RK +4 vs. Fern/−4 vs. Nah' },
   { id: 'schütteln',     de: 'Erschüttert',     en: 'Shaken',       effect: 'de: −2 Angriff/RW/Fertigk./Attributswürfe' },
   { id: 'krank',         de: 'Kränkelnd',       en: 'Sickened',     effect: 'de: −2 Angriff/Schaden/RW/Fertigk./Attributswürfe' },
