@@ -106,7 +106,7 @@ function CondTag({ info, lang }) {
   return <DetailTag className={`cond-tag ${info.total > 0 ? 'cond-pos' : 'cond-neg'}`} symbol="⚡" value={info.total} title={title} />
 }
 
-function StatBox({ label, value, sub, className, buffInfo, condInfo }) {
+function StatBox({ label, value, sub, className, buffInfo, condInfo, lang }) {
   return (
     <div className={`stat-box${className ? ' ' + className : ''}`}>
       <div className="stat-label">{label}</div>
