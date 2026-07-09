@@ -31,7 +31,7 @@ export const CONDITIONS = [
   { id: 'verängstigt',   de: 'Verängstigt',     en: 'Frightened',   effect: 'de: −2 Angriff/RW/Fertigk., muss fliehen' },
   { id: 'festgehalten',  de: 'Ringend',         en: 'Grappled',     effect: 'de: −4 GE, −2 Angriff, kein Bewegen' },
   { id: 'hilflos',       de: 'Hilflos',         en: 'Helpless',     effect: 'de: GE=0, Gnadenangriffe möglich' },
-  { id: 'unsichtbar',    de: 'Unsichtbar',       en: 'Invisible',    effect: 'de: +2 Angriff, Gegner −2 RK' },
+  { id: 'unsichtbar',    de: 'Unsichtbar',       en: 'Invisible',    effect: 'de: +2 Angriff, Gegner verliert GE-Bonus auf RK' },
   { id: 'gelähmt',       de: 'Gelähmt',         en: 'Paralyzed',    effect: 'de: ST & GE effektiv 0, hilflos' },
   { id: 'panisch',       de: 'Panisch',         en: 'Panicked',     effect: 'de: −2 RW/Fertigk./Attributswürfe, muss fliehen, lässt Sachen fallen' },
   { id: 'niedergestreckt', de: 'Liegend',       en: 'Prone',        effect: 'de: −4 Nahkampf-Angr., RK +4 vs. Fern/−4 vs. Nah' },
