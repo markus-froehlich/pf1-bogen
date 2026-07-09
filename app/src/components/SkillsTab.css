@@ -25,7 +25,7 @@
   overflow: hidden;
   white-space: nowrap;
 }
-.sh-name { font-size: 9px; color: var(--accent); font-weight: 700; text-transform: uppercase; overflow: hidden; white-space: nowrap; }
+.sh-name { display: flex; align-items: center; gap: 4px; font-size: 9px; color: var(--accent); font-weight: 700; text-transform: uppercase; overflow: hidden; white-space: nowrap; }
 
 .skills-list {
   border: 1px solid var(--border);
