@@ -91,7 +91,7 @@ export function ConditionsPanel({ char, setConditions, lang, hideTitle = false }
       </div>
       {activeCount > 0 && (
         <div className="cond-active-list">
-          {CONDITIONS.filter(c => active.has(c.id)).map(c => (
+          {sortedConditions.filter(c => active.has(c.id)).map(c => (
             <div key={c.id} className="cond-effect-row">
               <span className="cond-effect-name">{L ? c.de : c.en}</span>
               <span className="cond-effect-text">{c.effect.replace('de: ', '')}</span>
