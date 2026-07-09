@@ -6,12 +6,18 @@
  * Two-weapon: main hand = full BAB penalty, off hand = additional -2/-6
  */
 
-/** Compute attack and damage bonuses for one equipped weapon slot */
-export function computeWeaponAttack(slot, attrs, bab) {
+/**
+ * Compute attack and damage bonuses for one equipped weapon slot.
+ * `condMods` (from engine/conditions.js) and `extraAttack` (e.g. buff totals'
+ * flat attack bonus) are optional — passing them keeps this in sync with the
+ * Kampf-Tab's GAB, which already applies both. Without them, this falls back
+ * to raw attribute mods (no condition/buff penalties or bonuses).
+ */
+export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack = 0) {
   if (!slot?.weapon_id) return null
 
-  const STmod = attrs.ST.mod
-  const GEmod = attrs.GE.mod
+  const STmod = Math.max(-5, attrs.ST.mod + (condMods.str_mod_delta ?? 0))
+  const GEmod = Math.max(-5, attrs.GE.mod + (condMods.dex_mod_delta ?? 0))
 
   const isRanged  = slot.is_ranged ?? false
   const isThrWn   = slot.is_thrown ?? false
@@ -31,7 +37,7 @@ export function computeWeaponAttack(slot, attrs, bab) {
   const damageMod = isRanged ? (slot.composite_str ?? 0)
                   : Math.floor(STmod * strMult)
 
-  const attackBonus = bab + attackMod + enh + misc + (offHand ? -4 : 0)
+  const attackBonus = bab + attackMod + enh + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + extraAttack
   const totalDmgMod = damageMod + enh + dmgMisc
 
   return {
