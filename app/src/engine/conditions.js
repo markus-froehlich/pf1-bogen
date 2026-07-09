@@ -68,9 +68,9 @@ export function getConditionMods(conditions) {
     bump('ref_flat', -2, 'schütteln'); bump('will', -2, 'schütteln'); bump('skill_penalty', -2, 'schütteln')
   }
 
-  // Krank: -2 attack/saves/skills
+  // Kränkelnd (Sickened): -2 attack/weapon damage/saves/skills
   if (c.has('krank')) {
-    bump('attack', -2, 'krank'); bump('fort', -2, 'krank')
+    bump('attack', -2, 'krank'); bump('damage', -2, 'krank'); bump('fort', -2, 'krank')
     bump('ref_flat', -2, 'krank'); bump('will', -2, 'krank'); bump('skill_penalty', -2, 'krank')
   }
 
