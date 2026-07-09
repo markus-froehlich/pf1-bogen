@@ -1,6 +1,9 @@
 /**
  * Condition modifiers for PF1e standard conditions.
- * Returns flat modifier object applied on top of base combat/skill calculations.
+ * Returns flat modifier object applied on top of base combat/skill calculations,
+ * plus `sources`: for each modifier key, the list of condition ids that
+ * contributed to it (used by the UI to show *which* condition is responsible,
+ * not just the number).
  */
 export function getConditionMods(conditions) {
   const c = new Set(conditions ?? [])
@@ -21,70 +24,84 @@ export function getConditionMods(conditions) {
     // Skill checks
     skill_penalty: 0,
   }
+  const sources = {}
+
+  function bump(key, delta, condId) {
+    m[key] += delta
+    ;(sources[key] ??= []).push(condId)
+  }
+  function flag(key, condId) {
+    m[key] = true
+    ;(sources[key] ??= []).push(condId)
+  }
 
   // Erschöpft: -6 ST & GE → -3 to each mod
-  if (c.has('erschoepft')) { m.dex_mod_delta -= 3; m.str_mod_delta -= 3 }
+  if (c.has('erschoepft')) { bump('dex_mod_delta', -3, 'erschoepft'); bump('str_mod_delta', -3, 'erschoepft') }
   // Ermüdet: -2 ST & GE → -1 to each mod
-  if (c.has('ermuedtet'))  { m.dex_mod_delta -= 1; m.str_mod_delta -= 1 }
+  if (c.has('ermuedtet'))  { bump('dex_mod_delta', -1, 'ermuedtet');  bump('str_mod_delta', -1, 'ermuedtet') }
 
   // Festgehalten: -4 GE (= -2 mod), -2 attack
-  if (c.has('festgehalten')) { m.dex_mod_delta -= 2; m.attack -= 2 }
+  if (c.has('festgehalten')) { bump('dex_mod_delta', -2, 'festgehalten'); bump('attack', -2, 'festgehalten') }
 
   // Conditions that remove positive DEX bonus to AC (flat-footed equivalent)
-  if (c.has('blind') || c.has('betäubt') || c.has('hilflos') ||
-      c.has('gelähmt') || c.has('bewusstlos') || c.has('benommen')) {
-    m.no_dex_to_ac = true
+  for (const id of ['blind', 'betäubt', 'hilflos', 'gelähmt', 'bewusstlos', 'benommen']) {
+    if (c.has(id)) flag('no_dex_to_ac', id)
   }
 
   // Blind: additionally -2 to AC
-  if (c.has('blind')) m.rk -= 2
+  if (c.has('blind')) bump('rk', -2, 'blind')
 
   // Betäubt: -2 AC (on top of losing DEX)
-  if (c.has('betäubt')) m.rk -= 2
+  if (c.has('betäubt')) bump('rk', -2, 'betäubt')
 
   // Gelähmt: STR & DEX effectively 0 (use 0 mod)
   if (c.has('gelähmt')) {
-    m.dex_mod_delta = -999  // will be clamped in combat
-    m.str_mod_delta = -999
+    bump('dex_mod_delta', -999, 'gelähmt')  // will be clamped in combat
+    bump('str_mod_delta', -999, 'gelähmt')
   }
 
   // Schütteln: -2 attack/saves/skills
   if (c.has('schütteln')) {
-    m.attack -= 2; m.fort -= 2; m.ref_flat -= 2; m.will -= 2; m.skill_penalty -= 2
+    bump('attack', -2, 'schütteln'); bump('fort', -2, 'schütteln')
+    bump('ref_flat', -2, 'schütteln'); bump('will', -2, 'schütteln'); bump('skill_penalty', -2, 'schütteln')
   }
 
   // Krank: -2 attack/saves/skills
   if (c.has('krank')) {
-    m.attack -= 2; m.fort -= 2; m.ref_flat -= 2; m.will -= 2; m.skill_penalty -= 2
+    bump('attack', -2, 'krank'); bump('fort', -2, 'krank')
+    bump('ref_flat', -2, 'krank'); bump('will', -2, 'krank'); bump('skill_penalty', -2, 'krank')
   }
 
   // Verängstigt: -2 attack/saves/skills (+ forced flee, handled in UI)
   if (c.has('verängstigt')) {
-    m.attack -= 2; m.fort -= 2; m.ref_flat -= 2; m.will -= 2; m.skill_penalty -= 2
+    bump('attack', -2, 'verängstigt'); bump('fort', -2, 'verängstigt')
+    bump('ref_flat', -2, 'verängstigt'); bump('will', -2, 'verängstigt'); bump('skill_penalty', -2, 'verängstigt')
   }
 
   // Panisch: -2 attack/saves
   if (c.has('panisch')) {
-    m.attack -= 2; m.fort -= 2; m.ref_flat -= 2; m.will -= 2
+    bump('attack', -2, 'panisch'); bump('fort', -2, 'panisch')
+    bump('ref_flat', -2, 'panisch'); bump('will', -2, 'panisch')
   }
 
   // Niedergestreckt: -4 to melee attacks (applied to general attack for simplicity)
-  if (c.has('niedergestreckt')) m.attack -= 4
+  if (c.has('niedergestreckt')) bump('attack', -4, 'niedergestreckt')
 
   // Taub: -4 Initiative (20% arcane spell failure handled in UI)
-  if (c.has('taub')) m.init -= 4
+  if (c.has('taub')) bump('init', -4, 'taub')
 
   // Verlangsamt: -1 attack/AC/Reflex
-  if (c.has('verlangsamt')) { m.attack -= 1; m.rk -= 1; m.ref_flat -= 1 }
+  if (c.has('verlangsamt')) { bump('attack', -1, 'verlangsamt'); bump('rk', -1, 'verlangsamt'); bump('ref_flat', -1, 'verlangsamt') }
 
   // Gehetzt (Hasted): +1 attack/AC/Reflex
-  if (c.has('gehast')) { m.attack += 1; m.rk += 1; m.ref_flat += 1 }
+  if (c.has('gehast')) { bump('attack', 1, 'gehast'); bump('rk', 1, 'gehast'); bump('ref_flat', 1, 'gehast') }
 
   // Gesegnet: +1 attack + all saves
-  if (c.has('gesegnet')) { m.attack += 1; m.fort += 1; m.ref_flat += 1; m.will += 1 }
+  if (c.has('gesegnet')) { bump('attack', 1, 'gesegnet'); bump('fort', 1, 'gesegnet'); bump('ref_flat', 1, 'gesegnet'); bump('will', 1, 'gesegnet') }
 
   // Unsichtbar: +2 attack
-  if (c.has('unsichtbar')) m.attack += 2
+  if (c.has('unsichtbar')) bump('attack', 2, 'unsichtbar')
 
+  m.sources = sources
   return m
 }
