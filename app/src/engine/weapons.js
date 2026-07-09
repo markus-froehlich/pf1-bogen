@@ -38,7 +38,7 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
                   : Math.floor(STmod * strMult)
 
   const attackBonus = bab + attackMod + enh + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + extraAttack
-  const totalDmgMod = damageMod + enh + dmgMisc
+  const totalDmgMod = damageMod + enh + dmgMisc + (condMods.damage ?? 0)
 
   return {
     attack_bonus: attackBonus,
