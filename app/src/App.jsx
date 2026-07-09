@@ -476,7 +476,7 @@ export default function App() {
                   {!isCollapsed && (
                     <div className="attr-grid">
                       {ATTRS.map(a => (
-                        <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} />
+                        <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} />
                       ))}
                     </div>
                   )}
