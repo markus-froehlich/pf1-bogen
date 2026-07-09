@@ -14,8 +14,10 @@ export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de', 
   const label = ATTR_LABELS[lang]?.[attrKey] ?? attrKey
 
   const condKey = ATTR_TO_COND_KEY[attrKey]
-  const effMod = condKey ? Math.max(-5, mod + (condMods[condKey] ?? 0)) : mod
-  const condInfo = condKey ? condAnnot({ [condKey + '_applied']: effMod - mod, sources: { [condKey + '_applied']: condMods.sources?.[condKey] ?? [] } }, condKey + '_applied') : null
+  const rawDelta = condKey ? (condMods[condKey] ?? 0) : 0
+  const effMod = rawDelta ? Math.max(-5, mod + rawDelta) : mod
+  const appliedDelta = effMod - mod
+  const condInfo = appliedDelta !== 0 ? { total: appliedDelta, sourceIds: condMods.sources?.[condKey] ?? [] } : null
   const modStr = effMod >= 0 ? `+${effMod}` : `${effMod}`
 
   return (
