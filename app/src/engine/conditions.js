@@ -15,6 +15,8 @@ export function getConditionMods(conditions) {
     str_mod_delta: 0,       // actual STR mod change (erschöpft/ermüdet)
     // Attack modifier (melee + ranged)
     attack: 0,
+    // Weapon damage modifier
+    damage: 0,
     // Save modifiers
     fort: 0,
     ref_flat: 0,
