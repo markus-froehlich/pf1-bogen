@@ -324,6 +324,15 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
         )}
       </div>
 
+      {/* Freitext-Notiz */}
+      <input
+        className="sb-notes-input"
+        type="text"
+        placeholder={L ? 'Notiz (z.B. Zauberstufe, Sonderregel…)' : 'Note (e.g. caster level, special rule…)'}
+        value={sb.notes ?? ''}
+        onChange={e => setSpellbook(prev => ({ ...prev, notes: e.target.value }))}
+      />
+
       {/* Add level row */}
       <div className="sb-add-row">
         <span className="sb-add-label">{L ? 'Stufe hinzufügen' : 'Add level'}</span>
