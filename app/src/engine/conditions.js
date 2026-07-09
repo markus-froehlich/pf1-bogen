@@ -35,10 +35,10 @@ export function getConditionMods(conditions) {
     ;(sources[key] ??= []).push(condId)
   }
 
-  // Erschöpft: -6 ST & GE → -3 to each mod
-  if (c.has('erschoepft')) { bump('dex_mod_delta', -3, 'erschoepft'); bump('str_mod_delta', -3, 'erschoepft') }
-  // Ermüdet: -2 ST & GE → -1 to each mod
-  if (c.has('ermuedtet'))  { bump('dex_mod_delta', -1, 'ermuedtet');  bump('str_mod_delta', -1, 'ermuedtet') }
+  // Erschöpft (Fatigued): -2 ST & GE → -1 to each mod
+  if (c.has('erschoepft')) { bump('dex_mod_delta', -1, 'erschoepft'); bump('str_mod_delta', -1, 'erschoepft') }
+  // Entkräftet (Exhausted, id kept as 'ermuedtet' for backward compat): -6 ST & GE → -3 to each mod
+  if (c.has('ermuedtet'))  { bump('dex_mod_delta', -3, 'ermuedtet');  bump('str_mod_delta', -3, 'ermuedtet') }
 
   // Festgehalten: -4 GE (= -2 mod), -2 attack
   if (c.has('festgehalten')) { bump('dex_mod_delta', -2, 'festgehalten'); bump('attack', -2, 'festgehalten') }
