@@ -1,4 +1,4 @@
-import { condAnnot, CondTag } from './DetailTag.jsx'
+import { CondTag } from './DetailTag.jsx'
 import './AttributeBlock.css'
 
 const ATTR_LABELS = {
