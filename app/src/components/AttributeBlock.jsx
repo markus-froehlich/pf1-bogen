@@ -1,3 +1,4 @@
+import { condAnnot, CondTag } from './DetailTag.jsx'
 import './AttributeBlock.css'
 
 const ATTR_LABELS = {
@@ -5,10 +6,17 @@ const ATTR_LABELS = {
   en: { ST: 'Strength', GE: 'Dexterity', KO: 'Constitution', IN: 'Intelligence', WE: 'Wisdom', CH: 'Charisma' },
 }
 
-export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de' }) {
+// Only STR/DEX are altered by conditions (erschöpft/entkräftet/gelähmt/ringend)
+const ATTR_TO_COND_KEY = { ST: 'str_mod_delta', GE: 'dex_mod_delta' }
+
+export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de', condMods = {} }) {
   const { score, buff, buffed, mod } = computed
   const label = ATTR_LABELS[lang]?.[attrKey] ?? attrKey
-  const modStr = mod >= 0 ? `+${mod}` : `${mod}`
+
+  const condKey = ATTR_TO_COND_KEY[attrKey]
+  const effMod = condKey ? Math.max(-5, mod + (condMods[condKey] ?? 0)) : mod
+  const condInfo = condKey ? condAnnot({ [condKey + '_applied']: effMod - mod, sources: { [condKey + '_applied']: condMods.sources?.[condKey] ?? [] } }, condKey + '_applied') : null
+  const modStr = effMod >= 0 ? `+${effMod}` : `${effMod}`
 
   return (
     <div className="attr-block">
@@ -28,7 +36,10 @@ export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de' }
           ✦{buff > 0 ? `+${buff}` : buff}
         </div>
       )}
-      <div className={`attr-mod ${mod >= 0 ? 'pos' : 'neg'}`}>{modStr}</div>
+      <div className="attr-mod-row">
+        <div className={`attr-mod ${effMod >= 0 ? 'pos' : 'neg'}`}>{modStr}</div>
+        <CondTag info={condInfo} lang={lang} />
+      </div>
     </div>
   )
 }
