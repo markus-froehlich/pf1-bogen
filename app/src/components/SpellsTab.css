@@ -58,6 +58,16 @@
   gap: 6px;
   flex-wrap: wrap;
 }
+.sb-notes-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 6px 8px;
+  font-size: 0.8rem;
+}
+.sb-notes-input::placeholder { color: var(--text-muted); }
 .sb-class-label, .sb-add-label {
   font-size: 0.62rem;
   font-weight: 700;
