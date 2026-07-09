@@ -519,7 +519,7 @@ export default function App() {
                 conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
                 buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
                 resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
-                weapons:    <WeaponsTab char={char} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} />,
+                weapons:    <WeaponsTab char={char} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} />,
               }}
               extraLabels={lang === 'de' ? {
                 features:   'Klassenmerkmale',
