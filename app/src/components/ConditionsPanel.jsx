@@ -38,7 +38,7 @@ export const CONDITIONS = [
   { id: 'schütteln',     de: 'Erschüttert',     en: 'Shaken',       effect: 'de: −2 Angriff/RW/Fertigk./Attributswürfe' },
   { id: 'krank',         de: 'Kränkelnd',       en: 'Sickened',     effect: 'de: −2 Angriff/Schaden/RW/Fertigk./Attributswürfe' },
   { id: 'taumelnd',      de: 'Wankend',         en: 'Staggered',    effect: 'de: nur 1 Standard- oder Bewegungsaktion' },
-  { id: 'betäubt',       de: 'Betäubt',         en: 'Stunned',      effect: 'de: −2 RK, kein GE-Bonus, lässt Sachen fallen' },
+  { id: 'betäubt',       de: 'Betäubt',         en: 'Stunned',      effect: 'de: keine Aktionen, −2 RK, kein GE-Bonus, lässt Sachen fallen' },
   { id: 'bewusstlos',    de: 'Bewusstlos',      en: 'Unconscious',  effect: 'de: hilflos' },
   { id: 'flachfuss',     de: 'Auf dem falschen Fuß erwischt', en: 'Flat-Footed', effect: 'de: kein GE-Bonus auf RK, keine Gelegenheitsangriffe' },
   { id: 'fasziniert',    de: 'Fasziniert',      en: 'Fascinated',   effect: 'de: reagiert nicht auf Umgebung, −4 auf Reaktions-Fertigkeitswürfe' },
