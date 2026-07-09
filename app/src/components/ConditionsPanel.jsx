@@ -43,7 +43,7 @@ export const CONDITIONS = [
   { id: 'flachfuss',     de: 'Auf dem falschen Fuß erwischt', en: 'Flat-Footed', effect: 'de: kein GE-Bonus auf RK, keine Gelegenheitsangriffe' },
   { id: 'fasziniert',    de: 'Fasziniert',      en: 'Fascinated',   effect: 'de: reagiert nicht auf Umgebung, −4 auf Reaktions-Fertigkeitswürfe' },
   { id: 'haltegriff',    de: 'Im Haltegriff',   en: 'Pinned',       effect: 'de: kein GE-Bonus auf RK, zusätzlich −4 RK, keine Bewegung' },
-  { id: 'kampfunfaehig', de: 'Kampfunfähig',    en: 'Disabled',     effect: 'de: 0 TP, nur Bewegungs- ODER Standardaktion, halbe Bewegung' },
+  { id: 'kampfunfaehig', de: 'Kampfunfähig',    en: 'Disabled',     effect: 'de: 0/negative TP, nur Bewegungs- ODER Standardaktion, halbe Bewegung' },
   { id: 'kauernd',       de: 'Kauernd',         en: 'Cowering',     effect: 'de: −2 RK, kein GE-Bonus, keine Handlungen' },
   { id: 'stabilisiert',  de: 'Stabilisiert',    en: 'Stable',       effect: 'de: nicht mehr sterbend, aber weiter bewusstlos' },
   { id: 'tot',           de: 'Tot',             en: 'Dead',         effect: 'de: keine Handlungen, nur durch Magie wiederbelebbar' },
