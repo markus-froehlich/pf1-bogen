@@ -46,7 +46,8 @@ export function getConditionMods(conditions) {
   if (c.has('festgehalten')) { bump('dex_mod_delta', -2, 'festgehalten'); bump('attack', -2, 'festgehalten') }
 
   // Conditions that remove positive DEX bonus to AC (flat-footed equivalent)
-  for (const id of ['blind', 'betäubt', 'hilflos', 'gelähmt', 'bewusstlos', 'benommen']) {
+  for (const id of ['blind', 'betäubt', 'hilflos', 'gelähmt', 'bewusstlos', 'benommen',
+                     'flachfuss', 'haltegriff', 'kauernd', 'versteinert']) {
     if (c.has(id)) flag('no_dex_to_ac', id)
   }
 
