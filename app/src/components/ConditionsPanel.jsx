@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import './ConditionsPanel.css'
 
 // PF1e Verwirrt d%-Tabelle
