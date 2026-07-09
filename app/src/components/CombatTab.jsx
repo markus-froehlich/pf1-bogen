@@ -113,7 +113,7 @@ function StatBox({ label, value, sub, className, buffInfo, condInfo, lang }) {
       <div className="stat-value-row">
         <div className="stat-value">{typeof value === 'number' ? fmtBonus(value) : value}</div>
         <BuffTag info={buffInfo} />
-        <CondTag value={condInfo} />
+        <CondTag info={condInfo} lang={lang} />
       </div>
       {sub && <div className="stat-sub">{sub}</div>}
     </div>
@@ -129,7 +129,7 @@ function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, o
         <div className="save-total-wrap">
           <span className="save-total">{fmtBonus(total)}</span>
           <BuffTag info={buffInfo} />
-          <CondTag value={condInfo} />
+          <CondTag info={condInfo} lang={lang} />
         </div>
       </div>
       <div className="save-breakdown">
@@ -405,10 +405,10 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
           <div className="stat-row">
             <StatBox label="GAB" value={combat.bab}
               buffInfo={buffAnnot(activeBuffs, 'attack')}
-              condInfo={condAnnot(condMods, 'attack')} />
+              condInfo={condAnnot(condMods, 'attack')} lang={lang} />
             <StatBox label={L ? 'Init' : 'Init'} value={combat.init} sub={`GE${fmtBonus(attrs.GE.mod)}`}
               buffInfo={buffAnnot(activeBuffs, 'init')}
-              condInfo={condAnnot(condMods, 'init')} />
+              condInfo={condAnnot(condMods, 'init')} lang={lang} />
             <StatBox label="KMB" value={combat.kmb}
               buffInfo={buffAnnot(activeBuffs, 'attack')} />
             <StatBox label="KMV" value={combat.kmv} />
@@ -475,10 +475,10 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
           <div className="stat-row">
             <StatBox label={L ? 'RK' : 'AC'} value={combat.rk}
               buffInfo={buffAnnot(activeBuffs, 'ac', 'nat_armor', 'deflection')}
-              condInfo={condAnnot(condMods, 'rk')} />
+              condInfo={condAnnot(condMods, 'rk')} lang={lang} />
             <StatBox label={L ? 'Berührung' : 'Touch'} value={combat.rk_touch}
               buffInfo={buffAnnot(activeBuffs, 'ac', 'deflection')}
-              condInfo={condAnnot(condMods, 'rk')} />
+              condInfo={condAnnot(condMods, 'rk')} lang={lang} />
             <StatBox label={L ? 'Falsch. Fuß' : 'Flat'} value={combat.rk_flat}
               buffInfo={buffAnnot(activeBuffs, 'ac', 'nat_armor')} />
           </div>
