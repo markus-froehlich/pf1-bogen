@@ -80,6 +80,13 @@
   border-color: color-mix(in srgb, var(--bad) 30%, var(--border));
 }
 
+.attr-mod-row {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
 .attr-buff {
   font-size: 0.52rem;
   font-weight: 700;
