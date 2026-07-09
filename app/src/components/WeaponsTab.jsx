@@ -125,8 +125,8 @@ export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = 
     const strMult = slot.off_hand
       ? Math.min(def.str_bonus_mult ?? 1, 0.5)
       : (def.str_bonus_mult ?? 1)
-    return computeWeaponAttack({ ...slot, is_ranged: isRanged, str_mult: strMult }, attrs, bab)
-  }), [slots, attrs, bab, WEAPON_MAP])
+    return computeWeaponAttack({ ...slot, is_ranged: isRanged, str_mult: strMult }, attrs, bab, condMods, buffAttack)
+  }), [slots, attrs, bab, WEAPON_MAP, condMods, buffAttack])
 
   const filledSlots = useMemo(
     () => slots.map((s, i) => ({ ...s, _idx: i })).filter(s => s.weapon_id),
