@@ -100,7 +100,7 @@ function WeaponSearch({ allWeapons, initialId, onSelect, onCancel, lang }) {
   )
 }
 
-export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = [] }) {
+export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = [], condMods = {}, buffAttack = 0 }) {
   const [isAdding, setIsAdding] = useState(false)
   const [editingIdx, setEditingIdx] = useState(null) // which filled slot is being re-searched
   const L = lang === 'de'
