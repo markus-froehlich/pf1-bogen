@@ -48,6 +48,10 @@ export function ConditionsPanel({ char, setConditions, lang, hideTitle = false }
   const L = lang === 'de'
   const active = new Set(char.conditions ?? [])
   const [confusionRoll, setConfusionRoll] = useState(null)
+  const sortedConditions = useMemo(
+    () => [...CONDITIONS].sort((a, b) => (L ? a.de : a.en).localeCompare(L ? b.de : b.en, L ? 'de' : 'en')),
+    [L]
+  )
 
   function toggle(id) {
     setConditions(prev => {
