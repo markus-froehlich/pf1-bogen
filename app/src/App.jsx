@@ -491,7 +491,12 @@ export default function App() {
               if (id === 'bio') return (
                 <section key="bio" className="ct-section">
                   {attrHead}
-                  {!isCollapsed && <BioSection char={char} setBio={setBio} lang={lang} />}
+                  {!isCollapsed && (
+                    <>
+                      <BioSection char={char} setBio={setBio} lang={lang} />
+                      <ClassFeaturesPanel char={char} lang={lang} />
+                    </>
+                  )}
                 </section>
               )
               return null
