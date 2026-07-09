@@ -48,6 +48,7 @@ export const CONDITIONS = [
   { id: 'haltegriff',    de: 'Im Haltegriff',   en: 'Pinned',       effect: 'de: kein GE-Bonus auf RK, zusätzlich −4 RK, keine Bewegung' },
   { id: 'kampfunfaehig', de: 'Kampfunfähig',    en: 'Disabled',     effect: 'de: 0/negative TP, nur Bewegungs- ODER Standardaktion, halbe Bewegung' },
   { id: 'kauernd',       de: 'Kauernd',         en: 'Cowering',     effect: 'de: −2 RK, kein GE-Bonus, keine Handlungen' },
+  { id: 'lebenskraftverlust', de: 'Lebenskraftverlust', en: 'Energy Drain', effect: 'de: negative Stufen, Tod bei ≥ Trefferwürfel' },
   { id: 'stabilisiert',  de: 'Stabilisiert',    en: 'Stable',       effect: 'de: nicht mehr sterbend, aber weiter bewusstlos' },
   { id: 'tot',           de: 'Tot',             en: 'Dead',         effect: 'de: keine Handlungen, nur durch Magie wiederbelebbar' },
   { id: 'uebelkeit',     de: 'Übelkeit',        en: 'Nauseated',    effect: 'de: nur 1 Bewegungsaktion, kein Angriff/Zauber/Konzentr.' },
