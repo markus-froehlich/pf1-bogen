@@ -34,11 +34,16 @@ export function computeSkill(skillEntry, abilityMod, isClassSkill, armorPenalty 
  * @param {number} armorCheckPenalty  combined armor+shield check penalty (0 or negative)
  * @param {number} condSkillPenalty   penalty from conditions (erschöpft, schütteln, etc.)
  * @param {number} skillsBuff         bonus from active buffs (skills_all)
+ * @param {object} condMods           full getConditionMods() result — used here for
+ *   str_mod_delta/dex_mod_delta, so ST/GE-based skills reflect erschöpft/ermüdet/
+ *   festgehalten/gelähmt the same way combat.js's effSTmod/effGEmod already do.
  */
-export function computeAllSkills(char, attrs, skillDefs, classSkillSet, armorCheckPenalty = 0, condSkillPenalty = 0, skillsBuff = 0) {
+export function computeAllSkills(char, attrs, skillDefs, classSkillSet, armorCheckPenalty = 0, condSkillPenalty = 0, skillsBuff = 0, condMods = {}) {
   const result = {}
   for (const def of skillDefs) {
-    const abilityMod = attrs[def.ability]?.mod ?? 0
+    let abilityMod = attrs[def.ability]?.mod ?? 0
+    if (def.ability === 'ST') abilityMod = Math.max(-5, abilityMod + (condMods.str_mod_delta ?? 0))
+    if (def.ability === 'GE') abilityMod = Math.max(-5, abilityMod + (condMods.dex_mod_delta ?? 0))
     const isClassSkill = classSkillSet.has(def.id)
     const penalty = def.armor_check_penalty ? armorCheckPenalty : 0
     result[def.id] = computeSkill(char.skills?.[def.id], abilityMod, isClassSkill, penalty, condSkillPenalty, skillsBuff)
