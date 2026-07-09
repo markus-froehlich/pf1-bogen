@@ -3,10 +3,8 @@ import { ARMOR_MAP, SHIELDS_MAP } from '../engine/index.js'
 import armorData      from '../data/armor.json'
 import shieldsData    from '../data/shields.json'
 import racesData      from '../data/races.json'
-import { CONDITIONS } from './ConditionsPanel.jsx'
+import { condAnnot, BuffTag, CondTag } from './DetailTag.jsx'
 import './CombatTab.css'
-
-const CONDITION_NAME = Object.fromEntries(CONDITIONS.map(c => [c.id, c]))
 
 const ALL_ARMOR   = armorData.armor
 const ALL_SHIELDS = shieldsData.shields

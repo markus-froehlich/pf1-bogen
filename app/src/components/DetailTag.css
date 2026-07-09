@@ -1,0 +1,51 @@
+.tag-wrap { position: relative; display: inline-flex; }
+.tag-popover {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: normal;
+  max-width: 160px;
+  width: max-content;
+  text-align: center;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+}
+
+.buff-tag {
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: #6ec9c9;
+  background: color-mix(in srgb, #6ec9c9 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, #6ec9c9 35%, var(--border));
+  border-radius: 3px;
+  padding: 1px 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.cond-tag {
+  font-size: 0.52rem;
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 1px 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.cond-neg {
+  color: var(--bad);
+  background: color-mix(in srgb, var(--bad) 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, var(--bad) 35%, var(--border));
+}
+.cond-pos {
+  color: var(--good);
+  background: color-mix(in srgb, var(--good) 15%, var(--surface3));
+  border: 1px solid color-mix(in srgb, var(--good) 35%, var(--border));
+}
