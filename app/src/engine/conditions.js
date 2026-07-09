@@ -42,8 +42,17 @@ export function getConditionMods(conditions) {
   // Entkräftet (Exhausted, id kept as 'ermuedtet' for backward compat): -6 ST & GE → -3 to each mod
   if (c.has('ermuedtet'))  { bump('dex_mod_delta', -3, 'ermuedtet');  bump('str_mod_delta', -3, 'ermuedtet') }
 
-  // Festgehalten: -4 GE (= -2 mod), -2 attack
+  // Festgehalten (Ringend): -4 GE (= -2 mod), -2 attack
   if (c.has('festgehalten')) { bump('dex_mod_delta', -2, 'festgehalten'); bump('attack', -2, 'festgehalten') }
+
+  // Im Haltegriff (Pinned): like Ringend, plus additionally hilflos (no_dex_to_ac above)
+  if (c.has('haltegriff')) { bump('dex_mod_delta', -2, 'haltegriff'); bump('attack', -4, 'haltegriff') }
+
+  // Kauernd (Cowering): -2 AC on top of losing DEX bonus
+  if (c.has('kauernd')) bump('rk', -2, 'kauernd')
+
+  // Verstrickt (Entangled): -4 GE (= -2 mod), -2 attack
+  if (c.has('verstrickt')) { bump('dex_mod_delta', -2, 'verstrickt'); bump('attack', -2, 'verstrickt') }
 
   // Conditions that remove positive DEX bonus to AC (flat-footed equivalent)
   for (const id of ['blind', 'betäubt', 'hilflos', 'gelähmt', 'bewusstlos', 'benommen',
