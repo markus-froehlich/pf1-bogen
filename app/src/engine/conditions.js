@@ -45,8 +45,11 @@ export function getConditionMods(conditions) {
   // Festgehalten (Ringend): -4 GE (= -2 mod), -2 attack
   if (c.has('festgehalten')) { bump('dex_mod_delta', -2, 'festgehalten'); bump('attack', -2, 'festgehalten') }
 
-  // Im Haltegriff (Pinned): like Ringend, plus additionally hilflos (no_dex_to_ac above)
-  if (c.has('haltegriff')) { bump('dex_mod_delta', -2, 'haltegriff'); bump('attack', -4, 'haltegriff') }
+  // Im Haltegriff (Pinned): loses DEX bonus (no_dex_to_ac above) + additional -4 RK
+  if (c.has('haltegriff')) bump('rk', -4, 'haltegriff')
+
+  // Geblendet (Dazzled): -1 attack, -1 sight-based perception (perception not modeled separately)
+  if (c.has('geblendet')) bump('attack', -1, 'geblendet')
 
   // Kauernd (Cowering): -2 AC on top of losing DEX bonus
   if (c.has('kauernd')) bump('rk', -2, 'kauernd')
