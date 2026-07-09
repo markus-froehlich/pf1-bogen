@@ -21,6 +21,7 @@ function getConfusionResult(roll) {
 // PF1e Standardzustände mit kurzer Auswirkung
 export const CONDITIONS = [
   { id: 'blind',         de: 'Blind',          en: 'Blind',        effect: 'de: −2 RK, kein GE-Bonus, −4 Wahrnehm., 50% Miss' },
+  { id: 'geblendet',     de: 'Geblendet',       en: 'Dazzled',      effect: 'de: −1 Angriff, −1 Wahrnehm. (Sehen)' },
   { id: 'verwirrt',      de: 'Verwirrt',        en: 'Confused',     effect: 'de: zufällige Aktionen' },
   { id: 'benommen',      de: 'Benommen',        en: 'Dazed',        effect: 'de: keine Aktionen' },
   { id: 'taub',          de: 'Taub',            en: 'Deafened',     effect: 'de: −4 Init, 20% Zauberversagen (verbal)' },
