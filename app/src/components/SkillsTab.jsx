@@ -53,7 +53,10 @@ export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalF
         )}
         <div className="skills-header">
         <span className="sh-cs" title={L ? 'Klassenfertigkeit' : 'Class Skill'}>K</span>
-        <span className="sh-name">{L ? 'Fertigkeit' : 'Skill'}</span>
+        <span className="sh-name">
+          {L ? 'Fertigkeit' : 'Skill'}
+          <CondTag info={condAnnot(condMods, 'skill_penalty')} lang={lang} />
+        </span>
         <span className="sh-ability">{L ? 'Attr.' : 'Abil.'}</span>
         <span className="sh-ranks">{L ? 'Ränge' : 'Ranks'}</span>
         <span className="sh-misc">{L ? 'Sonst.' : 'Misc'}</span>
