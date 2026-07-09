@@ -7,7 +7,7 @@
       "runtimeArgs": ["run", "dev"],
       "cwd": "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/app",
       "port": 5173,
-      "autoPort": false
+      "autoPort": true
     }
   ]
 }
