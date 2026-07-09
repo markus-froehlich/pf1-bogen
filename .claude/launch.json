@@ -4,7 +4,7 @@
     {
       "name": "pf1-app",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": ["run", "dev", "--", "--port", "5199", "--strictPort"],
       "cwd": "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/app",
       "port": 5199,
       "autoPort": false
