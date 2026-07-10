@@ -33,11 +33,7 @@ export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de', 
         value={score}
         onChange={e => onScoreChange(attrKey, e.target.value)}
       />
-      {buff !== 0 && (
-        <div className="attr-buff" title={`Buff: ${buff > 0 ? '+' : ''}${buff} → ${buffed}`}>
-          ✦{buff > 0 ? `+${buff}` : buff}
-        </div>
-      )}
+      <BuffTag info={buff !== 0 ? { total: buff, title: `Buff → ${buffed}` } : null} />
       <div className="attr-mod-row">
         <div className={`attr-mod ${effMod >= 0 ? 'pos' : 'neg'}`}>{modStr}</div>
         <CondTag info={condInfo} lang={lang} />
