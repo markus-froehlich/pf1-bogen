@@ -85,6 +85,7 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
   const resources = char.resources ?? []
   const [editId, setEditId] = useState(null)
   const [draft, setDraft] = useState(EMPTY)
+  const [confirmResetId, setConfirmResetId] = useState(null)  // null | resource id | '__all__'
 
   function openNew() {
     setDraft({ ...EMPTY, id: genId() })
