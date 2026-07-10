@@ -3,8 +3,9 @@ Writes one CSV per sheet (rectangular, trimmed to used bounds)."""
 import openpyxl, os, csv, warnings
 warnings.simplefilter("ignore")
 
-SRC = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/Version 6.61/Bogen 6.61 Spieler.xlsx"
-OUT = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/extraction/sheets_values"
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(_ROOT, "Version 6.61", "Bogen 6.61 Spieler.xlsx")
+OUT = os.path.join(_ROOT, "extraction", "sheets_values")
 os.makedirs(OUT, exist_ok=True)
 
 print("loading (values, read_only)...")
