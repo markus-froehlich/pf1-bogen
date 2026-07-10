@@ -4,6 +4,20 @@ import './DetailTag.css'
 
 const CONDITION_NAME = Object.fromEntries(CONDITIONS.map(c => [c.id, c]))
 
+/** Sums active buffs' bonuses[key] across `keys` and builds a "Name: +N" title
+ * listing each contributing buff (mirrors condAnnot's sourceIds approach). */
+export function buffAnnot(activeBuffs, ...keys) {
+  let total = 0
+  const parts = []
+  for (const b of (activeBuffs ?? [])) {
+    if (!b.active) continue
+    let sum = 0
+    for (const k of keys) sum += Number(b.bonuses?.[k] ?? 0)
+    if (sum !== 0) { total += sum; parts.push(`${b.name}: ${sum > 0 ? '+' : ''}${sum}`) }
+  }
+  return total !== 0 ? { total, title: parts.join(', ') } : null
+}
+
 /** Sums condMods[key] across `keys` and collects which condition ids contributed. */
 export function condAnnot(condMods, ...keys) {
   if (!condMods) return null
