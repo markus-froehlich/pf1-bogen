@@ -189,7 +189,7 @@ Schaden = Würfel(Waffe1Dam, größenabhängig)  +  Waffe1STBon  +  Größenbonu
 - `Waffe1STBon` (JP) = `ROUNDDOWN(STmod * JO8, 0)`. **JO8** liefert den
   wirksamen ST-Faktor: 1.0 einhändig, **1.5 bei zweihändigem Einsatz**
   („Einziger Angriff"), 0.5 in der Off-Hand. Damit ist die klassische
-  Pathfinder-Regel ST×1.5 für Zweihandwaffen abgebildet.
+  PF1e-Regel ST×1.5 für Zweihandwaffen abgebildet.
 - Größenbonus (Bogen A149 = `Groemod`) wird in der Anzeigesumme addiert.
 - `BuffW1SW` (`Waffe!JA24`) = `BuffSWAllg + (Art=3 ? BuffSWFK : BuffSWNK)`
   (Schadens-Buffs allgemein / Fern- / Nahkampf).
