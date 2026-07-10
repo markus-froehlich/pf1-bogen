@@ -1,5 +1,6 @@
-import openpyxl
-path = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/Version 6.61/Bogen 6.61 Spieler.xlsx"
+import openpyxl, os
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path = os.path.join(_ROOT, "Version 6.61", "Bogen 6.61 Spieler.xlsx")
 wb = openpyxl.load_workbook(path, data_only=False, read_only=True)
 print("Sheets total:", len(wb.sheetnames))
 print(f"{'#':>2} {'state':<10} {'maxRow':>7} {'maxCol':>7}  name")
