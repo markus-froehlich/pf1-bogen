@@ -15,9 +15,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'icons/*.png'],
       manifest: {
-        name: 'Pathfinder Charakterbogen',
+        name: 'PF1 Bogen',
         short_name: 'PF1 Bogen',
-        description: 'Pathfinder 1. Edition Charakterbogen — deutsch/englisch',
+        description: 'Charakterbogen für PF1e — deutsch/englisch',
         theme_color: '#1a1a2e',
         background_color: '#1a1a2e',
         display: 'standalone',
