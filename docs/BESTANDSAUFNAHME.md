@@ -1,4 +1,4 @@
-# Bestandsaufnahme — „Bogen 6.61 Spieler" (Pathfinder 1e Charakterbogen)
+# Bestandsaufnahme — „Bogen 6.61 Spieler" (PF1e Bogen)
 
 > Lesbare Gesamtanalyse der Excel-Vorlage als Grundlage für den originalgetreuen
 > Web-App-Nachbau. **Dies ist der Prüf-Checkpoint** (Schritt 4 im Plan): bitte
