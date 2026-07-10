@@ -1,6 +1,6 @@
 # 02 — Content Data Tables: Classes (Klasse) & Races (Volk)
 
-Source workbook: *Bogen 6.61 Spieler* (Pathfinder 1e, German, Ulisses).
+Source workbook: *Bogen 6.61 Spieler* (PF1e, German, Ulisses).
 Extraction base: `extraction/sheets_values/`, `extraction/sheets_formulas/`,
 `extraction/named_ranges.json`. All cell refs are 1-based Excel coordinates.
 
