@@ -24,7 +24,9 @@ export function getConditionMods(conditions) {
     // Initiative
     init: 0,
     // Skill checks
-    skill_penalty: 0,
+    skill_penalty: 0,        // flat penalty applied to ALL skills (schütteln/krank/verängstigt/panisch)
+    stge_skill_penalty: 0,   // additional penalty applied only to ST/GE-based skills (blind)
+    perception_penalty: 0,   // additional penalty applied only to the Wahrnehmung skill
   }
   const sources = {}
 
