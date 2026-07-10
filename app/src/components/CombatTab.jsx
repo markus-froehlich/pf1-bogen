@@ -3,7 +3,7 @@ import { ARMOR_MAP, SHIELDS_MAP } from '../engine/index.js'
 import armorData      from '../data/armor.json'
 import shieldsData    from '../data/shields.json'
 import racesData      from '../data/races.json'
-import { condAnnot, BuffTag, CondTag } from './DetailTag.jsx'
+import { condAnnot, buffAnnot, BuffTag, CondTag } from './DetailTag.jsx'
 import './CombatTab.css'
 
 const ALL_ARMOR   = armorData.armor
