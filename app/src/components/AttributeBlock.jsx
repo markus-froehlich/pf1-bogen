@@ -1,4 +1,4 @@
-import { CondTag } from './DetailTag.jsx'
+import { CondTag, BuffTag } from './DetailTag.jsx'
 import './AttributeBlock.css'
 
 const ATTR_LABELS = {
