@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import classFeatData from '../data/class_features_by_level.json'
+import { RefLink } from './RefLink.jsx'
 import './ClassFeaturesPanel.css'
 
 const DATA = classFeatData.by_class ?? {}
