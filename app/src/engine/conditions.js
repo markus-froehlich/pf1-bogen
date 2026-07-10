@@ -56,6 +56,9 @@ export function getConditionMods(conditions) {
   // Kauernd (Cowering): -2 AC on top of losing DEX bonus
   if (c.has('kauernd')) bump('rk', -2, 'kauernd')
 
+  // Fasziniert (Fascinated): -4 on reactive skill checks, e.g. Wahrnehmung
+  if (c.has('fasziniert')) bump('perception_penalty', -4, 'fasziniert')
+
   // Verstrickt (Entangled): -4 GE (= -2 mod), -2 attack
   if (c.has('verstrickt')) { bump('dex_mod_delta', -2, 'verstrickt'); bump('attack', -2, 'verstrickt') }
 
