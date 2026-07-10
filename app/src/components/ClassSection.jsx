@@ -104,13 +104,11 @@ export function ClassSection({ char, setClass, setMeta, baseValues, lang, hbClas
                   {selected.map(name => (
                     <span key={name} className="arch-chip">
                       {name}
-                      <a
+                      <RefLink
                         className="arch-ref-link"
                         href={archUrl(className, name, archByName[name]?.source)}
-                        target="_blank" rel="noreferrer"
-                        onClick={e => e.stopPropagation()}
                         title="prd.5footstep.de"
-                      >↗</a>
+                      >↗</RefLink>
                       <button className="arch-remove" onClick={() => removeArchetype(name)}>×</button>
                     </span>
                   ))}
