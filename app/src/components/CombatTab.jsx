@@ -231,6 +231,25 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const speedFinal  = encumbered ? Math.min(speedRaw ?? Infinity, encumberedSpeed(baseSpeedM)) : speedRaw
   const speedLabel  = speedFinal != null ? `${speedFinal} m` : '—'
 
+  // Conditions like Entkräftet/Erschöpft/Verstrickt/Ringend work by changing the
+  // effective ST/GE mod (not a flat 'attack'/'rk' bump) — condAnnot() alone can't
+  // see that. Compute the actual clamped delta here (attrs is available) so boxes
+  // that derive from ST/GE (Nahkampf/Fernkampf/KMB/KMV) can show it as a badge too.
+  const stModDelta = Math.max(-5, attrs.ST.mod + (condMods.str_mod_delta ?? 0)) - attrs.ST.mod
+  const geModDelta = Math.max(-5, attrs.GE.mod + (condMods.dex_mod_delta ?? 0)) - attrs.GE.mod
+  function modInfo(delta, sourceIds) {
+    return delta !== 0 ? { total: delta, sourceIds: sourceIds ?? [] } : null
+  }
+  function mergeCondInfo(...infos) {
+    const valid = infos.filter(Boolean)
+    if (!valid.length) return null
+    const total = valid.reduce((s, i) => s + i.total, 0)
+    return total !== 0 ? { total, sourceIds: [...new Set(valid.flatMap(i => i.sourceIds))] } : null
+  }
+  const stAttackCondInfo = mergeCondInfo(condAnnot(condMods, 'attack'), modInfo(stModDelta, condMods.sources?.str_mod_delta))
+  const geAttackCondInfo = mergeCondInfo(condAnnot(condMods, 'attack'), modInfo(geModDelta, condMods.sources?.dex_mod_delta))
+  const kmvCondInfo = mergeCondInfo(condAnnot(condMods, 'rk'), modInfo(geModDelta, condMods.sources?.dex_mod_delta))
+
   const allKnownIds = [...INTERNAL_DEFAULT, ...Object.keys(extraPanels)]
   const order_ = (sectionOrder ?? INTERNAL_DEFAULT).filter(id => allKnownIds.includes(id))
 
