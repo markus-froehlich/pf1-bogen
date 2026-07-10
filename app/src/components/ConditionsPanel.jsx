@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { RefLink } from './RefLink.jsx'
 import './ConditionsPanel.css'
 
 // PF1e Verwirrt d%-Tabelle
