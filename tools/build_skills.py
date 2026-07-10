@@ -14,7 +14,7 @@ Markers in skill names:
   #  = armor check penalty (ArmorCheckPenalty = True)
   *# = both
 
-Standard Pathfinder 1e ability-to-skill mappings (using German abbreviations):
+Standard PF1e ability-to-skill mappings (using German abbreviations):
   ST (Stärke)      = Strength: Klettern, Schwimmen, Reiten, Überlebenskunst
   GE (Geschick)    = Dexterity: Akrobatik, Entfesselungskunst, Fingerfertigkeit,
                                  Fliegen, Heimlichkeit, Mechanismus ausschalten, Reiten
