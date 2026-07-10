@@ -65,8 +65,12 @@ export function getConditionMods(conditions) {
     if (c.has(id)) flag('no_dex_to_ac', id)
   }
 
-  // Blind: additionally -2 to AC
-  if (c.has('blind')) bump('rk', -2, 'blind')
+  // Blind: -2 AC; -4 on most STR/DEX-based skill checks; -4 on opposed Perception checks
+  if (c.has('blind')) {
+    bump('rk', -2, 'blind')
+    bump('stge_skill_penalty', -4, 'blind')
+    bump('perception_penalty', -4, 'blind')
+  }
 
   // Betäubt: -2 AC (on top of losing DEX)
   if (c.has('betäubt')) bump('rk', -2, 'betäubt')
