@@ -3,6 +3,7 @@ import poisonsData from '../data/poisons.json'
 import racialTraitsData from '../data/racial_traits.json'
 import classFeaturesData from '../data/class_features.json'
 import templatesData from '../data/templates.json'
+import { RefLink } from './RefLink.jsx'
 import './NotesTab.css'
 
 const ALL_RACIAL = Object.entries(racialTraitsData.by_race ?? {}).flatMap(([raceId, traits]) =>
