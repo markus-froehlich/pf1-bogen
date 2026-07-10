@@ -277,7 +277,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
                 onChange={e => setHp('temp', e.target.value)} />
             </label>
             <label className="hp-field">
-              <span>NL</span>
+              <span>{L ? 'NT' : 'NL'}</span>
               <input type="number" min={0} className="hp-input"
                 value={nlDmg}
                 onChange={e => setNlDamage?.(e.target.value)} />
