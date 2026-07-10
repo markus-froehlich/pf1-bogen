@@ -88,9 +88,7 @@ export function GistSyncPanel({ gistSync, onClose, profile = 'player' }) {
             <span className="gist-status-text" style={{ color: sl.color }}>{sl.text}</span>
             {connected && lastSync && <span className="gist-last-sync">· zuletzt {lastSync}</span>}
             {connected && gistId && (
-              <a className="gist-id-link"
-                href={`https://gist.github.com/${gistId}`}
-                target="_blank" rel="noreferrer">↗ Gist</a>
+              <RefLink className="gist-id-link" href={`https://gist.github.com/${gistId}`}>↗ Gist</RefLink>
             )}
           </div>
 
