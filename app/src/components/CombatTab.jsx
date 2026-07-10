@@ -304,12 +304,12 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               const v = parseInt(dmgInput) || 0; if (v > 0) { setHp('current', hp.current - v); setDmgInput('') }
             }}>−TP</button>
             <span className="hp-dmg-sep" />
-            <span className="hp-dmg-label">NL</span>
+            <span className="hp-dmg-label">{L ? 'NT' : 'NL'}</span>
             <input className="hp-dmg-input" type="number" min={0} placeholder="0"
               value={nlInput} onChange={e => setNlInput(e.target.value)} />
             <button className="hp-dmg-btn" onClick={() => {
               const v = parseInt(nlInput) || 0; if (v > 0) { setNlDamage?.(nlDmg + v); setNlInput('') }
-            }}>+NL</button>
+            }}>{L ? '+NT' : '+NL'}</button>
           </div>
           {nlDmg > 0 && (
             <div className="hp-nl-row">
