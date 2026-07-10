@@ -19,10 +19,7 @@ function toSkillSlug(name) {
 }
 function SkillLink({ name }) {
   const url = `http://prd.5footstep.de/Grundregelwerk/Fertigkeiten/${toSkillSlug(name)}`
-  return (
-    <a className="skill-ref-link" href={url} target="_blank" rel="noreferrer"
-      onClick={e => e.stopPropagation()} title="prd.5footstep.de">↗</a>
-  )
+  return <RefLink className="skill-ref-link" href={url} title="prd.5footstep.de">↗</RefLink>
 }
 
 export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, activeBuffs = [], lang }) {
