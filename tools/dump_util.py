@@ -1,8 +1,9 @@
 """Helper to slice a rectangular region out of a sheets_full/<sheet>.jsonl dump.
 Usage: python dump_util.py <Sheet> <A1:Range> [raw|val]
 Prints a TSV grid. Sheet name uses the on-disk safe form (underscores)."""
-import json, sys, re
-FULL = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/extraction/sheets_full"
+import json, sys, re, os
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FULL = os.path.join(_ROOT, "extraction", "sheets_full")
 
 def col_to_num(s):
     n = 0
