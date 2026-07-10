@@ -1,6 +1,6 @@
-# Pathfinder Web App
+# PF1e Web App
 
-Selbstrechnender Pathfinder-1e-Charakterbogen als PWA, Nachbau der Excel
+Selbstrechnender PF1e-Bogen als PWA, Nachbau der Excel
 „Bogen 6.61 Spieler".
 
 @AGENTS.md
