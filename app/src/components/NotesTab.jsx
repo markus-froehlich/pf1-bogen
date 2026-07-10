@@ -30,10 +30,7 @@ function toPoisonSlug(name) {
 function PoisonRefLink({ name, page }) {
   if (!page?.startsWith('G')) return null
   const url = `http://prd.5footstep.de/Grundregelwerk/Anhang/BesondereFaehigkeiten/Gebrechen/Gifte/${toPoisonSlug(name)}`
-  return (
-    <a className="poison-ref-link" href={url} target="_blank" rel="noreferrer"
-      onClick={e => e.stopPropagation()} title="prd.5footstep.de">↗</a>
-  )
+  return <RefLink className="poison-ref-link" href={url} title="prd.5footstep.de">↗</RefLink>
 }
 
 function genId() {
