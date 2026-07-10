@@ -117,9 +117,14 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
     setResources(prev => prev.map(r =>
       r.id === id ? { ...r, current: 0 } : r
     ))
+    setConfirmResetId(null)
   }
   function restoreAll() {
     setResources(prev => prev.map(r => ({ ...r, current: 0 })))
+    setConfirmResetId(null)
+  }
+  function requestRestore(id) {
+    setConfirmResetId(prev => prev === id ? null : id)
   }
 
   const anyUsed = resources.some(r => r.current > 0)
