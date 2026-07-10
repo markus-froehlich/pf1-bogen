@@ -7,7 +7,7 @@ mit besserem Design. **Oberste Priorität: exakte Daten und exakte Berechnungen.
 Scope-Entscheidung des Nutzers: **voller Nachbau** (nicht nur der Rechenkern).
 
 ## Regelbasis
-Pathfinder **1st Edition**, deutsches Grundregelwerk (Ulisses), Standardregeln.
+PF1e **1st Edition**, deutsches Grundregelwerk (Ulisses), Standardregeln.
 
 ## Entscheidungen (festgezurrt 2026-06-21)
 1. **Rechen-Treue: 1:1 wie Excel.** Die Excel-Werte (`sheets_values/*.csv`) sind die
