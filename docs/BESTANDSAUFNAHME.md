@@ -21,7 +21,7 @@
 
 ## 1. Was diese Datei ist
 
-Kein schlanker Bogen, sondern ein **vollständiger Pathfinder-1e-Charakter-Builder**
+Kein schlanker Bogen, sondern ein **vollständiger PF1e-Charakter-Builder**
 in Excel — komplett mit Inhalts-Datenbank für (fast) das ganze Regelwerk.
 
 - **Quelle:** `Version 6.61/Bogen 6.61 Spieler.xlsx` (6,7 MB, **ohne** Makros).
