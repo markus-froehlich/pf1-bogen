@@ -238,7 +238,7 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
                     style={{ color: pct > 0.5 ? 'var(--good)' : pct > 0 ? '#c9a96e' : '#c96e6e' }}>
                     {remaining}/{r.max}{r.unit ? ` ${r.unit}` : ''}
                   </span>
-                  <button className="res-restore-btn" onClick={() => restore(r.id)} disabled={r.current === 0}
+                  <button className="res-restore-btn" onClick={() => requestRestore(r.id)} disabled={r.current === 0}
                     title={L ? 'Zurücksetzen' : 'Reset'}>↺</button>
                 </div>
               </div>
@@ -247,6 +247,13 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
                   style={{ width: `${pct * 100}%`,
                     background: pct > 0.5 ? 'var(--good)' : pct > 0 ? '#c9a96e' : '#c96e6e' }} />
               </div>
+              {confirmResetId === r.id && (
+                <div className="res-confirm">
+                  <span className="res-confirm-label">{L ? 'Wirklich zurücksetzen?' : 'Really reset?'}</span>
+                  <button className="res-confirm-yes" onClick={() => restore(r.id)}>{L ? 'Ja' : 'Yes'}</button>
+                  <button className="res-confirm-no" onClick={() => setConfirmResetId(null)}>{L ? 'Abbrechen' : 'Cancel'}</button>
+                </div>
+              )}
             </div>
           )
         })}
