@@ -1,6 +1,7 @@
 import { ALL_CLASSES } from '../engine/index.js'
 import archetypesData from '../data/archetypes.json'
 import { DomainsPanel } from './DomainsPanel.jsx'
+import { RefLink } from './RefLink.jsx'
 import './CombatTab.css'
 
 const SOURCE_BOOK = {
