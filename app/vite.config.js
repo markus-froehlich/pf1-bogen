@@ -17,7 +17,7 @@ export default defineConfig({
       manifest: {
         name: 'PF1 Bogen',
         short_name: 'PF1 Bogen',
-        description: 'Charakterbogen für PF1e — deutsch/englisch',
+        description: 'Selbstrechnender Bogen für PF1e — deutsch/englisch',
         theme_color: '#1a1a2e',
         background_color: '#1a1a2e',
         display: 'standalone',
