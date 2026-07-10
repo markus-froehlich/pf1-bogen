@@ -3,8 +3,9 @@ Loads workbook with formulas (data_only=False)."""
 import openpyxl, json, os, csv, warnings
 warnings.simplefilter("ignore")
 
-SRC = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/Version 6.61/Bogen 6.61 Spieler.xlsx"
-OUT = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/extraction"
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(_ROOT, "Version 6.61", "Bogen 6.61 Spieler.xlsx")
+OUT = os.path.join(_ROOT, "extraction")
 
 print("loading (formulas)...")
 wb = openpyxl.load_workbook(SRC, data_only=False)
