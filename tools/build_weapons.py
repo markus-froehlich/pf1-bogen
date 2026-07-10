@@ -3,7 +3,8 @@ import json, re, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from dump_util import grid
 
-OUT = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/data/weapons.json"
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(_ROOT, "data", "weapons.json")
 
 def slug(s):
     if not s: return ""
