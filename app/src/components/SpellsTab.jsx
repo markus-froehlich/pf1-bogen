@@ -75,16 +75,7 @@ function RefLink({ name, page }) {
   const book = pageBook(page)
   if (!book) return null
   const url = `http://prd.5footstep.de/${book}/Zauber/${toSlug(name)}`
-  return (
-    <a
-      className="spell-ref-link"
-      href={url}
-      target="_blank"
-      rel="noreferrer"
-      onClick={e => e.stopPropagation()}
-      title={`prd.5footstep.de · ${book}`}
-    >↗</a>
-  )
+  return <ExternalRefLink className="spell-ref-link" href={url} title={`prd.5footstep.de · ${book}`}>↗</ExternalRefLink>
 }
 
 // ── Lookup mode ────────────────────────────────────────────────────────────────
