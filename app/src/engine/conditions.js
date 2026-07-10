@@ -111,8 +111,8 @@ export function getConditionMods(conditions) {
   // Niedergestreckt: -4 to melee attacks (applied to general attack for simplicity)
   if (c.has('niedergestreckt')) bump('attack', -4, 'niedergestreckt')
 
-  // Taub: -4 Initiative (20% arcane spell failure handled in UI)
-  if (c.has('taub')) bump('init', -4, 'taub')
+  // Taub: -4 Initiative, -4 auf konkurrierende Wahrnehmungswürfe (20% Zauberversagen in UI)
+  if (c.has('taub')) { bump('init', -4, 'taub'); bump('perception_penalty', -4, 'taub') }
 
   // Verlangsamt: -1 attack/AC/Reflex
   if (c.has('verlangsamt')) { bump('attack', -1, 'verlangsamt'); bump('rk', -1, 'verlangsamt'); bump('ref_flat', -1, 'verlangsamt') }
