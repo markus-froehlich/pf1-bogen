@@ -25,6 +25,7 @@ import { ClassFeaturesPanel } from './components/ClassFeaturesPanel.jsx'
 import { InventoryTab } from './components/InventoryTab.jsx'
 import { BioSection } from './components/BioSection.jsx'
 import { BuffTracker } from './components/BuffTracker.jsx'
+import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
 
