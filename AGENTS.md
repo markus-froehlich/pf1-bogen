@@ -33,6 +33,23 @@ PF1e **1st Edition**, deutsches Grundregelwerk (Ulisses), Standardregeln.
 - Vorerst **nur lokal** — kein Git/Push/Hosting (Hosting später, separat).
 - Privates Projekt.
 
+## Sicherheit / Repo öffentlich (festgezurrt 2026-07-10)
+Das Repo ist auf GitHub **öffentlich** (nötig für kostenloses GitHub Pages).
+Die extrahierten Regelinhalte stammen aus einem gekauften Buch (Ulisses) —
+**der Systemname und das deutsche Wort für „Figuren-Datenblatt" (siehe Regex in
+`.githooks/pre-commit`) dürfen nirgends im Repo vorkommen** (Code, Kommentare,
+Doku, Commit-Texte — auch nicht in dieser Datei), damit das Repo nicht über
+GitHub-Code-Suche nach diesen Begriffen auffindbar ist. Stattdessen: „PF1e",
+„Bogen", „Blatt". `robots.txt` + `<meta name="robots" content="noindex,...">`
+sperren zusätzlich die ausgelieferte Seite gegen Google/Bing-Indizierung.
+- **Pre-Commit-Hook** (`.githooks/pre-commit`) blockiert Commits mit diesen
+  Begriffen automatisch. Aktivieren (einmalig pro Klon): `git config core.hooksPath .githooks`
+- Absolute lokale Dateipfade in `tools/*.py` sind bewusst **relativ zu `__file__`**
+  aufgelöst (nicht hartkodiert) — sonst würde der Ordnername im Repo-Text landen.
+- Alte Commits vor 2026-07-10 enthalten die Begriffe noch in der Historie
+  (nicht rückwirkend bereinigt — hätte eine Force-Push-Historien-Neuschreibung
+  gebraucht, siehe Chat vom 2026-07-10).
+
 ## Extraktions-Pipeline (Quelle → Daten)
 Rohextraktion liegt in `extraction/` (erzeugt mit openpyxl, venv im Scratchpad):
 - `sheets_values/<Blatt>.csv` — zuletzt berechnete Zellwerte = **Referenz-Wahrheit**

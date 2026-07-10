@@ -1,0 +1,19 @@
+#!/bin/sh
+# Blocks commits whose staged changes contain "Pathfinder" or "Charakterbogen"
+# (case-insensitive, any combination). This repo is public; the game rules
+# content is purchased/copyrighted, so these words must never appear in
+# committed text (docs, code, comments) — see AGENTS.md.
+#
+# Enabled via: git config core.hooksPath .githooks
+
+forbidden='Pathfinder|Charakterbogen'
+hits=$(git diff --cached -U0 --no-color -- . ':!.githooks/pre-commit' ':!.github/workflows/deploy.yml' \
+  | grep -E '^\+' | grep -viE '^\+\+\+' | grep -iE "$forbidden")
+
+if [ -n "$hits" ]; then
+  echo "❌ Commit blocked: staged changes contain a forbidden word (Pathfinder/Charakterbogen)."
+  echo "$hits"
+  echo
+  echo "Use a neutral term instead (e.g. \"PF1e\", \"Bogen\"). See AGENTS.md."
+  exit 1
+fi
