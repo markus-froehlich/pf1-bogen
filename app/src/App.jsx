@@ -365,6 +365,19 @@ export default function App() {
                     </button>
                     <div className="app-menu-divider" />
                     <div className="app-menu-profile-row">
+                      <span className="app-menu-profile-label">{lang === 'de' ? 'Links:' : 'Links:'}</span>
+                      <div className="profile-toggle">
+                        <button className={`profile-btn${!externalLinks ? ' active' : ''}`}
+                          onClick={() => setExternalLinksPref(false)}
+                          title={lang === 'de' ? 'Links öffnen in der App (ein Fenster)' : 'Links open in-app (one window)'}
+                        >{lang === 'de' ? 'App' : 'App'}</button>
+                        <button className={`profile-btn${externalLinks ? ' active' : ''}`}
+                          onClick={() => setExternalLinksPref(true)}
+                          title={lang === 'de' ? 'Links öffnen extern in Safari/Browser (mehrere Tabs möglich)' : 'Links open externally in Safari/browser (multiple tabs)'}
+                        >Safari</button>
+                      </div>
+                    </div>
+                    <div className="app-menu-profile-row">
                       <span className="app-menu-profile-label">{lang === 'de' ? 'Profil:' : 'Profile:'}</span>
                       <div className="profile-toggle">
                         <button className={`profile-btn${profile === 'player' ? ' active' : ''}`} onClick={() => { switchProfile('player'); setAppMenuOpen(false) }}>SP</button>
