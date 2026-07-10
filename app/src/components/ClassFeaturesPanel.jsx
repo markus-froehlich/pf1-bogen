@@ -60,12 +60,10 @@ export function ClassFeaturesPanel({ char, lang, hideTitle = false }) {
           {slots.map(slot => (
             <div key={slot.id} className="cf-class-block">
               <div className="cf-class-header">
-                <a
+                <RefLink
                   className="cf-class-name cf-class-link"
                   href={`http://prd.5footstep.de/Grundregelwerk/Klassen/${toClassSlug(slot.name)}`}
-                  target="_blank" rel="noreferrer"
-                  onClick={e => e.stopPropagation()}
-                >{slot.name} ↗</a>
+                >{slot.name} ↗</RefLink>
                 <span className="cf-class-level">{L ? 'Stufe' : 'Level'} {slot.level}</span>
               </div>
               {slot.unlocked.map(({ level, features }) => (
