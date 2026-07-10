@@ -55,6 +55,7 @@ export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalF
         <span className="sh-cs" title={L ? 'Klassenfertigkeit' : 'Class Skill'}>K</span>
         <span className="sh-name">
           {L ? 'Fertigkeit' : 'Skill'}
+          <BuffTag info={buffAnnot(activeBuffs, 'skills_all')} />
           <CondTag info={condAnnot(condMods, 'skill_penalty')} lang={lang} />
         </span>
         <span className="sh-ability">{L ? 'Attr.' : 'Abil.'}</span>
