@@ -51,7 +51,7 @@ export function useGistSync(profile = 'player') {
         persistToken(t); persistGistId(existing.id); setStatus('ok')
         return { ok: true, gistId: existing.id, existed: true }
       }
-      const desc = profile === 'gm' ? 'PF1 SL-Backup' : 'PF1 Charakterbogen Backup'
+      const desc = profile === 'gm' ? 'PF1 SL-Backup' : 'PF1 Bogen-Backup'
       const createRes = await fetch(`${API}/gists`, {
         method: 'POST', headers,
         body: JSON.stringify({
