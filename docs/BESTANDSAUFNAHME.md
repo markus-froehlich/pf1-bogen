@@ -79,7 +79,7 @@ sie sauber nach JS überführen:
 
 | # | Blatt | Sicht | Rolle |
 |--:|---|---|---|
-| 0 | **Bogen** | sichtbar | Haupt-Charakterbogen: Eingaben (Dropdowns) **und** Anzeige der Endwerte; viele Kernformeln (Attribut-Mods, RK, Waffenfelder). |
+| 0 | **Bogen** | sichtbar | Hauptblatt: Eingaben (Dropdowns) **und** Anzeige der Endwerte; viele Kernformeln (Attribut-Mods, RK, Waffenfelder). |
 | 1 | Kräfte | sichtbar | Auswahlseite Klassenfähigkeiten/Volksfähigkeiten/Gifte (Dropdowns → Text). |
 | 2 | Zauberbuch | sichtbar | Zauberbuch / vorbereitete Sprüche, Slots pro Grad. |
 | 3 | Auswahl | sichtbar | Große Auswahl-/Notizmatrix (B23:B1232 etc.), Bonus-/Punktewahl. |
