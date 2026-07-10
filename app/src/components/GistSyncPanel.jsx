@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { RefLink } from './RefLink.jsx'
 import './GistSyncPanel.css'
 
 const STATUS_LABEL = {
