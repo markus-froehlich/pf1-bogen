@@ -146,10 +146,17 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
     <section className="res-panel ct-section">
       <div className="res-header">
         {!hideTitle && <h3 className="ct-heading">{L ? 'Ressourcen' : 'Resources'}</h3>}
-        {anyUsed && (
-          <button className="res-reset-all-btn" onClick={restoreAll}>
+        {anyUsed && confirmResetId !== '__all__' && (
+          <button className="res-reset-all-btn" onClick={() => requestRestore('__all__')}>
             ↺ {L ? 'Alle zurücksetzen' : 'Reset all'}
           </button>
+        )}
+        {confirmResetId === '__all__' && (
+          <div className="res-confirm">
+            <span className="res-confirm-label">{L ? 'Wirklich alle zurücksetzen?' : 'Really reset all?'}</span>
+            <button className="res-confirm-yes" onClick={restoreAll}>{L ? 'Ja' : 'Yes'}</button>
+            <button className="res-confirm-no" onClick={() => setConfirmResetId(null)}>{L ? 'Abbrechen' : 'Cancel'}</button>
+          </div>
         )}
       </div>
 
