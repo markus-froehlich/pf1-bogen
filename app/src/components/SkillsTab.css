@@ -65,12 +65,19 @@
 .sk-cs-btn.active { color: var(--accent); }
 .sk-cs-btn:active { background: var(--surface3); }
 
+.sk-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+}
 .sk-name {
   font-size: 0.78rem;
   color: var(--text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 0;
 }
 .sk-t  { color: var(--accent); margin-left: 2px; font-size: 0.55rem; }
 .sk-ap { color: #c96e6e; margin-left: 2px; font-size: 0.55rem; }
