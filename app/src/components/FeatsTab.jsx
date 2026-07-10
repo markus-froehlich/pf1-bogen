@@ -37,10 +37,7 @@ function FeatRefLink({ name, source }) {
   const book = featBook(source)
   if (!book) return null
   const url = `http://prd.5footstep.de/${book}/Talente/${toFeatSlug(name)}`
-  return (
-    <a className="feat-ref-link" href={url} target="_blank" rel="noreferrer"
-      onClick={e => e.stopPropagation()} title={`prd.5footstep.de · ${book}`}>↗</a>
-  )
+  return <RefLink className="feat-ref-link" href={url} title={`prd.5footstep.de · ${book}`}>↗</RefLink>
 }
 
 function genId() { return 'ft_' + Math.random().toString(36).slice(2, 10) }
