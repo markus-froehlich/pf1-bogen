@@ -71,6 +71,9 @@ export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalF
           const isClassOverride = char.skills?.[def.id]?.is_class ?? false
           const cv = computed[def.id]
           const ranks = char.skills?.[def.id]?.ranks ?? 0
+          const rowCondKey = def.id === 'wahrnehmung' ? 'perception_penalty'
+            : (def.ability === 'ST' || def.ability === 'GE') ? 'stge_skill_penalty' : null
+          const rowCondInfo = rowCondKey ? condAnnot(condMods, rowCondKey) : null
 
           return (
             <div key={def.id} className={`skill-row ${isClass ? 'is-class' : ''}`}>
@@ -81,13 +84,16 @@ export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalF
               >
                 {isClass ? '◆' : '◇'}
               </button>
-              <span className="sk-name">
-                {def.name[lang] ?? def.name.de}
-                {def.trained_only && <sup className="sk-t" title="Nur geübt einsetzbar">Ü</sup>}
-                {def.armor_check_penalty && armorCheckPenalty < 0 && (
-                  <sup className="sk-ap" title={`Rüstungsmalus ${armorCheckPenalty}`}>{armorCheckPenalty}</sup>
-                )}
-                <SkillLink name={def.name.de} />
+              <span className="sk-name-wrap">
+                <span className="sk-name">
+                  {def.name[lang] ?? def.name.de}
+                  {def.trained_only && <sup className="sk-t" title="Nur geübt einsetzbar">Ü</sup>}
+                  {def.armor_check_penalty && armorCheckPenalty < 0 && (
+                    <sup className="sk-ap" title={`Rüstungsmalus ${armorCheckPenalty}`}>{armorCheckPenalty}</sup>
+                  )}
+                  <SkillLink name={def.name.de} />
+                </span>
+                <CondTag info={rowCondInfo} lang={lang} />
               </span>
               <span className="sk-ability">{def.ability}</span>
               <input
