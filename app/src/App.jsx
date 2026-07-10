@@ -548,6 +548,7 @@ export default function App() {
             armorCheckPenalty={armorCheckPenalty}
             totalFk={totalFk} usedFk={usedFk}
             skillsBuff={buffTotals.skills_all ?? 0}
+            activeBuffs={char.active_buffs ?? []}
             condSkillPenalty={condMods.skill_penalty ?? 0}
             lang={lang} />
         )}
