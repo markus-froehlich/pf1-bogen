@@ -24,7 +24,7 @@ function SkillLink({ name }) {
   )
 }
 
-export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, lang }) {
+export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, activeBuffs = [], lang }) {
   const L = lang === 'de'
 
   const condMods = useMemo(() => getConditionMods(char.conditions), [char.conditions])
