@@ -60,6 +60,7 @@ export default function App() {
   const [gistOpen, setGistOpen] = useState(false)
   const [fontScale, setFontScale] = useState(_initScale)
   const [profile, setProfile] = useState(() => localStorage.getItem('pf1_profile') ?? 'player')
+  const externalLinks = useExternalLinksPref()
 
   function switchProfile(p) {
     if (p === profile) return
