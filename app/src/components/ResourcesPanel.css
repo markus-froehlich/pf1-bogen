@@ -17,6 +17,40 @@
 }
 .res-reset-all-btn:active { background: color-mix(in srgb, var(--accent) 22%, var(--surface2)); }
 
+.res-confirm {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+.res-confirm-label {
+  font-size: 0.7rem;
+  color: #c96e6e;
+  font-weight: 600;
+}
+.res-confirm-yes {
+  background: #c96e6e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.res-confirm-no {
+  background: var(--surface3);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
 /* Auto-suggestions */
 .res-auto-row {
   display: flex;
