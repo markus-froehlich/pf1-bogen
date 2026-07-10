@@ -46,7 +46,10 @@ export function computeAllSkills(char, attrs, skillDefs, classSkillSet, armorChe
     if (def.ability === 'GE') abilityMod = Math.max(-5, abilityMod + (condMods.dex_mod_delta ?? 0))
     const isClassSkill = classSkillSet.has(def.id)
     const penalty = def.armor_check_penalty ? armorCheckPenalty : 0
-    result[def.id] = computeSkill(char.skills?.[def.id], abilityMod, isClassSkill, penalty, condSkillPenalty, skillsBuff)
+    let extraCondPenalty = condSkillPenalty
+    if (def.ability === 'ST' || def.ability === 'GE') extraCondPenalty += (condMods.stge_skill_penalty ?? 0)
+    if (def.id === 'wahrnehmung') extraCondPenalty += (condMods.perception_penalty ?? 0)
+    result[def.id] = computeSkill(char.skills?.[def.id], abilityMod, isClassSkill, penalty, extraCondPenalty, skillsBuff)
   }
   return result
 }
