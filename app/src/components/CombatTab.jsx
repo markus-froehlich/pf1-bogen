@@ -361,23 +361,25 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
           })()}
 
           <div className="stat-row">
-            <StatBox label="GAB" value={combat.bab}
-              buffInfo={buffAnnot(activeBuffs, 'attack')}
-              condInfo={condAnnot(condMods, 'attack')} lang={lang} />
+            <StatBox label="GAB" value={combat.bab} />
             <StatBox label={L ? 'Init' : 'Init'} value={combat.init} sub={`GE${fmtBonus(attrs.GE.mod)}`}
               buffInfo={buffAnnot(activeBuffs, 'init')}
               condInfo={condAnnot(condMods, 'init')} lang={lang} />
             <StatBox label="KMB" value={combat.kmb}
-              buffInfo={buffAnnot(activeBuffs, 'attack')} />
-            <StatBox label="KMV" value={combat.kmv} />
+              buffInfo={buffAnnot(activeBuffs, 'attack')}
+              condInfo={stAttackCondInfo} lang={lang} />
+            <StatBox label="KMV" value={combat.kmv}
+              condInfo={kmvCondInfo} lang={lang} />
             <StatBox label={L ? 'Nahkampf' : 'Melee'}
               value={combat.melee_attacks.map(fmtBonus).join('/')}
               className="stat-box-attacks"
-              buffInfo={buffAnnot(activeBuffs, 'attack')} />
+              buffInfo={buffAnnot(activeBuffs, 'attack')}
+              condInfo={stAttackCondInfo} lang={lang} />
             <StatBox label={L ? 'Fernkampf' : 'Ranged'}
               value={combat.ranged_attacks.map(fmtBonus).join('/')}
               className="stat-box-attacks"
-              buffInfo={buffAnnot(activeBuffs, 'attack')} />
+              buffInfo={buffAnnot(activeBuffs, 'attack')}
+              condInfo={geAttackCondInfo} lang={lang} />
           </div>
         </>}
       </section>
