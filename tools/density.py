@@ -1,6 +1,7 @@
-import openpyxl, re, time
+import openpyxl, re, time, os
 from collections import Counter
-path = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/Version 6.61/Bogen 6.61 Spieler.xlsx"
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+path = os.path.join(_ROOT, "Version 6.61", "Bogen 6.61 Spieler.xlsx")
 wb = openpyxl.load_workbook(path, data_only=False, read_only=True)
 func_re = re.compile(r"([A-Z][A-Z0-9\.]+)\(")
 print(f"{'sheet':<22}{'state':<10}{'cells':>9}{'formula':>9}{'value':>9}{'%form':>7}")
