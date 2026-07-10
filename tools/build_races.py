@@ -4,7 +4,8 @@ import json, re, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from dump_util import grid
 
-OUT = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/data/races.json"
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT = os.path.join(_ROOT, "data", "races.json")
 ATTRS = {"ST","GE","KO","IN","WE","CH"}
 
 def slug(s):
