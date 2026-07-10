@@ -1,5 +1,6 @@
 import { useState, useRef, useMemo } from 'react'
 import featsData from '../data/feats.json'
+import { RefLink } from './RefLink.jsx'
 import './FeatsTab.css'
 
 const FEAT_PREFIX_BOOK = {
