@@ -50,8 +50,8 @@ export function getConditionMods(conditions) {
   // Im Haltegriff (Pinned): loses DEX bonus (no_dex_to_ac above) + additional -4 RK
   if (c.has('haltegriff')) bump('rk', -4, 'haltegriff')
 
-  // Geblendet (Dazzled): -1 attack, -1 sight-based perception (perception not modeled separately)
-  if (c.has('geblendet')) bump('attack', -1, 'geblendet')
+  // Geblendet (Dazzled): -1 attack, -1 sight-based Perception
+  if (c.has('geblendet')) { bump('attack', -1, 'geblendet'); bump('perception_penalty', -1, 'geblendet') }
 
   // Kauernd (Cowering): -2 AC on top of losing DEX bonus
   if (c.has('kauernd')) bump('rk', -2, 'kauernd')
