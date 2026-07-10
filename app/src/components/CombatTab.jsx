@@ -45,18 +45,6 @@ const RACE_SIZE_KEY = {
 const fmtBonus = n => n >= 0 ? `+${n}` : `${n}`
 const pct = f => `${Math.round(f * 100)}%`
 
-function buffAnnot(activeBuffs, ...keys) {
-  let total = 0
-  const parts = []
-  for (const b of activeBuffs) {
-    if (!b.active) continue
-    let sum = 0
-    for (const k of keys) sum += Number(b.bonuses?.[k] ?? 0)
-    if (sum !== 0) { total += sum; parts.push(`${b.name}: ${sum > 0 ? '+' : ''}${sum}`) }
-  }
-  return total !== 0 ? { total, title: parts.join(', ') } : null
-}
-
 function StatBox({ label, value, sub, className, buffInfo, condInfo, lang }) {
   return (
     <div className={`stat-box${className ? ' ' + className : ''}`}>
