@@ -87,8 +87,8 @@ export function ConditionsPanel({ char, setConditions, lang, hideTitle = false }
         {activeCount > 0 && (
           <span className="cond-active-badge">{activeCount} {L ? 'aktiv' : 'active'}</span>
         )}
-        <a className="cond-ref-link" href="http://prd.5footstep.de/Grundregelwerk/Anhang/Zustaende"
-          target="_blank" rel="noopener noreferrer" title={L ? 'Regelreferenz Zustände' : 'Conditions reference'}>?</a>
+        <RefLink className="cond-ref-link" href="http://prd.5footstep.de/Grundregelwerk/Anhang/Zustaende"
+          title={L ? 'Regelreferenz Zustände' : 'Conditions reference'}>?</RefLink>
       </div>
       <div className="cond-grid">
         {sortedConditions.map(c => {
