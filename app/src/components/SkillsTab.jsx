@@ -3,6 +3,7 @@ import skillsData from '../data/skills.json'
 import { computeAllSkills, buildClassSkillSet } from '../engine/skills.js'
 import { getConditionMods } from '../engine/conditions.js'
 import { condAnnot, buffAnnot, CondTag, BuffTag } from './DetailTag.jsx'
+import { RefLink } from './RefLink.jsx'
 import './SkillsTab.css'
 
 const SKILLS = skillsData.skills
