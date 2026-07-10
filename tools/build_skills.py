@@ -76,7 +76,7 @@ SKILL_ABILITIES = {
     "Zauberkunde": "IN",
 }
 
-# English translations (Pathfinder 1e standard)
+# English translations (PF1e standard)
 # Note: Abbreviated "W. Arkanes" forms are expanded to full names for English mapping
 SKILL_NAMES_EN = {
     "Akrobatik": "Acrobatics",
