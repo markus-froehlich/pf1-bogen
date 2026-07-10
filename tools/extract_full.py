@@ -4,8 +4,9 @@ non-empty cell: {"c": coord, "t": "f"|"v", "raw": formula-or-constant, "val": ca
 """
 import openpyxl, json, os, warnings, datetime
 warnings.simplefilter("ignore")
-SRC = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/Version 6.61/Bogen 6.61 Spieler.xlsx"
-OUT = "/Users/froema/Documents/Rollenspiel/Pathfinder/Pathinder Web App/extraction/sheets_full"
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SRC = os.path.join(_ROOT, "Version 6.61", "Bogen 6.61 Spieler.xlsx")
+OUT = os.path.join(_ROOT, "extraction", "sheets_full")
 os.makedirs(OUT, exist_ok=True)
 
 def norm(v):
