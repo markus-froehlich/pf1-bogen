@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import spellsData from '../data/spells.json'
 import { getSpellSlots, getSpellsKnown, isSpontaneousCaster } from '../engine/spellSlots.js'
+import { RefLink as ExternalRefLink } from './RefLink.jsx'
 import './SpellsTab.css'
 
 // Casting stat per class ID (PF1e rules)
