@@ -49,7 +49,21 @@ export function computeAllSkills(char, attrs, skillDefs, classSkillSet, armorChe
     let extraCondPenalty = condSkillPenalty
     if (def.ability === 'ST' || def.ability === 'GE') extraCondPenalty += (condMods.stge_skill_penalty ?? 0)
     if (def.id === 'wahrnehmung') extraCondPenalty += (condMods.perception_penalty ?? 0)
-    result[def.id] = computeSkill(char.skills?.[def.id], abilityMod, isClassSkill, penalty, extraCondPenalty, skillsBuff)
+
+    if (def.multi) {
+      // Handwerk/Beruf: PF1e lets you take these multiple times, once per
+      // specialty (craft/profession), each with its own ranks — so char.skills
+      // holds an array of instances instead of a single {ranks, misc} entry.
+      const stored = char.skills?.[def.id]
+      const instances = Array.isArray(stored) && stored.length > 0
+        ? stored
+        : Array.from({ length: def.default_slots ?? 1 }, () => ({ name: '', ranks: 0, misc: 0 }))
+      result[def.id] = instances.map(entry =>
+        computeSkill(entry, abilityMod, isClassSkill, penalty, extraCondPenalty, skillsBuff)
+      )
+    } else {
+      result[def.id] = computeSkill(char.skills?.[def.id], abilityMod, isClassSkill, penalty, extraCondPenalty, skillsBuff)
+    }
   }
   return result
 }

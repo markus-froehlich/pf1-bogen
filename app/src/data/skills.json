@@ -112,7 +112,9 @@
         "skalde",
         "test1",
         "waldlaeufer"
-      ]
+      ],
+      "multi": true,
+      "default_slots": 2
     },
     {
       "id": "bluffen",
@@ -193,7 +195,7 @@
         "en": "Intimidate"
       },
       "ability": "CH",
-      "trained_only": true,
+      "trained_only": false,
       "armor_check_penalty": false,
       "class_skills": [
         "adeliger",
@@ -317,7 +319,7 @@
         "en": "Craft"
       },
       "ability": "IN",
-      "trained_only": true,
+      "trained_only": false,
       "armor_check_penalty": false,
       "has_subskills": true,
       "class_skills": [
@@ -360,7 +362,9 @@
         "skalde",
         "test1",
         "waldlaeufer"
-      ]
+      ],
+      "multi": true,
+      "default_slots": 3
     },
     {
       "id": "heilkunde",
@@ -432,7 +436,7 @@
         "en": "Climb"
       },
       "ability": "ST",
-      "trained_only": true,
+      "trained_only": false,
       "armor_check_penalty": true,
       "class_skills": [
         "ark_betrueger",
@@ -609,7 +613,7 @@
         "en": "Ride"
       },
       "ability": "GE",
-      "trained_only": true,
+      "trained_only": false,
       "armor_check_penalty": true,
       "class_skills": [
         "adeliger",
@@ -682,7 +686,7 @@
         "en": "Swim"
       },
       "ability": "ST",
-      "trained_only": true,
+      "trained_only": false,
       "armor_check_penalty": true,
       "class_skills": [
         "adeliger",
@@ -754,7 +758,7 @@
         "en": "Survival"
       },
       "ability": "WE",
-      "trained_only": true,
+      "trained_only": false,
       "armor_check_penalty": false,
       "class_skills": [
         "adeliger",
