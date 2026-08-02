@@ -9,7 +9,7 @@ const ATTR_LABELS = {
 // Only STR/DEX are altered by conditions (erschöpft/entkräftet/gelähmt/ringend)
 const ATTR_TO_COND_KEY = { ST: 'str_mod_delta', GE: 'dex_mod_delta' }
 
-export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de', condMods = {} }) {
+export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de', condMods = {}, readOnly = false }) {
   const { score, buff, buffed, mod } = computed
   const label = ATTR_LABELS[lang]?.[attrKey] ?? attrKey
 
@@ -31,6 +31,8 @@ export function AttributeBlock({ attrKey, computed, onScoreChange, lang = 'de', 
         type="number"
         min={1} max={50}
         value={score}
+        readOnly={readOnly}
+        title={readOnly ? 'Wird aus Tierart und Gefährtenstufe berechnet' : undefined}
         onChange={e => onScoreChange(attrKey, e.target.value)}
       />
       <BuffTag info={buff !== 0 ? { total: buff, title: `Buff → ${buffed}` } : null} />

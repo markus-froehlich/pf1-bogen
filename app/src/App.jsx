@@ -4,7 +4,7 @@ import { useCharacters } from './store/useCharacters.js'
 import { useHomebrew }   from './store/useHomebrew.js'
 import { useGistSync }   from './store/useGistSync.js'
 import { GistSyncPanel } from './components/GistSyncPanel.jsx'
-import { computeAttributes, computeBABAndSaves, computeCombat, computeBuffTotals, ATTRS, carryThresholds, ARMOR_MAP, SHIELDS_MAP, ALL_CLASSES, registerHomebrewClasses, registerHomebrewArmor, registerHomebrewShields } from './engine/index.js'
+import { computeAttributes, computeBABAndSaves, computeCombat, computeBuffTotals, getCompanionRules, ATTRS, carryThresholds, ARMOR_MAP, SHIELDS_MAP, ALL_CLASSES, registerHomebrewClasses, registerHomebrewArmor, registerHomebrewShields } from './engine/index.js'
 import { getConditionMods } from './engine/conditions.js'
 import racesData from './data/races.json'
 import { AttributeBlock } from './components/AttributeBlock.jsx'
@@ -262,12 +262,21 @@ export default function App() {
   const RACE_MAP_APP  = Object.fromEntries([...racesData.races, ...hb.races].map(r => [r.id, r]))
   const CLASS_MAP_APP = Object.fromEntries([...ALL_CLASSES, ...hb.classes].map(c => [c.id, c]))
 
-  const buffTotals = computeBuffTotals(char.active_buffs ?? [])
-  const computed   = computeAttributes(char, buffTotals)
-  const baseValues = computeBABAndSaves(char)
-  const combat     = computeCombat(char, computed, baseValues, buffTotals)
-  const condMods   = getConditionMods(char.conditions)
   const isCompanion = char.companion?.kind === 'animal_companion'
+  const owner = isCompanion ? index.find(entry => entry.id === char.companion.ownerId) : null
+  const companionLevel = owner?.classes?.filter(entry => entry.id === 'druide').reduce((sum, entry) => sum + Number(entry.level || 0), 0)
+  const companionRules = isCompanion ? getCompanionRules(char, companionLevel) : null
+  const rulesChar = companionRules ? {
+    ...char,
+    attributes: companionRules.attrs,
+    combat_misc: { ...char.combat_misc, ...companionRules.combatMisc },
+    meta: { ...char.meta, level: companionRules.level, race: companionRules.size },
+  } : char
+  const buffTotals = computeBuffTotals(char.active_buffs ?? [])
+  const computed   = computeAttributes(rulesChar, buffTotals)
+  const baseValues = companionRules?.baseValues ?? computeBABAndSaves(char)
+  const combat     = computeCombat(rulesChar, computed, baseValues, buffTotals)
+  const condMods   = getConditionMods(char.conditions)
   const isDruid = !isCompanion && (char.meta?.classes ?? []).some(entry => entry.id === 'druide' && Number(entry.level) > 0)
   const visibleTabs = isDruid ? [...TABS, { id: 'companions', de: 'Gefährten', en: 'Companions' }] : TABS
 
@@ -502,7 +511,7 @@ export default function App() {
                   {!isCollapsed && (
                     <div className="attr-grid">
                       {ATTRS.map(a => (
-                        <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} />
+                        <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} readOnly={Boolean(companionRules)} />
                       ))}
                     </div>
                   )}
@@ -533,7 +542,7 @@ export default function App() {
         {tab === 'combat' && (
           <div className="section">
             <CombatTab
-              char={char} attrs={computed} combat={combat} baseValues={baseValues}
+              char={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
               setCombatMisc={setCombatMisc} setGear={setGear} setHp={setHp} setNlDamage={setNlDamage}
               lang={lang}
               hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields}

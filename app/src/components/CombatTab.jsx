@@ -256,10 +256,11 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   // (and shields) never do, regardless of whether one is equipped.
   const armorDefForSpeed = gear.armor_id ? ALL_ARMOR_MERGED.find(a => a.id === gear.armor_id) : null
   const hasArmor   = armorDefForSpeed?.type === 'Mittel' || armorDefForSpeed?.type === 'Schwer'
-  const speedRaw   = hasArmor
+  const manualSpeed = misc.speed_walk === '' || misc.speed_walk == null ? null : Number(misc.speed_walk)
+  const speedRaw   = manualSpeed ?? (hasArmor
     ? (raceData?.speed_m?.armored ?? raceData?.speed_m?.unarmored ?? null)
-    : (raceData?.speed_m?.unarmored ?? null)
-  const baseSpeedM  = raceData?.speed_m?.unarmored ?? speedRaw
+    : (raceData?.speed_m?.unarmored ?? null))
+  const baseSpeedM  = manualSpeed ?? raceData?.speed_m?.unarmored ?? speedRaw
   const encumbered  = applyCarryMovement && encumbranceTier !== 'light' && baseSpeedM != null
   const speedFinal  = encumbered ? Math.min(speedRaw ?? Infinity, encumberedSpeed(baseSpeedM)) : speedRaw
   const speedLabel  = speedFinal != null ? `${speedFinal} m` : '—'
