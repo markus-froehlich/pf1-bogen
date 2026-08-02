@@ -192,6 +192,41 @@ export function useCharacters(profile = 'player') {
     })
   }, [patchChar])
 
+  // Multi-instance skills (Handwerk/Beruf): char.skills[id] is an array of
+  // { name, ranks, misc } instead of a single object — one entry per chosen
+  // specialty, since PF1e lets you take these skills multiple times.
+  const setMultiSkill = useCallback((skillId, idx, field, value, defaultSlots = 1) => {
+    patchChar(prev => {
+      const existing = Array.isArray(prev.skills?.[skillId]) ? prev.skills[skillId] : []
+      const base = existing.length > 0
+        ? existing
+        : Array.from({ length: defaultSlots }, () => ({ name: '', ranks: 0, misc: 0 }))
+      const list = base.map(e => ({ ...e }))
+      while (list.length <= idx) list.push({ name: '', ranks: 0, misc: 0 })
+      list[idx][field] = field === 'name' ? value : (Number(value) || 0)
+      return { ...prev, skills: { ...prev.skills, [skillId]: list } }
+    })
+  }, [patchChar])
+
+  const addSkillSlot = useCallback((skillId, defaultSlots = 1) => {
+    patchChar(prev => {
+      const existing = Array.isArray(prev.skills?.[skillId]) ? prev.skills[skillId] : []
+      const base = existing.length > 0
+        ? existing
+        : Array.from({ length: defaultSlots }, () => ({ name: '', ranks: 0, misc: 0 }))
+      const list = [...base, { name: '', ranks: 0, misc: 0 }]
+      return { ...prev, skills: { ...prev.skills, [skillId]: list } }
+    })
+  }, [patchChar])
+
+  const removeSkillSlot = useCallback((skillId, idx) => {
+    patchChar(prev => {
+      const existing = Array.isArray(prev.skills?.[skillId]) ? prev.skills[skillId] : []
+      const list = existing.filter((_, i) => i !== idx)
+      return { ...prev, skills: { ...prev.skills, [skillId]: list.length > 0 ? list : [{ name: '', ranks: 0, misc: 0 }] } }
+    })
+  }, [patchChar])
+
   const setHp = useCallback((field, value) => {
     patchChar(prev => ({ ...prev, hp: { ...(prev.hp ?? {}), [field]: Number(value) || 0 } }))
   }, [patchChar])
