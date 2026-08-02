@@ -73,11 +73,11 @@ export function getCompanionRules(char, level) {
     if (sizeMatch) size = sizeMatch[1].replace(/^./, c => c.toUpperCase())
   }
 
-  const choices = char.companion?.choices ?? { statChoices: [], abilityChoices: [] }
-  for (let i = 0; i < statBonuses; i++) {
-    const choice = choices.statChoices?.[i]
-    if (choice === 'ST' || choice === 'GE') attrs[choice] += 1
-  }
+  const choices = char.companion?.choices ?? { abilityChoices: [] }
+  // "ST/GE" in Tabelle 3-6 is one shared progression bonus: it applies to
+  // both Strength and Dexterity, not a choice between the two attributes.
+  attrs.ST += statBonuses
+  attrs.GE += statBonuses
   const abilityCount = [4, 9, 14, 20].filter(lv => lv <= safeLevel).length
   for (let i = 0; i < abilityCount; i++) {
     const choice = choices.abilityChoices?.[i]

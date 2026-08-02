@@ -24,16 +24,11 @@ export function CompanionAdvancementPanel({ rules, tricks = [], onChoicesChange,
         <span>{L ? 'GEFÄHRTEN-AUFSTIEGE' : 'COMPANION ADVANCEMENTS'}</span>
         <small>{L ? `Stufe ${rules.level}` : `Level ${rules.level}`}</small>
       </div>
-      {Array.from({ length: rules.statBonusCount }, (_, index) => (
-        <label key={`stat-${index}`}>
-          <span>{L ? `Stufe ${index === 0 ? 3 : 6}: ST oder GE` : `Level ${index === 0 ? 3 : 6}: STR or DEX`}</span>
-          <select value={choices.statChoices?.[index] ?? ''} onChange={e => setChoice('statChoices', index, e.target.value)}>
-            <option value="">{L ? 'Auswählen…' : 'Choose…'}</option>
-            <option value="ST">ST</option>
-            <option value="GE">GE</option>
-          </select>
-        </label>
-      ))}
+      {rules.statBonusCount > 0 && (
+        <div className="companion-auto-bonus">
+          {L ? `ST und GE automatisch +${rules.statBonusCount}` : `STR and DEX automatically +${rules.statBonusCount}`}
+        </div>
+      )}
       {Array.from({ length: rules.abilityIncreaseCount }, (_, index) => (
         <label key={`ability-${index}`}>
           <span>{L ? `Stufe ${[4, 9, 14, 20][index]}: Attribut +1` : `Level ${[4, 9, 14, 20][index]}: Ability +1`}</span>
