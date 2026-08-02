@@ -281,9 +281,7 @@ export default function App() {
   const combat     = computeCombat(rulesChar, computed, baseValues, buffTotals)
   const condMods   = getConditionMods(char.conditions)
   const isDruid = !isCompanion && (char.meta?.classes ?? []).some(entry => entry.id === 'druide' && Number(entry.level) > 0)
-  const visibleTabs = isDruid
-    ? [...TABS, { id: 'companions', de: 'Gefährten', en: 'Companions' }]
-    : isCompanion ? TABS.filter(tab => tab.id !== 'spells') : TABS
+  const visibleTabs = isCompanion ? TABS.filter(tab => tab.id !== 'spells') : TABS
   const visibleAttrOrder = isCompanion ? attrOrder.filter(id => ['attrs', 'bio'].includes(id)) : attrOrder
 
   const gear = char.gear ?? {}
@@ -589,6 +587,17 @@ export default function App() {
               isCompanion={isCompanion}
               companionHd={companionRules?.hd ?? null}
             />
+            {isDruid && (
+              <div className="section">
+                <CompanionsTab
+                  index={index}
+                  ownerId={activeId}
+                  onCreate={species => newCompanion(species, activeId)}
+                  onOpen={id => { switchChar(id); setTab('attr') }}
+                  lang={lang}
+                />
+              </div>
+            )}
           </div>
         )}
 
@@ -624,15 +633,6 @@ export default function App() {
           <NotesTab char={char} setNotes={setNotes} setContacts={setContacts} setSpecials={setSpecials} lang={lang} />
         )}
 
-        {tab === 'companions' && isDruid && (
-          <CompanionsTab
-            index={index}
-            ownerId={activeId}
-            onCreate={species => newCompanion(species, activeId)}
-            onOpen={id => { switchChar(id); setTab('attr') }}
-            lang={lang}
-          />
-        )}
       </main>
 
       {navCollapsed && (
