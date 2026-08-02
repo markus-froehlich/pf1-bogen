@@ -578,6 +578,7 @@ export default function App() {
                 weapons:    'Weapons',
               }}
               isCompanion={isCompanion}
+              companionHd={companionRules?.hd ?? null}
             />
           </div>
         )}

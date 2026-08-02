@@ -237,7 +237,7 @@ function SectionHead({ id, label, idx, count, collapsed, onToggle, onMove }) {
   )
 }
 
-export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false }) {
+export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false, companionHd = null }) {
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
   const gear = char.gear ?? {}
@@ -324,6 +324,12 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
                 onChange={e => setNlDamage?.(e.target.value)} />
             </label>
           </div>
+          {companionHd != null && (
+            <div className="hp-companion-hd" title={L ? 'Wird aus der Stufe des verknüpften Druiden berechnet' : 'Calculated from the linked druid level'}>
+              <span>{companionHd} {L ? 'TW' : 'HD'}</span>
+              <span>W8</span>
+            </div>
+          )}
           <label className="hp-rolls-field">
             <span>{L ? 'Trefferwürfel-Historie' : 'Hit-die history'}</span>
             <input
