@@ -374,8 +374,8 @@ export default function App() {
                         >{lang === 'de' ? 'App' : 'App'}</button>
                         <button className={`profile-btn${externalLinks ? ' active' : ''}`}
                           onClick={() => setExternalLinksPref(true)}
-                          title={lang === 'de' ? 'Links öffnen extern in Safari/Browser (mehrere Tabs möglich)' : 'Links open externally in Safari/browser (multiple tabs)'}
-                        >Safari</button>
+                          title={lang === 'de' ? 'Links öffnen extern im Browser (mehrere Tabs möglich)' : 'Links open externally in browser (multiple tabs)'}
+                        >{lang === 'de' ? 'Browser' : 'Browser'}</button>
                       </div>
                     </div>
                     <div className="app-menu-profile-row">
