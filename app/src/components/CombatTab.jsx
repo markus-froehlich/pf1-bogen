@@ -222,7 +222,10 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const ALL_SHIELDS_MERGED = [...shieldsData.shields, ...hbShields]
 
   const raceData   = RACE_MAP[char.meta.race]
-  const hasArmor   = !!gear.armor_id
+  // Only medium/heavy armor reduces movement speed in PF1e RAW — light armor
+  // (and shields) never do, regardless of whether one is equipped.
+  const armorDefForSpeed = gear.armor_id ? ALL_ARMOR_MERGED.find(a => a.id === gear.armor_id) : null
+  const hasArmor   = armorDefForSpeed?.type === 'Mittel' || armorDefForSpeed?.type === 'Schwer'
   const speedRaw   = hasArmor
     ? (raceData?.speed_m?.armored ?? raceData?.speed_m?.unarmored ?? null)
     : (raceData?.speed_m?.unarmored ?? null)
