@@ -25,6 +25,7 @@ import { ClassFeaturesPanel } from './components/ClassFeaturesPanel.jsx'
 import { InventoryTab } from './components/InventoryTab.jsx'
 import { BioSection } from './components/BioSection.jsx'
 import { BuffTracker } from './components/BuffTracker.jsx'
+import { CompanionsTab } from './components/CompanionsTab.jsx'
 import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
@@ -48,7 +49,7 @@ const TABS = [
   { id: 'notes',     de: 'Notizen',   en: 'Notes'   },
 ]
 
-const NAV_ICONS = { attr: '👤', combat: '⚔', skills: '🔨', spells: '🪄', inventory: '🎒', feats: '📜', notes: '✏️' }
+const NAV_ICONS = { attr: '👤', combat: '⚔', skills: '🔨', spells: '🪄', inventory: '🎒', feats: '📜', notes: '✏️', companions: '🐾' }
 
 export default function App() {
   const [tab, setTab] = useState('attr')
@@ -142,7 +143,7 @@ export default function App() {
     setNotes, setSpellbook, setContacts, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
-    importChar, newChar, switchChar, deleteChar,
+    importChar, newChar, newCompanion, switchChar, deleteChar,
     getBackupData, reinitialize,
   } = useCharacters(profile)
 
@@ -266,6 +267,9 @@ export default function App() {
   const baseValues = computeBABAndSaves(char)
   const combat     = computeCombat(char, computed, baseValues, buffTotals)
   const condMods   = getConditionMods(char.conditions)
+  const isCompanion = char.companion?.kind === 'animal_companion'
+  const isDruid = !isCompanion && (char.meta?.classes ?? []).some(entry => entry.id === 'druide' && Number(entry.level) > 0)
+  const visibleTabs = isDruid ? [...TABS, { id: 'companions', de: 'Gefährten', en: 'Companions' }] : TABS
 
   const gear = char.gear ?? {}
   const armorCheckPenalty = (ARMOR_MAP[gear.armor_id]?.check_penalty ?? 0)
@@ -596,13 +600,23 @@ export default function App() {
         {tab === 'notes' && (
           <NotesTab char={char} setNotes={setNotes} setContacts={setContacts} setSpecials={setSpecials} lang={lang} />
         )}
+
+        {tab === 'companions' && isDruid && (
+          <CompanionsTab
+            index={index}
+            ownerId={activeId}
+            onCreate={species => newCompanion(species, activeId)}
+            onOpen={id => { switchChar(id); setTab('attr') }}
+            lang={lang}
+          />
+        )}
       </main>
 
       {navCollapsed && (
         <button className="bar-restore bar-restore-bottom" onClick={toggleNav} title="Navigation einblenden">▴</button>
       )}
       <nav className={`bottom-nav${navCollapsed ? ' bar-collapsed' : ''}`}>
-        {TABS.map(t => (
+        {visibleTabs.map(t => (
           <button key={t.id} className={`nav-btn ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
             <span className="nav-icon">{NAV_ICONS[t.id]}</span>
           </button>

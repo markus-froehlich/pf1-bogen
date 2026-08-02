@@ -307,7 +307,11 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
                   {/* Per-level slot + prepared spells */}
                   <div className="pv-spell-table">
                     {allSpellLevels.map(({ lv, data }) => {
-                      const names = (data.prepared ?? []).map(id => SPELL_MAP[id]?.name?.de ?? id)
+                      const names = (data.prepared ?? []).map(entry => {
+                        const id = typeof entry === 'string' ? entry : entry.spell_id
+                        const name = SPELL_MAP[id]?.name?.de ?? id
+                        return typeof entry === 'object' && entry.used ? `✓ ${name}` : name
+                      })
                       const free  = data.total - (data.used ?? 0)
                       return (
                         <div key={lv} className="pv-spell-row">

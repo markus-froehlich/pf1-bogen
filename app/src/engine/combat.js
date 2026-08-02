@@ -25,6 +25,12 @@ export { ARMOR_MAP, SHIELDS_MAP }
 export function registerHomebrewArmor(items)   { for (const a of (items ?? [])) ARMOR_MAP[a.id]   = a }
 export function registerHomebrewShields(items) { for (const s of (items ?? [])) SHIELDS_MAP[s.id] = s }
 
+function hasImprovedInitiative(feats) {
+  return (feats ?? []).some(feat =>
+    String(feat.name ?? '').toLowerCase().replace(/[^a-zäöüß]/g, '') === 'verbesserteinitiative'
+  )
+}
+
 /**
  * @param {object} char  full character object
  * @param {object} attrs result of computeAttributes(char)
@@ -76,6 +82,11 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
 
   const saves_all = Number(bt.saves_all ?? 0)
 
+  const initFeat = hasImprovedInitiative(char.feats) ? 4 : 0
+  const storedInitMisc = Number(misc.init_misc ?? 0)
+  // Older characters stored the feat bonus in the hidden misc field.
+  const initMisc = initFeat === 4 && storedInitMisc === 4 ? 0 : storedInitMisc
+
   const rk       = 10 + rk_armor + rk_shield + GEmodCapped + sizeModRK + rk_natural + rk_deflect + rk_misc2 + rk_buff_ac + cond.rk
   const rk_touch = 10 + GEmodCapped + sizeModRK + rk_deflect + rk_misc2 + rk_buff_ac + cond.rk
   const rk_flat  = 10 + rk_armor + rk_shield + sizeModRK + rk_natural + rk_deflect + rk_misc2
@@ -84,7 +95,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const ref_total  = ref  + effGEmod + Number(misc.ref_misc  ?? 0) + cond.ref_flat + saves_all + Number(bt.ref ?? 0)
   const will_total = will + WEmod  + Number(misc.will_misc ?? 0) + cond.will + saves_all + Number(bt.will ?? 0)
 
-  const init = effGEmod + Number(misc.init_misc ?? 0) + cond.init + Number(bt.init ?? 0)
+  const init = effGEmod + initMisc + initFeat + cond.init + Number(bt.init ?? 0)
 
   const gabMelee  = bab + effSTmod + Number(misc.gab_melee_misc  ?? 0) + cond.attack + Number(bt.attack ?? 0)
   const gabRanged = bab + effGEmod + Number(misc.gab_ranged_misc ?? 0) + cond.attack + Number(bt.attack ?? 0)
@@ -106,7 +117,11 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     gab_melee: gabMelee, gab_ranged: gabRanged,
     melee_attacks: meleeAttacks, ranged_attacks: rangedAttacks,
     kmb, kmv,
-    _components: { rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2 },
+    _components: {
+      rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2,
+      init_ability: effGEmod, init_misc: initMisc, init_feat: initFeat,
+      init_condition: cond.init, init_buff: Number(bt.init ?? 0),
+    },
     _condMods: cond,
   }
 }

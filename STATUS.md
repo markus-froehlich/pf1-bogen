@@ -1,12 +1,13 @@
 # STATUS
 
-_Stand: 2026-07-05_
+_Stand: 2026-08-02_
 
 ## Wo wir stehen
 **Phase 1 (Bestandsaufnahme) abgeschlossen + freigegeben.** Entscheidungen geklärt.
-**Phase 2 (Daten-Port) gestartet:** kanonischer Voll-Dump fertig, erstes Dataset
-(`races.json`) als Pipeline-Muster verifiziert. Als Nächstes: weitere Datasets +
-Engine-Gerüst.
+**Phase 2 (Daten-Port) weit fortgeschritten:** kanonischer Voll-Dump und die
+wichtigsten Regel-Datasets sind portiert und in der App gebündelt.
+**Phase 3 (PWA + Engine) aktiv:** App, Engine und UI sind weit fortgeschritten;
+aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
 
 ## Entscheidungen (festgezurrt, siehe AGENTS.md)
 1. Rechnen **1:1 wie Excel** (Referenz = `sheets_values`/`sheets_full`).
@@ -40,7 +41,7 @@ Engine-Gerüst.
 - **`app/src/engine/attributes.js`** — Attribut-Engine: `computeAttributes()`,
   `abilityMod()`, `carryThresholds()` 1:1 aus Attributtab (Listen!IE5:IS54)
 - **`app/src/data/races.json`** + **`attributtab.json`** — in App gebundelt
-- **`app/src/store/useCharacter.js`** — localStorage-backed State
+- **`app/src/store/useCharacters.js`** — localStorage-backed State
 - **iOS-Test bestanden**: Portrait+Landscape, navAtBottom, kein Overflow
 - **`data/attributtab.json`** — 50 Einträge (Score 1–50, Mod+Tragegrenzen)
 - **`data/classes.json`** — 67 Klassen (42 vollständig), 20-Zeilen-Progression
@@ -74,7 +75,7 @@ Engine-Gerüst.
 - Verifiziert: Feuerball → Hxm./Magier Stufe 3, Schule Hv Fe ✓
 
 - **Export/Import** — ⬇/⬆ Buttons in Topbar; Download als `<name>.json`;
-  Upload via FileReader + importChar(); `importChar()` in useCharacter.js
+  Upload via FileReader + importChar(); `importChar()` in useCharacters.js
 - **Tragegrenze** — Attribute-Tab Zeile: Leicht/Mittel/Schwer in kg (aus Attributtab,
   1:1 Excel), farbkodiert grün/amber/rot; reagiert auf ST-Änderungen
 - **Größen-Modifikator** — Kampf-Tab: size-Selektor (7 Stufen Winzig→Kolossal);
@@ -220,11 +221,6 @@ Engine-Gerüst.
   5. Modus im Notizen-Tab (✦ Schablonen); durchsuchbare Referenzliste mit GRW-Seitenzahlen.
 
 - **PWA-Cache-Limit** auf 5 MiB erhöht (vite.config.js workbox.maximumFileSizeToCacheInBytes)
-
-- **Klassenfähigkeiten-Panel** — collapsible im Kampf-Tab; 10 Basisklassen (Barbar, Barde, Druide,
-  Hexenmeister, Hexe, Kämpfer, Kleriker, Magier, Mönch, Paladin); freigeschaltete Fähigkeiten je
-  Stufe als Chips; `data/class_features_by_level.json`; `ClassFeaturesPanel.jsx`;
-  `tools/build_class_features.py` (hardcoded Kräftelisten-Spalten)
 
 - **NL-Schaden** — Kampf-Tab HP-Sektion: separates Eingabefeld; "Bewusstlos bei ≤X" Hinweis;
   "Erholt" Reset-Button; `char.nl_damage` im Store
@@ -451,6 +447,19 @@ Engine-Gerüst.
 - **GistSyncPanel Profil-Bugfix** — `handleConnect` + `handlePull` schrieben restore-Daten
   in hardcodierte SP-LS-Keys (`pf1_char_${id}`, `pf1_chars_index`), auch im SL-Profil;
   gefixt: `profileStorageKeys(profile)` → `charKey(id)` / `indexKey` korrekt je Profil
+
+- **Vorbereitete Zauber einzeln verbrauchbar** — vorbereitende Klassen können denselben
+  Zauber mehrfach auswählen; jede Vorbereitung wird als eigene Zeile mit `□`/`✓`
+  angezeigt und bleibt nach dem Wirken sichtbar. `prepared[]` unterstützt jetzt
+  Instanzen mit eigener ID und `used`-Status; alte Exporte mit reinen Zauber-IDs
+  bleiben lesbar. Spontane Zauberwirker behalten die `6/6`-Slotlogik; Bonuszauber
+  bleiben getrennt von Verbrauch und Bekannt-Limit. Druckansicht angepasst.
+
+- **Initiative aus Talent + sichtbares Sonstiges-Feld** — `Verbesserte Initiative`
+  wird automatisch mit +4 eingerechnet. Initiative zeigt zusätzlich ein sichtbares
+  `Sonst.`-Feld; der Quellen-Hover nennt Talent, Sonstiges und aktive Initiative-Buffs.
+  Der ältere gespeicherte `init_misc: 4`-Wert wird bei vorhandenem Talent nicht
+  doppelt gezählt. `engine/combat.js` + `CombatTab.jsx`.
 
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden

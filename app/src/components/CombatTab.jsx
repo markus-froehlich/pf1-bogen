@@ -59,6 +59,36 @@ function StatBox({ label, value, sub, className, buffInfo, condInfo, lang }) {
   )
 }
 
+function InitBox({ combat, misc, onMiscChange, lang, buffInfo, condInfo }) {
+  const L = lang === 'de'
+  const storedMisc = Number(misc.init_misc ?? 0)
+  const featBonus = combat._components?.init_feat ?? 0
+  const miscValue = featBonus === 4 && storedMisc === 4 ? 0 : storedMisc
+  const parts = []
+  if (featBonus) parts.push(L ? `Verbesserte Initiative: +${featBonus}` : `Improved Initiative: +${featBonus}`)
+  if (miscValue) parts.push(`${L ? 'Sonstiges' : 'Other'}: ${fmtBonus(miscValue)}`)
+  if (buffInfo?.title) parts.push(buffInfo.title)
+  const extraTotal = featBonus + miscValue + (buffInfo?.total ?? 0)
+  const extraInfo = extraTotal !== 0 ? { total: extraTotal, title: parts.join(', ') } : null
+
+  return (
+    <div className="stat-box">
+      <div className="stat-label">Init</div>
+      <div className="stat-value-row">
+        <div className="stat-value">{fmtBonus(combat.init)}</div>
+        <BuffTag info={extraInfo} />
+        <CondTag info={condInfo} lang={lang} />
+      </div>
+      <div className="stat-sub">GE{fmtBonus(combat._components?.init_ability ?? 0)}</div>
+      <div className="stat-misc">
+        <input className="stat-misc-input" type="number" value={miscValue}
+          onChange={e => onMiscChange(e.target.value)} />
+        <span>{L ? 'Sonst.' : 'Other'}</span>
+      </div>
+    </div>
+  )
+}
+
 function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, onNoteChange, notePlaceholder, lang, buffInfo, condInfo }) {
   const L = lang === 'de'
   return (
@@ -365,7 +395,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
 
           <div className="stat-row">
             <StatBox label="GAB" value={combat.bab} />
-            <StatBox label={L ? 'Init' : 'Init'} value={combat.init} sub={`GE${fmtBonus(attrs.GE.mod)}`}
+            <InitBox combat={combat} misc={misc} onMiscChange={v => setCombatMisc('init_misc', v)}
               buffInfo={buffAnnot(activeBuffs, 'init')}
               condInfo={condAnnot(condMods, 'init')} lang={lang} />
             <StatBox label="KMB" value={combat.kmb}

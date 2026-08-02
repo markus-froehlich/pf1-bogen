@@ -40,6 +40,26 @@ const CLASS_EN = {
   skalde: 'Skald', legendaer: 'Legendary',
 }
 
+function newPreparedId() {
+  return `prep_${Math.random().toString(36).slice(2, 10)}`
+}
+
+// Older exports stored prepared spells as plain IDs. Keep those readable while
+// giving each newly stored preparation its own identity and used state.
+function preparedEntries(prepared, level) {
+  return (prepared ?? []).map((entry, index) => {
+    if (typeof entry === 'string') {
+      return { id: `legacy_${level}_${index}`, spell_id: entry, used: false }
+    }
+    return {
+      ...entry,
+      id: entry.id ?? `legacy_${level}_${index}`,
+      spell_id: entry.spell_id ?? entry.id,
+      used: Boolean(entry.used),
+    }
+  })
+}
+
 function LevelBadge({ level }) {
   return <span className={`spell-lvl lvl-${level}`}>{level}</span>
 }
@@ -71,10 +91,16 @@ function toSlug(name) {
     .replace(/[^a-zA-Z0-9]/g, '')
 }
 
+// A few PRD pages use a historic slug that cannot be derived from the title.
+const SPELL_URL_SLUG_OVERRIDES = {
+  'Flamme erzeugen': 'Flammenerzeugen',
+}
+
 function RefLink({ name, page }) {
   const book = pageBook(page)
   if (!book) return null
-  const url = `http://prd.5footstep.de/${book}/Zauber/${toSlug(name)}`
+  const slug = SPELL_URL_SLUG_OVERRIDES[name] ?? toSlug(name)
+  const url = `http://prd.5footstep.de/${book}/Zauber/${slug}`
   return <ExternalRefLink className="spell-ref-link" href={url} title={`prd.5footstep.de · ${book}`}>↗</ExternalRefLink>
 }
 
@@ -247,7 +273,7 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
     })
   }
 
-  function useSlot(lv) {
+  function consumeSlot(lv) {
     setSpellbook(prev => {
       const lvData = { total: 0, used: 0, prepared: [], ...(prev.levels[lv] ?? {}) }
       if (lvData.used < lvData.total) lvData.used = lvData.used + 1
@@ -259,6 +285,9 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
     setSpellbook(prev => {
       const lvData = { ...(prev.levels[lv] ?? {}) }
       lvData.used = 0
+      if (!spontaneous) {
+        lvData.prepared = preparedEntries(lvData.prepared, lv).map(entry => ({ ...entry, used: false }))
+      }
       return { ...prev, levels: { ...prev.levels, [lv]: lvData } }
     })
   }
@@ -266,9 +295,21 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
   function removeSpell(lv, spellId) {
     setSpellbook(prev => {
       const lvData = { total: 0, used: 0, prepared: [], bloodline_ids: [], ...(prev.levels[lv] ?? {}) }
-      lvData.prepared = lvData.prepared.filter(id => id !== spellId)
-      lvData.bloodline_ids = (lvData.bloodline_ids ?? []).filter(id => id !== spellId)
+      const entries = preparedEntries(lvData.prepared, lv)
+      lvData.prepared = entries.filter(entry => entry.id !== spellId)
+      const remainingSpellIds = new Set(lvData.prepared.map(entry => entry.spell_id))
+      lvData.bloodline_ids = (lvData.bloodline_ids ?? []).filter(id => remainingSpellIds.has(id))
       return { ...prev, levels: { ...prev.levels, [lv]: lvData } }
+    })
+  }
+
+  function togglePrepared(lv, preparedId) {
+    setSpellbook(prev => {
+      const lvData = { total: 0, used: 0, prepared: [], ...(prev.levels[lv] ?? {}) }
+      const entries = preparedEntries(lvData.prepared, lv).map(entry =>
+        entry.id === preparedId ? { ...entry, used: !entry.used } : entry
+      )
+      return { ...prev, levels: { ...prev.levels, [lv]: { ...lvData, prepared: entries } } }
     })
   }
 
@@ -343,9 +384,12 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
 
       {LEVELS.filter(lv => (sb.levels[lv]?.total ?? 0) > 0 || (sb.levels[lv]?.prepared?.length ?? 0) > 0).map(lv => {
         const lvData = sb.levels[lv] ?? { total: 0, used: 0, prepared: [], bloodline_ids: [] }
+        const entries = preparedEntries(lvData.prepared, lv)
         const remaining = lvData.total - lvData.used
         const bloodlineIds = lvData.bloodline_ids ?? []
-        const knownCount = (lvData.prepared?.length ?? 0) - bloodlineIds.filter(id => lvData.prepared?.includes(id)).length
+        const knownSpellIds = [...new Set(entries.map(entry => entry.spell_id))]
+        const knownCount = knownSpellIds.filter(id => !bloodlineIds.includes(id)).length
+        const usedPrepared = entries.filter(entry => entry.used).length
         const maxKnown   = knownMax[lv] ?? null
         return (
           <div key={lv} className="sb-level">
@@ -360,13 +404,21 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
                 </span>
               )}
               <div className="sb-slots">
-                <span className={`sb-remaining ${remaining <= 0 && lv !== 0 ? 'depleted' : ''}`}>
-                  {lv === 0 ? '∞' : `${remaining}/${lvData.total}`}
-                </span>
-                {lv !== 0 && <button className="sb-use-btn" onClick={() => useSlot(lv)}
-                  disabled={remaining <= 0} title={L ? 'Slot verwenden' : 'Use slot'}>−</button>}
-                {lv !== 0 && <button className="sb-restore-btn" onClick={() => restoreSlots(lv)}
-                  title={L ? 'Alle wiederherstellen' : 'Restore all'}>↺</button>}
+                {spontaneous ? (
+                  <>
+                    <span className={`sb-remaining ${remaining <= 0 && lv !== 0 ? 'depleted' : ''}`}>
+                      {lv === 0 ? '∞' : `${remaining}/${lvData.total}`}
+                    </span>
+                    {lv !== 0 && <button className="sb-use-btn" onClick={() => consumeSlot(lv)}
+                      disabled={remaining <= 0} title={L ? 'Slot verwenden' : 'Use slot'}>−</button>}
+                  </>
+                ) : (
+                  <span className="sb-prepared-summary">
+                    {entries.length} {L ? 'vorbereitet' : 'prepared'} · {usedPrepared} {L ? 'verbraucht' : 'used'}
+                  </span>
+                )}
+                <button className="sb-restore-btn" onClick={() => restoreSlots(lv)}
+                  title={spontaneous ? (L ? 'Alle Slots wiederherstellen' : 'Restore all slots') : (L ? 'Alle Vorbereitungen zurücksetzen' : 'Reset all preparations')}>↺</button>
                 <label className="sb-total-label">
                   Max:
                   <input className="sb-total-input" type="number" min={0} max={20}
@@ -378,24 +430,31 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
             {/* Prepared / known spells */}
             {lvData.prepared?.length > 0 && (
               <div className="sb-prepared">
-                {lvData.prepared.map(spellId => {
-                  const spell = SPELL_MAP[spellId]
-                  const isBloodline = bloodlineIds.includes(spellId)
+                {entries.map(entry => {
+                  const spell = SPELL_MAP[entry.spell_id]
+                  const isBloodline = bloodlineIds.includes(entry.spell_id)
                   return (
-                    <div key={spellId} className="sb-spell">
+                    <div key={entry.id} className={`sb-spell${entry.used && !spontaneous ? ' used' : ''}`}>
+                      {!spontaneous && (
+                        <button className={`sb-prepared-toggle${entry.used ? ' active' : ''}`}
+                          onClick={() => togglePrepared(lv, entry.id)}
+                          title={entry.used ? (L ? 'Als verfügbar markieren' : 'Mark as available') : (L ? 'Als gewirkt markieren' : 'Mark as used')}>
+                          {entry.used ? '✓' : '□'}
+                        </button>
+                      )}
                       <button
                         className={`sb-bloodline-btn${isBloodline ? ' active' : ''}`}
-                        onClick={() => toggleBloodline(lv, spellId)}
+                        onClick={() => toggleBloodline(lv, entry.spell_id)}
                         title={isBloodline ? (L ? 'Bonuszauber — zählt nicht gegen bekannte Zauber (Blutlinie/Mysterium/Patron)' : 'Bonus spell — not counted against spells known') : (L ? 'Als Bonuszauber markieren (Blutlinie/Mysterium/Patron)' : 'Mark as bonus spell')}>
                         ✦
                       </button>
                       <span className="sb-spell-name-wrap">
-                        <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? spellId}</span>
+                        <span className="sb-spell-name">{(spell ? ((L ? spell.name.de : spell.name.en) ?? spell.name.de) : null) ?? entry.spell_id}</span>
                         {spell && <RefLink name={spell.name.de} page={spell.page} />}
                       </span>
                       {isBloodline && <span className="sb-bonus-tag">{L ? 'Bonus' : 'Bonus'}</span>}
                       {spell?.school && <span className="sb-spell-school">{spell.school}</span>}
-                      <button className="sb-remove-btn" onClick={() => removeSpell(lv, spellId)}>✕</button>
+                      <button className="sb-remove-btn" onClick={() => removeSpell(lv, entry.id)}>✕</button>
                     </div>
                   )
                 })}
@@ -502,13 +561,22 @@ export function SpellsTab({ char, setSpellbook, attrs, lang }) {
   function handlePrepare(spell, level, classId) {
     setSpellbook(prev => {
       const lvData = { total: 0, used: 0, prepared: [], ...(prev.levels[level] ?? {}) }
-      if (!lvData.prepared.includes(spell.id)) {
-        lvData.prepared = [...lvData.prepared, spell.id]
+      const entries = preparedEntries(lvData.prepared, level)
+      const aliases = SPELLBOOK_TO_CHAR_ID[prev.class_id || classId] ?? []
+      const actualClassId = (char.meta.classes ?? []).find(entry =>
+        entry.id === (prev.class_id || classId) || aliases.includes(entry.id)
+      )?.id ?? (prev.class_id || classId)
+      const spontaneous = isSpontaneousCaster(actualClassId)
+      if (spontaneous) {
+        if (entries.some(entry => entry.spell_id === spell.id)) return prev
+        entries.push({ id: newPreparedId(), spell_id: spell.id, used: false })
+      } else {
+        entries.push({ id: newPreparedId(), spell_id: spell.id, used: false })
       }
       return {
         ...prev,
         class_id: prev.class_id || classId,
-        levels: { ...prev.levels, [level]: lvData }
+        levels: { ...prev.levels, [level]: { ...lvData, prepared: entries } }
       }
     })
   }

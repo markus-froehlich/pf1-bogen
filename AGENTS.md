@@ -97,6 +97,10 @@ rekonstruieren.
 - `docs/BESTANDSAUFNAHME.md` — Gesamtanalyse (Prüf-Checkpoint, offene Fragen).
 - `docs/sections/01..05` — Detailanalysen je Themenblock.
 
+## Git-Arbeitsabschluss
+- Nach jeder abgeschlossenen, verifizierten Änderung committen. Nicht zusammenhängende
+  Nutzeränderungen bleiben dabei unangetastet.
+
 ## Verifikation (Pflicht für die Engine)
 Engine-Ausgaben gegen `extraction/sheets_values/*.csv` testen: gleiche Eingaben
 müssen dieselben Werte liefern. Beispiel-Charakter im Bogen: Volk=Mensch,

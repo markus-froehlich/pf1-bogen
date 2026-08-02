@@ -113,7 +113,12 @@ function indexEntry(id, char) {
   const classes = (char.meta?.classes ?? [])
     .filter(c => c.id)
     .map(c => ({ id: c.id, level: Number(c.level) || 1 }))
-  return { id, name: char.meta?.name || '—', race: char.meta?.race || '', classes, campaign: char.bio?.campaign || '', player: char.meta?.player || '', updated: Date.now() }
+  return {
+    id, name: char.meta?.name || '—', race: char.meta?.race || '', classes,
+    campaign: char.bio?.campaign || '', player: char.meta?.player || '',
+    kind: char.companion?.kind || 'character', ownerId: char.companion?.ownerId || null,
+    speciesId: char.companion?.speciesId || null, updated: Date.now()
+  }
 }
 
 export function useCharacters(profile = 'player') {
@@ -268,6 +273,32 @@ export function useCharacters(profile = 'player') {
     })
   }, [])
 
+  const newCompanion = useCallback((species, ownerId = activeId) => {
+    const id = genId()
+    const owner = loadChar(ownerId) ?? DEFAULT_CHAR
+    const ownerLevel = (owner.meta?.classes ?? [])
+      .filter(c => c.id === 'druide')
+      .reduce((sum, c) => sum + (Number(c.level) || 0), 0)
+    const name = species?.name?.de || species?.name || 'Tiergefährte'
+    const c = deepMerge(DEFAULT_CHAR, {
+      meta: { name, race: 'Tiergefährte', level: ownerLevel },
+      companion: {
+        kind: 'animal_companion', ownerId, speciesId: species?.id || '',
+        levelSource: 'owner_druid', level: Math.max(1, ownerLevel)
+      },
+      notes: `Tierart: ${name}\nBesitzer: ${owner.meta?.name || 'Druide'}`,
+    })
+    saveChar(id, c)
+    const entry = indexEntry(id, c)
+    setState(prev => {
+      const newIndex = [...prev.index, entry]
+      saveIndex(newIndex)
+      localStorage.setItem(ACTIVE_KEY, id)
+      return { index: newIndex, activeId: id, char: c }
+    })
+    return id
+  }, [activeId])
+
   const switchChar = useCallback((id) => {
     setState(prev => {
       if (id === prev.activeId) return prev
@@ -387,6 +418,7 @@ export function useCharacters(profile = 'player') {
     char, index, activeId,
     update, setAttr, setBuff, setMeta, setCombatMisc,
     setClass, setGear, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
+    newCompanion,
     setNotes, setSpellbook, setContacts, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
