@@ -20,10 +20,23 @@ const normalise = value => String(value ?? '').trim().toLowerCase()
 function baseAttributes(species) {
   const attrs = { ST: 10, GE: 10, KO: 10, IN: 10, WE: 10, CH: 10 }
   for (const key of Object.keys(attrs)) {
-    const match = species.base.match(new RegExp(`${key}\\s*(\\d+)`, 'i'))
+    const match = species.base.match(new RegExp(`${key}\\s*,?\\s*(\\d+)`, 'i'))
     if (match) attrs[key] = Number(match[1])
   }
+  // A dash represents a mindless creature in the source data, not INT 10.
+  if (/IN\s*[-—]/i.test(species.base)) attrs.IN = 0
   return attrs
+}
+
+function baseMovement(species) {
+  const base = species.base ?? ''
+  const movement = {}
+  if (species.speed) movement.speed_walk = Number(species.speed)
+  for (const [key, word] of [['speed_swim', 'Schwimmen'], ['speed_fly', 'Fliegen'], ['speed_climb', 'Klettern']]) {
+    const match = base.match(new RegExp(`${word}\\s*(\\d+)\\s*m`, 'i'))
+    if (match) movement[key] = Number(match[1])
+  }
+  return movement
 }
 
 function addTextBonuses(attrs, text) {
@@ -48,7 +61,7 @@ export function getCompanionRules(char, level) {
   const attrs = baseAttributes(species)
   let size = species.size
   let speciesNaturalArmor = 0
-  const baseNatural = species.base.match(/nat RK\s*\+?(\d+)/i)
+  const baseNatural = species.base.match(/nat[.\s]*RK\s*\+?(\d+)/i)
   if (baseNatural) speciesNaturalArmor += Number(baseNatural[1])
 
   for (let i = 0; i < safeLevel; i++) {
@@ -60,19 +73,23 @@ export function getCompanionRules(char, level) {
     if (sizeMatch) size = sizeMatch[1].replace(/^./, c => c.toUpperCase())
   }
 
-  const defaults = species.id === 'animal_wolf'
-    ? { statChoices: ['ST', 'ST'], abilityChoices: ['KO'] }
-    : { statChoices: [], abilityChoices: [] }
-  const choices = { ...defaults, ...(char.companion?.choices ?? {}) }
-  for (let i = 0; i < statBonuses; i++) attrs[choices.statChoices?.[i] === 'GE' ? 'GE' : 'ST'] += 1
+  const choices = char.companion?.choices ?? { statChoices: [], abilityChoices: [] }
+  for (let i = 0; i < statBonuses; i++) {
+    const choice = choices.statChoices?.[i]
+    if (choice === 'ST' || choice === 'GE') attrs[choice] += 1
+  }
   const abilityCount = [4, 9, 14, 20].filter(lv => lv <= safeLevel).length
-  for (let i = 0; i < abilityCount; i++) attrs[choices.abilityChoices?.[i] ?? 'ST'] += 1
+  for (let i = 0; i < abilityCount; i++) {
+    const choice = choices.abilityChoices?.[i]
+    if (['ST', 'GE', 'KO', 'IN', 'WE', 'CH'].includes(choice)) attrs[choice] += 1
+  }
 
   const [sizeModRK, sizeModKMB] = SIZE_MODS[normalise(size)] ?? [0, 0]
+  const movement = baseMovement(species)
   return {
     species, level: safeLevel, hd, tricks, attrs, size, speed: species.speed,
     choices, statBonusCount: statBonuses, abilityIncreaseCount: abilityCount,
     baseValues: { bab, ref, will, fort, totalLevel: safeLevel },
-    combatMisc: { speed_walk: species.speed, size_mod_rk: sizeModRK, size_mod_kmb: sizeModKMB, rk_natural: naturalArmor + speciesNaturalArmor + naturalArmorFeatCount(char.feats) },
+    combatMisc: { ...movement, size_mod_rk: sizeModRK, size_mod_kmb: sizeModKMB, rk_natural: naturalArmor + speciesNaturalArmor + naturalArmorFeatCount(char.feats) },
   }
 }

@@ -22,7 +22,8 @@ export function CompanionAdvancementPanel({ rules, onChoicesChange, lang }) {
       {Array.from({ length: rules.statBonusCount }, (_, index) => (
         <label key={`stat-${index}`}>
           <span>{L ? `Stufe ${index === 0 ? 3 : 6}: ST oder GE` : `Level ${index === 0 ? 3 : 6}: STR or DEX`}</span>
-          <select value={choices.statChoices?.[index] ?? 'ST'} onChange={e => setChoice('statChoices', index, e.target.value)}>
+          <select value={choices.statChoices?.[index] ?? ''} onChange={e => setChoice('statChoices', index, e.target.value)}>
+            <option value="">{L ? 'Auswählen…' : 'Choose…'}</option>
             <option value="ST">ST</option>
             <option value="GE">GE</option>
           </select>
@@ -31,7 +32,8 @@ export function CompanionAdvancementPanel({ rules, onChoicesChange, lang }) {
       {Array.from({ length: rules.abilityIncreaseCount }, (_, index) => (
         <label key={`ability-${index}`}>
           <span>{L ? `Stufe ${[4, 9, 14, 20][index]}: Attribut +1` : `Level ${[4, 9, 14, 20][index]}: Ability +1`}</span>
-          <select value={choices.abilityChoices?.[index] ?? 'ST'} onChange={e => setChoice('abilityChoices', index, e.target.value)}>
+          <select value={choices.abilityChoices?.[index] ?? ''} onChange={e => setChoice('abilityChoices', index, e.target.value)}>
+            <option value="">{L ? 'Auswählen…' : 'Choose…'}</option>
             {ATTRS.map(attr => <option key={attr} value={attr}>{attr}</option>)}
           </select>
         </label>
