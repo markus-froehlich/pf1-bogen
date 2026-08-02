@@ -51,7 +51,7 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
 
   function summaryStr(bonuses) {
     return BUFF_STATS
-      .filter(s => Number(bonuses[s.key]) !== 0)
+      .filter(s => Number(bonuses[s.key] ?? 0) !== 0)
       .map(s => `${s.de} ${Number(bonuses[s.key]) > 0 ? '+' : ''}${bonuses[s.key]}`)
       .join(' · ')
   }
