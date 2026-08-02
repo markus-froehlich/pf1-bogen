@@ -138,7 +138,7 @@ export default function App() {
 
   const {
     char, index, activeId,
-    setAttr, setMeta, setCombatMisc, setClass, setGear, setSkill, setWeaponSlot, setHp,
+    setAttr, setMeta, setCombatMisc, setClass, setGear, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
     setNotes, setSpellbook, setContacts, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
