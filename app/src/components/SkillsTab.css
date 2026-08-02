@@ -128,6 +128,48 @@
 .sk-total.neg { color: var(--bad); }
 .sk-total.sk-untrained { color: var(--text-muted); font-weight: 400; }
 
+/* Multi-instance skills (Handwerk/Beruf): one skill can be taken several
+ * times, once per specialty, each with its own name + independent ranks. */
+.skill-multi-group { display: flex; flex-direction: column; }
+.skill-row-multi {
+  grid-template-columns: 28px 1fr 32px 36px 36px 38px 18px;
+}
+.sk-multi-name {
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--border);
+  color: var(--text);
+  font-size: 0.78rem;
+  padding: 1px 0;
+}
+.sk-multi-name:focus { outline: none; border-bottom-color: var(--accent); }
+.sk-multi-name::placeholder { color: var(--text-muted); }
+.sk-multi-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+.sk-multi-remove:active { color: var(--bad); }
+.sk-multi-add {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
 .fk-budget {
   display: flex;
   align-items: center;
