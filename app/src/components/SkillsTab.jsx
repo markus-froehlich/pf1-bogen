@@ -66,12 +66,70 @@ export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, 
       <div className="skills-list">
         {SKILLS.map(def => {
           const isClass = classSkillSet.has(def.id)
-          const isClassOverride = char.skills?.[def.id]?.is_class ?? false
-          const cv = computed[def.id]
-          const ranks = char.skills?.[def.id]?.ranks ?? 0
           const rowCondKey = def.id === 'wahrnehmung' ? 'perception_penalty'
             : (def.ability === 'ST' || def.ability === 'GE') ? 'stge_skill_penalty' : null
           const rowCondInfo = rowCondKey ? condAnnot(condMods, rowCondKey) : null
+
+          if (def.multi) {
+            const stored = char.skills?.[def.id]
+            const instances = Array.isArray(stored) && stored.length > 0
+              ? stored
+              : Array.from({ length: def.default_slots ?? 1 }, () => ({ name: '', ranks: 0, misc: 0 }))
+            const cvList = computed[def.id]
+            return (
+              <div key={def.id} className="skill-multi-group">
+                {instances.map((entry, idx) => {
+                  const cv = cvList[idx]
+                  const ranks = entry.ranks ?? 0
+                  return (
+                    <div key={idx} className={`skill-row skill-row-multi ${isClass ? 'is-class' : ''}`}>
+                      <span className="sk-cs-btn" title={L ? 'Klassenfertigkeit' : 'Class skill'}>
+                        {isClass ? '◆' : '◇'}
+                      </span>
+                      <span className="sk-name-wrap">
+                        <input
+                          className="sk-multi-name"
+                          type="text"
+                          placeholder={idx === 0 ? (def.name[lang] ?? def.name.de) : `${def.name[lang] ?? def.name.de} …`}
+                          value={entry.name ?? ''}
+                          onChange={e => setMultiSkill(def.id, idx, 'name', e.target.value, def.default_slots ?? 1)}
+                        />
+                        <CondTag info={rowCondInfo} lang={lang} />
+                      </span>
+                      <span className="sk-ability">{def.ability}</span>
+                      <input
+                        className="sk-ranks"
+                        type="number" min={0} max={20}
+                        value={ranks}
+                        onChange={e => setMultiSkill(def.id, idx, 'ranks', e.target.value, def.default_slots ?? 1)}
+                      />
+                      <input
+                        className="sk-misc"
+                        type="number"
+                        value={entry.misc ?? 0}
+                        onChange={e => setMultiSkill(def.id, idx, 'misc', e.target.value, def.default_slots ?? 1)}
+                      />
+                      <span className={`sk-total ${cv.total >= 0 ? 'pos' : 'neg'}`}>
+                        {fmtBonus(cv.total)}
+                      </span>
+                      {instances.length > 1 && (
+                        <button className="sk-multi-remove" title={L ? 'Zeile entfernen' : 'Remove row'}
+                          onClick={() => removeSkillSlot(def.id, idx)}>×</button>
+                      )}
+                    </div>
+                  )
+                })}
+                <button className="sk-multi-add" onClick={() => addSkillSlot(def.id, def.default_slots ?? 1)}>
+                  + {L ? `Weitere ${def.name.de}` : `Add ${def.name.en ?? def.name.de}`}
+                  <SkillLink name={def.name.de} />
+                </button>
+              </div>
+            )
+          }
+
+          const isClassOverride = char.skills?.[def.id]?.is_class ?? false
+          const cv = computed[def.id]
+          const ranks = char.skills?.[def.id]?.ranks ?? 0
 
           return (
             <div key={def.id} className={`skill-row ${isClass ? 'is-class' : ''}`}>
