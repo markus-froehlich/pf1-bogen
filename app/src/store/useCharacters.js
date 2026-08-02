@@ -196,16 +196,28 @@ export function useCharacters(profile = 'player') {
     patchChar(prev => ({ ...prev, hp: { ...(prev.hp ?? {}), [field]: Number(value) || 0 } }))
   }, [patchChar])
 
+  // Imports always create a NEW character rather than overwriting the
+  // currently active one — accidentally overwriting an existing character
+  // via import is destructive and easy to trigger by mistake. Unwanted
+  // characters can just be deleted afterwards via the character drawer.
   const importChar = useCallback((data) => {
     try {
-      // Support both old format (raw char object) and new format ({version, char, homebrew})
       const charData = data?.char ?? data
       const hbData   = data?.homebrew ?? null
       if (hbData) localStorage.setItem(HOMEBREW_KEY, JSON.stringify(hbData))
-      patchChar(() => deepMerge(DEFAULT_CHAR, charData))
+      const merged = deepMerge(DEFAULT_CHAR, charData)
+      const id = genId()
+      saveChar(id, merged)
+      const entry = indexEntry(id, merged)
+      setState(prev => {
+        const newIndex = [...prev.index, entry]
+        saveIndex(newIndex)
+        localStorage.setItem(ACTIVE_KEY, id)
+        return { index: newIndex, activeId: id, char: merged }
+      })
       return { ok: true, hasHomebrew: Boolean(hbData) }
     } catch { return { ok: false } }
-  }, [patchChar])
+  }, [])
 
   // ── Multi-character management ────────────────────────────────────────────
   const newChar = useCallback(() => {
