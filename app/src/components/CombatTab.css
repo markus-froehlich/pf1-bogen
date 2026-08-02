@@ -152,6 +152,7 @@
   background: none; border: 1px solid #c9a96e; border-radius: 5px;
   color: #c9a96e; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; cursor: pointer;
 }
+.rk-derived { display: block; min-width: 38px; padding: 6px 8px; background: var(--surface3); border: 1px solid var(--border); border-radius: 5px; color: var(--text-muted); font-weight: 700; text-align: center; }
 
 .ct-section {
   background: var(--surface2);

@@ -278,7 +278,10 @@ export default function App() {
   const combat     = computeCombat(rulesChar, computed, baseValues, buffTotals)
   const condMods   = getConditionMods(char.conditions)
   const isDruid = !isCompanion && (char.meta?.classes ?? []).some(entry => entry.id === 'druide' && Number(entry.level) > 0)
-  const visibleTabs = isDruid ? [...TABS, { id: 'companions', de: 'Gefährten', en: 'Companions' }] : TABS
+  const visibleTabs = isDruid
+    ? [...TABS, { id: 'companions', de: 'Gefährten', en: 'Companions' }]
+    : isCompanion ? TABS.filter(tab => tab.id !== 'spells') : TABS
+  const visibleAttrOrder = isCompanion ? attrOrder.filter(id => ['attrs', 'bio'].includes(id)) : attrOrder
 
   const gear = char.gear ?? {}
   const armorCheckPenalty = (ARMOR_MAP[gear.armor_id]?.check_penalty ?? 0)
@@ -297,7 +300,7 @@ export default function App() {
   // Fertigkeitspunkte-Budget
   const inMod = computed.IN.mod
   const raceBonus = RACE_MAP_APP[char.meta.race]?.extra_skill_points_per_level ?? 0
-  const totalFk = (char.meta.classes ?? []).reduce((sum, entry) => {
+  const totalFk = companionRules ? companionRules.hd : (char.meta.classes ?? []).reduce((sum, entry) => {
     if (!entry.id) return sum
     const sppl = CLASS_MAP_APP[entry.id]?.skill_points_per_level ?? 2
     const perLevel = Math.max(1, sppl + inMod) + raceBonus
@@ -467,10 +470,10 @@ export default function App() {
       <main className="main-scroll">
         {tab === 'attr' && (
           <div className="section">
-            {attrOrder.map((id, idx) => {
+            {visibleAttrOrder.map((id, idx) => {
               const L2 = lang === 'de'
               const isCollapsed = attrCollapsed.has(id)
-              const count = attrOrder.length
+              const count = visibleAttrOrder.length
               const headings = {
                 race:  L2 ? 'Volk'      : 'Race',
                 class: L2 ? 'Klasse(n)' : 'Class(es)',
@@ -555,11 +558,11 @@ export default function App() {
               collapsedSections={combatCollapsed}
               onToggleCollapse={toggleCombatCollapse}
               extraPanels={{
-                features:   <ClassFeaturesPanel char={char} lang={lang} hideTitle />,
+                ...(!isCompanion && { features: <ClassFeaturesPanel char={char} lang={lang} hideTitle /> }),
                 conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
                 buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
-                resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
-                weapons:    <WeaponsTab char={char} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} />,
+                ...(!isCompanion && { resources: <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle /> }),
+                weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} />,
               }}
               extraLabels={lang === 'de' ? {
                 features:   'Klassenmerkmale',
@@ -574,6 +577,7 @@ export default function App() {
                 resources:  'Resources',
                 weapons:    'Weapons',
               }}
+              isCompanion={isCompanion}
             />
           </div>
         )}

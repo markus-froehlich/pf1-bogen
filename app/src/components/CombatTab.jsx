@@ -237,7 +237,7 @@ function SectionHead({ id, label, idx, count, collapsed, onToggle, onMove }) {
   )
 }
 
-export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {} }) {
+export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false }) {
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
   const gear = char.gear ?? {}
@@ -383,19 +383,19 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
             return (
               <div className="size-row">
                 <span className="size-label">{L ? 'Größe' : 'Size'}</span>
-                <select
-                  className="size-select"
-                  value={curKey}
-                  onChange={e => {
+                {isCompanion ? (
+                  <span className="size-select" title={L ? 'Wird aus Tierart und Gefährtenstufe berechnet' : 'Calculated from species and companion level'}>
+                    {L ? SIZE_MODS[curKey].de : SIZE_MODS[curKey].en}
+                  </span>
+                ) : (
+                  <select className="size-select" value={curKey} onChange={e => {
                     const m = SIZE_MODS[e.target.value]
-                    setCombatMisc('size_mod_rk',  m.rk)
+                    setCombatMisc('size_mod_rk', m.rk)
                     setCombatMisc('size_mod_kmb', m.kmb)
-                  }}
-                >
-                  {Object.entries(SIZE_MODS).map(([k, v]) => (
-                    <option key={k} value={k}>{L ? v.de : v.en}</option>
-                  ))}
-                </select>
+                  }}>
+                    {Object.entries(SIZE_MODS).map(([k, v]) => <option key={k} value={k}>{L ? v.de : v.en}</option>)}
+                  </select>
+                )}
                 <span className="size-mods">
                   RK {fmtBonus(SIZE_MODS[curKey].rk)} · KMB {fmtBonus(SIZE_MODS[curKey].kmb)}
                 </span>
@@ -514,10 +514,11 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               <label key={key} className="rk-field">
                 <span>{lbl}</span>
                 <div className="rk-field-val">
-                  <input type="number"
-                    value={misc[key] ?? 0}
-                    onChange={e => setCombatMisc(key, e.target.value)}
-                  />
+                  {isCompanion && key === 'rk_natural' ? (
+                    <span className="rk-derived" title={L ? 'Tierart, Gefährtenstufe und Talente' : 'Species, companion level, and feats'}>{misc[key] ?? 0}</span>
+                  ) : (
+                    <input type="number" value={misc[key] ?? 0} onChange={e => setCombatMisc(key, e.target.value)} />
+                  )}
                   {buffVal !== 0 && (
                     <span className="rk-buff-badge" title={L ? 'Aus aktivem Buff' : 'From active buff'}>
                       +{buffVal}
