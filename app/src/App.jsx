@@ -270,7 +270,9 @@ export default function App() {
   const rulesChar = companionRules ? {
     ...char,
     attributes: companionRules.attrs,
-    combat_misc: { ...char.combat_misc, ...companionRules.combatMisc },
+    // The species supplies defaults, but a player may choose the alternative
+    // companion advancement and therefore needs to override size or natural AC.
+    combat_misc: { ...companionRules.combatMisc, ...char.combat_misc },
     meta: { ...char.meta, level: companionRules.level, race: companionRules.size },
   } : char
   const buffTotals = computeBuffTotals(char.active_buffs ?? [])
