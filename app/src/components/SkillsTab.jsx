@@ -22,7 +22,7 @@ function SkillLink({ name }) {
   return <RefLink className="skill-ref-link" href={url} title="prd.5footstep.de">↗</RefLink>
 }
 
-export function SkillsTab({ char, attrs, setSkill, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, activeBuffs = [], lang }) {
+export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, activeBuffs = [], lang }) {
   const L = lang === 'de'
 
   const condMods = useMemo(() => getConditionMods(char.conditions), [char.conditions])
