@@ -95,6 +95,8 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Migration von Legacy `pf1_character` automatisch; `pf1_chars_index` + `pf1_char_<id>`;
   `CharacterDrawer.jsx` — Schublade mit Liste, Wechsel, Löschen, Neu; ☰ mit Zahl-Badge;
   immer mind. 1 Charakter; `newChar()` / `switchChar(id)` / `deleteChar(id)`
+- **`./deploy "Beschreibung"`** — baut die App, committet lokale Änderungen und pusht
+  `main`; der bestehende GitHub-Pages-Workflow übernimmt danach das Deployment.
 
 - **Notizen-Tab** — freies Textarea pro Charakter (`char.notes`), `setNotes()` in Store
 - **Zauberbuch-Modus** — Zauber-Tab: Mode-Toggle Nachschlagen/Zauberbuch;

@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# deploy — build, commit, push. GitHub Actions deploys GitHub Pages after the push.
+#
+# Usage: ./deploy "Short description of the change"
+
+set -euo pipefail
+
+DESC="${1:-}"
+if [[ -z "$DESC" ]]; then
+  echo 'Usage: ./deploy "Short description of the change"' >&2
+  exit 1
+fi
+
+cd "$(dirname "$0")"
+
+if [[ ! -d .git ]]; then
+  echo "Error: no Git repository in $(pwd)" >&2
+  exit 1
+fi
+
+BRANCH=$(git branch --show-current)
+if [[ "$BRANCH" != "main" ]]; then
+  echo "Error: deploy only runs from main (current: ${BRANCH:-detached})" >&2
+  exit 1
+fi
+
+echo '==> Build app'
+( cd app && npm run build )
+
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo '==> Commit local changes'
+  git add -A
+  git commit -m "$DESC"
+else
+  echo '==> Nothing new to commit'
+fi
+
+echo '==> Push main'
+git push origin main
+
+echo
+echo 'Pushed. GitHub Actions now builds and deploys GitHub Pages automatically.'

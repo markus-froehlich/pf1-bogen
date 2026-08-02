@@ -17,3 +17,6 @@ app/dist/
 
 # OS
 .DS_Store
+
+# Local Codex workspace metadata
+.codex/
