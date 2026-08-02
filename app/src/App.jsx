@@ -515,7 +515,9 @@ export default function App() {
                   {!isCollapsed && (
                     <>
                       <CompanionAdvancementPanel rules={companionRules} lang={lang}
-                        onChoicesChange={choices => update({ companion: { choices } })} />
+                        tricks={char.companion?.tricks ?? []}
+                        onChoicesChange={choices => update({ companion: { choices } })}
+                        onTricksChange={tricks => update({ companion: { tricks } })} />
                       <div className="attr-grid">
                         {ATTRS.map(a => (
                           <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} readOnly={Boolean(companionRules)} />

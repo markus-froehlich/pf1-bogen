@@ -2,7 +2,7 @@ import './CompanionAdvancementPanel.css'
 
 const ATTRS = ['ST', 'GE', 'KO', 'IN', 'WE', 'CH']
 
-export function CompanionAdvancementPanel({ rules, onChoicesChange, lang }) {
+export function CompanionAdvancementPanel({ rules, tricks = [], onChoicesChange, onTricksChange, lang }) {
   if (!rules) return null
   const L = lang === 'de'
   const choices = rules.choices ?? { statChoices: [], abilityChoices: [] }
@@ -11,6 +11,11 @@ export function CompanionAdvancementPanel({ rules, onChoicesChange, lang }) {
     const next = [...(choices[group] ?? [])]
     next[index] = value
     onChoicesChange({ ...choices, [group]: next })
+  }
+  function setTrick(index, value) {
+    const next = [...tricks]
+    next[index] = value
+    onTricksChange(next)
   }
 
   return (
@@ -38,6 +43,16 @@ export function CompanionAdvancementPanel({ rules, onChoicesChange, lang }) {
           </select>
         </label>
       ))}
+      {rules.tricks > 0 && (
+        <div className="companion-tricks">
+          <div className="companion-tricks-label">{L ? `Bonustricks (${tricks.filter(Boolean).length}/${rules.tricks})` : `Bonus tricks (${tricks.filter(Boolean).length}/${rules.tricks})`}</div>
+          {Array.from({ length: rules.tricks }, (_, index) => (
+            <input key={`trick-${index}`} value={tricks[index] ?? ''}
+              onChange={e => setTrick(index, e.target.value)}
+              placeholder={L ? `Trick ${index + 1}` : `Trick ${index + 1}`} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
