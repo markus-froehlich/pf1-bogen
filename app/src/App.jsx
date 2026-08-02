@@ -567,6 +567,7 @@ export default function App() {
 
         {tab === 'skills' && (
           <SkillsTab char={char} attrs={computed} setSkill={setSkill}
+            setMultiSkill={setMultiSkill} addSkillSlot={addSkillSlot} removeSkillSlot={removeSkillSlot}
             armorCheckPenalty={armorCheckPenalty}
             totalFk={totalFk} usedFk={usedFk}
             skillsBuff={buffTotals.skills_all ?? 0}
