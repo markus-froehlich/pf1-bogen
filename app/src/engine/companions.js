@@ -71,6 +71,7 @@ export function getCompanionRules(char, level) {
   const [sizeModRK, sizeModKMB] = SIZE_MODS[normalise(size)] ?? [0, 0]
   return {
     species, level: safeLevel, hd, tricks, attrs, size, speed: species.speed,
+    choices, statBonusCount: statBonuses, abilityIncreaseCount: abilityCount,
     baseValues: { bab, ref, will, fort, totalLevel: safeLevel },
     combatMisc: { speed_walk: species.speed, size_mod_rk: sizeModRK, size_mod_kmb: sizeModKMB, rk_natural: naturalArmor + speciesNaturalArmor + naturalArmorFeatCount(char.feats) },
   }

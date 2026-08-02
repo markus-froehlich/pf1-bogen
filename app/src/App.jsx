@@ -26,6 +26,7 @@ import { InventoryTab } from './components/InventoryTab.jsx'
 import { BioSection } from './components/BioSection.jsx'
 import { BuffTracker } from './components/BuffTracker.jsx'
 import { CompanionsTab } from './components/CompanionsTab.jsx'
+import { CompanionAdvancementPanel } from './components/CompanionAdvancementPanel.jsx'
 import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
@@ -138,7 +139,7 @@ export default function App() {
   }
 
   const {
-    char, index, activeId,
+    char, index, activeId, update,
     setAttr, setMeta, setCombatMisc, setClass, setGear, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
     setNotes, setSpellbook, setContacts, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
@@ -512,11 +513,15 @@ export default function App() {
                 <section key="attrs" className="ct-section">
                   {attrHead}
                   {!isCollapsed && (
-                    <div className="attr-grid">
-                      {ATTRS.map(a => (
-                        <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} readOnly={Boolean(companionRules)} />
-                      ))}
-                    </div>
+                    <>
+                      <CompanionAdvancementPanel rules={companionRules} lang={lang}
+                        onChoicesChange={choices => update({ companion: { choices } })} />
+                      <div className="attr-grid">
+                        {ATTRS.map(a => (
+                          <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} readOnly={Boolean(companionRules)} />
+                        ))}
+                      </div>
+                    </>
                   )}
                 </section>
               )
