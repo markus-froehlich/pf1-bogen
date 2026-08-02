@@ -345,7 +345,14 @@ export default function App() {
                           reader.onload = ev => {
                             try {
                               const result = importChar(JSON.parse(ev.target.result))
-                              if (result?.hasHomebrew) reloadHB()
+                              if (result?.ok) {
+                                if (result.hasHomebrew) reloadHB()
+                                alert(lang === 'de'
+                                  ? 'Als neuer Charakter importiert (bestehende Charaktere wurden nicht verändert).'
+                                  : 'Imported as a new character (existing characters were not changed).')
+                              } else {
+                                alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file')
+                              }
                             }
                             catch { alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file') }
                           }
