@@ -539,6 +539,15 @@ export default function App() {
                   {!isCollapsed && (
                     <>
                       <BioSection char={char} setBio={setBio} lang={lang} />
+                      {isDruid && (
+                        <CompanionsTab
+                          index={index}
+                          ownerId={activeId}
+                          onCreate={species => newCompanion(species, activeId)}
+                          onOpen={id => { switchChar(id); setTab('attr') }}
+                          lang={lang}
+                        />
+                      )}
                       <ClassFeaturesPanel char={char} lang={lang} />
                     </>
                   )}
@@ -587,17 +596,6 @@ export default function App() {
               isCompanion={isCompanion}
               companionHd={companionRules?.hd ?? null}
             />
-            {isDruid && (
-              <div className="section">
-                <CompanionsTab
-                  index={index}
-                  ownerId={activeId}
-                  onCreate={species => newCompanion(species, activeId)}
-                  onOpen={id => { switchChar(id); setTab('attr') }}
-                  lang={lang}
-                />
-              </div>
-            )}
           </div>
         )}
 
