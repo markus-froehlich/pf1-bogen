@@ -324,6 +324,15 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
                 onChange={e => setNlDamage?.(e.target.value)} />
             </label>
           </div>
+          <label className="hp-rolls-field">
+            <span>{L ? 'Trefferwürfel-Historie' : 'Hit-die history'}</span>
+            <input
+              type="text"
+              value={hp.rolls ?? ''}
+              onChange={e => setHp('rolls', e.target.value)}
+              placeholder={L ? 'z.B. 8 + 7 + 7 + 8 + 4 + 1; je TW +5 KO' : 'e.g. 8 + 7 + 7 + 8 + 4 + 1; +5 CON per HD'}
+            />
+          </label>
           {(baseValues?.totalLevel ?? 0) > 0 && (() => {
             const koMod   = attrs?.KO?.mod ?? 0
             const lvls    = baseValues.totalLevel

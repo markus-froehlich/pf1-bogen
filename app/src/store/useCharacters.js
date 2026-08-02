@@ -45,7 +45,7 @@ export const DEFAULT_CHAR = {
   combat_misc: {},
   gear: { armor_id: '', armor_enh: 0, shield_id: '', shield_enh: 0 },
   skills: {},
-  hp: { max: 0, current: 0, temp: 0 },
+  hp: { max: 0, current: 0, temp: 0, rolls: '' },
   weapons: [],
   notes: '',
   spellbook: { class_id: '', levels: {} },
@@ -233,7 +233,10 @@ export function useCharacters(profile = 'player') {
   }, [patchChar])
 
   const setHp = useCallback((field, value) => {
-    patchChar(prev => ({ ...prev, hp: { ...(prev.hp ?? {}), [field]: Number(value) || 0 } }))
+    patchChar(prev => ({ ...prev, hp: {
+      ...(prev.hp ?? {}),
+      [field]: field === 'rolls' ? value : (Number(value) || 0),
+    } }))
   }, [patchChar])
 
   // Imports always create a NEW character rather than overwriting the
