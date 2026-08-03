@@ -226,7 +226,7 @@ const PHONE_SECTION_LABELS = {
   Kampfwerte: 'Kampf',
   Rüstungsklasse: 'RK',
   Rettungswürfe: 'RW',
-  'Schadensreduktion & Resistenzen': 'SR',
+  'Schadensreduktion & Resistenzen': 'Schadensreduktion',
 }
 
 function SectionHead({ id, label, summary, idx, count, collapsed, onToggle, onMove }) {
