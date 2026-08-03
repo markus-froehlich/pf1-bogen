@@ -219,14 +219,24 @@ function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang }) 
 }
 
 const INTERNAL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr']
+const PHONE_SECTION_LABELS = {
+  Trefferpunkte: 'TP',
+  Kampfwerte: 'Kampf',
+  Rüstungsklasse: 'RK',
+  Rettungswürfe: 'RW',
+  'Schadensreduktion & Resistenzen': 'SR',
+}
 
 function SectionHead({ id, label, idx, count, collapsed, onToggle, onMove }) {
+  const compactLabel = PHONE_SECTION_LABELS[label]
   return (
     <div className="ct-heading-row">
       <button className="ct-collapse-btn" onClick={() => onToggle?.(id)} title={collapsed ? 'Aufklappen' : 'Zuklappen'}>
         {collapsed ? '▶' : '▼'}
       </button>
-      <h3 className="ct-heading ct-heading-clk" onClick={() => onToggle?.(id)}>{label}</h3>
+      <h3 className="ct-heading ct-heading-clk" onClick={() => onToggle?.(id)}>
+        {compactLabel ? <><span className="ct-heading-full">{label}</span><span className="ct-heading-phone">{compactLabel}</span></> : label}
+      </h3>
       {onMove && (
         <div className="ct-move-btns">
           <button className="ct-move-btn" disabled={idx === 0} onClick={() => onMove(id, -1)} title="Nach oben">↑</button>

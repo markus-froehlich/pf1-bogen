@@ -173,6 +173,13 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+.ct-heading-phone { display: none; }
+
+/* Phone only: tablets retain the full section labels. */
+@media (max-width: 600px) {
+  .ct-heading-full { display: none; }
+  .ct-heading-phone { display: inline; }
+}
 
 /* Speed section */
 .speed-main-row {
