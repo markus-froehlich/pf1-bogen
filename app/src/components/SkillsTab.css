@@ -131,9 +131,7 @@
 /* Multi-instance skills (Handwerk/Beruf): one skill can be taken several
  * times, once per specialty, each with its own name + independent ranks. */
 .skill-multi-group { display: flex; flex-direction: column; }
-.skill-row-multi.has-remove {
-  grid-template-columns: 28px 1fr 32px 36px 36px 38px 18px;
-}
+.skill-row-multi { position: relative; }
 .sk-multi-name {
   width: 100%;
   min-width: 0;
@@ -147,6 +145,11 @@
 .sk-multi-name:focus { outline: none; border-bottom-color: var(--accent); }
 .sk-multi-name::placeholder { color: var(--text-muted); }
 .sk-multi-remove {
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
   background: none;
   border: none;
   color: var(--text-muted);
