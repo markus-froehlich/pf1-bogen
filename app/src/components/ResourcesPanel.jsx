@@ -131,6 +131,16 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
   function requestRestore(id) {
     setConfirmResetId(prev => prev === id ? null : id)
   }
+  function move(id, offset) {
+    setResources(prev => {
+      const index = prev.findIndex(resource => resource.id === id)
+      const nextIndex = index + offset
+      if (index < 0 || nextIndex < 0 || nextIndex >= prev.length) return prev
+      const next = [...prev]
+      ;[next[index], next[nextIndex]] = [next[nextIndex], next[index]]
+      return next
+    })
+  }
 
   const anyUsed = resources.some(r => r.current > 0)
 
@@ -229,7 +239,7 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
       )}
 
       <div className="res-list">
-        {resources.map(r => {
+        {resources.map((r, index) => {
           const remaining = r.max - r.current
           const pct = r.max > 0 ? remaining / r.max : 1
           return (
@@ -247,6 +257,12 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
                     title={L ? 'Eine Anwendung zurückgeben' : 'Restore one use'}>+</button>
                   <button className="res-restore-btn" onClick={() => requestRestore(r.id)} disabled={r.current === 0}
                     title={L ? 'Zurücksetzen' : 'Reset'}>↺</button>
+                  <span className="res-order-controls">
+                    <button className="res-order-btn" onClick={() => move(r.id, -1)} disabled={index === 0}
+                      title={L ? 'Nach oben verschieben' : 'Move up'}>↑</button>
+                    <button className="res-order-btn" onClick={() => move(r.id, 1)} disabled={index === resources.length - 1}
+                      title={L ? 'Nach unten verschieben' : 'Move down'}>↓</button>
+                  </span>
                 </div>
               </div>
               <div className="res-bar-wrap">

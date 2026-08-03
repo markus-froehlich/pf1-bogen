@@ -208,6 +208,25 @@
 .res-restore-btn:not(:disabled):hover { color: var(--accent); border-color: var(--accent); }
 .res-use-btn:disabled, .res-add-use-btn:disabled, .res-restore-btn:disabled { opacity: 0.3; cursor: default; }
 
+.res-order-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.res-order-btn {
+  width: 18px;
+  height: 13px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.res-order-btn:not(:disabled):hover { color: var(--accent); }
+.res-order-btn:disabled { opacity: 0.2; cursor: default; }
+
 .res-counter {
   font-size: 1rem;
   font-weight: 700;
