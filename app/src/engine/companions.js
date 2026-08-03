@@ -121,7 +121,8 @@ export function getCompanionRules(char, level) {
     features: [
       { name: 'Verbindung', description: 'Der Druide kann den Gefährten als freie Aktion antreiben.' },
       { name: 'Zauber teilen', description: 'Geeignete Zauber des Druiden können auch den Gefährten betreffen.' },
-      ...['Dämmersicht', 'Geruchssinn'].filter(name => species.base.includes(name)).map(name => ({ name, description: '' })),
+      ...(species.base.includes('Dämmersicht') ? [{ name: 'Dämmersicht', description: 'Bei Dämmerlicht kann der Gefährte doppelt so weit sehen wie ein Mensch.' }] : []),
+      ...(species.base.includes('Geruchssinn') ? [{ name: 'Geruchssinn', description: 'Erkennt Kreaturen über Geruch in 9 m Entfernung (18 m gegen den Wind, 4,5 m mit dem Wind) und kann Geruchsspuren mit Überlebenskunst verfolgen.' }] : []),
       ...(safeLevel >= 3 ? [{ name: 'Entrinnen', description: 'Bei gelungenem Reflexwurf gegen halben Schaden erleidet der Gefährte keinen Schaden.' }] : []),
       ...(safeLevel >= 6 ? [{ name: 'Hingabe', description: '+4 Moralbonus auf Willenswürfe gegen Verzauberungen und Verzauberungseffekte.' }] : []),
     ],
