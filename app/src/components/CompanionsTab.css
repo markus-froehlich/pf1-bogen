@@ -2,11 +2,14 @@
 .companions-intro, .companion-create, .companion-card, .companions-empty {
   background: var(--surface2); border: 1px solid var(--border); border-radius: 9px;
 }
-.companions-intro { display: flex; align-items: center; justify-content: space-between; padding: 15px 16px; }
+.companions-intro { align-items: center; color: var(--text); cursor: pointer; display: flex; font: inherit; justify-content: space-between; padding: 15px 16px; text-align: left; width: 100%; }
+.companions-intro:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
 .companions-kicker { color: var(--accent); font-size: .58rem; font-weight: 800; letter-spacing: .1em; }
 .companions-intro h2 { margin: 4px 0 3px; font-size: 1.15rem; }
 .companions-intro p { margin: 0; color: var(--text-muted); font-size: .72rem; }
 .companions-count { color: var(--accent); font-size: 1.55rem; font-weight: 800; }
+.companions-header-end { align-items: center; display: flex; gap: 12px; }
+.companions-toggle { color: var(--text-muted); font-size: 1rem; }
 .companion-create { padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .companion-create label { color: var(--text-muted); font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
 .companion-create input { background: var(--surface3); border: 1px solid var(--border); border-radius: 6px; color: var(--text); font: inherit; font-size: .82rem; padding: 8px 10px; }
