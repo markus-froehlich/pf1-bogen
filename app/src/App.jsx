@@ -481,12 +481,26 @@ export default function App() {
                 xp:    L2 ? 'EP'        : 'XP',
                 bio:   L2 ? 'Person'    : 'Person',
               }
+              const raceName = RACE_MAP_APP[char.meta.race]?.name?.[L2 ? 'de' : 'en']
+                ?? RACE_MAP_APP[char.meta.race]?.name?.de
+                ?? char.meta.race
+                ?? '—'
+              const classSummary = (char.meta.classes ?? [])
+                .filter(entry => entry.id)
+                .map(entry => {
+                  const className = CLASS_MAP_APP[entry.id]?.name?.[L2 ? 'de' : 'en']
+                    ?? CLASS_MAP_APP[entry.id]?.name?.de
+                    ?? entry.id
+                  return `${className} ${entry.level}`
+                })
+                .join(' · ')
               const attrHead = (
                 <div className="ct-heading-row">
                   <button className="ct-collapse-btn" onClick={() => toggleAttrCollapse(id)} title={isCollapsed ? 'Aufklappen' : 'Zuklappen'}>
                     {isCollapsed ? '▶' : '▼'}
                   </button>
                   <h3 className="ct-heading ct-heading-clk" onClick={() => toggleAttrCollapse(id)}>{headings[id]}</h3>
+                  {isCollapsed && id === 'race' && <div className="ct-heading-summary">{raceName}</div>}
                   {isCollapsed && id === 'xp' && (
                     <div className="ct-heading-summary">
                       {(Number(char.xp?.current) || 0).toLocaleString(L2 ? 'de-DE' : 'en-US')} {L2 ? 'EP' : 'XP'}
@@ -509,6 +523,7 @@ export default function App() {
                   char={char} setClass={setClass} setMeta={setMeta}
                   baseValues={baseValues} lang={lang}
                   hbClasses={hb.classes} hbRaces={hb.races}
+                  collapsedSummary={classSummary}
                   collapsed={isCollapsed} onToggle={toggleAttrCollapse} onMove={moveAttr}
                   sectionIdx={idx} sectionCount={count}
                 />

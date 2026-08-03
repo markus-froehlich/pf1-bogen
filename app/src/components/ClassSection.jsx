@@ -31,7 +31,7 @@ function archUrl(className, archName, source) {
 }
 
 export function ClassSection({ char, setClass, setMeta, baseValues, lang, hbClasses = [], hbRaces = [],
-  collapsed = false, onToggle, onMove, sectionIdx = 0, sectionCount = 1 }) {
+  collapsed = false, collapsedSummary = '', onToggle, onMove, sectionIdx = 0, sectionCount = 1 }) {
   const L = lang === 'de'
   const CLASS_MAP_TAB = Object.fromEntries([...ALL_CLASSES, ...hbClasses].map(c => [c.id, c]))
   const classes = char.meta.classes ?? [{ id: '', level: 1 }]
@@ -45,7 +45,7 @@ export function ClassSection({ char, setClass, setMeta, baseValues, lang, hbClas
             {collapsed ? '▶' : '▼'}
           </button>
           <h3 className="ct-heading ct-heading-clk" onClick={() => onToggle?.('class')}>{L ? 'Klasse(n)' : 'Class(es)'}</h3>
-          {collapsed && <div className="ct-heading-summary">{L ? 'Stufe' : 'Level'} {baseValues.totalLevel}</div>}
+          {collapsed && <div className="ct-heading-summary">{collapsedSummary || `${L ? 'Stufe' : 'Level'} ${baseValues.totalLevel}`}</div>}
           {onMove && (
             <div className="ct-move-btns">
               <button className="ct-move-btn" disabled={sectionIdx === 0} onClick={() => onMove('class', -1)} title="Nach oben">↑</button>

@@ -274,3 +274,23 @@
 }
 .res-form-unit:focus { outline: none; border-color: var(--accent); }
 .res-form-unit::placeholder { color: var(--text-muted); font-style: italic; font-size: 0.72rem; }
+
+/* Small phones: keep the controls together below long resource names. */
+@media (max-width: 600px) {
+  .res-row-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+  .res-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+  .res-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .res-counter {
+    white-space: nowrap;
+  }
+}
