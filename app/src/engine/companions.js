@@ -28,6 +28,11 @@ function baseAttributes(species) {
   return attrs
 }
 
+export function getCompanionBaseAttributes(speciesOrId) {
+  const species = typeof speciesOrId === 'string' ? SPECIES[speciesOrId] : speciesOrId
+  return species ? baseAttributes(species) : null
+}
+
 function baseMovement(species) {
   const base = species.base ?? ''
   const movement = {}

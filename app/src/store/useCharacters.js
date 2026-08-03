@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { getCompanionBaseAttributes } from '../engine/companions.js'
 
 // Player profile uses legacy (unsuffixed) keys for backward compat.
 // GM profile uses _gm-suffixed keys — completely separate data.
@@ -283,8 +284,10 @@ export function useCharacters(profile = 'player') {
       .filter(c => c.id === 'druide')
       .reduce((sum, c) => sum + (Number(c.level) || 0), 0)
     const name = species?.name?.de || species?.name || 'Tiergefährte'
+    const attributes = getCompanionBaseAttributes(species) ?? DEFAULT_CHAR.attributes
     const c = deepMerge(DEFAULT_CHAR, {
       meta: { name, race: 'Tiergefährte', level: ownerLevel },
+      attributes,
       companion: {
         kind: 'animal_companion', ownerId, speciesId: species?.id || '',
         levelSource: 'owner_druid', level: Math.max(1, ownerLevel)

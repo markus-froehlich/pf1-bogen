@@ -269,9 +269,7 @@ export default function App() {
   const companionRules = isCompanion ? getCompanionRules(char, companionLevel) : null
   const rulesChar = companionRules ? {
     ...char,
-    attributes: companionRules.attrs,
-    // The species supplies defaults, but a player may choose the alternative
-    // companion advancement and therefore needs to override size or natural AC.
+    // Attributes remain manual after the species' starting values are applied.
     combat_misc: { ...companionRules.combatMisc, ...char.combat_misc },
     meta: { ...char.meta, level: companionRules.level, race: companionRules.size },
   } : char
@@ -516,11 +514,10 @@ export default function App() {
                     <>
                       <CompanionAdvancementPanel rules={companionRules} lang={lang}
                         tricks={char.companion?.tricks ?? []}
-                        onChoicesChange={choices => update({ companion: { choices } })}
                         onTricksChange={tricks => update({ companion: { tricks } })} />
                       <div className="attr-grid">
                         {ATTRS.map(a => (
-                          <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} readOnly={Boolean(companionRules)} />
+                          <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} />
                         ))}
                       </div>
                     </>

@@ -1,17 +1,9 @@
 import './CompanionAdvancementPanel.css'
 
-const ATTRS = ['ST', 'GE', 'KO', 'IN', 'WE', 'CH']
-
-export function CompanionAdvancementPanel({ rules, tricks = [], onChoicesChange, onTricksChange, lang }) {
+export function CompanionAdvancementPanel({ rules, tricks = [], onTricksChange, lang }) {
   if (!rules) return null
   const L = lang === 'de'
-  const choices = rules.choices ?? { statChoices: [], abilityChoices: [] }
 
-  function setChoice(group, index, value) {
-    const next = [...(choices[group] ?? [])]
-    next[index] = value
-    onChoicesChange({ ...choices, [group]: next })
-  }
   function setTrick(index, value) {
     const next = [...tricks]
     next[index] = value
@@ -24,20 +16,6 @@ export function CompanionAdvancementPanel({ rules, tricks = [], onChoicesChange,
         <span>{L ? 'GEFÄHRTEN-AUFSTIEGE' : 'COMPANION ADVANCEMENTS'}</span>
         <small>{L ? `Stufe ${rules.level}` : `Level ${rules.level}`}</small>
       </div>
-      {rules.statBonusCount > 0 && (
-        <div className="companion-auto-bonus">
-          {L ? `ST und GE automatisch +${rules.statBonusCount}` : `STR and DEX automatically +${rules.statBonusCount}`}
-        </div>
-      )}
-      {Array.from({ length: rules.abilityIncreaseCount }, (_, index) => (
-        <label key={`ability-${index}`}>
-          <span>{L ? `Stufe ${[4, 9, 14, 20][index]}: Attribut +1` : `Level ${[4, 9, 14, 20][index]}: Ability +1`}</span>
-          <select value={choices.abilityChoices?.[index] ?? ''} onChange={e => setChoice('abilityChoices', index, e.target.value)}>
-            <option value="">{L ? 'Auswählen…' : 'Choose…'}</option>
-            {ATTRS.map(attr => <option key={attr} value={attr}>{attr}</option>)}
-          </select>
-        </label>
-      ))}
       {rules.tricks > 0 && (
         <div className="companion-tricks">
           <div className="companion-tricks-label">{L ? `Bonustricks (${tricks.filter(Boolean).length}/${rules.tricks})` : `Bonus tricks (${tricks.filter(Boolean).length}/${rules.tricks})`}</div>

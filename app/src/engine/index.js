@@ -4,4 +4,4 @@ export { computeCombat, ARMOR_MAP, SHIELDS_MAP, registerHomebrewArmor, registerH
 export { computeSkill, computeAllSkills, buildClassSkillSet } from './skills.js'
 export { computeWeaponAttack } from './weapons.js'
 export { computeBuffTotals, BUFF_STATS } from './buffs.js'
-export { getCompanionRules } from './companions.js'
+export { getCompanionRules, getCompanionBaseAttributes } from './companions.js'
