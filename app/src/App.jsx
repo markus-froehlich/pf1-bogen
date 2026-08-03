@@ -487,6 +487,11 @@ export default function App() {
                     {isCollapsed ? '▶' : '▼'}
                   </button>
                   <h3 className="ct-heading ct-heading-clk" onClick={() => toggleAttrCollapse(id)}>{headings[id]}</h3>
+                  {isCollapsed && id === 'xp' && (
+                    <div className="ct-heading-summary">
+                      {(Number(char.xp?.current) || 0).toLocaleString(L2 ? 'de-DE' : 'en-US')} {L2 ? 'EP' : 'XP'}
+                    </div>
+                  )}
                   <div className="ct-move-btns">
                     <button className="ct-move-btn" disabled={idx === 0} onClick={() => moveAttr(id, -1)} title="Nach oben">↑</button>
                     <button className="ct-move-btn" disabled={idx === count - 1} onClick={() => moveAttr(id, 1)} title="Nach unten">↓</button>
