@@ -113,6 +113,11 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
       r.id === id ? { ...r, current: Math.min(r.max, r.current + 1) } : r
     ))
   }
+  function restoreOne(id) {
+    setResources(prev => prev.map(r =>
+      r.id === id ? { ...r, current: Math.max(0, r.current - 1) } : r
+    ))
+  }
   function restore(id) {
     setResources(prev => prev.map(r =>
       r.id === id ? { ...r, current: 0 } : r
@@ -238,6 +243,8 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
                     style={{ color: pct > 0.5 ? 'var(--good)' : pct > 0 ? '#c9a96e' : '#c96e6e' }}>
                     {remaining}/{r.max}{r.unit ? ` ${r.unit}` : ''}
                   </span>
+                  <button className="res-add-use-btn" onClick={() => restoreOne(r.id)} disabled={r.current === 0}
+                    title={L ? 'Eine Anwendung zurückgeben' : 'Restore one use'}>+</button>
                   <button className="res-restore-btn" onClick={() => requestRestore(r.id)} disabled={r.current === 0}
                     title={L ? 'Zurücksetzen' : 'Reset'}>↺</button>
                 </div>
