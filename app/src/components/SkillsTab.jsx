@@ -93,7 +93,7 @@ export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, 
                   const cv = cvList[idx]
                   const ranks = entry.ranks ?? 0
                   return (
-                    <div key={idx} className={`skill-row skill-row-multi ${isClass ? 'is-class' : ''}`}>
+                    <div key={idx} className={`skill-row skill-row-multi ${instances.length > 1 ? 'has-remove' : ''} ${isClass ? 'is-class' : ''}`}>
                       <span className="sk-cs-btn" title={L ? 'Klassenfertigkeit' : 'Class skill'}>
                         {isClass ? '◆' : '◇'}
                       </span>
