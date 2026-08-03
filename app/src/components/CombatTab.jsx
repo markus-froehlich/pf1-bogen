@@ -462,7 +462,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     )
     if (id === 'speed') return (
       <section key="speed" className="ct-section">
-        <SectionHead id="speed" label={L ? 'Bewegung' : 'Movement'} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="speed" label={L ? 'Bewegung' : 'Movement'} summary={`${L ? 'Zu Fuß' : 'Walk'} ${speedLabel}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           <div className="speed-main-row">
             <div className="speed-main-box">
