@@ -563,7 +563,7 @@ export default function App() {
               char={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
               setCombatMisc={setCombatMisc} setGear={setGear} setHp={setHp} setNlDamage={setNlDamage}
               lang={lang}
-              hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields}
+              hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields} hbWeapons={hb.weapons}
               encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
               buffTotals={buffTotals}
               activeBuffs={char.active_buffs ?? []}

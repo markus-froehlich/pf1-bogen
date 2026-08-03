@@ -3,6 +3,8 @@ import { ARMOR_MAP, SHIELDS_MAP } from '../engine/index.js'
 import armorData      from '../data/armor.json'
 import shieldsData    from '../data/shields.json'
 import racesData      from '../data/races.json'
+import weaponsData    from '../data/weapons.json'
+import { computeWeaponAttack } from '../engine/weapons.js'
 import { condAnnot, buffAnnot, BuffTag, CondTag } from './DetailTag.jsx'
 import './CombatTab.css'
 
@@ -227,7 +229,7 @@ const PHONE_SECTION_LABELS = {
   'Schadensreduktion & Resistenzen': 'SR',
 }
 
-function SectionHead({ id, label, idx, count, collapsed, onToggle, onMove }) {
+function SectionHead({ id, label, summary, idx, count, collapsed, onToggle, onMove }) {
   const compactLabel = PHONE_SECTION_LABELS[label]
   return (
     <div className="ct-heading-row">
@@ -237,6 +239,7 @@ function SectionHead({ id, label, idx, count, collapsed, onToggle, onMove }) {
       <h3 className="ct-heading ct-heading-clk" onClick={() => onToggle?.(id)}>
         {compactLabel ? <><span className="ct-heading-full">{label}</span><span className="ct-heading-phone">{compactLabel}</span></> : label}
       </h3>
+      {collapsed && summary && <div className="ct-heading-summary">{summary}</div>}
       {onMove && (
         <div className="ct-move-btns">
           <button className="ct-move-btn" disabled={idx === 0} onClick={() => onMove(id, -1)} title="Nach oben">↑</button>
@@ -247,7 +250,7 @@ function SectionHead({ id, label, idx, count, collapsed, onToggle, onMove }) {
   )
 }
 
-export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false, companionHd = null }) {
+export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false, companionHd = null }) {
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
   const gear = char.gear ?? {}
@@ -297,12 +300,32 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const allKnownIds = [...INTERNAL_DEFAULT, ...Object.keys(extraPanels)]
   const order_ = (sectionOrder ?? INTERNAL_DEFAULT).filter(id => allKnownIds.includes(id))
 
+  const weaponSummary = (() => {
+    const sizeModRk = Number(misc.size_mod_rk ?? 0)
+    const damageKey = ({ 2: 'sk', 1: 'k', 0: 'm', '-1': 'g', '-2': 'r', '-4': 'g', '-8': 'r' })[sizeModRk] ?? 'm'
+    const weaponMap = Object.fromEntries([...weaponsData.weapons, ...hbWeapons].map(weapon => [weapon.id, weapon]))
+    const standardWeapons = (char.weapons ?? []).flatMap(slot => {
+      const weapon = weaponMap[slot.weapon_id]
+      if (!weapon) return []
+      const isRanged = slot.is_ranged != null ? slot.is_ranged : weapon.str_bonus_mult === 0
+      const strMult = slot.off_hand ? Math.min(weapon.str_bonus_mult ?? 1, 0.5) : (weapon.str_bonus_mult ?? 1)
+      const result = computeWeaponAttack({ ...slot, is_ranged: isRanged, str_mult: strMult }, attrs, baseValues.bab, condMods, buffTotals.attack ?? 0)
+      const damage = weapon.damage?.[damageKey] ?? weapon.damage?.m ?? '—'
+      return [`${weapon.name?.[L ? 'de' : 'en'] ?? weapon.name?.de ?? weapon.id} ${result.full_attack_str} · ${damage}${result.damage_mod ? result.damage_str : ''}`]
+    })
+    const naturalWeapons = (extraPanels.weapons?.props?.companionAttacks ?? []).map(attack => {
+      const result = computeWeaponAttack({ weapon_id: `companion_${attack.name}`, str_mult: attack.strMult }, attrs, baseValues.bab, condMods, buffTotals.attack ?? 0)
+      return `${attack.name} ${result.full_attack_str} · ${attack.damage}${result.damage_mod ? result.damage_str : ''}`
+    })
+    return [...naturalWeapons, ...standardWeapons].join('  |  ')
+  })()
+
   const renderSection = (id, idx) => {
     const count = order_.length
     const isCollapsed = collapsedSections?.has(id) ?? false
     if (id === 'hp') return (
       <section key="hp" className="ct-section">
-        <SectionHead id="hp" label={L ? 'Trefferpunkte' : 'Hit Points'} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="hp" label={L ? 'Trefferpunkte' : 'Hit Points'} summary={`${hp.current} / ${hp.max} ${L ? 'TP' : 'HP'}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           <div className="hp-bar-wrap">
             <div className="hp-bar" style={{ width: `${hpPct * 100}%`,
@@ -483,7 +506,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     )
     if (id === 'ac') return (
       <section key="ac" className="ct-section">
-        <SectionHead id="ac" label={L ? 'Rüstungsklasse' : 'Armor Class'} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="ac" label={L ? 'Rüstungsklasse' : 'Armor Class'} summary={`${L ? 'RK' : 'AC'} ${fmtBonus(combat.rk)}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           <div className="stat-row">
             <StatBox label={L ? 'RK' : 'AC'} value={combat.rk}
@@ -539,7 +562,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     )
     if (id === 'saves') return (
       <section key="saves" className="ct-section">
-        <SectionHead id="saves" label={L ? 'Rettungswürfe' : 'Saving Throws'} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="saves" label={L ? 'Rettungswürfe' : 'Saving Throws'} summary={L ? `Zäh ${fmtBonus(combat.fort)} · Ref ${fmtBonus(combat.ref)} · Wil ${fmtBonus(combat.will)}` : `Fort ${fmtBonus(combat.fort)} · Ref ${fmtBonus(combat.ref)} · Will ${fmtBonus(combat.will)}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           <div className="saves-grid">
             <SaveBox label={L ? 'Zähigkeit' : 'Fortitude'} total={combat.fort}
@@ -609,7 +632,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     // Extra (outer) panels passed from App.jsx
     if (extraPanels[id]) return (
       <section key={id} className="ct-section">
-        <SectionHead id={id} label={extraLabels[id] ?? id} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id={id} label={extraLabels[id] ?? id} summary={id === 'weapons' ? weaponSummary : ''} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && extraPanels[id]}
       </section>
     )

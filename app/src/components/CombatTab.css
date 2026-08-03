@@ -11,6 +11,14 @@
   flex: 1;
   margin-bottom: 0;
 }
+.ct-heading-summary {
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .ct-move-btns {
   display: flex;
   gap: 3px;
@@ -179,6 +187,7 @@
 @media (max-width: 600px) {
   .ct-heading-full { display: none; }
   .ct-heading-phone { display: inline; }
+  .ct-heading-summary { font-size: 0.74rem; }
 }
 
 /* Speed section */
