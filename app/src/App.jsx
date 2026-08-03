@@ -576,7 +576,7 @@ export default function App() {
                 ...(!isCompanion && { features: <ClassFeaturesPanel char={char} lang={lang} hideTitle /> }),
                 conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
                 buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
-                ...(!isCompanion && { resources: <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle /> }),
+                resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
                 weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />,
               }}
               extraLabels={lang === 'de' ? {
