@@ -8,6 +8,8 @@ import './SkillsTab.css'
 
 const SKILLS = skillsData.skills
 const fmtBonus = n => n >= 0 ? `+${n}` : `${n}`
+const ANIMAL_SKILL_IDS = new Set(['akrobatik', 'einschuchtern', 'entfesselungskunst', 'fliegen', 'heimlichkeit', 'klettern', 'schwimmen', 'uberlebenskunst', 'wahrnehmung'])
+const ANIMAL_CLASS_SKILL_IDS = new Set(['akrobatik', 'fliegen', 'heimlichkeit', 'klettern', 'schwimmen', 'wahrnehmung'])
 
 function toSkillSlug(name) {
   // "Wissen Adel", "Wissen Arkanes" etc. all share one PRD page → strip subtype
@@ -22,12 +24,21 @@ function SkillLink({ name }) {
   return <RefLink className="skill-ref-link" href={url} title="prd.5footstep.de">↗</RefLink>
 }
 
-export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, activeBuffs = [], lang }) {
+export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk = 0, usedFk = 0, skillsBuff = 0, activeBuffs = [], companionRules = null, lang }) {
   const L = lang === 'de'
+  const isCompanion = Boolean(companionRules)
+  const companionCanUseAllSkills = Number(attrs.IN?.score ?? 0) >= 3
+  const visibleSkills = isCompanion && !companionCanUseAllSkills
+    ? SKILLS.filter(def => ANIMAL_SKILL_IDS.has(def.id))
+    : SKILLS
 
   const condMods = useMemo(() => getConditionMods(char.conditions), [char.conditions])
   const condSkillPenalty = condMods.skill_penalty
-  const classSkillSet = useMemo(() => buildClassSkillSet(char, SKILLS), [char])
+  const classSkillSet = useMemo(() => {
+    const result = buildClassSkillSet(char, SKILLS)
+    if (isCompanion) ANIMAL_CLASS_SKILL_IDS.forEach(id => result.add(id))
+    return result
+  }, [char, isCompanion])
   const computed = useMemo(
     () => computeAllSkills(char, attrs, SKILLS, classSkillSet, armorCheckPenalty, condSkillPenalty, skillsBuff, condMods),
     [char, attrs, classSkillSet, armorCheckPenalty, condSkillPenalty, skillsBuff, condMods]
@@ -64,7 +75,7 @@ export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, 
       </div>
 
       <div className="skills-list">
-        {SKILLS.map(def => {
+        {visibleSkills.map(def => {
           const isClass = classSkillSet.has(def.id)
           const rowCondKey = def.id === 'wahrnehmung' ? 'perception_penalty'
             : (def.ability === 'ST' || def.ability === 'GE') ? 'stge_skill_penalty' : null
@@ -133,13 +144,19 @@ export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, 
 
           return (
             <div key={def.id} className={`skill-row ${isClass ? 'is-class' : ''}`}>
-              <button
-                className={`sk-cs-btn ${isClass ? 'active' : ''}`}
-                onClick={() => setSkill(def.id, 'is_class', !isClassOverride)}
-                title={L ? 'Klassenfertigkeit umschalten' : 'Toggle class skill'}
-              >
-                {isClass ? '◆' : '◇'}
-              </button>
+              {isCompanion ? (
+                <span className={`sk-cs-btn ${isClass ? 'active' : ''}`} title={L ? 'Klassenfertigkeit des Tiergefährten' : 'Animal companion class skill'}>
+                  {isClass ? '◆' : '◇'}
+                </span>
+              ) : (
+                <button
+                  className={`sk-cs-btn ${isClass ? 'active' : ''}`}
+                  onClick={() => setSkill(def.id, 'is_class', !isClassOverride)}
+                  title={L ? 'Klassenfertigkeit umschalten' : 'Toggle class skill'}
+                >
+                  {isClass ? '◆' : '◇'}
+                </button>
+              )}
               <span className="sk-name-wrap">
                 <span className="sk-name">
                   {def.name[lang] ?? def.name.de}
@@ -180,6 +197,11 @@ export function SkillsTab({ char, attrs, setSkill, setMultiSkill, addSkillSlot, 
       {condSkillPenalty < 0 && (
         <p className="skills-armor-note">
           {L ? `Zustandsmalus ${condSkillPenalty} auf alle Fertigkeiten` : `Condition penalty ${condSkillPenalty} on all skills`}
+        </p>
+      )}
+      {isCompanion && !companionCanUseAllSkills && (
+        <p className="skills-armor-note">
+          {L ? 'Tiergefährte mit IN unter 3: nur die erlaubten Gefährtenfertigkeiten.' : 'Animal companion with INT below 3: only allowed companion skills.'}
         </p>
       )}
       <p className="skills-note">

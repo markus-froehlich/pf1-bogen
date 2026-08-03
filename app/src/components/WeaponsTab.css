@@ -11,6 +11,8 @@
 }
 .weapon-slot.empty { opacity: 0.7; }
 .weapon-slot.filled { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.companion-natural-attack { border-style: dashed; }
+.companion-natural-attack .ws-name-btn { cursor: default; }
 
 .ws-select-row {
   display: flex;

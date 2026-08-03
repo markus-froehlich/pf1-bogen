@@ -27,6 +27,7 @@ import { BioSection } from './components/BioSection.jsx'
 import { BuffTracker } from './components/BuffTracker.jsx'
 import { CompanionsTab } from './components/CompanionsTab.jsx'
 import { CompanionAdvancementPanel } from './components/CompanionAdvancementPanel.jsx'
+import { CompanionFeaturesPanel } from './components/CompanionFeaturesPanel.jsx'
 import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
@@ -536,6 +537,7 @@ export default function App() {
                   {!isCollapsed && (
                     <>
                       <BioSection char={char} setBio={setBio} lang={lang} />
+                      {isCompanion && <CompanionFeaturesPanel features={companionRules?.features} lang={lang} />}
                       {isDruid && (
                         <CompanionsTab
                           index={index}
@@ -575,7 +577,7 @@ export default function App() {
                 conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
                 buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
                 ...(!isCompanion && { resources: <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle /> }),
-                weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} />,
+                weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />,
               }}
               extraLabels={lang === 'de' ? {
                 features:   'Klassenmerkmale',
@@ -604,6 +606,7 @@ export default function App() {
             skillsBuff={buffTotals.skills_all ?? 0}
             activeBuffs={char.active_buffs ?? []}
             condSkillPenalty={condMods.skill_penalty ?? 0}
+            companionRules={companionRules}
             lang={lang} />
         )}
 

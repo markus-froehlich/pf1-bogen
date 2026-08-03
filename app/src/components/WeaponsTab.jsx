@@ -100,7 +100,7 @@ function WeaponSearch({ allWeapons, initialId, onSelect, onCancel, lang }) {
   )
 }
 
-export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = [], condMods = {}, buffAttack = 0 }) {
+export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = [], condMods = {}, buffAttack = 0, companionAttacks = [] }) {
   const [isAdding, setIsAdding] = useState(false)
   const [editingIdx, setEditingIdx] = useState(null) // which filled slot is being re-searched
   const L = lang === 'de'
@@ -155,6 +155,33 @@ export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = 
 
   return (
     <div className="weapons-tab">
+      {companionAttacks.map(attack => {
+        const comp = computeWeaponAttack({ weapon_id: `companion_${attack.name}`, str_mult: attack.strMult }, attrs, bab, condMods, buffAttack)
+        return (
+          <div key={attack.name} className="weapon-slot filled companion-natural-attack">
+            <div className="ws-select-row">
+              <span className="ws-num">◆</span>
+              <span className="ws-name-btn">{attack.name}</span>
+              <span className="ws-prof-badge">{L ? 'Natürlich' : 'Natural'}</span>
+            </div>
+            <div className="ws-stats-row">
+              <div className="ws-stat-box">
+                <span className="ws-lbl">{L ? 'Angriff' : 'Attack'}</span>
+                <span className="ws-big ws-iterative">{comp.full_attack_str}</span>
+              </div>
+              <div className="ws-stat-box">
+                <span className="ws-lbl">{L ? 'Schaden' : 'Damage'}</span>
+                <span className="ws-big">{attack.damage}{comp.damage_mod !== 0 ? ` ${comp.damage_str}` : ''}</span>
+              </div>
+              <div className="ws-stat-box">
+                <span className="ws-lbl">{L ? 'ST-Anteil' : 'STR share'}</span>
+                <span className="ws-big">{attack.strMult === 1.5 ? '1½ ST' : '1× ST'}</span>
+              </div>
+            </div>
+            {attack.special && <div className="ws-special">{attack.special}</div>}
+          </div>
+        )
+      })}
       {filledSlots.map((slot, displayIdx) => {
         const idx  = slot._idx
         const def  = WEAPON_MAP[slot.weapon_id]

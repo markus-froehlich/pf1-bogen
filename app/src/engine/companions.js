@@ -55,7 +55,29 @@ function addTextBonuses(attrs, text) {
 }
 
 function naturalArmorFeatCount(feats) {
-  return (feats ?? []).filter(feat => normalise(feat.name).replace(/[^a-zäöüß]/g, '') === 'verbessertenatürlicherk').length
+  return (feats ?? []).filter(feat => {
+    const name = normalise(feat.name).replace(/[^a-zäöüß]/g, '')
+    return name === 'verbessertenatürlicherk' || name === 'verbessertenatürlicherüstung'
+  }).length
+}
+
+function specialAdvancementArmor(text) {
+  if (!/(?:ST|GE|KO)\s*[+-]\s*\d+/i.test(text) || /ST\/GE\s*\+/i.test(text)) return 0
+  return Number(text.match(/(?:nat RK|NRK)\s*\+?(\d+)/i)?.[1] ?? 0)
+}
+
+function companionAttacks(species, level) {
+  const attacks = new Map()
+  const add = text => {
+    for (const match of text.matchAll(/(?:Angriff\s+)?(?<![+])(\d+\s+)?(Biss|Klauen?|Hufe?|Durchbohren|Schwanzschlag|Spucken)\s*\(?\s*(\dW\d+)/gi)) {
+      const name = `${match[1] ?? ''}${match[2]}`.trim().replace(/^./, char => char.toUpperCase())
+      attacks.set(name.toLowerCase(), { name, damage: match[3].toUpperCase(), special: /Zu[ -]?Fall/i.test(text) ? 'Zu Fall bringen' : '' })
+    }
+  }
+  add(species.base)
+  for (let index = 0; index < level; index++) add(species.levels[index] ?? '')
+  const list = [...attacks.values()]
+  return list.map(attack => ({ ...attack, strMult: list.length === 1 ? 1.5 : 1 }))
 }
 
 export function getCompanionRules(char, level) {
@@ -72,8 +94,7 @@ export function getCompanionRules(char, level) {
   for (let i = 0; i < safeLevel; i++) {
     const text = species.levels[i] ?? ''
     addTextBonuses(attrs, text)
-    const armor = text.match(/(?:nat RK|NRK)\s*\+?(\d+)/i)
-    if (armor) speciesNaturalArmor += Number(armor[1])
+    speciesNaturalArmor += specialAdvancementArmor(text)
     const sizeMatch = text.match(/Größe\s+(winzig|klein|mittelgroß|gross|groß|riesig)/i)
     if (sizeMatch) size = sizeMatch[1].replace(/^./, c => c.toUpperCase())
   }
@@ -96,5 +117,13 @@ export function getCompanionRules(char, level) {
     choices, statBonusCount: statBonuses, abilityIncreaseCount: abilityCount,
     baseValues: { bab, ref, will, fort, totalLevel: safeLevel },
     combatMisc: { ...movement, size_mod_rk: sizeModRK, size_mod_kmb: sizeModKMB, rk_natural: naturalArmor + speciesNaturalArmor + naturalArmorFeatCount(char.feats) },
+    attacks: companionAttacks(species, safeLevel),
+    features: [
+      { name: 'Verbindung', description: 'Der Druide kann den Gefährten als freie Aktion antreiben.' },
+      { name: 'Zauber teilen', description: 'Geeignete Zauber des Druiden können auch den Gefährten betreffen.' },
+      ...['Dämmersicht', 'Geruchssinn'].filter(name => species.base.includes(name)).map(name => ({ name, description: '' })),
+      ...(safeLevel >= 3 ? [{ name: 'Entrinnen', description: 'Bei gelungenem Reflexwurf gegen halben Schaden erleidet der Gefährte keinen Schaden.' }] : []),
+      ...(safeLevel >= 6 ? [{ name: 'Hingabe', description: '+4 Moralbonus auf Willenswürfe gegen Verzauberungen und Verzauberungseffekte.' }] : []),
+    ],
   }
 }
