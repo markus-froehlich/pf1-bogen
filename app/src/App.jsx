@@ -271,7 +271,10 @@ export default function App() {
   const companionRules = isCompanion ? getCompanionRules(char, companionLevel) : null
   const rulesChar = companionRules ? {
     ...char,
-    // Attributes remain manual after the species' starting values are applied.
+    // Attributes are fully derived from the owner's current druid level (species base +
+    // per-level bonuses + ability-increase choices) — like RK/KMB/HD, they're not meant to
+    // be hand-edited, so a stale score from an earlier level never lingers after a level change.
+    attributes: companionRules.attrs,
     combat_misc: { ...companionRules.combatMisc, ...char.combat_misc },
     meta: { ...char.meta, level: companionRules.level, race: companionRules.size },
   } : char
