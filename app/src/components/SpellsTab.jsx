@@ -237,11 +237,9 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
   const sb = char.spellbook ?? { class_id: '', levels: {} }
 
   // Auto-detect the character's spellcasting class from the Person tab (char.meta.classes)
-  // — a class counts as "casting" if it has a known casting stat (CASTING_STAT). With exactly
-  // one such class, the spellbook's class_id follows it automatically; with none or several
-  // (true multiclass casters), the manual dropdown below is the source of truth.
-  const casterEntries = (char.meta.classes ?? []).filter(e => e.id && CASTING_STAT[e.id])
-  const detectedClassId = casterEntries.length === 1 ? casterEntries[0].id : null
+  // — with exactly one such class, the spellbook's class_id follows it automatically; with
+  // none or several (true multiclass casters), the manual dropdown below is the source of truth.
+  const detectedClassId = detectCasterClassId(char)
 
   useEffect(() => {
     if (detectedClassId && sb.class_id !== detectedClassId) {
