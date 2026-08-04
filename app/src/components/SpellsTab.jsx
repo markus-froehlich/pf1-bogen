@@ -362,6 +362,8 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
         <span className="sb-class-label">{L ? 'Klasse' : 'Class'}</span>
         <select className="spell-class-select"
           value={sb.class_id}
+          disabled={!!detectedClassId}
+          title={detectedClassId ? (L ? 'Automatisch aus dem Personen-Tab übernommen' : 'Automatically taken from the Person tab') : undefined}
           onChange={e => setSpellbook(prev => ({ ...prev, class_id: e.target.value }))}>
           <option value="">— {L ? 'wählen' : 'select'} —</option>
           {CLASS_LIST.map(c => <option key={c.id} value={c.id}>{L ? c.de : (CLASS_EN[c.id] ?? c.de)}</option>)}
@@ -370,12 +372,6 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
           <span className="sb-spont-badge" title={L ? 'Spontanzauberer — Sprüche sind dauerhaft bekannt' : 'Spontaneous caster — spells are permanently known'}>
             {L ? 'Spontan' : 'Spont.'}
           </span>
-        )}
-        {sb.class_id && getSpellSlots(effectiveClassId, classLevel) && (
-          <button className="sb-auto-btn" onClick={autoFillSlots}
-            title={L ? `Slots für Stufe ${classLevel} auto-befüllen` : `Auto-fill slots for level ${classLevel}`}>
-            ⟳ Auto
-          </button>
         )}
         {sb.class_id && castingStat && (
           <span className="sb-conc" title={L ? `Konzentrationswurf: 1W20 ${fmtB(concBonus)} (Zauberstufe ${classLevel} + ${castingStat} ${fmtB(castingMod)})` : `Concentration: 1d20 ${fmtB(concBonus)} (CL ${classLevel} + ${castingStat} ${fmtB(castingMod)})`}>
