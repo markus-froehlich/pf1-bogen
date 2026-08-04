@@ -19,6 +19,10 @@ function xpLevel(current, thresholds) {
 
 const fmt = n => n.toLocaleString('de-DE')
 
+// PF1e: Talente auf ungeraden Stufen (1,3,5,…19), Attributswerterhöhung alle 4 Stufen — unabhängig vom XP-Tempo (Langsam/Mittel/Schnell), das nur die XP-Schwellen verschiebt, nicht die Stufen selbst.
+const FEAT_LEVELS = [1,3,5,7,9,11,13,15,17,19]
+const ATTR_LEVELS = [4,8,12,16,20]
+
 export function XpTracker({ char, setXp, totalLevel = 0, lang }) {
   const L = lang === 'de'
   const [addInput, setAddInput] = useState('')
