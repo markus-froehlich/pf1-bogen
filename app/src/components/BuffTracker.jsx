@@ -91,6 +91,12 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
                 onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                 autoFocus
               />
+              <input
+                className="bt-form-notes"
+                placeholder={L ? 'Notiz (optional)' : 'Note (optional)'}
+                value={form.notes}
+                onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
+              />
               <div className="bt-form-cats">
                 {cats.map(cat => (
                   <div key={cat} className="bt-form-cat">
