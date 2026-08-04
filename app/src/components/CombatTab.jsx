@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { ARMOR_MAP, SHIELDS_MAP } from '../engine/index.js'
+import { ARMOR_MAP, SHIELDS_MAP, hasToughness } from '../engine/index.js'
 import armorData      from '../data/armor.json'
 import shieldsData    from '../data/shields.json'
 import racesData      from '../data/races.json'
