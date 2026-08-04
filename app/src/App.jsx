@@ -266,6 +266,7 @@ export default function App() {
 
   const isCompanion = char.companion?.kind === 'animal_companion'
   const owner = isCompanion ? index.find(entry => entry.id === char.companion.ownerId) : null
+  const ownedCompanions = isCompanion ? [] : index.filter(entry => entry.kind === 'animal_companion' && entry.ownerId === activeId)
   const companionLevel = owner?.classes?.filter(entry => entry.id === 'druide').reduce((sum, entry) => sum + Number(entry.level || 0), 0)
   const companionRules = isCompanion ? getCompanionRules(char, companionLevel) : null
   const rulesChar = companionRules ? {
