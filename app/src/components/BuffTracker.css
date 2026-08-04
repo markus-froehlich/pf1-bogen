@@ -152,6 +152,19 @@
   box-sizing: border-box;
 }
 .bt-form-name:focus { outline: none; border-color: #4a9a5a; }
+.bt-form-notes {
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-size: 0.74rem;
+  padding: 5px 8px;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+.bt-form-notes:focus { outline: none; border-color: #4a9a5a; }
+.bt-form-notes::placeholder { color: var(--text-muted); font-style: italic; }
 
 .bt-form-cats { display: flex; flex-direction: column; gap: 6px; }
 .bt-form-cat-label {
