@@ -52,26 +52,28 @@ export function CompanionsTab({ index, ownerId, onCreate, onOpen, lang }) {
           </button>
         </div>
 
-        {companions.length === 0 ? (
+        {companions.length === 0 && (
           <div className="companions-empty">{L ? 'Noch kein Tiergefährte angelegt.' : 'No companion created yet.'}</div>
-        ) : (
-          <div className="companions-list">
-            {companions.map(entry => {
-              const species = SPECIES.find(s => s.id === entry.speciesId)
-              return (
-                <button key={entry.id} className="companion-card" onClick={() => onOpen(entry.id)}>
-                  <span className="companion-card-icon">◆</span>
-                  <span className="companion-card-main">
-                    <strong>{entry.name || species?.name.de || (L ? 'Tiergefährte' : 'Companion')}</strong>
-                    <small>{species?.name.de || entry.speciesId} · {L ? 'separater Bogen' : 'separate sheet'}</small>
-                  </span>
-                  <span className="companion-card-arrow">›</span>
-                </button>
-              )
-            })}
-          </div>
         )}
       </>}
+
+      {companions.length > 0 && (
+        <div className="companions-list">
+          {companions.map(entry => {
+            const species = SPECIES.find(s => s.id === entry.speciesId)
+            return (
+              <button key={entry.id} className="companion-card" onClick={() => onOpen(entry.id)}>
+                <span className="companion-card-icon">◆</span>
+                <span className="companion-card-main">
+                  <strong>{entry.name || species?.name.de || (L ? 'Tiergefährte' : 'Companion')}</strong>
+                  <small>{species?.name.de || entry.speciesId} · {L ? 'separater Bogen' : 'separate sheet'}</small>
+                </span>
+                <span className="companion-card-arrow">›</span>
+              </button>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
