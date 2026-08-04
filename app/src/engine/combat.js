@@ -33,7 +33,7 @@ function hasImprovedInitiative(feats) {
 
 export function hasToughness(feats) {
   return (feats ?? []).some(feat =>
-    String(feat.name ?? '').toLowerCase().replace(/[^a-zäöüß]/g, '') === 'abhaertung'
+    String(feat.name ?? '').toLowerCase().replace(/[^a-zäöüß]/g, '') === 'abhärtung'
   )
 }
 
