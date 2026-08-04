@@ -177,12 +177,21 @@
 }
 .res-name {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
   font-size: 0.84rem;
   font-weight: 700;
   color: var(--text);
   cursor: pointer;
 }
 .res-name:hover { color: var(--accent); }
+.res-notes {
+  font-size: 0.66rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-muted);
+}
 
 .res-controls {
   display: flex;
