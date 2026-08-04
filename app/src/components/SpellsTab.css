@@ -335,6 +335,7 @@
   appearance: none;
 }
 .spell-class-select:focus { outline: none; border-color: var(--accent); }
+.spell-class-select:disabled { opacity: 0.65; cursor: default; }
 .spell-search {
   flex: 1.4;
   min-width: 0;
