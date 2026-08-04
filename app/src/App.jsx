@@ -439,6 +439,16 @@ export default function App() {
           value={char.meta.player ?? ''}
           onChange={e => setMeta('player', e.target.value)}
         />
+        {isCompanion && owner && (
+          <button className="companion-switch-link" onClick={() => { switchChar(owner.id); setTab('combat') }}>
+            ↩ {lang === 'de' ? 'zu' : 'to'} {owner.name || (lang === 'de' ? 'Charakter' : 'Character')}
+          </button>
+        )}
+        {!isCompanion && ownedCompanions.map(c => (
+          <button key={c.id} className="companion-switch-link" onClick={() => { switchChar(c.id); setTab('combat') }}>
+            🐾 {lang === 'de' ? 'zu' : 'to'} {c.name || (lang === 'de' ? 'Tiergefährte' : 'Companion')}
+          </button>
+        ))}
       </header>
 
       {printOpen && (
