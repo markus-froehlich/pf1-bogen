@@ -631,7 +631,7 @@ export function SpellsTab({ char, setSpellbook, attrs, lang }) {
         </button>
       </div>
 
-      {mode === 'lookup' && <SpellLookup lang={lang} onPrepare={setSpellbook ? handlePrepare : null} />}
+      {mode === 'lookup' && <SpellLookup char={char} lang={lang} onPrepare={setSpellbook ? handlePrepare : null} />}
       {mode === 'book'   && <SpellBook char={char} setSpellbook={setSpellbook} attrs={attrs} lang={lang} />}
     </div>
   )
