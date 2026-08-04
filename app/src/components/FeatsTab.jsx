@@ -33,8 +33,24 @@ function featBook(source) {
   return FEAT_PREFIX_BOOK[m[1]] ?? null
 }
 
+// Manually-typed feats (not chosen via the DB autocomplete) have no stored `source`.
+// Fall back to a name lookup in the feats DB so the reference link still appears.
+function normFeatName(name) {
+  return String(name ?? '')
+    .replace(/\s*\([^)]*\)\s*$/, '')
+    .replace(/\s+[A-ZÄÖÜ]{1,3}\s*$/, '')
+    .trim()
+    .toLowerCase()
+}
+const DB_FEAT_SOURCE_BY_NAME = Object.fromEntries(featsData.feats.map(f => [f.name.de, f.source]))
+const DB_FEAT_SOURCE_BY_NORM = Object.fromEntries(featsData.feats.map(f => [normFeatName(f.name.de), f.source]))
+function lookupFeatSource(name) {
+  return DB_FEAT_SOURCE_BY_NAME[name] ?? DB_FEAT_SOURCE_BY_NORM[normFeatName(name)] ?? null
+}
+
 function FeatRefLink({ name, source }) {
-  const book = featBook(source)
+  const effectiveSource = source || lookupFeatSource(name)
+  const book = featBook(effectiveSource)
   if (!book) return null
   const url = `http://prd.5footstep.de/${book}/Talente/${toFeatSlug(name)}`
   return <RefLink className="feat-ref-link" href={url} title={`prd.5footstep.de · ${book}`}>↗</RefLink>
