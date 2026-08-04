@@ -18,12 +18,12 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
   const activeCount = buffs.filter(b => b.active).length
 
   function startNew() {
-    setForm({ name: '', bonuses: { ...EMPTY_BONUSES } })
+    setForm({ name: '', notes: '', bonuses: { ...EMPTY_BONUSES } })
     setEditing('new')
   }
 
   function startEdit(b) {
-    setForm({ name: b.name, bonuses: { ...EMPTY_BONUSES, ...b.bonuses } })
+    setForm({ name: b.name, notes: b.notes ?? '', bonuses: { ...EMPTY_BONUSES, ...b.bonuses } })
     setEditing(b.id)
   }
 
@@ -31,9 +31,9 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
     const hasBonus = BUFF_STATS.some(s => Number(form.bonuses[s.key]) !== 0)
     if (!form.name.trim() && !hasBonus) { setEditing(null); return }
     if (editing === 'new') {
-      setActiveBuffs(prev => [...prev, { id: genId(), name: form.name.trim() || 'Buff', active: true, bonuses: { ...form.bonuses } }])
+      setActiveBuffs(prev => [...prev, { id: genId(), name: form.name.trim() || 'Buff', notes: form.notes.trim(), active: true, bonuses: { ...form.bonuses } }])
     } else {
-      setActiveBuffs(prev => prev.map(b => b.id === editing ? { ...b, name: form.name.trim() || b.name, bonuses: { ...form.bonuses } } : b))
+      setActiveBuffs(prev => prev.map(b => b.id === editing ? { ...b, name: form.name.trim() || b.name, notes: form.notes.trim(), bonuses: { ...form.bonuses } } : b))
     }
     setEditing(null)
   }
