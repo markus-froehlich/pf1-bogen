@@ -22,6 +22,19 @@ const CASTING_STAT = {
 const SPELLBOOK_TO_CHAR_ID = {
   hxm_magier: ['hexenmeister', 'magier'],
 }
+// Reverse lookup: char class ID → spells.json class ID (e.g. hexenmeister/magier → hxm_magier)
+const CHAR_ID_TO_SPELLBOOK = Object.fromEntries(
+  Object.entries(SPELLBOOK_TO_CHAR_ID).flatMap(([sbId, charIds]) => charIds.map(cid => [cid, sbId]))
+)
+
+// The character's single spellcasting class (if unambiguous), used as a smart, still
+// user-overridable default for both the lookup class filter and the spellbook's class_id.
+function detectCasterClassId(char) {
+  const casterEntries = (char?.meta?.classes ?? []).filter(e => e.id && CASTING_STAT[e.id])
+  if (casterEntries.length !== 1) return null
+  const charId = casterEntries[0].id
+  return CHAR_ID_TO_SPELLBOOK[charId] ?? charId
+}
 
 const ALL_SPELLS = spellsData.spells
 const CLASSES    = spellsData._meta.classes
