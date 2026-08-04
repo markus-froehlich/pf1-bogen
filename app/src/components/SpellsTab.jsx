@@ -118,9 +118,9 @@ function RefLink({ name, page }) {
 }
 
 // ── Lookup mode ────────────────────────────────────────────────────────────────
-function SpellLookup({ lang, onPrepare }) {
+function SpellLookup({ char, lang, onPrepare }) {
   const L = lang === 'de'
-  const [classId, setClassId] = useState('hxm_magier')
+  const [classId, setClassId] = useState(() => detectCasterClassId(char) || 'hxm_magier')
   const [levelFilter, setLevelFilter] = useState(-1)
   const [search, setSearch] = useState('')
   const [expanded, setExpanded] = useState(null)
