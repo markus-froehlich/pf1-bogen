@@ -12,7 +12,7 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
   const L = lang === 'de'
   const buffs = char.active_buffs ?? []
   const [editing, setEditing] = useState(null) // null = closed, 'new' or buff.id
-  const [form, setForm] = useState({ name: '', bonuses: { ...EMPTY_BONUSES } })
+  const [form, setForm] = useState({ name: '', notes: '', bonuses: { ...EMPTY_BONUSES } })
   const [open, setOpen] = useState(true)
 
   const activeCount = buffs.filter(b => b.active).length
