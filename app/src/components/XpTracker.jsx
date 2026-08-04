@@ -37,9 +37,8 @@ export function XpTracker({ char, setXp, totalLevel = 0, lang }) {
   const progress   = atMax ? 1 : (current - lvStart) / (lvEnd - lvStart)
   const remaining  = atMax ? 0 : lvEnd - current
   const mismatch   = totalLevel > 0 && totalLevel !== lvFromXp
-  const nextLevel  = lvFromXp + 1
-  const nextFeat   = !atMax && FEAT_LEVELS.includes(nextLevel)
-  const nextAttr   = !atMax && ATTR_LEVELS.includes(nextLevel)
+  const curFeat    = FEAT_LEVELS.includes(lvFromXp)
+  const curAttr    = ATTR_LEVELS.includes(lvFromXp)
 
   function handleAdd() {
     const n = parseInt(addInput, 10)
