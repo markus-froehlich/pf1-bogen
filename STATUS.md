@@ -463,8 +463,17 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Der ältere gespeicherte `init_misc: 4`-Wert wird bei vorhandenem Talent nicht
   doppelt gezählt. `engine/combat.js` + `CombatTab.jsx`.
 
-## Zuletzt erledigt (02.–04.08., Import/Datenkorrekturen)
+## Zuletzt erledigt (Stand 04.08.)
 
+- **Tiergefährten-System** — vollständiges Feature: `engine/companions.js`,
+  `components/CompanionsTab.jsx`, `CompanionFeaturesPanel.jsx`,
+  `CompanionAdvancementPanel.jsx`, `data/animal_companions.json` (**92 Tierarten**
+  inkl. Wolf, jeweils volle 20-Stufen-Progression: Attribut-Wachstum, Größenänderung,
+  natürliche RK, Talente/Tricks pro Stufe). Ein Gefährte wird als **eigener Charakter**
+  angelegt (`char.companion = {kind, ownerId, speciesId, levelSource}`), Stufe/Attribute
+  leiten sich automatisch von der Druiden-Stufe des verknüpften Besitzers ab. Auswahl
+  direkt im Personen-Tab des Besitzer-Charakters (inkl. manueller Attribut-/Aufstiegs-
+  Overrides, Bonustricks, Trefferwürfel-Anzeige, Ressourcen, Klappfunktion).
 - **Charakter-Import: Excel → JSON** — kompletter Charakter ("Briala Schattenklaue",
   Druide 7) aus alter Excel + Notizdatei ausgelesen (rein lesend, `openpyxl` in
   Scratchpad-venv) und als importierbare JSON gebaut; alle Kampfwerte/Saves/
@@ -473,9 +482,9 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
 - **Import überschreibt nicht mehr den aktiven Charakter** — `importChar()` in
   `useCharacters.js` legt jetzt immer einen **neuen** Charakter an (eigene ID,
   eigener Listeneintrag) statt den aktiven zu patchen; Bestätigungsdialog nach
-  Import ("Als neuer Charakter importiert…"). Grund: ein Import hatte versehentlich
-  einen bestehenden Charakter überschrieben; verlorene Daten über die
-  Gist-Backup-Versionshistorie (`gh api gists/<id>/commits`) wiederhergestellt.
+  Import ("Als neuer Charakter importiert…"). Ein vorheriger versehentlicher
+  Überschreib-Fall wurde über die Gist-Backup-Versionshistorie
+  (`gh api gists/<id>/commits`) wiederhergestellt.
 - **Bewegungsrate-Bug behoben** — `CombatTab.jsx`: nur **mittlere/schwere** Rüstung
   senkt die Bewegungsrate (PF1e-RAW), vorher senkte jede Rüstung (auch Leicht) auf
   den "bewaffneten" Wert; jetzt wird `armorDefForSpeed.type` geprüft.
@@ -495,7 +504,7 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   einem einzelnen Objekt; `setMultiSkill()`/`addSkillSlot()`/`removeSkillSlot()` in
   `useCharacters.js`; `engine/skills.js` `computeAllSkills()` behandelt `def.multi`
   gesondert (Array von Ergebnissen); `SkillsTab.jsx` rendert je Instanz eine Zeile mit
-  Freitext-Namensfeld + "+ Weitere …"-Button + "×"-Entfernen.
+  Freitext-Namensfeld + "+ Weitere …"-Button + "×"-Entfernen; Layout nachjustiert.
   Verifiziert: Namenseingabe "Schreiner" bei Handwerk bleibt erhalten ✓
 - **Sicherheit: verbotene Begriffe aus öffentlichem Repo entfernt** — Systemname und
   deutsches Wort für "Figuren-Datenblatt" komplett aus Doku/Code/Kommentaren/Dateipfaden
@@ -511,34 +520,19 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   nächsten Link); nützlich z.B. beim Zauber-Vergleich mit vielen Referenz-Links
   gleichzeitig offen. `RefLink.jsx` (neue gemeinsame Komponente, ersetzt 8 einzelne
   `<a target="_blank">`-Stellen), `useExternalLinksPref()`.
-
-## Von anderer Session erledigt (02.–03.08., Companion-System & Mobile)
-
-- **Tiergefährten-System** — vollständiges Feature (Commits "Add companion management
-  and spell tracking" + 15 Folge-Commits): `engine/companions.js`,
-  `components/CompanionsTab.jsx`, `CompanionFeaturesPanel.jsx`,
-  `CompanionAdvancementPanel.jsx`, `data/animal_companions.json` (**92 Tierarten**
-  inkl. Wolf, jeweils volle 20-Stufen-Progression: Attribut-Wachstum, Größenänderung,
-  natürliche RK, Talente/Tricks pro Stufe). Ein Gefährte wird als **eigener Charakter**
-  angelegt (`char.companion = {kind, ownerId, speciesId, levelSource}`), Stufe/Attribute
-  leiten sich automatisch von der Druiden-Stufe des verknüpften Besitzers ab. Auswahl
-  direkt im Personen-Tab des Besitzer-Charakters (mehrfach nachjustiert: manuelle
-  Attribut-/Aufstiegs-Overrides, Bonustricks, Trefferwürfel-Anzeige, Ressourcen,
-  Klappfunktion). **Damit ist der bisherige "Nächste Schritte"-Punkt "Gefährten
-  (deferred)" erledigt.**
 - **Mobile: Werte in eingeklappten Kampf-Bereichen sichtbar** — Kampfwerte, KMB/KMV,
   Fußbewegung, Klassenstufe, aktuelle EP und Schadensreduktion zeigen jetzt auch bei
   eingeklapptem Panel ihre Werte in der Kopfzeile (nicht nur den Titel); Kampf-Tab-
   Überschriften auf dem Handy gekürzt.
 - **Ressourcen sortierbar** — `ResourcesPanel.jsx` reiht sich in die bestehende
   Panel-Sortierung im Kampf-Tab ein.
-- **`./deploy "Beschreibung"`-Skript** neu committet (baut, committet, pusht `main`).
+- **`./deploy "Beschreibung"`-Skript** (baut, committet, pusht `main`).
 
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
-- Zauber-SG-Feld: PDF-Export-Anhänge in Notizen (Screenshot-Bilder) werden beim Import
-  ignoriert — kein Feld dafür vorgesehen, nur zur Kenntnis
+- PDF-Bild-Anhänge in Notizdateien werden beim Import ignoriert (kein Bildfeld
+  vorgesehen) — nur zur Kenntnis, kein offener Fehler
 
 ## Hinweise
 - Dump-Erzeugung braucht venv + openpyxl 3.1.5 (im Scratchpad; bei Bedarf neu
