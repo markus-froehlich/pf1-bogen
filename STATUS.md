@@ -463,10 +463,82 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Der ältere gespeicherte `init_misc: 4`-Wert wird bei vorhandenem Talent nicht
   doppelt gezählt. `engine/combat.js` + `CombatTab.jsx`.
 
+## Zuletzt erledigt (02.–04.08., Import/Datenkorrekturen)
+
+- **Charakter-Import: Excel → JSON** — kompletter Charakter ("Briala Schattenklaue",
+  Druide 7) aus alter Excel + Notizdatei ausgelesen (rein lesend, `openpyxl` in
+  Scratchpad-venv) und als importierbare JSON gebaut; alle Kampfwerte/Saves/
+  Fertigkeiten live gegen die Notizen verifiziert (RK, GAB, KMB/KMV, Zauberpatzer,
+  SG-Tabelle, Zauberbuch-Slots — alle exakt deckungsgleich).
+- **Import überschreibt nicht mehr den aktiven Charakter** — `importChar()` in
+  `useCharacters.js` legt jetzt immer einen **neuen** Charakter an (eigene ID,
+  eigener Listeneintrag) statt den aktiven zu patchen; Bestätigungsdialog nach
+  Import ("Als neuer Charakter importiert…"). Grund: ein Import hatte versehentlich
+  einen bestehenden Charakter überschrieben; verlorene Daten über die
+  Gist-Backup-Versionshistorie (`gh api gists/<id>/commits`) wiederhergestellt.
+- **Bewegungsrate-Bug behoben** — `CombatTab.jsx`: nur **mittlere/schwere** Rüstung
+  senkt die Bewegungsrate (PF1e-RAW), vorher senkte jede Rüstung (auch Leicht) auf
+  den "bewaffneten" Wert; jetzt wird `armorDefForSpeed.type` geprüft.
+- **6 Fertigkeiten-Datenfehler behoben** (`data/skills.json` + `app/src/data/skills.json`):
+  Einschüchtern, Handwerk, Klettern, Reiten, Schwimmen, Überlebenskunst waren fälschlich
+  als "nur geübt einsetzbar" markiert — sind laut PF1e-Grundregelwerk aber ungeübt nutzbar.
+  Nur noch 8 echte Nur-geübt-Fertigkeiten (Beruf, Fingerfertigkeit, Sprachenkunde,
+  Magischen Gegenstand benutzen, Mechanismus ausschalten, Mit Tieren umgehen, Wissen*, Zauberkunde).
+- **BuffTracker-Anzeige-Bug behoben** — `summaryStr()` zeigte "undefined" für jedes
+  nicht gesetzte Bonus-Feld eines Buffs (z.B. ein reiner Ausweichen-Buff zeigte
+  "ST undefined · GE undefined · …"); Ursache: `Number(undefined) !== 0` ist `true`.
+  Jetzt `Number(bonuses[key] ?? 0)`.
+- **Mehrfachfertigkeiten (Handwerk/Beruf)** — PF1e erlaubt, diese Fertigkeiten mehrfach
+  zu wählen (je eine Spezialisierung mit eigenen Rängen). `skills.json`: neues
+  `multi: true` + `default_slots` (Beruf 2, Handwerk 3, wie im Original-Excel-Bogen);
+  `char.skills[id]` ist für diese beiden ein Array von `{name, ranks, misc}` statt
+  einem einzelnen Objekt; `setMultiSkill()`/`addSkillSlot()`/`removeSkillSlot()` in
+  `useCharacters.js`; `engine/skills.js` `computeAllSkills()` behandelt `def.multi`
+  gesondert (Array von Ergebnissen); `SkillsTab.jsx` rendert je Instanz eine Zeile mit
+  Freitext-Namensfeld + "+ Weitere …"-Button + "×"-Entfernen.
+  Verifiziert: Namenseingabe "Schreiner" bei Handwerk bleibt erhalten ✓
+- **Sicherheit: verbotene Begriffe aus öffentlichem Repo entfernt** — Systemname und
+  deutsches Wort für "Figuren-Datenblatt" komplett aus Doku/Code/Kommentaren/Dateipfaden
+  ersetzt (PF1e/Bogen/Blatt statt Klarname); absolute lokale Pfade in `tools/*.py` +
+  `.claude/launch.json` auf relative Pfade umgestellt; Pre-Commit-Hook (`.githooks/pre-commit`)
+  + CI-Check im Deploy-Workflow blockieren künftige Verstöße automatisch; siehe AGENTS.md.
+  Ein versehentlicher PDF-Export der Gist-Revisionshistorie (mit echten Testdaten und
+  verbotenem Wort im Dateinamen) wurde aus dem Repo entfernt.
+- **Links extern öffnen (App/Browser-Umschalter)** — ⚙-Menü: neuer Schalter zwischen
+  In-App-Link-Verhalten (`target="_blank"`, ein Fenster) und externem Öffnen (kein
+  `target`, mehrere unabhängige Browser-Tabs) — auf iOS-Homescreen-Installation öffnet
+  `target="_blank"` sonst nur ein einzelnes Overlay-Fenster (schließt sich vor dem
+  nächsten Link); nützlich z.B. beim Zauber-Vergleich mit vielen Referenz-Links
+  gleichzeitig offen. `RefLink.jsx` (neue gemeinsame Komponente, ersetzt 8 einzelne
+  `<a target="_blank">`-Stellen), `useExternalLinksPref()`.
+
+## Von anderer Session erledigt (02.–03.08., Companion-System & Mobile)
+
+- **Tiergefährten-System** — vollständiges Feature (Commits "Add companion management
+  and spell tracking" + 15 Folge-Commits): `engine/companions.js`,
+  `components/CompanionsTab.jsx`, `CompanionFeaturesPanel.jsx`,
+  `CompanionAdvancementPanel.jsx`, `data/animal_companions.json` (**92 Tierarten**
+  inkl. Wolf, jeweils volle 20-Stufen-Progression: Attribut-Wachstum, Größenänderung,
+  natürliche RK, Talente/Tricks pro Stufe). Ein Gefährte wird als **eigener Charakter**
+  angelegt (`char.companion = {kind, ownerId, speciesId, levelSource}`), Stufe/Attribute
+  leiten sich automatisch von der Druiden-Stufe des verknüpften Besitzers ab. Auswahl
+  direkt im Personen-Tab des Besitzer-Charakters (mehrfach nachjustiert: manuelle
+  Attribut-/Aufstiegs-Overrides, Bonustricks, Trefferwürfel-Anzeige, Ressourcen,
+  Klappfunktion). **Damit ist der bisherige "Nächste Schritte"-Punkt "Gefährten
+  (deferred)" erledigt.**
+- **Mobile: Werte in eingeklappten Kampf-Bereichen sichtbar** — Kampfwerte, KMB/KMV,
+  Fußbewegung, Klassenstufe, aktuelle EP und Schadensreduktion zeigen jetzt auch bei
+  eingeklapptem Panel ihre Werte in der Kopfzeile (nicht nur den Titel); Kampf-Tab-
+  Überschriften auf dem Handy gekürzt.
+- **Ressourcen sortierbar** — `ResourcesPanel.jsx` reiht sich in die bestehende
+  Panel-Sortierung im Kampf-Tab ein.
+- **`./deploy "Beschreibung"`-Skript** neu committet (baut, committet, pusht `main`).
+
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
-- Gefährten/Beschwörungen: eigener Mini-Bogen für Tierbegleiter/Vertraute (deferred)
+- Zauber-SG-Feld: PDF-Export-Anhänge in Notizen (Screenshot-Bilder) werden beim Import
+  ignoriert — kein Feld dafür vorgesehen, nur zur Kenntnis
 
 ## Hinweise
 - Dump-Erzeugung braucht venv + openpyxl 3.1.5 (im Scratchpad; bei Bedarf neu
