@@ -372,15 +372,18 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               placeholder={L ? 'z.B. 8 + 7 + 7 + 8 + 4 + 1; je TW +5 KO' : 'e.g. 8 + 7 + 7 + 8 + 4 + 1; +5 CON per HD'}
             />
           </label>
-          {(baseValues?.totalLevel ?? 0) > 0 && (() => {
+          {/* Companions gain HP per Hit Die (TW, Tabelle 3-6) — not per the linked
+              druid's class level, which diverges from TW past the first few levels. */}
+          {(companionHd ?? baseValues?.totalLevel ?? 0) > 0 && (() => {
             const koMod   = attrs?.KO?.mod ?? 0
-            const lvls    = baseValues.totalLevel
+            const lvls    = companionHd ?? baseValues.totalLevel
+            const unit    = companionHd != null ? (L ? 'TW' : 'HD') : (L ? 'Stufen' : 'levels')
             const contrib = koMod * lvls
             return (
               <div className="hp-ko-hint"
-                title={`KO-Mod ${koMod >= 0 ? '+' : ''}${koMod} × ${lvls} Stufen = ${contrib >= 0 ? '+' : ''}${contrib} Max-TP`}>
+                title={`KO-Mod ${koMod >= 0 ? '+' : ''}${koMod} × ${lvls} ${unit} = ${contrib >= 0 ? '+' : ''}${contrib} Max-TP`}>
                 <span className="hp-ko-label">KO</span>
-                <span className="hp-ko-eq">{koMod >= 0 ? '+' : ''}{koMod} × {lvls} Stufen</span>
+                <span className="hp-ko-eq">{koMod >= 0 ? '+' : ''}{koMod} × {lvls} {unit}</span>
                 <span className={`hp-ko-val ${contrib < 0 ? 'neg' : ''}`}>{contrib >= 0 ? '+' : ''}{contrib} TP</span>
               </div>
             )
