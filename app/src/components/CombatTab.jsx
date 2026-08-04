@@ -562,16 +562,9 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     )
     if (id === 'saves') return (
       <section key="saves" className="ct-section">
-        <SectionHead id="saves" label={L ? 'Rettungswürfe' : 'Saving Throws'} summary={L ? `Zäh ${fmtBonus(combat.fort)} · Ref ${fmtBonus(combat.ref)} · Wil ${fmtBonus(combat.will)}` : `Fort ${fmtBonus(combat.fort)} · Ref ${fmtBonus(combat.ref)} · Will ${fmtBonus(combat.will)}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="saves" label={L ? 'Rettungswürfe' : 'Saving Throws'} summary={L ? `Ref ${fmtBonus(combat.ref)} · Wil ${fmtBonus(combat.will)} · Zäh ${fmtBonus(combat.fort)}` : `Ref ${fmtBonus(combat.ref)} · Will ${fmtBonus(combat.will)} · Fort ${fmtBonus(combat.fort)}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           <div className="saves-grid">
-            <SaveBox label={L ? 'Zähigkeit' : 'Fortitude'} total={combat.fort}
-              base={baseValues.fort} mod={attrs.KO.mod} modAttr={L ? 'KO' : 'CON'}
-              misc={misc.fort_misc ?? 0} onMiscChange={v => setCombatMisc('fort_misc', v)}
-              note={misc.fort_note ?? ''} onNoteChange={v => setCombatMisc('fort_note', v)}
-              notePlaceholder={L ? 'z.B. Umhang der Resistenz +2, Sturheit …' : 'e.g. Cloak of Resistance +2 …'} lang={lang}
-              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'fort')}
-              condInfo={condAnnot(condMods, 'fort')} />
             <SaveBox label={L ? 'Reflex' : 'Reflex'} total={combat.ref}
               base={baseValues.ref} mod={attrs.GE.mod} modAttr={L ? 'GE' : 'DEX'}
               misc={misc.ref_misc ?? 0} onMiscChange={v => setCombatMisc('ref_misc', v)}
@@ -586,6 +579,13 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               notePlaceholder={L ? 'z.B. Umhang der Resistenz +2, Eiserner Wille …' : 'e.g. Cloak of Resistance +2 …'} lang={lang}
               buffInfo={buffAnnot(activeBuffs, 'saves_all', 'will')}
               condInfo={condAnnot(condMods, 'will')} />
+            <SaveBox label={L ? 'Zähigkeit' : 'Fortitude'} total={combat.fort}
+              base={baseValues.fort} mod={attrs.KO.mod} modAttr={L ? 'KO' : 'CON'}
+              misc={misc.fort_misc ?? 0} onMiscChange={v => setCombatMisc('fort_misc', v)}
+              note={misc.fort_note ?? ''} onNoteChange={v => setCombatMisc('fort_note', v)}
+              notePlaceholder={L ? 'z.B. Umhang der Resistenz +2, Sturheit …' : 'e.g. Cloak of Resistance +2 …'} lang={lang}
+              buffInfo={buffAnnot(activeBuffs, 'saves_all', 'fort')}
+              condInfo={condAnnot(condMods, 'fort')} />
           </div>
         </>}
       </section>
