@@ -388,6 +388,16 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               </div>
             )
           })()}
+          {/* Toughness (Abhärtung): +1 TP per level — flagged here so it isn't
+              forgotten to add to Max on the next level-up. */}
+          {hasToughness(char.feats) && (baseValues?.totalLevel ?? 0) > 0 && (
+            <div className="hp-ko-hint"
+              title={`${L ? 'Abhärtung' : 'Toughness'}: +1 × ${baseValues.totalLevel} ${L ? 'Stufen' : 'levels'} = +${baseValues.totalLevel} Max-TP`}>
+              <span className="hp-ko-label">{L ? 'Abh.' : 'Tough.'}</span>
+              <span className="hp-ko-eq">+1 × {baseValues.totalLevel} {L ? 'Stufen' : 'levels'}</span>
+              <span className="hp-ko-val">+{baseValues.totalLevel} TP</span>
+            </div>
+          )}
           <div className="hp-dmg-row">
             <span className="hp-dmg-label">{L ? 'Schaden' : 'Damage'}</span>
             <input className="hp-dmg-input" type="number" min={0} placeholder="0"
