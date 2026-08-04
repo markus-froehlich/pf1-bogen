@@ -127,3 +127,18 @@
 }
 .xp-add-btn:not(:disabled):active { background: color-mix(in srgb, var(--accent) 15%, var(--surface2)); }
 .xp-add-btn:disabled { opacity: 0.4; cursor: default; }
+
+.xp-next-perk {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.xp-perk-chip {
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface3));
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 600;
+  padding: 3px 9px;
+}
