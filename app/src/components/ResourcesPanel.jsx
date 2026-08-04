@@ -3,7 +3,7 @@ import './ResourcesPanel.css'
 
 function genId() { return 'res_' + Math.random().toString(36).slice(2, 9) }
 
-const EMPTY = { id: '', name: '', max: 1, current: 0, unit: '' }
+const EMPTY = { id: '', name: '', max: 1, current: 0, unit: '', notes: '' }
 
 // Auto-resource formulas per class ID
 function getAutoResources(classId, level, attrs, lang) {
