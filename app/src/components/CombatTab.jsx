@@ -411,7 +411,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     )
     if (id === 'combat') return (
       <section key="combat" className="ct-section">
-        <SectionHead id="combat" label={L ? 'Kampfwerte' : 'Combat values'} summary={`INI ${combat.init} · KMB ${combat.kmb} · KMV ${combat.kmv}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="combat" label={L ? 'Kampfwerte' : 'Combat values'} summary={`KMB ${combat.kmb} · KMV ${combat.kmv} · INI ${combat.init}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           {/* Size selector — auto-detect from race, allow override */}
           {(() => {
