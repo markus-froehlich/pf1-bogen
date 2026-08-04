@@ -75,6 +75,7 @@ export function BuffTracker({ char, setActiveBuffs, lang, hideTitle = false }) {
               <div className="bt-entry-info" onClick={() => startEdit(b)}>
                 <span className="bt-entry-name">{b.name}</span>
                 {summaryStr(b.bonuses) && <span className="bt-entry-summary">{summaryStr(b.bonuses)}</span>}
+                {b.notes && <span className="bt-entry-notes">{b.notes}</span>}
               </div>
               <button className="bt-del" onClick={() => del(b.id)} title="Löschen">×</button>
             </div>
