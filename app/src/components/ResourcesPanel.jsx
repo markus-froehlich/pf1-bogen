@@ -252,7 +252,10 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
           return (
             <div key={r.id} className={`res-row ${editId === r.id ? 'editing' : ''}`}>
               <div className="res-row-main">
-                <span className="res-name" onClick={() => editId !== r.id && openEdit(r)}>{r.name}</span>
+                <span className="res-name" onClick={() => editId !== r.id && openEdit(r)}>
+                  {r.name}
+                  {r.notes && <span className="res-notes">{r.notes}</span>}
+                </span>
                 <div className="res-controls">
                   <button className="res-use-btn" onClick={() => use(r.id)} disabled={remaining <= 0}
                     title={L ? 'Verwenden' : 'Use'}>−</button>
