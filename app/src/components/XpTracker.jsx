@@ -101,6 +101,13 @@ export function XpTracker({ char, setXp, totalLevel = 0, lang }) {
         )}
         {atMax && <span className="xp-maxlv">{L ? 'Max. Stufe' : 'Max level'} 🎖</span>}
       </div>
+
+      {(nextFeat || nextAttr) && (
+        <div className="xp-next-perk">
+          {nextFeat && <span className="xp-perk-chip">✦ {L ? `Talent auf Stufe ${nextLevel}` : `Feat at level ${nextLevel}`}</span>}
+          {nextAttr && <span className="xp-perk-chip">↑ {L ? `Attributswerterhöhung auf Stufe ${nextLevel}` : `Attribute increase at level ${nextLevel}`}</span>}
+        </div>
+      )}
     </div>
   )
 }
