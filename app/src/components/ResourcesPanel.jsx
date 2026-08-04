@@ -220,6 +220,13 @@ export function ResourcesPanel({ char, setResources, attrs, baseValues, lang, hi
               onChange={e => setDraft(d => ({ ...d, unit: e.target.value }))}
             />
           </div>
+          <input
+            className="res-form-notes"
+            type="text"
+            placeholder={L ? 'Notiz (optional)' : 'Note (optional)'}
+            value={draft.notes ?? ''}
+            onChange={e => setDraft(d => ({ ...d, notes: e.target.value }))}
+          />
           <div className="res-form-actions">
             {editId !== '__new__' && (
               <button className="res-del-btn" onClick={() => del(editId)} title={L ? 'Löschen' : 'Delete'}>🗑</button>
