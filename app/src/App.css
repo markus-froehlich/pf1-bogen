@@ -68,6 +68,23 @@
 .player-name-input:focus { outline: none; border-bottom-color: var(--accent); color: var(--text); }
 .player-name-input::placeholder { color: color-mix(in srgb, var(--text-muted) 50%, transparent); font-style: italic; }
 
+.companion-switch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  margin-right: 6px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.companion-switch-link:active { background: var(--surface2); }
+
 .char-list-btn {
   position: relative;
   font-size: 1rem;
