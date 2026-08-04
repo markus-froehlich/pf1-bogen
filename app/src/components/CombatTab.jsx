@@ -506,7 +506,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     )
     if (id === 'ac') return (
       <section key="ac" className="ct-section">
-        <SectionHead id="ac" label={L ? 'Rüstungsklasse' : 'Armor Class'} summary={`${L ? 'RK' : 'AC'} ${fmtBonus(combat.rk)}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
+        <SectionHead id="ac" label={L ? 'Rüstungsklasse' : 'Armor Class'} summary={`RK ${combat.rk} · BER ${combat.rk_touch} · FUSS ${combat.rk_flat}`} idx={idx} count={count} onMove={onMoveSection} collapsed={isCollapsed} onToggle={onToggleCollapse} />
         {!isCollapsed && <>
           <div className="stat-row">
             <StatBox label={L ? 'RK' : 'AC'} value={combat.rk}
