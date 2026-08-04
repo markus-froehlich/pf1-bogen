@@ -223,6 +223,20 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
   const L = lang === 'de'
   const sb = char.spellbook ?? { class_id: '', levels: {} }
 
+  // Auto-detect the character's spellcasting class from the Person tab (char.meta.classes)
+  // — a class counts as "casting" if it has a known casting stat (CASTING_STAT). With exactly
+  // one such class, the spellbook's class_id follows it automatically; with none or several
+  // (true multiclass casters), the manual dropdown below is the source of truth.
+  const casterEntries = (char.meta.classes ?? []).filter(e => e.id && CASTING_STAT[e.id])
+  const detectedClassId = casterEntries.length === 1 ? casterEntries[0].id : null
+
+  useEffect(() => {
+    if (detectedClassId && sb.class_id !== detectedClassId) {
+      setSpellbook(prev => ({ ...prev, class_id: detectedClassId }))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detectedClassId])
+
   // Auto-fill slots from PF1e standard tables
   // Resolve char class entry using alias map (e.g. hxm_magier → hexenmeister/magier)
   const sbAliases  = SPELLBOOK_TO_CHAR_ID[sb.class_id] ?? []
@@ -258,6 +272,19 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
       return { ...prev, levels: newLevels }
     })
   }
+
+  // Auto-recompute slot totals whenever the effective class, its level, or the casting
+  // stat modifier changes (e.g. a level-up) — no manual "⟳ Auto" click needed. This
+  // overwrites `total` on every relevant change, including any manually-entered value.
+  const autoFillKey = sb.class_id ? `${effectiveClassId}:${classLevel}:${castingMod}` : null
+  const lastAutoFillKey = useRef(null)
+  useEffect(() => {
+    if (autoFillKey && autoFillKey !== lastAutoFillKey.current) {
+      lastAutoFillKey.current = autoFillKey
+      autoFillSlots()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoFillKey])
 
   // Which levels have any slots or prepared spells?
   const activeLevels = LEVELS.filter(lv => {
