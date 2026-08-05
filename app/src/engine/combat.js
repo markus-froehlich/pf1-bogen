@@ -15,12 +15,14 @@
 
 import armorData   from '../data/armor.json'
 import shieldsData from '../data/shields.json'
+import ringsData   from '../data/rings.json'
 import { getConditionMods } from './conditions.js'
 
 const ARMOR_MAP   = Object.fromEntries(armorData.armor.map(a => [a.id, a]))
 const SHIELDS_MAP = Object.fromEntries(shieldsData.shields.map(s => [s.id, s]))
+const RINGS_MAP    = Object.fromEntries(ringsData.rings.map(r => [r.id, r]))
 
-export { ARMOR_MAP, SHIELDS_MAP }
+export { ARMOR_MAP, SHIELDS_MAP, RINGS_MAP }
 
 export function registerHomebrewArmor(items)   { for (const a of (items ?? [])) ARMOR_MAP[a.id]   = a }
 export function registerHomebrewShields(items) { for (const s of (items ?? [])) SHIELDS_MAP[s.id] = s }
