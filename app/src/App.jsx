@@ -607,7 +607,7 @@ export default function App() {
           <div className="section">
             <CombatTab
               char={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
-              setCombatMisc={setCombatMisc} setGear={setGear} setHp={setHp} setNlDamage={setNlDamage}
+              setCombatMisc={setCombatMisc} setGear={setGear} setGearSlot={setGearSlot} setHp={setHp} setNlDamage={setNlDamage}
               lang={lang}
               hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields} hbWeapons={hb.weapons}
               encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
