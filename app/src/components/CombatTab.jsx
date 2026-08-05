@@ -295,8 +295,8 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const raceData   = RACE_MAP[char.meta.race]
   // Only medium/heavy armor reduces movement speed in PF1e RAW — light armor
   // (and shields) never do, regardless of whether one is equipped.
-  const armorDefForSpeed = gear.armor_id ? ALL_ARMOR_MERGED.find(a => a.id === gear.armor_id) : null
-  const hasArmor   = armorDefForSpeed?.type === 'Mittel' || armorDefForSpeed?.type === 'Schwer'
+  const wornArmorDefs = (gear.items ?? []).map(item => ALL_ARMOR_MERGED.find(a => a.id === item.id)).filter(Boolean)
+  const hasArmor   = wornArmorDefs.some(a => a.type === 'Mittel' || a.type === 'Schwer')
   const manualSpeed = misc.speed_walk === '' || misc.speed_walk == null ? null : Number(misc.speed_walk)
   const speedRaw   = manualSpeed ?? (hasArmor
     ? (raceData?.speed_m?.armored ?? raceData?.speed_m?.unarmored ?? null)
