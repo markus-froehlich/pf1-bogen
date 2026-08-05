@@ -271,6 +271,11 @@ export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = 
                   </label>
                   <div className="ws-chips">
                     <button
+                      className={`ws-chip ${slot.mw ? 'ws-chip-on' : ''}`}
+                      onClick={() => setWeaponSlot(idx, 'mw', !slot.mw)}
+                      title={L ? 'Meisterarbeit: +1 Angriff (nur solange keine echte Verzauberung aktiv ist)' : 'Masterwork: +1 attack (superseded once a true enhancement is set)'}
+                    >{L ? 'Meisterarbeit' : 'Masterwork'}</button>
+                    <button
                       className={`ws-chip ${slot.finesse ? 'ws-chip-on' : ''}`}
                       onClick={() => setWeaponSlot(idx, 'finesse', !slot.finesse)}
                       title={L ? 'Waffenfinesse: GE statt ST für Angriff' : 'Weapon Finesse: DEX instead of STR for attack'}
