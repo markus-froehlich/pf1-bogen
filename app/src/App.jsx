@@ -182,6 +182,41 @@ export default function App() {
   useEffect(() => { indexRef.current   = index },            [index])
   useEffect(() => { getDataRef.current = getBackupData },    [getBackupData])
 
+  // Per-character merge for incoming remote data — mirrors the merge already done on
+  // push. Comparing one whole-file timestamp (old behavior) meant ANY other player's
+  // update could trigger overwriting ALL local characters, including one you're mid-edit
+  // on but haven't pushed yet (still in schedulePush's 3s debounce). Merging per id means
+  // your own character only ever loses to remote if remote is genuinely newer for that
+  // specific character — a fresh local edit's timestamp always wins its own comparison.
+  function mergeRemoteIndex(remoteIndex, localIndexList) {
+    const remoteById = Object.fromEntries((remoteIndex ?? []).map(e => [e.id, e]))
+    const localById  = Object.fromEntries(localIndexList.map(e => [e.id, e]))
+    const allIds = new Set([...Object.keys(remoteById), ...Object.keys(localById)])
+    const mergedIndex = []
+    const idsToWrite  = []
+    for (const id of allIds) {
+      const l = localById[id], r = remoteById[id]
+      const useRemote = r && (!l || (r.updated ?? 0) > (l.updated ?? 0))
+      mergedIndex.push(useRemote ? r : l)
+      if (useRemote) idsToWrite.push(id)
+    }
+    return { mergedIndex, idsToWrite }
+  }
+
+  function applyRemoteData(data, idsToWrite, mergedIndex) {
+    for (const id of idsToWrite) {
+      localStorage.setItem(CHAR_KEY_LS(id), JSON.stringify(data.chars[id]))
+    }
+    localStorage.setItem(CHARS_INDEX_LS, JSON.stringify(mergedIndex))
+    if (data.homebrew) { localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew)); reloadHB() }
+    if (data.preferences) {
+      for (const [k, v] of Object.entries(data.preferences)) {
+        localStorage.setItem(k, JSON.stringify(v))
+      }
+    }
+    reinitialize()
+  }
+
   // On startup: pull first, then enable push (prevents overwriting remote with stale local)
   useEffect(() => {
     if (!gistSync.connected) return
@@ -189,23 +224,8 @@ export default function App() {
     async function init() {
       const data = await pullRef.current()
       if (data?.index?.length && data?.chars) {
-        const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
-        const localMax  = Math.max(...indexRef.current.map(e => e.updated ?? 0))
-        if (remoteMax > localMax) {
-          for (const [id, charData] of Object.entries(data.chars)) {
-            localStorage.setItem(CHAR_KEY_LS(id), JSON.stringify(charData))
-          }
-          localStorage.setItem(CHARS_INDEX_LS, JSON.stringify(data.index))
-          if (data.homebrew) { localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew)); reloadHB() }
-          if (data.preferences) {
-            for (const [k, v] of Object.entries(data.preferences)) {
-              localStorage.setItem(k, JSON.stringify(v))
-            }
-          }
-          reinitialize()
-          pushReadyRef.current = true
-          return
-        }
+        const { mergedIndex, idsToWrite } = mergeRemoteIndex(data.index, indexRef.current)
+        if (idsToWrite.length > 0) applyRemoteData(data, idsToWrite, mergedIndex)
       }
       pushReadyRef.current = true
     }
@@ -219,32 +239,24 @@ export default function App() {
     if (gistSync.connected && pushReadyRef.current) gistSync.schedulePush(getBackupData)
   }, [index])
 
-  // Poll Gist every 20 s + on visibilitychange — reload if remote is newer
+  // Poll Gist every 8 s + on visibilitychange — merge in any character that's newer remotely
   useEffect(() => {
     if (!gistSync.connected) return
-    let reloading = false
+    let checking = false   // guards against overlapping fetches if one poll is still in flight
     async function checkRemote() {
-      if (reloading || !pushReadyRef.current) return
-      const data = await pullRef.current()
-      if (!data?.index?.length || !data?.chars) return
-      const remoteMax = Math.max(...data.index.map(e => e.updated ?? 0))
-      const localMax  = Math.max(...indexRef.current.map(e => e.updated ?? 0))
-      if (remoteMax <= localMax) return
-      reloading = true
-      for (const [id, charData] of Object.entries(data.chars)) {
-        localStorage.setItem(CHAR_KEY_LS(id), JSON.stringify(charData))
+      if (checking || !pushReadyRef.current) return
+      checking = true
+      try {
+        const data = await pullRef.current()
+        if (!data?.index?.length || !data?.chars) return
+        const { mergedIndex, idsToWrite } = mergeRemoteIndex(data.index, indexRef.current)
+        if (idsToWrite.length === 0) return
+        applyRemoteData(data, idsToWrite, mergedIndex)
+      } finally {
+        checking = false
       }
-      localStorage.setItem(CHARS_INDEX_LS, JSON.stringify(data.index))
-      if (data.homebrew) { localStorage.setItem('pf1_homebrew', JSON.stringify(data.homebrew)); reloadHB() }
-      if (data.preferences) {
-        for (const [k, v] of Object.entries(data.preferences)) {
-          localStorage.setItem(k, JSON.stringify(v))
-        }
-      }
-      reinitialize()
-      reloading = false
     }
-    const interval = setInterval(checkRemote, 20000)
+    const interval = setInterval(checkRemote, 8000)
     function onVisible() { if (document.visibilityState === 'visible') checkRemote() }
     document.addEventListener('visibilitychange', onVisible)
     return () => {
