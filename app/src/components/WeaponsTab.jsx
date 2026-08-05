@@ -229,6 +229,7 @@ export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = 
                     <span className="ws-big">
                       {def.damage?.[dmgKey] ?? def.damage?.m ?? '—'}
                       {comp.damage_mod !== 0 ? ` ${comp.damage_str}` : ''}
+                      {slot.dmg_extra ? ` + ${slot.dmg_extra}` : ''}
                     </span>
                   </div>
                   <div className="ws-stat-box">
