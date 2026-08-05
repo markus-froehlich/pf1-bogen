@@ -83,8 +83,6 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     }
     if (def.spell_failure > 0) gearSpellFailure += def.spell_failure
   }
-  const rk_ringTotal = rk_ring
-
   // MaxDex: worn armor's cap wins if lower than manual misc
   const maxDex = Math.min(
     armorMaxDex,
