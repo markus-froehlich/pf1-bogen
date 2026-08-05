@@ -65,6 +65,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   // Resolve armor from gear selection; fall back to manual misc for backward compat
   const armorDef  = ARMOR_MAP[gear.armor_id]
   const shieldDef = SHIELDS_MAP[gear.shield_id]
+  const ringDef   = RINGS_MAP[gear.ring_id]
 
   const rk_armor   = armorDef
     ? armorDef.bonus + Number(gear.armor_enh ?? 0)
@@ -72,6 +73,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const rk_shield  = shieldDef
     ? shieldDef.bonus + Number(gear.shield_enh ?? 0)
     : Number(misc.rk_shield ?? 0)
+  const rk_ring    = ringDef ? ringDef.bonus : 0
 
   // MaxDex: armor's cap wins if lower than manual misc
   const armorMaxDex = armorDef?.max_dex ?? 99
