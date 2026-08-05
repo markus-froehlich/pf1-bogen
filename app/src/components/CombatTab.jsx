@@ -158,6 +158,132 @@ function GearSearch({ items, groups, filtered, selectedId, onPick, lang }) {
   )
 }
 
+// One unified list of gear slots (armor, shields, rings all mixed together) — same
+// shape as the weapon slots in WeaponsTab. Nothing stops equipping two shields; every
+// slot's bonus is just summed by category in the engine, same as physically wearing
+// whatever's typed in.
+function GearSlotsList({ char, allGear, armorMap, shieldsMap, ringMap, setGearSlot, lang }) {
+  const L = lang === 'de'
+  const NUM_SLOTS = 5
+  const EMPTY = { id: '', enh: 0, mw: false }
+  const slots = Array.from({ length: NUM_SLOTS }, (_, i) => ({ ...EMPTY, ...(char.gear?.items?.[i] ?? {}) }))
+  const [editingIdx, setEditingIdx] = useState(null)
+  const [isAdding, setIsAdding] = useState(false)
+  const [query, setQuery] = useState('')
+  const closeTimer = useRef(null)
+
+  const filledSlots = slots.map((s, i) => ({ ...s, _idx: i })).filter(s => s.id)
+  const firstEmptyIdx = slots.findIndex(s => !s.id)
+  const canAdd = firstEmptyIdx !== -1
+
+  function defFor(id) { return armorMap[id] ?? shieldsMap[id] ?? ringMap[id] }
+  function isRing(id) { return !!ringMap[id] }
+
+  const q = query.trim().toLowerCase()
+  const filtered = q ? allGear.filter(i => i.name.de.toLowerCase().includes(q)) : allGear
+  const groups = {}
+  filtered.forEach(item => {
+    const t = item.type || (ringMap[item.id] ? (L ? 'Ringe' : 'Rings') : '—')
+    if (!groups[t]) groups[t] = []
+    groups[t].push(item)
+  })
+
+  function pick(idx, id) { clearTimeout(closeTimer.current); setGearSlot(idx, 'id', id); setQuery(''); setEditingIdx(null); setIsAdding(false) }
+  function handleBlur() { closeTimer.current = setTimeout(() => { setEditingIdx(null); setIsAdding(false) }, 150) }
+
+  return (
+    <div className="gear-slots-list">
+      {filledSlots.map((slot, displayIdx) => {
+        const idx = slot._idx
+        const def = defFor(slot.id)
+        if (!def) return null
+        const ring = isRing(slot.id)
+        return (
+          <div key={idx} className="gear-slot filled">
+            <div className="gear-slot-head">
+              <span className="gear-slot-label">{displayIdx + 1}</span>
+              {editingIdx === idx ? (
+                <div className="gear-search-wrap">
+                  <input
+                    className="gear-search-input2"
+                    type="text"
+                    placeholder={def.name.de}
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                    onBlur={handleBlur}
+                    autoFocus
+                  />
+                  <GearSearch items={allGear} groups={groups} filtered={filtered} selectedId={slot.id} onPick={id => pick(idx, id)} lang={lang} />
+                </div>
+              ) : (
+                <button className="gear-name-btn2" onClick={() => { clearTimeout(closeTimer.current); setEditingIdx(idx); setQuery('') }}>
+                  {def.name.de}
+                </button>
+              )}
+              {editingIdx !== idx && !ring && (
+                <label className="gear-enh-label">
+                  <span>{L ? 'Verz.' : 'Enh.'}</span>
+                  <input className="gear-enh" type="number" min={0} max={10}
+                    value={slot.enh} onChange={e => setGearSlot(idx, 'enh', e.target.value)} />
+                </label>
+              )}
+              {editingIdx !== idx && !ring && (
+                <button className={`gear-mw-chip ${slot.mw ? 'on' : ''}`}
+                  onClick={() => setGearSlot(idx, 'mw', !slot.mw)}
+                  title={L ? 'Meisterarbeit: −1 Rüstungsmalus' : 'Masterwork: −1 armor check penalty'}
+                >{L ? 'MA' : 'MW'}</button>
+              )}
+              {editingIdx !== idx && (
+                <button className="gear-clear-btn2" onClick={() => setGearSlot(idx, 'id', '')} title={L ? 'Entfernen' : 'Remove'}>×</button>
+              )}
+            </div>
+            {editingIdx !== idx && (
+              <div className="gear-info">
+                {def.type && <span className="gi-tag">{def.type}</span>}
+                <span className="gi-bonus">RK +{def.bonus + (ring ? 0 : Number(slot.enh ?? 0))}</span>
+                {def.max_dex != null && <span className="gi-cap">Max. GE {def.max_dex}</span>}
+                {def.check_penalty < 0 && (
+                  <span className="gi-pen">
+                    {L ? 'Rüstungsmalus' : 'Check penalty'} {slot.mw ? Math.min(0, def.check_penalty + 1) : def.check_penalty}
+                    {slot.mw && <span className="gi-mw-note"> ({L ? 'MA' : 'MW'})</span>}
+                  </span>
+                )}
+                {def.spell_failure > 0 && <span className="gi-fail">Zauberpatzer {pct(def.spell_failure)}</span>}
+              </div>
+            )}
+          </div>
+        )
+      })}
+
+      {isAdding && firstEmptyIdx !== -1 && (
+        <div className="gear-slot ws-adding">
+          <div className="gear-slot-head">
+            <div className="gear-search-wrap">
+              <input
+                className="gear-search-input2"
+                type="text"
+                placeholder={L ? 'Suchen…' : 'Search…'}
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                onBlur={handleBlur}
+                autoFocus
+              />
+              <GearSearch items={allGear} groups={groups} filtered={filtered} selectedId="" onPick={id => pick(firstEmptyIdx, id)} lang={lang} />
+            </div>
+            <button className="gear-clear-btn2" onClick={() => setIsAdding(false)} title={L ? 'Abbrechen' : 'Cancel'}>×</button>
+          </div>
+        </div>
+      )}
+
+      {!isAdding && canAdd && (
+        <button className="gear-add-btn2" onClick={() => { setIsAdding(true); setQuery('') }}>
+          + {L ? 'Neue Ausrüstung' : 'Add gear'}
+        </button>
+      )}
+    </div>
+  )
+}
+
 // Styled like the weapon slot cards in WeaponsTab: a bordered card with a
 // "+ … wählen" dashed button when empty, and a name button (tap to re-search)
 // + info row once something is picked.
