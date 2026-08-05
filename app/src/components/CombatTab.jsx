@@ -256,7 +256,7 @@ function GearSlotsList({ char, allGear, armorMap, shieldsMap, ringMap, setGearSl
       })}
 
       {isAdding && firstEmptyIdx !== -1 && (
-        <div className="gear-slot ws-adding">
+        <div className="gear-slot gear-slot-adding">
           <div className="gear-slot-head">
             <div className="gear-search-wrap">
               <input
