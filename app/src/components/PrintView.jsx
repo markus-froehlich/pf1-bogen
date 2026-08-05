@@ -72,8 +72,12 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
   const hasPage2 = preparedLevels.length > 0 || allSpellLevels.length > 0 ||
     char.notes?.trim() || bio.appearance || bio.background || bio.languages
 
-  const armorDef  = gear.armor_id  ? ARMOR_MAP[gear.armor_id]  : null
-  const shieldDef = gear.shield_id ? SHIELD_MAP[gear.shield_id] : null
+  // Gear is a free-form slot list (armor/shields/rings mixed) — resolve every worn
+  // item's definition + slot data (enh/mw) for display, same as the Kampf-Tab.
+  const wornGear = (gear.items ?? []).map(item => {
+    const def = ARMOR_MAP[item.id] ?? SHIELD_MAP[item.id] ?? RING_MAP[item.id]
+    return def ? { item, def, isRing: !!RING_MAP[item.id] } : null
+  }).filter(Boolean)
 
   // Trained / ranked skills only
   const rankedSkills = ALL_SKILLS.filter(s => (skills[s.id]?.ranks ?? 0) > 0)
