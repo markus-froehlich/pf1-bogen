@@ -1,6 +1,7 @@
 import racesData        from '../data/races.json'
 import armorData        from '../data/armor.json'
 import shieldsData      from '../data/shields.json'
+import ringsData        from '../data/rings.json'
 import skillsData       from '../data/skills.json'
 import spellsData       from '../data/spells.json'
 import classFeatData    from '../data/class_features_by_level.json'
