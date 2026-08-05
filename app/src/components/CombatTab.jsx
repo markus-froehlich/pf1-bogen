@@ -197,22 +197,36 @@ function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang, mw
             </div>
           )}
         </div>
-        <label className="gear-enh-label">
-          <span>{L ? 'Verz.' : 'Enh.'}</span>
-          <input
-            className="gear-enh"
-            type="number" min={0} max={10}
-            value={enh}
-            onChange={e => onEnh(e.target.value)}
-          />
-        </label>
+        {onEnh && (
+          <label className="gear-enh-label">
+            <span>{L ? 'Verz.' : 'Enh.'}</span>
+            <input
+              className="gear-enh"
+              type="number" min={0} max={10}
+              value={enh}
+              onChange={e => onEnh(e.target.value)}
+            />
+          </label>
+        )}
+        {onMw && (
+          <button
+            className={`gear-mw-chip ${mw ? 'on' : ''}`}
+            onClick={() => onMw(!mw)}
+            title={L ? 'Meisterarbeit: −1 Rüstungsmalus' : 'Masterwork: −1 armor check penalty'}
+          >{L ? 'MA' : 'MW'}</button>
+        )}
       </div>
       {def && (
         <div className="gear-info">
-          <span className="gi-tag">{def.type}</span>
-          <span className="gi-bonus">RK +{def.bonus + Number(enh)}</span>
+          {def.type && <span className="gi-tag">{def.type}</span>}
+          <span className="gi-bonus">RK +{def.bonus + Number(enh ?? 0)}</span>
           {def.max_dex != null && <span className="gi-cap">Max. GE {def.max_dex}</span>}
-          {def.check_penalty < 0 && <span className="gi-pen">Rüstungsmalus {def.check_penalty}</span>}
+          {def.check_penalty < 0 && (
+            <span className="gi-pen">
+              {L ? 'Rüstungsmalus' : 'Check penalty'} {mw ? Math.min(0, def.check_penalty + 1) : def.check_penalty}
+              {mw && <span className="gi-mw-note"> ({L ? 'MA' : 'MW'})</span>}
+            </span>
+          )}
           {def.spell_failure > 0 && <span className="gi-fail">Zauberpatzer {pct(def.spell_failure)}</span>}
         </div>
       )}
