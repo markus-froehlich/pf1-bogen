@@ -290,6 +290,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
   const RACE_MAP = { ...RACE_MAP_BASE, ...Object.fromEntries(hbRaces.map(r => [r.id, r])) }
   const ALL_ARMOR_MERGED   = [...armorData.armor,   ...hbArmor]
   const ALL_SHIELDS_MERGED = [...shieldsData.shields, ...hbShields]
+  const ALL_GEAR_MERGED    = [...ALL_ARMOR_MERGED, ...ALL_SHIELDS_MERGED, ...ALL_RINGS]
 
   const raceData   = RACE_MAP[char.meta.race]
   // Only medium/heavy armor reduces movement speed in PF1e RAW — light armor
