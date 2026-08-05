@@ -24,6 +24,9 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
   const finesse   = slot.finesse   ?? false   // use GE for melee attack
   const strMult   = slot.str_mult  ?? 1       // from weapon def or override
   const enh       = Number(slot.enhancement ?? 0)
+  // Masterwork gives +1 to attack only (no damage) — superseded once a true
+  // enhancement bonus is present (a +1 weapon is already masterwork by definition).
+  const mwAttack  = (slot.mw && enh === 0) ? 1 : 0
   const misc      = Number(slot.misc_attack  ?? 0)
   const dmgMisc   = Number(slot.misc_damage  ?? 0)
   const offHand   = slot.off_hand  ?? false
