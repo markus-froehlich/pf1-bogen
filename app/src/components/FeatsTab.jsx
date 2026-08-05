@@ -397,8 +397,10 @@ export function FeatsTab({ char, setFeats, totalLevel = 0, lang }) {
             className={`feat-card ${editId === f.id ? 'editing' : ''}`}
             onClick={() => editId !== f.id && openEdit(f)}>
             <div className="fc-main">
-              <span className="fc-name">{f.name}</span>
-              <FeatRefLink name={f.name} source={f.source} />
+              <span className="fc-name-wrap">
+                <span className="fc-name">{f.name}</span>
+                <FeatRefLink name={f.name} source={f.source} />
+              </span>
               <span className="fc-type" style={{ color: typeColor(f.type) }}>{f.type}</span>
             </div>
             {f.desc  && <p className="fc-desc">{f.desc}</p>}
