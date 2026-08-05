@@ -149,7 +149,11 @@
 .ws-mod-field input::-webkit-outer-spin-button,
 .ws-mod-field input::-webkit-inner-spin-button { -webkit-appearance: none; }
 .ws-mod-field input:focus { outline: none; border-color: var(--accent); }
-.ws-mod-field-dice { flex: 1; min-width: 110px; }
+.ws-mod-field-dice {
+  flex-basis: 100%;
+  align-items: flex-start;
+  margin-top: 4px;
+}
 .ws-mod-field-dice input {
   width: 100%;
   text-align: left;
