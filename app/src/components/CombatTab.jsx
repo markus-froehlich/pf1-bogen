@@ -131,13 +131,13 @@ function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, o
   )
 }
 
-function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang }) {
+function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang, mw, onMw, ringMap }) {
   const L = lang === 'de'
   const [query, setQuery] = useState('')
   const [open, setOpen] = useState(false)
   const wrapRef = useRef(null)
 
-  const def = selectedId ? (ARMOR_MAP[selectedId] ?? SHIELDS_MAP[selectedId]) : null
+  const def = selectedId ? (ARMOR_MAP[selectedId] ?? SHIELDS_MAP[selectedId] ?? ringMap?.[selectedId]) : null
   const selectedName = def ? def.name.de : ''
 
   const q = query.toLowerCase()
