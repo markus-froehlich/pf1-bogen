@@ -40,7 +40,7 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
   const damageMod = isRanged ? (slot.composite_str ?? 0)
                   : Math.floor(STmod * strMult)
 
-  const attackBonus = bab + attackMod + enh + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + extraAttack
+  const attackBonus = bab + attackMod + enh + mwAttack + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + extraAttack
   const totalDmgMod = damageMod + enh + dmgMisc + (condMods.damage ?? 0)
 
   return {
