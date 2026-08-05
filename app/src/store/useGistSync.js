@@ -89,6 +89,63 @@ export function useGistSync(profile = 'player') {
     } catch { setStatus('error'); return false }
   }
 
+  // Push, but merge per-character against the current remote state first — a plain
+  // push() would blindly overwrite the whole file with this device's local snapshot,
+  // which includes stale copies of every OTHER character this device hasn't repulled
+  // recently. That clobbers other players' concurrent edits (e.g. everyone updating
+  // HP mid-combat) whenever this device's push happens to land last. Merging picks,
+  // per character, whichever side (local vs. freshly-fetched remote) was updated more
+  // recently — so only genuinely stale copies lose, not just whoever pushed last.
+  async function pushMerged(localData) {
+    if (!token || !gistId) return false
+    setStatus('syncing')
+    try {
+      const getRes = await fetch(`${API}/gists/${gistId}`, { headers: ghHeaders(token) })
+      let remoteData = null
+      if (getRes.ok) {
+        const gist = await getRes.json()
+        const content = gist.files?.[FILENAME]?.content
+        if (content) { try { remoteData = JSON.parse(content) } catch {} }
+      }
+
+      let merged = localData
+      if (remoteData?.index?.length && remoteData?.chars) {
+        const remoteById = Object.fromEntries(remoteData.index.map(e => [e.id, e]))
+        const localById  = Object.fromEntries(localData.index.map(e => [e.id, e]))
+        const allIds = new Set([...Object.keys(remoteById), ...Object.keys(localById)])
+        const mergedIndex = []
+        const mergedChars = {}
+        for (const id of allIds) {
+          const l = localById[id], r = remoteById[id]
+          const useLocal = l && (!r || (l.updated ?? 0) >= (r.updated ?? 0))
+          const winner = useLocal ? l : r
+          mergedIndex.push(winner)
+          mergedChars[id] = useLocal ? localData.chars[id] : remoteData.chars[id]
+        }
+        const localMax  = Math.max(0, ...localData.index.map(e => e.updated ?? 0))
+        const remoteMax = Math.max(0, ...remoteData.index.map(e => e.updated ?? 0))
+        const preferLocal = localMax >= remoteMax
+        merged = {
+          ...localData,
+          index: mergedIndex,
+          chars: mergedChars,
+          homebrew:    preferLocal ? (localData.homebrew    ?? remoteData.homebrew)    : (remoteData.homebrew    ?? localData.homebrew),
+          preferences: preferLocal ? (localData.preferences ?? remoteData.preferences) : (remoteData.preferences ?? localData.preferences),
+        }
+      }
+
+      const res = await fetch(`${API}/gists/${gistId}`, {
+        method: 'PATCH',
+        headers: ghHeaders(token),
+        body: JSON.stringify({ files: { [FILENAME]: { content: JSON.stringify(merged) } } })
+      })
+      if (!res.ok) { setStatus('error'); return false }
+      const now = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+      setLastSync(now); localStorage.setItem(LS_LAST, now)
+      setStatus('ok'); return true
+    } catch { setStatus('error'); return false }
+  }
+
   async function pull(overrideToken, overrideGistId) {
     const t  = overrideToken  ?? token
     const id = overrideGistId ?? gistId
