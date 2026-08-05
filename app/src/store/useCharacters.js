@@ -436,7 +436,7 @@ export function useCharacters(profile = 'player') {
   return {
     char, index, activeId,
     update, setAttr, setBuff, setMeta, setCombatMisc,
-    setClass, setGear, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
+    setClass, setGear, setGearSlot, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
     newCompanion,
     setNotes, setSpellbook, setContacts, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
