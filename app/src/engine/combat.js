@@ -86,7 +86,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const GEmodCapped = Math.min(GEmodForAC, maxDex)
 
   const rk_natural  = Number(misc.rk_natural ?? 0) + Number(bt.nat_armor ?? 0)
-  const rk_deflect  = Number(misc.rk_deflect ?? 0) + Number(bt.deflection ?? 0)
+  const rk_deflect  = rk_ring + Number(misc.rk_deflect ?? 0) + Number(bt.deflection ?? 0)
   const rk_misc2    = Number(misc.rk_misc    ?? 0)
   const rk_buff_ac  = Number(bt.ac ?? 0)
 
