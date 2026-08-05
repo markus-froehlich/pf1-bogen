@@ -455,6 +455,8 @@
   gap: 6px;
 }
 .gear-slot.filled { border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.gear-slot-adding { border-style: dashed; opacity: 0.85; }
+.gear-slots-list { display: flex; flex-direction: column; gap: 8px; }
 .gear-slot-head { display: flex; align-items: center; gap: 6px; }
 .gear-slot-label { font-size: 0.62rem; color: var(--text-muted); min-width: 40px; flex-shrink: 0; }
 .gear-name-btn2 {
