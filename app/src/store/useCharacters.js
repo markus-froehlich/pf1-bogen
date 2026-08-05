@@ -44,7 +44,7 @@ export const DEFAULT_CHAR = {
   attributes: { ST: 10, GE: 10, KO: 10, IN: 10, WE: 10, CH: 10 },
   buffs: { ST: 0, GE: 0, KO: 0, IN: 0, WE: 0, CH: 0 },
   combat_misc: {},
-  gear: { armor_id: '', armor_enh: 0, shield_id: '', shield_enh: 0 },
+  gear: { items: [] },
   skills: {},
   hp: { max: 0, current: 0, temp: 0, rolls: '' },
   weapons: [],
