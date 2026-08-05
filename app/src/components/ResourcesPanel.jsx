@@ -16,7 +16,9 @@ function getAutoResources(classId, level, attrs, lang) {
   const suggestions = []
 
   if (classId === 'barbar') {
-    suggestions.push({ name: n('Kampfrausch (Runden)', 'Rage (rounds)'), max: Math.max(1, 4 + ko + 2 * lvl) })
+    // PF1e RAW: 4 + Con mod at level 1, +2 rounds/day for each level after that
+    // (i.e. 4 + ko + 2*(lvl-1) — not "+2*lvl", which double-counts level 1's base rounds).
+    suggestions.push({ name: n('Kampfrausch (Runden)', 'Rage (rounds)'), max: Math.max(1, 4 + ko + 2 * (lvl - 1)) })
   }
   if (classId === 'kleriker') {
     suggestions.push({ name: n('Energie fokussieren', 'Channel Energy'), max: Math.max(1, 3 + ch) })
