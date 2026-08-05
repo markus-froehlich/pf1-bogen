@@ -110,8 +110,9 @@
 .feat-card:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
 .feat-card.editing { opacity: 0.4; pointer-events: none; }
 .fc-main { display: flex; align-items: center; gap: 8px; }
-.fc-name  { flex: 1; font-size: 0.88rem; font-weight: 700; color: var(--text); }
-.fc-type  { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.fc-name-wrap { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 2px; overflow: hidden; }
+.fc-name  { font-size: 0.88rem; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.fc-type  { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0; }
 
 /* Reference link (feats + lookup) */
 .feat-ref-link {
