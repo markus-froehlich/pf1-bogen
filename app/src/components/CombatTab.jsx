@@ -133,19 +133,46 @@ function SaveBox({ label, total, base, mod, modAttr, misc, onMiscChange, note, o
   )
 }
 
+function GearSearch({ items, groups, filtered, selectedId, onPick, lang }) {
+  const L = lang === 'de'
+  return (
+    <div className="gear-dropdown">
+      <div className="gear-dd-none" onMouseDown={() => onPick('')}>
+        — {L ? 'keine' : 'none'} —
+      </div>
+      {Object.entries(groups).map(([type, typeItems]) => (
+        <div key={type}>
+          <div className="gear-dd-group">{type}</div>
+          {typeItems.map(item => (
+            <div key={item.id}
+              className={`gear-dd-item${item.id === selectedId ? ' selected' : ''}`}
+              onMouseDown={() => onPick(item.id)}>
+              <span className="gear-dd-name">{item.name.de}</span>
+              <span className="gear-dd-bonus">+{item.bonus}</span>
+            </div>
+          ))}
+        </div>
+      ))}
+      {filtered.length === 0 && <div className="gear-dd-empty">{L ? 'Keine Treffer' : 'No results'}</div>}
+    </div>
+  )
+}
+
+// Styled like the weapon slot cards in WeaponsTab: a bordered card with a
+// "+ … wählen" dashed button when empty, and a name button (tap to re-search)
+// + info row once something is picked.
 function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang, mw, onMw, ringMap }) {
   const L = lang === 'de'
   const [query, setQuery] = useState('')
-  const [open, setOpen] = useState(false)
-  const wrapRef = useRef(null)
+  const [editing, setEditing] = useState(false)
+  const closeTimer = useRef(null)
 
   const def = selectedId ? (ARMOR_MAP[selectedId] ?? SHIELDS_MAP[selectedId] ?? ringMap?.[selectedId]) : null
   const selectedName = def ? def.name.de : ''
 
-  const q = query.toLowerCase()
+  const q = query.trim().toLowerCase()
   const filtered = q ? items.filter(i => i.name.de.toLowerCase().includes(q)) : items
 
-  // Group by type
   const groups = {}
   filtered.forEach(item => {
     const t = item.type || '—'
@@ -153,53 +180,34 @@ function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang, mw
     groups[t].push(item)
   })
 
-  function pick(id) { onSelect(id); setQuery(''); setOpen(false) }
-  function clear(e) { e.stopPropagation(); onSelect(''); setQuery(''); setOpen(false) }
+  function pick(id) { clearTimeout(closeTimer.current); onSelect(id); setQuery(''); setEditing(false) }
+  function clear() { onSelect(''); setQuery(''); setEditing(false) }
+  function openSearch() { clearTimeout(closeTimer.current); setEditing(true) }
+  function handleBlur() { closeTimer.current = setTimeout(() => setEditing(false), 150) }
 
   return (
-    <div className="gear-selector">
-      <div className="gear-row">
-        <span className="gear-label">{label}</span>
-        <div className="gear-search-wrap" ref={wrapRef}>
-          <input
-            className="gear-search-input"
-            type="text"
-            placeholder={open ? (L ? 'Suchen…' : 'Search…') : (selectedName || (L ? '— keine —' : '— none —'))}
-            value={open ? query : (selectedName ? '' : '')}
-            readOnly={!open}
-            onFocus={() => { setOpen(true); setQuery('') }}
-            onBlur={() => setTimeout(() => setOpen(false), 150)}
-            onChange={e => setQuery(e.target.value)}
-          />
-          {selectedId && !open && (
-            <span className="gear-search-val">{selectedName}</span>
-          )}
-          {selectedId && (
-            <button className="gear-clear-btn" onMouseDown={clear} tabIndex={-1}>×</button>
-          )}
-          {open && (
-            <div className="gear-dropdown">
-              <div className="gear-dd-none" onMouseDown={() => pick('')}>
-                — {L ? 'keine' : 'none'} —
-              </div>
-              {Object.entries(groups).map(([type, typeItems]) => (
-                <div key={type}>
-                  <div className="gear-dd-group">{type}</div>
-                  {typeItems.map(item => (
-                    <div key={item.id}
-                      className={`gear-dd-item${item.id === selectedId ? ' selected' : ''}`}
-                      onMouseDown={() => pick(item.id)}>
-                      <span className="gear-dd-name">{item.name.de}</span>
-                      <span className="gear-dd-bonus">+{item.bonus}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
-              {filtered.length === 0 && <div className="gear-dd-empty">{L ? 'Keine Treffer' : 'No results'}</div>}
-            </div>
-          )}
-        </div>
-        {onEnh && (
+    <div className={`gear-slot ${def ? 'filled' : ''}`}>
+      <div className="gear-slot-head">
+        <span className="gear-slot-label">{label}</span>
+        {editing ? (
+          <div className="gear-search-wrap">
+            <input
+              className="gear-search-input2"
+              type="text"
+              placeholder={selectedName || (L ? 'Suchen…' : 'Search…')}
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              onBlur={handleBlur}
+              autoFocus
+            />
+            <GearSearch items={items} groups={groups} filtered={filtered} selectedId={selectedId} onPick={pick} lang={lang} />
+          </div>
+        ) : def ? (
+          <button className="gear-name-btn2" onClick={openSearch} title={L ? 'Ändern' : 'Change'}>{selectedName}</button>
+        ) : (
+          <button className="gear-add-btn2" onClick={openSearch}>+ {label} {L ? 'wählen' : 'choose'}</button>
+        )}
+        {def && !editing && onEnh && (
           <label className="gear-enh-label">
             <span>{L ? 'Verz.' : 'Enh.'}</span>
             <input
@@ -210,15 +218,18 @@ function GearSelector({ label, items, selectedId, enh, onSelect, onEnh, lang, mw
             />
           </label>
         )}
-        {onMw && (
+        {def && !editing && onMw && (
           <button
             className={`gear-mw-chip ${mw ? 'on' : ''}`}
             onClick={() => onMw(!mw)}
             title={L ? 'Meisterarbeit: −1 Rüstungsmalus' : 'Masterwork: −1 armor check penalty'}
           >{L ? 'MA' : 'MW'}</button>
         )}
+        {def && !editing && (
+          <button className="gear-clear-btn2" onClick={clear} title={L ? 'Entfernen' : 'Remove'}>×</button>
+        )}
       </div>
-      {def && (
+      {def && !editing && (
         <div className="gear-info">
           {def.type && <span className="gi-tag">{def.type}</span>}
           <span className="gi-bonus">RK +{def.bonus + Number(enh ?? 0)}</span>
