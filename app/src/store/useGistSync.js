@@ -165,7 +165,7 @@ export function useGistSync(profile = 'player') {
   function schedulePush(getData) {
     if (!token || !gistId) return
     if (timerRef.current) clearTimeout(timerRef.current)
-    timerRef.current = setTimeout(() => { push(getData()) }, 3000)
+    timerRef.current = setTimeout(() => { pushMerged(getData()) }, 3000)
   }
 
   function disconnect() {
