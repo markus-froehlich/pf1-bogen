@@ -277,7 +277,7 @@ function SectionHead({ id, label, summary, idx, count, collapsed, onToggle, onMo
   )
 }
 
-export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false, companionHd = null }) {
+export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setGear, setGearSlot, setHp, setNlDamage, lang, hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier = 'light', applyCarryMovement = false, buffTotals = {}, activeBuffs = [], condMods = {}, sectionOrder, onMoveSection, collapsedSections, onToggleCollapse, extraPanels = {}, extraLabels = {}, isCompanion = false, companionHd = null }) {
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
   const gear = char.gear ?? {}
