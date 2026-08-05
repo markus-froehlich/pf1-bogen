@@ -155,8 +155,11 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
 
             <section className="pv-section">
               <h3>{L ? 'Ausrüstung' : 'Gear'}</h3>
-              {armorDef  && <div className="pv-gear-line">{L ? 'Rüstung' : 'Armor'}: <b>{armorDef.name.de}</b>{gear.armor_enh > 0 ? ` +${gear.armor_enh}` : ''} (RK +{armorDef.bonus + (gear.armor_enh ?? 0)})</div>}
-              {shieldDef && <div className="pv-gear-line">{L ? 'Schild' : 'Shield'}: <b>{shieldDef.name.de}</b>{gear.shield_enh > 0 ? ` +${gear.shield_enh}` : ''} (RK +{shieldDef.bonus + (gear.shield_enh ?? 0)})</div>}
+              {wornGear.map(({ item, def, isRing }, i) => (
+                <div key={i} className="pv-gear-line">
+                  <b>{def.name.de}</b>{!isRing && item.enh > 0 ? ` +${item.enh}` : ''} (RK +{def.bonus + (isRing ? 0 : Number(item.enh ?? 0))})
+                </div>
+              ))}
               {!armorDef && !shieldDef && <div className="pv-empty">—</div>}
             </section>
 
