@@ -11,6 +11,7 @@ import './CombatTab.css'
 
 const ALL_ARMOR   = armorData.armor
 const ALL_SHIELDS = shieldsData.shields
+const ALL_RINGS   = ringsData.rings
 const RACE_MAP_BASE = Object.fromEntries(racesData.races.map(r => [r.id, r]))
 
 // PF1e encumbrance speed table (medium/heavy load, same reduction)
