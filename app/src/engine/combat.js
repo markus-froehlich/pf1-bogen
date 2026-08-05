@@ -134,6 +134,8 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     gab_melee: gabMelee, gab_ranged: gabRanged,
     melee_attacks: meleeAttacks, ranged_attacks: rangedAttacks,
     kmb, kmv,
+    gear_check_penalty: gearCheckPenalty,
+    gear_spell_failure: gearSpellFailure,
     _components: {
       rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2,
       init_ability: effGEmod, init_misc: initMisc, init_feat: initFeat,
