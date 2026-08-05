@@ -4,7 +4,7 @@ import { computeWeaponAttack } from '../engine/weapons.js'
 import './WeaponsTab.css'
 
 const OFFICIAL_WEAPONS = weaponsData.weapons
-const EMPTY_SLOT  = { weapon_id: '', enhancement: 0, misc_attack: 0, misc_damage: 0, dmg_extra: '', finesse: false, off_hand: false }
+const EMPTY_SLOT  = { weapon_id: '', enhancement: 0, misc_attack: 0, misc_damage: 0, dmg_extra: '', finesse: false, off_hand: false, mw: false }
 const NUM_SLOTS   = 5
 
 // Map size_mod_rk → weapon damage size key
