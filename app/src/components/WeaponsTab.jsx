@@ -260,6 +260,15 @@ export function WeaponsTab({ char, attrs, bab, setWeaponSlot, lang, hbWeapons = 
                       />
                     </label>
                   ))}
+                  <label className="ws-mod-field ws-mod-field-dice">
+                    <span>{L ? 'Zusatzwürfel' : 'Extra dice'}</span>
+                    <input
+                      type="text"
+                      placeholder={L ? 'z.B. 1W6 Feuer' : 'e.g. 1d6 fire'}
+                      value={slot.dmg_extra ?? ''}
+                      onChange={e => setWeaponSlot(idx, 'dmg_extra', e.target.value)}
+                    />
+                  </label>
                   <div className="ws-chips">
                     <button
                       className={`ws-chip ${slot.finesse ? 'ws-chip-on' : ''}`}
