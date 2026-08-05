@@ -62,21 +62,30 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const sizeModRK  = Number(misc.size_mod_rk  ?? 0)
   const sizeModKMB = Number(misc.size_mod_kmb ?? 0)
 
-  // Resolve armor from gear selection; fall back to manual misc for backward compat
-  const armorDef  = ARMOR_MAP[gear.armor_id]
-  const shieldDef = SHIELDS_MAP[gear.shield_id]
-  const ringDef   = RINGS_MAP[gear.ring_id]
+  // Gear is a free-form list of slots (like weapons) — each slot can hold any armor,
+  // shield, or ring item. Nothing stops equipping e.g. two shields; every slot's bonus
+  // is simply summed by category, same as a player physically wearing whatever they typed in.
+  const gearItems = gear.items ?? []
+  let rk_armor = 0, rk_shield = 0, rk_ring = 0
+  let armorMaxDex = 99, gearCheckPenalty = 0, gearSpellFailure = 0
+  for (const item of gearItems) {
+    const isArmor  = ARMOR_MAP[item.id]
+    const isShield = SHIELDS_MAP[item.id]
+    const isRing   = RINGS_MAP[item.id]
+    const def = isArmor ?? isShield ?? isRing
+    if (!item.id || !def) continue
+    const bonus = def.bonus + (isRing ? 0 : Number(item.enh ?? 0))
+    if (isArmor) { rk_armor += bonus; armorMaxDex = Math.min(armorMaxDex, def.max_dex ?? 99) }
+    else if (isShield) rk_shield += bonus
+    else if (isRing) rk_ring += bonus
+    if (def.check_penalty < 0) {
+      gearCheckPenalty += (item.mw ? Math.min(0, def.check_penalty + 1) : def.check_penalty)
+    }
+    if (def.spell_failure > 0) gearSpellFailure += def.spell_failure
+  }
+  const rk_ringTotal = rk_ring
 
-  const rk_armor   = armorDef
-    ? armorDef.bonus + Number(gear.armor_enh ?? 0)
-    : Number(misc.rk_armor ?? 0)
-  const rk_shield  = shieldDef
-    ? shieldDef.bonus + Number(gear.shield_enh ?? 0)
-    : Number(misc.rk_shield ?? 0)
-  const rk_ring    = ringDef ? ringDef.bonus : 0
-
-  // MaxDex: armor's cap wins if lower than manual misc
-  const armorMaxDex = armorDef?.max_dex ?? 99
+  // MaxDex: worn armor's cap wins if lower than manual misc
   const maxDex = Math.min(
     armorMaxDex,
     misc.max_dex != null ? Number(misc.max_dex) : 99
