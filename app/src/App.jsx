@@ -300,12 +300,8 @@ export default function App() {
   const visibleAttrOrder = isCompanion ? attrOrder.filter(id => ['attrs', 'bio'].includes(id)) : attrOrder
 
   const gear = char.gear ?? {}
-  // Masterwork armor/shields reduce their own check penalty by 1 (min 0) — PF1e RAW.
-  const armorPenaltyRaw = ARMOR_MAP[gear.armor_id]?.check_penalty ?? 0
-  const shieldPenaltyRaw = SHIELDS_MAP[gear.shield_id]?.check_penalty ?? 0
-  const armorPenalty  = gear.armor_mw  && armorPenaltyRaw  < 0 ? Math.min(0, armorPenaltyRaw + 1)  : armorPenaltyRaw
-  const shieldPenalty = gear.shield_mw && shieldPenaltyRaw < 0 ? Math.min(0, shieldPenaltyRaw + 1) : shieldPenaltyRaw
-  const armorCheckPenalty = armorPenalty + shieldPenalty
+  // Masterwork armor/shields (−1 check penalty each, PF1e RAW) already folded in by the engine.
+  const armorCheckPenalty = combat.gear_check_penalty ?? 0
 
   // Carry tier for CombatTab (encumbrance → speed)
   const _carry = carryThresholds(computed.ST.buffed)
