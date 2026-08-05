@@ -18,6 +18,7 @@ const SPELL_MAP = Object.fromEntries(spellsData.spells.map(s => [s.id, s]))
 const RACE_MAP   = Object.fromEntries(racesData.races.map(r => [r.id, r]))
 const ARMOR_MAP  = Object.fromEntries(armorData.armor.map(a => [a.id, a]))
 const SHIELD_MAP = Object.fromEntries(shieldsData.shields.map(s => [s.id, s]))
+const RING_MAP   = Object.fromEntries(ringsData.rings.map(r => [r.id, r]))
 const ALL_SKILLS = skillsData.skills
 
 const ATTRS = ['ST','GE','KO','IN','WE','CH']
