@@ -553,6 +553,8 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
             enh={gear.armor_enh ?? 0}
             onSelect={v => setGear('armor_id', v)}
             onEnh={v => setGear('armor_enh', Number(v) || 0)}
+            mw={gear.armor_mw ?? false}
+            onMw={v => setGear('armor_mw', v)}
             lang={lang}
           />
           <GearSelector
@@ -562,13 +564,23 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
             enh={gear.shield_enh ?? 0}
             onSelect={v => setGear('shield_id', v)}
             onEnh={v => setGear('shield_enh', Number(v) || 0)}
+            mw={gear.shield_mw ?? false}
+            onMw={v => setGear('shield_mw', v)}
             lang={lang}
+          />
+          <GearSelector
+            label={L ? 'Ring' : 'Ring'}
+            items={ALL_RINGS}
+            selectedId={gear.ring_id ?? ''}
+            onSelect={v => setGear('ring_id', v)}
+            lang={lang}
+            ringMap={RINGS_MAP}
           />
 
           <div className="rk-inputs">
             {[
               ['rk_natural', L ? 'Natürlich' : 'Natural',   buffTotals.nat_armor  ?? 0],
-              ['rk_deflect', L ? 'Ausweichen' : 'Deflect',  buffTotals.deflection ?? 0],
+              ['rk_deflect', L ? 'Ausweichen (sonst.)' : 'Deflect (other)',  buffTotals.deflection ?? 0],
               ['rk_misc',    L ? 'Sonstiges' : 'Misc',      0],
             ].map(([key, lbl, buffVal]) => (
               <label key={key} className="rk-field">
