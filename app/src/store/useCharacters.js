@@ -190,6 +190,19 @@ export function useCharacters(profile = 'player') {
     patchChar(prev => ({ ...prev, gear: { ...(prev.gear ?? {}), [field]: value } }))
   }, [patchChar])
 
+  // Gear (armor/shields/rings) as a free-form slot list, same shape as weapons —
+  // nothing stops equipping e.g. two shields, same as typing in whatever fits.
+  const setGearSlot = useCallback((idx, field, value) => {
+    patchChar(prev => {
+      const NUM_SLOTS = 5
+      const EMPTY = { id: '', enh: 0, mw: false }
+      const gear = prev.gear ?? {}
+      const items = Array.from({ length: NUM_SLOTS }, (_, i) => ({ ...EMPTY, ...(gear.items?.[i] ?? {}) }))
+      items[idx] = { ...items[idx], [field]: typeof value === 'boolean' ? value : (field === 'id' ? value : (Number(value) || 0)) }
+      return { ...prev, gear: { ...gear, items } }
+    })
+  }, [patchChar])
+
   const setSkill = useCallback((skillId, field, value) => {
     patchChar(prev => {
       const skillEntry = { ...(prev.skills?.[skillId] ?? {}) }
