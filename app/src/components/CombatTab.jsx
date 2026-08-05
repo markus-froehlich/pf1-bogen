@@ -686,35 +686,14 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
               buffInfo={buffAnnot(activeBuffs, 'ac', 'nat_armor')} />
           </div>
 
-          <GearSelector
-            label={L ? 'Rüstung' : 'Armor'}
-            items={ALL_ARMOR_MERGED}
-            selectedId={gear.armor_id ?? ''}
-            enh={gear.armor_enh ?? 0}
-            onSelect={v => setGear('armor_id', v)}
-            onEnh={v => setGear('armor_enh', Number(v) || 0)}
-            mw={gear.armor_mw ?? false}
-            onMw={v => setGear('armor_mw', v)}
-            lang={lang}
-          />
-          <GearSelector
-            label={L ? 'Schild' : 'Shield'}
-            items={ALL_SHIELDS_MERGED}
-            selectedId={gear.shield_id ?? ''}
-            enh={gear.shield_enh ?? 0}
-            onSelect={v => setGear('shield_id', v)}
-            onEnh={v => setGear('shield_enh', Number(v) || 0)}
-            mw={gear.shield_mw ?? false}
-            onMw={v => setGear('shield_mw', v)}
-            lang={lang}
-          />
-          <GearSelector
-            label={L ? 'Ring' : 'Ring'}
-            items={ALL_RINGS}
-            selectedId={gear.ring_id ?? ''}
-            onSelect={v => setGear('ring_id', v)}
-            lang={lang}
+          <GearSlotsList
+            char={char}
+            allGear={ALL_GEAR_MERGED}
+            armorMap={Object.fromEntries(ALL_ARMOR_MERGED.map(a => [a.id, a]))}
+            shieldsMap={Object.fromEntries(ALL_SHIELDS_MERGED.map(s => [s.id, s]))}
             ringMap={RINGS_MAP}
+            setGearSlot={setGearSlot}
+            lang={lang}
           />
 
           <div className="rk-inputs">
