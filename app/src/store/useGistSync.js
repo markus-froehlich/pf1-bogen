@@ -174,5 +174,5 @@ export function useGistSync(profile = 'player') {
     setLastSync(''); setStatus('idle')
   }
 
-  return { token, gistId, connected, status, lastSync, connect, push, pull, schedulePush, disconnect }
+  return { token, gistId, connected, status, lastSync, connect, push, pushMerged, pull, schedulePush, disconnect }
 }
