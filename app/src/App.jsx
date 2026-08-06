@@ -562,6 +562,11 @@ export default function App() {
                       <CompanionAdvancementPanel rules={companionRules} lang={lang}
                         tricks={char.companion?.tricks ?? []}
                         onTricksChange={tricks => update({ companion: { tricks } })} />
+                      <p className="attr-note">
+                        {lang === 'de'
+                          ? '⚠ Attributswerte selbst eintragen — Boni werden berechnet'
+                          : '⚠ Enter ability scores yourself — modifiers are calculated'}
+                      </p>
                       <div className="attr-grid">
                         {ATTRS.map(a => (
                           <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} />
