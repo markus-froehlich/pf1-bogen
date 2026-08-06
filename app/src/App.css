@@ -461,6 +461,13 @@
 .sort-bar-btn:not(:disabled):hover { opacity: 1; color: var(--accent); border-color: var(--accent); }
 .sort-bar-btn:disabled { opacity: 0.2; cursor: default; }
 
+.attr-note {
+  color: var(--warn);
+  font-style: italic;
+  font-size: 0.72rem;
+  margin: 0 0 6px;
+}
+
 /* ── Attribute grid ── */
 .attr-grid {
   display: grid;
