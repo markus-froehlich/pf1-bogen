@@ -48,8 +48,8 @@ export function RaceSelector({ value, onChange, lang = 'de', hbRaces = [], showL
             <span className="race-skill">+{selected.extra_skill_points_per_level} FP/Stufe</span>
           )}
           <span className="race-note">{lang === 'de'
-            ? '⚠ Attribut-Boni manuell eintragen'
-            : '⚠ Apply ability bonuses manually'}</span>
+            ? '⚠ Volks-Boni selbst in den Attributwert einrechnen — der Modifikator berechnet sich dann automatisch'
+            : '⚠ Add racial bonuses into the score yourself — the modifier is then calculated automatically'}</span>
         </div>
       )}
       {selected && traits.length > 0 && (
