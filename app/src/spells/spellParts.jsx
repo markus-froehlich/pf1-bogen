@@ -3,13 +3,7 @@ import { ArrowSquareOut, MagnifyingGlass, Minus, Plus, MagicWand } from '@phosph
 import { RefLink } from '../components/RefLink.jsx'
 import { EditSheet, TextField, NumField } from '../combat/EditSheet.jsx'
 import { Stepper } from '../combat/ui.jsx'
-import { SPELL_MAP, SCHOOLS, schoolOf, spellUrl } from './spellModel.js'
-
-/** Untertitel eines Zaubers: „Hv [Feuer] · SG 13". */
-export function spellSub(spell, dc) {
-  const sch = spell?.school_de && spell.school ? spell.school.replace(/^(\S+)\s+(.+)$/, '$1 [$2]') : spell?.school
-  return [sch, dc != null ? `SG ${dc}` : null].filter(Boolean).join(' · ')
-}
+import { SPELL_MAP, SCHOOLS, spellUrl, spellSub } from './spellModel.js'
 
 /** Eine Zauberzeile: links optional Kästchen, Name (antippen = Beschreibung), rechts Aktionen. */
 export function SpellRow({ spell, spellId, dc, lead, tags, actions, done, lang }) {
@@ -157,4 +151,3 @@ export function CasterSettings({ entry, data, grades, onPatch, onAdjust, lang })
   )
 }
 
-export const schoolName = spell => SCHOOLS[schoolOf(spell)] ?? schoolOf(spell)

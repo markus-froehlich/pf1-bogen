@@ -158,3 +158,9 @@ export function spellUrl(spell) {
   return `http://prd.5footstep.de/${book}/Zauber/${slug}`
 }
 export const LIST_NAMES = spellsData._meta.classes
+
+/** Untertitel eines Zaubers: „Hv [Feuer] · SG 13". */
+export function spellSub(spell, dc) {
+  const sch = spell?.school ? spell.school.replace(/^(\S+)\s+(.+)$/, '$1 [$2]') : null
+  return [sch, dc != null ? `SG ${dc}` : null].filter(Boolean).join(' · ')
+}
