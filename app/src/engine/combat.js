@@ -114,14 +114,14 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
 
   const init = effGEmod + initMisc + initFeat + cond.init + Number(bt.init ?? 0)
 
-  const gabMelee  = bab + effSTmod + Number(misc.gab_melee_misc  ?? 0) + cond.attack + Number(bt.attack ?? 0)
+  const gabMelee  = bab + effSTmod + Number(misc.gab_melee_misc  ?? 0) + cond.attack + cond.melee_attack + Number(bt.attack ?? 0)
   const gabRanged = bab + effGEmod + Number(misc.gab_ranged_misc ?? 0) + cond.attack + Number(bt.attack ?? 0)
 
   // KMB gets the same attack-roll condition mods as GAB (e.g. Ringend/Schütteln -2 gilt
   // auch für Kampfmanöverwürfe). KMV is a defense value: it inherits AC-type dodge mods
   // (cond.rk, e.g. Gehetzt +1/Verlangsamt -1) but NOT the attacker's own attack-roll malus.
   const kmbBase = bab + effSTmod + sizeModKMB + Number(misc.kmb_misc ?? 0)
-  const kmb = kmbBase + cond.attack
+  const kmb = kmbBase + cond.attack + cond.melee_attack
   const kmv = 10 + kmbBase + effGEmod + cond.rk
 
   const meleeAttacks  = attackString(gabMelee,  bab)

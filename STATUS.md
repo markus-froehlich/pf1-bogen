@@ -540,6 +540,22 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Verifiziert: 6560 Zellen JSON↔`sheets_values`, Engine 0 Abweichungen, live Hexenmeister 11,
   Paladin 4, Kleriker 1, Mystiker 1 ✓.
 
+- **PDF-Audit aller Regeltabellen (2026-09-25)** — ab jetzt gilt das PDF-Grundregelwerk (siehe
+  AGENTS.md „Regel-Autorität“). Gegen das PDF geprüft, **0 Abweichungen** nach Fixes:
+  11 Grundklassen (GAB/RW/Zauber pro Tag), Barde/Hexenmeister bekannte Zauber, Attributmods 1–45 +
+  Bonuszauber (Tab. 1-3), 10 Prestige- + 5 NSC-Klassen (GAB/RW), Adept-Zauber, Rüstungen/Schilde,
+  Grundwaffen, Größenmodifikatoren, Tiergefährten Tab. 3-6, Schutzring +1–+5, Fertigkeiten Tab. 4-3
+  (35 × Attribut/nur geübt/Rüstungsmalus + 374 Klassenfertigkeits-Zellen), Zustände (Anhang 2).
+  Korrigiert: Turmschild Max. GE +2 (Engine deckelt jetzt auch per Schild), Waffen-Reichweiten
+  („3 m“ wurde nicht geparst → 110 Waffen mit Reichweite), Siangham K 1W4, Größen Mini/Winzig/
+  Sehr klein (+8/+4/+2), Tiergefährten Stufe 8 + 17, Schutzring-Seite G481 (G313 war erfunden),
+  Beruf WE, Mit Tieren umgehen CH, EP mittel Stufe 14 = 445.000, Zustände: Benommen ohne GE-Verlust,
+  Bewusstlos/Im Sterben/Stabilisiert/Versteinert = hilflos (GE 0), Gesegnet nur +1 Angriff (RW nur
+  gg. Furcht), Liegend −4 nur Nahkampf (`melee_attack` in `conditions.js`).
+  **Offen (Nutzer fragen):** PDF-Gewichte sind Pfund, App beschriftet „kg“; Münzgewicht App
+  1000 Münzen = 1,5 — PDF 50 Münzen = 1 Pfund. Noch nicht gegen PDF geprüft: Talente (Tab. 5-1),
+  Domänen, Schablonen, Tierarten-Werte, Ressourcen-Formeln (außer Kampfrausch), Wechselkurse.
+
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)

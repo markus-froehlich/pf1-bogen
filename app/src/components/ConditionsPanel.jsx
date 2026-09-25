@@ -24,7 +24,7 @@ export const CONDITIONS = [
   { id: 'blind',         de: 'Blind',          en: 'Blind',        effect: '−2 RK, kein GE-Bonus, −4 Wahrnehm., 50% Miss' },
   { id: 'geblendet',     de: 'Geblendet',       en: 'Dazzled',      effect: '−1 Angriff, −1 Wahrnehm. (Sehen)' },
   { id: 'verwirrt',      de: 'Verwirrt',        en: 'Confused',     effect: 'zufällige Aktionen' },
-  { id: 'benommen',      de: 'Benommen',        en: 'Dazed',        effect: 'keine Aktionen' },
+  { id: 'benommen',      de: 'Benommen',        en: 'Dazed',        effect: 'keine Aktionen, kein RK-Malus' },
   { id: 'beschaedigt',   de: 'Beschädigt',      en: 'Broken',       effect: 'Waffe −2 Angriff/Schaden; Rüstung/Schild RK-Bonus halbiert; 75% Wert' },
   { id: 'blutung',       de: 'Blutung',         en: 'Bleed',        effect: 'Schaden zu Rundenbeginn, bis Heilkunde SG 15 o. Heilzauber' },
   { id: 'koerperlos',    de: 'Körperlos',       en: 'Incorporeal',  effect: 'immun geg. nichtmagische Angriffe, 50% Schaden von Magischem' },
@@ -43,7 +43,7 @@ export const CONDITIONS = [
   { id: 'krank',         de: 'Kränkelnd',       en: 'Sickened',     effect: '−2 Angriff/Schaden/RW/Fertigk./Attributswürfe' },
   { id: 'taumelnd',      de: 'Wankend',         en: 'Staggered',    effect: 'nur 1 Standard- oder Bewegungsaktion' },
   { id: 'betäubt',       de: 'Betäubt',         en: 'Stunned',      effect: 'keine Aktionen, −2 RK, kein GE-Bonus, lässt Sachen fallen' },
-  { id: 'bewusstlos',    de: 'Bewusstlos',      en: 'Unconscious',  effect: 'hilflos' },
+  { id: 'bewusstlos',    de: 'Bewusstlos',      en: 'Unconscious',  effect: 'hilflos (GE 0)' },
   { id: 'flachfuss',     de: 'Auf dem falschen Fuß erwischt', en: 'Flat-Footed', effect: 'kein GE-Bonus auf RK, keine Gelegenheitsangriffe' },
   { id: 'fasziniert',    de: 'Fasziniert',      en: 'Fascinated',   effect: 'reagiert nicht auf Umgebung, −4 auf Reaktions-Fertigkeitswürfe' },
   { id: 'haltegriff',    de: 'Im Haltegriff',   en: 'Pinned',       effect: 'kein GE-Bonus auf RK, zusätzlich −4 RK, keine Bewegung' },
@@ -57,7 +57,7 @@ export const CONDITIONS = [
   { id: 'verstrickt',    de: 'Verstrickt',      en: 'Entangled',    effect: '−2 Angriff, −4 GE, halbe Bewegung, kein Rennen/Ansturm' },
   { id: 'verlangsamt',   de: 'Verlangsamt',     en: 'Slowed',       effect: '−1 Angriff/RK/Reflex, eine Aktion weniger' },
   { id: 'gehast',        de: 'Gehetzt',         en: 'Hasted',       effect: '+1 Angriff/RK/Reflex, Zusatzangriff, +9m Bew.' },
-  { id: 'gesegnet',      de: 'Gesegnet',        en: 'Blessed',      effect: '+1 Angriff & RW' },
+  { id: 'gesegnet',      de: 'Gesegnet',        en: 'Blessed',      effect: '+1 Angriff, +1 RW gegen Furcht' },
 ]
 
 export function ConditionsPanel({ char, setConditions, lang, hideTitle = false }) {

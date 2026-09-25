@@ -15,6 +15,7 @@ export function getConditionMods(conditions) {
     str_mod_delta: 0,       // actual STR mod change (erschöpft/ermüdet)
     // Attack modifier (melee + ranged)
     attack: 0,
+    melee_attack: 0,        // melee only (Liegend)
     // Weapon damage modifier
     damage: 0,
     // Save modifiers
@@ -62,9 +63,10 @@ export function getConditionMods(conditions) {
   // Verstrickt (Entangled): -4 GE (= -2 mod), -2 attack
   if (c.has('verstrickt')) { bump('dex_mod_delta', -2, 'verstrickt'); bump('attack', -2, 'verstrickt') }
 
-  // Conditions that remove positive DEX bonus to AC (flat-footed equivalent)
-  for (const id of ['blind', 'betäubt', 'hilflos', 'gelähmt', 'bewusstlos', 'benommen',
-                     'flachfuss', 'haltegriff', 'kauernd', 'versteinert']) {
+  // Conditions that remove positive DEX bonus to AC (flat-footed equivalent).
+  // Benommen NICHT: GRW S. 565 "hat aber keinen Malus auf die RK".
+  for (const id of ['blind', 'betäubt', 'hilflos', 'gelähmt', 'bewusstlos', 'sterbend',
+                     'stabilisiert', 'flachfuss', 'haltegriff', 'kauernd', 'versteinert']) {
     if (c.has(id)) flag('no_dex_to_ac', id)
   }
 
@@ -84,8 +86,11 @@ export function getConditionMods(conditions) {
     bump('str_mod_delta', -999, 'gelähmt')
   }
 
-  // Hilflos: treated as DEX 0 (mod -5)
-  if (c.has('hilflos')) bump('dex_mod_delta', -999, 'hilflos')
+  // Hilflos: treated as DEX 0 (mod -5). GRW S. 566-568: bewusstlos ist hilflos;
+  // sterbend/stabilisiert sind bewusstlos; versteinert gilt als bewusstlos.
+  for (const id of ['hilflos', 'bewusstlos', 'sterbend', 'stabilisiert', 'versteinert']) {
+    if (c.has(id)) { bump('dex_mod_delta', -999, id); break }
+  }
 
   // Schütteln: -2 attack/saves/skills
   if (c.has('schütteln')) {
@@ -111,8 +116,8 @@ export function getConditionMods(conditions) {
     bump('will', -2, 'panisch'); bump('skill_penalty', -2, 'panisch')
   }
 
-  // Niedergestreckt: -4 to melee attacks (applied to general attack for simplicity)
-  if (c.has('niedergestreckt')) bump('attack', -4, 'niedergestreckt')
+  // Liegend (id 'niedergestreckt'): -4 nur auf Nahkampf-Angriffswürfe (GRW S. 567)
+  if (c.has('niedergestreckt')) bump('melee_attack', -4, 'niedergestreckt')
 
   // Taub: -4 Initiative, -4 auf konkurrierende Wahrnehmungswürfe (20% Zauberversagen in UI)
   if (c.has('taub')) { bump('init', -4, 'taub'); bump('perception_penalty', -4, 'taub') }
@@ -123,8 +128,9 @@ export function getConditionMods(conditions) {
   // Gehetzt (Hasted): +1 attack/AC/Reflex
   if (c.has('gehast')) { bump('attack', 1, 'gehast'); bump('rk', 1, 'gehast'); bump('ref_flat', 1, 'gehast') }
 
-  // Gesegnet: +1 attack + all saves
-  if (c.has('gesegnet')) { bump('attack', 1, 'gesegnet'); bump('fort', 1, 'gesegnet'); bump('ref_flat', 1, 'gesegnet'); bump('will', 1, 'gesegnet') }
+  // Gesegnet (Segnen, GRW S. 331): +1 Moral auf Angriffswürfe; RW-Bonus gilt nur
+  // gegen Furchteffekte und wird deshalb nicht auf die allgemeinen RW gerechnet.
+  if (c.has('gesegnet')) bump('attack', 1, 'gesegnet')
 
   // Unsichtbar: +2 attack
   if (c.has('unsichtbar')) bump('attack', 2, 'unsichtbar')

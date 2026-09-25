@@ -361,7 +361,7 @@ export function CombatTab({ char, attrs, combat, baseValues, setCombatMisc, setG
     const total = valid.reduce((s, i) => s + i.total, 0)
     return total !== 0 ? { total, sourceIds: [...new Set(valid.flatMap(i => i.sourceIds))] } : null
   }
-  const stAttackCondInfo = mergeCondInfo(condAnnot(condMods, 'attack'), modInfo(stModDelta, condMods.sources?.str_mod_delta))
+  const stAttackCondInfo = mergeCondInfo(condAnnot(condMods, 'attack', 'melee_attack'), modInfo(stModDelta, condMods.sources?.str_mod_delta))
   const geAttackCondInfo = mergeCondInfo(condAnnot(condMods, 'attack'), modInfo(geModDelta, condMods.sources?.dex_mod_delta))
   const kmvCondInfo = mergeCondInfo(condAnnot(condMods, 'rk'), modInfo(geModDelta, condMods.sources?.dex_mod_delta))
 
