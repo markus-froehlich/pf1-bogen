@@ -28,5 +28,7 @@ Alle Schritte **ohne Zwischenstopp** nacheinander umsetzen (nicht nach jedem Sch
 - Safari (iOS + macOS) und Chrome (Android + Desktop). Safe-Areas, `100dvh`, Hover nur bei `(hover:hover)`.
 - Bestehende Funktionen dürfen nicht wegfallen. Keine Datenformat-Änderung ohne Migration (`deepMerge`).
 
+- **Abschluss-Pflicht (Wunsch des Nutzers, 2026-09-26):** Bevor „fertig" gemeldet wird, muss **alles** durchgetestet sein – jeder Tab und jede Funktion in **Handy, Tablet und Desktop** (inkl. Hoch/Quer, Schrift M + XL, beide Themes), im Browser tatsächlich bedient (nicht nur gebaut). Gefundene Fehler zuerst beheben, dann erneut testen. Die Zusammenfassung nennt, was getestet wurde.
+
 ## 4. Abweichungen
 Weicht etwas im Code vom Design ab oder fehlt im Design eine Angabe: nicht erfinden, sondern die naheliegendste Lösung im Sinne von README.md wählen, weiterarbeiten und die Frage in der Schlusszusammenfassung auflisten. Kleine Design-Probleme (Abstände, Umbrüche) selbst im Sinne der Tokens und Muster aus README.md lösen.
