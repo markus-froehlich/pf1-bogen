@@ -28,7 +28,7 @@ export function BreakdownSheet({ bd, misc, onMisc, lang }) {
                 <span className="nc-ellipsis">{line.label}</span>
                 <span className="nc-bd-sub">{line.sub}</span>
               </span>
-              <span className="nc-bd-val">{line.raw ? line.value : sg(line.value)}</span>
+              <span className="nc-bd-val">{line.display ?? (line.raw ? line.value : sg(line.value))}</span>
             </div>
           )
         })}
