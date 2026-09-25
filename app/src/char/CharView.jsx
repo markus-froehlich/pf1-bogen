@@ -30,7 +30,7 @@ const fmt = n => Number(n || 0).toLocaleString('de-DE')
 export function CharView(props) {
   const {
     char, attrs, baseValues, lang, layout, races, hbClasses = [],
-    setMeta, setClass, setAttr, setXp, setBio, update,
+    setMeta, setAttr, setXp, setBio, update,
     isCompanion, companionRules, owner, ownedCompanions, isDruid, index, activeId, switchChar, newCompanion,
   } = props
   const L = lang === 'de'
@@ -116,8 +116,8 @@ export function CharView(props) {
                 <span className="nc-chips nc-chips-tight">
                   {arch.map(a => <span key={a} className="nc-tag nc-tag-accent">{a}</span>)}
                   {(archetypesData.archetypes[entry.id]?.length ?? 0) > 0 && <span className="nc-tag nc-tag-outline">{arch.length ? (L ? 'Archetypen ändern' : 'Change archetypes') : (L ? '+ Archetyp' : '+ Archetype')}</span>}
-                  {(char.meta.domains ?? []).filter(Boolean).length > 0 && idx === 0 && (entry.id === 'kleriker' || entry.id === 'inquisitor') &&
-                    char.meta.domains.filter(Boolean).map(d => <span key={d} className="nc-tag nc-tag-neutral">{d}</span>)}
+                  {(entry.id === 'kleriker' || entry.id === 'inquisitor') &&
+                    (char.meta.domains ?? []).filter(Boolean).map(d => <span key={d} className="nc-tag nc-tag-neutral">{d}</span>)}
                 </span>
               </button>
               {idx > 0 && <button className="nc-row-edit" onClick={() => removeClass(idx)} aria-label={L ? 'Klasse entfernen' : 'Remove class'}><X /></button>}
@@ -239,7 +239,7 @@ export function CharView(props) {
         )}
         {sheet?.type === 'person' && <PersonEditor bio={bio} setBio={setBio} lang={lang} onClose={close} />}
         {sheet?.type === 'class' && (
-          <ClassEditor char={char} idx={sheet.idx} classMap={classMap} hbClasses={hbClasses} setClass={setClass} setMeta={setMeta}
+          <ClassEditor char={char} idx={sheet.idx} classMap={classMap} hbClasses={hbClasses} setMeta={setMeta}
             onRemove={sheet.idx > 0 && sheet.idx < classes.length ? () => removeClass(sheet.idx) : null} lang={lang} onClose={close} />
         )}
         {sheet?.type === 'companion' && (
@@ -280,7 +280,7 @@ function IdentityEditor({ char, races, setMeta, setBio, lang, onClose }) {
       {traits.length > 0 && (
         <Field label={L ? `Volksmerkmale (${traits.length})` : `Racial traits (${traits.length})`}>
           <button className="nc-btn nc-btn-ghost nc-self-start" onClick={() => setShowTraits(v => !v)}>{showTraits ? (L ? 'Ausblenden' : 'Hide') : (L ? 'Anzeigen' : 'Show')}</button>
-          {showTraits && <div className="nc-traits">{traits.map((t, i) => <div key={i} className="nc-trait"><b>{t.name}</b>{t.desc ? ` – ${t.desc}` : ''}</div>)}</div>}
+          {showTraits && <div className="nc-traits">{traits.map((t, i) => <div key={i} className="nc-trait"><b>{t.trait}</b>{t.desc ? ` – ${t.desc}` : ''}</div>)}</div>}
         </Field>
       )}
       <ChipsField label={L ? 'Gesinnung' : 'Alignment'} options={ALIGNMENTS.map(a => [a[0], L ? a[1] : a[2]])} value={d.alignment} onChange={v => set({ alignment: v })} />
@@ -313,7 +313,7 @@ function PersonEditor({ bio, setBio, lang, onClose }) {
   )
 }
 
-function ClassEditor({ char, idx, classMap, hbClasses, setClass, setMeta, onRemove, lang, onClose }) {
+function ClassEditor({ char, idx, classMap, hbClasses, setMeta, onRemove, lang, onClose }) {
   const L = lang === 'de'
   const cur = (char.meta.classes ?? [])[idx] ?? { id: '', level: 1, archetypes: [] }
   const [d, setD] = useState({ id: cur.id ?? '', level: Number(cur.level) || 1, archetypes: cur.archetypes ?? [] })
@@ -342,10 +342,9 @@ function ClassEditor({ char, idx, classMap, hbClasses, setClass, setMeta, onRemo
           onChange={v => set({ archetypes: Object.keys(v).filter(k => v[k]).slice(-3) })}
           hint={L ? 'Bis zu 3, sofern sie nicht dieselben Klassenmerkmale ersetzen.' : 'Up to 3 if they do not replace the same features.'} />
       )}
-      {idx === 0 && (d.id === 'kleriker' || d.id === 'inquisitor') && (
+      {(d.id === 'kleriker' || d.id === 'inquisitor') && (
         <Field label={L ? 'Domänen' : 'Domains'}><DomainsPanel char={{ ...char, meta: { ...char.meta, classes: [{ id: d.id, level: d.level }] } }} setMeta={setMeta} lang={lang} /></Field>
       )}
-      {cur.id && void setClass}
     </EditSheet>
   )
 }
