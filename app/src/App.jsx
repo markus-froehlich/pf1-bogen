@@ -8,6 +8,8 @@ import { computeAttributes, computeBABAndSaves, computeCombat, computeBuffTotals
 import { getConditionMods } from './engine/conditions.js'
 import { COIN_WEIGHT_PFUND } from './engine/attributes.js'
 import racesData from './data/races.json'
+import poisonsData from './data/poisons.json'
+import templatesData from './data/templates.json'
 import { AttributeBlock } from './components/AttributeBlock.jsx'
 import { RaceSelector } from './components/RaceSelector.jsx'
 import { ClassSection } from './components/ClassSection.jsx'
@@ -386,7 +388,7 @@ export default function App() {
   const moreCounts = {
     contacts: (char.contacts ?? []).length || null,
     specials: (char.specials ?? []).length || null,
-    poisons: 80, templates: 25,
+    poisons: poisonsData.poisons.length, templates: templatesData.templates.length,
   }
   const sub = tab === 'more' && morePage
     ? { title: L ? MORE_PAGES[morePage].de : MORE_PAGES[morePage].en, onBack: () => setMorePage(null) }
