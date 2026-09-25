@@ -17,6 +17,8 @@ export function Wizard({ races, hbClasses = [], defaultPlayer = '', onCreate, on
   const [step, setStep] = useState(0)
   const [w, setW] = useState({ name: '', player: defaultPlayer, race: null, choice: null, cls: null, pb: 15, at: { ST: 10, GE: 10, KO: 10, IN: 10, WE: 10, CH: 10 } })
   const set = patch => setW(prev => ({ ...prev, ...patch }))
+  // funktional: schnelles Mehrfachtippen darf keine Schritte verlieren
+  const stepAttr = (k, d) => setW(prev => ({ ...prev, at: { ...prev.at, [k]: Math.max(7, Math.min(18, prev.at[k] + d)) } }))
   const classes = useMemo(() => [...ALL_CLASSES, ...hbClasses].filter(c => c.progression?.length), [hbClasses])
   const race = races.find(r => r.id === w.race)
   const floating = race && race.ability_mod_floating != null && !Object.keys(race.ability_mods ?? {}).length
@@ -103,9 +105,9 @@ export function Wizard({ races, hbClasses = [], defaultPlayer = '', onCreate, on
               return (
                 <div key={k} className="nc-wiz-attr">
                   <span className="nc-row-text"><span className="nc-pick-name">{k}</span><span className="nc-row-sub">{ATTR_NAMES[k][L ? 0 : 1]} · {POINT_BUY[base]} P</span></span>
-                  <button className="nc-step-btn" onClick={() => set({ at: { ...w.at, [k]: Math.max(7, base - 1) } })} aria-label="−"><Minus /></button>
+                  <button className="nc-step-btn" onClick={() => stepAttr(k, -1)} aria-label="−"><Minus /></button>
                   <span className="nc-step-val">{base}</span>
-                  <button className="nc-step-btn" onClick={() => set({ at: { ...w.at, [k]: Math.min(18, base + 1) } })} aria-label="+"><Plus /></button>
+                  <button className="nc-step-btn" onClick={() => stepAttr(k, 1)} aria-label="+"><Plus /></button>
                   <span className="nc-wiz-final"><span>{fin} <small className="nc-accent-soft">{sg(abilityMod(fin))}</small></span>{r ? <small className="nc-accent-soft">{sg(r)} {L ? 'Volk' : 'race'}</small> : null}</span>
                 </div>
               )
