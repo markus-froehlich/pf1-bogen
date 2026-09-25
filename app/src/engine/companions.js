@@ -2,15 +2,15 @@ import companionsData from '../data/animal_companions.json'
 
 const SPECIES = Object.fromEntries(companionsData.companions.map(species => [species.id, species]))
 
-// Tabelle 3-6: Grundwerte von Tiergefährten. The values are independent from
+// Tabelle 3-6: Grundwerte von Tiergefährten (gegen PDF + Excel geprüft 2026-09-25). The values are independent from
 // normal class progressions and are therefore kept in their own engine module.
 const PROGRESSION = [
   [2, 1, 3, 0, 3, 0, 0, 1], [3, 2, 3, 1, 3, 0, 0, 1], [3, 2, 3, 1, 3, 2, 1, 2],
   [4, 3, 4, 1, 4, 2, 1, 2], [5, 3, 4, 1, 4, 2, 1, 2], [6, 4, 5, 2, 5, 4, 2, 3],
-  [6, 4, 5, 2, 5, 4, 2, 3], [7, 5, 6, 2, 6, 4, 2, 3], [8, 6, 6, 2, 6, 6, 3, 4],
+  [6, 4, 5, 2, 5, 4, 2, 3], [7, 5, 5, 2, 5, 4, 2, 3], [8, 6, 6, 2, 6, 6, 3, 4],
   [9, 6, 6, 3, 6, 6, 3, 4], [9, 6, 6, 3, 6, 6, 3, 4], [10, 7, 7, 3, 7, 8, 4, 5],
   [11, 8, 7, 3, 7, 8, 4, 5], [12, 9, 8, 4, 8, 8, 4, 5], [12, 9, 8, 4, 8, 10, 5, 6],
-  [13, 9, 8, 4, 8, 10, 5, 6], [14, 10, 9, 4, 8, 10, 5, 6], [15, 11, 9, 5, 9, 12, 6, 7],
+  [13, 9, 8, 4, 8, 10, 5, 6], [14, 10, 9, 4, 9, 10, 5, 6], [15, 11, 9, 5, 9, 12, 6, 7],
   [15, 11, 9, 5, 9, 12, 6, 7], [16, 12, 10, 5, 10, 12, 6, 7],
 ]
 

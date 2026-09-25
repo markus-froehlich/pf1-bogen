@@ -94,6 +94,10 @@ def extract_shields():
 if __name__ == '__main__':
     armor   = extract_armor()
     shields = extract_shields()
+    # PDF-Korrekturen (Grundregelwerk Tab. 6-6 ist maßgeblich; im Excel fehlt der Wert)
+    for sh in shields:
+        if sh['id'] == 'turmschild':
+            sh['max_dex'] = 2
     print(f'Armor: {len(armor)} entries, Shields: {len(shields)} entries')
 
     out_dir = os.path.join(os.path.dirname(__file__), '..', 'data')

@@ -76,7 +76,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     if (!item.id || !def) continue
     const bonus = def.bonus + (isRing ? 0 : Number(item.enh ?? 0))
     if (isArmor) { rk_armor += bonus; armorMaxDex = Math.min(armorMaxDex, def.max_dex ?? 99) }
-    else if (isShield) rk_shield += bonus
+    else if (isShield) { rk_shield += bonus; if (def.max_dex != null) armorMaxDex = Math.min(armorMaxDex, def.max_dex) }  // Turmschild: Max. GE +2
     else if (isRing) rk_ring += bonus
     if (def.check_penalty < 0) {
       gearCheckPenalty += (item.mw ? Math.min(0, def.check_penalty + 1) : def.check_penalty)
