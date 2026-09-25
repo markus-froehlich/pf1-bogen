@@ -1,6 +1,6 @@
 # STATUS
 
-_Stand: 2026-08-04_
+_Stand: 2026-09-26_
 
 ## Wo wir stehen
 **Phase 1 (Bestandsaufnahme) abgeschlossen + freigegeben.** Entscheidungen geklärt.
@@ -9,8 +9,27 @@ wichtigsten Regel-Datasets sind portiert und in der App gebündelt.
 **Phase 3 (PWA + Engine) aktiv:** App, Engine und UI sind weit fortgeschritten;
 aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
 
+## Redesign „Nocturne" (Branch `redesign/mobile-nocturne`, Stand 2026-09-26)
+**Alle 7 Schritte umgesetzt und getestet, NICHT gemergt, NICHT deployt.** Branch ist nur lokal
+(push.default=matching → nur `main` wird gepusht; main unverändert).
+Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag, Prototyp-HTML).
+- Neue UI je Bereich in eigenen Ordnern: `shell/` (Hülle, Sheets, Toast, Suche ⌘K), `combat/`,
+  `char/` (inkl. Assistent), `skills/`, `spells/`, `inventory/`, `more/`. Engine/Daten unverändert
+  genutzt, nur ergänzt (Buff-Typen/Stapelung, `resolveGearItem`, `spellRow`, `classLabel`, `usedSkillRanks`).
+- Zauber: Klassentyp Liste/Buch/Spontan/Hybrid; Multiklasse unter `spellbook.others[classId]`,
+  primäre Klasse bleibt im alten Format (Druckansicht kompatibel); `spellbook.book[lv]` neu.
+- PDF-Regeln statt Excel (verifiziert im GRW): Paladin/Waldläufer ZS = Stufe − 3; Magier-Spezialist
+  +1 Schulplatz, Gegnerschule 2 Plätze; Zauberbuch-Eintrag Grad 0 = 5 GM, sonst Grad² × 10 GM.
+- Abschlusstest: 360/375/390, 667/780/844 quer, 744/820/1024 (+quer), 1180/1280/1440; je M + XL,
+  Standard + Kontrast; alle Tabs, Mehr-Unterseiten, 22 Sheets; Überlauf/Überlappung/Touch ≥ 44px/
+  Eingaben ≥ 16px automatisiert geprüft; iOS-Rig (iPhone SE/12/14 Pro Max quer, iPad Pro 11).
+- **Offen (Entscheidung Nutzer):** siehe Abschluss-Zusammenfassung im Chat 2026-09-26
+  (u. a. Antipaladin/Blutwüter-ZS, Ring vs. Ablenkungs-Buff, KMB ohne Angriffs-Buffs,
+  alte Komponenten-Dateien löschen, wip-Commit 273797d, Merge/Deploy).
+
 ## Entscheidungen (festgezurrt, siehe AGENTS.md)
-1. Rechnen **1:1 wie Excel** (Referenz = `sheets_values`/`sheets_full`).
+1. ~~Rechnen 1:1 wie Excel~~ → **PDF-Grundregelwerk gilt** (siehe AGENTS.md „Regel-Autorität"),
+   Excel für Inhalte außerhalb der PDFs und als Test-Referenz.
 2. Sprache **DE + EN** umschaltbar (Felder sprachgekeyt).
 3. **Homebrew von Anfang an.**
 4. **Kein** Alt-Import (eigene lokale Speicherung).
