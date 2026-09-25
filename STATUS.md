@@ -552,9 +552,11 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Beruf WE, Mit Tieren umgehen CH, EP mittel Stufe 14 = 445.000, Zustände: Benommen ohne GE-Verlust,
   Bewusstlos/Im Sterben/Stabilisiert/Versteinert = hilflos (GE 0), Gesegnet nur +1 Angriff (RW nur
   gg. Furcht), Liegend −4 nur Nahkampf (`melee_attack` in `conditions.js`).
+  Wechselkurse PM/GM/SM/KM ✓ (S. 139).
   **Offen (Nutzer fragen):** PDF-Gewichte sind Pfund, App beschriftet „kg“; Münzgewicht App
-  1000 Münzen = 1,5 — PDF 50 Münzen = 1 Pfund. Noch nicht gegen PDF geprüft: Talente (Tab. 5-1),
-  Domänen, Schablonen, Tierarten-Werte, Ressourcen-Formeln (außer Kampfrausch), Wechselkurse.
+  1000 Münzen = 1,5 — PDF S. 139: „Standardmünze wiegt ungefähr neuneinhalb Gramm“ (1000 ≈ 9,5 kg).
+  Noch nicht gegen PDF geprüft: Talente (Tab. 5-1), Domänen, Schablonen, Tierarten-Werte,
+  Ressourcen-Formeln (außer Kampfrausch).
 
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
