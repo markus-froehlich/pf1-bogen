@@ -45,7 +45,7 @@ const SIZE_MODS = {
 
 // Map German race size text → SIZE_MODS key
 const RACE_SIZE_KEY = {
-  'Mittelgroß': 'mittelgross', 'Klein': 'klein', 'Winzig': 'winzig',
+  'Mittelgroß': 'mittelgross', 'Klein': 'klein', 'Sehr klein': 'sehr_klein', 'Winzig': 'winzig', 'Mini': 'mini',
   'Groß': 'gross', 'Riesig': 'riesig', 'Gigantisch': 'gigantisch', 'Kolossal': 'kolossal',
 }
 

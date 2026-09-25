@@ -1,9 +1,13 @@
 {
+  "_meta": {
+    "source": "Grundregelwerk Tabelle 15-13 (Ringe) + Beschreibung SCHUTZRING, S. 481",
+    "verified": "2026-09-25 gegen PDF: Ablenkungsbonus +1 bis +5, Preise"
+  },
   "rings": [
-    { "id": "schutzring_1", "name": { "de": "Schutzring +1", "en": "Ring of Protection +1" }, "bonus": 1, "page_ref": "G313" },
-    { "id": "schutzring_2", "name": { "de": "Schutzring +2", "en": "Ring of Protection +2" }, "bonus": 2, "page_ref": "G313" },
-    { "id": "schutzring_3", "name": { "de": "Schutzring +3", "en": "Ring of Protection +3" }, "bonus": 3, "page_ref": "G313" },
-    { "id": "schutzring_4", "name": { "de": "Schutzring +4", "en": "Ring of Protection +4" }, "bonus": 4, "page_ref": "G313" },
-    { "id": "schutzring_5", "name": { "de": "Schutzring +5", "en": "Ring of Protection +5" }, "bonus": 5, "page_ref": "G313" }
+    { "id": "schutzring_1", "name": { "de": "Schutzring +1", "en": "Ring of Protection +1" }, "bonus": 1, "value_gp": 2000, "page_ref": "G481" },
+    { "id": "schutzring_2", "name": { "de": "Schutzring +2", "en": "Ring of Protection +2" }, "bonus": 2, "value_gp": 8000, "page_ref": "G481" },
+    { "id": "schutzring_3", "name": { "de": "Schutzring +3", "en": "Ring of Protection +3" }, "bonus": 3, "value_gp": 18000, "page_ref": "G481" },
+    { "id": "schutzring_4", "name": { "de": "Schutzring +4", "en": "Ring of Protection +4" }, "bonus": 4, "value_gp": 32000, "page_ref": "G481" },
+    { "id": "schutzring_5", "name": { "de": "Schutzring +5", "en": "Ring of Protection +5" }, "bonus": 5, "value_gp": 50000, "page_ref": "G481" }
   ]
 }
