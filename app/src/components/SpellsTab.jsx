@@ -271,9 +271,11 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
     setSpellbook(prev => {
       const newLevels = {}
       for (let lv = 0; lv <= 9; lv++) {
+        // A grade present in baseSlots (even with 0, e.g. Paladin Stufe 4) is accessible
+        // and gets attribute bonus spells; absent grades get none.
+        const accessible = lv in baseSlots
         const base  = baseSlots[lv] ?? 0
-        const bonus = (lv >= 1 && base > 0 && abilityMod >= lv)
-          ? Math.floor((abilityMod - lv) / 4) + 1 : 0
+        const bonus = accessible ? bonusSpells(abilityMod, lv) : 0
         const total = base + bonus
         if (total > 0 || (prev.levels[lv]?.prepared?.length ?? 0) > 0) {
           const existing = prev.levels[lv] ?? { total: 0, used: 0, prepared: [] }
