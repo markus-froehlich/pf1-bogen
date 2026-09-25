@@ -8,6 +8,14 @@
       "cwd": "app",
       "port": 5199,
       "autoPort": false
+    },
+    {
+      "name": "design-proto",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "5288", "--bind", "127.0.0.1"],
+      "cwd": "docs/design/mobile_redesign",
+      "port": 5288,
+      "autoPort": false
     }
   ]
 }
