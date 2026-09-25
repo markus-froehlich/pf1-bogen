@@ -9,6 +9,7 @@ import { computeAttributes, computeCombat, resolveGearItem } from '../engine/ind
 import { computeWeaponAttack, weaponStrMult } from '../engine/weapons.js'
 import { BUFF_STATS, BUFF_TYPES, suppressedTargets } from '../engine/buffs.js'
 import { hasToughness } from '../engine/combat.js'
+import { classLabel } from '../engine/classes.js'
 import { CONDITIONS, CONFUSED_TABLE } from '../components/ConditionsPanel.jsx'
 import { Sheet } from '../shell/Sheet.jsx'
 import { useToast } from '../shell/toastContext.js'
@@ -211,7 +212,7 @@ export function CombatView(props) {
         {[
           { key: 'rk', label: L ? 'RK' : 'AC', v: String(combat.rk), sub: `${L ? 'Ber.' : 'Touch'} ${combat.rk_touch} · ${L ? 'Fuß' : 'Flat'} ${combat.rk_flat}`, big: true },
           { key: 'init', label: 'Initiative', v: sg(combat.init), sub: `GE ${sg(combat._components?.init_ability ?? 0)}` },
-          { key: 'gab', label: L ? 'GAB' : 'BAB', v: sg(combat.bab), sub: (char.meta.classes ?? []).filter(c => c.id).map(c => `${c.id[0].toUpperCase()}${c.id.slice(1)} ${c.level}`).join(' / ') || '—', noBd: true },
+          { key: 'gab', label: L ? 'GAB' : 'BAB', v: sg(combat.bab), sub: (char.meta.classes ?? []).filter(c => c.id).map(c => `${classLabel(c.id, lang)} ${c.level}`).join(' / ') || '—', noBd: true },
           { key: 'kmb', label: L ? 'KMB' : 'CMB', v: sg(combat.kmb), sub: `ST ${sg(combat._components?.effSTmod ?? attrs.ST.mod)}` },
           { key: 'kmv', label: L ? 'KMV' : 'CMD', v: String(combat.kmv), sub: L ? 'GAB+ST+GE' : 'BAB+Str+Dex' },
           { key: 'speed', label: L ? 'Bewegung' : 'Speed', v: speed.speed != null ? `${speed.speed} m` : '—',

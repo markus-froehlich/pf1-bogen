@@ -7,6 +7,7 @@ import ringsData from '../data/rings.json'
 import { BUFF_STATS, BUFF_TYPES } from '../engine/buffs.js'
 import { computeWeaponAttack, weaponStrMult } from '../engine/weapons.js'
 import { getAutoResources } from '../engine/resources.js'
+import { classLabel } from '../engine/classes.js'
 import { EditSheet, Field, TextField, NumField, ChipsField, SearchPick } from './EditSheet.jsx'
 import { sg, typo } from './breakdown.js'
 
@@ -88,7 +89,7 @@ export function ResourceEditor({ resource, char, attrs, onSave, onDelete, onClos
     : { name: '', source: '', max: 1, reset: 'tag' })
   const set = patch => setD(prev => ({ ...prev, ...patch }))
   const suggestions = useMemo(() => (char.meta.classes ?? []).filter(c => c.id)
-    .flatMap(c => getAutoResources(c.id, c.level, attrs, lang).map(s => ({ ...s, source: `${c.id[0].toUpperCase()}${c.id.slice(1)} ${c.level}` }))), [char.meta.classes, attrs, lang])
+    .flatMap(c => getAutoResources(c.id, c.level, attrs, lang).map(s => ({ ...s, source: `${classLabel(c.id, lang)} ${c.level}` }))), [char.meta.classes, attrs, lang])
   return (
     <EditSheet lang={lang} title={resource ? (L ? 'Ressource bearbeiten' : 'Edit resource') : (L ? 'Ressource anlegen' : 'Add resource')}
       onDelete={resource ? () => onDelete(resource.id) : null}

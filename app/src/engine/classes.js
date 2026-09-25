@@ -46,6 +46,12 @@ export function findClass(idOrName) {
   return CLASSES_BY_ID[idOrName] ?? CLASSES_BY_NAME_DE[idOrName] ?? HB_CLASSES_BY_ID[idOrName] ?? null
 }
 
+/** Anzeigename einer Klasse (Stammdaten oder Homebrew), Fallback: id. */
+export function classLabel(id, lang = 'de') {
+  const n = findClass(id)?.name
+  return (typeof n === 'string' ? n : n?.[lang] || n?.de) || id
+}
+
 /** All homebrew classes as array */
 export function getHBClasses() { return Object.values(HB_CLASSES_BY_ID) }
 

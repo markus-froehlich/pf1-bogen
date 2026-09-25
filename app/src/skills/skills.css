@@ -1,0 +1,78 @@
+/* ══ Fähigkeiten-Tab „Nocturne" (Fertigkeiten + Talente) ══ */
+.nc-skills { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.nc-skills-head {
+  position: sticky; top: 0; z-index: 2; display: flex; flex-direction: column; gap: 0.5rem;
+  padding: 0.5rem 0; margin-top: -0.5rem; background: var(--color-bg);
+}
+/* breit genug: Suche + Filter in einer Zeile; wenig Höhe (Handy quer): Kopf scrollt mit */
+@media (min-width: 560px) {
+  .nc-skills-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .nc-skills-head > .nc-fp, .nc-skills-head > .nc-skills-note { grid-column: 1 / -1; }
+}
+@media (max-height: 500px) { .nc-skills-head { position: static; } }
+
+/* FP-/Talent-Budget */
+.nc-fp { display: flex; flex-direction: column; gap: 0.375rem; }
+.nc-fp-row { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; font-size: 0.8125rem; }
+.nc-fp-val { font-weight: 500; font-variant-numeric: tabular-nums; }
+.nc-fp-val.is-neg { color: var(--c-neg); }
+.nc-fp-val.is-ok { color: var(--color-accent-300); }
+.nc-fp-val.is-warn { color: var(--c-warn); }
+.nc-fp-bar { height: 4px; border-radius: 2px; background: var(--color-neutral-800); overflow: hidden; }
+.nc-fp-bar > div { height: 100%; border-radius: 2px; background: var(--c-warn); transition: width 0.2s; }
+.nc-fp-bar > div.is-ok { background: var(--color-accent); }
+.nc-fp-bar > div.is-neg { background: var(--c-neg); }
+.nc-skills-note { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.75rem; color: var(--c-warn); }
+.nc-skills-note svg { flex: none; }
+
+/* Fertigkeitsliste */
+.nc-skill-list { display: flex; flex-direction: column; background: var(--color-surface); border-radius: var(--radius-md); outline: var(--hc-edge); outline-offset: -1px; }
+.nc-skill-row { display: flex; align-items: center; gap: 0.25rem; min-height: 3.25rem; padding-right: 0.25rem; min-width: 0; }
+.nc-skill-row + .nc-skill-row { border-top: 1px solid var(--color-neutral-900); }
+.nc-skill-name {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; align-self: stretch; justify-content: center;
+  padding: 0.375rem 0.5rem 0.375rem 0.875rem; background: none; border: 0; color: inherit; text-align: left;
+}
+.nc-skill-title { font-size: 0.9375rem; }
+.nc-skill-meta { display: flex; gap: 0.5rem; font-size: 0.6875rem; color: var(--color-neutral-500); }
+.nc-skill-ranks { display: flex; align-items: center; flex: none; }
+.nc-rank-btn {
+  width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center;
+  background: none; border: 0; color: var(--color-neutral-400); border-radius: var(--radius-sm);
+}
+.nc-rank-btn:active { background: var(--color-neutral-800); color: var(--color-text); }
+.nc-rank-val { min-width: 1.5rem; text-align: center; font-variant-numeric: tabular-nums; font-size: 0.9375rem; }
+.nc-rank-val.is-zero { color: var(--color-neutral-600); }
+.nc-skill-total {
+  flex: none; min-width: 3.25rem; height: 2.75rem; border-radius: var(--radius-sm); background: var(--color-neutral-900);
+  border: 0; color: var(--color-text); font-size: 1.25rem; font-weight: 500; font-variant-numeric: tabular-nums;
+}
+.nc-skill-total.is-neg { color: var(--c-neg); }
+.nc-skill-total.is-na { color: var(--color-neutral-600); }
+@media (hover: hover) and (pointer: fine) {
+  .nc-skill-name:hover .nc-skill-title { color: var(--color-accent-200); }
+  .nc-skill-total:hover { background: var(--color-neutral-800); }
+}
+
+/* Talente */
+.nc-feat-row { display: flex; align-items: center; gap: 0.25rem; padding-right: 0.25rem; min-width: 0; }
+.nc-feat-row + .nc-feat-row { border-top: 1px solid var(--color-neutral-900); }
+.nc-feat-main {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.25rem; padding: 0.625rem 0.875rem;
+  background: none; border: 0; color: inherit; text-align: left; min-height: 3.25rem;
+}
+.nc-feat-top { display: flex; align-items: center; gap: 0.5rem; min-width: 0; flex-wrap: wrap; }
+.nc-feat-name { font-size: 0.9375rem; font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+.nc-feat-type {
+  font-size: 0.6875rem; padding: 0.125rem 0.5rem; border-radius: 6px; flex: none;
+  background: var(--color-neutral-800); color: var(--color-neutral-200);
+}
+.nc-feat-type.t-Kampf { background: var(--c-warn-bg); color: var(--c-warn-fg); }
+.nc-feat-type.t-Metamagie, .nc-feat-type.t-Erschaffung { background: var(--color-accent-900); color: var(--color-accent-200); }
+.nc-feat-type.t-Nachteil { background: var(--c-neg-bg); color: var(--c-neg-fg); }
+.nc-feat-desc { font-size: 0.8125rem; color: var(--color-neutral-300); line-height: 1.4; }
+.nc-feat-note { font-size: 0.8125rem; color: var(--color-neutral-500); font-style: italic; white-space: pre-wrap; }
+.nc-feat-db { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.25rem 0.5rem 0.75rem; min-width: 0; }
+.nc-feat-db + .nc-feat-db { border-top: 1px solid var(--color-neutral-900); }
+.nc-icon-btn.is-done { color: var(--color-accent-300); }
+@media (hover: hover) and (pointer: fine) { .nc-feat-main:hover .nc-feat-name { color: var(--color-accent-200); } }

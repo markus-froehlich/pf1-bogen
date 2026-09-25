@@ -10,11 +10,11 @@ import { COIN_WEIGHT_PFUND } from './engine/attributes.js'
 import racesData from './data/races.json'
 import poisonsData from './data/poisons.json'
 import templatesData from './data/templates.json'
-import { SkillsTab } from './components/SkillsTab.jsx'
+import { SkillsView } from './skills/SkillsView.jsx'
 import { SpellsTab } from './components/SpellsTab.jsx'
 import { NotesTab } from './components/NotesTab.jsx'
 import { HomebrewPanel } from './components/HomebrewPanel.jsx'
-import { FeatsTab } from './components/FeatsTab.jsx'
+import { FeatsView } from './skills/FeatsView.jsx'
 import { InventoryTab } from './components/InventoryTab.jsx'
 import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
@@ -313,7 +313,6 @@ export default function App() {
     const perLevel = Math.max(1, sppl + inMod) + raceBonus
     return sum + perLevel * (Number(entry.level) || 0)
   }, 0)
-  const usedFk = Object.values(char.skills ?? {}).reduce((s, e) => s + (Number(e.ranks) || 0), 0)
 
   function exportCurrent() {
     const name = char.meta.name?.trim() || 'charakter'
@@ -408,18 +407,15 @@ export default function App() {
                 </button>
               </div>
               {skillsMode === 'skills' && (
-                <SkillsTab char={char} attrs={computed} setSkill={setSkill}
+                <SkillsView char={char} attrs={computed} setSkill={setSkill}
                   setMultiSkill={setMultiSkill} addSkillSlot={addSkillSlot} removeSkillSlot={removeSkillSlot}
-                  armorCheckPenalty={armorCheckPenalty}
-                  totalFk={totalFk} usedFk={usedFk}
-                  skillsBuff={buffTotals.skills_all ?? 0}
-                  activeBuffs={char.active_buffs ?? []}
-                  condSkillPenalty={condMods.skill_penalty ?? 0}
-                  companionRules={companionRules}
-                  lang={lang} />
+                  armorCheckPenalty={armorCheckPenalty} totalFk={totalFk}
+                  skillsBuff={buffTotals.skills_all ?? 0} companionRules={companionRules}
+                  maxRanks={companionRules ? companionRules.hd : Math.max(1, baseValues.totalLevel)}
+                  lang={lang} layout={layout} />
               )}
               {skillsMode === 'feats' && (
-                <FeatsTab char={char} setFeats={setFeats} totalLevel={baseValues.totalLevel} lang={lang} />
+                <FeatsView char={char} setFeats={setFeats} totalLevel={baseValues.totalLevel} lang={lang} layout={layout} />
               )}
             </>
           )}

@@ -23,7 +23,7 @@ function skillUrl(name) {
   return `http://prd.5footstep.de/Grundregelwerk/Fertigkeiten/${slug}`
 }
 
-function skillBreakdown({ def, cv, entry, attrs, char, isClass, lang, instanceName }) {
+function skillBreakdown({ def, cv, entry, attrs, char, lang, instanceName }) {
   const L = lang === 'de'
   const lines = [{ kind: 'base', label: L ? 'Ränge' : 'Ranks', sub: L ? 'Fertigkeitspunkte' : 'Skill points', value: cv.ranks }]
   const baseMod = attrs[def.ability]?.mod ?? 0
@@ -101,7 +101,7 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
   const condText = condMods.skill_penalty ? (L ? ` · Zustand ${sg(condMods.skill_penalty)} auf alle` : ` · condition ${sg(condMods.skill_penalty)} on all`) : ''
 
   const open = sheet ? rows.find(r => r.def.id === sheet.id && (r.idx ?? null) === (sheet.idx ?? null)) : null
-  const bd = open ? skillBreakdown({ def: open.def, cv: open.cv, entry: open.entry, attrs, char, isClass: classSet.has(open.def.id), lang, instanceName: open.multi ? open.entry?.name : null }) : null
+  const bd = open ? skillBreakdown({ def: open.def, cv: open.cv, entry: open.entry, attrs, char, lang, instanceName: open.multi ? open.entry?.name : null }) : null
   const setField = (field, value) => (open.multi ? setMultiSkill(open.def.id, open.idx, field, value, open.def.default_slots ?? 1) : setSkill(open.def.id, field, value))
 
   return (
