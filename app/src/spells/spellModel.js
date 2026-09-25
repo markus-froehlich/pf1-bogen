@@ -36,17 +36,9 @@ export const casterLevelOf = (charId, level) => (CL_MINUS_3.has(charId) ? Math.m
 /** Kosten fürs Eintragen ins Zauberbuch (GRW, Magier): Grad 0 = 5 GM, sonst Grad² × 10 GM. */
 export const copyCost = lv => (lv === 0 ? 5 : lv * lv * 10)
 
-/** Schulen aus den Zauberdaten: Kürzel (erstes Wort von `school`) → deutscher Name. */
-export const SCHOOLS = (() => {
-  const out = {}
-  for (const s of ALL_SPELLS) {
-    const code = (s.school ?? '').split(/\s+/)[0]
-    if (!code || out[code] || !/^[A-Z][a-z]$/.test(code) || !s.school_de) continue
-    out[code] = s.school_de.split(/[\s[(]/)[0]
-  }
-  return out
-})()
-export const schoolOf = spell => (spell?.school ?? '').split(/\s+/)[0]
+/** Die acht Schulen (Namen wie in den Zauberlisten des GRW) — Kürzel wie in spells.json. */
+export const SCHOOLS = { Ba: 'Bannzauber', Be: 'Beschwörung', Er: 'Erkenntnis', Hv: 'Hervorrufung', Il: 'Illusion', Ne: 'Nekromantie', Vw: 'Verwandlung', Vz: 'Verzauberung' }
+export const schoolOf = spell => { const c = (spell?.school ?? '').split(/\s+/)[0]; return c.length === 2 ? c[0].toUpperCase() + c[1].toLowerCase() : c }
 
 /** Alle Zauberklassen des Charakters (Reihenfolge wie Klassen-Slots). */
 export function casterEntries(char) {

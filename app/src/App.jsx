@@ -11,7 +11,7 @@ import racesData from './data/races.json'
 import poisonsData from './data/poisons.json'
 import templatesData from './data/templates.json'
 import { SkillsView } from './skills/SkillsView.jsx'
-import { SpellsTab } from './components/SpellsTab.jsx'
+import { SpellsView } from './spells/SpellsView.jsx'
 import { NotesTab } from './components/NotesTab.jsx'
 import { HomebrewPanel } from './components/HomebrewPanel.jsx'
 import { FeatsView } from './skills/FeatsView.jsx'
@@ -430,7 +430,7 @@ export default function App() {
           )}
 
           {t === 'spells' && (
-            <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} setSummons={setSummons} attrs={computed} lang={lang} />
+            <SpellsView char={char} setSpellbook={setSpellbook} setWands={setWands} setSummons={setSummons} attrs={computed} lang={lang} layout={layout} />
           )}
 
           {t === 'more' && !morePage && (

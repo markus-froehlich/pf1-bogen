@@ -376,7 +376,7 @@ function FreeLookup({ lang }) {
       <select className="nc-input" value={list} onChange={e => setList(e.target.value)}>
         {Object.entries(LIST_NAMES).map(([id, v]) => <option key={id} value={id}>{v.de}</option>)}
       </select></label>
-    <div className="nc-chips">{grades.map(g => <button key={g} className={`nc-chip ${g === cur ? 'is-on' : ''}`} onClick={() => setLv(g)}>{L ? 'Grad' : 'Lvl'} {g}</button>)}</div>
+    <div className="nc-chips nc-spell-pills">{grades.map(g => <button key={g} className={`nc-chip ${g === cur ? 'is-on' : ''}`} onClick={() => setLv(g)}>{L ? 'Grad' : 'Lvl'} {g}</button>)}</div>
     <SpellSearchList spells={classSpells(list, cur)} lang={lang} placeholder={L ? 'Zauber suchen' : 'Search spells'} emptyText={L ? 'Keine Zauber gefunden.' : 'No spells found.'} renderActions={() => null} />
   </>
 }

@@ -1,5 +1,5 @@
 /* ══ Zauber-Tab „Nocturne" ══ */
-.nc-spells { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+.nc-spells { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; container: spells / inline-size; }
 .nc-spell-pills { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
 .nc-spell-pills .nc-chip { flex: none; }
 
@@ -46,7 +46,7 @@
 }
 .nc-free-slot + .nc-free-slot { border-top: 1px dashed var(--color-neutral-700); margin-top: 0; }
 .nc-free-slot.is-special { border-color: var(--color-accent-700); color: var(--color-accent-300); }
-.nc-btn-small { min-height: 2.75rem; padding: 0 0.625rem; font-size: 0.8125rem; border-color: var(--color-accent-700); color: var(--color-accent-200); }
+.nc-btn.nc-btn-small { min-height: 2.75rem; padding: 0 0.625rem; font-size: 0.8125rem; border-color: var(--color-accent-700); color: var(--color-accent-200); }
 .nc-tag-warn { background: var(--c-warn-bg); color: var(--c-warn-fg); }
 .nc-tag svg { width: 0.75rem; height: 0.75rem; margin-right: 0.25rem; }
 @media (hover: hover) and (pointer: fine) {
@@ -55,7 +55,9 @@
 }
 
 /* Platz-Karte (spontan / bereit) */
-.nc-slot-card { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.nc-card.nc-slot-card { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; text-align: left; }
+.nc-slot-card .nc-row-text { align-items: flex-start; }
+.nc-slot-card .nc-pips { justify-content: flex-start; }
 
 /* Zauberstäbe */
 .nc-spell-block { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
@@ -64,3 +66,6 @@
 .nc-wand-row .nc-step-val { min-width: 3.5rem; text-align: center; font-variant-numeric: tabular-nums; }
 .nc-slot-adjust { padding: 0.5rem 0.75rem; }
 .nc-slot-adjust + .nc-slot-adjust { border-top: 1px solid var(--color-neutral-900); }
+
+/* Modus-Umschalter: auf schmalen Schirmen nur Text */
+@container spells (max-width: 480px) { .nc-spells .nc-seg-opt svg { display: none; } .nc-spells .nc-seg-opt { padding: 0 0.375rem; } }
