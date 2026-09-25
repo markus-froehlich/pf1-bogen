@@ -62,3 +62,19 @@ export function bonusSpells(abilityMod, spellLevel) {
   if (spellLevel < 1 || abilityMod < spellLevel) return 0
   return Math.floor((abilityMod - spellLevel) / 4) + 1
 }
+
+/**
+ * Rohzeile der Excel-Tabelle für eine Klassenstufe: `day` (Zauber/Tag inkl. 99/0.1-Kodierung),
+ * `known` (bekannte Zauber bzw. beim Arkanisten: vorbereitete) und `extra` (Domänen-/Geist-Platz,
+ * Index = Grad − 1). null = kein Zauberwirker.
+ */
+export function spellRow(classId, classLevel) {
+  const e = entryFor(classId)
+  if (!e) return null
+  return {
+    day: rowOf(e.day, classLevel),
+    known: e.known ? rowOf(e.known, classLevel) : null,
+    extra: e.extra ? rowOf(e.extra, classLevel) : null,
+    source: e.source ?? null,
+  }
+}
