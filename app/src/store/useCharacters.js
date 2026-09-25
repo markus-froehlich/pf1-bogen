@@ -61,6 +61,7 @@ export const DEFAULT_CHAR = {
   resources: [],
   nl_damage: 0,
   magic_slots: {},
+  summons: [],
 }
 
 function genId() {
@@ -364,6 +365,10 @@ export function useCharacters(profile = 'player') {
     patchChar(prev => ({ ...prev, contacts: fn(prev.contacts ?? []) }))
   }, [patchChar])
 
+  const setSummons = useCallback((fn) => {
+    patchChar(prev => ({ ...prev, summons: fn(prev.summons ?? []) }))
+  }, [patchChar])
+
   const setFeats = useCallback((fn) => {
     patchChar(prev => ({ ...prev, feats: fn(prev.feats ?? []) }))
   }, [patchChar])
@@ -438,7 +443,7 @@ export function useCharacters(profile = 'player') {
     update, setAttr, setBuff, setMeta, setCombatMisc,
     setClass, setGear, setGearSlot, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
     newCompanion,
-    setNotes, setSpellbook, setContacts, setFeats, setXp,
+    setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
     importChar, newChar, switchChar, deleteChar,

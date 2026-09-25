@@ -143,7 +143,7 @@ export default function App() {
   const {
     char, index, activeId, update,
     setAttr, setMeta, setCombatMisc, setClass, setGear, setGearSlot, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
-    setNotes, setSpellbook, setContacts, setFeats, setXp,
+    setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
     importChar, newChar, newCompanion, switchChar, deleteChar,
@@ -672,7 +672,7 @@ export default function App() {
         )}
 
         {tab === 'spells' && (
-          <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} attrs={computed} lang={lang} />
+          <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} setSummons={setSummons} attrs={computed} lang={lang} />
         )}
 
         {tab === 'feats' && (
