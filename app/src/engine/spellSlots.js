@@ -17,6 +17,11 @@ function rowOf(table, classLevel) {
   return table[Math.min(Math.max(Number(classLevel) || 1, 1), 20) - 1]
 }
 
+/** Zauberattribut (IN/WE/CH) laut Excel, sonst null (kein Zauberwirker). */
+export function castingStatOf(classId) {
+  return entryFor(classId)?.stat ?? null
+}
+
 /** Spontanzauberer = Klassen mit Tabelle "bekannte Zauber" im Excel. */
 export function isSpontaneousCaster(classId) {
   return Boolean(entryFor(classId)?.known)

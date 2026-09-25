@@ -1,12 +1,8 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import spellsData from '../data/spells.json'
-import { getSpellSlots, getSpellsKnown, isSpontaneousCaster, bonusSpells } from '../engine/spellSlots.js'
+import { getSpellSlots, getSpellsKnown, isSpontaneousCaster, bonusSpells, castingStatOf } from '../engine/spellSlots.js'
 import { RefLink as ExternalRefLink } from './RefLink.jsx'
 import './SpellsTab.css'
-
-// Casting stat per class ID — from the Excel (Klasse sheet), via spell_progression.json.
-// Spell-list IDs from spells.json resolve to their stat through the alias map below.
-const CASTING_STAT = new Proxy({}, { get: (_, id) => castingStatOf(String(id)) })
 
 // spells.json class IDs → possible classes.json char class IDs
 // (e.g. hxm_magier covers both hexenmeister and magier in the spell list)
@@ -22,7 +18,7 @@ const CHAR_ID_TO_SPELLBOOK = Object.fromEntries(
 // The character's single spellcasting class (if unambiguous), used as a smart, still
 // user-overridable default for both the lookup class filter and the spellbook's class_id.
 function detectCasterClassId(char) {
-  const casterEntries = (char?.meta?.classes ?? []).filter(e => e.id && CASTING_STAT[e.id])
+  const casterEntries = (char?.meta?.classes ?? []).filter(e => e.id && castingStatOf(e.id))
   if (casterEntries.length !== 1) return null
   const charId = casterEntries[0].id
   return CHAR_ID_TO_SPELLBOOK[charId] ?? charId
@@ -199,7 +195,7 @@ function DcPanel({ char, attrs, lang }) {
   const aliases = SPELLBOOK_TO_CHAR_ID[classId] ?? []
   const charEntry = (char.meta.classes ?? []).find(e => e.id === classId || aliases.includes(e.id))
   const effectiveId = (charEntry && charEntry.id !== classId) ? charEntry.id : classId
-  const stat = CASTING_STAT[effectiveId] ?? CASTING_STAT[classId]
+  const stat = castingStatOf(effectiveId) ?? castingStatOf(classId)
   if (!stat) return null
 
   const mod = attrs?.[stat]?.mod ?? 0
@@ -248,7 +244,7 @@ function SpellBook({ char, setSpellbook, attrs, lang }) {
   // Use the actual char class ID for slot-type lookup (hexenmeister → spontaneous, magier → prepared)
   const effectiveClassId = (classEntry && classEntry.id !== sb.class_id) ? classEntry.id : sb.class_id
   const spontaneous = isSpontaneousCaster(effectiveClassId)
-  const castingStat = CASTING_STAT[effectiveClassId] ?? CASTING_STAT[sb.class_id]
+  const castingStat = castingStatOf(effectiveClassId) ?? castingStatOf(sb.class_id)
   const castingMod  = (castingStat && attrs) ? (attrs[castingStat]?.mod ?? 0) : 0
   const concBonus   = classLevel + castingMod
   const fmtB = n => n >= 0 ? `+${n}` : `${n}`
