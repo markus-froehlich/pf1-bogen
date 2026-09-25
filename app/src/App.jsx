@@ -6,6 +6,7 @@ import { useGistSync }   from './store/useGistSync.js'
 import { GistSyncPanel } from './components/GistSyncPanel.jsx'
 import { computeAttributes, computeBABAndSaves, computeCombat, computeBuffTotals, getCompanionRules, ATTRS, carryThresholds, ALL_CLASSES, registerHomebrewClasses, registerHomebrewArmor, registerHomebrewShields } from './engine/index.js'
 import { getConditionMods } from './engine/conditions.js'
+import { COIN_WEIGHT_PFUND } from './engine/attributes.js'
 import racesData from './data/races.json'
 import { AttributeBlock } from './components/AttributeBlock.jsx'
 import { RaceSelector } from './components/RaceSelector.jsx'
@@ -309,7 +310,7 @@ export default function App() {
   const _countCoins = char.inventory?.count_coin_weight !== false
   const _coinCount = (Number(_coins.pp)||0)+(Number(_coins.gp)||0)+(Number(_coins.sp)||0)+(Number(_coins.cp)||0)
   const _itemsKg = (char.inventory?.items ?? []).reduce((s, it) => s + (Number(it.weight)||0)*(Number(it.qty)||1), 0)
-  const _carriedKg = Math.round((_itemsKg + (_countCoins ? _coinCount * 1.5 / 1000 : 0)) * 10) / 10
+  const _carriedKg = Math.round((_itemsKg + (_countCoins ? _coinCount * COIN_WEIGHT_PFUND : 0)) * 10) / 10
   const encumbranceTier = _carriedKg <= _carry.light ? 'light' : _carriedKg <= _carry.medium ? 'medium' : 'heavy'
   const applyCarryMovement = char.inventory?.apply_carry_movement === true
 

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './InventoryTab.css'
+import { COIN_WEIGHT_PFUND } from '../engine/attributes.js'
 
 function genId() { return 'itm_' + Math.random().toString(36).slice(2, 10) }
 
@@ -46,7 +47,7 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
   // Total weight
   const totalItemWeight = items.reduce((s, it) => s + (Number(it.weight) || 0) * (Number(it.qty) || 1), 0)
   const coinCount = (Number(coins.pp)||0)+(Number(coins.gp)||0)+(Number(coins.sp)||0)+(Number(coins.cp)||0)
-  const carriedKg = Math.round((totalItemWeight + (countCoins ? coinCount * 1.5 / 1000 : 0)) * 10) / 10
+  const carriedKg = Math.round((totalItemWeight + (countCoins ? coinCount * COIN_WEIGHT_PFUND : 0)) * 10) / 10
   const totalItemGp = items.reduce((s, it) => s + (Number(it.gp) || 0) * (Number(it.qty) || 1), 0)
 
   // Carry tier
@@ -191,18 +192,18 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
           <span className="carry-label">{L ? 'Tragelast' : 'Carry'}</span>
           <span className={`carry-tier carry-light ${wc === 'light' && carriedKg > 0 ? 'carry-active' : ''}`}>
             <span className="ct-tag">{L ? 'Leicht' : 'Light'}</span>
-            <span className="ct-val">≤{carryThresholds.light} kg</span>
+            <span className="ct-val">≤{carryThresholds.light} Pfd.</span>
           </span>
           <span className={`carry-tier carry-medium ${wc === 'medium' ? 'carry-active' : ''}`}>
             <span className="ct-tag">{L ? 'Mittel' : 'Med'}</span>
-            <span className="ct-val">≤{carryThresholds.medium} kg</span>
+            <span className="ct-val">≤{carryThresholds.medium} Pfd.</span>
           </span>
           <span className={`carry-tier carry-heavy ${wc === 'heavy' ? 'carry-active' : ''}`}>
             <span className="ct-tag">{L ? 'Schwer' : 'Heavy'}</span>
-            <span className="ct-val">≤{carryThresholds.heavy} kg</span>
+            <span className="ct-val">≤{carryThresholds.heavy} Pfd.</span>
           </span>
           {carriedKg > 0 && (
-            <span className={`carry-current carry-current-${wc || 'light'}`}>{carriedKg} kg</span>
+            <span className={`carry-current carry-current-${wc || 'light'}`}>{carriedKg} Pfd.</span>
           )}
           <button
             className={`carry-coin-toggle ${countCoins ? 'carry-coin-on' : 'carry-coin-off'}`}
@@ -239,7 +240,7 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
                 onChange={e => setDraft(d => ({ ...d, qty: Math.max(1, Number(e.target.value) || 1) }))} />
             </div>
             <div className="invf-cell">
-              <label className="invf-label">{L ? 'Gew. (kg)' : 'Wt (kg)'}</label>
+              <label className="invf-label">{L ? 'Gew. (Pfd.)' : 'Wt (lb)'}</label>
               <input className="invf-input invf-small" type="number" min={0} step={0.1}
                 value={draft.weight}
                 onChange={e => setDraft(d => ({ ...d, weight: Number(e.target.value) || 0 }))} />
@@ -313,7 +314,7 @@ export function InventoryTab({ char, setInventory, setMagicSlots, lang, carryThr
                     <span className="ii-name">{it.name}</span>
                     {it.qty > 1 && <span className="ii-qty">×{it.qty}</span>}
                     {it.weight > 0 && (
-                      <span className="ii-weight">{Math.round(it.weight * it.qty * 10) / 10} kg</span>
+                      <span className="ii-weight">{Math.round(it.weight * it.qty * 10) / 10} Pfd.</span>
                     )}
                     {it.gp > 0 && (
                       <span className="ii-gp">{it.qty > 1 ? `${it.qty}×` : ''}{it.gp} {COIN_LABEL.gp}</span>

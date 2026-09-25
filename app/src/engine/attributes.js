@@ -20,7 +20,11 @@ export function abilityMod(score) {
   return entry ? entry.mod : 0
 }
 
-/** Carry thresholds for a given Strength score (kg, German PF1e). */
+// GRW S. 139: "Eine Standardmünze wiegt ungefähr neuneinhalb Gramm" → 0,019 Pfund
+// (deutsches Pfund = 500 g). Alle Gewichte in der App sind Pfund wie im Grundregelwerk.
+export const COIN_WEIGHT_PFUND = 0.019
+
+/** Carry thresholds for a given Strength score (Pfund, GRW Tab. 7-4). */
 export function carryThresholds(strScore) {
   const entry = TABLE[String(Math.round(strScore))]
   if (!entry) return { light: 0, medium: 0, heavy: 0 }

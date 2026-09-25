@@ -104,7 +104,7 @@ export function BioSection({ char, setBio, lang }) {
           />
         </div>
         <div className="bio-field">
-          <label className="bio-label">{L ? 'Gewicht (kg)' : 'Weight (kg)'}</label>
+          <label className="bio-label">{L ? 'Gewicht (Pfd.)' : 'Weight (lb)'}</label>
           <input
             className="bio-input bio-input-num"
             type="text"

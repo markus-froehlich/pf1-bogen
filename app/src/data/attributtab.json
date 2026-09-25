@@ -4,7 +4,8 @@
     "score_range": [
       1,
       50
-    ]
+    ],
+    "carry_source": "Grundregelwerk Tab. 7-4 Traglast (S. 169), Werte in Pfund; ST 1-29 aus Tabelle, ab 30 Regel \"+10 = x4\" (Excel wich ab ST 34/40 ab, ST 24 leicht 235 statt 233)"
   },
   "table": {
     "1": {
@@ -147,7 +148,7 @@
     },
     "24": {
       "mod": 7,
-      "carry_light": 235,
+      "carry_light": 233,
       "carry_medium": 466,
       "carry_heavy": 700
     },
@@ -207,7 +208,7 @@
     },
     "34": {
       "mod": 12,
-      "carry_light": 940,
+      "carry_light": 932,
       "carry_medium": 1864,
       "carry_heavy": 2800
     },
@@ -243,57 +244,57 @@
     },
     "40": {
       "mod": 15,
-      "carry_light": 1966,
-      "carry_medium": 3936,
-      "carry_heavy": 5905
+      "carry_light": 2128,
+      "carry_medium": 4256,
+      "carry_heavy": 6400
     },
     "41": {
       "mod": 15,
-      "carry_light": 2169,
-      "carry_medium": 4343,
-      "carry_heavy": 6516
+      "carry_light": 2448,
+      "carry_medium": 4896,
+      "carry_heavy": 7360
     },
     "42": {
       "mod": 16,
-      "carry_light": 2474,
-      "carry_medium": 4953,
-      "carry_heavy": 7433
+      "carry_light": 2768,
+      "carry_medium": 5536,
+      "carry_heavy": 8320
     },
     "43": {
       "mod": 16,
-      "carry_light": 2881,
-      "carry_medium": 5768,
-      "carry_heavy": 8655
+      "carry_light": 3200,
+      "carry_medium": 6400,
+      "carry_heavy": 9600
     },
     "44": {
       "mod": 17,
-      "carry_light": 3389,
-      "carry_medium": 6785,
-      "carry_heavy": 10182
+      "carry_light": 3728,
+      "carry_medium": 7456,
+      "carry_heavy": 11200
     },
     "45": {
       "mod": 17,
-      "carry_light": 3999,
-      "carry_medium": 8007,
-      "carry_heavy": 12015
+      "carry_light": 4256,
+      "carry_medium": 8528,
+      "carry_heavy": 12800
     },
     "46": {
       "mod": 18,
-      "carry_light": 4711,
-      "carry_medium": 9432,
-      "carry_heavy": 14153
+      "carry_light": 4896,
+      "carry_medium": 9808,
+      "carry_heavy": 14720
     },
     "47": {
       "mod": 18,
-      "carry_light": 5524,
-      "carry_medium": 11060,
-      "carry_heavy": 16596
+      "carry_light": 5536,
+      "carry_medium": 11088,
+      "carry_heavy": 16640
     },
     "48": {
       "mod": 19,
-      "carry_light": 6439,
-      "carry_medium": 12892,
-      "carry_heavy": 19345
+      "carry_light": 6400,
+      "carry_medium": 12800,
+      "carry_heavy": 19200
     },
     "49": {
       "mod": 19,
@@ -303,9 +304,9 @@
     },
     "50": {
       "mod": 20,
-      "carry_light": 8574,
-      "carry_medium": 17167,
-      "carry_heavy": 25760
+      "carry_light": 8512,
+      "carry_medium": 17024,
+      "carry_heavy": 25600
     }
   }
 }
