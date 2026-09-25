@@ -30,8 +30,11 @@ function encumberedSpeed(baseM) {
 }
 
 // PF1e size mods: { rk, kmb }  (RK and KMB/KMV use equal-and-opposite values)
+// Grundregelwerk Tabelle 8-1 (sehr klein = Tiny, winzig = Diminutive, Mini = Fine)
 const SIZE_MODS = {
-  winzig:      { de: 'Winzig',      en: 'Tiny',       rk:  2, kmb: -2 },
+  mini:        { de: 'Mini',        en: 'Fine',       rk:  8, kmb: -8 },
+  winzig:      { de: 'Winzig',      en: 'Diminutive', rk:  4, kmb: -4 },
+  sehr_klein:  { de: 'Sehr klein',  en: 'Tiny',       rk:  2, kmb: -2 },
   klein:       { de: 'Klein',       en: 'Small',      rk:  1, kmb: -1 },
   mittelgross: { de: 'Mittelgroß',  en: 'Medium',     rk:  0, kmb:  0 },
   gross:       { de: 'Groß',        en: 'Large',      rk: -1, kmb:  1 },
