@@ -91,7 +91,7 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     const total = key === 'rk' ? combat.rk : key === 'touch' ? combat.rk_touch : combat.rk_flat
     const title = key === 'rk' ? (L ? 'Rüstungsklasse' : 'Armor Class') : key === 'touch' ? (L ? 'RK Berührung' : 'Touch AC') : (L ? 'RK auf dem falschen Fuß' : 'Flat-footed AC')
     // rk_misc zählt in alle drei RK-Werte; bearbeitbar nur in der RK-Aufschlüsselung
-    const miscExtra = { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0), note: misc.rk_note, lang, editable: key === 'rk' }
+    const miscExtra = { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0), note: misc.rk_note, lang, editable: key === 'rk', absolute: true }
     return finish(title, total, lines, miscExtra)
   }
 
@@ -114,7 +114,7 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     lines.push(...condLines(conds, key === 'kmb' ? ['attack', 'melee_attack'] : ['rk'], lang))
     const miscKey = key === 'kmb' ? 'kmb_misc' : 'kmv_misc'
     return finish(key === 'kmb' ? (L ? 'Kampfmanöverbonus' : 'Combat maneuver bonus') : (L ? 'Kampfmanöververteidigung' : 'Combat maneuver defense'),
-      combat[key], lines, { miscKey, noteKey: key === 'kmb' ? 'kmb_note' : 'kmv_note', miscValue: Number(misc[miscKey] ?? 0), note: misc[key === 'kmb' ? 'kmb_note' : 'kmv_note'], lang, editable: true })
+      combat[key], lines, { miscKey, noteKey: key === 'kmb' ? 'kmb_note' : 'kmv_note', miscValue: Number(misc[miscKey] ?? 0), note: misc[key === 'kmb' ? 'kmb_note' : 'kmv_note'], lang, editable: true, absolute: key === 'kmv' })
   }
 
   if (key === 'fort' || key === 'ref' || key === 'will') {
