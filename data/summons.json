@@ -12,12 +12,16 @@
   "monster": {
    "name": "Monster herbeizaubern",
    "classes": "BAR, KLE, HXM/MAG",
-   "page": 308
+   "page": 308,
+   "table": "10-1",
+   "table_page": 309
   },
   "natur": {
    "name": "Verbündeten der Natur herbeizaubern",
    "classes": "DRU, WAL",
-   "page": 352
+   "page": 352,
+   "table": "10-2",
+   "table_page": 354
   }
  },
  "templates": {

@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
+import { SummonsPanel } from './SummonsPanel.jsx'
 import spellsData from '../data/spells.json'
 import { getSpellSlots, getSpellsKnown, isSpontaneousCaster, bonusSpells, castingStatOf } from '../engine/spellSlots.js'
 import { RefLink as ExternalRefLink } from './RefLink.jsx'
@@ -578,9 +579,9 @@ function WandsPanel({ char, setWands, lang }) {
 }
 
 // ── Main tab ───────────────────────────────────────────────────────────────────
-export function SpellsTab({ char, setSpellbook, attrs, lang }) {
+export function SpellsTab({ char, setSpellbook, setSummons, attrs, lang }) {
   const L = lang === 'de'
-  const [mode, setMode] = useState('book')  // 'lookup' | 'book'
+  const [mode, setMode] = useState('book')  // 'lookup' | 'book' | 'summon'
 
   function handlePrepare(spell, level, classId) {
     setSpellbook(prev => {
@@ -617,10 +618,17 @@ export function SpellsTab({ char, setSpellbook, attrs, lang }) {
           onClick={() => setMode('book')}>
           {L ? '📖 Zauberbuch' : '📖 Spellbook'}
         </button>
+        {setSummons && (
+          <button className={`smt-btn ${mode === 'summon' ? 'active' : ''}`}
+            onClick={() => setMode('summon')}>
+            {L ? '✦ Herbeizaubern' : '✦ Summon'}
+          </button>
+        )}
       </div>
 
       {mode === 'lookup' && <SpellLookup char={char} lang={lang} onPrepare={setSpellbook ? handlePrepare : null} />}
       {mode === 'book'   && <SpellBook char={char} setSpellbook={setSpellbook} attrs={attrs} lang={lang} />}
+      {mode === 'summon' && setSummons && <SummonsPanel char={char} setSummons={setSummons} lang={lang} />}
     </div>
   )
 }

@@ -75,7 +75,12 @@ def entries_of(lines):
         if lab:
             cur = [lab, fix_merged(l if lab == "Typ" else l[len(lab):].strip())]; entries.append(cur)
         elif cur is not None:
-            cur[1] = cur[1][:-1] + l if cur[1].endswith("-") and not cur[1].endswith(" -") else cur[1] + " " + l
+            if cur[1].endswith("-") and not cur[1].endswith(" -"):
+                # Trennstrich am Zeilenende: echter Bindestrich bleibt, wenn das Wort schon einen hat („Zu-Fall-bringen")
+                word = cur[1].rsplit(" ", 1)[-1]
+                cur[1] = cur[1] + l if "-" in word[:-1] or l[:1].isupper() else cur[1][:-1] + l
+            else:
+                cur[1] = cur[1] + " " + l
     return entries
 
 def statblocks():
@@ -222,8 +227,8 @@ TEMPLATES = {  # MHB I S. 294-295, Tabellen „Verteidigungsfähigkeiten einer c
 }
 SPELLS = {  # Anzahl je Zaubergrad (GRW S. 308/352: gleicher Grad 1, Grad-1 1W3, niedriger 1W4+1)
     "count_same": "1", "count_minus1": "1W3", "count_lower": "1W4+1", "duration": "1 Runde/Stufe",
-    "monster": {"name": "Monster herbeizaubern", "classes": "BAR, KLE, HXM/MAG", "page": 308},
-    "natur": {"name": "Verbündeten der Natur herbeizaubern", "classes": "DRU, WAL", "page": 352},
+    "monster": {"name": "Monster herbeizaubern", "classes": "BAR, KLE, HXM/MAG", "page": 308, "table": "10-1", "table_page": 309},
+    "natur": {"name": "Verbündeten der Natur herbeizaubern", "classes": "DRU, WAL", "page": 352, "table": "10-2", "table_page": 354},
 }
 data = {"_meta": {"source": "GRW Tab. 10-1/10-2 (S. 309/354), Werte aus Monsterhandbuch I/II, Schablonen MHB I S. 294-295",
                   "built_by": "tools/build_summons.py", "note": "nur Spielwerte, keine Beschreibungstexte"},

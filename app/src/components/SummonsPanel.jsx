@@ -232,7 +232,7 @@ export function SummonsPanel({ char, setSummons, lang }) {
                     <span className="sum-entry-name">{entry.name}{entry.template && listKey === 'monster' ? '*' : ''}</span>
                     {entry.subtype && <span className="sum-subtype">{entry.subtype}</span>}
                     {group.grades.length > 1 && <span className="sum-grade">{entry.grade}</span>}
-                    <span className="sum-hg">{first ? `HG ${first.hg}` : '—'}</span>
+                    <span className="sum-hg">{first ? `HG ${(entry.template && templateKey ? applySummonTemplate(first, templateKey)?.hg : null) ?? first.hg}` : '—'}</span>
                   </button>
                   {isOpen && <CreatureCard entry={entry} templateKey={templateKey} lang={lang} onSummon={summon} countExpr={group.count} />}
                 </div>
@@ -242,7 +242,7 @@ export function SummonsPanel({ char, setSummons, lang }) {
         )
       })}
       <div className="sum-footer">
-        {L ? `Quelle: GRW Tab. ${listKey === 'monster' ? '10-1' : '10-2'} (S. ${spell.page}), Werte: Monsterhandbuch I/II.` : 'Source: core rules + bestiaries.'}
+        {L ? `Quelle: GRW ${spell.name} S. ${spell.page}, Tab. ${spell.table} S. ${spell.table_page}; Werte: Monsterhandbuch I/II.` : 'Source: core rules + bestiaries.'}
       </div>
     </div>
   )
