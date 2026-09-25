@@ -165,7 +165,7 @@ function GearSearch({ items, groups, filtered, selectedId, onPick, lang }) {
 // shape as the weapon slots in WeaponsTab. Nothing stops equipping two shields; every
 // slot's bonus is just summed by category in the engine, same as physically wearing
 // whatever's typed in.
-function GearSlotsList({ char, allGear, armorMap, shieldsMap, ringMap, setGearSlot, lang }) {
+export function GearSlotsList({ char, allGear, armorMap, shieldsMap, ringMap, setGearSlot, lang }) {
   const L = lang === 'de'
   const NUM_SLOTS = 5
   const EMPTY = { id: '', enh: 0, mw: false }

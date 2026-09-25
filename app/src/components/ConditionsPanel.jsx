@@ -3,7 +3,7 @@ import { RefLink } from './RefLink.jsx'
 import './ConditionsPanel.css'
 
 // PF1e Verwirrt d%-Tabelle
-const CONFUSED_TABLE = [
+export const CONFUSED_TABLE = [
   { range: '01–25',  de: 'Handelt normal',                    en: 'Act normally' },
   { range: '26–50',  de: 'Tut nichts, lallt verwirrt',        en: 'Do nothing, babbles incoherently' },
   { range: '51–75',  de: 'Fügt sich selbst 1W8+ST-Schaden zu', en: 'Deals 1d8+STR damage to self' },
