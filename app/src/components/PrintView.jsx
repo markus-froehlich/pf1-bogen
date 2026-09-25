@@ -6,7 +6,7 @@ import skillsData       from '../data/skills.json'
 import spellsData       from '../data/spells.json'
 import classFeatData    from '../data/class_features_by_level.json'
 import { computeWeaponAttack } from '../engine/weapons.js'
-import { getSpellSlots, isSpontaneousCaster } from '../engine/spellSlots.js'
+import { getSpellSlots, isSpontaneousCaster, castingStatOf } from '../engine/spellSlots.js'
 import { ALL_CLASSES } from '../engine/index.js'
 import './PrintView.css'
 
@@ -27,12 +27,9 @@ const ATTR_EN = { ST:'Strength', GE:'Dexterity', KO:'Constitution', IN:'Intellig
 
 function sign(n) { return n >= 0 ? `+${n}` : `${n}` }
 
-// Spell DC = 10 + spell level + ability mod; ability depends on class
-const SPELL_ABILITY_MAP = {
-  magier:'IN', hexe:'IN', alchemist:'IN', kampfmagus:'IN',
-  kleriker:'WE', druide:'WE', waldlaeufer:'WE', paladin:'WE', inquisitor:'WE',
-  barde:'CH', hexenmeister:'CH', paktmagier:'CH', skalde:'CH', orakel:'CH',
-}
+// Spellbook class_id is a spell-list ID (e.g. hxm_magier) — resolve to the character's
+// actual casting class so Hexenmeister (CH) and Magier (IN) get the right stat.
+const SPELL_LIST_CLASSES = { hxm_magier: ['hexenmeister', 'magier'], kampfmagier: ['kampfmagus'] }
 
 export function PrintView({ char, computed, baseValues, combat, lang, onClose }) {
   const L = lang === 'de'
@@ -62,7 +59,9 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
     .sort((a, b) => a.lv - b.lv)
 
   // Spell DC for each level
-  const spellAbilityKey = SPELL_ABILITY_MAP[sb.class_id] ?? null
+  const sbCandidates = [sb.class_id, ...(SPELL_LIST_CLASSES[sb.class_id] ?? [])]
+  const sbClassEntry = classes.find(e => sbCandidates.includes(e.id))
+  const spellAbilityKey = castingStatOf(sbClassEntry?.id) ?? castingStatOf(sb.class_id)
   const spellAbilityMod = spellAbilityKey ? (computed[spellAbilityKey]?.mod ?? 0) : 0
 
   const raceName = RACE_MAP[meta.race]?.name?.de ?? meta.race ?? '—'

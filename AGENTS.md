@@ -9,11 +9,24 @@ Scope-Entscheidung des Nutzers: **voller Nachbau** (nicht nur der Rechenkern).
 ## Regelbasis
 PF1e **1st Edition**, deutsches Grundregelwerk (Ulisses), Standardregeln.
 
+## Regel-Autorität (festgezurrt 2026-09-25, ersetzt die frühere „1:1 wie Excel“-Regel)
+**Das PDF-Grundregelwerk ist die gültige Regelquelle.** Das Excel war nur der erste
+Entwurf, damit die Mechanik steht. Bei Abweichungen Excel ↔ PDF gilt das **PDF**
+(Excel-Fehler korrigieren und im Build-Skript/Commit dokumentieren).
+- PDF liegt lokal im Nachbarordner `../<PDF-Ordner>/` (Datei `US50001PDF_…Grundregelwerk…pdf`,
+  Name bewusst nicht ausgeschrieben, siehe Sicherheit). Grundregelwerk = 11 Grundklassen
+  + Grundregeln. Dazu Monsterhandbuch I + II im selben Ordner.
+- Für Inhalte, die **nicht** in diesen PDFs stehen (z. B. Zusatzklassen wie Hexe,
+  Inquisitor, Kampfmagus), bleibt das Excel die Quelle.
+- Regeldaten **nie aus dem Gedächtnis** schreiben — immer aus PDF bzw. Excel extrahieren
+  (Build-Skript in `tools/`) und gegen die Quelle testen. Siehe Vorfall Zaubertabellen
+  (STATUS 2026-09-25): handgeschrieben → bei 16 von 22 Klassen falsch.
+- `data/` und `app/src/data/` sind Kopien — nach jeder Änderung beide abgleichen.
+
 ## Entscheidungen (festgezurrt 2026-06-21)
-1. **Rechen-Treue: 1:1 wie Excel.** Die Excel-Werte (`sheets_values/*.csv`) sind die
-   Referenz-Wahrheit; Engine wird dagegen getestet. Excel-Eigenheiten werden
-   übernommen (z. B. TP nicht auto-summiert; Last senkt Bewegung nicht).
-   Abweichungen vom RAW-Regelwerk nur als separate Notiz markieren, nicht „fixen".
+1. ~~Rechen-Treue: 1:1 wie Excel.~~ **Überholt** durch „Regel-Autorität“ oben (PDF gilt).
+   Das Excel (`sheets_values/*.csv`, `sheets_full/*.jsonl`) bleibt Datenquelle für den
+   Nachbau und Test-Referenz, wo das PDF nichts anderes sagt.
 2. **Sprache: DE + EN umschaltbar.** Datenfelder sprachgekeyt (`{de, en}`). EN-Inhalt
    nur wo in der Quelle vorhanden; sonst DE-Fallback + später ergänzen.
 3. **Homebrew von Anfang an.** Eigene Klassen/Völker/Waffen/Rüstungen/Schilde/Sprüche

@@ -26414,7 +26414,12 @@
       "school_de": "Ne",
       "page": "V113",
       "desc": "Resistent gegen Lebenskrafteffekte und Blutsaugen =A ~vg >Berührung *1 Kreatur #10Min/St RZ",
-      "class_levels": {}
+      "class_levels": {
+        "inquisitor": 5,
+        "kriegspriester": 5,
+        "mystiker": 5,
+        "kleriker": 5
+      }
     },
     {
       "id": "schw_bindender_ruf",
