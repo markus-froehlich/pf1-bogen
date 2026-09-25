@@ -4,11 +4,11 @@ import spellsData       from '../data/spells.json'
 import classFeatData    from '../data/class_features_by_level.json'
 import { computeWeaponAttack } from '../engine/weapons.js'
 import { getSpellSlots, isSpontaneousCaster, castingStatOf } from '../engine/spellSlots.js'
-import { ALL_CLASSES, resolveGearItem } from '../engine/index.js'
+import { resolveGearItem } from '../engine/index.js'
+import { classLabel } from '../engine/classes.js'
 import './PrintView.css'
 
 const CF_DATA = classFeatData.by_class ?? {}
-const CLASS_MAP = Object.fromEntries(ALL_CLASSES.map(c => [c.id, c]))
 
 const SPELL_MAP = Object.fromEntries(spellsData.spells.map(s => [s.id, s]))
 
@@ -59,7 +59,7 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
   const spellAbilityMod = spellAbilityKey ? (computed[spellAbilityKey]?.mod ?? 0) : 0
 
   const raceName = RACE_MAP[meta.race]?.name?.de ?? meta.race ?? '—'
-  const classStr = classes.filter(e => e.id).map(e => `${CLASS_MAP[e.id]?.name ?? e.id} ${e.level}`).join(' / ')
+  const classStr = classes.filter(e => e.id).map(e => `${classLabel(e.id, lang)} ${e.level}`).join(' / ')
 
   // Has page-2 content?
   const hasPage2 = preparedLevels.length > 0 || allSpellLevels.length > 0 ||
@@ -282,7 +282,7 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
             <div className="pv-col pv-col-left">
               {allSpellLevels.length > 0 && (
                 <section className="pv-section">
-                  <h3>{L ? 'Zauberbuch' : 'Spellbook'}{sb.class_id ? ` (${CLASS_MAP[sb.class_id]?.name ?? sb.class_id})` : ''}</h3>
+                  <h3>{L ? 'Zauberbuch' : 'Spellbook'}{sb.class_id ? ` (${classLabel(sbClassEntry?.id ?? sb.class_id, lang)})` : ''}</h3>
 
                   {/* DC row header */}
                   {spellAbilityKey && (
