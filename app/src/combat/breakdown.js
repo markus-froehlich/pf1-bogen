@@ -41,6 +41,10 @@ function buffLines(activeBuffs, keys, lang) {
 }
 
 function finish(title, total, lines, extra = {}) {
+  // „Sonstiges" (manuelles Feld + Notiz) ist Teil der Summe
+  if (extra.miscKey && Number(extra.miscValue ?? 0)) {
+    lines.push({ kind: 'misc', label: extra.lang === 'en' ? 'Other' : 'Sonstiges', sub: extra.note || (extra.lang === 'en' ? 'manual' : 'manuell'), value: Number(extra.miscValue) })
+  }
   const sum = lines.reduce((s, l) => s + (l.value ?? 0), 0)
   if (sum !== total) lines.push({ kind: 'misc', label: 'Differenz', sub: 'Engine ≠ Summe der Posten', value: total - sum })
   return { title, total, lines, ...extra }
@@ -77,8 +81,7 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     if (c.rk_ring) lines.push({ kind: 'gear', label: L ? 'Ablenkung' : 'Deflection', sub: L ? 'Ring · Ausrüstung' : 'Ring', value: c.rk_ring })
     const deflManual = Number(misc.rk_deflect ?? 0)
     if (deflManual) lines.push({ kind: 'misc', label: L ? 'Ablenkung' : 'Deflection', sub: L ? 'manuell' : 'manual', value: deflManual })
-    lines.push(...buffLines(buffs, ['deflection', 'ac', ...(key === 'flat' ? [] : ['dodge'])], lang)
-      .filter(l => !(key !== 'flat' && cm.no_dex_to_ac && l.value && false)))
+    lines.push(...buffLines(buffs, ['deflection', 'ac', ...(key === 'flat' ? [] : ['dodge'])], lang))
     if (key !== 'flat') lines.push(...condLines(conds, ['rk'], lang))
     // Ausweichen entfällt ohne GE-Bonus (Engine: rk_dodge = 0) — Buffzeilen sind dann korrigiert
     if (key !== 'flat' && cm.no_dex_to_ac) {
@@ -87,14 +90,16 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     }
     const total = key === 'rk' ? combat.rk : key === 'touch' ? combat.rk_touch : combat.rk_flat
     const title = key === 'rk' ? (L ? 'Rüstungsklasse' : 'Armor Class') : key === 'touch' ? (L ? 'RK Berührung' : 'Touch AC') : (L ? 'RK auf dem falschen Fuß' : 'Flat-footed AC')
-    return finish(title, total, lines, key === 'rk' ? { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0) } : {})
+    // rk_misc zählt in alle drei RK-Werte; bearbeitbar nur in der RK-Aufschlüsselung
+    const miscExtra = { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0), note: misc.rk_note, lang, editable: key === 'rk' }
+    return finish(title, total, lines, miscExtra)
   }
 
   if (key === 'init') {
     const lines = [{ kind: 'attr', label: gePrefix, sub: L ? 'Attribut' : 'Ability', value: c.init_ability ?? 0 }]
     if (c.init_feat) lines.push({ kind: 'feat', label: L ? 'Verbesserte Initiative' : 'Improved Initiative', sub: L ? 'Talent' : 'Feat', value: c.init_feat })
     lines.push(...buffLines(buffs, ['init'], lang), ...condLines(conds, ['init'], lang))
-    return finish(L ? 'Initiative' : 'Initiative', combat.init, lines, { miscKey: 'init_misc', noteKey: 'init_note', miscValue: c.init_misc ?? 0 })
+    return finish(L ? 'Initiative' : 'Initiative', combat.init, lines, { miscKey: 'init_misc', noteKey: 'init_note', miscValue: c.init_misc ?? 0, note: misc.init_note, lang, editable: true })
   }
 
   if (key === 'kmb' || key === 'kmv') {
@@ -109,7 +114,7 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     lines.push(...condLines(conds, key === 'kmb' ? ['attack', 'melee_attack'] : ['rk'], lang))
     const miscKey = key === 'kmb' ? 'kmb_misc' : 'kmv_misc'
     return finish(key === 'kmb' ? (L ? 'Kampfmanöverbonus' : 'Combat maneuver bonus') : (L ? 'Kampfmanöververteidigung' : 'Combat maneuver defense'),
-      combat[key], lines, { miscKey, noteKey: key === 'kmb' ? 'kmb_note' : 'kmv_note', miscValue: Number(misc[miscKey] ?? 0) })
+      combat[key], lines, { miscKey, noteKey: key === 'kmb' ? 'kmb_note' : 'kmv_note', miscValue: Number(misc[miscKey] ?? 0), note: misc[key === 'kmb' ? 'kmb_note' : 'kmv_note'], lang, editable: true })
   }
 
   if (key === 'fort' || key === 'ref' || key === 'will') {
@@ -122,22 +127,9 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
       ...condLines(conds, [key === 'ref' ? 'ref_flat' : key], lang),
     ]
     const title = { fort: L ? 'Zähigkeit' : 'Fortitude', ref: 'Reflex', will: L ? 'Willen' : 'Will' }[key]
-    return finish(title, combat[key], lines, { miscKey: `${key}_misc`, noteKey: `${key}_note`, miscValue: Number(misc[`${key}_misc`] ?? 0) })
+    return finish(title, combat[key], lines, { miscKey: `${key}_misc`, noteKey: `${key}_note`, miscValue: Number(misc[`${key}_misc`] ?? 0), note: misc[`${key}_note`], lang, editable: true })
   }
   return null
-}
-
-/** Sonstiges-Zeile für die Anzeige (nach finish, damit die Summe stimmt). */
-export function withMiscLine(bd, misc, lang) {
-  if (!bd || !bd.miscKey) return bd
-  const v = Number(bd.miscValue ?? 0)
-  if (!v) return bd
-  const note = misc?.[bd.noteKey]
-  const lines = bd.lines.filter(l => l.label !== 'Differenz')
-  const sum = lines.reduce((s, l) => s + l.value, 0) + v
-  const out = [...lines, { kind: 'misc', label: lang === 'de' ? 'Sonstiges' : 'Other', sub: note || (lang === 'de' ? 'manuell' : 'manual'), value: v }]
-  if (sum !== bd.total) out.push({ kind: 'misc', label: 'Differenz', sub: 'Engine ≠ Summe der Posten', value: bd.total - sum })
-  return { ...bd, lines: out }
 }
 
 /** Angriff einer Waffe: Posten aus computeWeaponAttack. */
