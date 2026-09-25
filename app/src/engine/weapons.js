@@ -13,7 +13,7 @@
  * Kampf-Tab's GAB, which already applies both. Without them, this falls back
  * to raw attribute mods (no condition/buff penalties or bonuses).
  */
-export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack = 0) {
+export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack = 0, extraDamage = 0) {
   if (!slot?.weapon_id) return null
 
   const STmod = Math.max(-5, attrs.ST.mod + (condMods.str_mod_delta ?? 0))
@@ -41,7 +41,7 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
                   : Math.floor(STmod * strMult)
 
   const attackBonus = bab + attackMod + enh + mwAttack + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + (isRanged ? 0 : (condMods.melee_attack ?? 0)) + extraAttack
-  const totalDmgMod = damageMod + enh + dmgMisc + (condMods.damage ?? 0)
+  const totalDmgMod = damageMod + enh + dmgMisc + (condMods.damage ?? 0) + extraDamage
 
   return {
     attack_bonus: attackBonus,

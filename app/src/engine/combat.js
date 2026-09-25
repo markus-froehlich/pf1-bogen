@@ -96,6 +96,8 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const rk_deflect  = rk_ring + Number(misc.rk_deflect ?? 0) + Number(bt.deflection ?? 0)
   const rk_misc2    = Number(misc.rk_misc    ?? 0)
   const rk_buff_ac  = Number(bt.ac ?? 0)
+  // Ausweichen: zählt auf RK + Berührung, entfällt auf dem falschen Fuß und ohne GE-Bonus
+  const rk_dodge    = cond.no_dex_to_ac ? 0 : Number(bt.dodge ?? 0)
 
   const saves_all = Number(bt.saves_all ?? 0)
 
@@ -104,9 +106,9 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   // Older characters stored the feat bonus in the hidden misc field.
   const initMisc = initFeat === 4 && storedInitMisc === 4 ? 0 : storedInitMisc
 
-  const rk       = 10 + rk_armor + rk_shield + GEmodCapped + sizeModRK + rk_natural + rk_deflect + rk_misc2 + rk_buff_ac + cond.rk
-  const rk_touch = 10 + GEmodCapped + sizeModRK + rk_deflect + rk_misc2 + rk_buff_ac + cond.rk
-  const rk_flat  = 10 + rk_armor + rk_shield + sizeModRK + rk_natural + rk_deflect + rk_misc2
+  const rk       = 10 + rk_armor + rk_shield + GEmodCapped + sizeModRK + rk_natural + rk_deflect + rk_misc2 + rk_buff_ac + rk_dodge + cond.rk
+  const rk_touch = 10 + GEmodCapped + sizeModRK + rk_deflect + rk_misc2 + rk_buff_ac + rk_dodge + cond.rk
+  const rk_flat  = 10 + rk_armor + rk_shield + sizeModRK + rk_natural + rk_deflect + rk_misc2 + rk_buff_ac
 
   const fort_total = fort + KOmod + Number(misc.fort_misc ?? 0) + cond.fort + saves_all + Number(bt.fort ?? 0)
   const ref_total  = ref  + effGEmod + Number(misc.ref_misc  ?? 0) + cond.ref_flat + saves_all + Number(bt.ref ?? 0)
@@ -122,7 +124,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   // (cond.rk, e.g. Gehetzt +1/Verlangsamt -1) but NOT the attacker's own attack-roll malus.
   const kmbBase = bab + effSTmod + sizeModKMB + Number(misc.kmb_misc ?? 0)
   const kmb = kmbBase + cond.attack + cond.melee_attack
-  const kmv = 10 + kmbBase + effGEmod + cond.rk
+  const kmv = 10 + kmbBase + effGEmod + cond.rk + Number(misc.kmv_misc ?? 0)
 
   const meleeAttacks  = attackString(gabMelee,  bab)
   const rangedAttacks = attackString(gabRanged, bab)
@@ -138,6 +140,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     gear_spell_failure: gearSpellFailure,
     _components: {
       rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2,
+      rk_ring, rk_buff_ac, rk_dodge, armorMaxDex, maxDex, effGEmod, effSTmod, sizeModKMB,
       init_ability: effGEmod, init_misc: initMisc, init_feat: initFeat,
       init_condition: cond.init, init_buff: Number(bt.init ?? 0),
     },
