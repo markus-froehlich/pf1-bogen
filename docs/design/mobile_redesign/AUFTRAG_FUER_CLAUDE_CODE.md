@@ -13,7 +13,7 @@ Dieser Ordner ist ein Design-Handoff. Er gehört nach `docs/design/mobile_redesi
 - Der Prototyp ist **Design-Referenz, kein Produktionscode**. Seine Rechenwerte sind Beispiele. Maßgeblich bleiben `app/src/engine`, `app/src/data` und der Store.
 
 ## 2. Umsetzen – schrittweise, je Schritt ein Commit
-Nach jedem Schritt kurz zusammenfassen, was sich geändert hat, und auf Rückmeldung warten.
+Alle Schritte **ohne Zwischenstopp** nacheinander umsetzen (nicht nach jedem Schritt auf Rückmeldung warten). Je Schritt ein Commit. Erst am Ende **eine** Gesamtzusammenfassung aller Schritte inkl. offener Fragen/Abweichungen. (Geändert auf Wunsch des Nutzers, 2026-09-25.)
 1. Tokens (beide Themes als CSS-Variablen), Phosphor-Icons statt Emoji, App-Hülle: Kopf, 5-Tab-Leiste (Handy), Navigationsschiene (Tablet/Desktop), Breakpoints, Ein-/Ausblenden beim Scrollen, Sheets bzw. Seitenpanel, Toast mit Rückgängig.
 2. Kampf-Tab: alle Bereiche einklapp-/sortierbar, TP mit Zahlenfeld, Werte mit Buff/Zustand-Tags, Aufschlüsselung inkl. „Sonstiges"-Feldern, Tablet-Masonry, Desktop-Dashboard.
 3. Bearbeiten-Sheet (einheitlich) für Buff (mit Bonus-Typ und Stapelregel), Ressource, Waffe, Ausrüstung; Bereich „Verteidigung · Bewegung".
