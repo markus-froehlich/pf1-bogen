@@ -29,4 +29,4 @@ Alle Schritte **ohne Zwischenstopp** nacheinander umsetzen (nicht nach jedem Sch
 - Bestehende Funktionen dürfen nicht wegfallen. Keine Datenformat-Änderung ohne Migration (`deepMerge`).
 
 ## 4. Abweichungen
-Weicht etwas im Code vom Design ab oder fehlt im Design eine Angabe: **fragen, nicht erfinden.** Kleine Design-Probleme (Abstände, Umbrüche) selbst im Sinne der Tokens und Muster aus README.md lösen.
+Weicht etwas im Code vom Design ab oder fehlt im Design eine Angabe: nicht erfinden, sondern die naheliegendste Lösung im Sinne von README.md wählen, weiterarbeiten und die Frage in der Schlusszusammenfassung auflisten. Kleine Design-Probleme (Abstände, Umbrüche) selbst im Sinne der Tokens und Muster aus README.md lösen.
