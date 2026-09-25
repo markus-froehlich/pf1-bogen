@@ -145,3 +145,16 @@ export function bookIds(data, lv) {
 }
 
 export const entryLabel = (e, lang) => `${classLabel(e.charId, lang)} ${e.level}`
+
+/* Regel-Link (prd.5footstep.de) — Präfix der Seitenangabe → Buch, unverändert aus SpellsTab.jsx. */
+const PAGE_PREFIX_BOOK = { G: 'Grundregelwerk', E: 'Expertenregeln', M: 'Ausbauregeln-Magie', K: 'Ausbauregeln-II-Kampf', KL: 'Ausbauregeln-VI-Klassen', OG: 'Ausbauregeln-VII-Okkultes' }
+const SLUG_OVERRIDES = { 'Flamme erzeugen': 'Flammenerzeugen' }
+export function spellUrl(spell) {
+  const m = spell?.page?.match(/^([A-Za-z]+)/)
+  const book = m ? PAGE_PREFIX_BOOK[m[1]] : null
+  if (!book) return null
+  const slug = SLUG_OVERRIDES[spell.name.de] ?? spell.name.de.replace(/ä/g, 'ae').replace(/Ä/g, 'Ae').replace(/ö/g, 'oe').replace(/Ö/g, 'Oe')
+    .replace(/ü/g, 'ue').replace(/Ü/g, 'Ue').replace(/ß/g, 'ss').replace(/\s+/g, '').replace(/[^a-zA-Z0-9]/g, '')
+  return `http://prd.5footstep.de/${book}/Zauber/${slug}`
+}
+export const LIST_NAMES = spellsData._meta.classes
