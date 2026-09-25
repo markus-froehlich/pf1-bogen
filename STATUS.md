@@ -560,6 +560,18 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   nicht vor → Excel) und Schablonen — gegen MHB I/II noch nicht geprüft. Noch nicht gegen PDF geprüft: Talente (Tab. 5-1), Domänen, Schablonen, Tierarten-Werte,
   Ressourcen-Formeln (außer Kampfrausch).
 
+- **Tiergefährten gegen GRW + MHB I/II (2026-09-25)** — 57 von 92 Arten geprüft, Datenfehler per
+  `tools/fix_animal_companions_pdf.py` korrigiert; Engine: Größe wächst beim Aufstieg (Klein+ST+4 →
+  Mittelgroß, Mittelgroß+ST+8 → Groß, im PDF ausnahmslos), nat. RK im Aufstieg auch als „nat.RK“.
+  Arten aus MHB III („3M…“) bleiben Excel. Schablonen-Seiten = MHB I/II (vorher als „GRW“ beschriftet).
+- **Herbeizauber-Helfer (2026-09-25)** — Zauber-Tab Modus „✦ Herbeizaubern“: Monster herbeizaubern
+  und Verbündeten der Natur herbeizaubern I–IX nach GRW Tab. 10-1/10-2; Werteblöcke aus MHB I/II
+  (`data/summons.json`, 132 Kreaturen, nur Spielwerte, per `tools/build_summons.py` direkt aus den PDFs
+  mit Spaltenschnitt; 2700 Teilwerte gegen den PDF-Text geprüft); celestische/infernalische Schablone
+  automatisch nach `bio.alignment` (neutral → Wahl); Element-/Mephit-/Riesenameisen-Varianten;
+  aktive Beschwörungen in `char.summons` (Runden = Zauberstufe, TP je Kreatur, `setSummons`).
+  Nicht in MHB I/II: Bebelith, Schreckensrabe (nur Name). Idee Stufe 2: Bestiarium fürs SL-Profil.
+
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
