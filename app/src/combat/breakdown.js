@@ -10,7 +10,7 @@ import { CONDITIONS } from '../components/ConditionsPanel.jsx'
 
 const COND_NAME = Object.fromEntries(CONDITIONS.map(c => [c.id, c]))
 
-export const sg = n => (n >= 0 ? `+${n}` : `${n}`)
+export const sg = n => (n >= 0 ? `+${n}` : `−${Math.abs(n)}`)   // typografisches Minus
 
 function condLines(conditions, keys, lang) {
   const out = []

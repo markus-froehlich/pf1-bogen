@@ -13,7 +13,6 @@ import templatesData from './data/templates.json'
 import { AttributeBlock } from './components/AttributeBlock.jsx'
 import { RaceSelector } from './components/RaceSelector.jsx'
 import { ClassSection } from './components/ClassSection.jsx'
-import { CombatTab } from './components/CombatTab.jsx'
 import { SkillsTab } from './components/SkillsTab.jsx'
 import { WeaponsTab } from './components/WeaponsTab.jsx'
 import { SpellsTab } from './components/SpellsTab.jsx'
@@ -21,7 +20,6 @@ import { NotesTab } from './components/NotesTab.jsx'
 import { HomebrewPanel } from './components/HomebrewPanel.jsx'
 import { FeatsTab } from './components/FeatsTab.jsx'
 import { XpTracker } from './components/XpTracker.jsx'
-import { ConditionsPanel } from './components/ConditionsPanel.jsx'
 import { ResourcesPanel } from './components/ResourcesPanel.jsx'
 import { ClassFeaturesPanel } from './components/ClassFeaturesPanel.jsx'
 import { InventoryTab } from './components/InventoryTab.jsx'
@@ -42,13 +40,20 @@ import { CharacterSheet } from './shell/CharacterSheet.jsx'
 import { MoreView } from './shell/MoreView.jsx'
 import { MORE_PAGES } from './shell/morePages.js'
 import { baseFeatBudget } from './engine/featBudget.js'
+import { CombatView, DefenseSection } from './combat/CombatView.jsx'
+import { COMBAT_SECTIONS, migrateCombatPrefs } from './combat/sections.js'
+import { GearSlotsList } from './components/CombatTab.jsx'
+import armorDataApp from './data/armor.json'
+import shieldsDataApp from './data/shields.json'
+import ringsDataApp from './data/rings.json'
+import { RINGS_MAP } from './engine/index.js'
 
 // Apply saved font scale before first paint
 const _SCALES = ['s', 'm', 'l', 'xl']
 const _initScale = localStorage.getItem('pf1_font_scale') ?? 'm'
 if (_initScale !== 'm') document.documentElement.classList.add(`fs-${_initScale}`)
 
-const COMBAT_ALL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr', 'features', 'conditions', 'buffs', 'resources', 'weapons']
+migrateCombatPrefs()   // alte Bereichs-IDs → neue (einmalig)
 const ATTR_DEFAULT            = ['race', 'class', 'attrs', 'xp', 'bio']
 
 
@@ -123,15 +128,12 @@ export default function App() {
     if (i < _SCALES.length - 1) applyFont(_SCALES[i + 1])
   }
 
-  const [combatOrder, moveCombat] = useSectionOrder('pf1_combat_order', COMBAT_ALL_DEFAULT)
+  const [combatOrder, moveCombat, resetCombatOrder] = useSectionOrder('pf1_combat_order', COMBAT_SECTIONS)
   const [attrOrder,   moveAttr]   = useSectionOrder('pf1_attr_order',   ATTR_DEFAULT)
 
   const [combatCollapsed, setCombatCollapsed] = useState(() => {
     try {
-      // Merge both old keys on first load
-      const a = new Set(JSON.parse(localStorage.getItem('pf1_combat_collapsed') ?? '[]'))
-      const b = new Set(JSON.parse(localStorage.getItem('pf1_outer_collapsed')  ?? '[]'))
-      return new Set([...a, ...b])
+      return new Set(JSON.parse(localStorage.getItem('pf1_combat_collapsed') ?? '[]').filter(id => COMBAT_SECTIONS.includes(id)))
     }
     catch { return new Set() }
   })
@@ -159,7 +161,7 @@ export default function App() {
 
   const {
     char, index, activeId, update,
-    setAttr, setMeta, setCombatMisc, setClass, setGear, setGearSlot, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
+    setAttr, setMeta, setCombatMisc, setClass, setGearSlot, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
     setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
@@ -381,8 +383,10 @@ export default function App() {
     .map(entry => `${CLASS_MAP_APP[entry.id]?.name?.[L ? 'de' : 'en'] ?? CLASS_MAP_APP[entry.id]?.name?.de ?? entry.id} ${entry.level}`)
     .join(' / ')
   const subline = [raceLabel, classLabel, char.meta.player].filter(Boolean).join(' · ') || (L ? 'Tippen für Charakterliste' : 'Tap for character list')
-  const navItems = [...(isCompanion ? TABS.filter(id => id !== 'spells') : TABS), ...(layout === 'desktop' ? ['more'] : [])]
-  const activeNav = tab === 'more' ? 'more' : tab
+  const navItems = layout === 'desktop'
+    ? ['attr', 'skills', 'inventory', 'more']
+    : (isCompanion ? TABS.filter(id => id !== 'spells') : TABS)
+  const activeNav = layout === 'desktop' && ['combat', 'spells'].includes(tab) ? 'attr' : tab
   const syncDot = gistSync.connected ? (gistSync.status === 'error' ? 'error' : gistSync.status === 'ok' ? 'ok' : 'syncing') : null
   const hbCount = Object.values(hb).reduce((sum, arr) => sum + (arr?.length ?? 0), 0)
   const moreCounts = {
@@ -393,23 +397,9 @@ export default function App() {
   const sub = tab === 'more' && morePage
     ? { title: L ? MORE_PAGES[morePage].de : MORE_PAGES[morePage].en, onBack: () => setMorePage(null) }
     : null
-  return (
-    <ToastProvider lang={lang}>
-    <div className={`app-shell nc-shell${chromeHidden && !charSheetOpen ? ' is-chrome-hidden' : ''}`} data-layout={layout}>
-      <header className="nc-shell-head">
-        <AppHeader
-          name={char.meta.name} subline={subline} lang={lang}
-          onOpenChars={() => setCharSheetOpen(true)}
-          onOpenNotes={() => openMorePage('notes')}
-          onOpenMore={() => goTab('more')}
-          showMore={layout !== 'desktop'} moreActive={tab === 'more'}
-          syncDot={syncDot} sub={sub}
-        />
-      </header>
-
-      <main className="nc-shell-main main-scroll" onScroll={onMainScroll}>
-        <div className="nc-main-inner">
-          {tab === 'attr' && (
+  const renderTab = t => (
+    <>
+          {t === 'attr' && (
             <div className="section">
               <div className="nc-identity">
                 <label className="nc-field"><span>{lang === 'de' ? 'Charaktername' : 'Character name'}</span>
@@ -549,48 +539,56 @@ export default function App() {
             </div>
           )}
 
-          {tab === 'combat' && (
-            <div className="section">
-              <CombatTab
-                char={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
-                setCombatMisc={setCombatMisc} setGear={setGear} setGearSlot={setGearSlot} setHp={setHp} setNlDamage={setNlDamage}
-                lang={lang}
-                hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields} hbWeapons={hb.weapons}
-                encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
-                buffTotals={buffTotals}
-                activeBuffs={char.active_buffs ?? []}
-                condMods={condMods}
-                sectionOrder={combatOrder}
-                onMoveSection={moveCombat}
-                collapsedSections={combatCollapsed}
-                onToggleCollapse={toggleCombatCollapse}
-                extraPanels={{
-                  ...(!isCompanion && { features: <ClassFeaturesPanel char={char} lang={lang} hideTitle /> }),
-                  conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
-                  buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
-                  resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
-                  weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />,
-                }}
-                extraLabels={lang === 'de' ? {
-                  features:   'Klassenmerkmale',
-                  conditions: 'Zustände',
-                  buffs:      'Buffs / Effekte',
-                  resources:  'Ressourcen',
-                  weapons:    'Waffen',
-                } : {
-                  features:   'Class Features',
-                  conditions: 'Conditions',
-                  buffs:      'Buffs / Effects',
-                  resources:  'Resources',
-                  weapons:    'Weapons',
-                }}
-                isCompanion={isCompanion}
-                companionHd={companionRules?.hd ?? null}
-              />
-            </div>
+          {t === 'combat' && (
+            <CombatView
+              char={char} rulesChar={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
+              condMods={condMods} buffTotals={buffTotals} lang={lang} layout={layout}
+              setCombatMisc={setCombatMisc} setHp={setHp} setNlDamage={setNlDamage}
+              setConditions={setConditions} setActiveBuffs={setActiveBuffs} setResources={setResources}
+              hbRaces={hb.races} hbArmor={hb.armor} hbWeapons={hb.weapons}
+              encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
+              companionHd={companionRules?.hd ?? null} companionAttacks={companionRules?.attacks ?? []}
+              order={combatOrder} onMove={moveCombat} onResetOrder={resetCombatOrder}
+              collapsed={combatCollapsed} onToggle={toggleCombatCollapse}
+              editors={{
+                defense: (
+                  <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hb.races} lang={lang}
+                    gearList={
+                      <div className="nc-card nc-card-pad">
+                        <GearSlotsList char={char}
+                          allGear={[...armorDataApp.armor, ...hb.armor, ...shieldsDataApp.shields, ...hb.shields, ...ringsDataApp.rings]}
+                          armorMap={Object.fromEntries([...armorDataApp.armor, ...hb.armor].map(x => [x.id, x]))}
+                          shieldsMap={Object.fromEntries([...shieldsDataApp.shields, ...hb.shields].map(x => [x.id, x]))}
+                          ringMap={RINGS_MAP} setGearSlot={setGearSlot} lang={lang} />
+                      </div>
+                    } />
+                ),
+                weapon: (idx, done) => (
+                  <div className="nc-sheet-body nc-gap">
+                    <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Waffen' : 'Weapons'}</span>
+                      <button className="nc-btn nc-btn-ghost" onClick={done}>{L ? 'Fertig' : 'Done'}</button></div>
+                    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />
+                  </div>
+                ),
+                buff: (id, done) => (
+                  <div className="nc-sheet-body nc-gap">
+                    <div className="nc-sheet-titlebar"><span className="nc-sheet-title">Buffs</span>
+                      <button className="nc-btn nc-btn-ghost" onClick={done}>{L ? 'Fertig' : 'Done'}</button></div>
+                    <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />
+                  </div>
+                ),
+                resource: (id, done) => (
+                  <div className="nc-sheet-body nc-gap">
+                    <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Ressourcen' : 'Resources'}</span>
+                      <button className="nc-btn nc-btn-ghost" onClick={done}>{L ? 'Fertig' : 'Done'}</button></div>
+                    <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />
+                  </div>
+                ),
+              }}
+            />
           )}
 
-          {tab === 'skills' && (
+          {t === 'skills' && (
             <>
               <div className="nc-seg is-full nc-tab-seg">
                 <button className={`nc-seg-opt ${skillsMode === 'skills' ? 'is-on' : ''}`} onClick={() => selectSkillsMode('skills')}>
@@ -617,7 +615,7 @@ export default function App() {
             </>
           )}
 
-          {tab === 'inventory' && (
+          {t === 'inventory' && (
             <div className="section">
               <InventoryTab
                 char={char} setInventory={setInventory} setMagicSlots={setMagicSlots} lang={lang}
@@ -626,11 +624,11 @@ export default function App() {
             </div>
           )}
 
-          {tab === 'spells' && (
+          {t === 'spells' && (
             <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} setSummons={setSummons} attrs={computed} lang={lang} />
           )}
 
-          {tab === 'more' && !morePage && (
+          {t === 'more' && !morePage && (
             <MoreView
               lang={lang} counts={moreCounts} onOpenPage={openMorePage}
               onExport={exportCurrent} onImportFile={importFile}
@@ -644,11 +642,38 @@ export default function App() {
               onLang={setLang} build={__COMMIT__}
             />
           )}
-          {tab === 'more' && morePage && (
+          {t === 'more' && morePage && (
             <NotesTab key={morePage} initialMode={morePage}
               char={char} setNotes={setNotes} setContacts={setContacts} setSpecials={setSpecials} lang={lang} />
           )}
-        </div>
+    </>
+  )
+  const dashMid = ['combat', 'spells'].includes(tab) ? 'attr' : tab
+
+  return (
+    <ToastProvider lang={lang}>
+    <div className={`app-shell nc-shell${chromeHidden && !charSheetOpen ? ' is-chrome-hidden' : ''}`} data-layout={layout}>
+      <header className="nc-shell-head">
+        <AppHeader
+          name={char.meta.name} subline={subline} lang={lang}
+          onOpenChars={() => setCharSheetOpen(true)}
+          onOpenNotes={() => openMorePage('notes')}
+          onOpenMore={() => goTab('more')}
+          showMore={layout !== 'desktop'} moreActive={tab === 'more'}
+          syncDot={syncDot} sub={sub}
+        />
+      </header>
+
+      <main className={`nc-shell-main main-scroll ${layout === 'desktop' ? 'is-dash' : ''}`} onScroll={onMainScroll}>
+        {layout === 'desktop' ? (
+          <div className={`nc-dash ${isCompanion ? 'is-two' : ''}`}>
+            <div className="nc-dash-col">{renderTab('combat')}</div>
+            <div className="nc-dash-col"><div className="nc-main-inner">{renderTab(dashMid)}</div></div>
+            {!isCompanion && <div className="nc-dash-col">{renderTab('spells')}</div>}
+          </div>
+        ) : (
+          <div className="nc-main-inner">{renderTab(tab)}</div>
+        )}
       </main>
 
       <NavBar items={navItems} active={activeNav} onSelect={goTab} layout={layout} lang={lang} />
