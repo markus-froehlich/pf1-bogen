@@ -553,9 +553,11 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Bewusstlos/Im Sterben/Stabilisiert/Versteinert = hilflos (GE 0), Gesegnet nur +1 Angriff (RW nur
   gg. Furcht), Liegend −4 nur Nahkampf (`melee_attack` in `conditions.js`).
   Wechselkurse PM/GM/SM/KM ✓ (S. 139).
-  **Offen (Nutzer fragen):** PDF-Gewichte sind Pfund, App beschriftet „kg“; Münzgewicht App
-  1000 Münzen = 1,5 — PDF S. 139: „Standardmünze wiegt ungefähr neuneinhalb Gramm“ (1000 ≈ 9,5 kg).
-  Noch nicht gegen PDF geprüft: Talente (Tab. 5-1), Domänen, Schablonen, Tierarten-Werte,
+  **Gewichte (Nutzer: „alles wie PDF“):** alle Gewichte sind Pfund wie im GRW (Anzeige „Pfd.“,
+  Datenfelder heißen weiter `*_kg`/`weight`); Münze 9,5 g = 0,019 Pfund (`COIN_WEIGHT_PFUND`,
+  dt. Pfund 500 g); Traglast Tab. 7-4: ST 24 leicht 233, ab ST 30 „+10 = ×4“ (Excel wich ab ST 34 ab).
+  Monsterhandbuch-Inhalte in der App: Tiergefährten (1M/2M-Seitenangaben, 3M = MHB III liegt
+  nicht vor → Excel) und Schablonen — gegen MHB I/II noch nicht geprüft. Noch nicht gegen PDF geprüft: Talente (Tab. 5-1), Domänen, Schablonen, Tierarten-Werte,
   Ressourcen-Formeln (außer Kampfrausch).
 
 ## Nächste Schritte
