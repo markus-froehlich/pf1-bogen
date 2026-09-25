@@ -62,3 +62,11 @@ function iterativeAttacks(first, bab) {
   for (let n = 1; bab >= n * 5 + 1; n++) attacks.push(first - n * 5)
   return attacks
 }
+
+/** ST-Multiplikator für Schaden: Nebenhand ×½, einhändige Waffe zweihändig ×1,5, sonst Waffendaten. */
+export function weaponStrMult(def, slot) {
+  const base = def?.str_bonus_mult ?? 1
+  if (slot.off_hand) return Math.min(base, 0.5)
+  if (slot.two_handed && base === 1) return 1.5          // einhändige Waffe zweihändig geführt: ST ×1,5
+  return base
+}

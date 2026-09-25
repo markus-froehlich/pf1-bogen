@@ -37,6 +37,14 @@ export function BreakdownSheet({ bd, misc, onMisc, lang }) {
           <span className="nc-bd-val">{shown}</span>
         </div>
       </div>
+      {bd.editable && onMisc && bd.extras?.map(x => (
+        <div key={x.key} className="nc-bd-misc">
+          <div className="nc-bd-misc-row">
+            <span className="nc-bd-text"><span>{x.label}</span><span className="nc-bd-sub">{x.sub}</span></span>
+            <Stepper value={Number(misc?.[x.key] ?? 0)} onChange={v => onMisc(x.key, v)} min={x.min ?? -99} label={x.label} />
+          </div>
+        </div>
+      ))}
       {bd.editable && onMisc && (
         <div className="nc-bd-misc">
           <div className="nc-bd-misc-row">

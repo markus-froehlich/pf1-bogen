@@ -5,10 +5,10 @@ import armorData from '../data/armor.json'
 import shieldsData from '../data/shields.json'
 import ringsData from '../data/rings.json'
 import { BUFF_STATS, BUFF_TYPES } from '../engine/buffs.js'
-import { computeWeaponAttack } from '../engine/weapons.js'
+import { computeWeaponAttack, weaponStrMult } from '../engine/weapons.js'
 import { getAutoResources } from '../engine/resources.js'
 import { EditSheet, Field, TextField, NumField, ChipsField, SearchPick } from './EditSheet.jsx'
-import { sg } from './breakdown.js'
+import { sg, typo } from './breakdown.js'
 
 const newId = prefix => `${prefix}_${Math.random().toString(36).slice(2, 9)}`
 const TARGET_LABEL = { ac: 'RK (alle)' }
@@ -29,7 +29,7 @@ function buffTemplates(cl) {
   ]
 }
 
-export function buffPreview(d, lang) {
+function buffPreview(d, lang) {
   const L = lang === 'de'
   const type = BUFF_TYPES.find(t => t.id === (d.type || 'ungetypt'))
   const parts = BUFF_STATS.filter(s => Number(d.bonuses?.[s.key] ?? 0)).map(s => `${TARGET_LABEL[s.key] ?? s.de} ${sg(Number(d.bonuses[s.key]))}`)
@@ -42,7 +42,7 @@ export function BuffEditor({ buff, casterLevel, onSave, onDelete, onClose, lang 
     ? { name: buff.name, type: buff.type || 'ungetypt', duration: buff.duration ?? '', notes: buff.notes ?? '', rows: BUFF_STATS.filter(s => Number(buff.bonuses?.[s.key] ?? 0)).map(s => ({ key: s.key, v: Number(buff.bonuses[s.key]) })) }
     : { name: '', type: 'ungetypt', duration: '', notes: '', rows: [{ key: 'attack', v: 1 }] })
   const set = patch => setD(prev => ({ ...prev, ...patch }))
-  const bonuses = Object.fromEntries(BUFF_STATS.map(s => [s.key, d.rows.filter(r => r.key === s.key).reduce((a, r) => a + r.v, 0)]))
+  const bonuses = Object.fromEntries(BUFF_STATS.map(s => [s.key, d.rows.filter(r => r.key === s.key).reduce((a, r) => a + r.v, 0)]).filter(([, v]) => v))
   const tpls = buffTemplates(casterLevel)
   const setRow = (i, patch) => set({ rows: d.rows.map((r, j) => (j === i ? { ...r, ...patch } : r)) })
   return (
@@ -109,12 +109,6 @@ export function ResourceEditor({ resource, char, attrs, onSave, onDelete, onClos
 
 // ── Waffe ────────────────────────────────────────────────────────────────────
 const SIZE_TO_DMG = { 2: 'sk', 1: 'k', 0: 'm', '-1': 'g', '-2': 'r', '-4': 'g', '-8': 'r' }
-export function weaponStrMult(def, slot) {
-  const base = def?.str_bonus_mult ?? 1
-  if (slot.off_hand) return Math.min(base, 0.5)
-  if (slot.two_handed && base === 1) return 1.5          // einhändige Waffe zweihändig geführt: ST ×1,5
-  return base
-}
 
 export function WeaponEditor({ slot, index, char, attrs, bab, condMods, buffTotals, hbWeapons = [], onSave, onDelete, onClose, lang }) {
   const L = lang === 'de'
@@ -132,13 +126,13 @@ export function WeaponEditor({ slot, index, char, attrs, bab, condMods, buffTota
   return (
     <EditSheet lang={lang} title={slot ? (L ? 'Waffe bearbeiten' : 'Edit weapon') : (L ? 'Waffe hinzufügen' : 'Add weapon')}
       onDelete={slot ? () => onDelete(index) : null}
-      preview={result ? `${L ? 'Angriff' : 'Attack'} ${result.full_attack_str} · ${L ? 'Schaden' : 'Damage'} ${dice}${result.damage_mod ? result.damage_str : ''}${d.dmg_extra ? ` + ${d.dmg_extra}` : ''} · ${def.crit ?? '—'}` : (L ? 'Waffe aus der Liste wählen' : 'Pick a weapon')}
+      preview={result ? `${L ? 'Angriff' : 'Attack'} ${result.full_attack_str} · ${L ? 'Schaden' : 'Damage'} ${dice}${result.damage_mod ? result.damage_str : ''}${d.dmg_extra ? ` + ${d.dmg_extra}` : ''} · ${typo(def.crit) ?? '—'}` : (L ? 'Waffe aus der Liste wählen' : 'Pick a weapon')}
       onCancel={onClose} saveDisabled={!def}
       onSave={() => onSave(index, { ...d, name: d.name.trim() })}>
       <SearchPick label={L ? `Waffe aus Liste (${all.length})` : `Weapon (${all.length})`} items={items} selectedId={d.weapon_id}
         placeholder={L ? 'Waffe suchen …' : 'Search weapon …'}
         onPick={i => set({ weapon_id: i.id, is_ranged: null })}
-        render={i => (<><span className="nc-ellipsis">{i.label}</span><span className="nc-search-meta">{i.w.damage?.m ?? '—'} · {i.w.crit ?? '—'}{i.w.range_m ? ` · ${i.w.range_m} m` : ''}</span></>)} />
+        render={i => (<><span className="nc-ellipsis">{i.label}</span><span className="nc-search-meta">{i.w.damage?.m ?? '—'} · {typo(i.w.crit) ?? '—'}{i.w.range_m ? ` · ${i.w.range_m} m` : ''}</span></>)} />
       <TextField label="Name" value={d.name} onChange={v => set({ name: v })} placeholder={def ? def.name?.de : (L ? 'eigener Name, optional' : 'custom name, optional')} />
       <ChipsField label={L ? 'Art' : 'Type'} options={[['nah', L ? 'Nahkampf' : 'Melee'], ['fern', L ? 'Fernkampf' : 'Ranged']]} value={isRanged ? 'fern' : 'nah'}
         onChange={v => set({ is_ranged: v === 'fern' ? (autoRanged ? null : true) : (autoRanged ? false : null) })} />
@@ -173,7 +167,7 @@ export function GearEditor({ item, index, hbArmor = [], hbShields = [], onSave, 
   const armorLike = d.kind === 'Rüstung' || d.kind === 'Schild'
   const acpShown = Number(d.acp) < 0 && (d.mw || Number(d.enh) > 0) ? Math.min(0, Number(d.acp) + 1) : Number(d.acp)
   const preview = armorLike
-    ? `RK +${Number(d.ac) + Number(d.enh)}${d.kind === 'Rüstung' && d.maxGE != null ? ` · ${L ? 'max. GE' : 'max Dex'} +${d.maxGE}` : ''}${acpShown ? ` · ${L ? 'RM' : 'ACP'} ${acpShown}` : ''}${Number(d.asf) ? ` · ${L ? 'ZP' : 'ASF'} ${Math.round(Number(d.asf) * 100)} %` : ''}${d.cat ? ` · ${d.cat}` : ''}`
+    ? `RK +${Number(d.ac) + Number(d.enh)}${d.kind === 'Rüstung' && d.maxGE != null ? ` · ${L ? 'max. GE' : 'max Dex'} +${d.maxGE}` : ''}${acpShown ? ` · ${L ? 'RM' : 'ACP'} ${sg(acpShown)}` : ''}${Number(d.asf) ? ` · ${L ? 'ZP' : 'ASF'} ${Math.round(Number(d.asf) * 100)} %` : ''}${d.cat ? ` · ${d.cat}` : ''}`
     : d.kind === 'Ring' ? (Number(d.defl) ? `${L ? 'Ablenkung' : 'Deflection'} +${d.defl} ${L ? 'auf RK' : 'to AC'}` : (L ? 'kein RK-Bonus' : 'no AC bonus'))
     : d.kind === 'Umhang' ? (Number(d.res) ? `${L ? 'Widerstand' : 'Resistance'} +${d.res} ${L ? 'auf alle RW' : 'on all saves'}` : (L ? 'kein RW-Bonus' : 'no save bonus'))
     : (L ? 'Wird nicht verrechnet' : 'Not calculated')

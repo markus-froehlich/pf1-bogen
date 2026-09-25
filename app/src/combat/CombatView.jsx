@@ -2,19 +2,21 @@ import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
   Sword, Heart, Crosshair, PencilSimple, Plus, X, DiceFive, Moon, ArrowsDownUp,
   DotsSixVertical, Eye, EyeSlash, ArrowUp, ArrowDown, Stack,
+  TShirt, Shield, CircleNotch, Wind, Diamond, CaretRight,
 } from '@phosphor-icons/react'
 import weaponsData from '../data/weapons.json'
-import { computeAttributes, computeCombat } from '../engine/index.js'
-import { computeWeaponAttack } from '../engine/weapons.js'
+import { computeAttributes, computeCombat, resolveGearItem } from '../engine/index.js'
+import { computeWeaponAttack, weaponStrMult } from '../engine/weapons.js'
 import { BUFF_STATS, BUFF_TYPES, suppressedTargets } from '../engine/buffs.js'
 import { hasToughness } from '../engine/combat.js'
 import { CONDITIONS, CONFUSED_TABLE } from '../components/ConditionsPanel.jsx'
 import { Sheet } from '../shell/Sheet.jsx'
 import { useToast } from '../shell/toastContext.js'
-import { SectionFrame, ValueTags, Switch, ListCard, Stepper } from './ui.jsx'
+import { SectionFrame, ValueTags, Switch, ListCard } from './ui.jsx'
+import { BuffEditor, ResourceEditor, WeaponEditor, GearEditor } from './editors.jsx'
 import { BreakdownSheet } from './BreakdownSheet.jsx'
 import { NumberPad } from './NumberPad.jsx'
-import { combatBreakdown, weaponBreakdown, sg } from './breakdown.js'
+import { combatBreakdown, weaponBreakdown, sg, typo } from './breakdown.js'
 import { computeSpeed, currentSizeKey, SIZE_MODS } from './defense.js'
 import './combat.css'
 
@@ -58,21 +60,21 @@ function weaponRows({ char, attrs, baseValues, condMods, buffTotals, weaponMap, 
       sub: `${L ? 'Natürlich' : 'Natural'}${attack.special ? ` · ${attack.special}` : ''}`,
       dmg: `${attack.damage}${result.damage_mod ? result.damage_str : ''}` })
   }
-  ;(char.weapons ?? []).forEach((slot, idx) => {
+  ;(char.weapons ?? []).filter(w => w?.weapon_id).forEach((slot, idx) => {
     const def = weaponMap[slot.weapon_id]
     if (!def) return
     const isRanged = slot.is_ranged != null ? slot.is_ranged : def.str_bonus_mult === 0
-    const strMult = slot.off_hand ? Math.min(def.str_bonus_mult ?? 1, 0.5) : (def.str_bonus_mult ?? 1)
+    const strMult = weaponStrMult(def, slot)
     const s = { ...slot, is_ranged: isRanged, str_mult: strMult }
     const result = computeWeaponAttack(s, attrs, baseValues.bab, condMods, buffTotals.attack ?? 0, buffTotals.damage ?? 0)
     const noBuff = computeWeaponAttack(s, deltas.noBuffAttrs, baseValues.bab, condMods, 0, 0)
     const noCond = computeWeaponAttack(s, attrs, baseValues.bab, {}, buffTotals.attack ?? 0, buffTotals.damage ?? 0)
     const enh = Number(slot.enhancement ?? 0)
-    const name = (def.name?.[L ? 'de' : 'en'] ?? def.name?.de ?? def.id) + (enh ? ` +${enh}` : slot.mw ? ` (${L ? 'MA' : 'MW'})` : '')
-    const sub = [isRanged ? (L ? 'Fernkampf' : 'Ranged') : (L ? 'Nahkampf' : 'Melee'), def.damage_type, def.crit,
-      def.range_m ? `${def.range_m} m` : null, slot.off_hand ? (L ? 'Nebenhand' : 'Off hand') : null].filter(Boolean).join(' · ')
+    const name = (slot.name || def.name?.[L ? 'de' : 'en'] || def.name?.de || def.id) + (enh ? ` +${enh}` : slot.mw ? ` (${L ? 'MA' : 'MW'})` : '')
+    const sub = [isRanged ? (L ? 'Fernkampf' : 'Ranged') : (L ? 'Nahkampf' : 'Melee'), def.damage_type, typo(def.crit),
+      def.range_m ? `${def.range_m} m` : null, slot.off_hand ? (L ? 'Nebenhand' : 'Off hand') : null, slot.two_handed ? (L ? 'zweihändig' : 'two-handed') : null].filter(Boolean).join(' · ')
     const dice = def.damage?.[dmgKey] ?? def.damage?.m ?? '—'
-    rows.push({ key: `w:${idx}`, idx, name, slot: s, result, isRanged, finesse: slot.finesse, sub,
+    rows.push({ key: `w:${idx}`, idx, rawSlot: slot, name, slot: s, result, isRanged, finesse: slot.finesse, sub,
       dmg: `${dice}${result.damage_mod ? result.damage_str : ''}${slot.dmg_extra ? ` + ${slot.dmg_extra}` : ''}`,
       buff: result.attack_bonus - noBuff.attack_bonus, cond: result.attack_bonus - noCond.attack_bonus, def })
   })
@@ -89,11 +91,10 @@ function buffSummary(b, lang) {
 export function CombatView(props) {
   const {
     char, rulesChar, attrs, combat, baseValues, condMods, buffTotals, lang, layout,
-    setCombatMisc, setHp, setNlDamage, setConditions, setActiveBuffs, setResources,
-    hbRaces = [], hbArmor = [], hbWeapons = [], encumbranceTier, applyCarryMovement,
-    companionHd = null, companionAttacks = [],
+    setCombatMisc, setHp, setNlDamage, setConditions, setActiveBuffs, setResources, setWeapons, setGearItems,
+    hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier, applyCarryMovement,
+    companionHd = null, companionAttacks = [], casterLevel = 1,
     order, onMove, onResetOrder, collapsed, onToggle,
-    editors, // { weapon: (idx|null) => node, buff: (id|null) => node, resource: (id|null) => node, gear: node }
   } = props
   const L = lang === 'de'
   const toast = useToast()
@@ -106,7 +107,7 @@ export function CombatView(props) {
   const nl = Number(char.nl_damage ?? 0)
   const weaponMap = useWeaponMap(hbWeapons)
   const deltas = useDeltas(rulesChar, attrs, combat, baseValues, buffTotals)
-  const speed = computeSpeed(rulesChar, { hbRaces, hbArmor, encumbranceTier, applyCarryMovement })
+  const speed = computeSpeed(rulesChar, { hbRaces, encumbranceTier, applyCarryMovement })
   const bdCtx = { char: rulesChar, attrs, combat, baseValues, lang }
   const conds = char.conditions ?? []
   const buffs = char.active_buffs ?? []
@@ -114,6 +115,20 @@ export function CombatView(props) {
   const attacks = weaponRows({ char: rulesChar, attrs, baseValues, condMods, buffTotals, weaponMap, companionAttacks, deltas, lang })
   const tag = key => ({ buff: combat[key] - deltas.noBuff[key], cond: combat[key] - deltas.noCond[key] })
   const koScore = attrs.KO?.buffed ?? attrs.KO?.score ?? 10   // Tot bei negativen TP in Höhe des KO-Werts
+
+  // ── Listen speichern/löschen (Löschen mit Rückgängig) ──────────────────
+  const upsert = (list, item, match) => (list.some(match) ? list.map(x => (match(x) ? item : x)) : [...list, item])
+  const saveBuff = b => { setActiveBuffs(list => upsert(list, b, x => x.id === b.id)); close() }
+  const saveResource = r => { setResources(list => upsert(list, r, x => x.id === r.id)); close() }
+  const saveAt = setter => (index, value) => { setter(list => (index == null ? [...list, value] : list.map((x, i) => (i === index ? value : x)))); close() }
+  const removeWithUndo = (setter, predicate, label) => {
+    let removed = null
+    setter(list => { removed = list; return list.filter((x, i) => !predicate(x, i)) })
+    close()
+    toast(L ? `${label} gelöscht` : `${label} deleted`, { undo: () => setter(() => removed) })
+  }
+  const gearItems = (char.gear?.items ?? []).filter(i => i && (i.id || i.kind))
+  const weaponsList = (char.weapons ?? []).filter(w => w?.weapon_id)
 
   // ── TP ──────────────────────────────────────────────────────────────────
   function applyPad(v) {
@@ -150,7 +165,7 @@ export function CombatView(props) {
           const row = attacks.find(a => a.key === sheet.key)
           if (!row) return null
           const out = weaponBreakdown({ name: row.name, result: row.result, slot: row.slot, bab: baseValues.bab, isRanged: row.isRanged, finesse: row.finesse, condMods, buffs, lang })
-          out.note = `${L ? 'Schaden' : 'Damage'} ${row.dmg}${row.def?.crit ? ` · ${row.def.crit}` : ''}${row.def?.range_m ? ` · ${L ? 'Grundreichweite' : 'Range'} ${row.def.range_m} m` : ''}${row.slot.off_hand ? (L ? ' · Nebenhand (ST ×½)' : ' · off hand (Str ×½)') : ''}`
+          out.note = `${L ? 'Schaden' : 'Damage'} ${row.dmg}${row.def?.crit ? ` · ${typo(row.def.crit)}` : ''}${row.def?.range_m ? ` · ${L ? 'Grundreichweite' : 'Range'} ${row.def.range_m} m` : ''}${row.slot.off_hand ? (L ? ' · Nebenhand (ST ×½)' : ' · off hand (Str ×½)') : ''}`
           return out
         })()
       : combatBreakdown(sheet.key, bdCtx))
@@ -258,7 +273,8 @@ export function CombatView(props) {
         ))}
       </ListCard>
     ),
-    def: editors.defense,
+    def: <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hbRaces} lang={lang}
+      gearItems={gearItems} onEditGear={index => setSheet({ type: 'gear', index })} />,
     cond: (
       <div className="nc-card nc-card-pad">
         {!conds.length && <span className="nc-muted">{L ? 'Keine aktiven Zustände.' : 'No active conditions.'}</span>}
@@ -445,9 +461,24 @@ export function CombatView(props) {
             </div>
           </div>
         )}
-        {sheet?.type === 'weapon' && editors.weapon(sheet.idx, close)}
-        {buffForEdit && editors.buff(sheet.id, close)}
-        {sheet?.type === 'resource' && editors.resource(sheet.id, close)}
+        {sheet?.type === 'weapon' && (
+          <WeaponEditor slot={sheet.idx != null ? weaponsList[sheet.idx] : null} index={sheet.idx} char={rulesChar} attrs={attrs} bab={baseValues.bab}
+            condMods={condMods} buffTotals={buffTotals} hbWeapons={hbWeapons} lang={lang} onClose={close}
+            onSave={(index, slot) => { if (index == null && weaponsList.length >= 5) { toast(L ? 'Höchstens 5 Waffen' : 'At most 5 weapons'); return } saveAt(setWeapons)(index, slot) }}
+            onDelete={index => removeWithUndo(setWeapons, (_, i) => i === index, L ? 'Waffe' : 'Weapon')} />
+        )}
+        {buffForEdit && (
+          <BuffEditor buff={buffs.find(b => b.id === sheet.id) ?? null} casterLevel={casterLevel} lang={lang} onClose={close}
+            onSave={saveBuff} onDelete={id => removeWithUndo(setActiveBuffs, x => x.id === id, 'Buff')} />
+        )}
+        {sheet?.type === 'resource' && (
+          <ResourceEditor resource={resources.find(r => r.id === sheet.id) ?? null} char={rulesChar} attrs={attrs} lang={lang} onClose={close}
+            onSave={saveResource} onDelete={id => removeWithUndo(setResources, x => x.id === id, L ? 'Ressource' : 'Resource')} />
+        )}
+        {sheet?.type === 'gear' && (
+          <GearEditor item={sheet.index != null ? gearItems[sheet.index] : null} index={sheet.index} hbArmor={hbArmor} hbShields={hbShields} lang={lang} onClose={close}
+            onSave={saveAt(setGearItems)} onDelete={index => removeWithUndo(setGearItems, (_, i) => i === index, L ? 'Ausrüstung' : 'Gear')} />
+        )}
       </Sheet>
     </div>
   )
@@ -495,11 +526,24 @@ function HpEdit({ hp, nl, setHp, setNlDamage, attrs, baseValues, companionHd, fe
   )
 }
 
-/** Verteidigung · Bewegung (Übergang bis zum Bearbeiten-Sheet in Schritt 3). */
-export function DefenseSection({ char, setCombatMisc, gearList, hbRaces, lang }) {
+const GEAR_ICON = { Rüstung: TShirt, Schild: Shield, Ring: CircleNotch, Umhang: Wind, Sonstiges: Diamond }
+
+function gearMeta(g, L) {
+  if (g.kind === 'Rüstung' || g.kind === 'Schild') {
+    return [`RK +${g.ac + g.enh}`, g.kind === 'Rüstung' && g.maxGE != null ? `${L ? 'max. GE' : 'max Dex'} +${g.maxGE}` : null,
+      g.acp ? `${L ? 'RM' : 'ACP'} ${sg(g.acp)}` : null, g.asf ? `${L ? 'ZP' : 'ASF'} ${Math.round(g.asf * 100)} %` : null, g.cat].filter(Boolean).join(' · ')
+  }
+  if (g.kind === 'Ring') return g.defl ? `${L ? 'Ablenkung' : 'Deflection'} +${g.defl} ${L ? 'auf RK' : 'to AC'}` : (g.note || 'Ring')
+  if (g.kind === 'Umhang') return g.res ? `${L ? 'Widerstand' : 'Resistance'} +${g.res} ${L ? 'auf alle RW' : 'on all saves'}` : (L ? 'Umhang' : 'Cloak')
+  return g.note || (L ? 'Sonstiges' : 'Other')
+}
+
+/** Verteidigung · Bewegung (README): Ausrüstungsliste, Größe, Bewegungsarten, SR/Resistenzen/Immunitäten. */
+export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbRaces, lang }) {
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
   const sizeKey = currentSizeKey(char, hbRaces)
+  const resolved = gearItems.map(resolveGearItem)
   const speedField = (label, key) => (
     <label className="nc-field"><span>{label}</span>
       <input className="nc-input" type="text" inputMode="decimal" placeholder="—" value={misc[key] ?? ''}
@@ -513,7 +557,23 @@ export function DefenseSection({ char, setCombatMisc, gearList, hbRaces, lang })
   )
   return (
     <>
-      {gearList}
+      <ListCard empty={!resolved.length} emptyText={L ? 'Keine Rüstung, kein Schild angelegt.' : 'No armor or shield.'}
+        addLabel={L ? 'Ausrüstung hinzufügen' : 'Add gear'} onAdd={() => onEditGear(null)}>
+        {resolved.map((g, i) => {
+          if (!g) return null
+          const Icon = GEAR_ICON[g.kind] ?? Diamond
+          return (
+            <button key={i} className="nc-list-row nc-gear-row" onClick={() => onEditGear(i)}>
+              <Icon className="nc-list-icon nc-accent-soft" />
+              <span className="nc-row-text">
+                <span className="nc-ellipsis nc-gear-name">{g.name}{g.enh ? ` +${g.enh}` : g.mw && (g.kind === 'Rüstung' || g.kind === 'Schild') ? ` (${L ? 'MA' : 'MW'})` : ''}</span>
+                <span className="nc-row-sub nc-ellipsis">{gearMeta(g, L)}</span>
+              </span>
+              <CaretRight className="nc-list-caret" />
+            </button>
+          )
+        })}
+      </ListCard>
       <div className="nc-card nc-card-pad nc-gap">
         <div className="nc-set-row nc-set-row-flat">
           <span className="nc-set-label">{L ? 'Größe' : 'Size'}</span>
@@ -533,14 +593,6 @@ export function DefenseSection({ char, setCombatMisc, gearList, hbRaces, lang })
         {textField(L ? 'Schadensreduzierung' : 'Damage reduction', 'dr_text', L ? 'z. B. 5/Kaltes Eisen' : 'e.g. 5/cold iron')}
         {textField(L ? 'Resistenzen' : 'Resistances', 'resist_text', L ? 'z. B. Feuer 10, Kälte 5' : 'e.g. fire 10, cold 5')}
         {textField(L ? 'Immunitäten' : 'Immunities', 'immunity_text', L ? 'z. B. Gift, Schlaf' : 'e.g. poison, sleep')}
-        <div className="nc-grid-2">
-          <label className="nc-field"><span>{L ? 'Natürliche Rüstung' : 'Natural armor'}</span>
-            <Stepper value={Number(misc.rk_natural ?? 0)} onChange={v => setCombatMisc('rk_natural', v)} min={0} format={v => sg(v)} />
-          </label>
-          <label className="nc-field"><span>{L ? 'Ablenkung (sonst.)' : 'Deflection (other)'}</span>
-            <Stepper value={Number(misc.rk_deflect ?? 0)} onChange={v => setCombatMisc('rk_deflect', v)} min={0} format={v => sg(v)} />
-          </label>
-        </div>
       </div>
     </>
   )

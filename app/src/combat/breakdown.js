@@ -11,6 +11,8 @@ import { CONDITIONS } from '../components/ConditionsPanel.jsx'
 const COND_NAME = Object.fromEntries(CONDITIONS.map(c => [c.id, c]))
 
 export const sg = n => (n >= 0 ? `+${n}` : `−${Math.abs(n)}`)   // typografisches Minus
+/** Anzeige: „19-20/x2" → „19–20/×2", „-2" → „−2" (Daten bleiben unverändert). */
+export const typo = t => (t == null ? t : String(t).replace(/(\d)-(\d)/g, '$1–$2').replace(/x(\d)/g, '×$1').replace(/(^|\s)-(\d)/g, '$1−$2'))
 
 function condLines(conditions, keys, lang) {
   const out = []
@@ -91,7 +93,11 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     const total = key === 'rk' ? combat.rk : key === 'touch' ? combat.rk_touch : combat.rk_flat
     const title = key === 'rk' ? (L ? 'Rüstungsklasse' : 'Armor Class') : key === 'touch' ? (L ? 'RK Berührung' : 'Touch AC') : (L ? 'RK auf dem falschen Fuß' : 'Flat-footed AC')
     // rk_misc zählt in alle drei RK-Werte; bearbeitbar nur in der RK-Aufschlüsselung
-    const miscExtra = { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0), note: misc.rk_note, lang, editable: key === 'rk', absolute: true }
+    const miscExtra = { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0), note: misc.rk_note, lang, editable: key === 'rk', absolute: true,
+      extras: key === 'rk' ? [
+        { key: 'rk_natural', label: L ? 'Natürliche Rüstung' : 'Natural armor', sub: L ? 'z. B. Volk, Tiergestalt' : 'e.g. race, wild shape', min: 0 },
+        { key: 'rk_deflect', label: L ? 'Ablenkung (sonstige)' : 'Deflection (other)', sub: L ? 'ohne Ring/Buff' : 'besides ring/buff', min: 0 },
+      ] : [] }
     return finish(title, total, lines, miscExtra)
   }
 

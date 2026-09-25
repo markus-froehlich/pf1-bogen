@@ -14,17 +14,14 @@ import { AttributeBlock } from './components/AttributeBlock.jsx'
 import { RaceSelector } from './components/RaceSelector.jsx'
 import { ClassSection } from './components/ClassSection.jsx'
 import { SkillsTab } from './components/SkillsTab.jsx'
-import { WeaponsTab } from './components/WeaponsTab.jsx'
 import { SpellsTab } from './components/SpellsTab.jsx'
 import { NotesTab } from './components/NotesTab.jsx'
 import { HomebrewPanel } from './components/HomebrewPanel.jsx'
 import { FeatsTab } from './components/FeatsTab.jsx'
 import { XpTracker } from './components/XpTracker.jsx'
-import { ResourcesPanel } from './components/ResourcesPanel.jsx'
 import { ClassFeaturesPanel } from './components/ClassFeaturesPanel.jsx'
 import { InventoryTab } from './components/InventoryTab.jsx'
 import { BioSection } from './components/BioSection.jsx'
-import { BuffTracker } from './components/BuffTracker.jsx'
 import { CompanionsTab } from './components/CompanionsTab.jsx'
 import { CompanionAdvancementPanel } from './components/CompanionAdvancementPanel.jsx'
 import { CompanionFeaturesPanel } from './components/CompanionFeaturesPanel.jsx'
@@ -40,13 +37,9 @@ import { CharacterSheet } from './shell/CharacterSheet.jsx'
 import { MoreView } from './shell/MoreView.jsx'
 import { MORE_PAGES } from './shell/morePages.js'
 import { baseFeatBudget } from './engine/featBudget.js'
-import { CombatView, DefenseSection } from './combat/CombatView.jsx'
+import { CombatView } from './combat/CombatView.jsx'
+import { castingStatOf } from './engine/spellSlots.js'
 import { COMBAT_SECTIONS, migrateCombatPrefs } from './combat/sections.js'
-import { GearSlotsList } from './components/CombatTab.jsx'
-import armorDataApp from './data/armor.json'
-import shieldsDataApp from './data/shields.json'
-import ringsDataApp from './data/rings.json'
-import { RINGS_MAP } from './engine/index.js'
 
 // Apply saved font scale before first paint
 const _SCALES = ['s', 'm', 'l', 'xl']
@@ -161,7 +154,7 @@ export default function App() {
 
   const {
     char, index, activeId, update,
-    setAttr, setMeta, setCombatMisc, setClass, setGearSlot, setGearItems, setWeapons, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
+    setAttr, setMeta, setCombatMisc, setClass, setGearItems, setWeapons, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setHp,
     setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
@@ -550,41 +543,8 @@ export default function App() {
               companionHd={companionRules?.hd ?? null} companionAttacks={companionRules?.attacks ?? []}
               order={combatOrder} onMove={moveCombat} onResetOrder={resetCombatOrder}
               collapsed={combatCollapsed} onToggle={toggleCombatCollapse}
-              editors={{
-                defense: (
-                  <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hb.races} lang={lang}
-                    gearList={
-                      <div className="nc-card nc-card-pad">
-                        <GearSlotsList char={char}
-                          allGear={[...armorDataApp.armor, ...hb.armor, ...shieldsDataApp.shields, ...hb.shields, ...ringsDataApp.rings]}
-                          armorMap={Object.fromEntries([...armorDataApp.armor, ...hb.armor].map(x => [x.id, x]))}
-                          shieldsMap={Object.fromEntries([...shieldsDataApp.shields, ...hb.shields].map(x => [x.id, x]))}
-                          ringMap={RINGS_MAP} setGearSlot={setGearSlot} lang={lang} />
-                      </div>
-                    } />
-                ),
-                weapon: (idx, done) => (
-                  <div className="nc-sheet-body nc-gap">
-                    <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Waffen' : 'Weapons'}</span>
-                      <button className="nc-btn nc-btn-ghost" onClick={done}>{L ? 'Fertig' : 'Done'}</button></div>
-                    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />
-                  </div>
-                ),
-                buff: (id, done) => (
-                  <div className="nc-sheet-body nc-gap">
-                    <div className="nc-sheet-titlebar"><span className="nc-sheet-title">Buffs</span>
-                      <button className="nc-btn nc-btn-ghost" onClick={done}>{L ? 'Fertig' : 'Done'}</button></div>
-                    <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />
-                  </div>
-                ),
-                resource: (id, done) => (
-                  <div className="nc-sheet-body nc-gap">
-                    <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Ressourcen' : 'Resources'}</span>
-                      <button className="nc-btn nc-btn-ghost" onClick={done}>{L ? 'Fertig' : 'Done'}</button></div>
-                    <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />
-                  </div>
-                ),
-              }}
+              setWeapons={setWeapons} setGearItems={setGearItems} hbShields={hb.shields}
+              casterLevel={Math.max(1, ...(char.meta.classes ?? []).filter(c => c.id && castingStatOf(c.id)).map(c => Number(c.level) || 1), 1)}
             />
           )}
 
