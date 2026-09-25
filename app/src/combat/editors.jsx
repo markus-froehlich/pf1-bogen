@@ -19,7 +19,7 @@ const TARGET_LABEL = { ac: 'RK (alle)' }
 function buffTemplates(cl) {
   const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v))
   return [
-    { name: 'Segen', type: 'moral', bonuses: { attack: 1 }, duration: '1 Min./Stufe', notes: 'RW-Bonus +1 nur gegen Furcht (GRW S. 331)' },
+    { name: 'Segnen', type: 'moral', bonuses: { attack: 1 }, duration: '1 Min./Stufe', notes: 'RW-Bonus +1 nur gegen Furcht (GRW S. 331)' },
     { name: 'Heldenmut', type: 'moral', bonuses: { attack: 2, saves_all: 2, skills_all: 2 }, duration: '10 Min./Stufe' },
     { name: 'Bärenstärke', type: 'verbesserung', bonuses: { str: 4 }, duration: '1 Min./Stufe' },
     { name: 'Katzenhafte Anmut', type: 'verbesserung', bonuses: { dex: 4 }, duration: '1 Min./Stufe' },
@@ -54,7 +54,7 @@ export function BuffEditor({ buff, casterLevel, onSave, onDelete, onClose, lang 
       preview={buffPreview({ ...d, bonuses }, lang)}
       onCancel={onClose} saveDisabled={!d.name.trim()}
       onSave={() => onSave({ ...(buff ?? { id: newId('b'), active: true }), name: d.name.trim(), type: d.type, duration: d.duration.trim(), notes: d.notes.trim(), bonuses })}>
-      <TextField label="Name" value={d.name} onChange={v => set({ name: v })} placeholder={L ? 'z. B. Segen' : 'e.g. Bless'} />
+      <TextField label="Name" value={d.name} onChange={v => set({ name: v })} placeholder={L ? 'z. B. Segnen' : 'e.g. Bless'} />
       <TextField label={L ? 'Dauer' : 'Duration'} value={d.duration} onChange={v => set({ duration: v })} placeholder={L ? 'z. B. 7 Min. oder 1 Min./Stufe' : 'e.g. 1 min./level'} />
       <ChipsField label={L ? 'Bonus-Typ' : 'Bonus type'} options={BUFF_TYPES.map(t => [t.id, L ? t.de : t.en])} value={d.type} onChange={v => set({ type: v })}
         hint={L ? 'Boni desselben Typs stapeln nicht – es zählt der höchste. Ausweichen, ungetypte Boni und alle Mali stapeln.' : 'Same-type bonuses do not stack; dodge, untyped and penalties do.'} />

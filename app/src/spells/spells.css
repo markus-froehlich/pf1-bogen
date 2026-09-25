@@ -1,6 +1,6 @@
 /* ══ Zauber-Tab „Nocturne" ══ */
 .nc-spells { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; container: spells / inline-size; }
-.nc-spell-pills { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.nc-chips.nc-spell-pills { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
 .nc-spell-pills .nc-chip { flex: none; }
 
 /* Kopfkarte */
