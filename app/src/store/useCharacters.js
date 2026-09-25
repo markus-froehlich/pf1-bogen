@@ -218,7 +218,7 @@ export function useCharacters(profile = 'player') {
   const setSkill = useCallback((skillId, field, value) => {
     patchChar(prev => {
       const skillEntry = { ...(prev.skills?.[skillId] ?? {}) }
-      skillEntry[field] = field === 'is_class' ? Boolean(value) : (Number(value) || 0)
+      skillEntry[field] = field === 'is_class' ? Boolean(value) : field === 'note' ? String(value) : (Number(value) || 0)
       return { ...prev, skills: { ...prev.skills, [skillId]: skillEntry } }
     })
   }, [patchChar])
@@ -234,7 +234,7 @@ export function useCharacters(profile = 'player') {
         : Array.from({ length: defaultSlots }, () => ({ name: '', ranks: 0, misc: 0 }))
       const list = base.map(e => ({ ...e }))
       while (list.length <= idx) list.push({ name: '', ranks: 0, misc: 0 })
-      list[idx][field] = field === 'name' ? value : (Number(value) || 0)
+      list[idx][field] = field === 'name' || field === 'note' ? String(value) : (Number(value) || 0)
       return { ...prev, skills: { ...prev.skills, [skillId]: list } }
     })
   }, [patchChar])

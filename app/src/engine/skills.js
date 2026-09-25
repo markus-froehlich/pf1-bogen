@@ -92,3 +92,8 @@ export function buildClassSkillSet(char, skillDefs) {
   }
   return set
 }
+
+/** Ränge insgesamt — inkl. Mehrfachfertigkeiten (Handwerk/Beruf als Liste). */
+export function usedSkillRanks(skills) {
+  return Object.values(skills ?? {}).reduce((sum, e) => sum + (Array.isArray(e) ? e.reduce((a, x) => a + (Number(x?.ranks) || 0), 0) : Number(e?.ranks) || 0), 0)
+}
