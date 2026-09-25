@@ -4,9 +4,8 @@ import {
   DotsSixVertical, Eye, EyeSlash, ArrowUp, ArrowDown, Stack,
 } from '@phosphor-icons/react'
 import weaponsData from '../data/weapons.json'
-import { computeAttributes, computeCombat, RINGS_MAP } from '../engine/index.js'
+import { computeAttributes, computeCombat } from '../engine/index.js'
 import { computeWeaponAttack } from '../engine/weapons.js'
-import { getConditionMods } from '../engine/conditions.js'
 import { BUFF_STATS, BUFF_TYPES, suppressedTargets } from '../engine/buffs.js'
 import { hasToughness } from '../engine/combat.js'
 import { CONDITIONS, CONFUSED_TABLE } from '../components/ConditionsPanel.jsx'
@@ -19,7 +18,6 @@ import { combatBreakdown, weaponBreakdown, sg } from './breakdown.js'
 import { computeSpeed, currentSizeKey, SIZE_MODS } from './defense.js'
 import './combat.css'
 
-export const COMBAT_SECTIONS = ['hp', 'stats', 'saves', 'atk', 'def', 'cond', 'buff', 'res']
 const LABELS = {
   hp:    ['Trefferpunkte', 'Hit points'],
   stats: ['Kampfwerte', 'Combat values'],
@@ -115,7 +113,7 @@ export function CombatView(props) {
   const resources = char.resources ?? []
   const attacks = weaponRows({ char: rulesChar, attrs, baseValues, condMods, buffTotals, weaponMap, companionAttacks, deltas, lang })
   const tag = key => ({ buff: combat[key] - deltas.noBuff[key], cond: combat[key] - deltas.noCond[key] })
-  const koScore = attrs.KO?.score ?? attrs.KO?.buffed ?? 10
+  const koScore = attrs.KO?.buffed ?? attrs.KO?.score ?? 10   // Tot bei negativen TP in Höhe des KO-Werts
 
   // ── TP ──────────────────────────────────────────────────────────────────
   function applyPad(v) {
@@ -547,4 +545,3 @@ export function DefenseSection({ char, setCombatMisc, gearList, hbRaces, lang })
     </>
   )
 }
-export { RINGS_MAP, getConditionMods }
