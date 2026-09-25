@@ -57,6 +57,7 @@ def main():
             print("WARN: keine Klassen-ID fuer", name)
             continue
         entry = {
+            "stat": str(rows[i + 1][49] or "").strip() or None,  # Zauberattribut (IN/WE/CH)
             "source": "arcane" if day is arcane else "divine",
             "day": day,
             "known": known if has(known) else None,

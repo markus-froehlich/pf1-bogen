@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import spellsData from '../data/spells.json'
-import { getSpellSlots, getSpellsKnown, isSpontaneousCaster } from '../engine/spellSlots.js'
+import { getSpellSlots, getSpellsKnown, isSpontaneousCaster, bonusSpells } from '../engine/spellSlots.js'
 import { RefLink as ExternalRefLink } from './RefLink.jsx'
 import './SpellsTab.css'
 
