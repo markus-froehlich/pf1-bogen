@@ -289,9 +289,10 @@ export function useCharacters(profile = 'player') {
   }, [])
 
   // ── Multi-character management ────────────────────────────────────────────
-  const newChar = useCallback(() => {
+  const newChar = useCallback((initial) => {
     const id = genId()
-    const c = { ...DEFAULT_CHAR }
+    // Charakter-Assistent übergibt Startwerte; ohne Argument (bzw. Klick-Event) = leerer Charakter
+    const c = initial && !initial.nativeEvent && typeof initial === 'object' ? deepMerge(DEFAULT_CHAR, initial) : { ...DEFAULT_CHAR }
     saveChar(id, c)
     const entry = indexEntry(id, c)
     setState(prev => {
