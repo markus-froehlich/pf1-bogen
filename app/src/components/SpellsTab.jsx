@@ -4,23 +4,15 @@ import { getSpellSlots, getSpellsKnown, isSpontaneousCaster, bonusSpells } from 
 import { RefLink as ExternalRefLink } from './RefLink.jsx'
 import './SpellsTab.css'
 
-// Casting stat per class ID (PF1e rules)
-const CASTING_STAT = {
-  hxm_magier: 'IN', arkanist: 'IN', alchemist: 'IN',
-  hexe: 'IN', kampfmagier: 'IN', ermittler: 'IN',
-  magier: 'IN',
-  kleriker: 'WE', druide: 'WE', inquisitor: 'WE',
-  waldlaeufer: 'WE', jaeger: 'WE', schamane: 'WE',
-  mystiker: 'WE', kriegspriester: 'WE', adept: 'WE',
-  barde: 'CH', paladin: 'CH', antipaladin: 'CH',
-  blutwueter: 'CH', skalde: 'CH', paktmagier: 'CH',
-  hexenmeister: 'CH', orakel: 'CH',
-}
+// Casting stat per class ID — from the Excel (Klasse sheet), via spell_progression.json.
+// Spell-list IDs from spells.json resolve to their stat through the alias map below.
+const CASTING_STAT = new Proxy({}, { get: (_, id) => castingStatOf(String(id)) })
 
 // spells.json class IDs → possible classes.json char class IDs
 // (e.g. hxm_magier covers both hexenmeister and magier in the spell list)
 const SPELLBOOK_TO_CHAR_ID = {
   hxm_magier: ['hexenmeister', 'magier'],
+  kampfmagier: ['kampfmagus'],
 }
 // Reverse lookup: char class ID → spells.json class ID (e.g. hexenmeister/magier → hxm_magier)
 const CHAR_ID_TO_SPELLBOOK = Object.fromEntries(

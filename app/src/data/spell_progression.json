@@ -1,5 +1,6 @@
 {
  "barde": {
+  "stat": "CH",
   "source": "arcane",
   "day": [
    [
@@ -488,6 +489,7 @@
   "extra": null
  },
  "druide": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -735,6 +737,7 @@
   "extra": null
  },
  "hexenmeister": {
+  "stat": "CH",
   "source": "arcane",
   "day": [
    [
@@ -1223,6 +1226,7 @@
   "extra": null
  },
  "kleriker": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -1691,6 +1695,7 @@
   ]
  },
  "magier": {
+  "stat": "IN",
   "source": "arcane",
   "day": [
    [
@@ -1938,6 +1943,7 @@
   "extra": null
  },
  "paladin": {
+  "stat": "CH",
   "source": "divine",
   "day": [
    [
@@ -2185,6 +2191,7 @@
   "extra": null
  },
  "waldlaeufer": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -2432,6 +2439,7 @@
   "extra": null
  },
  "alchemist": {
+  "stat": "IN",
   "source": "arcane",
   "day": [
    [
@@ -2679,6 +2687,7 @@
   "extra": null
  },
  "hexe": {
+  "stat": "IN",
   "source": "arcane",
   "day": [
    [
@@ -2926,6 +2935,7 @@
   "extra": null
  },
  "inquisitor": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -3414,6 +3424,7 @@
   "extra": null
  },
  "mystiker": {
+  "stat": "CH",
   "source": "divine",
   "day": [
    [
@@ -3902,6 +3913,7 @@
   "extra": null
  },
  "paktmagier": {
+  "stat": "CH",
   "source": "arcane",
   "day": [
    [
@@ -4390,6 +4402,7 @@
   "extra": null
  },
  "adept": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -4637,6 +4650,7 @@
   "extra": null
  },
  "kampfmagus": {
+  "stat": "IN",
   "source": "arcane",
   "day": [
    [
@@ -4884,6 +4898,7 @@
   "extra": null
  },
  "antipaladin": {
+  "stat": "CH",
   "source": "divine",
   "day": [
    [
@@ -5131,6 +5146,7 @@
   "extra": null
  },
  "arkanist": {
+  "stat": "IN",
   "source": "arcane",
   "day": [
    [
@@ -5619,6 +5635,7 @@
   "extra": null
  },
  "blutwueter": {
+  "stat": "CH",
   "source": "arcane",
   "day": [
    [
@@ -6107,6 +6124,7 @@
   "extra": null
  },
  "ermittler": {
+  "stat": "IN",
   "source": "arcane",
   "day": [
    [
@@ -6354,6 +6372,7 @@
   "extra": null
  },
  "jaeger": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -6842,6 +6861,7 @@
   "extra": null
  },
  "kriegspriester": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -7089,6 +7109,7 @@
   "extra": null
  },
  "schamane": {
+  "stat": "WE",
   "source": "divine",
   "day": [
    [
@@ -7557,6 +7578,7 @@
   ]
  },
  "skalde": {
+  "stat": "CH",
   "source": "arcane",
   "day": [
    [

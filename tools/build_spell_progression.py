@@ -33,7 +33,7 @@ def num(v):
     return int(f) if f.is_integer() else f
 
 def main():
-    rows = grid("Klasse", "A1:AW2500", "val")
+    rows = grid("Klasse", "A1:AX2500", "val")
     classes = json.load(open(CLASSES, encoding="utf-8"))
     classes = classes["classes"] if isinstance(classes, dict) else classes
     by_name = {c["name"]["de"].strip(): c["id"] for c in classes}
