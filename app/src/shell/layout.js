@@ -27,17 +27,23 @@ export const THEME_KEY = 'pf1_theme'
 
 export function initialTheme() {
   try {
-    const saved = localStorage.getItem(THEME_KEY)
+    let saved = localStorage.getItem(THEME_KEY)
+    try { saved = JSON.parse(saved) } catch { /* ältere Rohwerte */ }
     if (saved === 'standard' || saved === 'kontrast') return saved
     // Erster Start: automatisch Kontrast, wenn das System es verlangt
     const wantsContrast = window.matchMedia?.('(prefers-contrast: more)').matches
       || window.matchMedia?.('(forced-colors: active)').matches
     const theme = wantsContrast ? 'kontrast' : 'standard'
-    localStorage.setItem(THEME_KEY, theme)
+    saveTheme(theme)
     return theme
   } catch {
     return 'standard'
   }
+}
+
+// JSON-kodiert wie die übrigen PREF_KEYS (Gist-Backup schreibt JSON.stringify zurück)
+export function saveTheme(theme) {
+  try { localStorage.setItem(THEME_KEY, JSON.stringify(theme)) } catch { /* privat/voll */ }
 }
 
 export function applyTheme(theme) {

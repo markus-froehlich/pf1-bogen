@@ -15,7 +15,6 @@ import { CombatTab } from './components/CombatTab.jsx'
 import { SkillsTab } from './components/SkillsTab.jsx'
 import { WeaponsTab } from './components/WeaponsTab.jsx'
 import { SpellsTab } from './components/SpellsTab.jsx'
-import { CharacterDrawer } from './components/CharacterDrawer.jsx'
 import { NotesTab } from './components/NotesTab.jsx'
 import { HomebrewPanel } from './components/HomebrewPanel.jsx'
 import { FeatsTab } from './components/FeatsTab.jsx'
@@ -32,6 +31,14 @@ import { CompanionFeaturesPanel } from './components/CompanionFeaturesPanel.jsx'
 import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
+import './shell/shell.css'
+import { useLayout, initialTheme, applyTheme, saveTheme } from './shell/layout.js'
+import { ToastProvider } from './shell/Toast.jsx'
+import { Sheet } from './shell/Sheet.jsx'
+import { AppHeader, NavBar } from './shell/AppChrome.jsx'
+import { CharacterSheet } from './shell/CharacterSheet.jsx'
+import { MoreView, MORE_PAGES } from './shell/MoreView.jsx'
+import { baseFeatBudget } from './components/FeatsTab.jsx'
 
 // Apply saved font scale before first paint
 const _SCALES = ['s', 'm', 'l', 'xl']
@@ -42,27 +49,28 @@ const COMBAT_ALL_DEFAULT = ['hp', 'combat', 'speed', 'ac', 'saves', 'dr', 'featu
 const ATTR_DEFAULT            = ['race', 'class', 'attrs', 'xp', 'bio']
 
 
-const TABS = [
-  { id: 'attr',      de: 'Char',      en: 'Char'      },
-  { id: 'combat',    de: 'Kampf',     en: 'Combat'  },
-  { id: 'skills',    de: 'Fähigk.',   en: 'Skills'  },
-  { id: 'spells',    de: 'Zauber',    en: 'Spells'  },
-  { id: 'inventory', de: 'Inventar',  en: 'Inventory' },
-  { id: 'feats',     de: 'Talente',   en: 'Feats'   },
-  { id: 'notes',     de: 'Notizen',   en: 'Notes'   },
-]
+// Untere Navigation (README „App-Shell"): Kampf · Char · Fähigk. · Zauber · Inventar; „Mehr" über ⋯ bzw. Schiene
+const TABS = ['combat', 'attr', 'skills', 'spells', 'inventory']
+const SKILLS_SEG_KEY = 'pf1_skills_segment'
 
-const NAV_ICONS = { attr: '👤', combat: '⚔', skills: '🔨', spells: '🪄', inventory: '🎒', feats: '📜', notes: '✏️', companions: '🐾' }
+// Theme vor dem ersten Rendern setzen (kein Aufblitzen)
+const _initTheme = initialTheme()
+applyTheme(_initTheme)
 
 export default function App() {
-  const [tab, setTab] = useState('attr')
+  const [tab, setTab] = useState('combat')
+  const [morePage, setMorePage] = useState(null)          // Unterseite in „Mehr" (notes, contacts, …)
+  const [skillsMode, setSkillsMode] = useState(() => localStorage.getItem(SKILLS_SEG_KEY) === 'feats' ? 'feats' : 'skills')
   const [lang, setLang] = useState('de')
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [charSheetOpen, setCharSheetOpen] = useState(false)
   const [hbOpen, setHbOpen] = useState(false)
   const [printOpen, setPrintOpen] = useState(false)
-  const [appMenuOpen, setAppMenuOpen] = useState(false)
   const [gistOpen, setGistOpen] = useState(false)
   const [fontScale, setFontScale] = useState(_initScale)
+  const [theme, setTheme] = useState(_initTheme)
+  const [chromeHidden, setChromeHidden] = useState(false)
+  const lastScrollY = useRef(0)
+  const layout = useLayout(fontScale)
   const [profile, setProfile] = useState(() => localStorage.getItem('pf1_profile') ?? 'player')
   const externalLinks = useExternalLinksPref()
 
@@ -71,24 +79,28 @@ export default function App() {
     localStorage.setItem('pf1_profile', p)
     window.location.reload()
   }
-  const [topbarCollapsed, setTopbarCollapsed] = useState(() =>
-    localStorage.getItem('pf1_topbar_collapsed') === '1')
-  const [navCollapsed, setNavCollapsed] = useState(() =>
-    localStorage.getItem('pf1_nav_collapsed') === '1')
-
-  function toggleTopbar() {
-    setTopbarCollapsed(v => {
-      const next = !v
-      localStorage.setItem('pf1_topbar_collapsed', next ? '1' : '0')
-      return next
-    })
+  function pickTheme(next) {
+    setTheme(next); saveTheme(next); applyTheme(next)
   }
-  function toggleNav() {
-    setNavCollapsed(v => {
-      const next = !v
-      localStorage.setItem('pf1_nav_collapsed', next ? '1' : '0')
-      return next
-    })
+  function selectSkillsMode(mode) {
+    setSkillsMode(mode); localStorage.setItem(SKILLS_SEG_KEY, mode)
+  }
+  function goTab(id) {
+    setTab(id); setMorePage(null); setChromeHidden(false)
+  }
+  function openMorePage(page) {
+    setTab('more'); setMorePage(page); setChromeHidden(false)
+  }
+
+  // Beim Scrollen nach unten Kopf + Leiste wegklappen (nur Handy, nicht bei offenem Sheet)
+  function onMainScroll(e) {
+    const y = e.currentTarget.scrollTop
+    const last = lastScrollY.current
+    lastScrollY.current = y
+    if (layout !== 'phone') return
+    if (y < 40) { if (chromeHidden) setChromeHidden(false); return }
+    if (y > last + 6 && !chromeHidden) setChromeHidden(true)
+    else if (y < last - 10 && chromeHidden) setChromeHidden(false)
   }
 
   function applyFont(scale) {
@@ -325,147 +337,328 @@ export default function App() {
   }, 0)
   const usedFk = Object.values(char.skills ?? {}).reduce((s, e) => s + (Number(e.ranks) || 0), 0)
 
+  function exportCurrent() {
+    const name = char.meta.name?.trim() || 'charakter'
+    const slug = name.toLowerCase().replace(/[^a-z0-9äöü]/gi, '_').replace(/_+/g, '_')
+    const hasHB = Object.values(hb).some(arr => arr.length > 0)
+    const exportData = hasHB ? { version: 2, char, homebrew: hb } : char
+    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
+    const url  = URL.createObjectURL(blob)
+    const a    = document.createElement('a')
+    a.href = url; a.download = `${slug}.json`; a.click()
+    URL.revokeObjectURL(url)
+  }
+  function importFile(e) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = ev => {
+      try {
+        const result = importChar(JSON.parse(ev.target.result))
+        if (result?.ok) {
+          if (result.hasHomebrew) reloadHB()
+          alert(lang === 'de'
+            ? 'Als neuer Charakter importiert (bestehende Charaktere wurden nicht verändert).'
+            : 'Imported as a new character (existing characters were not changed).')
+        } else {
+          alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file')
+        }
+      }
+      catch { alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file') }
+    }
+    reader.readAsText(file)
+    e.target.value = ''
+  }
+
+  const L = lang === 'de'
+  const featBudget = baseFeatBudget(baseValues.totalLevel, char.meta?.race === 'mensch' || char.meta?.race === 'human')
+  const raceLabel = RACE_MAP_APP[char.meta.race]?.name?.[L ? 'de' : 'en'] ?? RACE_MAP_APP[char.meta.race]?.name?.de ?? char.meta.race
+  const classLabel = (char.meta.classes ?? []).filter(entry => entry.id)
+    .map(entry => `${CLASS_MAP_APP[entry.id]?.name?.[L ? 'de' : 'en'] ?? CLASS_MAP_APP[entry.id]?.name?.de ?? entry.id} ${entry.level}`)
+    .join(' / ')
+  const subline = [raceLabel, classLabel, char.meta.player].filter(Boolean).join(' · ') || (L ? 'Tippen für Charakterliste' : 'Tap for character list')
+  const navItems = [...(isCompanion ? TABS.filter(id => id !== 'spells') : TABS), ...(layout === 'desktop' ? ['more'] : [])]
+  const activeNav = tab === 'more' ? 'more' : tab
+  const syncDot = gistSync.connected ? (gistSync.status === 'error' ? 'error' : gistSync.status === 'ok' ? 'ok' : 'syncing') : null
+  const hbCount = Object.values(hb).reduce((sum, arr) => sum + (arr?.length ?? 0), 0)
+  const moreCounts = {
+    contacts: (char.contacts ?? []).length || null,
+    specials: (char.specials ?? []).length || null,
+    poisons: 80, templates: 25,
+  }
+  const sub = tab === 'more' && morePage
+    ? { title: L ? MORE_PAGES[morePage].de : MORE_PAGES[morePage].en, onBack: () => setMorePage(null) }
+    : null
+  document.documentElement.dataset.layout = layout
+
   return (
-    <div className="app-shell">
-      {topbarCollapsed && (
-        <button className="bar-restore bar-restore-top" onClick={toggleTopbar} title="Menü einblenden">▾</button>
-      )}
-      <header className={`topbar${topbarCollapsed ? ' bar-collapsed' : ''}`}>
-        <div className="topbar-row1">
-          <button
-            className="topbar-icon-btn char-list-btn"
-            title={lang === 'de' ? 'Charakterliste' : 'Characters'}
-            onClick={() => setDrawerOpen(true)}
-          >
-            ☰
-            {index.length > 1 && <span className="char-count-badge">{index.length}</span>}
-          </button>
-          {baseValues.totalLevel > 0 && (
-            <span className="topbar-level">{lang === 'de' ? 'Stufe' : 'Lvl'} {baseValues.totalLevel}</span>
-          )}
-          <div className="topbar-actions">
-            <div className="app-menu-wrap">
-              <button className="topbar-icon-btn" title="Menü" onClick={() => setAppMenuOpen(v => !v)}>
-                ⚙
-                {gistSync.connected && (
-                  <span className="gist-status-badge"
-                    style={{ background: gistSync.status === 'ok' ? '#6ec97e' : gistSync.status === 'error' ? '#c96e6e' : '#c9a96e' }} />
-                )}
-              </button>
-              {appMenuOpen && (
-                <>
-                <div className="app-menu-backdrop" onClick={() => setAppMenuOpen(false)} />
-                <div className="app-menu" onClick={e => e.stopPropagation()}>
-                    <button className="app-menu-item" onClick={() => {
-                      const name = char.meta.name?.trim() || 'charakter'
-                      const slug = name.toLowerCase().replace(/[^a-z0-9äöü]/gi, '_').replace(/_+/g, '_')
-                      const hasHB = Object.values(hb).some(arr => arr.length > 0)
-                      const exportData = hasHB ? { version: 2, char, homebrew: hb } : char
-                      const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' })
-                      const url  = URL.createObjectURL(blob)
-                      const a    = document.createElement('a')
-                      a.href = url; a.download = `${slug}.json`; a.click()
-                      URL.revokeObjectURL(url)
-                      setAppMenuOpen(false)
-                    }}>⬇ {lang === 'de' ? 'Exportieren' : 'Export'}</button>
-                    <label className="app-menu-item">
-                      ⬆ {lang === 'de' ? 'Importieren' : 'Import'}
-                      <input type="file" accept=".json" style={{ display: 'none' }}
-                        onChange={e => {
-                          const file = e.target.files?.[0]
-                          if (!file) return
-                          const reader = new FileReader()
-                          reader.onload = ev => {
-                            try {
-                              const result = importChar(JSON.parse(ev.target.result))
-                              if (result?.ok) {
-                                if (result.hasHomebrew) reloadHB()
-                                alert(lang === 'de'
-                                  ? 'Als neuer Charakter importiert (bestehende Charaktere wurden nicht verändert).'
-                                  : 'Imported as a new character (existing characters were not changed).')
-                              } else {
-                                alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file')
-                              }
-                            }
-                            catch { alert(lang === 'de' ? 'Ungültige JSON-Datei' : 'Invalid JSON file') }
-                          }
-                          reader.readAsText(file)
-                          e.target.value = ''
-                          setAppMenuOpen(false)
-                        }} />
-                    </label>
-                    <button className="app-menu-item" onClick={() => { setPrintOpen(true); setAppMenuOpen(false) }}>
-                      🖨 {lang === 'de' ? 'Drucken' : 'Print'}
+    <ToastProvider lang={lang}>
+    <div className={`app-shell nc-shell${chromeHidden && !charSheetOpen ? ' is-chrome-hidden' : ''}`} data-layout={layout}>
+      <header className="nc-shell-head">
+        <AppHeader
+          name={char.meta.name} subline={subline} lang={lang}
+          onOpenChars={() => setCharSheetOpen(true)}
+          onOpenNotes={() => openMorePage('notes')}
+          onOpenMore={() => goTab('more')}
+          showMore={layout !== 'desktop'} moreActive={tab === 'more'}
+          syncDot={syncDot} sub={sub}
+        />
+      </header>
+
+      <main className="nc-shell-main main-scroll" onScroll={onMainScroll}>
+        <div className="nc-main-inner">
+          {tab === 'attr' && (
+            <div className="section">
+              <div className="nc-identity">
+                <label className="nc-field"><span>{lang === 'de' ? 'Charaktername' : 'Character name'}</span>
+                  <input className="nc-input" type="text" value={char.meta.name}
+                    placeholder={lang === 'de' ? 'Charaktername' : 'Character name'}
+                    onChange={e => setMeta('name', e.target.value)} />
+                </label>
+                <label className="nc-field"><span>{lang === 'de' ? 'Spielende Person' : 'Player'}</span>
+                  <input className="nc-input" type="text" value={char.meta.player ?? ''}
+                    placeholder={lang === 'de' ? 'Spielende Person' : 'Player'}
+                    onChange={e => setMeta('player', e.target.value)} />
+                </label>
+              </div>
+              {(isCompanion && owner) || ownedCompanions.length > 0 ? (
+                <div className="nc-companion-links">
+                  {isCompanion && owner && (
+                    <button className="nc-btn nc-btn-secondary" onClick={() => { switchChar(owner.id); goTab('combat') }}>
+                      ↩ {lang === 'de' ? 'zu' : 'to'} {owner.name || (lang === 'de' ? 'Charakter' : 'Character')}
                     </button>
-                    <button className="app-menu-item" onClick={() => { setHbOpen(true); setAppMenuOpen(false) }}>
-                      ✦ Homebrew
+                  )}
+                  {!isCompanion && ownedCompanions.map(c => (
+                    <button key={c.id} className="nc-btn nc-btn-secondary" onClick={() => { switchChar(c.id); goTab('combat') }}>
+                      {lang === 'de' ? 'zu' : 'to'} {c.name || (lang === 'de' ? 'Tiergefährte' : 'Companion')}
                     </button>
-                    <button className="app-menu-item" onClick={() => { setGistOpen(true); setAppMenuOpen(false) }}>
-                      ☁ {lang === 'de' ? 'Backup' : 'Backup'}
-                      {gistSync.connected && <span className="app-menu-sync-indicator" />}
+                  ))}
+                </div>
+              ) : null}
+              {visibleAttrOrder.map((id, idx) => {
+                const L2 = lang === 'de'
+                const isCollapsed = attrCollapsed.has(id)
+                const count = visibleAttrOrder.length
+                const headings = {
+                  race:  L2 ? 'Volk'      : 'Race',
+                  class: L2 ? 'Klasse(n)' : 'Class(es)',
+                  attrs: L2 ? 'Attribute' : 'Ability Scores',
+                  xp:    L2 ? 'EP'        : 'XP',
+                  bio:   L2 ? 'Person'    : 'Person',
+                }
+                const raceName = RACE_MAP_APP[char.meta.race]?.name?.[L2 ? 'de' : 'en']
+                  ?? RACE_MAP_APP[char.meta.race]?.name?.de
+                  ?? char.meta.race
+                  ?? '—'
+                const classSummary = (char.meta.classes ?? [])
+                  .filter(entry => entry.id)
+                  .map(entry => {
+                    const className = CLASS_MAP_APP[entry.id]?.name?.[L2 ? 'de' : 'en']
+                      ?? CLASS_MAP_APP[entry.id]?.name?.de
+                      ?? entry.id
+                    return `${className} ${entry.level}`
+                  })
+                  .join(' · ')
+                const attrHead = (
+                  <div className="ct-heading-row">
+                    <button className="ct-collapse-btn" onClick={() => toggleAttrCollapse(id)} title={isCollapsed ? 'Aufklappen' : 'Zuklappen'}>
+                      {isCollapsed ? '▶' : '▼'}
                     </button>
-                    <div className="app-menu-divider" />
-                    <div className="app-menu-profile-row">
-                      <span className="app-menu-profile-label">{lang === 'de' ? 'Links:' : 'Links:'}</span>
-                      <div className="profile-toggle">
-                        <button className={`profile-btn${!externalLinks ? ' active' : ''}`}
-                          onClick={() => setExternalLinksPref(false)}
-                          title={lang === 'de' ? 'Links öffnen in der App (ein Fenster)' : 'Links open in-app (one window)'}
-                        >{lang === 'de' ? 'App' : 'App'}</button>
-                        <button className={`profile-btn${externalLinks ? ' active' : ''}`}
-                          onClick={() => setExternalLinksPref(true)}
-                          title={lang === 'de' ? 'Links öffnen extern im Browser (mehrere Tabs möglich)' : 'Links open externally in browser (multiple tabs)'}
-                        >{lang === 'de' ? 'Browser' : 'Browser'}</button>
+                    <h3 className="ct-heading ct-heading-clk" onClick={() => toggleAttrCollapse(id)}>{headings[id]}</h3>
+                    {isCollapsed && id === 'race' && <div className="ct-heading-summary">{raceName}</div>}
+                    {isCollapsed && id === 'xp' && (
+                      <div className="ct-heading-summary">
+                        {(Number(char.xp?.current) || 0).toLocaleString(L2 ? 'de-DE' : 'en-US')} {L2 ? 'EP' : 'XP'}
                       </div>
-                    </div>
-                    <div className="app-menu-profile-row">
-                      <span className="app-menu-profile-label">{lang === 'de' ? 'Profil:' : 'Profile:'}</span>
-                      <div className="profile-toggle">
-                        <button className={`profile-btn${profile === 'player' ? ' active' : ''}`} onClick={() => { switchProfile('player'); setAppMenuOpen(false) }}>SP</button>
-                        <button className={`profile-btn${profile === 'gm' ? ' active' : ''}`} onClick={() => { switchProfile('gm'); setAppMenuOpen(false) }}>SL</button>
-                      </div>
+                    )}
+                    <div className="ct-move-btns">
+                      <button className="ct-move-btn" disabled={idx === 0} onClick={() => moveAttr(id, -1)} title="Nach oben">↑</button>
+                      <button className="ct-move-btn" disabled={idx === count - 1} onClick={() => moveAttr(id, 1)} title="Nach unten">↓</button>
                     </div>
                   </div>
-                </>
+                )
+                if (id === 'race') return (
+                  <section key="race" className="ct-section">
+                    {attrHead}
+                    {!isCollapsed && <RaceSelector value={char.meta.race} onChange={v => setMeta('race', v)} lang={lang} hbRaces={hb.races} showLabel={false} />}
+                  </section>
+                )
+                if (id === 'class') return (
+                  <ClassSection key="class"
+                    char={char} setClass={setClass} setMeta={setMeta}
+                    baseValues={baseValues} lang={lang}
+                    hbClasses={hb.classes} hbRaces={hb.races}
+                    collapsedSummary={classSummary}
+                    collapsed={isCollapsed} onToggle={toggleAttrCollapse} onMove={moveAttr}
+                    sectionIdx={idx} sectionCount={count}
+                  />
+                )
+                if (id === 'attrs') return (
+                  <section key="attrs" className="ct-section">
+                    {attrHead}
+                    {!isCollapsed && (
+                      <>
+                        <CompanionAdvancementPanel rules={companionRules} lang={lang}
+                          tricks={char.companion?.tricks ?? []}
+                          onTricksChange={tricks => update({ companion: { tricks } })} />
+                        <p className="attr-note">
+                          {lang === 'de'
+                            ? '⚠ Attributswerte selbst eintragen — Boni werden berechnet'
+                            : '⚠ Enter ability scores yourself — modifiers are calculated'}
+                        </p>
+                        <div className="attr-grid">
+                          {ATTRS.map(a => (
+                            <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} />
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </section>
+                )
+                if (id === 'xp') return (
+                  <section key="xp" className="ct-section">
+                    {attrHead}
+                    {!isCollapsed && <XpTracker char={char} setXp={setXp} totalLevel={baseValues.totalLevel} lang={lang} />}
+                  </section>
+                )
+                if (id === 'bio') return (
+                  <section key="bio" className="ct-section">
+                    {attrHead}
+                    {!isCollapsed && (
+                      <>
+                        <BioSection char={char} setBio={setBio} lang={lang} />
+                        {isCompanion && <CompanionFeaturesPanel features={companionRules?.features} lang={lang} />}
+                        {isDruid && (
+                          <CompanionsTab
+                            index={index}
+                            ownerId={activeId}
+                            onCreate={species => newCompanion(species, activeId)}
+                            onOpen={id => { switchChar(id); setTab('attr') }}
+                            lang={lang}
+                          />
+                        )}
+                        <ClassFeaturesPanel char={char} lang={lang} />
+                      </>
+                    )}
+                  </section>
+                )
+                return null
+              })}
+            </div>
+          )}
+
+          {tab === 'combat' && (
+            <div className="section">
+              <CombatTab
+                char={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
+                setCombatMisc={setCombatMisc} setGear={setGear} setGearSlot={setGearSlot} setHp={setHp} setNlDamage={setNlDamage}
+                lang={lang}
+                hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields} hbWeapons={hb.weapons}
+                encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
+                buffTotals={buffTotals}
+                activeBuffs={char.active_buffs ?? []}
+                condMods={condMods}
+                sectionOrder={combatOrder}
+                onMoveSection={moveCombat}
+                collapsedSections={combatCollapsed}
+                onToggleCollapse={toggleCombatCollapse}
+                extraPanels={{
+                  ...(!isCompanion && { features: <ClassFeaturesPanel char={char} lang={lang} hideTitle /> }),
+                  conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
+                  buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
+                  resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
+                  weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />,
+                }}
+                extraLabels={lang === 'de' ? {
+                  features:   'Klassenmerkmale',
+                  conditions: 'Zustände',
+                  buffs:      'Buffs / Effekte',
+                  resources:  'Ressourcen',
+                  weapons:    'Waffen',
+                } : {
+                  features:   'Class Features',
+                  conditions: 'Conditions',
+                  buffs:      'Buffs / Effects',
+                  resources:  'Resources',
+                  weapons:    'Weapons',
+                }}
+                isCompanion={isCompanion}
+                companionHd={companionRules?.hd ?? null}
+              />
+            </div>
+          )}
+
+          {tab === 'skills' && (
+            <>
+              <div className="nc-seg is-full nc-tab-seg">
+                <button className={`nc-seg-opt ${skillsMode === 'skills' ? 'is-on' : ''}`} onClick={() => selectSkillsMode('skills')}>
+                  {lang === 'de' ? 'Fertigkeiten' : 'Skills'}
+                </button>
+                <button className={`nc-seg-opt ${skillsMode === 'feats' ? 'is-on' : ''}`} onClick={() => selectSkillsMode('feats')}>
+                  {lang === 'de' ? 'Talente' : 'Feats'} {(char.feats ?? []).length}{featBudget > 0 ? `/${featBudget}` : ''}
+                </button>
+              </div>
+              {skillsMode === 'skills' && (
+                <SkillsTab char={char} attrs={computed} setSkill={setSkill}
+                  setMultiSkill={setMultiSkill} addSkillSlot={addSkillSlot} removeSkillSlot={removeSkillSlot}
+                  armorCheckPenalty={armorCheckPenalty}
+                  totalFk={totalFk} usedFk={usedFk}
+                  skillsBuff={buffTotals.skills_all ?? 0}
+                  activeBuffs={char.active_buffs ?? []}
+                  condSkillPenalty={condMods.skill_penalty ?? 0}
+                  companionRules={companionRules}
+                  lang={lang} />
               )}
+              {skillsMode === 'feats' && (
+                <FeatsTab char={char} setFeats={setFeats} totalLevel={baseValues.totalLevel} lang={lang} />
+              )}
+            </>
+          )}
+
+          {tab === 'inventory' && (
+            <div className="section">
+              <InventoryTab
+                char={char} setInventory={setInventory} setMagicSlots={setMagicSlots} lang={lang}
+                carryThresholds={carryThresholds(computed.ST.buffed)}
+              />
             </div>
-            <div className="font-scale-stepper" title="Schriftgröße">
-              <button className="fss-btn" onClick={fontDown} disabled={fontScale === _SCALES[0]}>−</button>
-              <span className="fss-label">Aa</span>
-              <button className="fss-btn" onClick={fontUp} disabled={fontScale === _SCALES[_SCALES.length-1]}>+</button>
-            </div>
-            <button className="lang-btn" onClick={() => setLang(l => l === 'de' ? 'en' : 'de')}>
-              {lang === 'de' ? 'EN' : 'DE'}
-            </button>
-            <span className="app-version" title="Build-Version">#{__COMMIT__}</span>
-            <button className="topbar-icon-btn bar-collapse-btn" onClick={toggleTopbar} title="Menü einklappen">−</button>
-          </div>
+          )}
+
+          {tab === 'spells' && (
+            <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} setSummons={setSummons} attrs={computed} lang={lang} />
+          )}
+
+          {tab === 'more' && !morePage && (
+            <MoreView
+              lang={lang} counts={moreCounts} onOpenPage={openMorePage}
+              onExport={exportCurrent} onImportFile={importFile}
+              onPrint={() => setPrintOpen(true)} onHomebrew={() => setHbOpen(true)} homebrewCount={hbCount}
+              onBackup={() => setGistOpen(true)}
+              backupStatus={gistSync.connected ? (gistSync.status === 'error' ? 'error' : 'ok') : 'off'}
+              profile={profile} onProfile={switchProfile}
+              fontScale={fontScale} onFontDown={fontDown} onFontUp={fontUp}
+              theme={theme} onTheme={pickTheme}
+              externalLinks={externalLinks} onLinks={setExternalLinksPref}
+              onLang={setLang} build={__COMMIT__}
+            />
+          )}
+          {tab === 'more' && morePage && (
+            <NotesTab key={morePage} initialMode={morePage}
+              char={char} setNotes={setNotes} setContacts={setContacts} setSpecials={setSpecials} lang={lang} />
+          )}
         </div>
-        <input
-          className="char-name-input"
-          type="text"
-          placeholder={lang === 'de' ? 'Charaktername' : 'Character name'}
-          value={char.meta.name}
-          onChange={e => setMeta('name', e.target.value)}
+      </main>
+
+      <NavBar items={navItems} active={activeNav} onSelect={goTab} layout={layout} lang={lang} />
+
+      <Sheet open={charSheetOpen} onClose={() => setCharSheetOpen(false)} layout={layout} label={L ? 'Charaktere' : 'Characters'}>
+        <CharacterSheet
+          index={index} activeId={activeId} player={char.meta.player}
+          onSwitch={switchChar} onNew={newChar} onDelete={deleteChar}
+          onClose={() => setCharSheetOpen(false)}
+          lang={lang} raceMap={RACE_MAP_APP} classMap={CLASS_MAP_APP}
         />
-        <input
-          className="player-name-input"
-          type="text"
-          placeholder={lang === 'de' ? 'Spielende Person' : 'Player'}
-          value={char.meta.player ?? ''}
-          onChange={e => setMeta('player', e.target.value)}
-        />
-        {isCompanion && owner && (
-          <button className="companion-switch-link" onClick={() => { switchChar(owner.id); setTab('combat') }}>
-            ↩ {lang === 'de' ? 'zu' : 'to'} {owner.name || (lang === 'de' ? 'Charakter' : 'Character')}
-          </button>
-        )}
-        {!isCompanion && ownedCompanions.map(c => (
-          <button key={c.id} className="companion-switch-link" onClick={() => { switchChar(c.id); setTab('combat') }}>
-            🐾 {lang === 'de' ? 'zu' : 'to'} {c.name || (lang === 'de' ? 'Tiergefährte' : 'Companion')}
-          </button>
-        ))}
-      </header>
+      </Sheet>
 
       {printOpen && (
         <PrintView
@@ -473,229 +666,14 @@ export default function App() {
           lang={lang} onClose={() => setPrintOpen(false)}
         />
       )}
-
       {hbOpen && (
         <HomebrewPanel hb={hb} saveHBItem={saveHBItem} deleteHB={deleteHB}
           onClose={() => setHbOpen(false)} lang={lang} />
       )}
-
       {gistOpen && (
         <GistSyncPanel gistSync={gistSync} onClose={() => setGistOpen(false)} profile={profile} />
       )}
-
-      {drawerOpen && (
-        <CharacterDrawer
-          index={index} activeId={activeId}
-          onSwitch={switchChar} onNew={newChar} onDelete={deleteChar}
-          onClose={() => setDrawerOpen(false)}
-          lang={lang}
-          raceMap={RACE_MAP_APP}
-          classMap={CLASS_MAP_APP}
-        />
-      )}
-
-      <main className="main-scroll">
-        {tab === 'attr' && (
-          <div className="section">
-            {visibleAttrOrder.map((id, idx) => {
-              const L2 = lang === 'de'
-              const isCollapsed = attrCollapsed.has(id)
-              const count = visibleAttrOrder.length
-              const headings = {
-                race:  L2 ? 'Volk'      : 'Race',
-                class: L2 ? 'Klasse(n)' : 'Class(es)',
-                attrs: L2 ? 'Attribute' : 'Ability Scores',
-                xp:    L2 ? 'EP'        : 'XP',
-                bio:   L2 ? 'Person'    : 'Person',
-              }
-              const raceName = RACE_MAP_APP[char.meta.race]?.name?.[L2 ? 'de' : 'en']
-                ?? RACE_MAP_APP[char.meta.race]?.name?.de
-                ?? char.meta.race
-                ?? '—'
-              const classSummary = (char.meta.classes ?? [])
-                .filter(entry => entry.id)
-                .map(entry => {
-                  const className = CLASS_MAP_APP[entry.id]?.name?.[L2 ? 'de' : 'en']
-                    ?? CLASS_MAP_APP[entry.id]?.name?.de
-                    ?? entry.id
-                  return `${className} ${entry.level}`
-                })
-                .join(' · ')
-              const attrHead = (
-                <div className="ct-heading-row">
-                  <button className="ct-collapse-btn" onClick={() => toggleAttrCollapse(id)} title={isCollapsed ? 'Aufklappen' : 'Zuklappen'}>
-                    {isCollapsed ? '▶' : '▼'}
-                  </button>
-                  <h3 className="ct-heading ct-heading-clk" onClick={() => toggleAttrCollapse(id)}>{headings[id]}</h3>
-                  {isCollapsed && id === 'race' && <div className="ct-heading-summary">{raceName}</div>}
-                  {isCollapsed && id === 'xp' && (
-                    <div className="ct-heading-summary">
-                      {(Number(char.xp?.current) || 0).toLocaleString(L2 ? 'de-DE' : 'en-US')} {L2 ? 'EP' : 'XP'}
-                    </div>
-                  )}
-                  <div className="ct-move-btns">
-                    <button className="ct-move-btn" disabled={idx === 0} onClick={() => moveAttr(id, -1)} title="Nach oben">↑</button>
-                    <button className="ct-move-btn" disabled={idx === count - 1} onClick={() => moveAttr(id, 1)} title="Nach unten">↓</button>
-                  </div>
-                </div>
-              )
-              if (id === 'race') return (
-                <section key="race" className="ct-section">
-                  {attrHead}
-                  {!isCollapsed && <RaceSelector value={char.meta.race} onChange={v => setMeta('race', v)} lang={lang} hbRaces={hb.races} showLabel={false} />}
-                </section>
-              )
-              if (id === 'class') return (
-                <ClassSection key="class"
-                  char={char} setClass={setClass} setMeta={setMeta}
-                  baseValues={baseValues} lang={lang}
-                  hbClasses={hb.classes} hbRaces={hb.races}
-                  collapsedSummary={classSummary}
-                  collapsed={isCollapsed} onToggle={toggleAttrCollapse} onMove={moveAttr}
-                  sectionIdx={idx} sectionCount={count}
-                />
-              )
-              if (id === 'attrs') return (
-                <section key="attrs" className="ct-section">
-                  {attrHead}
-                  {!isCollapsed && (
-                    <>
-                      <CompanionAdvancementPanel rules={companionRules} lang={lang}
-                        tricks={char.companion?.tricks ?? []}
-                        onTricksChange={tricks => update({ companion: { tricks } })} />
-                      <p className="attr-note">
-                        {lang === 'de'
-                          ? '⚠ Attributswerte selbst eintragen — Boni werden berechnet'
-                          : '⚠ Enter ability scores yourself — modifiers are calculated'}
-                      </p>
-                      <div className="attr-grid">
-                        {ATTRS.map(a => (
-                          <AttributeBlock key={a} attrKey={a} computed={computed[a]} onScoreChange={setAttr} lang={lang} condMods={condMods} />
-                        ))}
-                      </div>
-                    </>
-                  )}
-                </section>
-              )
-              if (id === 'xp') return (
-                <section key="xp" className="ct-section">
-                  {attrHead}
-                  {!isCollapsed && <XpTracker char={char} setXp={setXp} totalLevel={baseValues.totalLevel} lang={lang} />}
-                </section>
-              )
-              if (id === 'bio') return (
-                <section key="bio" className="ct-section">
-                  {attrHead}
-                  {!isCollapsed && (
-                    <>
-                      <BioSection char={char} setBio={setBio} lang={lang} />
-                      {isCompanion && <CompanionFeaturesPanel features={companionRules?.features} lang={lang} />}
-                      {isDruid && (
-                        <CompanionsTab
-                          index={index}
-                          ownerId={activeId}
-                          onCreate={species => newCompanion(species, activeId)}
-                          onOpen={id => { switchChar(id); setTab('attr') }}
-                          lang={lang}
-                        />
-                      )}
-                      <ClassFeaturesPanel char={char} lang={lang} />
-                    </>
-                  )}
-                </section>
-              )
-              return null
-            })}
-          </div>
-        )}
-
-        {tab === 'combat' && (
-          <div className="section">
-            <CombatTab
-              char={rulesChar} attrs={computed} combat={combat} baseValues={baseValues}
-              setCombatMisc={setCombatMisc} setGear={setGear} setGearSlot={setGearSlot} setHp={setHp} setNlDamage={setNlDamage}
-              lang={lang}
-              hbRaces={hb.races} hbArmor={hb.armor} hbShields={hb.shields} hbWeapons={hb.weapons}
-              encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
-              buffTotals={buffTotals}
-              activeBuffs={char.active_buffs ?? []}
-              condMods={condMods}
-              sectionOrder={combatOrder}
-              onMoveSection={moveCombat}
-              collapsedSections={combatCollapsed}
-              onToggleCollapse={toggleCombatCollapse}
-              extraPanels={{
-                ...(!isCompanion && { features: <ClassFeaturesPanel char={char} lang={lang} hideTitle /> }),
-                conditions: <ConditionsPanel char={char} setConditions={setConditions} lang={lang} hideTitle />,
-                buffs:      <BuffTracker char={char} setActiveBuffs={setActiveBuffs} lang={lang} hideTitle />,
-                resources:  <ResourcesPanel char={char} setResources={setResources} attrs={computed} baseValues={baseValues} lang={lang} hideTitle />,
-                weapons:    <WeaponsTab char={rulesChar} attrs={computed} bab={baseValues.bab} setWeaponSlot={setWeaponSlot} lang={lang} hbWeapons={hb.weapons} condMods={condMods} buffAttack={buffTotals.attack ?? 0} companionAttacks={companionRules?.attacks ?? []} />,
-              }}
-              extraLabels={lang === 'de' ? {
-                features:   'Klassenmerkmale',
-                conditions: 'Zustände',
-                buffs:      'Buffs / Effekte',
-                resources:  'Ressourcen',
-                weapons:    'Waffen',
-              } : {
-                features:   'Class Features',
-                conditions: 'Conditions',
-                buffs:      'Buffs / Effects',
-                resources:  'Resources',
-                weapons:    'Weapons',
-              }}
-              isCompanion={isCompanion}
-              companionHd={companionRules?.hd ?? null}
-            />
-          </div>
-        )}
-
-        {tab === 'skills' && (
-          <SkillsTab char={char} attrs={computed} setSkill={setSkill}
-            setMultiSkill={setMultiSkill} addSkillSlot={addSkillSlot} removeSkillSlot={removeSkillSlot}
-            armorCheckPenalty={armorCheckPenalty}
-            totalFk={totalFk} usedFk={usedFk}
-            skillsBuff={buffTotals.skills_all ?? 0}
-            activeBuffs={char.active_buffs ?? []}
-            condSkillPenalty={condMods.skill_penalty ?? 0}
-            companionRules={companionRules}
-            lang={lang} />
-        )}
-
-        {tab === 'inventory' && (
-          <div className="section">
-            <InventoryTab
-              char={char} setInventory={setInventory} setMagicSlots={setMagicSlots} lang={lang}
-              carryThresholds={carryThresholds(computed.ST.buffed)}
-            />
-          </div>
-        )}
-
-        {tab === 'spells' && (
-          <SpellsTab char={char} setSpellbook={setSpellbook} setWands={setWands} setSummons={setSummons} attrs={computed} lang={lang} />
-        )}
-
-        {tab === 'feats' && (
-          <FeatsTab char={char} setFeats={setFeats} totalLevel={baseValues.totalLevel} lang={lang} />
-        )}
-
-        {tab === 'notes' && (
-          <NotesTab char={char} setNotes={setNotes} setContacts={setContacts} setSpecials={setSpecials} lang={lang} />
-        )}
-
-      </main>
-
-      {navCollapsed && (
-        <button className="bar-restore bar-restore-bottom" onClick={toggleNav} title="Navigation einblenden">▴</button>
-      )}
-      <nav className={`bottom-nav${navCollapsed ? ' bar-collapsed' : ''}`}>
-        {visibleTabs.map(t => (
-          <button key={t.id} className={`nav-btn ${tab === t.id ? 'active' : ''}`} onClick={() => setTab(t.id)}>
-            <span className="nav-icon">{NAV_ICONS[t.id]}</span>
-          </button>
-        ))}
-        <button className="nav-collapse-handle" onClick={toggleNav} title="Navigation einklappen">−</button>
-      </nav>
     </div>
+    </ToastProvider>
   )
 }
