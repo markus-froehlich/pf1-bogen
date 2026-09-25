@@ -1,0 +1,21 @@
+/* ══ Mehr-Unterseiten „Nocturne" ══ */
+.nc-notes-area { min-height: 55vh; line-height: 1.5; }
+.nc-more-card {
+  display: flex; flex-direction: column; gap: 0.25rem; width: 100%; min-height: 3.25rem; padding: 0.625rem 0.875rem;
+  background: none; border: 0; color: inherit; text-align: left; min-width: 0;
+}
+.nc-more-card + .nc-more-card { border-top: 1px solid var(--color-neutral-900); }
+.nc-more-card-top { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; min-width: 0; }
+.nc-more-card-title { font-size: 0.9375rem; font-weight: 500; overflow-wrap: anywhere; }
+.nc-more-card-text { font-size: 0.8125rem; color: var(--color-neutral-300); line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
+.nc-more-tag.is-neutral { background: var(--color-neutral-800); color: var(--color-neutral-100); }
+.nc-more-tag.is-accent { background: var(--color-accent-900); color: var(--color-accent-200); }
+.nc-more-tag.is-pos { background: var(--color-accent-800); color: var(--color-accent-100); }
+.nc-more-tag.is-neg { background: var(--c-neg-bg); color: var(--c-neg-fg); }
+@media (hover: hover) and (pointer: fine) { .nc-more-card:hover .nc-more-card-title { color: var(--color-accent-200); } }
+
+/* Referenzlisten (Gifte, Schablonen) */
+.nc-ref-row + .nc-ref-row { border-top: 1px solid var(--color-neutral-900); }
+.nc-ref-head { display: flex; align-items: center; gap: 0.125rem; padding-right: 0.25rem; min-height: 3.25rem; min-width: 0; }
+.nc-ref-detail { display: flex; flex-direction: column; gap: 0.25rem; padding: 0 0.875rem 0.75rem; font-size: 0.8125rem; color: var(--color-neutral-300); line-height: 1.4; }
+.nc-ref-k { display: inline-block; min-width: 4.75rem; color: var(--color-neutral-500); margin-right: 0.375rem; }

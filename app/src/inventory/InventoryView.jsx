@@ -163,7 +163,7 @@ export function InventoryView({ char, setInventory, setMagicSlots, carryThreshol
           ))}
           {!items.length && <span className="nc-empty">{L ? 'Noch keine Gegenstände.' : 'No items yet.'}</span>}
           <form className="nc-inv-quick" onSubmit={e => { e.preventDefault(); quickAdd() }}>
-            <input className="nc-input" value={quick.name} onChange={e => setQuick(q => ({ ...q, name: e.target.value }))} placeholder={L ? 'Schnell hinzufügen: Name' : 'Quick add: name'} aria-label="Name" />
+            <input className="nc-input" value={quick.name} onChange={e => setQuick(q => ({ ...q, name: e.target.value }))} placeholder={L ? 'Neuer Gegenstand' : 'New item'} aria-label="Name" />
             <input className="nc-input nc-inv-quick-w" inputMode="decimal" value={quick.weight} onChange={e => setQuick(q => ({ ...q, weight: e.target.value }))} placeholder="Pfd." aria-label={L ? 'Gewicht (Pfd.)' : 'Weight (lb)'} />
             <button type="submit" className="nc-icon-btn nc-accent" disabled={!quick.name.trim()} aria-label={L ? 'Hinzufügen' : 'Add'}><Plus /></button>
           </form>

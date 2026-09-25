@@ -1,0 +1,59 @@
+/* ══ Inventar „Nocturne" ══ */
+.nc-inv { display: flex; flex-direction: column; gap: 1rem; min-width: 0; container: inv / inline-size; }
+.nc-inv-block { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+
+/* Münzen */
+.nc-coin-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+.nc-coin {
+  display: flex; flex-direction: column; align-items: center; gap: 0.125rem; padding: 0.5rem 0.25rem; min-width: 0;
+  background: var(--color-surface); border-radius: var(--radius-md); outline: var(--hc-edge); outline-offset: -1px; border-top: 2px solid var(--coin);
+}
+.nc-coin.is-pp { --coin: oklch(0.82 0.03 250); }
+.nc-coin.is-gp { --coin: oklch(0.8 0.1 85); }
+.nc-coin.is-sp { --coin: oklch(0.75 0.01 250); }
+.nc-coin.is-cp { --coin: oklch(0.66 0.1 50); }
+.nc-coin-label { font-size: 0.75rem; letter-spacing: 0.06em; color: var(--coin); font-weight: 500; }
+.nc-coin-input, .nc-coin-conv {
+  width: 100%; min-width: 0; text-align: center; font-size: max(16px, 1.25rem); font-weight: 500; font-variant-numeric: tabular-nums;
+  background: none; border: 0; color: var(--color-text); padding: 0.25rem 0; border-radius: var(--radius-sm); min-height: 2.75rem;
+}
+.nc-coin-conv { display: flex; align-items: center; justify-content: center; overflow-wrap: anywhere; font-size: 1rem; }
+.nc-coin-input:focus { outline: 1px solid var(--color-accent); background: var(--color-bg); }
+.nc-inv-coin-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+
+/* Traglast */
+.nc-carry { gap: 0.75rem; }
+.nc-carry-top { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.nc-carry-total { font-size: 1.5rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+.nc-carry-tag { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.nc-carry-tag.is-light { background: var(--color-accent-900); color: var(--color-accent-200); }
+.nc-carry-tag.is-medium { background: var(--c-warn-bg); color: var(--c-warn-fg); }
+.nc-carry-tag.is-heavy, .nc-carry-tag.is-over { background: var(--c-neg-bg); color: var(--c-neg-fg); }
+.nc-carry-bars { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.375rem; }
+.nc-carry-seg { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.nc-carry-bar { height: 6px; border-radius: 3px; background: var(--color-neutral-800); overflow: hidden; }
+.nc-carry-bar > div { height: 100%; border-radius: 3px; transition: width 0.2s; }
+.nc-carry-seg.is-light .nc-carry-bar > div { background: var(--color-accent); }
+.nc-carry-seg.is-medium .nc-carry-bar > div { background: var(--c-warn); }
+.nc-carry-seg.is-heavy .nc-carry-bar > div { background: var(--c-neg); }
+.nc-carry-lim { font-size: 0.6875rem; color: var(--color-neutral-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nc-set-row.nc-switch-row { width: 100%; background: none; border: 0; color: inherit; text-align: left; padding: 0.25rem 0; min-height: 2.75rem; border-top: 1px solid var(--color-neutral-900); }
+
+/* Gegenstände */
+.nc-inv-row { display: flex; align-items: center; gap: 0.25rem; padding-right: 0.25rem; min-height: 3.25rem; min-width: 0; }
+.nc-inv-row + .nc-inv-row, .nc-inv-group + .nc-inv-group { border-top: 1px solid var(--color-neutral-900); }
+.nc-inv-weight { flex: none; font-size: 0.8125rem; color: var(--color-neutral-400); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.nc-inv-bag { display: flex; align-items: center; gap: 0.375rem; padding: 0.5rem 0.875rem 0.125rem; font-size: 0.75rem; letter-spacing: 0.04em; color: var(--color-accent-300); }
+.nc-inv-quick { display: flex; gap: 0.375rem; padding: 0.5rem 0.5rem 0.5rem 0.625rem; border-top: 1px solid var(--color-neutral-900); align-items: center; }
+.nc-inv-quick .nc-input { flex: 1; min-width: 0; }
+.nc-inv-quick .nc-inv-quick-w { flex: 0 0 4.5rem; text-align: center; }
+
+/* Magische Plätze 2 × 6 */
+.nc-slot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.375rem; }
+.nc-magic-slot {
+  display: flex; flex-direction: column; gap: 0.125rem; padding: 0.375rem 0.625rem; min-width: 0;
+  background: var(--color-surface); border-radius: var(--radius-sm); outline: var(--hc-edge); outline-offset: -1px;
+}
+.nc-magic-label { font-size: 0.6875rem; color: var(--color-neutral-500); letter-spacing: 0.04em; }
+.nc-magic-input { width: 100%; min-width: 0; background: none; border: 0; color: var(--color-text); font-size: max(16px, 0.9375rem); padding: 0.125rem 0; min-height: 2rem; }
+.nc-magic-input:focus { outline: none; box-shadow: 0 1px 0 var(--color-accent); }

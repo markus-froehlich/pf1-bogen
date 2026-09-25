@@ -12,10 +12,11 @@ import poisonsData from './data/poisons.json'
 import templatesData from './data/templates.json'
 import { SkillsView } from './skills/SkillsView.jsx'
 import { SpellsView } from './spells/SpellsView.jsx'
-import { NotesTab } from './components/NotesTab.jsx'
+import { NotesPage, ContactsPage, SpecialsPage, PoisonsPage, TemplatesPage } from './more/MorePages.jsx'
+import { SearchSheet } from './shell/SearchSheet.jsx'
 import { HomebrewPanel } from './components/HomebrewPanel.jsx'
 import { FeatsView } from './skills/FeatsView.jsx'
-import { InventoryTab } from './components/InventoryTab.jsx'
+import { InventoryView } from './inventory/InventoryView.jsx'
 import { useExternalLinksPref, setExternalLinksPref } from './components/RefLink.jsx'
 import { useSectionOrder } from './store/useSectionOrder.js'
 import './App.css'
@@ -60,6 +61,7 @@ export default function App() {
   const [hbOpen, setHbOpen] = useState(false)
   const [printOpen, setPrintOpen] = useState(false)
   const [gistOpen, setGistOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const [fontScale, setFontScale] = useState(_initScale)
   const [theme, setTheme] = useState(_initTheme)
   const [chromeHidden, setChromeHidden] = useState(false)
@@ -87,6 +89,18 @@ export default function App() {
   function openMorePage(page) {
     setTab('more'); setMorePage(page); setChromeHidden(false)
   }
+  function goSearchTarget(t) {
+    setSearchOpen(false)
+    if (t.morePage) openMorePage(t.morePage)
+    else goTab(t.tab)
+    if (t.skillsMode) selectSkillsMode(t.skillsMode)
+  }
+  // ⌘/Strg + K öffnet die Suche
+  useEffect(() => {
+    const onKey = e => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setSearchOpen(o => !o) } }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   // Beim Scrollen nach unten Kopf + Leiste wegklappen (nur Handy, nicht bei offenem Sheet)
   function onMainScroll(e) {
@@ -416,12 +430,8 @@ export default function App() {
           )}
 
           {t === 'inventory' && (
-            <div className="section">
-              <InventoryTab
-                char={char} setInventory={setInventory} setMagicSlots={setMagicSlots} lang={lang}
-                carryThresholds={carryThresholds(computed.ST.buffed)}
-              />
-            </div>
+            <InventoryView char={char} setInventory={setInventory} setMagicSlots={setMagicSlots} lang={lang} layout={layout}
+              carryThresholds={carryThresholds(computed.ST.buffed)} />
           )}
 
           {t === 'spells' && (
@@ -443,8 +453,13 @@ export default function App() {
             />
           )}
           {t === 'more' && morePage && (
-            <NotesTab key={morePage} initialMode={morePage}
-              char={char} setNotes={setNotes} setContacts={setContacts} setSpecials={setSpecials} lang={lang} />
+            <>
+              {morePage === 'notes' && <NotesPage char={char} setNotes={setNotes} lang={lang} />}
+              {morePage === 'contacts' && <ContactsPage char={char} setContacts={setContacts} lang={lang} layout={layout} />}
+              {morePage === 'specials' && <SpecialsPage char={char} setSpecials={setSpecials} lang={lang} layout={layout} />}
+              {morePage === 'poisons' && <PoisonsPage char={char} setSpecials={setSpecials} lang={lang} />}
+              {morePage === 'templates' && <TemplatesPage char={char} setSpecials={setSpecials} lang={lang} />}
+            </>
           )}
     </>
   )
@@ -458,6 +473,7 @@ export default function App() {
           name={char.meta.name} subline={subline} lang={lang}
           onOpenChars={() => setCharSheetOpen(true)}
           onOpenNotes={() => openMorePage('notes')}
+          onOpenSearch={() => setSearchOpen(true)}
           onOpenMore={() => goTab('more')}
           showMore={layout !== 'desktop'} moreActive={tab === 'more'}
           syncDot={syncDot} sub={sub}
@@ -492,6 +508,10 @@ export default function App() {
           onClose={() => setCharSheetOpen(false)}
           lang={lang} raceMap={RACE_MAP_APP} classMap={CLASS_MAP_APP}
         />
+      </Sheet>
+
+      <Sheet open={searchOpen} onClose={() => setSearchOpen(false)} layout={layout} label={L ? 'Suche' : 'Search'}>
+        {searchOpen && <SearchSheet char={char} lang={lang} featBudget={featBudget} onGo={goSearchTarget} />}
       </Sheet>
 
       <Sheet open={wizardOpen} onClose={() => setWizardOpen(false)} layout={layout} label={L ? 'Neuer Charakter' : 'New character'}>

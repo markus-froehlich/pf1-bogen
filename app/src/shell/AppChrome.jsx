@@ -1,8 +1,8 @@
-import { DotsThreeOutline, NotePencil, CaretDown, CaretLeft } from '@phosphor-icons/react'
+import { DotsThreeOutline, NotePencil, CaretDown, CaretLeft, MagnifyingGlass } from '@phosphor-icons/react'
 import { NAV_ITEMS, initials } from './navItems.js'
 
 /** Kopf: Avatar + Name + „Volk · Klasse Stufe · Spieler"; rechts Notizen und ⋯ (Mehr). */
-export function AppHeader({ name, subline, onOpenChars, onOpenNotes, onOpenMore, showMore, moreActive, syncDot, sub, lang }) {
+export function AppHeader({ name, subline, onOpenChars, onOpenNotes, onOpenSearch, onOpenMore, showMore, moreActive, syncDot, sub, lang }) {
   const L = lang === 'de'
   if (sub) {
     return (
@@ -24,6 +24,11 @@ export function AppHeader({ name, subline, onOpenChars, onOpenNotes, onOpenMore,
           <span className="nc-head-subline nc-ellipsis">{subline}</span>
         </span>
       </button>
+      {onOpenSearch && (
+        <button className="nc-icon-btn" onClick={onOpenSearch} title={L ? 'Suche (⌘/Strg + K)' : 'Search (⌘/Ctrl + K)'} aria-label={L ? 'Suche' : 'Search'}>
+          <MagnifyingGlass />
+        </button>
+      )}
       <button className="nc-icon-btn" onClick={onOpenNotes} title={L ? 'Notizen' : 'Notes'} aria-label={L ? 'Notizen' : 'Notes'}>
         <NotePencil />
       </button>
