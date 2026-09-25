@@ -1,7 +1,8 @@
 {
   "_meta": {
     "source": "Volk.csv Tiergefährtenliste",
-    "count": 92
+    "count": 92,
+    "pdf_checked": "2026-09-25: 57 Arten gegen GRW S. 43-44 + MHB I/II geprüft, Korrekturen siehe tools/fix_animal_companions_pdf.py"
   },
   "companions": [
     {
@@ -48,7 +49,7 @@
         ", Biss 1W4, 2 Klauen 1W4, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
         "NRK+2, ST/GE+1, Entrinnen, Trick2",
-        "Att+1, TW:4 (+1), nat RK+1 Biss 1W6, 2 Klauen 1W6; ST+8, GE-2, KO+4",
+        "Att+1, TW:4 (+1), nat RK+2 Biss 1W6, 2 Klauen 1W6; ST+8, GE-2, KO+4",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
         "0",
@@ -147,7 +148,7 @@
         "Att+1, TW:4 (+1)",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
-        "nat RK+1, 2 Krallen 1W8, Biss 1W6, 2 Klauen 1W4, ST+4, GE-2, KO+2, Anspringen",
+        "nat RK+2, 2 Krallen 1W8, Biss 1W6, 2 Klauen 1W4, ST+4, GE-2, KO+2, Anspringen",
         "Talent4, TW:7 (+1)",
         "Att+1, Mehrfachangriff, NRK+2, ST/GE+1, Trick4, TW:8 (+1)",
         "Talent5, TW:9 (+1)",
@@ -272,7 +273,7 @@
         ", Biss 1W4 plus Zu Fall bringen, 2 Klauen 1W2, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
         "NRK+2, ST/GE+1, Entrinnen, Trick2",
-        "Att+1, TW:4 (+1), Biss 1W6 plus Zu Fall bringen, 2 Klauen 1W3, ST+4, GE-2, KO+2, Sprin",
+        "Att+1, TW:4 (+1), nat RK+2, Biss 1W6 plus Zu Fall bringen, 2 Klauen 1W3, ST+4, GE-2, KO+2, Sprin",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
         "0",
@@ -363,7 +364,7 @@
       },
       "size": "Klein",
       "speed": "0",
-      "base": "Verbindung, Zauber teilen, ST13, GE15, KO15, IN1, WE12, CH2, Dämmersicht, Geruchssinn, nat RK+4",
+      "base": "Verbindung, Zauber teilen, Schwimmen 18m, ST13, GE15, KO15, IN1, WE12, CH2, Dämmersicht, Geruchssinn, nat RK+4",
       "levels": [
         ", Biss 1W4, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
@@ -459,9 +460,9 @@
       },
       "size": "Klein",
       "speed": "6",
-      "base": "Verbindung, Zauber teilen, ST15, GE14, KO15, IN1, WE12, CH2, Schwimmen 9 m, Atem anhalten, Dämmersicht",
+      "base": "Verbindung, Zauber teilen, ST15, GE14, KO15, IN1, WE12, CH2, Schwimmen 9 m, Atem anhalten, Dämmersicht, nat RK+4",
       "levels": [
-        ", nat RK+4 Biss 1W6, , Talent1, TW:2, Trick1",
+        ", Biss 1W6, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
         "NRK+2, ST/GE+1, Entrinnen, Trick2",
         "Att+1, TW:4 (+1), Biss 1W8 oder Schwanzschlag 1W12, ST+4, GE-2, KO+2, Ergreifen, Sprint, Todesrolle",
@@ -528,7 +529,7 @@
         ", Biss 1W4 plus Zu Fall bringen, 2 Klauen 1W2, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
         "NRK+2, ST/GE+1, Entrinnen, Trick2",
-        "Att+1, TW:4 (+1), Biss 1W6 plus Zu Fall bringen, 2 Klauen 1W3, ST+4, GE-2, KO+2, Sprin",
+        "Att+1, TW:4 (+1), nat RK+2, Biss 1W6 plus Zu Fall bringen, 2 Klauen 1W3, ST+4, GE-2, KO+2, Sprin",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
         "0",
@@ -563,7 +564,7 @@
         "Att+1, TW:4 (+1)",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
-        "nat RK+1, Biss 1W8, 2 Klauen 1W6, Krallen 1W6, ST+8, GE-2, KO+4, Anspringen, Ergreifen",
+        "nat RK+2, Biss 1W8, 2 Klauen 1W6, Krallen 1W6, ST+8, GE-2, KO+4, Anspringen, Ergreifen",
         "Talent4, TW:7 (+1)",
         "Att+1, Mehrfachangriff, NRK+2, ST/GE+1, Trick4, TW:8 (+1)",
         "Talent5, TW:9 (+1)",
@@ -651,12 +652,12 @@
       },
       "size": "Mittelgroß",
       "speed": "12",
-      "base": "Verbindung, Zauber teilen, ST13, GE13, KO12, IN2, WE11, CH4, Dämmersicht, Geruchssinn, nat RK+2",
+      "base": "Verbindung, Zauber teilen, ST13, GE13, KO12, IN2, WE11, CH6, Dämmersicht, Geruchssinn, nat RK+2",
       "levels": [
         "2 Hufe 1W3, , , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
         "NRK+2, ST/GE+1, Entrinnen, Trick2",
-        "Att+1, TW:4 (+1), ST+2, KO+2, Kampfsicher",
+        "Att+1, TW:4 (+1), ST+2, KO+2, Kampfausbildung",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
         "0",
@@ -723,7 +724,7 @@
         "Att+1, TW:4 (+1)",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
-        "nat RK+1, Biss 1W8, 2 Klauen 1W6, Krallen 1W6, ST+8, GE-2, KO+4, Anspringen, Ergreifen",
+        "nat RK+2, Biss 1W8, 2 Klauen 1W6, Krallen 1W6, ST+8, GE-2, KO+4, Anspringen, Ergreifen",
         "Talent4, TW:7 (+1)",
         "Att+1, Mehrfachangriff, NRK+2, ST/GE+1, Trick4, TW:8 (+1)",
         "Talent5, TW:9 (+1)",
@@ -755,7 +756,7 @@
         "Att+1, TW:4 (+1)",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
-        "nat RK+1, 2 Krallen 1W8, Biss 1W6, 2 Klauen 1W4, ST+4, GE-2, KO+2, Anspringen",
+        "nat RK+2, 2 Krallen 1W8, Biss 1W6, 2 Klauen 1W4, ST+4, GE-2, KO+2, Anspringen",
         "Talent4, TW:7 (+1)",
         "Att+1, Mehrfachangriff, NRK+2, ST/GE+1, Trick4, TW:8 (+1)",
         "Talent5, TW:9 (+1)",
@@ -875,7 +876,7 @@
       },
       "size": "Mittelgroß",
       "speed": "6",
-      "base": "Verbindung, Zauber teilen, 1W3, ST15, GE17, KO13, IN1, WE12, CH2, Klettern 6m, Schwimmen 6m, Ergreifen, Dämmersicht, Geruchssinn, nat RK+2",
+      "base": "Verbindung, Zauber teilen, ST15, GE17, KO13, IN1, WE12, CH6, Klettern 6m, Schwimmen 6m, Ergreifen, Dämmersicht, Geruchssinn, nat RK+2",
       "levels": [
         ", Biss 1W3, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
@@ -1770,7 +1771,7 @@
         "de": "Frosch"
       },
       "size": "Mittelgroß",
-      "speed": "3",
+      "speed": "9",
       "base": "Verbindung, Zauber teilen, ST15, GE13, KO16, IN1, WE9, CH6, Dämmersicht, Geruchssinn ,Schwimmen 9m,  Zunge, Ziehen, nat.RK+1",
       "levels": [
         ", Biss 1W6, , Talent1, TW:2, Trick1",
@@ -1994,7 +1995,7 @@
         "de": "Mantarochen"
       },
       "size": "Mittelgroß",
-      "speed": "18",
+      "speed": "",
       "base": "Verbindung, Zauber teilen, Schwimmen 18m, ST8, GE15, KO11, IN1, WE13, CH2, Dämmersicht, nat.RK+1",
       "levels": [
         ", Schwanzschlag 1W4, , Talent1, TW:2, Trick1",
@@ -2131,7 +2132,7 @@
         "Att+1, TW:4 (+1)",
         "Talent3, TW:5 (+1)",
         "NRK+2, ST/GE+1, Hingabe, Trick3, TW:6 (+1)",
-        "nat.RK+3, Durchbohren 2W6, ST+8, GE-4, KO+4, Mächtiger Sturm",
+        "nat.RK+3, Durchbohren 2W6, ST+8, GE-2, KO+4, Mächtiger Sturm",
         "Talent4, TW:7 (+1)",
         "Att+1, Mehrfachangriff, NRK+2, ST/GE+1, Trick4, TW:8 (+1)",
         "Talent5, TW:9 (+1)",
@@ -2475,7 +2476,7 @@
       },
       "size": "Mittelgroß",
       "speed": "6",
-      "base": "Verbindung, Zauber teilen, Schwimmen 6m, ST8, GE10, KO9, IN1, WE13, CH6, Dämmersicht, Luft anhalten, Geruchssinn, nat.RK+1",
+      "base": "Verbindung, Zauber teilen, Schwimmen 6m, ST8, GE10, KO9, IN1, WE13, CH6, Dämmersicht, Luft anhalten, Geruchssinn, nat.RK+10",
       "levels": [
         ", , Biss 1W6, Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",
@@ -2698,7 +2699,7 @@
         "de": "Stachelrochen"
       },
       "size": "Klein",
-      "speed": "12",
+      "speed": "",
       "base": "Verbindung, Zauber teilen, Schwimmen 12m, ST6, GE15, KO13, IN1, WE13, CH2, Dämmersicht, nat.RK+0",
       "levels": [
         ", Stich1W3+ Gift, , Talent1, TW:2, Trick1",
@@ -2858,7 +2859,7 @@
         "de": "Tyrannosaurus"
       },
       "size": "Mittelgroß",
-      "speed": "12",
+      "speed": "9",
       "base": "Verbindung, Zauber teilen, ST14, GE16, KO10, IN2, WE15, CH10, Dämmersicht, Geruchssinn, nat.RK+4",
       "levels": [
         ", , Biss 1W8, Talent1, TW:2, Trick1",
@@ -2923,7 +2924,7 @@
       },
       "size": "Klein",
       "speed": "1.5",
-      "base": "Verbindung, Zauber teilen, Schwimmen 9m, ST12, GE14, KO18, IN1, WE10, CH6, Amphibisch, Dämmersicht, Resistenz>Elektrizität 5, nat.RK+5",
+      "base": "Verbindung, Zauber teilen, Schwimmen 9m, ST12, GE14, KO18, IN1, WE10, CH6, Amphibisch, Dämmersicht, Resistenz>Elektrizität 5",
       "levels": [
         ", Biss 1W6, , Talent1, TW:2, Trick1",
         "Talent2, TW3 (+1)",

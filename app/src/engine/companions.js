@@ -63,7 +63,18 @@ function naturalArmorFeatCount(feats) {
 
 function specialAdvancementArmor(text) {
   if (!/(?:ST|GE|KO)\s*[+-]\s*\d+/i.test(text) || /ST\/GE\s*\+/i.test(text)) return 0
-  return Number(text.match(/(?:nat RK|NRK)\s*\+?(\d+)/i)?.[1] ?? 0)
+  return Number(text.match(/(?:nat[.\s]*RK|NRK)\s*\+?(\d+)/i)?.[1] ?? 0)
+}
+
+// Aufstieg (Stufe 4/7) nennt im Excel keine Größe. GRW S. 43-44 + MHB I/II (57 Arten geprüft):
+// ausnahmslos Klein + ST +4 -> Mittelgroß und Mittelgroß + ST +8 -> Groß; sonst bleibt die Größe.
+function advancementSize(size, text) {
+  if (!/(?:ST|GE|KO)\s*[+-]\s*\d+/i.test(text) || /ST\/GE\s*\+/i.test(text)) return size
+  const st = Number(text.match(/\bST\s*\+\s*(\d+)/i)?.[1] ?? 0)
+  const current = normalise(size)
+  if (current === 'klein' && st === 4) return 'Mittelgroß'
+  if (current === 'mittelgroß' && st === 8) return 'Groß'
+  return size
 }
 
 function companionAttacks(species, level) {
@@ -97,6 +108,7 @@ export function getCompanionRules(char, level) {
     speciesNaturalArmor += specialAdvancementArmor(text)
     const sizeMatch = text.match(/Größe\s+(winzig|klein|mittelgroß|gross|groß|riesig)/i)
     if (sizeMatch) size = sizeMatch[1].replace(/^./, c => c.toUpperCase())
+    else size = advancementSize(size, text)
   }
 
   const choices = char.companion?.choices ?? { abilityChoices: [] }
