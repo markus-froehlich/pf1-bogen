@@ -528,6 +528,18 @@ aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
   Panel-Sortierung im Kampf-Tab ein.
 - **`./deploy "Beschreibung"`-Skript** (baut, committet, pusht `main`).
 
+- **Zaubertabellen jetzt 1:1 aus dem Excel (2026-09-25)** — `engine/spellSlots.js` war seit
+  dem Initial-Commit **handgeschrieben** (nicht extrahiert) und bei 16 von 22 Zauberklassen falsch
+  (z. B. Hexenmeister 6. Grad schon ab Stufe 11, Mystiker mit WE statt CH, Kampfmagus/Magier
+  nicht zugeordnet). Neu: `tools/build_spell_progression.py` liest Blatt „Klasse“ (Zauber/Tag
+  arkan K–T bzw. göttlich U–AD, bekannte Zauber AE–AN, Domänen-/Geist-Slot AO–AW, Zauberattribut
+  AX) → `data/spell_progression.json`; Engine + Zauberattribut nutzen nur noch diese Daten.
+  Excel-Kodierung: `99` = unbegrenzt (Grad 0 Spontan → Max = bekannte), `0.1` = Grad zugänglich
+  mit 0 Grundzaubern (nur Attribut-Bonuszauber, z. B. Paladin 4). Domänenslot wird zu Max addiert.
+  Einzige bewusste Excel-Abweichung (Tippfehler): Magier Stufe 16, 2. Grad 6 → 4 (`FIXES` im Skript).
+  Verifiziert: 6560 Zellen JSON↔`sheets_values`, Engine 0 Abweichungen, live Hexenmeister 11,
+  Paladin 4, Kleriker 1, Mystiker 1 ✓.
+
 ## Nächste Schritte
 - Waffe zweihändig halten: Toggle an 1H-Waffe → ST-Bonus ×1,5 im Schaden
 - Buff-Tracker: Bonus-Typ (Verbesserung/Moral/Glück/…) für Stapelung zeigen (optional)
