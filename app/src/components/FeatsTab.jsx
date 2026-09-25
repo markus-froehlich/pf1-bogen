@@ -97,7 +97,7 @@ function LookupFeatRow({ feat, lang, onAdd }) {
   )
 }
 
-function baseFeatBudget(totalLevel, isHuman) {
+export function baseFeatBudget(totalLevel, isHuman) {
   if (!totalLevel) return 0
   return Math.ceil(totalLevel / 2) + (isHuman ? 1 : 0)
 }

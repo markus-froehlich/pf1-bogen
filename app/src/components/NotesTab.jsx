@@ -59,9 +59,9 @@ function autoResize(el) {
   el.style.height = el.scrollHeight + 'px'
 }
 
-export function NotesTab({ char, setNotes, setContacts, setSpecials, lang }) {
+export function NotesTab({ char, setNotes, setContacts, setSpecials, lang, initialMode = 'notes' }) {
   const L = lang === 'de'
-  const [mode, setMode] = useState('notes')
+  const [mode, setMode] = useState(initialMode)
   const [editId, setEditId] = useState(null)
   const [draft, setDraft]   = useState(EMPTY_CONTACT)
   const [specEditId, setSpecEditId] = useState(null)
