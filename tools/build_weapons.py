@@ -20,6 +20,9 @@ def clean(v):
     return v
 
 def num(v):
+    # Excel stores some numbers as text with unit, e.g. range "3 m" or "4,5 m"
+    if isinstance(v, str):
+        v = v.strip().removesuffix("m").strip().replace(",", ".")
     try: return float(v) if v not in (None, "", "-") else None
     except (ValueError, TypeError): return None
 
@@ -51,6 +54,9 @@ C_VALUE   = 33  # Wert (GP)
 def get(row, idx):
     if idx >= len(row): return None
     return row[idx]
+
+# PDF-Korrekturen (Grundregelwerk Tab. 6-4 ist maßgeblich): id -> {feld: wert}
+PDF_FIXES = {"siangham": {"damage.k": "1W4"}}
 
 weapons, skipped = [], []
 current_category = ""
@@ -121,6 +127,13 @@ for row in rows:
     if seen_ids[base_id] > 1:
         w['id'] = f"{base_id}_{seen_ids[base_id]}"
     weapons.append(w)
+
+for w in weapons:
+    for path, val in PDF_FIXES.get(w['id'], {}).items():
+        obj = w
+        *parents, leaf = path.split('.')
+        for k in parents: obj = obj[k]
+        obj[leaf] = val
 
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 with open(OUT, "w") as f:

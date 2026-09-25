@@ -164,7 +164,7 @@
         "r": "1W8"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -220,7 +220,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -248,7 +248,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -444,7 +444,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -472,7 +472,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -693,7 +693,7 @@
         "k": "1W4/1W4",
         "m": "1W6/1W6",
         "g": "1W8/1W8",
-        "r": "2w6/2w6"
+        "r": "2W6/2W6"
       },
       "crit": "x2",
       "range_m": null,
@@ -780,7 +780,7 @@
         "r": "3W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 6.0,
       "special": "A",
       "str_bonus_mult": 1.5,
@@ -808,7 +808,7 @@
         "r": "3W6"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 24.0,
       "weight_kg": 4.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -864,7 +864,7 @@
         "r": "3W8"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 36.0,
       "weight_kg": 8.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -920,7 +920,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 4.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -948,7 +948,7 @@
         "r": "1W4"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -976,7 +976,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -1004,7 +1004,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 9.0,
       "special": "T",
       "str_bonus_mult": 1.0,
@@ -1032,7 +1032,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 0.5,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -1060,7 +1060,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -1116,7 +1116,7 @@
         "r": "1W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -1200,7 +1200,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -1648,7 +1648,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 1.0,
       "special": "M",
       "str_bonus_mult": 1.0,
@@ -1872,7 +1872,7 @@
         "r": "1W8"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -1984,7 +1984,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -2012,7 +2012,7 @@
         "r": "1W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": null,
       "special": "M",
       "str_bonus_mult": 1.0,
@@ -2096,7 +2096,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 4.0,
       "special": "A",
       "str_bonus_mult": 1.0,
@@ -2404,7 +2404,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 2.0,
       "special": "T",
       "str_bonus_mult": 1.0,
@@ -3101,7 +3101,7 @@
         "k": "1W4/1W4",
         "m": "1W6/1W6",
         "g": "1W8/1W8",
-        "r": "2w6/2w6"
+        "r": "2W6/2W6"
       },
       "crit": "x2",
       "range_m": null,
@@ -3636,7 +3636,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 1.0,
       "special": "Sk",
       "str_bonus_mult": null,
@@ -3664,7 +3664,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": null,
@@ -3720,7 +3720,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 0.5,
       "special": null,
       "str_bonus_mult": 1.5,
@@ -3776,7 +3776,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -3832,7 +3832,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 4.5,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -3888,7 +3888,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 21.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -3916,7 +3916,7 @@
         "r": "3W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 33.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -3944,7 +3944,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 18.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -3972,7 +3972,7 @@
         "r": "3W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 30.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -4000,7 +4000,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 12.0,
       "weight_kg": 0.5,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -4028,7 +4028,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 4.0,
       "special": "T",
       "str_bonus_mult": 1.0,
@@ -4056,7 +4056,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 18.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 1.5,
@@ -4112,7 +4112,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 1.5,
@@ -4140,7 +4140,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 2.0,
       "special": "F",
       "str_bonus_mult": 1.0,
@@ -4224,7 +4224,7 @@
         "r": "1W6"
       },
       "crit": "19–20/x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": null,
       "special": "BM",
       "str_bonus_mult": 1.0,
@@ -4364,7 +4364,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 5.0,
       "special": "D",
       "str_bonus_mult": 1.0,
@@ -4722,7 +4722,7 @@
       "damage_type": "",
       "damage": {
         "sk": "1W3",
-        "k": "1W8",
+        "k": "1W4",
         "m": "1W6",
         "g": "1W8",
         "r": "2W6"
@@ -4896,7 +4896,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 5.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -5285,7 +5285,7 @@
         "k": "1W8/1W4",
         "m": "1W10/1W6",
         "g": "2W8/1W8",
-        "r": "3w8/2w6"
+        "r": "3W8/2W6"
       },
       "crit": "x2/x3",
       "range_m": null,
@@ -5400,7 +5400,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -5848,7 +5848,7 @@
         "r": "3W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 16.0,
       "special": "RkZ",
       "str_bonus_mult": 1.5,
@@ -6072,7 +6072,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 1.0,
       "special": "ERMRk",
       "str_bonus_mult": 1.5,
@@ -6403,12 +6403,12 @@
       "damage": {
         "sk": "1W2",
         "k": "1W3",
-        "m": "1w4",
+        "m": "1W4",
         "g": "1W6",
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 2.0,
       "special": "NF",
       "str_bonus_mult": 1.0,
@@ -6436,7 +6436,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 3.0,
       "special": "T",
       "str_bonus_mult": 1.0,
@@ -6464,7 +6464,7 @@
         "r": "3W6"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 24.0,
       "weight_kg": 18.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -6492,7 +6492,7 @@
         "r": "1W8"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 1.0,
       "special": "D",
       "str_bonus_mult": 1.0,
@@ -6520,7 +6520,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 12.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -6548,7 +6548,7 @@
         "r": "3W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 24.0,
       "weight_kg": 3.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -6576,7 +6576,7 @@
         "r": "1W8"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -6604,7 +6604,7 @@
         "r": "3W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": null,
@@ -6739,7 +6739,7 @@
       "damage": {
         "sk": "1W4",
         "k": "1W6",
-        "m": "1w8",
+        "m": "1W8",
         "g": "2W6",
         "r": "3W6"
       },
@@ -6772,7 +6772,7 @@
         "r": null
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 6.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -6795,12 +6795,12 @@
       "damage": {
         "sk": "1W4",
         "k": "1W6",
-        "m": "1w8",
+        "m": "1W8",
         "g": "2W6",
         "r": "3W6"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 24.0,
       "weight_kg": 6.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -6828,7 +6828,7 @@
         "r": "3W8"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 36.0,
       "weight_kg": 12.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -6884,7 +6884,7 @@
         "r": "1W8"
       },
       "crit": "2x",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -6912,7 +6912,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 3.0,
       "special": "T",
       "str_bonus_mult": 1.0,
@@ -6968,7 +6968,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": null,
       "special": "BAM",
       "str_bonus_mult": null,
@@ -6996,7 +6996,7 @@
         "r": "1W8"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 2.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7024,7 +7024,7 @@
         "r": "1W4"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 0.5,
       "special": "M",
       "str_bonus_mult": 1.0,
@@ -7103,12 +7103,12 @@
       "damage": {
         "sk": "1W4",
         "k": "1W6",
-        "m": "1w8",
+        "m": "1W8",
         "g": "2W6",
         "r": "3W6"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 24.0,
       "weight_kg": 6.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -7136,7 +7136,7 @@
         "r": "3W8"
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 36.0,
       "weight_kg": 12.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -7164,7 +7164,7 @@
         "r": "2W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 14.0,
       "special": "RkZ",
       "str_bonus_mult": 1.0,
@@ -7192,7 +7192,7 @@
         "r": "2W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": null,
       "special": "Z",
       "str_bonus_mult": 1.0,
@@ -7220,7 +7220,7 @@
         "r": "1W8"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7276,7 +7276,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 5.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7304,7 +7304,7 @@
         "r": "4W8"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 15.0,
       "weight_kg": 18.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7332,7 +7332,7 @@
         "r": "2W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 3.0,
       "special": "S",
       "str_bonus_mult": 0.0,
@@ -7360,7 +7360,7 @@
         "r": "2W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 4.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7388,7 +7388,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 12.0,
       "special": "S",
       "str_bonus_mult": 0.0,
@@ -7416,7 +7416,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 15.0,
       "special": "S",
       "str_bonus_mult": 0.0,
@@ -7444,7 +7444,7 @@
         "r": "3W8"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 24.0,
       "weight_kg": 12.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7472,7 +7472,7 @@
         "r": "3W8"
       },
       "crit": "19-20/x3",
-      "range_m": null,
+      "range_m": 50.0,
       "weight_kg": 8.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7500,7 +7500,7 @@
         "r": "4W8"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 40.0,
       "special": "S",
       "str_bonus_mult": 0.0,
@@ -7528,7 +7528,7 @@
         "r": "3W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": 6.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7556,7 +7556,7 @@
         "r": "1W8"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7584,7 +7584,7 @@
         "r": "4W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 12.0,
       "weight_kg": 9.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7612,7 +7612,7 @@
         "r": "4W6"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 27.0,
       "weight_kg": 9.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7640,7 +7640,7 @@
         "r": "4W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 12.0,
       "weight_kg": 11.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7668,7 +7668,7 @@
         "r": "3W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 4.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7696,7 +7696,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 18.0,
       "weight_kg": 4.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7724,7 +7724,7 @@
         "r": "3W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 5.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7752,7 +7752,7 @@
         "r": "3W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": 4.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7780,7 +7780,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 18.0,
       "weight_kg": 5.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7808,7 +7808,7 @@
         "r": "3W6"
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 10.0,
       "weight_kg": 8.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7836,7 +7836,7 @@
         "r": "1W8"
       },
       "crit": "x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 1.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -7864,7 +7864,7 @@
         "r": "2W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 6.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9208,7 +9208,7 @@
         "r": "1W6+1/2St."
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9236,7 +9236,7 @@
         "r": "1W6+1/2St."
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9257,14 +9257,14 @@
       "proficiency": "M MG",
       "damage_type": "",
       "damage": {
-        "sk": "1w4",
-        "k": "1w4",
-        "m": "1w4",
-        "g": "1w4",
-        "r": "1w4"
+        "sk": "1W4",
+        "k": "1W4",
+        "m": "1W4",
+        "g": "1W4",
+        "r": "1W4"
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9292,7 +9292,7 @@
         "r": "1W6+1/2St."
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9320,7 +9320,7 @@
         "r": "1W6+1/2St."
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9348,7 +9348,7 @@
         "r": "1W6+1/2St."
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9369,14 +9369,14 @@
       "proficiency": "M MG",
       "damage_type": "",
       "damage": {
-        "sk": "1w4+1/2St",
-        "k": "1w4+1/2St",
-        "m": "1w4+1/2St",
-        "g": "1w4+1/2St",
-        "r": "1w4+1/2St"
+        "sk": "1W4+1/2St",
+        "k": "1W4+1/2St",
+        "m": "1W4+1/2St",
+        "g": "1W4+1/2St",
+        "r": "1W4+1/2St"
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9432,7 +9432,7 @@
         "r": "4W8"
       },
       "crit": "19-20/×2",
-      "range_m": null,
+      "range_m": 54.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9460,7 +9460,7 @@
         "r": "6W8"
       },
       "crit": "19-20/×2",
-      "range_m": null,
+      "range_m": 30.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9628,7 +9628,7 @@
         "r": "6W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 30.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9796,7 +9796,7 @@
         "r": "8W6"
       },
       "crit": "x4",
-      "range_m": null,
+      "range_m": 45.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9936,7 +9936,7 @@
         "r": null
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -9992,7 +9992,7 @@
         "r": null
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 1.5,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -10076,7 +10076,7 @@
         "r": null
       },
       "crit": "18-20/x3",
-      "range_m": null,
+      "range_m": 6.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -10104,7 +10104,7 @@
         "r": null
       },
       "crit": null,
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -10188,7 +10188,7 @@
         "r": null
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -10216,7 +10216,7 @@
         "r": null
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 16.0,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -10244,7 +10244,7 @@
         "r": null
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 16.0,
       "special": null,
       "str_bonus_mult": 1.5,
@@ -10272,7 +10272,7 @@
         "r": null
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 0.5,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -10384,7 +10384,7 @@
         "r": null
       },
       "crit": "19-20/x2",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 0.5,
       "special": null,
       "str_bonus_mult": 1.0,
@@ -10412,7 +10412,7 @@
         "r": null
       },
       "crit": "x2",
-      "range_m": null,
+      "range_m": 40.0,
       "weight_kg": 15.0,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -10440,7 +10440,7 @@
         "r": null
       },
       "crit": "19/20x2",
-      "range_m": null,
+      "range_m": 9.0,
       "weight_kg": null,
       "special": null,
       "str_bonus_mult": 0.0,
@@ -10468,7 +10468,7 @@
         "r": null
       },
       "crit": "19/20x3",
-      "range_m": null,
+      "range_m": 3.0,
       "weight_kg": 20.0,
       "special": "A",
       "str_bonus_mult": 1.0,
