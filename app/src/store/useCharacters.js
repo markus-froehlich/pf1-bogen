@@ -188,6 +188,16 @@ export function useCharacters(profile = 'player') {
     })
   }, [patchChar])
 
+  /** Ausrüstungsliste als Ganzes (Bearbeiten-Sheet): leere Altslots werden entfernt. */
+  const setGearItems = useCallback((fn) => {
+    patchChar(prev => ({ ...prev, gear: { ...(prev.gear ?? {}), items: fn((prev.gear?.items ?? []).filter(i => i && (i.id || i.kind))) } }))
+  }, [patchChar])
+
+  /** Waffenliste als Ganzes (Bearbeiten-Sheet); bis zu 5 Einträge wie bisher. */
+  const setWeapons = useCallback((fn) => {
+    patchChar(prev => ({ ...prev, weapons: fn((prev.weapons ?? []).filter(w => w && w.weapon_id)).slice(0, 5) }))
+  }, [patchChar])
+
   const setGear = useCallback((field, value) => {
     patchChar(prev => ({ ...prev, gear: { ...(prev.gear ?? {}), [field]: value } }))
   }, [patchChar])
@@ -455,7 +465,7 @@ export function useCharacters(profile = 'player') {
   return {
     char, index, activeId,
     update, setAttr, setBuff, setMeta, setCombatMisc,
-    setClass, setGear, setGearSlot, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
+    setClass, setGear, setGearSlot, setGearItems, setWeapons, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, setWeaponSlot, setHp,
     newCompanion,
     setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,

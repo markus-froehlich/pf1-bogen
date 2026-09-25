@@ -27,6 +27,41 @@ export { ARMOR_MAP, SHIELDS_MAP, RINGS_MAP }
 export function registerHomebrewArmor(items)   { for (const a of (items ?? [])) ARMOR_MAP[a.id]   = a }
 export function registerHomebrewShields(items) { for (const s of (items ?? [])) SHIELDS_MAP[s.id] = s }
 
+const KIND_OF_TYPE = { Leicht: 'leicht', Mittel: 'mittel', Schwer: 'schwer' }
+
+/**
+ * Ein Ausrüstungseintrag → aufgelöste Werte. Bestand {id, enh, mw} verweist auf die Rüstungs-/
+ * Schild-/Ringdaten; eigene Felder (README „Ausrüstung") überschreiben bzw. ersetzen sie:
+ * kind (Rüstung|Schild|Ring|Umhang|Sonstiges), name, ac, maxGE, cat (leicht|mittel|schwer),
+ * acp, asf (Anteil 0–1), defl, res, note.
+ */
+export function resolveGearItem(item) {
+  if (!item) return null
+  const armor = ARMOR_MAP[item.id], shield = SHIELDS_MAP[item.id], ring = RINGS_MAP[item.id]
+  const def = armor ?? shield ?? ring ?? null
+  const kind = item.kind ?? (armor ? 'Rüstung' : shield ? 'Schild' : ring ? 'Ring' : null)
+  if (!kind) return null
+  const num = (v, fallback) => (v === '' || v == null ? fallback : Number(v))
+  const enh = Number(item.enh ?? 0)
+  const mw = !!item.mw
+  const baseAcp = num(item.acp, def?.check_penalty ?? 0)
+  return {
+    kind, def, id: item.id ?? null,
+    name: item.name || def?.name?.de || kind,
+    ac: kind === 'Rüstung' || kind === 'Schild' ? num(item.ac, def?.bonus ?? 0) : 0,
+    enh: kind === 'Rüstung' || kind === 'Schild' ? enh : 0,
+    mw,
+    maxGE: kind === 'Rüstung' || (kind === 'Schild' && (item.maxGE != null || def?.max_dex != null)) ? num(item.maxGE, def?.max_dex ?? null) : null,
+    cat: item.cat ?? KIND_OF_TYPE[def?.type] ?? null,
+    // Meisterarbeit oder Verzauberung (magisch = immer Meisterarbeit): Rüstungsmalus −1 weniger
+    acp: baseAcp < 0 && (mw || enh > 0) ? Math.min(0, baseAcp + 1) : baseAcp,
+    asf: num(item.asf, def?.spell_failure ?? 0),
+    defl: kind === 'Ring' ? num(item.defl, ring?.bonus ?? 0) : 0,
+    res: kind === 'Umhang' ? num(item.res, 0) : 0,
+    note: item.note ?? '',
+  }
+}
+
 function hasImprovedInitiative(feats) {
   return (feats ?? []).some(feat =>
     String(feat.name ?? '').toLowerCase().replace(/[^a-zäöüß]/g, '') === 'verbesserteinitiative'
@@ -65,23 +100,16 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   // Gear is a free-form list of slots (like weapons) — each slot can hold any armor,
   // shield, or ring item. Nothing stops equipping e.g. two shields; every slot's bonus
   // is simply summed by category, same as a player physically wearing whatever they typed in.
-  const gearItems = gear.items ?? []
-  let rk_armor = 0, rk_shield = 0, rk_ring = 0
+  const gearItems = (gear.items ?? []).map(resolveGearItem).filter(Boolean)
+  let rk_armor = 0, rk_shield = 0, rk_ring = 0, gearResist = 0
   let armorMaxDex = 99, gearCheckPenalty = 0, gearSpellFailure = 0
-  for (const item of gearItems) {
-    const isArmor  = ARMOR_MAP[item.id]
-    const isShield = SHIELDS_MAP[item.id]
-    const isRing   = RINGS_MAP[item.id]
-    const def = isArmor ?? isShield ?? isRing
-    if (!item.id || !def) continue
-    const bonus = def.bonus + (isRing ? 0 : Number(item.enh ?? 0))
-    if (isArmor) { rk_armor += bonus; armorMaxDex = Math.min(armorMaxDex, def.max_dex ?? 99) }
-    else if (isShield) { rk_shield += bonus; if (def.max_dex != null) armorMaxDex = Math.min(armorMaxDex, def.max_dex) }  // Turmschild: Max. GE +2
-    else if (isRing) rk_ring += bonus
-    if (def.check_penalty < 0) {
-      gearCheckPenalty += (item.mw ? Math.min(0, def.check_penalty + 1) : def.check_penalty)
-    }
-    if (def.spell_failure > 0) gearSpellFailure += def.spell_failure
+  for (const g of gearItems) {
+    if (g.kind === 'Rüstung') { rk_armor += g.ac + g.enh; if (g.maxGE != null) armorMaxDex = Math.min(armorMaxDex, g.maxGE) }
+    else if (g.kind === 'Schild') { rk_shield += g.ac + g.enh; if (g.maxGE != null) armorMaxDex = Math.min(armorMaxDex, g.maxGE) }  // Turmschild: Max. GE +2
+    else if (g.kind === 'Ring') rk_ring = Math.max(rk_ring, g.defl)          // Ablenkungsboni stapeln nicht
+    else if (g.kind === 'Umhang') gearResist = Math.max(gearResist, g.res)   // Widerstandsboni stapeln nicht
+    if (g.acp < 0) gearCheckPenalty += g.acp
+    if (g.asf > 0) gearSpellFailure += g.asf
   }
   // MaxDex: worn armor's cap wins if lower than manual misc
   const maxDex = Math.min(
@@ -99,7 +127,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   // Ausweichen: zählt auf RK + Berührung, entfällt auf dem falschen Fuß und ohne GE-Bonus
   const rk_dodge    = cond.no_dex_to_ac ? 0 : Number(bt.dodge ?? 0)
 
-  const saves_all = Number(bt.saves_all ?? 0)
+  const saves_all = Number(bt.saves_all ?? 0) + gearResist
 
   const initFeat = hasImprovedInitiative(char.feats) ? 4 : 0
   const storedInitMisc = Number(misc.init_misc ?? 0)
@@ -140,7 +168,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     gear_spell_failure: gearSpellFailure,
     _components: {
       rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2,
-      rk_ring, rk_buff_ac, rk_dodge, armorMaxDex, maxDex, effGEmod, effSTmod, sizeModKMB,
+      rk_ring, rk_buff_ac, rk_dodge, armorMaxDex, maxDex, effGEmod, effSTmod, sizeModKMB, gearResist,
       init_ability: effGEmod, init_misc: initMisc, init_feat: initFeat,
       init_condition: cond.init, init_buff: Number(bt.init ?? 0),
     },

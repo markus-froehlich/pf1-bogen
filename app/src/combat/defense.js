@@ -1,5 +1,5 @@
 /** Bewegung + Größe — unverändert aus dem bisherigen CombatTab.jsx übernommen. */
-import armorData from '../data/armor.json'
+import { resolveGearItem } from '../engine/combat.js'
 import racesData from '../data/races.json'
 
 const RACE_MAP_BASE = Object.fromEntries(racesData.races.map(r => [r.id, r]))
@@ -50,12 +50,12 @@ export function currentSizeKey(char, hbRaces = []) {
 }
 
 /** Bewegung zu Fuß (m): nur mittlere/schwere Rüstung senkt sie (PF1e RAW); Last optional. */
-export function computeSpeed(char, { hbRaces = [], hbArmor = [], encumbranceTier = 'light', applyCarryMovement = false } = {}) {
+export function computeSpeed(char, { hbRaces = [], encumbranceTier = 'light', applyCarryMovement = false } = {}) {
   const misc = char.combat_misc ?? {}
   const raceData = raceMapWith(hbRaces)[char.meta.race]
-  const armorAll = [...armorData.armor, ...hbArmor]
-  const worn = (char.gear?.items ?? []).map(item => armorAll.find(a => a.id === item.id)).filter(Boolean)
-  const hasArmor = worn.some(a => a.type === 'Mittel' || a.type === 'Schwer')
+  // Mittlere/schwere Rüstung (auch eigene Einträge mit Kategorie) senkt die Bewegung
+  const worn = (char.gear?.items ?? []).map(resolveGearItem).filter(g => g && g.kind === 'Rüstung')
+  const hasArmor = worn.some(g => g.cat === 'mittel' || g.cat === 'schwer')
   const manualSpeed = misc.speed_walk === '' || misc.speed_walk == null ? null : Number(misc.speed_walk)
   const speedRaw = manualSpeed ?? (hasArmor
     ? (raceData?.speed_m?.armored ?? raceData?.speed_m?.unarmored ?? null)

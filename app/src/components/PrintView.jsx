@@ -1,13 +1,10 @@
 import racesData        from '../data/races.json'
-import armorData        from '../data/armor.json'
-import shieldsData      from '../data/shields.json'
-import ringsData        from '../data/rings.json'
 import skillsData       from '../data/skills.json'
 import spellsData       from '../data/spells.json'
 import classFeatData    from '../data/class_features_by_level.json'
 import { computeWeaponAttack } from '../engine/weapons.js'
 import { getSpellSlots, isSpontaneousCaster, castingStatOf } from '../engine/spellSlots.js'
-import { ALL_CLASSES } from '../engine/index.js'
+import { ALL_CLASSES, resolveGearItem } from '../engine/index.js'
 import './PrintView.css'
 
 const CF_DATA = classFeatData.by_class ?? {}
@@ -16,9 +13,6 @@ const CLASS_MAP = Object.fromEntries(ALL_CLASSES.map(c => [c.id, c]))
 const SPELL_MAP = Object.fromEntries(spellsData.spells.map(s => [s.id, s]))
 
 const RACE_MAP   = Object.fromEntries(racesData.races.map(r => [r.id, r]))
-const ARMOR_MAP  = Object.fromEntries(armorData.armor.map(a => [a.id, a]))
-const SHIELD_MAP = Object.fromEntries(shieldsData.shields.map(s => [s.id, s]))
-const RING_MAP   = Object.fromEntries(ringsData.rings.map(r => [r.id, r]))
 const ALL_SKILLS = skillsData.skills
 
 const ATTRS = ['ST','GE','KO','IN','WE','CH']
@@ -73,10 +67,7 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
 
   // Gear is a free-form slot list (armor/shields/rings mixed) — resolve every worn
   // item's definition + slot data (enh/mw) for display, same as the Kampf-Tab.
-  const wornGear = (gear.items ?? []).map(item => {
-    const def = ARMOR_MAP[item.id] ?? SHIELD_MAP[item.id] ?? RING_MAP[item.id]
-    return def ? { item, def, isRing: !!RING_MAP[item.id] } : null
-  }).filter(Boolean)
+  const wornGear = (gear.items ?? []).map(resolveGearItem).filter(Boolean)
 
   // Trained / ranked skills only
   const rankedSkills = ALL_SKILLS.filter(s => (skills[s.id]?.ranks ?? 0) > 0)
@@ -154,12 +145,13 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
 
             <section className="pv-section">
               <h3>{L ? 'Ausrüstung' : 'Gear'}</h3>
-              {wornGear.map(({ item, def, isRing }, i) => (
+              {wornGear.map((g, i) => (
                 <div key={i} className="pv-gear-line">
-                  <b>{def.name.de}</b>{!isRing && item.enh > 0 ? ` +${item.enh}` : ''} (RK +{def.bonus + (isRing ? 0 : Number(item.enh ?? 0))})
+                  <b>{g.name}</b>{g.enh > 0 ? ` +${g.enh}` : ''}
+                  {g.kind === 'Rüstung' || g.kind === 'Schild' ? ` (RK +${g.ac + g.enh})` : g.kind === 'Ring' && g.defl ? ` (Ablenkung +${g.defl})` : g.kind === 'Umhang' && g.res ? ` (Widerstand +${g.res})` : g.note ? ` (${g.note})` : ''}
                 </div>
               ))}
-              {!armorDef && !shieldDef && <div className="pv-empty">—</div>}
+              {wornGear.length === 0 && <div className="pv-empty">—</div>}
             </section>
 
             {conds.length > 0 && (
