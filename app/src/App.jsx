@@ -37,8 +37,9 @@ import { ToastProvider } from './shell/Toast.jsx'
 import { Sheet } from './shell/Sheet.jsx'
 import { AppHeader, NavBar } from './shell/AppChrome.jsx'
 import { CharacterSheet } from './shell/CharacterSheet.jsx'
-import { MoreView, MORE_PAGES } from './shell/MoreView.jsx'
-import { baseFeatBudget } from './components/FeatsTab.jsx'
+import { MoreView } from './shell/MoreView.jsx'
+import { MORE_PAGES } from './shell/morePages.js'
+import { baseFeatBudget } from './engine/featBudget.js'
 
 // Apply saved font scale before first paint
 const _SCALES = ['s', 'm', 'l', 'xl']
@@ -71,6 +72,8 @@ export default function App() {
   const [chromeHidden, setChromeHidden] = useState(false)
   const lastScrollY = useRef(0)
   const layout = useLayout(fontScale)
+  // Toast/Panels außerhalb der Hülle (Portal) richten sich nach dem Layout
+  useEffect(() => { document.documentElement.dataset.layout = layout }, [layout])
   const [profile, setProfile] = useState(() => localStorage.getItem('pf1_profile') ?? 'player')
   const externalLinks = useExternalLinksPref()
 
@@ -158,7 +161,7 @@ export default function App() {
     setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
-    importChar, newChar, newCompanion, switchChar, deleteChar,
+    importChar, newChar, newCompanion, switchChar, deleteChar, restoreChar,
     getBackupData, reinitialize,
   } = useCharacters(profile)
 
@@ -309,7 +312,6 @@ export default function App() {
   const combat     = computeCombat(rulesChar, computed, baseValues, buffTotals)
   const condMods   = getConditionMods(char.conditions)
   const isDruid = !isCompanion && (char.meta?.classes ?? []).some(entry => entry.id === 'druide' && Number(entry.level) > 0)
-  const visibleTabs = isCompanion ? TABS.filter(tab => tab.id !== 'spells') : TABS
   const visibleAttrOrder = isCompanion ? attrOrder.filter(id => ['attrs', 'bio'].includes(id)) : attrOrder
 
   const gear = char.gear ?? {}
@@ -389,8 +391,6 @@ export default function App() {
   const sub = tab === 'more' && morePage
     ? { title: L ? MORE_PAGES[morePage].de : MORE_PAGES[morePage].en, onBack: () => setMorePage(null) }
     : null
-  document.documentElement.dataset.layout = layout
-
   return (
     <ToastProvider lang={lang}>
     <div className={`app-shell nc-shell${chromeHidden && !charSheetOpen ? ' is-chrome-hidden' : ''}`} data-layout={layout}>
@@ -654,7 +654,14 @@ export default function App() {
       <Sheet open={charSheetOpen} onClose={() => setCharSheetOpen(false)} layout={layout} label={L ? 'Charaktere' : 'Characters'}>
         <CharacterSheet
           index={index} activeId={activeId} player={char.meta.player}
-          onSwitch={switchChar} onNew={newChar} onDelete={deleteChar}
+          onSwitch={switchChar} onNew={newChar}
+          onDelete={id => {
+            const position = index.findIndex(e => e.id === id)
+            const snapshot = { id, raw: localStorage.getItem(CHAR_KEY_LS(id)), entry: index[position], position }
+            deleteChar(id)
+            return snapshot
+          }}
+          onRestore={restoreChar}
           onClose={() => setCharSheetOpen(false)}
           lang={lang} raceMap={RACE_MAP_APP} classMap={CLASS_MAP_APP}
         />

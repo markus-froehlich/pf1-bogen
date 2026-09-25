@@ -354,6 +354,19 @@ export function useCharacters(profile = 'player') {
     })
   }, [])
 
+  /** Rückgängig nach deleteChar: Rohdaten + Listenposition unverändert zurückschreiben. */
+  const restoreChar = useCallback(({ id, raw, entry, position }) => {
+    if (!id || !raw || !entry) return
+    localStorage.setItem(CHAR_KEY(id), raw)
+    setState(prev => {
+      if (prev.index.some(e => e.id === id)) return prev
+      const newIndex = [...prev.index]
+      newIndex.splice(Math.min(position ?? newIndex.length, newIndex.length), 0, entry)
+      saveIndex(newIndex)
+      return { ...prev, index: newIndex }
+    })
+  }, [])
+
   const setNotes = useCallback((value) => {
     patchChar(prev => ({ ...prev, notes: value }))
   }, [patchChar])
@@ -447,7 +460,7 @@ export function useCharacters(profile = 'player') {
     setNotes, setSpellbook, setContacts, setSummons, setFeats, setXp,
     setConditions, setInventory, setBio, setSpecials, setResources,
     setNlDamage, setMagicSlots, setActiveBuffs, setWands,
-    importChar, newChar, switchChar, deleteChar,
+    importChar, newChar, switchChar, deleteChar, restoreChar,
     getBackupData, reinitialize,
   }
 }

@@ -15,9 +15,17 @@ export function layoutFor(width, fontScale) {
 export function useLayout(fontScale) {
   const [width, setWidth] = useState(() => window.innerWidth)
   useEffect(() => {
-    const onResize = () => setWidth(window.innerWidth)
+    const onResize = () => setWidth(document.documentElement.clientWidth || window.innerWidth)
+    // resize feuert nicht überall zuverlässig (iOS-Drehung, Emulation) → zusätzlich ResizeObserver
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(onResize) : null
+    observer?.observe(document.documentElement)
     window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
+    window.addEventListener('orientationchange', onResize)
+    return () => {
+      observer?.disconnect()
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('orientationchange', onResize)
+    }
   }, [])
   return layoutFor(width, fontScale)
 }

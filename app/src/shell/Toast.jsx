@@ -1,12 +1,6 @@
-import { createContext, useCallback, useContext, useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Info, ArrowCounterClockwise } from '@phosphor-icons/react'
-
-const ToastContext = createContext(() => {})
-
-/** useToast()(text, { undo }) — Bestätigung 2,2 s; mit Rückgängig 5 s. */
-export function useToast() {
-  return useContext(ToastContext)
-}
+import { ToastContext } from './toastContext.js'
 
 export function ToastProvider({ children, lang = 'de' }) {
   const [toast, setToast] = useState(null)

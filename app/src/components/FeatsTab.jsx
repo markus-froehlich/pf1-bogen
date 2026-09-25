@@ -1,4 +1,5 @@
 import { useState, useRef, useMemo } from 'react'
+import { baseFeatBudget } from '../engine/featBudget.js'
 import featsData from '../data/feats.json'
 import { RefLink } from './RefLink.jsx'
 import './FeatsTab.css'
@@ -97,10 +98,6 @@ function LookupFeatRow({ feat, lang, onAdd }) {
   )
 }
 
-export function baseFeatBudget(totalLevel, isHuman) {
-  if (!totalLevel) return 0
-  return Math.ceil(totalLevel / 2) + (isHuman ? 1 : 0)
-}
 
 function searchFeats(query, limit = 10) {
   if (!query || query.length < 2) return []
