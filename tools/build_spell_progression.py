@@ -5,6 +5,7 @@ Jede Klasse ist ein 20-Zeilen-Block (Namenszeile = Stufe 1). Spalten (0-basiert)
   20-29  goettliche Zauber pro Tag, Grad 0-9
   30-39  bekannte Zauber, Grad 0-9 (Spontanzauberer)
   40-48  Zusatz-Slot je Grad 1-9 (Domaene / Geist)
+  49     (2. Blockzeile) Zauberattribut IN/WE/CH
 Excel-Kodierung wird unveraendert uebernommen:
   99  = unbegrenzt (Grad 0 bei Spontanzauberern)
   0.1 = Grad zugaenglich, aber 0 Grundzauber (nur Bonuszauber durch Attribut)
