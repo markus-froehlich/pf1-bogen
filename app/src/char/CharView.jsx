@@ -152,11 +152,15 @@ export function CharView(props) {
                 <span className="nc-attr-score-wrap">
                   <input className="nc-attr-score" inputMode="numeric" value={a.score} aria-label={ATTR_NAMES[k][0]}
                     onChange={e => { const v = e.target.value.replace(/\D/g, ''); if (v !== '') setAttr(k, Math.min(50, Number(v))) }} />
-                  {a.buff ? <span className="nc-vtag is-buff">→ {a.buffed}</span> : null}
-                  {condDelta ? <ValueTags cond={condDelta} /> : null}
                 </span>
                 <button className="nc-step-btn" onClick={() => setAttr(k, Math.min(50, a.score + 1))} aria-label="+"><Plus /></button>
               </div>
+              {(a.buffed !== a.score || condDelta) ? (
+                    <span className="nc-attr-tags">
+                      <ValueTags buff={a.buffed - a.score} cond={condDelta} />
+                      {a.buffed !== a.score && <span className="nc-attr-eff" title={L ? 'Wert mit Buffs' : 'Score with buffs'}>= {a.buffed}</span>}
+                    </span>
+                  ) : null}
             </div>
           )
         })}

@@ -94,3 +94,5 @@
 .nc-chip.is-sub { font-size: 0.8125rem; color: var(--color-neutral-300); }
 .nc-chip.is-sub.is-on { color: var(--color-accent-200); }
 .nc-species-list { max-height: 22rem; overflow-y: auto; }
+.nc-attr-tags { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem; }
+.nc-attr-eff { font-size: 0.75rem; color: var(--color-neutral-300); font-variant-numeric: tabular-nums; }
