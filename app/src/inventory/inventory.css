@@ -36,7 +36,7 @@
 .nc-carry-seg.is-light .nc-carry-bar > div { background: var(--color-accent); }
 .nc-carry-seg.is-medium .nc-carry-bar > div { background: var(--c-warn); }
 .nc-carry-seg.is-heavy .nc-carry-bar > div { background: var(--c-neg); }
-.nc-carry-lim { font-size: 0.6875rem; color: var(--color-neutral-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nc-carry-lim { font-size: 0.6875rem; color: var(--color-neutral-500); white-space: normal; overflow-wrap: break-word; hyphens: auto; }
 .nc-set-row.nc-switch-row { width: 100%; background: none; border: 0; color: inherit; text-align: left; padding: 0.25rem 0; min-height: 2.75rem; border-top: 1px solid var(--color-neutral-900); }
 
 /* Gegenstände */

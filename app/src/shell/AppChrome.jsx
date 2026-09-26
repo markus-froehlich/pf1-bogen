@@ -29,7 +29,7 @@ export function AppHeader({ name, subline, onOpenChars, onOpenNotes, onOpenSearc
           <MagnifyingGlass />
         </button>
       )}
-      <button className="nc-icon-btn" onClick={onOpenNotes} title={L ? 'Notizen' : 'Notes'} aria-label={L ? 'Notizen' : 'Notes'}>
+      <button className="nc-icon-btn nc-head-notes" onClick={onOpenNotes} title={L ? 'Notizen' : 'Notes'} aria-label={L ? 'Notizen' : 'Notes'}>
         <NotePencil />
       </button>
       {showMore && (

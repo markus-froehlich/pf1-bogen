@@ -28,11 +28,14 @@
 /* schmale Spalte (Desktop-Dashboard): Stepper brauchen ~170px je Attribut */
 @container charview (max-width: 540px) { .nc-attr-grid.is-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .nc-attr { padding: 0.625rem 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
-.nc-attr-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.375rem; background: none; border: 0; color: inherit; padding: 0; text-align: left; border-radius: var(--radius-sm); min-height: 2.75rem; }
+.nc-attr-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; column-gap: 0.375rem; background: none; border: 0; color: inherit; padding: 0; text-align: left; border-radius: var(--radius-sm); min-height: 2.75rem; }
 .nc-attr-head:active { background: var(--color-neutral-800); }
-.nc-attr-names { display: flex; flex-direction: column; min-width: 0; }
+.nc-attr-names { display: contents; }
+.nc-attr-key { grid-row: 1; grid-column: 1; }
+.nc-attr-name { grid-row: 2; grid-column: 1 / -1; }
+.nc-attr-head > .nc-mod-pill { grid-row: 1; grid-column: 2; }
 .nc-attr-key { font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.02em; }
-.nc-attr-name { font-size: 0.6875rem; color: var(--color-neutral-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nc-attr-name { font-size: 0.6875rem; color: var(--color-neutral-500); white-space: normal; overflow-wrap: break-word; hyphens: auto; }
 .nc-mod-pill {
   min-width: 2.5rem; height: 2rem; padding: 0 0.375rem; border-radius: 1rem; display: flex; align-items: center; justify-content: center;
   font-size: 1rem; font-weight: 500; border: 1px solid var(--color-neutral-700); color: var(--color-neutral-300); flex: none; font-variant-numeric: tabular-nums;

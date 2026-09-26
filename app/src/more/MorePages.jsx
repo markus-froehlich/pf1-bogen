@@ -160,7 +160,7 @@ function RefList({ items, placeholder, countLabel, renderMeta, renderDetail, url
                   <span className="nc-spell-name">{x.name}</span>
                   <span className="nc-row-sub">{renderMeta(x)}</span>
                 </button>
-                {url && <RefLink className="nc-icon-btn" href={url} title="prd.5footstep.de"><ArrowSquareOut /></RefLink>}
+                {isOpen && url && <RefLink className="nc-icon-btn" href={url} title="prd.5footstep.de"><ArrowSquareOut /></RefLink>}
                 <button className={`nc-icon-btn ${has ? 'is-active' : 'nc-muted'}`} onClick={() => onAdd(x)} aria-label={L ? 'Zu Sonderfähigkeiten' : 'Add to abilities'}
                   title={has ? (L ? 'Schon in den Sonderfähigkeiten' : 'Already added') : (L ? 'Zu Sonderfähigkeiten hinzufügen' : 'Add to abilities')}><Plus /></button>
               </div>
