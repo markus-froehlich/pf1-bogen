@@ -1,0 +1,6450 @@
+{
+ "_meta": {
+  "source": "GRW S. 56-63 (33 Domänen, maßgeblich) + Excel Listen (Unterdomänen, Druide, Eide, Geister)",
+  "count": 152,
+  "grw_domains": 33,
+  "unmapped": 23
+ },
+ "domains": {
+  "Adel": {
+   "name": "Adel",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Göttliche Gunst",
+     "id": "goettliche_gunst"
+    },
+    "2": {
+     "name": "Fesseln",
+     "id": "fesseln"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Lügen erkennen",
+     "id": "luegen_erkennen"
+    },
+    "5": {
+     "name": "Mächtiger Befehl",
+     "id": "maechtiger_befehl"
+    },
+    "6": {
+     "name": "Geas/ Auftrag",
+     "id": "geas_auftrag"
+    },
+    "7": {
+     "name": "Abstoßung",
+     "id": "abstossung"
+    },
+    "8": {
+     "name": "Aufforderung",
+     "id": "aufforderung"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Adel/Aufopferung": {
+   "name": "Aufopferung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Adel",
+   "spells": {
+    "1": {
+     "name": "Göttliche Gunst",
+     "id": "goettliche_gunst"
+    },
+    "2": {
+     "name": "Anderen schützen",
+     "id": "anderen_schuetzen"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Lügen erkennen",
+     "id": "luegen_erkennen"
+    },
+    "5": {
+     "name": "Mächtiger Befehl",
+     "id": "maechtiger_befehl"
+    },
+    "6": {
+     "name": "Eid der Aufopferung",
+     "id": "eid_der_aufopferung"
+    },
+    "7": {
+     "name": "Abstoßung",
+     "id": "abstossung"
+    },
+    "8": {
+     "name": "Aufforderung",
+     "id": "aufforderung"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Adel/Führung": {
+   "name": "Führung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Adel",
+   "spells": {
+    "1": {
+     "name": "Segen",
+     "id": "segnen"
+    },
+    "2": {
+     "name": "Fesseln",
+     "id": "fesseln"
+    },
+    "3": {
+     "name": "Gebet",
+     "id": "gebet"
+    },
+    "4": {
+     "name": "Lügen erkennen",
+     "id": "luegen_erkennen"
+    },
+    "5": {
+     "name": "Mächtiger Befehl",
+     "id": "maechtiger_befehl"
+    },
+    "6": {
+     "name": "Geniale Eingebung",
+     "id": "geniale_eingebung"
+    },
+    "7": {
+     "name": "Abstoßung",
+     "id": "abstossung"
+    },
+    "8": {
+     "name": "Aufforderung",
+     "id": "aufforderung"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Befreiung": {
+   "name": "Befreiung",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Furcht bannen",
+     "id": "furcht_bannen"
+    },
+    "2": {
+     "name": "Lähmung aufheben",
+     "id": "laehmung_aufheben"
+    },
+    "3": {
+     "name": "Fluch brechen",
+     "id": "fluch_brechen"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Verzauberung brechen",
+     "id": "verzauberung_brechen"
+    },
+    "6": {
+     "name": "Mächtige Magie bannen",
+     "id": "maechtige_magie_bannen"
+    },
+    "7": {
+     "name": "Zuflucht",
+     "id": "zuflucht"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Befreiung",
+     "id": "befreiung"
+    }
+   }
+  },
+  "Befreiung/Freiheit": {
+   "name": "Freiheit",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Befreiung",
+   "spells": {
+    "1": {
+     "name": "Heiligtum",
+     "id": "heiligtum"
+    },
+    "2": {
+     "name": "Lähmung aufheben",
+     "id": "laehmung_aufheben"
+    },
+    "3": {
+     "name": "Fluch brechen",
+     "id": "fluch_brechen"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Ebenenwechsel",
+     "id": "ebenenwechsel"
+    },
+    "6": {
+     "name": "Mächtige Magie bannen",
+     "id": "maechtige_magie_bannen"
+    },
+    "7": {
+     "name": "Zuflucht",
+     "id": "zuflucht"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Befreiung",
+     "id": "befreiung"
+    }
+   }
+  },
+  "Befreiung/Revolution": {
+   "name": "Revolution",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Befreiung",
+   "spells": {
+    "1": {
+     "name": "Furcht bannen",
+     "id": "furcht_bannen"
+    },
+    "2": {
+     "name": "Fesseln",
+     "id": "fesseln"
+    },
+    "3": {
+     "name": "Fluch brechen",
+     "id": "fluch_brechen"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Verzauberung brechen",
+     "id": "verzauberung_brechen"
+    },
+    "6": {
+     "name": "Symbol der Überredung",
+     "id": "symbol_der_ueberredung"
+    },
+    "7": {
+     "name": "Zuflucht",
+     "id": "zuflucht"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Befreiung",
+     "id": "befreiung"
+    }
+   }
+  },
+  "Böses": {
+   "name": "Böses",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schutz vor Gutem",
+     "id": "schutz_vor_gutem"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Böse)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Schutzkreis gegen Gutes",
+     "id": "schutzkreis_gegen_gutes"
+    },
+    "4": {
+     "name": "Unheilige Plage",
+     "id": "unheilige_plage"
+    },
+    "5": {
+     "name": "Gutes bannen",
+     "id": "gutes_bannen"
+    },
+    "6": {
+     "name": "Untote erschaffen",
+     "id": "untote_erschaffen"
+    },
+    "7": {
+     "name": "Blasphemie",
+     "id": "blasphemie"
+    },
+    "8": {
+     "name": "Unheilige Aura",
+     "id": "unheilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur böse Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Böses/Dämonen": {
+   "name": "Dämonen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Böses",
+   "spells": {
+    "1": {
+     "name": "Unheil",
+     "id": "unheil"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur böse)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Unheilige Plage",
+     "id": "unheilige_plage"
+    },
+    "5": {
+     "name": "Gutes bannen",
+     "id": "gutes_bannen"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Dämonen)",
+     "id": "bindender_ruf_nur_daemonen"
+    },
+    "7": {
+     "name": "Blasphemie",
+     "id": "blasphemie"
+    },
+    "8": {
+     "name": "Unheilige Aura",
+     "id": "unheilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur böse Kreaturen) .   Dämonen (B)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Böses/Daimonen": {
+   "name": "Daimonen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Böses",
+   "spells": {
+    "1": {
+     "name": "Furcht verursachen",
+     "id": "furcht_ausloesen"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur böse)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Vampirgriff",
+     "id": "vampirgriff"
+    },
+    "4": {
+     "name": "Unheilige Plage",
+     "id": "unheilige_plage"
+    },
+    "5": {
+     "name": "Gutes bannen",
+     "id": "gutes_bannen"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Daimonen)",
+     "id": "bindender_ruf_nur_daimonen"
+    },
+    "7": {
+     "name": "Blasphemie",
+     "id": "blasphemie"
+    },
+    "8": {
+     "name": "Unheilige Aura",
+     "id": "unheilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur böse Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Böses/Furcht": {
+   "name": "Furcht",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Böses",
+   "spells": {
+    "1": {
+     "name": "Furcht auslösen",
+     "id": "furcht_ausloesen"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur böse)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Erschrecken",
+     "id": "erschrecken"
+    },
+    "4": {
+     "name": "Furcht",
+     "id": "furcht"
+    },
+    "5": {
+     "name": "Gutes bannen",
+     "id": "gutes_bannen"
+    },
+    "6": {
+     "name": "Untote erschaffen",
+     "id": "untote_erschaffen"
+    },
+    "7": {
+     "name": "Blasphemie",
+     "id": "blasphemie"
+    },
+    "8": {
+     "name": "Unheilige Aura",
+     "id": "unheilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur böse Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Böses/Teufel": {
+   "name": "Teufel",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Böses",
+   "spells": {
+    "1": {
+     "name": "Befehl",
+     "id": "befehl"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur böse)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Einflüsterung",
+     "id": "einfluesterung"
+    },
+    "4": {
+     "name": "Unheilige Plage",
+     "id": "unheilige_plage"
+    },
+    "5": {
+     "name": "Gutes bannen",
+     "id": "gutes_bannen"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Teufel)",
+     "id": "bindender_ruf_nur_teufel"
+    },
+    "7": {
+     "name": "Blasphemie",
+     "id": "blasphemie"
+    },
+    "8": {
+     "name": "Unheilige Aura",
+     "id": "unheilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur böse Kreaturen) .   Teufel (B)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Chaos": {
+   "name": "Chaos",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schutz vor Ordnung",
+     "id": "schutz_vor_ordnung"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Chaos)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Schutzkreis gegen Ordnung",
+     "id": "schutzkreis_gegen_ordnung"
+    },
+    "4": {
+     "name": "Chaoshammer",
+     "id": "chaoshammer"
+    },
+    "5": {
+     "name": "Rechtschaffenes bannen",
+     "id": "rechtschaffendes_bannen"
+    },
+    "6": {
+     "name": "Gegenstände beleben",
+     "id": "gegenstaende_beleben"
+    },
+    "7": {
+     "name": "Wort des Chaos",
+     "id": "wort_des_chaos"
+    },
+    "8": {
+     "name": "Schutzmantel des Chaos",
+     "id": "schutzmantel_des_chaos"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur chaotische Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Chaos/Azata": {
+   "name": "Azata",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Chaos",
+   "spells": {
+    "1": {
+     "name": "Rascher Rückzug",
+     "id": "rascher_rueckzug"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Chaos)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Chaoshammer",
+     "id": "chaoshammer"
+    },
+    "5": {
+     "name": "Rechtschaffendes bannen",
+     "id": "rechtschaffendes_bannen"
+    },
+    "6": {
+     "name": "Verbündeter aus den Ebenen (nur Azata)",
+     "id": "verbuendeter_aus_den_ebenen_nur_azata"
+    },
+    "7": {
+     "name": "Wort des Chaos",
+     "id": "wort_des_chaos"
+    },
+    "8": {
+     "name": "Schutzmantel des Chaos",
+     "id": "schutzmantel_des_chaos"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur chaotische Kreaturen) .   Azata (C)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Chaos/Dämonen": {
+   "name": "Dämonen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Chaos",
+   "spells": {
+    "1": {
+     "name": "Unheil",
+     "id": "unheil"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Chaos)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Chaoshammer",
+     "id": "chaoshammer"
+    },
+    "5": {
+     "name": "Rechtschaffendes bannen",
+     "id": "rechtschaffendes_bannen"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Dämonen)",
+     "id": "bindender_ruf_nur_daemonen"
+    },
+    "7": {
+     "name": "Wort des Chaos",
+     "id": "wort_des_chaos"
+    },
+    "8": {
+     "name": "Schutzmantel des Chaos",
+     "id": "schutzmantel_des_chaos"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur chaotische Kreaturen) .   Dämonen (C)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Chaos/Entropie": {
+   "name": "Entropie",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Chaos",
+   "spells": {
+    "1": {
+     "name": "Entropieschild",
+     "id": "entropieschild"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Chaos)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Magie bannen",
+     "id": "magie_bannen"
+    },
+    "4": {
+     "name": "Chaoshammer",
+     "id": "chaoshammer"
+    },
+    "5": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "6": {
+     "name": "Gegenstände beleben",
+     "id": "gegenstaende_beleben"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Schutzmantel des Chaos",
+     "id": "schutzmantel_des_chaos"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur chaotische Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Chaos/Proteaner": {
+   "name": "Proteaner",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Chaos",
+   "spells": {
+    "1": {
+     "name": "Schwächere Verwirrung",
+     "id": "schwaechere_verwirrung"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Chaos)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Standort vortäuschen",
+     "id": "standort_vortaeuschen"
+    },
+    "4": {
+     "name": "Chaoshammer",
+     "id": "chaoshammer"
+    },
+    "5": {
+     "name": "Rechtschaffendes bannen",
+     "id": "rechtschaffendes_bannen"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Proteaner)",
+     "id": "bindender_ruf_nur_proteaner"
+    },
+    "7": {
+     "name": "Wort des Chaos",
+     "id": "wort_des_chaos"
+    },
+    "8": {
+     "name": "Schutzmantel des Chaos",
+     "id": "schutzmantel_des_chaos"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur chaotische Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Dunkelheit": {
+   "name": "Dunkelheit",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Blind- oder Taubheit verursachen (nur Blindheit)",
+     "id": "blind_oder_taubheit_verursachen"
+    },
+    "3": {
+     "name": "Undurchdringliche Dunkelheit",
+     "id": "tiefere_dunkelheit"
+    },
+    "4": {
+     "name": "Schattenbeschwörung",
+     "id": "schattenbeschwoerung"
+    },
+    "5": {
+     "name": "Monster herbeirufen V (ruft 1W3 Schatten herbei)",
+     "id": "monster_herbeizaubern_v"
+    },
+    "6": {
+     "name": "Schattenreise",
+     "id": "schattenreise"
+    },
+    "7": {
+     "name": "Wort der Macht: Blindheit",
+     "id": "wort_der_macht_blindheit"
+    },
+    "8": {
+     "name": "Mächtige Schattenhervorrufung",
+     "id": "maechtige_schattenhervorrufung"
+    },
+    "9": {
+     "name": "Schatten",
+     "id": "schatten"
+    }
+   }
+  },
+  "Dunkelheit/Mond (AM55)": {
+   "name": "Mond (AM55)",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Dunkelheit",
+   "spells": {
+    "1": {
+     "name": "Feenfeuer",
+     "id": "feenfeuer"
+    },
+    "2": {
+     "name": "Blind- oder Taubheit verursachen (nur Blindheit)",
+     "id": "blind_oder_taubheit_verursachen"
+    },
+    "3": {
+     "name": "Undurchdringliche Dunkelheit",
+     "id": "tiefere_dunkelheit"
+    },
+    "4": {
+     "name": "Mondsucht",
+     "id": "mondsucht"
+    },
+    "5": {
+     "name": "Monster herbeirufen V (ruft 1W3 Schatten herbei)",
+     "id": "monster_herbeizaubern_v"
+    },
+    "6": {
+     "name": "Traumumhang",
+     "id": "traumumhang"
+    },
+    "7": {
+     "name": "Wort der Macht-Blindheit",
+     "id": "wort_der_macht_blindheit"
+    },
+    "8": {
+     "name": "Mächtige Schattenhervorrufung",
+     "id": "maechtige_schattenhervorrufung"
+    },
+    "9": {
+     "name": "Schatten",
+     "id": "schatten"
+    }
+   }
+  },
+  "Dunkelheit/Nacht": {
+   "name": "Nacht",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Dunkelheit",
+   "spells": {
+    "1": {
+     "name": "Schlaf",
+     "id": "schlaf"
+    },
+    "2": {
+     "name": "Blind- oder Taubheit verursachen (nur Blindheit)",
+     "id": "blind_oder_taubheit_verursachen"
+    },
+    "3": {
+     "name": "Undurchdringliche Dunkelheit",
+     "id": "tiefere_dunkelheit"
+    },
+    "4": {
+     "name": "Schattenbeschwörung",
+     "id": "schattenbeschwoerung"
+    },
+    "5": {
+     "name": "Monster herbeirufen V (ruft 1W3 Schatten herbei)",
+     "id": "monster_herbeizaubern_v"
+    },
+    "6": {
+     "name": "Albtraum",
+     "id": "albtraum"
+    },
+    "7": {
+     "name": "Wort der Macht-Blindheit",
+     "id": "wort_der_macht_blindheit"
+    },
+    "8": {
+     "name": "Mächtige Schattenhervorrufung",
+     "id": "maechtige_schattenhervorrufung"
+    },
+    "9": {
+     "name": "Schatten",
+     "id": "schatten"
+    }
+   }
+  },
+  "Dunkelheit/Verlust": {
+   "name": "Verlust",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Dunkelheit",
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Blind- oder Taubheit verursachen (nur Blindheit)",
+     "id": "blind_oder_taubheit_verursachen"
+    },
+    "3": {
+     "name": "Undurchdringliche Dunkelheit",
+     "id": "tiefere_dunkelheit"
+    },
+    "4": {
+     "name": "Schattenbeschwörung",
+     "id": "schattenbeschwoerung"
+    },
+    "5": {
+     "name": "Entkräftung",
+     "id": "entkraeftung"
+    },
+    "6": {
+     "name": "Erinnerung verändern",
+     "id": "erinnerung_veraendern"
+    },
+    "7": {
+     "name": "Wort der Macht-Blindheit",
+     "id": "wort_der_macht_blindheit"
+    },
+    "8": {
+     "name": "Mächtige Schattenhervorrufung",
+     "id": "maechtige_schattenhervorrufung"
+    },
+    "9": {
+     "name": "Entzug von Lebenskraft",
+     "id": "entzug_von_lebenskraft"
+    }
+   }
+  },
+  "Erde": {
+   "name": "Erde",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Magischer Stein",
+     "id": "magischer_stein"
+    },
+    "2": {
+     "name": "Erde und Gestein erweichen",
+     "id": "erde_und_gestein_erweichen"
+    },
+    "3": {
+     "name": "Stein formen",
+     "id": "stein_formen"
+    },
+    "4": {
+     "name": "Steindornen",
+     "id": "steindornen"
+    },
+    "5": {
+     "name": "Steinwand",
+     "id": "steinwand"
+    },
+    "6": {
+     "name": "Steinhaut",
+     "id": "steinhaut"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Erde)",
+     "id": "elementargestalt_iv_nur_erde"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Erde)",
+     "id": "elementarhorde_nur_erde"
+    }
+   }
+  },
+  "Erde/Höhlen": {
+   "name": "Höhlen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Erde",
+   "spells": {
+    "1": {
+     "name": "Magischer Stein",
+     "id": "magischer_stein"
+    },
+    "2": {
+     "name": "Grube erschaffen",
+     "id": "grube_erschaffen"
+    },
+    "3": {
+     "name": "Mördergrube",
+     "id": "moerdergrube"
+    },
+    "4": {
+     "name": "Steindornen",
+     "id": "steindornen"
+    },
+    "5": {
+     "name": "Steinwand",
+     "id": "steinwand"
+    },
+    "6": {
+     "name": "Hungrige Grube",
+     "id": "hungrige_grube"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Erde)",
+     "id": "elementargestalt_iv_nur_erde"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Erde)",
+     "id": "elementarhorde_nur_erde"
+    }
+   }
+  },
+  "Erde/Metalle": {
+   "name": "Metalle",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Erde",
+   "spells": {
+    "1": {
+     "name": "Magischer Stein",
+     "id": "magischer_stein"
+    },
+    "2": {
+     "name": "Metall erhitzen",
+     "id": "metall_erhitzen"
+    },
+    "3": {
+     "name": "Stein formen",
+     "id": "stein_formen"
+    },
+    "4": {
+     "name": "Steindornen",
+     "id": "steindornen"
+    },
+    "5": {
+     "name": "Steinwand",
+     "id": "steinwand"
+    },
+    "6": {
+     "name": "Eisenwand",
+     "id": "eisenwand"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Erde)",
+     "id": "elementargestalt_iv_nur_erde"
+    },
+    "8": {
+     "name": "Eiserner Körper",
+     "id": "eiserner_koerper"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Erde)",
+     "id": "elementarhorde_nur_erde"
+    }
+   }
+  },
+  "Feuer": {
+   "name": "Feuer",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Brennende Hände",
+     "id": "brennende_haende"
+    },
+    "2": {
+     "name": "Flammen erzeugen",
+     "id": "flamme_erzeugen"
+    },
+    "3": {
+     "name": "Feuerball",
+     "id": "feuerball"
+    },
+    "4": {
+     "name": "Feuerwand",
+     "id": "feuerwand"
+    },
+    "5": {
+     "name": "Feuerschild",
+     "id": "feuerschild"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Feuer)",
+     "id": "elementargestalt_iv_nur_feuer"
+    },
+    "8": {
+     "name": "Flammende Wolke",
+     "id": "flammende_wolke"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Feuer)",
+     "id": "elementarhorde_nur_feuer"
+    }
+   }
+  },
+  "Feuer/Asche": {
+   "name": "Asche",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Feuer",
+   "spells": {
+    "1": {
+     "name": "Brennende Hände",
+     "id": "brennende_haende"
+    },
+    "2": {
+     "name": "Flammen erzeugen",
+     "id": "flamme_erzeugen"
+    },
+    "3": {
+     "name": "Feuerball",
+     "id": "feuerball"
+    },
+    "4": {
+     "name": "Feuerwand",
+     "id": "feuerwand"
+    },
+    "5": {
+     "name": "Feuerschild",
+     "id": "feuerschild"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Auflösung",
+     "id": "aufloesung"
+    },
+    "8": {
+     "name": "Flammende Wolke",
+     "id": "flammende_wolke"
+    },
+    "9": {
+     "name": "Feurige Gestalt",
+     "id": "feurige_gestalt"
+    }
+   }
+  },
+  "Feuer/Brandstiftung": {
+   "name": "Brandstiftung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Feuer",
+   "spells": {
+    "1": {
+     "name": "Brennende Hände",
+     "id": "brennende_haende"
+    },
+    "2": {
+     "name": "Flammenkugel",
+     "id": "flammenkugel"
+    },
+    "3": {
+     "name": "Feuerball",
+     "id": "feuerball"
+    },
+    "4": {
+     "name": "Feuerwand",
+     "id": "feuerwand"
+    },
+    "5": {
+     "name": "Flammenschlag",
+     "id": "flammenschlag"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Spätzündender Feuerball",
+     "id": "spaetzuendender_feuerball"
+    },
+    "8": {
+     "name": "Flammende Wolke",
+     "id": "flammende_wolke"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Feuer)",
+     "id": "elementarhorde_nur_feuer"
+    }
+   }
+  },
+  "Feuer/Rauch": {
+   "name": "Rauch",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Feuer",
+   "spells": {
+    "1": {
+     "name": "Brennende Hände",
+     "id": "brennende_haende"
+    },
+    "2": {
+     "name": "Feuerwerk",
+     "id": "feuerwerk"
+    },
+    "3": {
+     "name": "Stinkende Wolke",
+     "id": "stinkende_wolke"
+    },
+    "4": {
+     "name": "Feuerwand",
+     "id": "feuerwand"
+    },
+    "5": {
+     "name": "Feuerschild",
+     "id": "feuerschild"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Feuer)",
+     "id": "elementargestalt_iv_nur_feuer"
+    },
+    "8": {
+     "name": "Flammende Wolke",
+     "id": "flammende_wolke"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Feuer)",
+     "id": "elementarhorde_nur_feuer"
+    }
+   }
+  },
+  "Gemeinschaft": {
+   "name": "Gemeinschaft",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Segnen",
+     "id": "segnen"
+    },
+    "2": {
+     "name": "Anderen schützen",
+     "id": "anderen_schuetzen"
+    },
+    "3": {
+     "name": "Gebet",
+     "id": "gebet"
+    },
+    "4": {
+     "name": "Zauberkräfte verleihen",
+     "id": "zauberkraefte_verleihen"
+    },
+    "5": {
+     "name": "Telepathisches Band",
+     "id": "telepathisches_band"
+    },
+    "6": {
+     "name": "Heldenmahl",
+     "id": "heldenmahl"
+    },
+    "7": {
+     "name": "Zuflucht",
+     "id": "zuflucht"
+    },
+    "8": {
+     "name": "Massen-Kritische Wunden heilen",
+     "id": "massen_kritische_wunden_heilen"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Gemeinschaft/Familie": {
+   "name": "Familie",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Gemeinschaft",
+   "spells": {
+    "1": {
+     "name": "Segnen",
+     "id": "segnen"
+    },
+    "2": {
+     "name": "Gefühle besänftigen",
+     "id": "gefuehle_besaenftigen"
+    },
+    "3": {
+     "name": "Nahrung und Wasser erschaffen",
+     "id": "nahrung_und_wasser_erschaffen"
+    },
+    "4": {
+     "name": "Zustand",
+     "id": "zustand"
+    },
+    "5": {
+     "name": "Telepathisches Band",
+     "id": "telepathisches_band"
+    },
+    "6": {
+     "name": "Heldenmahl",
+     "id": "heldenmahl"
+    },
+    "7": {
+     "name": "Zuflucht",
+     "id": "zuflucht"
+    },
+    "8": {
+     "name": "Massen-kritische Wunden heilen",
+     "id": "massen_kritische_wunden_heilen"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Gemeinschaft/Heim": {
+   "name": "Heim",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Gemeinschaft",
+   "spells": {
+    "1": {
+     "name": "Alarm",
+     "id": "alarm"
+    },
+    "2": {
+     "name": "Anderen schützen",
+     "id": "anderen_schuetzen"
+    },
+    "3": {
+     "name": "Glyphe der Abwehr",
+     "id": "glyphe_der_abwehr"
+    },
+    "4": {
+     "name": "Zustand",
+     "id": "zustand"
+    },
+    "5": {
+     "name": "Telepathisches Band",
+     "id": "telepathisches_band"
+    },
+    "6": {
+     "name": "Heldenmahl",
+     "id": "heldenmahl"
+    },
+    "7": {
+     "name": "Wächter und Hüter",
+     "id": "waechter_und_hueter"
+    },
+    "8": {
+     "name": "Massen-kritische Wunden heilen",
+     "id": "massen_kritische_wunden_heilen"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Glück": {
+   "name": "Glück",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Beistand",
+     "id": "beistand"
+    },
+    "3": {
+     "name": "Schutz vor Energien",
+     "id": "schutz_vor_energien"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Verzauberung brechen",
+     "id": "verzauberung_brechen"
+    },
+    "6": {
+     "name": "Ablenkung",
+     "id": "ablenkung"
+    },
+    "7": {
+     "name": "Zauber zurückwerfen",
+     "id": "zauber_zurueckwerfen"
+    },
+    "8": {
+     "name": "Moment der Eingebung",
+     "id": "moment_der_eingebung"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Glück/Flüche": {
+   "name": "Flüche",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Glück",
+   "spells": {
+    "1": {
+     "name": "Verfluchen",
+     "id": "verfluchen"
+    },
+    "2": {
+     "name": "Beistand",
+     "id": "beistand"
+    },
+    "3": {
+     "name": "Fluch",
+     "id": "fluch"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Verzauberung brechen",
+     "id": "verzauberung_brechen"
+    },
+    "6": {
+     "name": "Böser Blick",
+     "id": "boeser_blick"
+    },
+    "7": {
+     "name": "Zauber zurückwerfen",
+     "id": "zauber_zurueckwerfen"
+    },
+    "8": {
+     "name": "Moment der Eingebung",
+     "id": "moment_der_eingebung"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Glück/Schicksal": {
+   "name": "Schicksal",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Glück",
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Vorahnung",
+     "id": "vorahnung"
+    },
+    "3": {
+     "name": "Glück ausborgen",
+     "id": "glueck_ausborgen"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Verzauberung brechen",
+     "id": "verzauberung_brechen"
+    },
+    "6": {
+     "name": "Ablenkung",
+     "id": "ablenkung"
+    },
+    "7": {
+     "name": "Zauber zurückwerfen",
+     "id": "zauber_zurueckwerfen"
+    },
+    "8": {
+     "name": "Moment der Eingebung",
+     "id": "moment_der_eingebung"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Gutes": {
+   "name": "Gutes",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schutz vor Bösem",
+     "id": "schutz_vor_boesem"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Gut)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Schutzkreis gegen Böses",
+     "id": "schutzkreis_gegen_boeses"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Böses bannen",
+     "id": "boeses_bannen"
+    },
+    "6": {
+     "name": "Klingenbarriere",
+     "id": "klingenbarriere"
+    },
+    "7": {
+     "name": "Heiliges Wort",
+     "id": "heiliges_wort"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur gute Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Gutes/Agathion": {
+   "name": "Agathion",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Gutes",
+   "spells": {
+    "1": {
+     "name": "Schild des Glaubens",
+     "id": "schild_des_glaubens"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Gut)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Zungen",
+     "id": "zungen"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Böses bannen",
+     "id": "boeses_bannen"
+    },
+    "6": {
+     "name": "Verbündeter aus den Ebenen (nur Agathionen)",
+     "id": "verbuendeter_aus_den_ebenen_nur_agathionen"
+    },
+    "7": {
+     "name": "Heiliges Wort",
+     "id": "heiliges_wort"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur gute Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Gutes/Archonten": {
+   "name": "Archonten",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Gutes",
+   "spells": {
+    "1": {
+     "name": "Göttlicher Gefallen",
+     "id": "goettliche_gunst"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Gut)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Gebet",
+     "id": "gebet"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Böses bannen",
+     "id": "boeses_bannen"
+    },
+    "6": {
+     "name": "Verbündeter aus den Ebenen (nur Archonten)",
+     "id": "verbuendeter_aus_den_ebenen_nur_archonten"
+    },
+    "7": {
+     "name": "Heiliges Wort",
+     "id": "heiliges_wort"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur gute Kreaturen) .   Archonten (G)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Gutes/Azata": {
+   "name": "Azata",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Gutes",
+   "spells": {
+    "1": {
+     "name": "Rascher Rückzug",
+     "id": "rascher_rueckzug"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Gut)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Böses bannen",
+     "id": "boeses_bannen"
+    },
+    "6": {
+     "name": "Verbündeter aus den Ebenen (nur Azata)",
+     "id": "verbuendeter_aus_den_ebenen_nur_azata"
+    },
+    "7": {
+     "name": "Heiliges Wort",
+     "id": "heiliges_wort"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur gute Kreaturen) .   Azata (G)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Handwerk": {
+   "name": "Handwerk",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Seil beleben",
+     "id": "seil_beleben"
+    },
+    "2": {
+     "name": "Holz formen",
+     "id": "holz_formen"
+    },
+    "3": {
+     "name": "Stein formen",
+     "id": "stein_formen"
+    },
+    "4": {
+     "name": "Niedere Erschaffung",
+     "id": "niedere_erschaffung"
+    },
+    "5": {
+     "name": "Verarbeitung",
+     "id": "verarbeitung"
+    },
+    "6": {
+     "name": "Höhere Erschaffung",
+     "id": "hoehere_erschaffung"
+    },
+    "7": {
+     "name": "Eisenwand",
+     "id": "eisenwand"
+    },
+    "8": {
+     "name": "Statue",
+     "id": "statue"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Handwerk/Mühen": {
+   "name": "Mühen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Handwerk",
+   "spells": {
+    "1": {
+     "name": "Befehl",
+     "id": "befehl"
+    },
+    "2": {
+     "name": "Holz formen",
+     "id": "holz_formen"
+    },
+    "3": {
+     "name": "Stein formen",
+     "id": "stein_formen"
+    },
+    "4": {
+     "name": "Niedere Erschaffung",
+     "id": "niedere_erschaffung"
+    },
+    "5": {
+     "name": "Wellen der Entkräftung",
+     "id": "wellen_der_entkraeftung"
+    },
+    "6": {
+     "name": "Höhere Erschaffung",
+     "id": "hoehere_erschaffung"
+    },
+    "7": {
+     "name": "Wellen der Erschöpfung",
+     "id": "wellen_der_erschoepfung"
+    },
+    "8": {
+     "name": "Sofortige Herbeizauberung",
+     "id": "sofortige_herbeizauberung"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Handwerk/Konstrukte": {
+   "name": "Konstrukte",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Handwerk",
+   "spells": {
+    "1": {
+     "name": "Seil beleben",
+     "id": "seil_beleben"
+    },
+    "2": {
+     "name": "Holz formen",
+     "id": "holz_formen"
+    },
+    "3": {
+     "name": "Stein formen",
+     "id": "stein_formen"
+    },
+    "4": {
+     "name": "Niedere Erschaffung",
+     "id": "niedere_erschaffung"
+    },
+    "5": {
+     "name": "Verarbeitung",
+     "id": "verarbeitung"
+    },
+    "6": {
+     "name": "Höhere Erschaffung",
+     "id": "hoehere_erschaffung"
+    },
+    "7": {
+     "name": "Begrenzter Wunsch",
+     "id": "begrenzter_wunsch"
+    },
+    "8": {
+     "name": "Beliebiges Verwandeln",
+     "id": "beliebiges_verwandeln"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Heilung": {
+   "name": "Heilung",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Leichte Wunden heilen",
+     "id": "leichte_wunden_heilen"
+    },
+    "2": {
+     "name": "Mittelschwere Wunden heilen",
+     "id": "mittelschwere_wunden_heilen"
+    },
+    "3": {
+     "name": "Schwere Wunden heilen",
+     "id": "schwere_wunden_heilen"
+    },
+    "4": {
+     "name": "Kritische Wunden heilen",
+     "id": "kritische_wunden_heilen"
+    },
+    "5": {
+     "name": "Lebensatem",
+     "id": "lebensatem"
+    },
+    "6": {
+     "name": "Heilung",
+     "id": "heilung"
+    },
+    "7": {
+     "name": "Regeneration",
+     "id": "regeneration"
+    },
+    "8": {
+     "name": "MassenKritische Wunden heilen",
+     "id": "massen_kritische_wunden_heilen"
+    },
+    "9": {
+     "name": "Massenheilung",
+     "id": "massenheilung"
+    }
+   }
+  },
+  "Heilung/Genesung": {
+   "name": "Genesung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Heilung",
+   "spells": {
+    "1": {
+     "name": "Leichte Wunden heilen",
+     "id": "leichte_wunden_heilen"
+    },
+    "2": {
+     "name": "Krankheit heilen",
+     "id": "krankheit_heilen"
+    },
+    "3": {
+     "name": "Schwere Wunden heilen",
+     "id": "schwere_wunden_heilen"
+    },
+    "4": {
+     "name": "Gift neutralisieren",
+     "id": "gift_neutralisieren"
+    },
+    "5": {
+     "name": "Verzauberung brechen",
+     "id": "verzauberung_brechen"
+    },
+    "6": {
+     "name": "Heilung",
+     "id": "heilung"
+    },
+    "7": {
+     "name": "Regeneration",
+     "id": "regeneration"
+    },
+    "8": {
+     "name": "Massen-Kritische Wunden heilen",
+     "id": "massen_kritische_wunden_heilen"
+    },
+    "9": {
+     "name": "Massenheilung",
+     "id": "massenheilung"
+    }
+   }
+  },
+  "Heilung/Wiederbelebung": {
+   "name": "Wiederbelebung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Heilung",
+   "spells": {
+    "1": {
+     "name": "Leichte Wunden heilen",
+     "id": "leichte_wunden_heilen"
+    },
+    "2": {
+     "name": "Mittelschwere Wunden heilen",
+     "id": "mittelschwere_wunden_heilen"
+    },
+    "3": {
+     "name": "Schwere Wunden heilen",
+     "id": "schwere_wunden_heilen"
+    },
+    "4": {
+     "name": "Kritische Wunden heilen",
+     "id": "kritische_wunden_heilen"
+    },
+    "5": {
+     "name": "Tote erwecken",
+     "id": "tote_erwecken"
+    },
+    "6": {
+     "name": "Heilung",
+     "id": "heilung"
+    },
+    "7": {
+     "name": "Auferstehung",
+     "id": "auferstehung"
+    },
+    "8": {
+     "name": "Massen-Kritische Wunden heilen",
+     "id": "massen_kritische_wunden_heilen"
+    },
+    "9": {
+     "name": "Wahre Auferstehung",
+     "id": "wahre_auferstehung"
+    }
+   }
+  },
+  "Herrlichkeit": {
+   "name": "Herrlichkeit",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schild des Glaubens",
+     "id": "schild_des_glaubens"
+    },
+    "2": {
+     "name": "Waffe weihen",
+     "id": "waffe_weihen"
+    },
+    "3": {
+     "name": "Gleißendes Licht",
+     "id": "gleissendes_licht"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Tod den Untoten",
+     "id": "tod_den_untoten"
+    },
+    "7": {
+     "name": "Heiliges Schwert",
+     "id": "heiliges_schwert"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Tor",
+     "id": "tor"
+    }
+   }
+  },
+  "Herrlichkeit/Ehre": {
+   "name": "Ehre",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Herrlichkeit",
+   "spells": {
+    "1": {
+     "name": "Schild des Glaubens",
+     "id": "schild_des_glaubens"
+    },
+    "2": {
+     "name": "Zone der Wahrheit",
+     "id": "zone_der_wahrheit"
+    },
+    "3": {
+     "name": "Gleißendes Licht",
+     "id": "gleissendes_licht"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Geas/Auftrag",
+     "id": "geas_auftrag"
+    },
+    "7": {
+     "name": "Heiliges Schwert",
+     "id": "heiliges_schwert"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Tor",
+     "id": "tor"
+    }
+   }
+  },
+  "Herrlichkeit/Heldentum": {
+   "name": "Heldentum",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Herrlichkeit",
+   "spells": {
+    "1": {
+     "name": "Schild des Glaubens",
+     "id": "schild_des_glaubens"
+    },
+    "2": {
+     "name": "Waffe weihen",
+     "id": "waffe_weihen"
+    },
+    "3": {
+     "name": "Heldenmut",
+     "id": "heldenmut"
+    },
+    "4": {
+     "name": "Heiliger Schlag",
+     "id": "heiliger_schlag"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Mächtiger Heldenmut",
+     "id": "maechtiger_heldenmut"
+    },
+    "7": {
+     "name": "Heiliges Schwert",
+     "id": "heiliges_schwert"
+    },
+    "8": {
+     "name": "Heilige Aura",
+     "id": "heilige_aura"
+    },
+    "9": {
+     "name": "Tor",
+     "id": "tor"
+    }
+   }
+  },
+  "Krieg": {
+   "name": "Krieg",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Magische Waffe",
+     "id": "magische_waffe"
+    },
+    "2": {
+     "name": "Waffe des Glaubens",
+     "id": "waffe_des_glaubens"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Göttliche Macht",
+     "id": "goettliche_macht"
+    },
+    "5": {
+     "name": "Flammenschlag",
+     "id": "flammenschlag"
+    },
+    "6": {
+     "name": "Klingenbarriere",
+     "id": "klingenbarriere"
+    },
+    "7": {
+     "name": "Wort der Macht: Blindheit",
+     "id": "wort_der_macht_blindheit"
+    },
+    "8": {
+     "name": "Wort der Macht: Betäubung",
+     "id": "wort_der_macht_betaeubung"
+    },
+    "9": {
+     "name": "Wort der Macht: Tod",
+     "id": "wort_der_macht_tod"
+    }
+   }
+  },
+  "Krieg/Blut": {
+   "name": "Blut",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Krieg",
+   "spells": {
+    "1": {
+     "name": "Magische Waffe",
+     "id": "magische_waffe"
+    },
+    "2": {
+     "name": "Waffe des Glaubens",
+     "id": "waffe_des_glaubens"
+    },
+    "3": {
+     "name": "Vampirgriff",
+     "id": "vampirgriff"
+    },
+    "4": {
+     "name": "Göttliche Macht",
+     "id": "goettliche_macht"
+    },
+    "5": {
+     "name": "Dornenwand",
+     "id": "dornenwand"
+    },
+    "6": {
+     "name": "Klingenbarriere",
+     "id": "klingenbarriere"
+    },
+    "7": {
+     "name": "Massen-Schwere Wunden verursachen",
+     "id": "massen_schwere_wunden_verursachen"
+    },
+    "8": {
+     "name": "Wort der Macht-Betäubung",
+     "id": "wort_der_macht_betaeubung"
+    },
+    "9": {
+     "name": "Wort der Macht-Tod",
+     "id": "wort_der_macht_tod"
+    }
+   }
+  },
+  "Krieg/Taktik": {
+   "name": "Taktik",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Krieg",
+   "spells": {
+    "1": {
+     "name": "Magische Waffe",
+     "id": "magische_waffe"
+    },
+    "2": {
+     "name": "Beistand",
+     "id": "beistand"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Göttliche Macht",
+     "id": "goettliche_macht"
+    },
+    "5": {
+     "name": "Mächtiger Befehl",
+     "id": "maechtiger_befehl"
+    },
+    "6": {
+     "name": "Klingenbarriere",
+     "id": "klingenbarriere"
+    },
+    "7": {
+     "name": "Wort der Macht-Blindheit",
+     "id": "wort_der_macht_blindheit"
+    },
+    "8": {
+     "name": "Mächtiger Verbündeter aus den Ebenen",
+     "id": "maechtiger_verbuendeter_aus_den_ebenen"
+    },
+    "9": {
+     "name": "Wort der Macht-Tod",
+     "id": "wort_der_macht_tod"
+    }
+   }
+  },
+  "Luft": {
+   "name": "Luft",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Windwall",
+     "id": "windwall"
+    },
+    "3": {
+     "name": "Gasförmige Gestalt",
+     "id": "gasfoermige_gestalt"
+    },
+    "4": {
+     "name": "Luftwandeln",
+     "id": "luftweg"
+    },
+    "5": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "6": {
+     "name": "Kugelblitz",
+     "id": "kugelblitz"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Luft)",
+     "id": "elementargestalt_iv_nur_luft"
+    },
+    "8": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Luft)",
+     "id": "elementarhorde_nur_luft"
+    }
+   }
+  },
+  "Luft/Wind": {
+   "name": "Wind",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Luft",
+   "spells": {
+    "1": {
+     "name": "Windgeflüster",
+     "id": "windgefluester"
+    },
+    "2": {
+     "name": "Windwall",
+     "id": "windwall"
+    },
+    "3": {
+     "name": "Gasförmige Gestalt",
+     "id": "gasfoermige_gestalt"
+    },
+    "4": {
+     "name": "Luftweg",
+     "id": "luftweg"
+    },
+    "5": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "6": {
+     "name": "Windwandeln",
+     "id": "windwandeln"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Luft)",
+     "id": "elementargestalt_iv_nur_luft"
+    },
+    "8": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "9": {
+     "name": "Winde der Vergeltung",
+     "id": "winde_der_vergeltung"
+    }
+   }
+  },
+  "Luft/Wolken": {
+   "name": "Wolken",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Luft",
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Windwall",
+     "id": "windwall"
+    },
+    "3": {
+     "name": "Gasförmige Gestalt",
+     "id": "gasfoermige_gestalt"
+    },
+    "4": {
+     "name": "Fester Nebel",
+     "id": "fester_nebel"
+    },
+    "5": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "6": {
+     "name": "Kugelblitz",
+     "id": "kugelblitz"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Luft)",
+     "id": "elementargestalt_iv_nur_luft"
+    },
+    "8": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Magie": {
+   "name": "Magie",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Identifizieren",
+     "id": "identifizieren"
+    },
+    "2": {
+     "name": "Magischer Mund",
+     "id": "magischer_mund"
+    },
+    "3": {
+     "name": "Magie bannen",
+     "id": "magie_bannen"
+    },
+    "4": {
+     "name": "Zauberkräfte verleihen",
+     "id": "zauberkraefte_verleihen"
+    },
+    "5": {
+     "name": "Zauberresistenz",
+     "id": "zauberresistenz"
+    },
+    "6": {
+     "name": "Antimagisches Feld",
+     "id": "antimagisches_feld"
+    },
+    "7": {
+     "name": "Zauber zurückwerfen",
+     "id": "zauber_zurueckwerfen"
+    },
+    "8": {
+     "name": "Schutz vor Zaubern",
+     "id": "schutz_vor_zaubern"
+    },
+    "9": {
+     "name": "Magische Auftrennung",
+     "id": "magische_auftrennung"
+    }
+   }
+  },
+  "Magie/Arkenes": {
+   "name": "Arkenes",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Magie",
+   "spells": {
+    "1": {
+     "name": "Magische Aura",
+     "id": "magische_aura"
+    },
+    "2": {
+     "name": "Magischer Mund",
+     "id": "magischer_mund"
+    },
+    "3": {
+     "name": "Magie bannen",
+     "id": "magie_bannen"
+    },
+    "4": {
+     "name": "Arkanes Auge",
+     "id": "arkanes_auge"
+    },
+    "5": {
+     "name": "Zauberresistenz",
+     "id": "zauberresistenz"
+    },
+    "6": {
+     "name": "Zauber analysieren",
+     "id": "zauber_analysieren"
+    },
+    "7": {
+     "name": "Zauber zurückwerfen",
+     "id": "zauber_zurueckwerfen"
+    },
+    "8": {
+     "name": "Schutz vor Zaubern",
+     "id": "schutz_vor_zaubern"
+    },
+    "9": {
+     "name": "Magische Auftrennung",
+     "id": "magische_auftrennung"
+    }
+   }
+  },
+  "Magie/Göttliches": {
+   "name": "Göttliches",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Magie",
+   "spells": {
+    "1": {
+     "name": "Identifizieren",
+     "id": "identifizieren"
+    },
+    "2": {
+     "name": "Wasser weihen",
+     "id": "wasser_weihen"
+    },
+    "3": {
+     "name": "Magie bannen",
+     "id": "magie_bannen"
+    },
+    "4": {
+     "name": "Zauberkräfte verleihen",
+     "id": "zauberkraefte_verleihen"
+    },
+    "5": {
+     "name": "Reinigung",
+     "id": "reinigung"
+    },
+    "6": {
+     "name": "Antimagisches Feld",
+     "id": "antimagisches_feld"
+    },
+    "7": {
+     "name": "Auferstehung",
+     "id": "auferstehung"
+    },
+    "8": {
+     "name": "Schutz vor Zaubern",
+     "id": "schutz_vor_zaubern"
+    },
+    "9": {
+     "name": "Wunder",
+     "id": "wunder"
+    }
+   }
+  },
+  "Ordnung": {
+   "name": "Ordnung",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schutz vor Chaos",
+     "id": "schutz_vor_chaos"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Rechtschaffen)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Schutzkreis gegen Chaos",
+     "id": "schutzkreis_gegen_chaos"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    },
+    "5": {
+     "name": "Chaotisches bannen",
+     "id": "chaotisches_bannen"
+    },
+    "6": {
+     "name": "Monster festhalten",
+     "id": "monster_festhalten"
+    },
+    "7": {
+     "name": "Diktum",
+     "id": "diktum"
+    },
+    "8": {
+     "name": "Schild der Ordnung",
+     "id": "schild_der_ordnung"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur rechtschaffene Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Ordnung/Archonten": {
+   "name": "Archonten",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ordnung",
+   "spells": {
+    "1": {
+     "name": "Göttlicher Gefallen",
+     "id": "goettliche_gunst"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Rechtsch.)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Gebet",
+     "id": "gebet"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    },
+    "5": {
+     "name": "Chaotisches bannen",
+     "id": "chaotisches_bannen"
+    },
+    "6": {
+     "name": "Verbündeter aus den Ebenen (nur Archonten)",
+     "id": "verbuendeter_aus_den_ebenen_nur_archonten"
+    },
+    "7": {
+     "name": "Diktum",
+     "id": "diktum"
+    },
+    "8": {
+     "name": "Schild der Ordnung",
+     "id": "schild_der_ordnung"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur rechtschaffene Kreaturen) .   Archonten (O)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Ordnung/Sklaverei": {
+   "name": "Sklaverei",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ordnung",
+   "spells": {
+    "1": {
+     "name": "Person bezaubern",
+     "id": "person_bezaubern"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Rechtsch.)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Schutzkreis gegen Chaos",
+     "id": "schutzkreis_gegen_chaos"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    },
+    "5": {
+     "name": "Person beherrschen",
+     "id": "person_beherrschen"
+    },
+    "6": {
+     "name": "Monster festhalten",
+     "id": "monster_festhalten"
+    },
+    "7": {
+     "name": "Diktum",
+     "id": "diktum"
+    },
+    "8": {
+     "name": "Magische Bande",
+     "id": "magische_bande"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur rechtschaffene Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Ordnung/Teufel": {
+   "name": "Teufel",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ordnung",
+   "spells": {
+    "1": {
+     "name": "Befehl",
+     "id": "befehl"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Rechtsch.)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Einflüsterung",
+     "id": "einfluesterung"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    },
+    "5": {
+     "name": "Chaotisches bannen",
+     "id": "chaotisches_bannen"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Teufel)",
+     "id": "bindender_ruf_nur_teufel"
+    },
+    "7": {
+     "name": "Diktum",
+     "id": "diktum"
+    },
+    "8": {
+     "name": "Schild der Ordnung",
+     "id": "schild_der_ordnung"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur rechtschaffene Kreaturen) .   Teufel (O)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Ordnung/Tyranei": {
+   "name": "Tyranei",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ordnung",
+   "spells": {
+    "1": {
+     "name": "Befehl",
+     "id": "befehl"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Rechtsch.)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Fluch",
+     "id": "fluch"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    },
+    "5": {
+     "name": "Chaotisches bannen",
+     "id": "chaotisches_bannen"
+    },
+    "6": {
+     "name": "Monster festhalten",
+     "id": "monster_festhalten"
+    },
+    "7": {
+     "name": "Symbol der Überredung",
+     "id": "symbol_der_ueberredung"
+    },
+    "8": {
+     "name": "Schild der Ordnung",
+     "id": "schild_der_ordnung"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur rechtschaffene Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Ordnung/Unvermeidbares": {
+   "name": "Unvermeidbares",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ordnung",
+   "spells": {
+    "1": {
+     "name": "Schutz vor Chaos",
+     "id": "schutz_vor_chaos"
+    },
+    "2": {
+     "name": "Waffengesinnung (nur Rechtsch.)",
+     "id": "waffengesinnung"
+    },
+    "3": {
+     "name": "Untote befehligen",
+     "id": "untote_befehligen"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    },
+    "5": {
+     "name": "Mächtiger Befehl",
+     "id": "maechtiger_befehl"
+    },
+    "6": {
+     "name": "Bindender Ruf (nur Unvermeidbare)",
+     "id": "bindender_ruf_nur_unvermeidbare"
+    },
+    "7": {
+     "name": "Diktum",
+     "id": "diktum"
+    },
+    "8": {
+     "name": "Schild der Ordnung",
+     "id": "schild_der_ordnung"
+    },
+    "9": {
+     "name": "Monster herbeizaubern IX (nur rechtschaffene Kreaturen)",
+     "id": "monster_herbeizaubern_ix"
+    }
+   }
+  },
+  "Pflanzen": {
+   "name": "Pflanzen",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Verstricken",
+     "id": "verstricken"
+    },
+    "2": {
+     "name": "Rindenhaut",
+     "id": "rindenhaut"
+    },
+    "3": {
+     "name": "Pflanzen wachstum",
+     "id": "pflanzenwachstum"
+    },
+    "4": {
+     "name": "Pflanzen befehligen",
+     "id": "pflanzen_befehligen"
+    },
+    "5": {
+     "name": "Dornenwand",
+     "id": "dornenwand"
+    },
+    "6": {
+     "name": "Holz zurücktreiben",
+     "id": "holz_zuruecktreiben"
+    },
+    "7": {
+     "name": "Pflanzen beleben",
+     "id": "pflanzen_beleben"
+    },
+    "8": {
+     "name": "Pflanzen kontrollieren",
+     "id": "pflanzen_kontrollieren"
+    },
+    "9": {
+     "name": "Modernder Schlurfer",
+     "id": "modernder_schlurfer"
+    }
+   }
+  },
+  "Pflanzen/Verwesung": {
+   "name": "Verwesung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Pflanzen",
+   "spells": {
+    "1": {
+     "name": "Verstricken",
+     "id": "verstricken"
+    },
+    "2": {
+     "name": "Rindenhaut",
+     "id": "rindenhaut"
+    },
+    "3": {
+     "name": "Ansteckung",
+     "id": "ansteckung"
+    },
+    "4": {
+     "name": "Vergiften",
+     "id": "vergiften"
+    },
+    "5": {
+     "name": "Dornenwand",
+     "id": "dornenwand"
+    },
+    "6": {
+     "name": "Leid",
+     "id": "leid"
+    },
+    "7": {
+     "name": "Pflanzen beleben",
+     "id": "pflanzen_beleben"
+    },
+    "8": {
+     "name": "Pflanzen kontrollieren",
+     "id": "pflanzen_kontrollieren"
+    },
+    "9": {
+     "name": "Modernder Schlurfer",
+     "id": "modernder_schlurfer"
+    }
+   }
+  },
+  "Pflanzen/Wachstum": {
+   "name": "Wachstum",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Pflanzen",
+   "spells": {
+    "1": {
+     "name": "Person vergrößern",
+     "id": "person_vergroessern"
+    },
+    "2": {
+     "name": "Rindenhaut",
+     "id": "rindenhaut"
+    },
+    "3": {
+     "name": "Pflanzenwachstum",
+     "id": "pflanzenwachstum"
+    },
+    "4": {
+     "name": "Pflanzen befehligen",
+     "id": "pflanzen_befehligen"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Holz zurücktreiben",
+     "id": "holz_zuruecktreiben"
+    },
+    "7": {
+     "name": "Pflanzen beleben",
+     "id": "pflanzen_beleben"
+    },
+    "8": {
+     "name": "Pflanzen kontrollieren",
+     "id": "pflanzen_kontrollieren"
+    },
+    "9": {
+     "name": "Modernder Schlurfer",
+     "id": "modernder_schlurfer"
+    }
+   }
+  },
+  "Reisen": {
+   "name": "Reisen",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Lange Schritte",
+     "id": "lange_schritte"
+    },
+    "2": {
+     "name": "Gegenstand aufspüren",
+     "id": "gegenstand_aufspueren"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Dimensionstür",
+     "id": "dimensionstuer"
+    },
+    "5": {
+     "name": "Teleportieren",
+     "id": "teleportieren"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Mächtiges Teleportieren",
+     "id": "maech_teleportieren"
+    },
+    "8": {
+     "name": "Äthertor",
+     "id": "aethertor"
+    },
+    "9": {
+     "name": "Astrale Projektion",
+     "id": "astrale_projektion"
+    }
+   }
+  },
+  "Reisen/Erforschung": {
+   "name": "Erforschung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Reisen",
+   "spells": {
+    "1": {
+     "name": "Rascher Rückzug",
+     "id": "rascher_rueckzug"
+    },
+    "2": {
+     "name": "Gegenstand aufspüren",
+     "id": "gegenstand_aufspueren"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Kreatur aufspüren",
+     "id": "kreatur_aufspueren"
+    },
+    "5": {
+     "name": "Teleportieren",
+     "id": "teleportieren"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Mächtiges Teleportieren",
+     "id": "maech_teleportieren"
+    },
+    "8": {
+     "name": "Äthertor",
+     "id": "aethertor"
+    },
+    "9": {
+     "name": "Weltenwoge",
+     "id": "weltenwoge"
+    }
+   }
+  },
+  "Reisen/Handel": {
+   "name": "Handel",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Reisen",
+   "spells": {
+    "1": {
+     "name": "Schwebende Scheibe",
+     "id": "schwebende_scheibe"
+    },
+    "2": {
+     "name": "Gegenstand aufspüren",
+     "id": "gegenstand_aufspueren"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Diemensionstür",
+     "id": "dimensionstuer"
+    },
+    "5": {
+     "name": "Überlandflug",
+     "id": "ueberlandflug"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Mächtiges Teleportieren",
+     "id": "maech_teleportieren"
+    },
+    "8": {
+     "name": "Äthertor",
+     "id": "aethertor"
+    },
+    "9": {
+     "name": "Tor",
+     "id": "tor"
+    }
+   }
+  },
+  "Ruhe": {
+   "name": "Ruhe",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Totenwache",
+     "id": "totenwache"
+    },
+    "2": {
+     "name": "Sanfte Ruhe",
+     "id": "sanfte_ruhe"
+    },
+    "3": {
+     "name": "Mit Toten sprechen",
+     "id": "mit_toten_sprechen"
+    },
+    "4": {
+     "name": "Todesschutz",
+     "id": "todesschutz"
+    },
+    "5": {
+     "name": "Schneller Tod",
+     "id": "schneller_tod"
+    },
+    "6": {
+     "name": "Tod den Untoten",
+     "id": "tod_den_untoten"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Wellen der Entkräftung",
+     "id": "wellen_der_entkraeftung"
+    },
+    "9": {
+     "name": "Wehgeschrei der Todesfee",
+     "id": "wehgeschrei_der_todesfee"
+    }
+   }
+  },
+  "Ruhe/Ahnen": {
+   "name": "Ahnen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ruhe",
+   "spells": {
+    "1": {
+     "name": "Totenwache",
+     "id": "totenwache"
+    },
+    "2": {
+     "name": "Sanfte Ruhe",
+     "id": "sanfte_ruhe"
+    },
+    "3": {
+     "name": "Mit Toten sprechen",
+     "id": "mit_toten_sprechen"
+    },
+    "4": {
+     "name": "Ewige Ruhe",
+     "id": "ewige_ruhe"
+    },
+    "5": {
+     "name": "Schneller Tod",
+     "id": "schneller_tod"
+    },
+    "6": {
+     "name": "Geas/Auftrag",
+     "id": "geas_auftrag"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Wellen der Entkräftung",
+     "id": "wellen_der_entkraeftung"
+    },
+    "9": {
+     "name": "Wehgeschrei der Todesfee",
+     "id": "wehgeschrei_der_todesfee"
+    }
+   }
+  },
+  "Ruhe/Seelen": {
+   "name": "Seelen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Ruhe",
+   "spells": {
+    "1": {
+     "name": "Totenwache",
+     "id": "totenwache"
+    },
+    "2": {
+     "name": "Sanfte Ruhe",
+     "id": "sanfte_ruhe"
+    },
+    "3": {
+     "name": "Tote beleben",
+     "id": "tote_beleben"
+    },
+    "4": {
+     "name": "Todesschutz",
+     "id": "todesschutz"
+    },
+    "5": {
+     "name": "Schneller Tod",
+     "id": "schneller_tod"
+    },
+    "6": {
+     "name": "Schutzhülle gegen Lebendes",
+     "id": "schutzhuelle_gegen_lebendes"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Wellen der Entkräftung",
+     "id": "wellen_der_entkraeftung"
+    },
+    "9": {
+     "name": "Seelenfalle",
+     "id": "seelenfalle"
+    }
+   }
+  },
+  "Runen": {
+   "name": "Runen",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Austilgen",
+     "id": "austilgen"
+    },
+    "2": {
+     "name": "Verborgene Seite",
+     "id": "verborgene_seite"
+    },
+    "3": {
+     "name": "Glyphe der Abwehr",
+     "id": "glyphe_der_abwehr"
+    },
+    "4": {
+     "name": "Explosive Runen",
+     "id": "explosive_runen"
+    },
+    "5": {
+     "name": "Schwächerer Bindender Ruf",
+     "id": "schw_bindender_ruf"
+    },
+    "6": {
+     "name": "Mächtige Glyphe der Abwehr",
+     "id": "maechtige_glyphe_der_abwehr"
+    },
+    "7": {
+     "name": "Sofortige Herbeizauberung",
+     "id": "sofortige_herbeizauberung"
+    },
+    "8": {
+     "name": "Symbol des Todes",
+     "id": "symbol_des_todes"
+    },
+    "9": {
+     "name": "Kreis der Teleportation",
+     "id": "kreis_der_teleportation"
+    }
+   }
+  },
+  "Runen/Sprachen": {
+   "name": "Sprachen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Runen",
+   "spells": {
+    "1": {
+     "name": "Austilgen",
+     "id": "austilgen"
+    },
+    "2": {
+     "name": "Verborgene Seite",
+     "id": "verborgene_seite"
+    },
+    "3": {
+     "name": "Glyphe der Abwehr",
+     "id": "glyphe_der_abwehr"
+    },
+    "4": {
+     "name": "Explosive Runen",
+     "id": "explosive_runen"
+    },
+    "5": {
+     "name": "Schwächerer Bindender Ruf",
+     "id": "schw_bindender_ruf"
+    },
+    "6": {
+     "name": "Mächtige Glyphe der Abwehr",
+     "id": "maechtige_glyphe_der_abwehr"
+    },
+    "7": {
+     "name": "Sofortige Herbeizauberung",
+     "id": "sofortige_herbeizauberung"
+    },
+    "8": {
+     "name": "Symbol des Todes",
+     "id": "symbol_des_todes"
+    },
+    "9": {
+     "name": "Kreis der Teleportation",
+     "id": "kreis_der_teleportation"
+    }
+   }
+  },
+  "Runen/Schutzzeichen": {
+   "name": "Schutzzeichen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Runen",
+   "spells": {
+    "1": {
+     "name": "Arkanes Schloss",
+     "id": "arkanes_schloss"
+    },
+    "2": {
+     "name": "Verborgene Seite",
+     "id": "verborgene_seite"
+    },
+    "3": {
+     "name": "Glyphe der Abwehr",
+     "id": "glyphe_der_abwehr"
+    },
+    "4": {
+     "name": "Dimensionsanker",
+     "id": "dimensionsanker"
+    },
+    "5": {
+     "name": "Schwächerer Bindender Ruf",
+     "id": "schw_bindender_ruf"
+    },
+    "6": {
+     "name": "Wächter und Hüter",
+     "id": "waechter_und_hueter"
+    },
+    "7": {
+     "name": "Sofortige Herbeizauberung",
+     "id": "sofortige_herbeizauberung"
+    },
+    "8": {
+     "name": "Symbol des Todes",
+     "id": "symbol_des_todes"
+    },
+    "9": {
+     "name": "Kreis der Teleportation",
+     "id": "kreis_der_teleportation"
+    }
+   }
+  },
+  "Schutz": {
+   "name": "Schutz",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Heiligtum",
+     "id": "heiligtum"
+    },
+    "2": {
+     "name": "Anderen schützen",
+     "id": "anderen_schuetzen"
+    },
+    "3": {
+     "name": "Schutz vor Energien",
+     "id": "schutz_vor_energien"
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    },
+    "5": {
+     "name": "Zauberresistenz",
+     "id": "zauberresistenz"
+    },
+    "6": {
+     "name": "Antimagisches Feld",
+     "id": "antimagisches_feld"
+    },
+    "7": {
+     "name": "Abstoßung",
+     "id": "abstossung"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Schutz/Reinheit": {
+   "name": "Reinheit",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Schutz",
+   "spells": {
+    "1": {
+     "name": "Schutz vor BösemChaosGutemOrdnung",
+     "id": null
+    },
+    "2": {
+     "name": "Anderen schützen",
+     "id": "anderen_schuetzen"
+    },
+    "3": {
+     "name": "Blind-oder Taubheit heilen",
+     "id": "blind_oder_taubheit_heilen"
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    },
+    "5": {
+     "name": "Buße",
+     "id": "busse"
+    },
+    "6": {
+     "name": "Antimagisches Feld",
+     "id": "antimagisches_feld"
+    },
+    "7": {
+     "name": "Abstoßung",
+     "id": "abstossung"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Schutz/Verteidigung": {
+   "name": "Verteidigung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Schutz",
+   "spells": {
+    "1": {
+     "name": "Schild",
+     "id": "schild"
+    },
+    "2": {
+     "name": "Rindenhaut",
+     "id": "rindenhaut"
+    },
+    "3": {
+     "name": "Schutz vor Energien",
+     "id": "schutz_vor_energien"
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    },
+    "5": {
+     "name": "Zauberresistenz",
+     "id": "zauberresistenz"
+    },
+    "6": {
+     "name": "Antimagisches Feld",
+     "id": "antimagisches_feld"
+    },
+    "7": {
+     "name": "Angriff zurückwerfen",
+     "id": "angriff_zurueckwerfen"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Sonne": {
+   "name": "Sonne",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Elementen trotzen",
+     "id": "elementen_trotzen"
+    },
+    "2": {
+     "name": "Metall erhitzen",
+     "id": "metall_erhitzen"
+    },
+    "3": {
+     "name": "Gleißendes Licht",
+     "id": "gleissendes_licht"
+    },
+    "4": {
+     "name": "Feuerschild",
+     "id": "feuerschild"
+    },
+    "5": {
+     "name": "Flammenschlag",
+     "id": "flammenschlag"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Sonnenstrahl",
+     "id": "sonnenstrahl"
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Sonne/Licht": {
+   "name": "Licht",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Sonne",
+   "spells": {
+    "1": {
+     "name": "Feenfeuer",
+     "id": "feenfeuer"
+    },
+    "2": {
+     "name": "Metall erhitzen",
+     "id": "metall_erhitzen"
+    },
+    "3": {
+     "name": "Tageslicht",
+     "id": "tageslicht"
+    },
+    "4": {
+     "name": "Feuerschild",
+     "id": "feuerschild"
+    },
+    "5": {
+     "name": "Flammenschlag",
+     "id": "flammenschlag"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Sonnenstrahl",
+     "id": "sonnenstrahl"
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Sonne/Tag": {
+   "name": "Tag",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Sonne",
+   "spells": {
+    "1": {
+     "name": "Elementen trotzen",
+     "id": "elementen_trotzen"
+    },
+    "2": {
+     "name": "Dauerhafte Flamme",
+     "id": "dauerhafte_flamme"
+    },
+    "3": {
+     "name": "Tageslicht",
+     "id": "tageslicht"
+    },
+    "4": {
+     "name": "Feuerschild",
+     "id": "feuerschild"
+    },
+    "5": {
+     "name": "Flammenschlag",
+     "id": "flammenschlag"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Sonnenstrahl",
+     "id": "sonnenstrahl"
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Regenbogensphäre",
+     "id": "regenbogensphaere"
+    }
+   }
+  },
+  "Stärke": {
+   "name": "Stärke",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Person vergrößern",
+     "id": "person_vergroessern"
+    },
+    "2": {
+     "name": "Bärenstärke",
+     "id": "baerenstaerke"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Steinhaut",
+     "id": "steinhaut"
+    },
+    "7": {
+     "name": "Zugreifende Hand",
+     "id": "zugreifende_hand"
+    },
+    "8": {
+     "name": "Geballte Faust",
+     "id": "geballte_faust"
+    },
+    "9": {
+     "name": "Zerdrückende Hand",
+     "id": "zerdrueckende_hand"
+    }
+   }
+  },
+  "Stärke/Entschlossenheit": {
+   "name": "Entschlossenheit",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Stärke",
+   "spells": {
+    "1": {
+     "name": "Segen",
+     "id": "segnen"
+    },
+    "2": {
+     "name": "Bärenstärke",
+     "id": "baerenstaerke"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Heldenmahl",
+     "id": "heldenmahl"
+    },
+    "7": {
+     "name": "Zugreifende Hand",
+     "id": "zugreifende_hand"
+    },
+    "8": {
+     "name": "Geballte Faust",
+     "id": "geballte_faust"
+    },
+    "9": {
+     "name": "Zerdrückende Hand",
+     "id": "zerdrueckende_hand"
+    }
+   }
+  },
+  "Stärke/Wildheit": {
+   "name": "Wildheit",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Stärke",
+   "spells": {
+    "1": {
+     "name": "Person vergrößern",
+     "id": "person_vergroessern"
+    },
+    "2": {
+     "name": "Bärenstärke",
+     "id": "baerenstaerke"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Massen-Bärenstärke",
+     "id": "massen_baerenstaerke"
+    },
+    "7": {
+     "name": "Zugreifende Hand",
+     "id": "zugreifende_hand"
+    },
+    "8": {
+     "name": "Geballte Faust",
+     "id": "geballte_faust"
+    },
+    "9": {
+     "name": "Zerdrückende Hand",
+     "id": "zerdrueckende_hand"
+    }
+   }
+  },
+  "Tiere": {
+   "name": "Tiere",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Tiere beruhigen",
+     "id": "tiere_beruhigen"
+    },
+    "2": {
+     "name": "Tier festhalten",
+     "id": "tier_festhalten"
+    },
+    "3": {
+     "name": "Tier beherrschen",
+     "id": "tiere_beherrschen"
+    },
+    "4": {
+     "name": "Verbündeten der Natur herbeizaubern IV (nur Tiere)",
+     "id": "verb_d_natur_herbeizaubern_iv_nur_tiere"
+    },
+    "5": {
+     "name": "Bestiengestalt III",
+     "id": "bestiengestalt_iii"
+    },
+    "6": {
+     "name": "Schutzhülle gegen Lebendes",
+     "id": "schutzhuelle_gegen_lebendes"
+    },
+    "7": {
+     "name": "Tierform",
+     "id": "tierform"
+    },
+    "8": {
+     "name": "Verbündeten der Natur herbeizaubern VIII (nur Tiere)",
+     "id": "verb_d_natur_herbeizaubern_viii_nur_tiere"
+    },
+    "9": {
+     "name": "Gestaltwandel",
+     "id": "gestaltwandel"
+    }
+   }
+  },
+  "Tiere/Federn": {
+   "name": "Federn",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Tiere",
+   "spells": {
+    "1": {
+     "name": "Tiere beruhigen",
+     "id": "tiere_beruhigen"
+    },
+    "2": {
+     "name": "Federfall",
+     "id": "federfall"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Verbündeten der Natur herbeizaubern IV (nur Tiere)",
+     "id": "verb_d_natur_herbeizaubern_iv_nur_tiere"
+    },
+    "5": {
+     "name": "Bestiengestalt III",
+     "id": "bestiengestalt_iii"
+    },
+    "6": {
+     "name": "Massen-Fliegen",
+     "id": "massen_fliegen"
+    },
+    "7": {
+     "name": "Tierform",
+     "id": "tierform"
+    },
+    "8": {
+     "name": "Verbündeten der Natur herbeizaubern VIII (nur Tiere)",
+     "id": "verb_d_natur_herbeizaubern_viii_nur_tiere"
+    },
+    "9": {
+     "name": "Gestaltwandel",
+     "id": "gestaltwandel"
+    }
+   }
+  },
+  "Tiere/Felle": {
+   "name": "Felle",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Tiere",
+   "spells": {
+    "1": {
+     "name": "Magische Fänge",
+     "id": "magische_faenge"
+    },
+    "2": {
+     "name": "Tier festhalten",
+     "id": "tier_festhalten"
+    },
+    "3": {
+     "name": "Bestiengestalt I (nur Tiere)",
+     "id": "bestiengestalt_i_nur_tiere"
+    },
+    "4": {
+     "name": "Verbündeten der Natur herbeizaubern IV (nur Tiere)",
+     "id": "verb_d_natur_herbeizaubern_iv_nur_tiere"
+    },
+    "5": {
+     "name": "Bestiengestalt III",
+     "id": "bestiengestalt_iii"
+    },
+    "6": {
+     "name": "Schutzhülle gegen Lebendes",
+     "id": "schutzhuelle_gegen_lebendes"
+    },
+    "7": {
+     "name": "Tierform",
+     "id": "tierform"
+    },
+    "8": {
+     "name": "Verbündeten der Natur herbeizaubern VIII (nur Tiere)",
+     "id": "verb_d_natur_herbeizaubern_viii_nur_tiere"
+    },
+    "9": {
+     "name": "Gestaltwandel",
+     "id": "gestaltwandel"
+    }
+   }
+  },
+  "Tod": {
+   "name": "Tod",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Furcht auslösen",
+     "id": "furcht_ausloesen"
+    },
+    "2": {
+     "name": "Totenglocke",
+     "id": "totenglocke"
+    },
+    "3": {
+     "name": "Tote beleben",
+     "id": "tote_beleben"
+    },
+    "4": {
+     "name": "Todesschutz",
+     "id": "todesschutz"
+    },
+    "5": {
+     "name": "Schneller Tod",
+     "id": "schneller_tod"
+    },
+    "6": {
+     "name": "Untote erschaffen",
+     "id": "untote_erschaffen"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Mächtigere Untote erschaffen",
+     "id": "maechtigere_untote_erschaffen"
+    },
+    "9": {
+     "name": "Wehgeschrei der Todesfee",
+     "id": "wehgeschrei_der_todesfee"
+    }
+   }
+  },
+  "Tod/Mord": {
+   "name": "Mord",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Tod",
+   "spells": {
+    "1": {
+     "name": "Furcht verursachen",
+     "id": "furcht_ausloesen"
+    },
+    "2": {
+     "name": "Totenglocke",
+     "id": "totenglocke"
+    },
+    "3": {
+     "name": "Schärfen",
+     "id": "schaerfen"
+    },
+    "4": {
+     "name": "Todesschutz",
+     "id": "todesschutz"
+    },
+    "5": {
+     "name": "Ersticken",
+     "id": "ersticken"
+    },
+    "6": {
+     "name": "Untote erschaffen",
+     "id": "untote_erschaffen"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Mächtigere Untote erschaffen",
+     "id": "maechtigere_untote_erschaffen"
+    },
+    "9": {
+     "name": "Massen-Ersticken",
+     "id": "massen_ersticken"
+    }
+   }
+  },
+  "Tod/Untod": {
+   "name": "Untod",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Tod",
+   "spells": {
+    "1": {
+     "name": "Furcht verursachen",
+     "id": "furcht_ausloesen"
+    },
+    "2": {
+     "name": "Ghulgriff",
+     "id": null
+    },
+    "3": {
+     "name": "Tote beleben",
+     "id": "tote_beleben"
+    },
+    "4": {
+     "name": "Entkräftung",
+     "id": "entkraeftung"
+    },
+    "5": {
+     "name": "Schneller Tod",
+     "id": "schneller_tod"
+    },
+    "6": {
+     "name": "Untote erschaffen",
+     "id": "untote_erschaffen"
+    },
+    "7": {
+     "name": "Zerstörung",
+     "id": "zerstoerung"
+    },
+    "8": {
+     "name": "Mächtigere Untote erschaffen",
+     "id": "maechtigere_untote_erschaffen"
+    },
+    "9": {
+     "name": "Entzug von Lebenskraft",
+     "id": "entzug_von_lebenskraft"
+    }
+   }
+  },
+  "Tricks": {
+   "name": "Tricks",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Selbstverkleidung",
+     "id": "selbstverkleidung"
+    },
+    "2": {
+     "name": "Unsichtbarkeit",
+     "id": "unsichtbarkeit"
+    },
+    "3": {
+     "name": "Unauffindbarkeit",
+     "id": "unauffindbarkeit"
+    },
+    "4": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "5": {
+     "name": "Falsche Erkenntnis",
+     "id": "falsche_erkenntnis"
+    },
+    "6": {
+     "name": "Ablenkung",
+     "id": "ablenkung"
+    },
+    "7": {
+     "name": "Abschirmung",
+     "id": "abschirmung"
+    },
+    "8": {
+     "name": "Massenunsichtbarkeit",
+     "id": "massenunsichtbarkeit"
+    },
+    "9": {
+     "name": "Zeitstopp",
+     "id": "zeitstopp"
+    }
+   }
+  },
+  "Tricks/Diebstahl": {
+   "name": "Diebstahl",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Tricks",
+   "spells": {
+    "1": {
+     "name": "Selbstverkleidung",
+     "id": "selbstverkleidung"
+    },
+    "2": {
+     "name": "Unsichtbarkeit",
+     "id": "unsichtbarkeit"
+    },
+    "3": {
+     "name": "Gegenstand aufspüren",
+     "id": "gegenstand_aufspueren"
+    },
+    "4": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "5": {
+     "name": "Falsche Erkenntnis",
+     "id": "falsche_erkenntnis"
+    },
+    "6": {
+     "name": "Ablenkung",
+     "id": "ablenkung"
+    },
+    "7": {
+     "name": "Ätherischer Ausflug",
+     "id": "aetherischer_ausflug"
+    },
+    "8": {
+     "name": "Massenunsichtbarkeit",
+     "id": "massenunsichtbarkeit"
+    },
+    "9": {
+     "name": "Zeitstopp",
+     "id": "zeitstopp"
+    }
+   }
+  },
+  "Tricks/Täuschung": {
+   "name": "Täuschung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Tricks",
+   "spells": {
+    "1": {
+     "name": "Selbstverkleidung",
+     "id": "selbstverkleidung"
+    },
+    "2": {
+     "name": "Spiegelbilder",
+     "id": "spiegelbilder"
+    },
+    "3": {
+     "name": "Unauffindbarkeit",
+     "id": "unauffindbarkeit"
+    },
+    "4": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "5": {
+     "name": "Falsche Erkenntnis",
+     "id": "falsche_erkenntnis"
+    },
+    "6": {
+     "name": "Ablenkung",
+     "id": "ablenkung"
+    },
+    "7": {
+     "name": "Projiziertes Ebenbild",
+     "id": "projiziertes_ebenbild"
+    },
+    "8": {
+     "name": "Massenunsichtbarkeit",
+     "id": "massenunsichtbarkeit"
+    },
+    "9": {
+     "name": "Zeitstopp",
+     "id": "zeitstopp"
+    }
+   }
+  },
+  "Verzauberung": {
+   "name": "Verzauberung",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Person bezaubern",
+     "id": "person_bezaubern"
+    },
+    "2": {
+     "name": "Gefühle besänftigen",
+     "id": "gefuehle_besaenftigen"
+    },
+    "3": {
+     "name": "Einflüsterung",
+     "id": "einfluesterung"
+    },
+    "4": {
+     "name": "Heldenmut",
+     "id": "heldenmut"
+    },
+    "5": {
+     "name": "Monster bezaubern",
+     "id": "monster_bezaubern"
+    },
+    "6": {
+     "name": "Geas/ Auftrag",
+     "id": "geas_auftrag"
+    },
+    "7": {
+     "name": "Wahnsinn",
+     "id": "wahnsinn"
+    },
+    "8": {
+     "name": "Aufforderung",
+     "id": "aufforderung"
+    },
+    "9": {
+     "name": "Monster beherrschen",
+     "id": "monster_beherrschen"
+    }
+   }
+  },
+  "Verzauberung/Liebe": {
+   "name": "Liebe",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Verzauberung",
+   "spells": {
+    "1": {
+     "name": "Person bezaubern",
+     "id": "person_bezaubern"
+    },
+    "2": {
+     "name": "Fesseln",
+     "id": "fesseln"
+    },
+    "3": {
+     "name": "Einflüsterung",
+     "id": "einfluesterung"
+    },
+    "4": {
+     "name": "Heldenmut",
+     "id": "heldenmut"
+    },
+    "5": {
+     "name": "Monster bezaubern",
+     "id": "monster_bezaubern"
+    },
+    "6": {
+     "name": "Geas/Auftrag",
+     "id": "geas_auftrag"
+    },
+    "7": {
+     "name": "Wahnsinn",
+     "id": "wahnsinn"
+    },
+    "8": {
+     "name": "Fröhliche Gelassenheit",
+     "id": "froehliche_gelassenheit"
+    },
+    "9": {
+     "name": "Monster beherrschen",
+     "id": "monster_beherrschen"
+    }
+   }
+  },
+  "Verzauberung/Lust": {
+   "name": "Lust",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Verzauberung",
+   "spells": {
+    "1": {
+     "name": "Person bezaubern",
+     "id": "person_bezaubern"
+    },
+    "2": {
+     "name": "Hauch des Stumpfsinn",
+     "id": null
+    },
+    "3": {
+     "name": "Einflüsterung",
+     "id": "einfluesterung"
+    },
+    "4": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "5": {
+     "name": "Monster bezaubern",
+     "id": "monster_bezaubern"
+    },
+    "6": {
+     "name": "Geas/Auftrag",
+     "id": "geas_auftrag"
+    },
+    "7": {
+     "name": "Wahnsinn",
+     "id": "wahnsinn"
+    },
+    "8": {
+     "name": "Aufforderung",
+     "id": "aufforderung"
+    },
+    "9": {
+     "name": "Monster beherrschen",
+     "id": "monster_beherrschen"
+    }
+   }
+  },
+  "Wahnsinn": {
+   "name": "Wahnsinn",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schwächere Verwirrung",
+     "id": "schwaechere_verwirrung"
+    },
+    "2": {
+     "name": "Hauch des Stumpfsinns",
+     "id": "hauch_des_stumpfsinns"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "5": {
+     "name": "Albtraum",
+     "id": "albtraum"
+    },
+    "6": {
+     "name": "Tödliches Phantom",
+     "id": "toedliches_phantom"
+    },
+    "7": {
+     "name": "Wahnsinn",
+     "id": "wahnsinn"
+    },
+    "8": {
+     "name": "Schillerndes Muster",
+     "id": "schillerndes_muster"
+    },
+    "9": {
+     "name": "Unheimliches Schicksal",
+     "id": "unheimliches_schicksal"
+    }
+   }
+  },
+  "Wahnsinn/Albträume": {
+   "name": "Albträume",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wahnsinn",
+   "spells": {
+    "1": {
+     "name": "Schwächere Verwirrung",
+     "id": "schwaechere_verwirrung"
+    },
+    "2": {
+     "name": "Hauch des Stumpfsinns",
+     "id": "hauch_des_stumpfsinns"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Tödliches Phantom",
+     "id": "toedliches_phantom"
+    },
+    "5": {
+     "name": "Albtraum",
+     "id": "albtraum"
+    },
+    "6": {
+     "name": "Traumumhang",
+     "id": "traumumhang"
+    },
+    "7": {
+     "name": "Wahnsinn",
+     "id": "wahnsinn"
+    },
+    "8": {
+     "name": "Schillerndes Muster",
+     "id": "schillerndes_muster"
+    },
+    "9": {
+     "name": "Unheimliches Schicksal",
+     "id": "unheimliches_schicksal"
+    }
+   }
+  },
+  "Wahnsinn/Irrsinn": {
+   "name": "Irrsinn",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wahnsinn",
+   "spells": {
+    "1": {
+     "name": "Schwächere Verwirrung",
+     "id": "schwaechere_verwirrung"
+    },
+    "2": {
+     "name": "Hauch des Stumpfsinns",
+     "id": "hauch_des_stumpfsinns"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Mondsucht",
+     "id": "mondsucht"
+    },
+    "5": {
+     "name": "Albtraum",
+     "id": "albtraum"
+    },
+    "6": {
+     "name": "Phantomnetz",
+     "id": "phantomnetz"
+    },
+    "7": {
+     "name": "Wahnsinn",
+     "id": "wahnsinn"
+    },
+    "8": {
+     "name": "Schillerndes Muster",
+     "id": "schillerndes_muster"
+    },
+    "9": {
+     "name": "Unheimliches Schicksal",
+     "id": "unheimliches_schicksal"
+    }
+   }
+  },
+  "Wasser": {
+   "name": "Wasser",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Nebelwolke",
+     "id": "nebelwolke"
+    },
+    "3": {
+     "name": "Wasser atmen",
+     "id": "wasser_atmen"
+    },
+    "4": {
+     "name": "Wasser kontrollieren",
+     "id": "wasser_kontrollieren"
+    },
+    "5": {
+     "name": "Eissturm",
+     "id": "eissturm"
+    },
+    "6": {
+     "name": "Kältekegel",
+     "id": "kaeltekegel"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Wasser)",
+     "id": "elementargestalt_iv_nur_wasser"
+    },
+    "8": {
+     "name": "Verdorren",
+     "id": "verdorren"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Wasser)",
+     "id": "elementarhorde_nur_wasser"
+    }
+   }
+  },
+  "Wasser/Eis": {
+   "name": "Eis",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wasser",
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Nebelwolke",
+     "id": "nebelwolke"
+    },
+    "3": {
+     "name": "Wasser atmen",
+     "id": "wasser_atmen"
+    },
+    "4": {
+     "name": "Wasser kontrollieren",
+     "id": "wasser_kontrollieren"
+    },
+    "5": {
+     "name": "Eissturm",
+     "id": "eissturm"
+    },
+    "6": {
+     "name": "Kältekegel",
+     "id": "kaeltekegel"
+    },
+    "7": {
+     "name": "Frostsphäre",
+     "id": "frostsphaere"
+    },
+    "8": {
+     "name": "Verdorren",
+     "id": "verdorren"
+    },
+    "9": {
+     "name": "Polarstrahl",
+     "id": "polarstrahl"
+    }
+   }
+  },
+  "Wasser/Meere": {
+   "name": "Meere",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wasser",
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Wellenritt",
+     "id": "wellenritt"
+    },
+    "3": {
+     "name": "Auf Wasser gehen",
+     "id": "auf_wasser_gehen"
+    },
+    "4": {
+     "name": "Wasser kontrollieren",
+     "id": "wasser_kontrollieren"
+    },
+    "5": {
+     "name": "Eissturm",
+     "id": "eissturm"
+    },
+    "6": {
+     "name": "Kältekegel",
+     "id": "kaeltekegel"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Wasser)",
+     "id": "elementargestalt_iv_nur_wasser"
+    },
+    "8": {
+     "name": "Verdorren",
+     "id": "verdorren"
+    },
+    "9": {
+     "name": "Tsunami",
+     "id": "tsunami"
+    }
+   }
+  },
+  "Wasser/Treibgut": {
+   "name": "Treibgut",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wasser",
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Reparieren",
+     "id": "reparieren"
+    },
+    "3": {
+     "name": "Wasser atmen",
+     "id": "wasser_atmen"
+    },
+    "4": {
+     "name": "Wasser kontrollieren",
+     "id": "wasser_kontrollieren"
+    },
+    "5": {
+     "name": "Höhere Erschaﬀung",
+     "id": "hoehere_erschaffung"
+    },
+    "6": {
+     "name": "Gegenstand beleben",
+     "id": "gegenstaende_beleben"
+    },
+    "7": {
+     "name": "Elementargestalt IV (nur Wasser)",
+     "id": "elementargestalt_iv_nur_wasser"
+    },
+    "8": {
+     "name": "Verdorren",
+     "id": "verdorren"
+    },
+    "9": {
+     "name": "Elementarhorde (nur Wasser)",
+     "id": "elementarhorde_nur_wasser"
+    }
+   }
+  },
+  "Wetter": {
+   "name": "Wetter",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Nebelwolke",
+     "id": "nebelwolke"
+    },
+    "3": {
+     "name": "Blitze herbeirufen",
+     "id": "blitze_herbeirufen"
+    },
+    "4": {
+     "name": "Schneesturm",
+     "id": "schneesturm"
+    },
+    "5": {
+     "name": "Eissturm",
+     "id": "eissturm"
+    },
+    "6": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "7": {
+     "name": "Wetterkontrolle",
+     "id": "wetterkontrolle"
+    },
+    "8": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Wetter/Jahreszeiten": {
+   "name": "Jahreszeiten",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wetter",
+   "spells": {
+    "1": {
+     "name": "Gute Beeren",
+     "id": "gute_beeren"
+    },
+    "2": {
+     "name": "Nebelwolke",
+     "id": "nebelwolke"
+    },
+    "3": {
+     "name": "Blitze herbeirufen",
+     "id": "blitze_herbeirufen"
+    },
+    "4": {
+     "name": "Dürre",
+     "id": "duerre"
+    },
+    "5": {
+     "name": "Eissturm",
+     "id": "eissturm"
+    },
+    "6": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "7": {
+     "name": "Wetterkontrolle",
+     "id": "wetterkontrolle"
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Wetter/Stürme": {
+   "name": "Stürme",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wetter",
+   "spells": {
+    "1": {
+     "name": "Verhüllender Nebel",
+     "id": "verhuellender_nebel"
+    },
+    "2": {
+     "name": "Nebelwolke",
+     "id": "nebelwolke"
+    },
+    "3": {
+     "name": "Blitze herbeirufen",
+     "id": "blitze_herbeirufen"
+    },
+    "4": {
+     "name": "Schneesturm",
+     "id": "schneesturm"
+    },
+    "5": {
+     "name": "Gewittersturm herbeirufen",
+     "id": "gewittersturm_herbeirufen"
+    },
+    "6": {
+     "name": "Scirocco",
+     "id": "scirocco"
+    },
+    "7": {
+     "name": "Wetterkontrolle",
+     "id": "wetterkontrolle"
+    },
+    "8": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Wissen": {
+   "name": "Wissen",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Sprachen verstehen",
+     "id": "sprachen_verstehen"
+    },
+    "2": {
+     "name": "Gedanken wahrnehmen",
+     "id": "gedanken_wahrnehmen"
+    },
+    "3": {
+     "name": "Mit Toten sprechen",
+     "id": "mit_toten_sprechen"
+    },
+    "4": {
+     "name": "Weissagung",
+     "id": "weissagung"
+    },
+    "5": {
+     "name": "Wahrer Blick",
+     "id": "wahrer_blick"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Sagenkunde",
+     "id": "sagenkunde"
+    },
+    "8": {
+     "name": "Aufspüren",
+     "id": "aufspueren"
+    },
+    "9": {
+     "name": "Sechster Sinn",
+     "id": "sechster_sinn"
+    }
+   }
+  },
+  "Wissen/Erinnerungen": {
+   "name": "Erinnerungen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wissen",
+   "spells": {
+    "1": {
+     "name": "Sprachen verstehen",
+     "id": "sprachen_verstehen"
+    },
+    "2": {
+     "name": "Gedächtnislücke",
+     "id": "gedaechtnisluecke"
+    },
+    "3": {
+     "name": "Mit Toten sprechen",
+     "id": "mit_toten_sprechen"
+    },
+    "4": {
+     "name": "Weissagung",
+     "id": "weissagung"
+    },
+    "5": {
+     "name": "Wahrer Blick",
+     "id": "wahrer_blick"
+    },
+    "6": {
+     "name": "Erinnerung verändern",
+     "id": "erinnerung_veraendern"
+    },
+    "7": {
+     "name": "Sagenkunde",
+     "id": "sagenkunde"
+    },
+    "8": {
+     "name": "Moment der Eingebung",
+     "id": "moment_der_eingebung"
+    },
+    "9": {
+     "name": "Sechster Sinn",
+     "id": "sechster_sinn"
+    }
+   }
+  },
+  "Wissen/Gedanken": {
+   "name": "Gedanken",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Wissen",
+   "spells": {
+    "1": {
+     "name": "Sprachen verstehen",
+     "id": "sprachen_verstehen"
+    },
+    "2": {
+     "name": "Gedanken wahrnehmen",
+     "id": "gedanken_wahrnehmen"
+    },
+    "3": {
+     "name": "Gedanken suchen",
+     "id": "gedanken_suchen"
+    },
+    "4": {
+     "name": "Weissagung",
+     "id": "weissagung"
+    },
+    "5": {
+     "name": "Telepathisches Band",
+     "id": "telepathisches_band"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Sagenkunde",
+     "id": "sagenkunde"
+    },
+    "8": {
+     "name": "Gedankenleere",
+     "id": "gedankenleere"
+    },
+    "9": {
+     "name": "Sechster Sinn",
+     "id": "sechster_sinn"
+    }
+   }
+  },
+  "Zerstörung": {
+   "name": "Zerstörung",
+   "group": "domaene",
+   "source": "GRW",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Zerbersten",
+     "id": "zerbersten"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Kritische Wunden verursachen",
+     "id": "kritische_wunden_verursachen"
+    },
+    "5": {
+     "name": "Brüllen",
+     "id": "bruellen"
+    },
+    "6": {
+     "name": "Leid",
+     "id": "leid"
+    },
+    "7": {
+     "name": "Auflösung",
+     "id": "aufloesung"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Implosion",
+     "id": "implosion"
+    }
+   }
+  },
+  "Zerstörung/Folter": {
+   "name": "Folter",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Zerstörung",
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Brennende Schmerzen",
+     "id": "brennende_schmerzen"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Kritische Wunden verursachen",
+     "id": "kritische_wunden_verursachen"
+    },
+    "5": {
+     "name": "Symbol der Schmerzen",
+     "id": null
+    },
+    "6": {
+     "name": "Leid",
+     "id": "leid"
+    },
+    "7": {
+     "name": "Auflösung",
+     "id": "aufloesung"
+    },
+    "8": {
+     "name": "Auﬀorderung",
+     "id": "aufforderung"
+    },
+    "9": {
+     "name": "Implosion",
+     "id": "implosion"
+    }
+   }
+  },
+  "Zerstörung/Katastrophen": {
+   "name": "Katastrophen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Zerstörung",
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Windstoß",
+     "id": "windstoss"
+    },
+    "3": {
+     "name": "Blitze herbeirufen",
+     "id": "blitze_herbeirufen"
+    },
+    "4": {
+     "name": "Kritische Wunden verursachen",
+     "id": "kritische_wunden_verursachen"
+    },
+    "5": {
+     "name": "Brüllen",
+     "id": "bruellen"
+    },
+    "6": {
+     "name": "Leid",
+     "id": "leid"
+    },
+    "7": {
+     "name": "Wetterkontrolle",
+     "id": "wetterkontrolle"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Implosion",
+     "id": "implosion"
+    }
+   }
+  },
+  "Zerstörung/Wut": {
+   "name": "Wut",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": "Zerstörung",
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Bärenstärke",
+     "id": "baerenstaerke"
+    },
+    "3": {
+     "name": "Wut",
+     "id": "wut"
+    },
+    "4": {
+     "name": "Kritische Wunden verursachen",
+     "id": "kritische_wunden_verursachen"
+    },
+    "5": {
+     "name": "Brüllen",
+     "id": "bruellen"
+    },
+    "6": {
+     "name": "Mondsucht",
+     "id": "mondsucht"
+    },
+    "7": {
+     "name": "Auflösung",
+     "id": "aufloesung"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Implosion",
+     "id": "implosion"
+    }
+   }
+  },
+  "Erschaffung": {
+   "name": "Erschaffung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Wasser erschaffen",
+     "id": "wasser_erschaffen"
+    },
+    "2": {
+     "name": "Einfaches Trugbild",
+     "id": "einfaches_trugbild"
+    },
+    "3": {
+     "name": "Nahrung und Wasser erschaffen",
+     "id": "nahrung_und_wasser_erschaffen"
+    },
+    "4": {
+     "name": "Niedere Erschaffung",
+     "id": "niedere_erschaffung"
+    },
+    "5": {
+     "name": "Höhere Erschaffung",
+     "id": "hoehere_erschaffung"
+    },
+    "6": {
+     "name": "Heldenmahl",
+     "id": "heldenmahl"
+    },
+    "7": {
+     "name": "Dauerhaftes Trugbild",
+     "id": "dauerhaftes_trugbild"
+    },
+    "8": {
+     "name": "Wahre Erschaffung",
+     "id": "wahre_erschaffung"
+    },
+    "9": {
+     "name": "Genesis",
+     "id": "genesis"
+    }
+   }
+  },
+  "Elementar Holz": {
+   "name": "Elementar Holz",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "2": {
+     "name": "Verstricken",
+     "id": "verstricken"
+    },
+    "3": {
+     "name": "Baumgestalt",
+     "id": null
+    },
+    "4": {
+     "name": "Pflanzenwachstum",
+     "id": "pflanzenwachstum"
+    },
+    "5": {
+     "name": "Pflanzen befehligen",
+     "id": "pflanzen_befehligen"
+    },
+    "6": {
+     "name": "Pflanzentor",
+     "id": "pflanzentor"
+    },
+    "7": {
+     "name": "Wächtereiche",
+     "id": "waechtereiche"
+    },
+    "8": {
+     "name": "Metall in Holz verwandeln",
+     "id": "metall_in_holz_verwandeln"
+    },
+    "9": {
+     "name": "Pflanzen kontrollieren",
+     "id": "pflanzen_kontrollieren"
+    }
+   }
+  },
+  "Elemantar Metall": {
+   "name": "Elemantar Metall",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "3": {
+     "name": "Metall abkühlen, Metall erhitzen",
+     "id": null
+    },
+    "5": {
+     "name": "Rostgriff",
+     "id": "rostgriff"
+    },
+    "9": {
+     "name": "Metall oder Stein zurücktreiben",
+     "id": "metall_oder_stein_zuruecktreiben"
+    }
+   }
+  },
+  "Adler": {
+   "name": "Adler",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Aspekt des Adlers",
+     "id": "aspekt_des_adlers"
+    },
+    "2": {
+     "name": "Pracht des Adlers",
+     "id": "pracht_des_adlers"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Windstrom",
+     "id": "windstrom"
+    },
+    "5": {
+     "name": "Überlandflug",
+     "id": "ueberlandflug"
+    },
+    "6": {
+     "name": "Flug der Riesenadler",
+     "id": "flug_der_riesenadler"
+    },
+    "7": {
+     "name": "Tiergestalt (nur Vögel)",
+     "id": null
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Winde der Vergeltung",
+     "id": "winde_der_vergeltung"
+    }
+   }
+  },
+  "Affen": {
+   "name": "Affen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Verführerisches Geschenk",
+     "id": "verfuehrerisches_geschenk"
+    },
+    "2": {
+     "name": "Spinnenklettern",
+     "id": "spinnenklettern"
+    },
+    "3": {
+     "name": "Kakophonie",
+     "id": "kakophonie"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Verbündeten der Natur herbeizaubern V (nur Schreckensaffe oder Girallon)",
+     "id": "verb_d_natur_herbeizaubern_v"
+    },
+    "6": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "7": {
+     "name": "Tiergestalt (nur Affen)",
+     "id": null
+    },
+    "8": {
+     "name": "Geballte Faust",
+     "id": "geballte_faust"
+    },
+    "9": {
+     "name": "Sechster Sinn",
+     "id": "sechster_sinn"
+    }
+   }
+  },
+  "Aquatische": {
+   "name": "Aquatische",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Wasserstrahl",
+     "id": "wasserstrahl"
+    },
+    "2": {
+     "name": "Wellenritt",
+     "id": "wellenritt"
+    },
+    "3": {
+     "name": "Wasser atmen",
+     "id": "wasser_atmen"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    },
+    "5": {
+     "name": "Schwarze Tentakel",
+     "id": "schwarze_tentakel"
+    },
+    "6": {
+     "name": "Frostsphäre",
+     "id": "frostsphaere"
+    },
+    "7": {
+     "name": "Tierform (nur aquatische Kreaturen)",
+     "id": "tierform"
+    },
+    "8": {
+     "name": "Mantel der See",
+     "id": "mantel_der_see"
+    },
+    "9": {
+     "name": "Tsunami",
+     "id": "tsunami"
+    }
+   }
+  },
+  "Arktische": {
+   "name": "Arktische",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Erfrierung",
+     "id": "erfrierung"
+    },
+    "2": {
+     "name": "Aspekt des Bäre",
+     "id": null
+    },
+    "3": {
+     "name": "Schneesturm",
+     "id": "schneesturm"
+    },
+    "4": {
+     "name": "Eiswand",
+     "id": "eiswand"
+    },
+    "5": {
+     "name": "Aspekt des Wolfs",
+     "id": null
+    },
+    "6": {
+     "name": "Frostsphäre",
+     "id": "frostsphaere"
+    },
+    "7": {
+     "name": "Wind wandeln",
+     "id": "windwandeln"
+    },
+    "8": {
+     "name": "Polarstrahl",
+     "id": "polarstrahl"
+    },
+    "9": {
+     "name": "Polarnacht",
+     "id": "polarnacht"
+    }
+   }
+  },
+  "Berg": {
+   "name": "Berg",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Steinfaust",
+     "id": "steinfaust"
+    },
+    "2": {
+     "name": "Steinschlag",
+     "id": "steinschlag"
+    },
+    "3": {
+     "name": "Mantel der Winde",
+     "id": null
+    },
+    "4": {
+     "name": "Steinhaut",
+     "id": "steinhaut"
+    },
+    "5": {
+     "name": "Geysir",
+     "id": "geysir"
+    },
+    "6": {
+     "name": "Ersticken",
+     "id": "ersticken"
+    },
+    "7": {
+     "name": "Fleisch zu Stein",
+     "id": "fleisch_zu_stein"
+    },
+    "8": {
+     "name": "Schwerkraft umkehren",
+     "id": "schwerkraft_umkehren"
+    },
+    "9": {
+     "name": "Zerschmetternde Felsen",
+     "id": "zerschmetternde_felsen"
+    }
+   }
+  },
+  "Dschungel": {
+   "name": "Dschungel",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Gleiten",
+     "id": "gleiten"
+    },
+    "2": {
+     "name": "Teerkugel",
+     "id": "teerkugel"
+    },
+    "3": {
+     "name": "Giftbolzen",
+     "id": "giftbolzen"
+    },
+    "4": {
+     "name": "Holzhammer",
+     "id": "holzhammer"
+    },
+    "5": {
+     "name": "Segen des Salamanders",
+     "id": "segen_des_salamanders"
+    },
+    "6": {
+     "name": "Schwarmhaut",
+     "id": "schwarmhaut"
+    },
+    "7": {
+     "name": "Kriechender Tod",
+     "id": "kriechender_tod"
+    },
+    "8": {
+     "name": "Lavawand",
+     "id": "lavawand"
+    },
+    "9": {
+     "name": "Modernder Schurfer",
+     "id": null
+    }
+   }
+  },
+  "Frosch": {
+   "name": "Frosch",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Springen",
+     "id": "springen"
+    },
+    "2": {
+     "name": "Gift verzögern",
+     "id": "gift_verzoegern"
+    },
+    "3": {
+     "name": "Seerosenpfad",
+     "id": "seerosenpfad"
+    },
+    "4": {
+     "name": "Brüllen",
+     "id": "bruellen"
+    },
+    "5": {
+     "name": "Segen des Salamanders",
+     "id": "segen_des_salamanders"
+    },
+    "6": {
+     "name": "Verwirrung",
+     "id": "verwirrung"
+    },
+    "7": {
+     "name": "Tiergestalt (nur Amphibien)",
+     "id": null
+    },
+    "8": {
+     "name": "Mächtiges Brüllen",
+     "id": "maech_bruellen"
+    },
+    "9": {
+     "name": "Froschkoloss herbeizaubern",
+     "id": "froschkoloss_herbeizaubern"
+    }
+   }
+  },
+  "Höhlen": {
+   "name": "Höhlen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Aberrationen entdecken",
+     "id": "aberrationen_entdecken"
+    },
+    "2": {
+     "name": "Steinschlag",
+     "id": "steinschlag"
+    },
+    "3": {
+     "name": "Tiefere Dunkelheit",
+     "id": "tiefere_dunkelheit"
+    },
+    "4": {
+     "name": "Echolot",
+     "id": "echolot"
+    },
+    "5": {
+     "name": "Steinwand",
+     "id": "steinwand"
+    },
+    "6": {
+     "name": "Schwarzen Blob herbeizaubern",
+     "id": "schwarzen_blob_herbeizaubern"
+    },
+    "7": {
+     "name": "Statue (sieht aus wie ein Stalaktit oder ein Stalagmit)",
+     "id": "statue"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Einkerkerung",
+     "id": "einkerkerung"
+    }
+   }
+  },
+  "Schlangen": {
+   "name": "Schlangen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Tier bezaubern",
+     "id": "tier_bezaubern"
+    },
+    "2": {
+     "name": "Tiere faszinieren",
+     "id": "tiere_faszinieren"
+    },
+    "3": {
+     "name": "Vergiften",
+     "id": "vergiften"
+    },
+    "4": {
+     "name": "Starker Kiefer",
+     "id": "starker_kiefer"
+    },
+    "5": {
+     "name": "Schlangenstab",
+     "id": "schlangenstab"
+    },
+    "6": {
+     "name": "Monster bezaubern",
+     "id": "monster_bezaubern"
+    },
+    "7": {
+     "name": "Tiergestalt (nur Schlangen und Reptilien)",
+     "id": null
+    },
+    "8": {
+     "name": "Schillerndes Muster",
+     "id": "schillerndes_muster"
+    },
+    "9": {
+     "name": "Zerdrückende Hand",
+     "id": "zerdrueckende_hand"
+    }
+   }
+  },
+  "Steppen": {
+   "name": "Steppen",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Reittier",
+     "id": "reittier"
+    },
+    "2": {
+     "name": "Segen des Chamäleons",
+     "id": "segen_des_chamaeleons"
+    },
+    "3": {
+     "name": "Hast",
+     "id": "hast"
+    },
+    "4": {
+     "name": "Aspekt des Hirsches",
+     "id": "aspekt_des_hirsches"
+    },
+    "5": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "8": {
+     "name": "Tiergestalt",
+     "id": null
+    },
+    "9": {
+     "name": "Weltenwoge",
+     "id": "weltenwoge"
+    }
+   }
+  },
+  "Sumpf": {
+   "name": "Sumpf",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Wasserstrahl",
+     "id": "wasserstrahl"
+    },
+    "2": {
+     "name": "Nesselexplosion",
+     "id": "nesselexplosion"
+    },
+    "3": {
+     "name": "Seerosenpfad",
+     "id": "seerosenpfad"
+    },
+    "4": {
+     "name": "Wespenmantel",
+     "id": "wespenmantel"
+    },
+    "5": {
+     "name": "Insektenplage",
+     "id": "insektenplage"
+    },
+    "6": {
+     "name": "Massen-Eitern",
+     "id": "massen_eitern"
+    },
+    "7": {
+     "name": "Pf lanzen beleben",
+     "id": "pflanzen_beleben"
+    },
+    "8": {
+     "name": "Blutnebel",
+     "id": "blutnebel"
+    },
+    "9": {
+     "name": "Modernder Schlurfer",
+     "id": "modernder_schlurfer"
+    }
+   }
+  },
+  "Wolf": {
+   "name": "Wolf",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Jagdgeheul",
+     "id": "jagdgeheul"
+    },
+    "2": {
+     "name": "Bluthund",
+     "id": "bluthund"
+    },
+    "3": {
+     "name": "Aspekt des Wolfes",
+     "id": "aspekt_des_wolfes"
+    },
+    "4": {
+     "name": "Starker Kiefer",
+     "id": "starker_kiefer"
+    },
+    "5": {
+     "name": "Unermüdliche Verfolger",
+     "id": "unermuedliche_verfolger"
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Tiergestalt (nur Hundeartige)",
+     "id": null
+    },
+    "8": {
+     "name": "Rachsüchtiges Phantom",
+     "id": "rachsuechtiges_phantom"
+    },
+    "9": {
+     "name": "Freiheit",
+     "id": null
+    }
+   }
+  },
+  "Wüsten": {
+   "name": "Wüsten",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schattenumhang",
+     "id": "schattenumhang"
+    },
+    "2": {
+     "name": "Versanden",
+     "id": "versanden"
+    },
+    "3": {
+     "name": "Unlöschbarer Durst",
+     "id": "unloeschbarer_durst"
+    },
+    "4": {
+     "name": "Scheingelände",
+     "id": "scheingelaende"
+    },
+    "5": {
+     "name": "Fels zu Schlamm verwandeln (erschafft lockeren Sand statt Schlamm)",
+     "id": "fels_zu_schlamm_verwandeln"
+    },
+    "6": {
+     "name": "Scirocco",
+     "id": "scirocco"
+    },
+    "7": {
+     "name": "Sonnenstrahl",
+     "id": "sonnenstrahl"
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Verdorren",
+     "id": "verdorren"
+    }
+   }
+  },
+  "Geier": {
+   "name": "Geier",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Totenwache",
+     "id": "totenwache"
+    },
+    "2": {
+     "name": "Gleiten",
+     "id": "gleiten"
+    },
+    "3": {
+     "name": "Totenglocke",
+     "id": "totenglocke"
+    },
+    "4": {
+     "name": "Todesschutz",
+     "id": "todesschutz"
+    },
+    "5": {
+     "name": "Lebensatem",
+     "id": "lebensatem"
+    },
+    "6": {
+     "name": "Todeskreis",
+     "id": "todeskreis"
+    },
+    "7": {
+     "name": "Auferstehung",
+     "id": "auferstehung"
+    },
+    "8": {
+     "name": "Finger des Todes",
+     "id": "finger_des_todes"
+    },
+    "9": {
+     "name": "Winde der Vergeltung",
+     "id": "winde_der_vergeltung"
+    }
+   }
+  },
+  "Krokodil": {
+   "name": "Krokodil",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Hauch der See",
+     "id": "hauch_der_see"
+    },
+    "2": {
+     "name": "Zerfleischendes Maul",
+     "id": null
+    },
+    "3": {
+     "name": "Auf Wasser gehen",
+     "id": "auf_wasser_gehen"
+    },
+    "4": {
+     "name": "Starker Kiefer",
+     "id": "starker_kiefer"
+    },
+    "5": {
+     "name": "Sagenkunde",
+     "id": "sagenkunde"
+    },
+    "6": {
+     "name": "Massen-Weisheit der Eule",
+     "id": "massen_weisheit_der_eule"
+    },
+    "7": {
+     "name": "Wahrer Blick",
+     "id": "wahrer_blick"
+    },
+    "8": {
+     "name": "Massenheilung",
+     "id": "massenheilung"
+    },
+    "9": {
+     "name": "Regeneration",
+     "id": "regeneration"
+    }
+   }
+  },
+  "Ödland": {
+   "name": "Ödland",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Schattenumhang",
+     "id": "schattenumhang"
+    },
+    "2": {
+     "name": "Unstillbarer Hunger",
+     "id": "unstillbarer_hunger"
+    },
+    "3": {
+     "name": "Windumhang",
+     "id": "windumhang"
+    },
+    "4": {
+     "name": "Steindornen",
+     "id": "steindornen"
+    },
+    "5": {
+     "name": "Windklingen",
+     "id": null
+    },
+    "6": {
+     "name": "Weg finden",
+     "id": "weg_finden"
+    },
+    "7": {
+     "name": "Feuersturm",
+     "id": "feuersturm"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Panther": {
+   "name": "Panther",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Dunkelheit",
+     "id": "dunkelheit"
+    },
+    "3": {
+     "name": "Tiefere Dunkelheit",
+     "id": "tiefere_dunkelheit"
+    },
+    "4": {
+     "name": "Mondsucht",
+     "id": "mondsucht"
+    },
+    "5": {
+     "name": "Einswerden mit der Natur",
+     "id": "einswerden_mit_der_natur"
+    },
+    "6": {
+     "name": "Ablenkung",
+     "id": "ablenkung"
+    },
+    "7": {
+     "name": "Wahrer Blick",
+     "id": "wahrer_blick"
+    },
+    "8": {
+     "name": "Neun Leben",
+     "id": null
+    },
+    "9": {
+     "name": "Mächtige Immunität gegen Zauber",
+     "id": "maechtige_immunitaet_gegen_zauber"
+    }
+   }
+  },
+  "Keuschheit": {
+   "name": "Keuschheit",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Furcht bannen",
+     "id": "furcht_bannen"
+    },
+    "2": {
+     "name": "Beichte",
+     "id": "beichte"
+    },
+    "3": {
+     "name": "Heldenmut",
+     "id": "heldenmut"
+    },
+    "4": {
+     "name": "Bewegungsfreiheit",
+     "id": "bewegungsfreiheit"
+    }
+   }
+  },
+  "Loyalität": {
+   "name": "Loyalität",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Zorn",
+     "id": "zorn"
+    },
+    "2": {
+     "name": "Beistand",
+     "id": "beistand"
+    },
+    "3": {
+     "name": "Hilfreiche Hand",
+     "id": "hilfreiche_hand"
+    },
+    "4": {
+     "name": "Verständigung",
+     "id": "verstaendigung"
+    }
+   }
+  },
+  "Vergeltung": {
+   "name": "Vergeltung",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Zorn",
+     "id": "zorn"
+    },
+    "2": {
+     "name": "Beichte",
+     "id": "beichte"
+    },
+    "3": {
+     "name": "Segen des Eiferers",
+     "id": null
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    }
+   }
+  },
+  "Wohltätigkeit": {
+   "name": "Wohltätigkeit",
+   "group": "domaene",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Magischer Stein",
+     "id": "magischer_stein"
+    },
+    "2": {
+     "name": "Reparieren",
+     "id": "reparieren"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Zauberkräfte Verleihen",
+     "id": "zauberkraefte_verleihen"
+    }
+   }
+  },
+  "gegen Barbarei": {
+   "name": "gegen Barbarei",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Totenwache",
+     "id": "totenwache"
+    },
+    "2": {
+     "name": "Schutz vor Pfeilen",
+     "id": "schutz_vor_pfeilen"
+    },
+    "3": {
+     "name": "Hast",
+     "id": "hast"
+    },
+    "4": {
+     "name": "Göttliche Macht",
+     "id": "goettliche_macht"
+    }
+   }
+  },
+  "gegen Drachen": {
+   "name": "gegen Drachen",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Person vergrößern",
+     "id": "person_vergroessern"
+    },
+    "2": {
+     "name": "Bärenstärke",
+     "id": "baerenstaerke"
+    },
+    "3": {
+     "name": "Fliegen",
+     "id": "fliegen"
+    },
+    "4": {
+     "name": "Steinhaut",
+     "id": "steinhaut"
+    }
+   }
+  },
+  "gegen Scheusale": {
+   "name": "gegen Scheusale",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Energien wiederstehen",
+     "id": "energien_widerstehen"
+    },
+    "2": {
+     "name": "Gedanken wahrnehmen",
+     "id": "gedanken_wahrnehmen"
+    },
+    "3": {
+     "name": "Unsichtbarkeit aufheben",
+     "id": "unsichtbarkeit_aufheben"
+    },
+    "4": {
+     "name": "Ebenenwechsel",
+     "id": "ebenenwechsel"
+    }
+   }
+  },
+  "gegen Untote": {
+   "name": "gegen Untote",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Leiche segnen",
+     "id": "leiche_segnen"
+    },
+    "2": {
+     "name": "Dunkelsicht",
+     "id": "dunkelsicht"
+    },
+    "3": {
+     "name": "Gleißendes Licht",
+     "id": "gleissendes_licht"
+    },
+    "4": {
+     "name": "Untote festsetzen",
+     "id": "untote_festsetzen"
+    }
+   }
+  },
+  "gegen Verderbtheit": {
+   "name": "gegen Verderbtheit",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Zielsicherer Schlag",
+     "id": "zielsicherer_schlag"
+    },
+    "2": {
+     "name": "Gesteigerte Aufmerksamkeit",
+     "id": "gesteigerte_aufmerksamkeit"
+    },
+    "3": {
+     "name": "Hauch des Schwachsinns",
+     "id": null
+    },
+    "4": {
+     "name": "Immunität gegen Zauber",
+     "id": "immunitaet_gegen_zauber"
+    }
+   }
+  },
+  "gegen Chaos": {
+   "name": "gegen Chaos",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Befehl",
+     "id": "befehl"
+    },
+    "2": {
+     "name": "Gefühle besänftigen",
+     "id": "gefuehle_besaenftigen"
+    },
+    "3": {
+     "name": "Einflüsterung",
+     "id": "einfluesterung"
+    },
+    "4": {
+     "name": "Zorn der Ordnung",
+     "id": "zorn_der_ordnung"
+    }
+   }
+  },
+  "gegen Entstellung": {
+   "name": "gegen Entstellung",
+   "group": "eid",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Heiligtum",
+     "id": "heiligtum"
+    },
+    "2": {
+     "name": "Reparieren",
+     "id": "reparieren"
+    },
+    "3": {
+     "name": "Erscheinung bannen",
+     "id": "erscheinung_bannen"
+    },
+    "4": {
+     "name": "Wahre Gestalt",
+     "id": "wahre_gestalt"
+    }
+   }
+  },
+  "Firmament T": {
+   "name": "Firmament T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Sprühende Farben",
+     "id": "spruehende_farben"
+    },
+    "2": {
+     "name": "Hypnotisches Muster",
+     "id": "hypnotisches_muster"
+    },
+    "3": {
+     "name": "Tageslicht",
+     "id": "tageslicht"
+    },
+    "4": {
+     "name": "Regenbogenmuster",
+     "id": "regenbogenmuster"
+    },
+    "5": {
+     "name": "Überlandflug",
+     "id": "ueberlandflug"
+    },
+    "6": {
+     "name": "Kugelblitz",
+     "id": "kugelblitz"
+    },
+    "7": {
+     "name": "Regenbogenspiel",
+     "id": "regenbogenspiel"
+    },
+    "8": {
+     "name": "Sonnenfeuer",
+     "id": "sonnenfeuer"
+    },
+    "9": {
+     "name": "Meteoritenschwarm",
+     "id": "meteoritenschwarm"
+    }
+   }
+  },
+  "Flammen T": {
+   "name": "Flammen T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Brennende Hände",
+     "id": "brennende_haende"
+    },
+    "2": {
+     "name": "Energien widerstehen",
+     "id": "energien_widerstehen"
+    },
+    "3": {
+     "name": "Feuerball",
+     "id": "feuerball"
+    },
+    "4": {
+     "name": "Feuerwand",
+     "id": "feuerwand"
+    },
+    "5": {
+     "name": "Monster herbeizaubern V (nur Feuerelementare)",
+     "id": "monster_herbeizaubern_v"
+    },
+    "6": {
+     "name": "Feuersaat",
+     "id": "feuersaat"
+    },
+    "7": {
+     "name": "Feuersturm",
+     "id": "feuersturm"
+    },
+    "8": {
+     "name": "Flammende Wolke",
+     "id": "flammende_wolke"
+    },
+    "9": {
+     "name": "Feurige Gestalt",
+     "id": "feurige_gestalt"
+    }
+   }
+  },
+  "Gebeine T": {
+   "name": "Gebeine T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Furcht auslösen",
+     "id": "furcht_ausloesen"
+    },
+    "2": {
+     "name": "Falsches Leben",
+     "id": "falsches_leben"
+    },
+    "3": {
+     "name": "Tote beleben",
+     "id": "tote_beleben"
+    },
+    "4": {
+     "name": "Furcht",
+     "id": "furcht"
+    },
+    "5": {
+     "name": "Schneller Tod",
+     "id": "schneller_tod"
+    },
+    "6": {
+     "name": "Todeskreis",
+     "id": "todeskreis"
+    },
+    "7": {
+     "name": "Untote kontrollieren",
+     "id": "untote_kontrollieren_2"
+    },
+    "8": {
+     "name": "Verdorren",
+     "id": "verdorren"
+    },
+    "9": {
+     "name": "Wehgeschrei der Todesfee",
+     "id": "wehgeschrei_der_todesfee"
+    }
+   }
+  },
+  "Leben T": {
+   "name": "Leben T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Untote entdecken",
+     "id": "untote_entdecken"
+    },
+    "2": {
+     "name": "Teilweise Genesung",
+     "id": "teilweise_genesung"
+    },
+    "3": {
+     "name": "Gift neutralisieren",
+     "id": "gift_neutralisieren"
+    },
+    "4": {
+     "name": "Genesung",
+     "id": "genesung"
+    },
+    "5": {
+     "name": "Lebensatem",
+     "id": "lebensatem"
+    },
+    "6": {
+     "name": "Heilung",
+     "id": "heilung"
+    },
+    "7": {
+     "name": "Vollständige Genesung",
+     "id": "vollstaendige_genesung"
+    },
+    "8": {
+     "name": "Massen-Heilung",
+     "id": "massenheilung"
+    },
+    "9": {
+     "name": "Wahre Auferstehung",
+     "id": "wahre_auferstehung"
+    }
+   }
+  },
+  "Natur T": {
+   "name": "Natur T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Tier bezaubern",
+     "id": "tier_bezaubern"
+    },
+    "2": {
+     "name": "Rindenhaut",
+     "id": "rindenhaut"
+    },
+    "3": {
+     "name": "Mit Tieren sprechen",
+     "id": "mit_tieren_sprechen"
+    },
+    "4": {
+     "name": "Hain der Erholung",
+     "id": "hain_der_erholung"
+    },
+    "5": {
+     "name": "Erwecken",
+     "id": "erwecken"
+    },
+    "6": {
+     "name": "Erzählende Steine",
+     "id": "erzaehlende_steine"
+    },
+    "7": {
+     "name": "Kriechender Tod",
+     "id": "kriechender_tod"
+    },
+    "8": {
+     "name": "Tierform",
+     "id": "tierform"
+    },
+    "9": {
+     "name": "Weltenwoge",
+     "id": "weltenwoge"
+    }
+   }
+  },
+  "Schlacht T": {
+   "name": "Schlacht T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Person vergrößern",
+     "id": "person_vergroessern"
+    },
+    "2": {
+     "name": "Nebelwolke",
+     "id": "nebelwolke"
+    },
+    "3": {
+     "name": "Magisches Schutzgewand",
+     "id": "magisches_schutzgewand"
+    },
+    "4": {
+     "name": "Feuerwand",
+     "id": "feuerwand"
+    },
+    "5": {
+     "name": "Gerechte Macht",
+     "id": "gerechte_macht"
+    },
+    "6": {
+     "name": "Massen-Ausdauer des Ochsen",
+     "id": "massen_ausdauer_des_ochsen"
+    },
+    "7": {
+     "name": "Wetterkontrolle",
+     "id": "wetterkontrolle"
+    },
+    "8": {
+     "name": "Erdbeben",
+     "id": "erdbeben"
+    },
+    "9": {
+     "name": "Sturm der Vergeltung",
+     "id": "sturm_der_vergeltung"
+    }
+   }
+  },
+  "Steine T": {
+   "name": "Steine T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Magischer Stein",
+     "id": "magischer_stein"
+    },
+    "2": {
+     "name": "Steinschlag",
+     "id": "steinschlag"
+    },
+    "3": {
+     "name": "Mit Stein verschmelzen",
+     "id": "mit_stein_verschmelzen"
+    },
+    "4": {
+     "name": "Steinwand",
+     "id": "steinwand"
+    },
+    "5": {
+     "name": "Steinhaut",
+     "id": "steinhaut"
+    },
+    "6": {
+     "name": "Erzählende Steine",
+     "id": "erzaehlende_steine"
+    },
+    "7": {
+     "name": "Statue",
+     "id": "statue"
+    },
+    "8": {
+     "name": "Metall oder Stein zurücktreiben",
+     "id": "metall_oder_stein_zuruecktreiben"
+    },
+    "9": {
+     "name": "Zerschmetternde Felsen",
+     "id": "zerschmetternde_felsen"
+    }
+   }
+  },
+  "Wellen T": {
+   "name": "Wellen T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Wasserstrahl",
+     "id": "wasserstrahl"
+    },
+    "2": {
+     "name": "Wellenritt",
+     "id": "wellenritt"
+    },
+    "3": {
+     "name": "Wasser atmen",
+     "id": "wasser_atmen"
+    },
+    "4": {
+     "name": "Eiswand",
+     "id": "eiswand"
+    },
+    "5": {
+     "name": "Geysir",
+     "id": "geysir"
+    },
+    "6": {
+     "name": "Flüssige Gestalt",
+     "id": "fluessige_gestalt"
+    },
+    "7": {
+     "name": "Strudel",
+     "id": "strudel"
+    },
+    "8": {
+     "name": "Mantel der See",
+     "id": "mantel_der_see"
+    },
+    "9": {
+     "name": "Tsunam",
+     "id": null
+    }
+   }
+  },
+  "Wind T": {
+   "name": "Wind T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Windstärke anpassen",
+     "id": "windstaerke_anpassen"
+    },
+    "2": {
+     "name": "Windstoß",
+     "id": "windstoss"
+    },
+    "3": {
+     "name": "Windumhang",
+     "id": "windumhang"
+    },
+    "4": {
+     "name": "Windstrom",
+     "id": "windstrom"
+    },
+    "5": {
+     "name": "Windkontrolle",
+     "id": "windkontrolle"
+    },
+    "6": {
+     "name": "Scirocco",
+     "id": "scirocco"
+    },
+    "7": {
+     "name": "Wetterkontrolle",
+     "id": "wetterkontrolle"
+    },
+    "8": {
+     "name": "Wirbelwind",
+     "id": "wirbelwind"
+    },
+    "9": {
+     "name": "Winde der Vergeltung",
+     "id": "winde_der_vergeltung"
+    }
+   }
+  },
+  "Wissen T": {
+   "name": "Wissen T",
+   "group": "geist",
+   "source": "Excel",
+   "parent": null,
+   "spells": {
+    "1": {
+     "name": "Identifizieren",
+     "id": "identifizieren"
+    },
+    "2": {
+     "name": "Zungen",
+     "id": "zungen"
+    },
+    "3": {
+     "name": "Gegenstand aufspüren",
+     "id": "gegenstand_aufspueren"
+    },
+    "4": {
+     "name": "Sagenkunde",
+     "id": "sagenkunde"
+    },
+    "5": {
+     "name": "Kontakt zu anderen Ebenen",
+     "id": "kontakt_zu_anderen_ebenen"
+    },
+    "6": {
+     "name": "Massen-Weisheit der Eule",
+     "id": "massen_weisheit_der_eule"
+    },
+    "7": {
+     "name": "Vision",
+     "id": "vision"
+    },
+    "8": {
+     "name": "Moment der Eingebung",
+     "id": "moment_der_eingebung"
+    },
+    "9": {
+     "name": "Zeitstopp",
+     "id": "zeitstopp"
+    }
+   }
+  }
+ }
+}
