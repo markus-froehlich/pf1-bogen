@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 /**
- * Sheet: Handy = von unten (Griff, Backdrop 62 %), Tablet = Seitenpanel rechts (400px),
- * Desktop = zentriertes Fenster (Backdrop 38 %). Esc schließt (README „App-Shell" / „Responsive").
+ * Sheet: Handy = von unten (Griff, Backdrop 62 %), Touch-Tablet = Seitenpanel rechts (400px),
+ * Desktop und alles mit Maus = zentriertes Fenster (Backdrop 38 %). Esc schließt (README „App-Shell" / „Responsive").
  * Wischen schließt wie in nativen Apps: Handy nach unten (wenn der Inhalt oben steht),
  * Seitenpanel auf Touch-Geräten nach rechts.
  */
@@ -21,7 +21,9 @@ export function Sheet({ open, onClose, layout, children, label }) {
   }, [open, onClose])
 
   const phone = layout === 'phone'
-  const center = layout === 'desktop'
+  // Zentriert am Desktop und überall mit Maus (auch Tablet-Layout am Mac); Seitenpanel nur auf Touch-Tablets
+  const finePointer = typeof window !== 'undefined' && window.matchMedia?.('(hover: hover) and (pointer: fine)').matches
+  const center = layout === 'desktop' || (layout === 'tablet' && finePointer)
   useEffect(() => {
     const el = sheetRef.current
     if (!open || !el || center) return   // zentriert: kein Wischen (Maus)
