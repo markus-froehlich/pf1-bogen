@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { ArrowSquareOut, MagnifyingGlass, Plus } from '@phosphor-icons/react'
 import poisonsData from '../data/poisons.json'
 import racialTraitsData from '../data/racial_traits.json'
@@ -51,9 +51,21 @@ function useCrud(list, setList, label, L) {
 
 export function NotesPage({ char, setNotes, lang }) {
   const L = lang === 'de'
+  const ref = useRef(null)
+  // Höhe an den Text anpassen (beim Öffnen und bei jeder Änderung), damit nichts versteckt scrollt
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const fit = () => { el.style.height = 'auto'; el.style.height = `${el.scrollHeight + 2}px` }
+    fit()
+    let w = el.clientWidth
+    const ro = new ResizeObserver(() => { if (el.clientWidth !== w) { w = el.clientWidth; fit() } })   // Drehen, Spaltenbreite
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [char.notes])
   return (
     <div className="nc-page">
-      <textarea className="nc-input nc-textarea nc-notes-area" value={char.notes ?? ''} onChange={e => setNotes(e.target.value)}
+      <textarea ref={ref} className="nc-input nc-textarea nc-notes-area" value={char.notes ?? ''} onChange={e => setNotes(e.target.value)}
         placeholder={L ? 'Hintergrundgeschichte, Quests, Hinweise …' : 'Background, quests, notes …'} aria-label={L ? 'Notizen' : 'Notes'} />
       <span className="nc-hint">{L ? 'Wird automatisch gespeichert.' : 'Saved automatically.'}</span>
     </div>

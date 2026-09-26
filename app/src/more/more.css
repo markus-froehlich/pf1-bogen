@@ -1,5 +1,5 @@
 /* ══ Mehr-Unterseiten „Nocturne" ══ */
-.nc-notes-area { min-height: 55vh; line-height: 1.5; }
+.nc-textarea.nc-notes-area { min-height: 55vh; line-height: 1.5; resize: none; overflow: hidden; }
 .nc-more-card {
   display: flex; flex-direction: column; gap: 0.25rem; width: 100%; min-height: 3.25rem; padding: 0.625rem 0.875rem;
   background: none; border: 0; color: inherit; text-align: left; min-width: 0;
