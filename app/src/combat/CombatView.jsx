@@ -6,7 +6,7 @@ import {
 } from '@phosphor-icons/react'
 import weaponsData from '../data/weapons.json'
 import { computeAttributes, computeCombat, resolveGearItem } from '../engine/index.js'
-import { computeWeaponAttack, weaponStrMult } from '../engine/weapons.js'
+import { computeWeaponAttack, weaponStrMult, weaponCategory } from '../engine/weapons.js'
 import { BUFF_STATS, BUFF_TYPES, suppressedTargets } from '../engine/buffs.js'
 import { hasToughness } from '../engine/combat.js'
 import { classLabel } from '../engine/classes.js'
@@ -75,8 +75,10 @@ function weaponRows({ char, attrs, baseValues, condMods, buffTotals, weaponMap, 
     const noCond = computeWeaponAttack(s, attrs, baseValues.bab, {}, buffTotals.attack ?? 0, buffTotals.damage ?? 0)
     const enh = Number(slot.enhancement ?? 0)
     const name = (slot.name || def.name?.[L ? 'de' : 'en'] || def.name?.de || def.id) + (enh ? ` +${enh}` : slot.mw ? ` (${L ? 'MA' : 'MW'})` : '')
-    const sub = [isRanged ? (L ? 'Fernkampf' : 'Ranged') : (L ? 'Nahkampf' : 'Melee'), def.damage_type, typo(def.crit),
-      def.range_m ? `${def.range_m} m` : null, slot.off_hand ? (L ? 'Nebenhand' : 'Off hand') : null, slot.two_handed ? (L ? 'zweihändig' : 'two-handed') : null].filter(Boolean).join(' · ')
+    const wc = weaponCategory(def, lang)
+    const sub = [isRanged ? (L ? 'Fernkampf' : 'Ranged') : (L ? 'Nahkampf' : 'Melee'), wc.damage, typo(def.crit),
+      def.range_m ? `${def.range_m} m` : null, slot.off_hand ? (L ? 'Nebenhand' : 'Off hand') : null, slot.two_handed ? (L ? 'zweihändig' : 'two-handed') : null,
+      wc.category].filter(Boolean).join(' · ')
     const dice = def.damage?.[dmgKey] ?? def.damage?.m ?? '—'
     rows.push({ key: `w:${idx}`, idx, rawSlot: slot, name, slot: s, result, isRanged, finesse: slot.finesse, sub,
       dmg: `${dice}${result.damage_mod ? result.damage_str : ''}${slot.dmg_extra ? ` + ${slot.dmg_extra}` : ''}`,
@@ -202,7 +204,6 @@ export function CombatView(props) {
           <button className="nc-hp-value" onClick={() => setSheet({ type: 'hpEdit' })} title={L ? 'TP bearbeiten' : 'Edit HP'}>
             <span className="nc-hp-cur">{hp.current}</span>
             <span className="nc-hp-max">/ {hp.max}</span>
-            {hp.temp > 0 && <span className="nc-tag nc-tag-accent">+{hp.temp} {L ? 'temp.' : 'temp'}</span>}
             <PencilSimple className="nc-hp-edit" />
           </button>
           <div className="nc-hp-actions">
@@ -212,8 +213,13 @@ export function CombatView(props) {
         </div>
         <div className="nc-bar"><div className={`nc-bar-fill is-${hpTone}`} style={{ width: `${ratio * 100}%` }} /></div>
         <div className="nc-hp-meta">
-          <span className="nc-ellipsis">{hpStatus}</span>
-          <span>{L ? 'NL-Schaden' : 'Nonlethal'} {nl}</span>
+          <span className="nc-hp-status">{hpStatus}</span>
+          <div className="nc-hp-extra">
+            <button className={`nc-hp-pill ${hp.temp > 0 ? 'is-on' : ''}`} onClick={() => { setPadMode('temp'); setSheet({ type: 'pad' }) }} title={L ? 'Temporäre TP setzen' : 'Set temporary HP'}>
+              <span className="nc-hp-pill-k">{L ? 'Temp. TP' : 'Temp HP'}</span><span className="nc-hp-pill-v">{hp.temp > 0 ? `+${hp.temp}` : 0}</span></button>
+            <button className={`nc-hp-pill ${nl > 0 ? 'is-warn' : ''}`} onClick={() => { setPadMode('nl'); setSheet({ type: 'pad' }) }} title={L ? 'Nichttödlichen Schaden nehmen' : 'Take nonlethal damage'}>
+              <span className="nc-hp-pill-k">{L ? 'NL-Schaden' : 'Nonlethal'}</span><span className="nc-hp-pill-v">{nl}</span></button>
+          </div>
         </div>
       </div>
     ),

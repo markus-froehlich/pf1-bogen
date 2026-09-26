@@ -70,3 +70,22 @@ export function weaponStrMult(def, slot) {
   if (slot.two_handed && base === 1) return 1.5          // einhändige Waffe zweihändig geführt: ST ×1,5
   return base
 }
+
+/**
+ * Waffen-Kategorie aus den Excel-Kürzeln. Beim Einlesen liegen Schadensart und Kategorie verteilt
+ * auf `damage_type` und `proficiency` (z. B. Dolch: „S EL" + „H") → beide zusammen lesen:
+ * Kategorie-Token [E|K|X][L|E|Z|F] = einfach/Kriegs-/exotisch · leicht/einhändig/zweihändig/Fernkampf.
+ */
+const CAT = { E: ['Einfache Waffe', 'Simple'], K: ['Kriegswaffe', 'Martial'], X: ['Exotische Waffe', 'Exotic'] }
+const HAND = { L: ['leicht', 'light'], E: ['einhändig', 'one-handed'], Z: ['zweihändig', 'two-handed'], F: ['Fernkampf', 'ranged'] }
+const DMG = { H: ['Hieb', 'slashing'], S: ['Stich', 'piercing'], W: ['Wucht', 'bludgeoning'] }
+export function weaponCategory(def, lang = 'de') {
+  const i = lang === 'de' ? 0 : 1
+  const tokens = `${def?.damage_type ?? ''} ${def?.proficiency ?? ''}`.split(/\s+/).filter(Boolean)
+  const cat = tokens.find(t => /^[EKX][LEZF]$/.test(t))
+  const dmg = [...new Set(tokens.filter(t => t !== cat).join('').replace(/[^HSW]/g, '').split(''))]
+  return {
+    category: cat ? `${CAT[cat[0]][i]} · ${HAND[cat[1]][i]}` : null,
+    damage: dmg.length ? dmg.map(d => DMG[d][i]).join('/') : null,
+  }
+}

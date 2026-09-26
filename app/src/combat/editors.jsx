@@ -5,7 +5,7 @@ import armorData from '../data/armor.json'
 import shieldsData from '../data/shields.json'
 import ringsData from '../data/rings.json'
 import { BUFF_STATS, BUFF_TYPES } from '../engine/buffs.js'
-import { computeWeaponAttack, weaponStrMult } from '../engine/weapons.js'
+import { computeWeaponAttack, weaponStrMult, weaponCategory } from '../engine/weapons.js'
 import { getAutoResources } from '../engine/resources.js'
 import { classLabel } from '../engine/classes.js'
 import { EditSheet, Field, TextField, NumField, ChipsField, SearchPick } from './EditSheet.jsx'
@@ -144,7 +144,7 @@ export function WeaponEditor({ slot, index, char, attrs, bab, condMods, buffTota
       <SearchPick label={L ? `Waffe aus Liste (${all.length})` : `Weapon (${all.length})`} items={items} selectedId={d.weapon_id}
         placeholder={L ? 'Waffe suchen …' : 'Search weapon …'}
         onPick={i => set({ weapon_id: i.id, is_ranged: null })}
-        render={i => (<><span className="nc-ellipsis">{i.label}</span><span className="nc-search-meta">{i.w.damage?.m ?? '—'} · {typo(i.w.crit) ?? '—'}{i.w.range_m ? ` · ${i.w.range_m} m` : ''}</span></>)} />
+        render={i => (<><span className="nc-row-text"><span className="nc-ellipsis">{i.label}</span>{weaponCategory(i.w, lang).category && <span className="nc-row-sub">{weaponCategory(i.w, lang).category}</span>}</span><span className="nc-search-meta">{i.w.damage?.m ?? '—'} · {typo(i.w.crit) ?? '—'}{i.w.range_m ? ` · ${i.w.range_m} m` : ''}</span></>)} />
       <TextField label="Name" value={d.name} onChange={v => set({ name: v })} placeholder={def ? def.name?.de : (L ? 'eigener Name, optional' : 'custom name, optional')} />
       <ChipsField label={L ? 'Art' : 'Type'} options={[['nah', L ? 'Nahkampf' : 'Melee'], ['fern', L ? 'Fernkampf' : 'Ranged']]} value={isRanged ? 'fern' : 'nah'}
         onChange={v => set({ is_ranged: v === 'fern' ? (autoRanged ? null : true) : (autoRanged ? false : null) })} />
