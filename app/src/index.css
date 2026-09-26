@@ -72,49 +72,75 @@
   color-scheme: dark;
 }
 
-/* Theme „Hoher Kontrast" — nur Variablen, keine Komponenten ändern */
+/* Theme „Hoher Kontrast" — modern, aber maximaler Kontrast (Text ≥ 13:1 auf Schwarz).
+   Tiefe über feine Lichtkanten, Leucht-Akzent und dezenten Farbschein statt grauer Rahmen. */
 :root[data-theme="kontrast"] {
   --color-bg: #000000;
-  --color-surface: #0f0f11;
+  --color-surface: #0e0e16;
   --color-text: #ffffff;
-  --color-accent: #c7bdff;
-  --color-divider: rgba(255,255,255,0.6);
+  --color-accent: #b8a4ff;
+  --color-divider: rgba(255,255,255,0.24);
 
   --color-neutral-100: #ffffff;
   --color-neutral-200: #ffffff;
-  --color-neutral-300: #f2f2f2;
-  --color-neutral-400: #e6e6e6;
-  --color-neutral-500: #d6d6d6;
-  --color-neutral-600: #bdbdbd;
-  --color-neutral-700: #8f8f8f;
-  --color-neutral-800: #3d3d42;
-  --color-neutral-900: #2a2a2e;
+  --color-neutral-300: #f4f4fa;
+  --color-neutral-400: #eceef6;
+  --color-neutral-500: #e0e2ee;
+  --color-neutral-600: #c9ccdb;
+  --color-neutral-700: #6e6f86;
+  --color-neutral-800: #2c2c3c;
+  --color-neutral-900: #1c1c29;
 
   --color-accent-100: #ffffff;
-  --color-accent-200: #f1eeff;
-  --color-accent-300: #ddd6ff;
-  --color-accent-400: #d3caff;
-  --color-accent-500: #c7bdff;
-  --color-accent-600: #a99cf5;
-  --color-accent-700: #7d6fe0;
-  --color-accent-800: #3a2f86;
-  --color-accent-900: #1f1850;
+  --color-accent-200: #f1ecff;
+  --color-accent-300: #ddd2ff;
+  --color-accent-400: #cbbcff;
+  --color-accent-500: #b8a4ff;
+  --color-accent-600: #9d86ff;
+  --color-accent-700: #7b5cff;
+  --color-accent-800: #35278a;
+  --color-accent-900: #1c1348;
 
-  --c-neg: #ff9a8f;
-  --c-neg-bg: #5c1109;
+  --c-neg: #ff8f84;
+  --c-neg-bg: #4d0e08;
   --c-neg-fg: #ffffff;
   --c-warn: #ffd84d;
-  --c-warn-bg: #4a3a00;
+  --c-warn-bg: #3d3000;
   --c-warn-fg: #ffffff;
 
-  --shadow-sm: 0 0 0 1px #8f8f8f;
-  --shadow-md: 0 0 0 1px #bdbdbd, 0 6px 18px rgba(0,0,0,0.8);
-  --shadow-lg: 0 0 0 2px #ffffff, 0 16px 40px rgba(0,0,0,0.9);
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 
-  --hc-edge: 1px solid #8f8f8f;
-  --app-bg: #000000;
-  --border: #8f8f8f;
+  --shadow-sm: 0 0 0 1px rgba(255,255,255,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+  --shadow-md: 0 0 0 1px rgba(255,255,255,0.36), 0 10px 30px rgba(0,0,0,0.9);
+  --shadow-lg: 0 0 0 1px #ffffff, 0 18px 48px rgba(0,0,0,0.95), 0 0 40px rgba(123,92,255,0.25);
+
+  --hc-edge: 1px solid rgba(255,255,255,0.26);
+  --app-bg: radial-gradient(110% 50% at 0% 0%, rgba(123,92,255,0.22), transparent 60%),
+            radial-gradient(70% 35% at 100% 0%, rgba(0,190,255,0.10), transparent 65%), #000000;
+  --border: rgba(255,255,255,0.3);
 }
+
+/* Veredelung nur im Kontrast-Theme: Flächen mit Lichtkante oben, Leucht-Akzente, klare Titel */
+:root[data-theme="kontrast"] :is(.nc-card, .nc-tile, .nc-skill-list, .nc-grade-tile, .nc-coin, .nc-magic-slot, .nc-search-hits) {
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0) 60%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+}
+:root[data-theme="kontrast"] :is(.nc-section-label, .nc-label, .nc-spell-block-title) { color: #ffffff; font-weight: 500; }
+:root[data-theme="kontrast"] :is(.nc-section-label, .nc-label, .nc-spell-block-title)::before {
+  content: ''; display: inline-block; width: 3px; height: 0.9em; margin-right: 0.5rem; vertical-align: -0.1em;
+  border-radius: 2px; background: var(--color-accent); box-shadow: 0 0 8px var(--color-accent);
+}
+:root[data-theme="kontrast"] .nc-btn-primary { box-shadow: 0 0 0 1px var(--color-accent), 0 0 18px rgba(184,164,255,0.35); }
+:root[data-theme="kontrast"] :is(.nc-chip, .nc-seg-opt, .nc-grade-tile).is-on {
+  background-color: var(--color-accent-800); color: #ffffff; box-shadow: 0 0 0 1px var(--color-accent), 0 0 14px rgba(184,164,255,0.35);
+}
+:root[data-theme="kontrast"] .nc-nav-btn.is-active { color: #ffffff; }
+:root[data-theme="kontrast"] .nc-nav-btn.is-active .nc-nav-mark { box-shadow: 0 0 14px 2px var(--color-accent); }
+:root[data-theme="kontrast"] .nc-nav.is-rail .nc-nav-btn.is-active { background: var(--color-accent-900); box-shadow: inset 0 0 0 1px var(--color-accent-700); }
+:root[data-theme="kontrast"] .nc-avatar { box-shadow: 0 0 0 1px var(--color-accent), 0 0 16px rgba(123,92,255,0.45); }
+:root[data-theme="kontrast"] :is(button, input, select, textarea, a):focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 
 *, *::before, *::after { box-sizing: border-box; }
 * { -webkit-tap-highlight-color: transparent; }
