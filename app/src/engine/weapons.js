@@ -55,7 +55,7 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
   }
 }
 
-function signedStr(n) { return n >= 0 ? `+${n}` : `${n}` }
+function signedStr(n) { return !n ? '0' : n > 0 ? `+${n}` : `${n}` }
 
 function iterativeAttacks(first, bab) {
   const attacks = [first]

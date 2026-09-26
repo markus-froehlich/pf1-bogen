@@ -19,7 +19,7 @@ const ATTRS = ['ST','GE','KO','IN','WE','CH']
 const ATTR_DE = { ST:'Stärke', GE:'Geschicklichkeit', KO:'Konstitution', IN:'Intelligenz', WE:'Weisheit', CH:'Charisma' }
 const ATTR_EN = { ST:'Strength', GE:'Dexterity', KO:'Constitution', IN:'Intelligence', WE:'Wisdom', CH:'Charisma' }
 
-function sign(n) { return n >= 0 ? `+${n}` : `${n}` }
+function sign(n) { return !n ? '0' : n > 0 ? `+${n}` : `${n}` }
 
 // Spellbook class_id is a spell-list ID (e.g. hxm_magier) — resolve to the character's
 // actual casting class so Hexenmeister (CH) and Magier (IN) get the right stat.

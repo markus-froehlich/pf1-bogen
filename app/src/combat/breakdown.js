@@ -10,7 +10,7 @@ import { CONDITIONS } from '../components/ConditionsPanel.jsx'
 
 const COND_NAME = Object.fromEntries(CONDITIONS.map(c => [c.id, c]))
 
-export const sg = n => (n >= 0 ? `+${n}` : `−${Math.abs(n)}`)   // typografisches Minus
+export const sg = n => (!n ? '0' : n > 0 ? `+${n}` : `−${Math.abs(n)}`)   // typografisches Minus; 0 ohne Vorzeichen
 /** Anzeige: „19-20/x2" → „19–20/×2", „-2" → „−2" (Daten bleiben unverändert). */
 export const typo = t => (t == null ? t : String(t).replace(/(\d)-(\d)/g, '$1–$2').replace(/x(\d)/g, '×$1').replace(/(^|\s)-(\d)/g, '$1−$2'))
 
