@@ -9,10 +9,20 @@ export function SectionFrame({ id, label, summary, collapsed, onToggle, action, 
         <button className="nc-section-toggle" onClick={() => onToggle(id)} aria-expanded={!collapsed}>
           <CaretDown className={`nc-caret ${collapsed ? 'is-shut' : ''}`} />
           <span className="nc-section-label">{label}</span>
-          {collapsed && summary && <span className="nc-section-summary">{summary}</span>}
+          {collapsed && summary && !Array.isArray(summary) && <span className="nc-section-summary">{summary}</span>}
         </button>
         {action}
       </div>
+      {collapsed && Array.isArray(summary) && (
+        <button className="nc-section-chips" onClick={() => onToggle(id)} aria-label={label}>
+          {summary.map(c => (
+            <span key={c.key} className={`nc-sum-chip ${c.tone ? `is-${c.tone}` : ''}`}>
+              {c.tone === 'buff' && <Sparkle weight="fill" />}{c.tone === 'cond' && <WarningCircle weight="fill" />}
+              <span className="nc-sum-chip-label">{c.label}</span>{c.value && <b>{c.value}</b>}
+            </span>
+          ))}
+        </button>
+      )}
       {!collapsed && children}
     </section>
   )

@@ -78,7 +78,7 @@ function weaponRows({ char, attrs, baseValues, condMods, buffTotals, weaponMap, 
     const wc = weaponCategory(def, lang)
     const sub = [isRanged ? (L ? 'Fernkampf' : 'Ranged') : (L ? 'Nahkampf' : 'Melee'), wc.damage, typo(def.crit),
       def.range_m ? `${def.range_m} m` : null, slot.off_hand ? (L ? 'Nebenhand' : 'Off hand') : null, slot.two_handed ? (L ? 'zweihändig' : 'two-handed') : null,
-      wc.category].filter(Boolean).join(' · ')
+      wc.category?.replace(/ · (Fernkampf|ranged)$/, '')].filter(Boolean).join(' · ')   // „Fernkampf“ steht schon vorne
     const dice = def.damage?.[dmgKey] ?? def.damage?.m ?? '—'
     rows.push({ key: `w:${idx}`, idx, rawSlot: slot, name, slot: s, result, isRanged, finesse: slot.finesse, sub,
       dmg: `${dice}${result.damage_mod ? result.damage_str : ''}${slot.dmg_extra ? ` + ${slot.dmg_extra}` : ''}`,
@@ -191,9 +191,13 @@ export function CombatView(props) {
     atk: attacks.map(a => `${a.name} ${a.result.full_attack_str}`).join(' · ') || (L ? 'keine' : 'none'),
     def: `RK ${combat.rk} · SR ${misc.dr_text || '—'}`,
     move: [speed.speed != null ? `${speed.speed} m` : '—', ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']].filter(([k]) => misc[k]).map(([k, n]) => `${n} ${misc[k]} m`)].join(' · '),
-    cond: conds.length ? conds.map(id => CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id).join(', ') : (L ? 'keine' : 'none'),
-    buff: buffs.filter(b => b.active).map(b => b.name).join(', ') || (L ? 'keine aktiv' : 'none active'),
-    res: resources.map(r => `${r.name} ${Math.max(0, r.max - (r.current ?? 0))}/${r.max}`).join(' · ') || (L ? 'keine' : 'none'),
+    // Listen als Kacheln unter der Überschrift (statt langem Text rechts)
+    cond: conds.length ? conds.map(id => ({ key: id, label: CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id, tone: 'cond' })) : (L ? 'keine' : 'none'),
+    buff: buffs.some(b => b.active) ? buffs.filter(b => b.active).map(b => ({ key: b.id, label: b.name, tone: 'buff' })) : (L ? 'keine aktiv' : 'none active'),
+    res: resources.length ? resources.map(r => {
+      const left = Math.max(0, r.max - (r.current ?? 0))
+      return { key: r.id ?? r.name, label: r.name, value: `${left}/${r.max}`, tone: left === 0 ? 'empty' : '' }
+    }) : (L ? 'keine' : 'none'),
   }
 
   // ── Bereiche ────────────────────────────────────────────────────────────
