@@ -183,20 +183,40 @@ export function CombatView(props) {
       : combatBreakdown(sheet.key, bdCtx))
     : null
 
-  // ── Zusammenfassungen (eingeklappt) ─────────────────────────────────────
+  // ── Zusammenfassungen (eingeklappt): Kacheln unter der Überschrift ────
+  // Kachel antippen = Schnellaktion für genau diesen Wert; Überschrift antippen = ganzer Bereich
+  const openBd = key => () => setSheet({ type: 'bd', key })
+  const val = (key, label, value, onClick, tags) => ({ key, label, value, onClick,
+    tone: tags?.cond < 0 ? 'down' : tags?.buff > 0 ? 'up' : tags?.cond > 0 ? 'up' : tags?.buff < 0 ? 'down' : '' })
   const summaries = {
-    hp: `${hp.current}/${hp.max} ${L ? 'TP' : 'HP'}${hp.temp ? ` +${hp.temp}` : ''}`,
-    stats: `RK ${combat.rk} · Init ${sg(combat.init)} · KMB ${sg(combat.kmb)}`,
-    saves: `${L ? 'Zäh' : 'Fort'} ${sg(combat.fort)} · Ref ${sg(combat.ref)} · ${L ? 'Wil' : 'Will'} ${sg(combat.will)}`,
-    atk: attacks.map(a => `${a.name} ${a.result.full_attack_str}`).join(' · ') || (L ? 'keine' : 'none'),
-    def: `RK ${combat.rk} · SR ${misc.dr_text || '—'}`,
-    move: [speed.speed != null ? `${speed.speed} m` : '—', ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']].filter(([k]) => misc[k]).map(([k, n]) => `${n} ${misc[k]} m`)].join(' · '),
-    // Listen als Kacheln unter der Überschrift (statt langem Text rechts)
-    cond: conds.length ? conds.map(id => ({ key: id, label: CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id, tone: 'cond' })) : (L ? 'keine' : 'none'),
-    buff: buffs.some(b => b.active) ? buffs.filter(b => b.active).map(b => ({ key: b.id, label: b.name, tone: 'buff' })) : (L ? 'keine aktiv' : 'none active'),
+    hp: [
+      { ...val('hp', L ? 'TP' : 'HP', `${hp.current}/${hp.max}`, () => { setPadMode('dmg'); setSheet({ type: 'pad' }) }), tone: hpTone === 'neg' ? 'down' : '' },
+      hp.temp > 0 ? val('temp', L ? 'Temp.' : 'Temp', `+${hp.temp}`, () => { setPadMode('temp'); setSheet({ type: 'pad' }) }) : null,
+      nl > 0 ? { ...val('nl', L ? 'NL' : 'NL', String(nl), () => { setPadMode('nl'); setSheet({ type: 'pad' }) }), tone: 'down' } : null,
+    ].filter(Boolean),
+    stats: [
+      val('rk', L ? 'RK' : 'AC', String(combat.rk), openBd('rk'), tag('rk')),
+      val('init', 'Init', sg(combat.init), openBd('init'), tag('init')),
+      val('gab', L ? 'GAB' : 'BAB', sg(combat.bab)),
+      val('kmb', L ? 'KMB' : 'CMB', sg(combat.kmb), openBd('kmb'), tag('kmb')),
+      val('kmv', L ? 'KMV' : 'CMD', String(combat.kmv), openBd('kmv'), tag('kmv')),
+    ],
+    saves: [['fort', L ? 'Zäh' : 'Fort'], ['ref', 'Ref'], ['will', L ? 'Wil' : 'Will']].map(([k, l]) => val(k, l, sg(combat[k]), openBd(k), tag(k))),
+    atk: attacks.length ? attacks.map(a => ({ ...val(a.key, a.name, a.result.full_attack_str, openBd(a.key)), tone: a.cond < 0 ? 'down' : a.buff > 0 ? 'up' : '' })) : (L ? 'keine' : 'none'),
+    def: [
+      val('rk', L ? 'RK' : 'AC', String(combat.rk), openBd('rk'), tag('rk')),
+      val('touch', L ? 'Ber.' : 'Touch', String(combat.rk_touch), openBd('touch'), tag('rk_touch')),
+      val('flat', L ? 'Fuß' : 'Flat', String(combat.rk_flat), openBd('flat'), tag('rk_flat')),
+      misc.dr_text ? val('dr', 'SR', misc.dr_text) : null,
+    ].filter(Boolean),
+    move: [val('walk', L ? 'Grund' : 'Base', speed.speed != null ? `${speed.speed} m` : '—'),
+      ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']]
+        .filter(([k]) => misc[k]).map(([k, n]) => val(k, n, `${misc[k]} m`))],
+    cond: conds.length ? conds.map(id => ({ key: id, label: CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id, tone: 'cond', onClick: () => setSheet({ type: 'qcond', id }) })) : (L ? 'keine' : 'none'),
+    buff: buffs.some(b => b.active) ? buffs.filter(b => b.active).map(b => ({ key: b.id, label: b.name, tone: 'buff', onClick: () => setSheet({ type: 'qbuff', id: b.id }) })) : (L ? 'keine aktiv' : 'none active'),
     res: resources.length ? resources.map(r => {
       const left = Math.max(0, r.max - (r.current ?? 0))
-      return { key: r.id ?? r.name, label: r.name, value: `${left}/${r.max}`, tone: left === 0 ? 'empty' : '' }
+      return { key: r.id ?? r.name, label: r.name, value: `${left}/${r.max}`, tone: left === 0 ? 'empty' : '', onClick: () => setSheet({ type: 'qres', id: r.id }) }
     }) : (L ? 'keine' : 'none'),
   }
 
@@ -457,6 +477,62 @@ export function CombatView(props) {
           <HpEdit hp={hp} nl={nl} setHp={setHp} setNlDamage={setNlDamage} attrs={attrs} baseValues={baseValues}
             companionHd={companionHd} feats={char.feats} lang={lang} onDone={close} />
         )}
+        {sheet?.type === 'qres' && (() => {
+          const r = resources.find(x => x.id === sheet.id)
+          if (!r) return null
+          const used = Number(r.current ?? 0)
+          const left = Math.max(0, r.max - used)
+          const setUsed = n => setResources(list => list.map(x => (x.id === r.id ? { ...x, current: Math.max(0, Math.min(x.max, n)) } : x)))
+          return (
+            <div className="nc-sheet-body nc-gap nc-quick">
+              <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{r.name}</span>
+                <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
+              <div className="nc-quick-counter">
+                <button className="nc-quick-btn" disabled={left <= 0} onClick={() => setUsed(used + 1)} aria-label={L ? 'Eins verbrauchen' : 'Use one'}><Minus /></button>
+                <span className="nc-quick-val"><b className={left === 0 ? 'is-empty' : ''}>{left}</b><small>/ {r.max}</small></span>
+                <button className="nc-quick-btn" disabled={left >= r.max} onClick={() => setUsed(used - 1)} aria-label={L ? 'Eins zurück' : 'Restore one'}><Plus /></button>
+              </div>
+              <span className="nc-hint">{[r.unit || r.source, r.reset === 'nie' ? (L ? 'kein Reset' : 'no reset') : `Reset: ${(RESET_LABEL[r.reset ?? 'tag'] ?? RESET_LABEL.tag)[L ? 0 : 1]}`].filter(Boolean).join(' · ')}</span>
+              <div className="nc-sheet-foot">
+                <button className="nc-btn nc-btn-ghost" onClick={() => setSheet({ type: 'resource', id: r.id })}><PencilSimple />{L ? 'Bearbeiten' : 'Edit'}</button>
+                <button className="nc-btn nc-btn-ghost" onClick={() => { close(); if (collapsed.has('res')) onToggle('res') }}>{L ? 'Alle Ressourcen' : 'All resources'}</button>
+              </div>
+            </div>
+          )
+        })()}
+        {sheet?.type === 'qbuff' && (() => {
+          const b = buffs.find(x => x.id === sheet.id)
+          if (!b) return null
+          return (
+            <div className="nc-sheet-body nc-gap nc-quick">
+              <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{b.name}</span>
+                <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
+              <span className="nc-quick-text">{buffSummary(b, lang) || (L ? 'Keine Boni eingetragen.' : 'No bonuses.')}</span>
+              <button className="nc-row-main nc-quick-switch" aria-pressed={!!b.active}
+                onClick={() => setActiveBuffs(list => list.map(x => (x.id === b.id ? { ...x, active: !x.active } : x)))}>
+                <span>{b.active ? (L ? 'Aktiv' : 'Active') : (L ? 'Aus' : 'Off')}</span><Switch on={!!b.active} /></button>
+              <div className="nc-sheet-foot">
+                <button className="nc-btn nc-btn-ghost" onClick={() => setSheet({ type: 'buff', id: b.id })}><PencilSimple />{L ? 'Bearbeiten' : 'Edit'}</button>
+                <button className="nc-btn nc-btn-ghost" onClick={() => { close(); if (collapsed.has('buff')) onToggle('buff') }}>{L ? 'Alle Buffs' : 'All buffs'}</button>
+              </div>
+            </div>
+          )
+        })()}
+        {sheet?.type === 'qcond' && (() => {
+          const c = CONDITIONS.find(x => x.id === sheet.id)
+          if (!c) return null
+          return (
+            <div className="nc-sheet-body nc-gap nc-quick">
+              <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? c.de : c.en}</span>
+                <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
+              <span className="nc-quick-text">{c.effect}</span>
+              <div className="nc-sheet-foot">
+                <button className="nc-btn nc-btn-secondary" onClick={() => { close(); removeCondition(c.id) }}><X />{L ? 'Zustand entfernen' : 'Remove'}</button>
+                <button className="nc-btn nc-btn-ghost" onClick={() => setSheet({ type: 'conds' })}>{L ? 'Alle Zustände' : 'All conditions'}</button>
+              </div>
+            </div>
+          )
+        })()}
         {sheet?.type === 'bd' && (
           <BreakdownSheet bd={bd} misc={misc} onMisc={(k, v) => setCombatMisc(k, v)} lang={lang} />
         )}
@@ -494,7 +570,7 @@ export function CombatView(props) {
               })}
             </div>
             <div className="nc-sheet-foot">
-              <span className="nc-hint">{L ? 'Eingeklappte Bereiche zeigen ihre Werte in der Kopfzeile. Tippen auf eine Überschrift klappt auch direkt.' : 'Collapsed sections show their values in the header.'}</span>
+              <span className="nc-hint">{L ? 'Eingeklappte Bereiche zeigen ihre Werte als Kacheln. Kachel antippen = Schnellaktion (z. B. Ressource −/+), Überschrift antippen = ganzer Bereich.' : 'Collapsed sections show their values as tiles. Tap a tile for a quick action, tap the heading for the full section.'}</span>
               <button className="nc-btn nc-btn-ghost" onClick={onResetOrder}>{L ? 'Zurücksetzen' : 'Reset'}</button>
             </div>
           </div>

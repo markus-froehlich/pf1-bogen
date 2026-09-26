@@ -14,14 +14,16 @@ export function SectionFrame({ id, label, summary, collapsed, onToggle, action, 
         {action}
       </div>
       {collapsed && Array.isArray(summary) && (
-        <button className="nc-section-chips" onClick={() => onToggle(id)} aria-label={label}>
-          {summary.map(c => (
-            <span key={c.key} className={`nc-sum-chip ${c.tone ? `is-${c.tone}` : ''}`}>
-              {c.tone === 'buff' && <Sparkle weight="fill" />}{c.tone === 'cond' && <WarningCircle weight="fill" />}
+        <div className="nc-section-chips">
+          {summary.map(c => {
+            const inner = <>
+              {(c.tone === 'buff' || c.tone === 'up') && <Sparkle weight="fill" />}{(c.tone === 'cond' || c.tone === 'down') && <WarningCircle weight="fill" />}
               <span className="nc-sum-chip-label">{c.label}</span>{c.value && <b>{c.value}</b>}
-            </span>
-          ))}
-        </button>
+            </>
+            // Kachel mit eigener Schnellaktion, sonst klappt sie den Bereich auf
+            return <button key={c.key} className={`nc-sum-chip ${c.tone ? `is-${c.tone}` : ''}`} onClick={c.onClick ?? (() => onToggle(id))}>{inner}</button>
+          })}
+        </div>
       )}
       {!collapsed && children}
     </section>
