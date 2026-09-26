@@ -149,8 +149,8 @@ export function WeaponEditor({ slot, index, char, attrs, bab, condMods, buffTota
       <ChipsField label={L ? 'Art' : 'Type'} options={[['nah', L ? 'Nahkampf' : 'Melee'], ['fern', L ? 'Fernkampf' : 'Ranged']]} value={isRanged ? 'fern' : 'nah'}
         onChange={v => set({ is_ranged: v === 'fern' ? (autoRanged ? null : true) : (autoRanged ? false : null) })} />
       <NumField label={L ? 'Verzauberung' : 'Enhancement'} value={d.enhancement} onChange={v => set({ enhancement: v })} min={0} max={5} format={v => (v ? `+${v}` : (L ? 'keine' : 'none'))} />
-      <NumField label={L ? 'Angriff+ (sonstiges)' : 'Attack+ (other)'} value={d.misc_attack} onChange={v => set({ misc_attack: v })} min={-10} max={20} format={v => (v ? sg(v) : '±0')} />
-      <NumField label={L ? 'Schaden+ (sonstiges)' : 'Damage+ (other)'} value={d.misc_damage} onChange={v => set({ misc_damage: v })} min={-10} max={20} format={v => (v ? sg(v) : '±0')} />
+      <NumField label={L ? 'Angriff+ (sonstiges)' : 'Attack+ (other)'} value={d.misc_attack} onChange={v => set({ misc_attack: v })} min={-10} max={20} format={v => (v ? sg(v) : '0')} />
+      <NumField label={L ? 'Schaden+ (sonstiges)' : 'Damage+ (other)'} value={d.misc_damage} onChange={v => set({ misc_damage: v })} min={-10} max={20} format={v => (v ? sg(v) : '0')} />
       <TextField label={L ? 'Zusatzschaden' : 'Extra damage'} value={d.dmg_extra} onChange={v => set({ dmg_extra: v })} placeholder={L ? 'z. B. 1W6 Feuer' : 'e.g. 1d6 fire'} />
       <ChipsField multi label={L ? 'Eigenschaften' : 'Properties'} value={{ mw: d.mw, finesse: d.finesse, off_hand: d.off_hand, two_handed: d.two_handed }}
         options={[['mw', L ? 'Meisterarbeit' : 'Masterwork'], ['finesse', L ? 'Waffenfinesse' : 'Weapon Finesse'], ['off_hand', L ? 'Nebenhand' : 'Off hand'], ['two_handed', L ? 'Zweihändig' : 'Two-handed']]}

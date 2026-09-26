@@ -28,7 +28,7 @@ export function ValueTags({ buff, cond }) {
   )
 }
 
-export function Stepper({ value, onChange, min = -99, max = 99, format = v => (v ? sg(v) : '±0'), label }) {
+export function Stepper({ value, onChange, min = -99, max = 99, format = v => (v ? sg(v) : '0'), label }) {
   return (
     <div className="nc-stepper" aria-label={label}>
       <button className="nc-step-btn" onClick={() => onChange(Math.max(min, value - 1))} aria-label="−"><Minus /></button>

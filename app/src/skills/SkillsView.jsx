@@ -173,7 +173,7 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
               <span className="nc-bd-text"><span>{L ? 'Sonstiges' : 'Other'}</span><span className="nc-bd-sub">{L ? 'Manueller Bonus oder Malus' : 'Manual bonus or penalty'}</span></span>
               <div className="nc-stepper">
                 <button className="nc-step-btn" onClick={() => setField('misc', Number(open.entry?.misc ?? 0) - 1)} aria-label="−"><Minus /></button>
-                <span className="nc-step-val">{Number(open.entry?.misc ?? 0) ? sg(Number(open.entry.misc)) : '±0'}</span>
+                <span className="nc-step-val">{Number(open.entry?.misc ?? 0) ? sg(Number(open.entry.misc)) : '0'}</span>
                 <button className="nc-step-btn" onClick={() => setField('misc', Number(open.entry?.misc ?? 0) + 1)} aria-label="+"><Plus /></button>
               </div>
             </div>

@@ -649,7 +649,7 @@ export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbR
           return (
             <div className="nc-bd-misc-row">
               <span className="nc-bd-text"><span>{L ? 'Größe' : 'Size'}</span>
-                <span className="nc-bd-sub">{`RK ${cur?.rk ? sg(cur.rk) : '±0'} · KMB ${cur?.kmb ? sg(cur.kmb) : '±0'}`}</span></span>
+                <span className="nc-bd-sub">{`RK ${cur?.rk ? sg(cur.rk) : '0'} · KMB ${cur?.kmb ? sg(cur.kmb) : '0'}`}</span></span>
               <div className="nc-stepper nc-stepper-wide" aria-label={L ? 'Größe' : 'Size'}>
                 <button className="nc-step-btn" disabled={i <= 0} onClick={() => setSize(keys[i - 1])} aria-label={L ? 'kleiner' : 'smaller'}><Minus /></button>
                 <span className="nc-step-val">{cur ? (L ? cur.de : cur.en) : '—'}</span>
