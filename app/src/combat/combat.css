@@ -282,3 +282,7 @@
 /* Kontrast: Stepper-Knöpfe klar umrandet, weißes Symbol */
 :root[data-theme="kontrast"] .nc-step-btn:not(.is-bare) { border-color: var(--color-accent); color: #ffffff; background: color-mix(in srgb, var(--color-accent) 18%, #000); }
 :root[data-theme="kontrast"] .nc-stepper { border-color: #ffffff55; }
+/* Suchfelder: Fokus am Rahmen des Feldes zeigen, nicht als zweiter Ring ums innere input */
+:root .nc-search input:focus-visible, :root[data-theme] .nc-search input:focus-visible { outline: none; }
+.nc-search:focus-within { border-color: var(--color-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 25%, transparent); }
+.nc-search input::placeholder { color: var(--color-neutral-500); text-overflow: ellipsis; }
