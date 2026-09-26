@@ -2,7 +2,7 @@ import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
   Sword, Heart, Crosshair, PencilSimple, X, DiceFive, Moon, ArrowsDownUp,
   DotsSixVertical, Eye, EyeSlash, ArrowUp, ArrowDown, Stack,
-  TShirt, Shield, CircleNotch, Wind, Diamond, CaretRight,
+  TShirt, Shield, CircleNotch, Wind, Diamond, CaretRight, Minus, Plus,
 } from '@phosphor-icons/react'
 import weaponsData from '../data/weapons.json'
 import { computeAttributes, computeCombat, resolveGearItem } from '../engine/index.js'
@@ -640,15 +640,24 @@ export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbR
             <Stepper value={Number(misc[key] ?? 0)} onChange={v => setCombatMisc(key, v)} min={key === 'rk_misc' ? -20 : 0} max={30} label={label} />
           </div>
         ))}
-        <div className="nc-set-row nc-set-row-flat">
-          <span className="nc-set-label">{L ? 'Größe' : 'Size'}</span>
-          <select className="nc-input nc-select" value={sizeKey} onChange={e => {
-            const m = SIZE_MODS[e.target.value]
-            setCombatMisc('size_mod_rk', m.rk); setCombatMisc('size_mod_kmb', m.kmb)
-          }}>
-            {Object.entries(SIZE_MODS).map(([k, v]) => <option key={k} value={k}>{(L ? v.de : v.en)}{v.rk ? ` (RK ${sg(v.rk)})` : ''}</option>)}
-          </select>
-        </div>
+        {(() => {
+          // Größe als Stepper wie die Zeilen darüber: − kleiner, + größer (GRW-Reihenfolge Mini … Kolossal)
+          const keys = Object.keys(SIZE_MODS)
+          const i = keys.indexOf(sizeKey)
+          const setSize = k => { const m = SIZE_MODS[k]; setCombatMisc('size_mod_rk', m.rk); setCombatMisc('size_mod_kmb', m.kmb) }
+          const cur = SIZE_MODS[sizeKey]
+          return (
+            <div className="nc-bd-misc-row">
+              <span className="nc-bd-text"><span>{L ? 'Größe' : 'Size'}</span>
+                <span className="nc-bd-sub">{`RK ${cur?.rk ? sg(cur.rk) : '±0'} · KMB ${cur?.kmb ? sg(cur.kmb) : '±0'}`}</span></span>
+              <div className="nc-stepper nc-stepper-wide" aria-label={L ? 'Größe' : 'Size'}>
+                <button className="nc-step-btn" disabled={i <= 0} onClick={() => setSize(keys[i - 1])} aria-label={L ? 'kleiner' : 'smaller'}><Minus /></button>
+                <span className="nc-step-val">{cur ? (L ? cur.de : cur.en) : '—'}</span>
+                <button className="nc-step-btn" disabled={i < 0 || i >= keys.length - 1} onClick={() => setSize(keys[i + 1])} aria-label={L ? 'größer' : 'larger'}><Plus /></button>
+              </div>
+            </div>
+          )
+        })()}
         {textField(L ? 'Schadensreduzierung' : 'Damage reduction', 'dr_text', L ? 'z. B. 5/Kaltes Eisen' : 'e.g. 5/cold iron')}
         {textField(L ? 'Resistenzen' : 'Resistances', 'resist_text', L ? 'z. B. Feuer 10, Kälte 5' : 'e.g. fire 10, cold 5')}
         {textField(L ? 'Immunitäten' : 'Immunities', 'immunity_text', L ? 'z. B. Gift, Schlaf' : 'e.g. poison, sleep')}
