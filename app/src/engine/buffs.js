@@ -23,6 +23,8 @@ export const BUFF_STATS = [
 // Ausweichen, ungetypt und alle Mali stapeln. Buffs ohne Typ (Bestand) = ungetypt.
 export const BUFF_TYPES = [
   { id: 'verbesserung', de: 'Verbesserung', en: 'Enhancement' },
+  { id: 'ruestung',     de: 'Rüstung',      en: 'Armor' },
+  { id: 'schild',       de: 'Schild',       en: 'Shield' },
   { id: 'moral',        de: 'Moral',        en: 'Morale' },
   { id: 'glueck',       de: 'Glück',        en: 'Luck' },
   { id: 'kompetenz',    de: 'Kompetenz',    en: 'Competence' },

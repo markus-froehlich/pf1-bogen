@@ -55,6 +55,20 @@ function deflectionLines(c, L, activeBuffs = []) {
   })
 }
 
+/** Getragene Rüstung/Schild vs. Buff gleicher Art (z. B. Magierrüstung): nur der höchste zählt. */
+function maxLines(sources = [], label, activeBuffs, type, L) {
+  if (!sources.length) return []
+  const best = Math.max(...sources.map(x => x.value))
+  const names = (buffContributions(activeBuffs).ac ?? []).filter(x => x.counted && x.type === type).map(x => x.name)
+  let taken = false
+  return sources.map(x => {
+    const counts = !taken && x.value === best
+    if (counts) taken = true
+    const src = x.src === 'gear' ? (L ? 'Ausrüstung' : 'Gear') : `Buff · ${names.join(', ') || 'Buff'}`
+    return { kind: x.src === 'gear' ? 'gear' : 'buff', label, sub: counts ? src : `${src} · ${L ? `stapelt nicht (${sg(x.value)}, höchster zählt)` : 'does not stack'}`, value: counts ? x.value : 0 }
+  })
+}
+
 function finish(title, total, lines, extra = {}) {
   // „Sonstiges" (manuelles Feld + Notiz) ist Teil der Summe
   if (extra.miscKey && Number(extra.miscValue ?? 0)) {
@@ -80,8 +94,8 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
   if (key === 'rk' || key === 'touch' || key === 'flat') {
     const lines = [{ kind: 'base', label: L ? 'Basis' : 'Base', sub: L ? 'Grundwert' : 'Base value', value: 10, raw: true }]
     if (key !== 'touch') {
-      if (c.rk_armor) lines.push({ kind: 'gear', label: L ? 'Rüstung' : 'Armor', sub: L ? 'Ausrüstung' : 'Gear', value: c.rk_armor })
-      if (c.rk_shield) lines.push({ kind: 'gear', label: L ? 'Schild' : 'Shield', sub: L ? 'Ausrüstung' : 'Gear', value: c.rk_shield })
+      lines.push(...maxLines(c.armorSources, L ? 'Rüstung' : 'Armor', buffs, 'ruestung', L))
+      lines.push(...maxLines(c.shieldSources, L ? 'Schild' : 'Shield', buffs, 'schild', L))
     }
     if (key !== 'flat' && c.GEmodCapped) {
       const capped = c.maxDex < 99 && c.effGEmod > c.maxDex
@@ -96,7 +110,7 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
       lines.push(...buffLines(buffs, ['nat_armor'], lang))
     }
     lines.push(...deflectionLines(c, L, buffs))
-    lines.push(...buffLines(buffs, ['ac'], lang, t => t !== 'ablenkung' && t !== 'ausweichen'))
+    lines.push(...buffLines(buffs, ['ac'], lang, t => !['ablenkung', 'ausweichen', 'ruestung', 'schild'].includes(t)))
     if (key !== 'flat') {
       lines.push(...buffLines(buffs, ['dodge', 'ac'], lang, t => t === 'ausweichen').map(l => ({ ...l, sub: `${l.sub} · ${L ? 'Ausweichen' : 'Dodge'}` })))
       lines.push(...condLines(conds, ['rk'], lang))

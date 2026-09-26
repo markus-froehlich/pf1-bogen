@@ -139,7 +139,15 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const acOfType    = pred => acContribs.filter(x => pred(x.type)).reduce((a, x) => a + x.value, 0)
   const acDeflect   = acOfType(t => t === 'ablenkung')
   const acDodge     = acOfType(t => t === 'ausweichen')
-  const rk_buff_ac  = acOfType(t => t !== 'ablenkung' && t !== 'ausweichen')
+  // Rüstungs-/Schildbonus aus Buffs (z. B. Magierrüstung, Schild): wie getragene Rüstung —
+  // nicht auf Berührung, stapelt nicht mit getragener Rüstung bzw. Schild (höchster zählt, GRW)
+  const acArmorBuff = acOfType(t => t === 'ruestung')
+  const acShieldBuff = acOfType(t => t === 'schild')
+  const armorSources = [{ src: 'gear', value: rk_armor }, { src: 'buff', value: acArmorBuff }].filter(x => x.value)
+  const shieldSources = [{ src: 'gear', value: rk_shield }, { src: 'buff', value: acShieldBuff }].filter(x => x.value)
+  rk_armor = Math.max(rk_armor, acArmorBuff)
+  rk_shield = Math.max(rk_shield, acShieldBuff)
+  const rk_buff_ac  = acOfType(t => !['ablenkung', 'ausweichen', 'ruestung', 'schild'].includes(t))
   const acKmv       = acOfType(t => KMV_AC_TYPES.has(t) && t !== 'ablenkung' && t !== 'ausweichen')
   // Ablenkung: Ring, Buff und manuelles Feld sind derselbe Bonus-Typ → nur der höchste zählt (GRW)
   const deflSources = [
@@ -196,7 +204,7 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     gear_spell_failure: gearSpellFailure,
     _components: {
       rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2,
-      rk_ring, rk_buff_ac, rk_dodge, dodgeRaw, acKmv, deflSources, deflCounted, loadTier, loadMaxDex, loadCheckPenalty,
+      rk_ring, rk_buff_ac, rk_dodge, dodgeRaw, armorSources, shieldSources, acKmv, deflSources, deflCounted, loadTier, loadMaxDex, loadCheckPenalty,
       kmb_buff: Number(bt.attack ?? 0), armorMaxDex, maxDex, effGEmod, effSTmod, sizeModKMB, gearResist,
       init_ability: effGEmod, init_misc: initMisc, init_feat: initFeat,
       init_condition: cond.init, init_buff: Number(bt.init ?? 0),

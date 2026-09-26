@@ -13,7 +13,7 @@ import { classLabel } from '../engine/classes.js'
 import { CONDITIONS, CONFUSED_TABLE } from '../components/ConditionsPanel.jsx'
 import { Sheet } from '../shell/Sheet.jsx'
 import { useToast } from '../shell/toastContext.js'
-import { SectionFrame, ValueTags, Switch, ListCard } from './ui.jsx'
+import { SectionFrame, ValueTags, Switch, ListCard, Stepper } from './ui.jsx'
 import { BuffEditor, ResourceEditor, WeaponEditor, GearEditor } from './editors.jsx'
 import { BreakdownSheet } from './BreakdownSheet.jsx'
 import { NumberPad } from './NumberPad.jsx'
@@ -42,8 +42,10 @@ function useWeaponMap(hbWeapons) {
 /** Wert mit/ohne Buffs bzw. Zustände — Differenz = Tag „✦ +n" bzw. „⚠ −n" (Engine bleibt maßgeblich). */
 function useDeltas(char, attrs, combat, baseValues, buffTotals) {
   return useMemo(() => {
-    const noBuffAttrs = computeAttributes(char, {})
-    const noBuff = computeCombat(char, noBuffAttrs, baseValues, {})
+    // Vergleich „ohne Buffs": die Engine liest RK-Buffs nach Typ direkt aus active_buffs → dort leeren
+    const noBuffChar = { ...char, active_buffs: [] }
+    const noBuffAttrs = computeAttributes(noBuffChar, {})
+    const noBuff = computeCombat(noBuffChar, noBuffAttrs, baseValues, {})
     const noCondChar = { ...char, conditions: [] }
     const noCond = computeCombat(noCondChar, attrs, baseValues, buffTotals)
     return { noBuff, noBuffAttrs, noCond }
@@ -227,7 +229,7 @@ export function CombatView(props) {
             sub: speed.encumbered ? (L ? 'durch Last reduziert' : 'reduced by load') : speed.unarmored != null && speed.speed != null && speed.speed < speed.unarmored ? `${speed.unarmored} m ${L ? 'ohne Rüstung' : 'unarmored'}` : (L ? 'Grundbewegung' : 'Base speed'), noBd: true },
         ].map(t => {
           const tags = t.noBd ? {} : tag(t.key)
-          const onClick = t.key === 'speed' ? () => (collapsed.has('def') ? onToggle('def') : null)
+          const onClick = t.key === 'speed' ? () => (collapsed.has('move') ? onToggle('move') : null)
             : t.noBd ? () => toast(L ? `GAB aus Klassen: ${t.sub}` : `BAB from classes: ${t.sub}`)
             : () => setSheet({ type: 'bd', key: t.key })
           return (
@@ -282,8 +284,21 @@ export function CombatView(props) {
         ))}
       </ListCard>
     ),
-    def: <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hbRaces} lang={lang}
-      gearItems={gearItems} onEditGear={index => setSheet({ type: 'gear', index })} />,
+    def: (<>
+      <div className="nc-tiles">
+        {[['rk', 'rk', L ? 'RK' : 'AC'], ['touch', 'rk_touch', L ? 'Berührung' : 'Touch'], ['flat', 'rk_flat', L ? 'Falscher Fuß' : 'Flat-footed']].map(([bdKey, key, label]) => {
+          const tags = tag(key)
+          return (
+            <button key={bdKey} className="nc-tile" onClick={() => setSheet({ type: 'bd', key: bdKey })}>
+              <span className="nc-tile-label">{label}</span>
+              <span className="nc-tile-row"><span className="nc-tile-value is-big">{combat[key]}</span><ValueTags buff={tags.buff} cond={tags.cond} /></span>
+            </button>
+          )
+        })}
+      </div>
+      <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hbRaces} lang={lang}
+        gearItems={gearItems} onEditGear={index => setSheet({ type: 'gear', index })} />
+    </>),
     move: <MovementSection char={rulesChar} setCombatMisc={setCombatMisc} speed={speed} lang={lang} />,
     cond: (
       <ListCard empty={!conds.length} emptyText={L ? 'Keine aktiven Zustände.' : 'No active conditions.'}
@@ -611,6 +626,14 @@ export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbR
         })}
       </ListCard>
       <div className="nc-card nc-card-pad nc-gap">
+        {[['rk_natural', L ? 'Natürliche Rüstung' : 'Natural armor', L ? 'z. B. Volk, Tiergestalt (Buffs zählen extra)' : 'e.g. race, wild shape'],
+          ['rk_deflect', L ? 'Ablenkung (sonstige)' : 'Deflection (other)', L ? 'zählt nur, wenn höher als Ring/Buff' : 'counts only if higher than ring/buff'],
+          ['rk_misc', L ? 'Sonstiges' : 'Other', L ? 'zählt auf RK, Berührung und falschen Fuß' : 'applies to all AC values']].map(([key, label, hint]) => (
+          <div key={key} className="nc-bd-misc-row">
+            <span className="nc-bd-text"><span>{label}</span><span className="nc-bd-sub">{hint}</span></span>
+            <Stepper value={Number(misc[key] ?? 0)} onChange={v => setCombatMisc(key, v)} min={key === 'rk_misc' ? -20 : 0} max={30} label={label} />
+          </div>
+        ))}
         <div className="nc-set-row nc-set-row-flat">
           <span className="nc-set-label">{L ? 'Größe' : 'Size'}</span>
           <select className="nc-input nc-select" value={sizeKey} onChange={e => {

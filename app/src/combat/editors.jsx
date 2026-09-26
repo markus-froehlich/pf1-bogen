@@ -21,6 +21,8 @@ function buffTemplates(cl) {
   return [
     { name: 'Segnen', type: 'moral', bonuses: { attack: 1 }, duration: '1 Min./Stufe', notes: 'RW-Bonus +1 nur gegen Furcht (GRW S. 331)' },
     { name: 'Heldenmut', type: 'moral', bonuses: { attack: 2, saves_all: 2, skills_all: 2 }, duration: '10 Min./Stufe' },
+    { name: 'Magierrüstung', type: 'ruestung', bonuses: { ac: 4 }, duration: '1 Std./Stufe', notes: 'Rüstungsbonus: nicht auf Berührung, stapelt nicht mit Rüstung' },
+    { name: 'Schild', type: 'schild', bonuses: { ac: 4 }, duration: '1 Min./Stufe', notes: 'Schildbonus; hebt Magische Geschosse auf' },
     { name: 'Bärenstärke', type: 'verbesserung', bonuses: { str: 4 }, duration: '1 Min./Stufe' },
     { name: 'Katzenhafte Anmut', type: 'verbesserung', bonuses: { dex: 4 }, duration: '1 Min./Stufe' },
     { name: 'Rindenhaut', type: 'verbesserung', bonuses: { nat_armor: clamp(2 + Math.floor(Math.max(0, cl - 3) / 3), 2, 5) }, duration: '10 Min./Stufe' },
