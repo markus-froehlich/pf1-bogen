@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react'
 import { ArrowSquareOut, MagnifyingGlass, Plus } from '@phosphor-icons/react'
 import featsData from '../data/feats.json'
-import { baseFeatBudget } from '../engine/featBudget.js'
+import { featBudget, hasKnownBonusRules } from '../engine/featBudget.js'
+import { classLabel } from '../engine/classes.js'
+import { Stepper } from '../combat/ui.jsx'
 import { RefLink } from '../components/RefLink.jsx'
 import { Sheet } from '../shell/Sheet.jsx'
 import { useToast } from '../shell/toastContext.js'
@@ -58,7 +60,7 @@ function FeatEditor({ feat, onSave, onDelete, onClose, lang }) {
   )
 }
 
-export function FeatsView({ char, setFeats, totalLevel = 0, lang, layout }) {
+export function FeatsView({ char, setFeats, update, totalLevel = 0, lang, layout }) {
   const L = lang === 'de'
   const toast = useToast()
   const [sheet, setSheet] = useState(null)           // {type:'edit', id|null} | {type:'browse'}
@@ -66,8 +68,9 @@ export function FeatsView({ char, setFeats, totalLevel = 0, lang, layout }) {
   const [btype, setBtype] = useState('')
   const [limit, setLimit] = useState(PAGE)
   const feats = char.feats ?? []
-  const isHuman = char.meta?.race === 'mensch' || char.meta?.race === 'human'
-  const budget = baseFeatBudget(totalLevel, isHuman)
+  const fb = featBudget(char, totalLevel, lang)
+  const budget = fb.total
+  const unknownClasses = (char.meta?.classes ?? []).filter(c => c.id && !hasKnownBonusRules(c.id)).map(c => classLabel(c.id, lang))
   const tone = feats.length > budget ? 'neg' : feats.length === budget ? 'ok' : 'warn'
   const browse = useMemo(() => {
     const s = bq.trim().toLowerCase()
@@ -97,7 +100,20 @@ export function FeatsView({ char, setFeats, totalLevel = 0, lang, layout }) {
           <span className={`nc-fp-val is-${budget > 0 ? tone : 'ok'}`}>{feats.length}{budget > 0 ? ` / ${budget}` : ''}</span>
         </div>
         {budget > 0 && <div className="nc-fp-bar"><div className={`is-${tone}`} style={{ width: `${Math.min(100, (feats.length / budget) * 100)}%` }} /></div>}
-        <span className="nc-hint">{L ? `Grundwert ⌈Stufe/2⌉${isHuman ? ' + 1 Mensch' : ''}. Bonustalente der Klasse (z. B. Kämpfer) kommen dazu.` : `Base ⌈level/2⌉${isHuman ? ' + 1 human' : ''}; class bonus feats extra.`}</span>
+        {fb.lines.length > 0 && (
+          <div className="nc-feat-budget">
+            {fb.lines.map((l, i) => (
+              <span key={i} className="nc-feat-budget-line"><span>{l.classId ? `${classLabel(l.classId, lang)}: ${l.label}` : l.label}{l.sub && !l.classId ? <span className="nc-muted"> · {l.sub}</span> : null}</span><span className="nc-feat-budget-n">+{l.n}</span></span>
+            ))}
+          </div>
+        )}
+        {update && (
+          <div className="nc-bd-misc-row">
+            <span className="nc-bd-text"><span>{L ? 'Weitere Bonustalente' : 'Other bonus feats'}</span>
+              <span className="nc-bd-sub">{unknownClasses.length ? (L ? `z. B. von ${unknownClasses.join(', ')} (Regeln nicht in den App-Daten), Domäne, Schurkentrick` : 'e.g. class, domain, rogue talent') : (L ? 'z. B. Domäne, Schurkentrick, Gegenstand' : 'e.g. domain, rogue talent')}</span></span>
+            <Stepper value={Number(char.feats_extra ?? 0)} onChange={v => update({ feats_extra: v })} min={-10} max={20} label={L ? 'Weitere Bonustalente' : 'Other bonus feats'} />
+          </div>
+        )}
       </div>
 
       <div className="nc-chips">

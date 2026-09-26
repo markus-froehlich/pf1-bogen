@@ -30,7 +30,7 @@ import { MoreView } from './shell/MoreView.jsx'
 import { CharView } from './char/CharView.jsx'
 import { Wizard } from './char/Wizard.jsx'
 import { MORE_PAGES } from './shell/morePages.js'
-import { baseFeatBudget } from './engine/featBudget.js'
+import { featBudget as featBudgetOf } from './engine/featBudget.js'
 import { CombatView } from './combat/CombatView.jsx'
 import { castingStatOf } from './engine/spellSlots.js'
 import { COMBAT_SECTIONS, migrateCombatPrefs } from './combat/sections.js'
@@ -357,7 +357,7 @@ export default function App() {
   }
 
   const L = lang === 'de'
-  const featBudget = baseFeatBudget(baseValues.totalLevel, char.meta?.race === 'mensch' || char.meta?.race === 'human')
+  const featBudget = featBudgetOf(char, baseValues.totalLevel).total
   const raceLabel = RACE_MAP_APP[char.meta.race]?.name?.[L ? 'de' : 'en'] ?? RACE_MAP_APP[char.meta.race]?.name?.de ?? char.meta.race
   const classLabel = (char.meta.classes ?? []).filter(entry => entry.id)
     .map(entry => `${CLASS_MAP_APP[entry.id]?.name?.[L ? 'de' : 'en'] ?? CLASS_MAP_APP[entry.id]?.name?.de ?? entry.id} ${entry.level}`)
@@ -424,7 +424,7 @@ export default function App() {
                   lang={lang} layout={layout} />
               )}
               {skillsMode === 'feats' && (
-                <FeatsView char={char} setFeats={setFeats} totalLevel={baseValues.totalLevel} lang={lang} layout={layout} />
+                <FeatsView char={char} setFeats={setFeats} update={update} totalLevel={baseValues.totalLevel} lang={lang} layout={layout} />
               )}
             </>
           )}
