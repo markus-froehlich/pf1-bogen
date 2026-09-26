@@ -47,8 +47,11 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
   Detailfenster per Wischgeste schließen; Waffenkategorie wieder sichtbar.
 - **Testen lokal:** `.claude/launch.json` → `pf1-app` (http://localhost:5199) bzw. `pf1-app-lan`
   (Port 5200, im WLAN z. B. fürs iPhone). Eigene Daten dort per Export/Import; Gist-Backup im Test NICHT verbinden.
-- **Ideen für später:** eigene Ansichten/Vorlagen am Desktop; Kacheln + Schnellfenster auch für
-  Zauberplätze (Zauber-Tab) und Münzen/Verbrauchsgüter (Inventar) – Nutzer gefragt, noch offen.
+- **Nach dem Merge (2026-09-26):** Zauber vormerken („für den nächsten Zug“): Lesezeichen an jedem Zauber,
+  Liste oben im Zauber-Tab mit „Wirken“ (spontan: Platz des Grades, vorbereitet: nächstes Exemplar abhaken);
+  `spellbook(.others[klasse]).marks = [{lv, spell_id}]`.
+- **Ideen für später:** eigene Ansichten/Vorlagen am Desktop; Kacheln für Zauber-Tab/Inventar
+  bewusst verworfen (dort Listen mit direkten Knöpfen; Verbrauchsgüter laufen als Ressourcen im Kampf-Tab).
 
 ## Entscheidungen (festgezurrt, siehe AGENTS.md)
 1. ~~Rechnen 1:1 wie Excel~~ → **PDF-Grundregelwerk gilt** (siehe AGENTS.md „Regel-Autorität"),

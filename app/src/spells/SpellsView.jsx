@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Moon, GearSix, Check, X, Sparkle, BookOpen, MagnifyingGlass, ListChecks, PawPrint, Lightning, Plus } from '@phosphor-icons/react'
+import { Moon, GearSix, Check, X, Sparkle, BookOpen, MagnifyingGlass, ListChecks, PawPrint, Lightning, Plus, BookmarkSimple } from '@phosphor-icons/react'
 import { Sheet } from '../shell/Sheet.jsx'
 import { useToast } from '../shell/toastContext.js'
 import { sg } from '../combat/breakdown.js'
@@ -195,6 +195,39 @@ function CasterView({ entry, sb, char, attrs, setSpellbook, lang, layout }) {
     addInstance(lv, id, null); toast(L ? `${spellName(id)} vorbereitet` : 'Prepared')
   }
 
+  // ── Vormerken (für den nächsten Zug): data.marks = [{ lv, spell_id }] je Zauberklasse ──
+  const marks = (data.marks ?? []).filter(m => SPELL_MAP[m.spell_id])
+  const isMarked = (level, id) => marks.some(m => m.lv === level && m.spell_id === id)
+  const toggleMark = (level, id) => {
+    const on = isMarked(level, id)
+    updateBook(setSpellbook, entry, d => ({ ...d, marks: on ? (d.marks ?? []).filter(m => !(m.lv === level && m.spell_id === id)) : [...(d.marks ?? []), { lv: level, spell_id: id }] }))
+    toast(on ? (L ? `${spellName(id)} nicht mehr vorgemerkt` : 'Unmarked') : (L ? `${spellName(id)} vorgemerkt` : 'Marked'))
+  }
+  // Wirken aus der Vormerkliste: wie „Wirken" bzw. Kästchen im jeweiligen Grad
+  const castMarked = m => {
+    const gm = grades[m.lv]
+    if (!gm) return
+    if (gm.unlimited) { toast(L ? `${spellName(m.spell_id)} – Grad 0, beliebig oft` : 'Level 0 – at will'); return }
+    const cur = data.levels?.[m.lv] ?? {}
+    if (entry.kind === 'spont' || entry.kind === 'hybrid') {
+      const usedHere = Number(cur.used ?? 0)
+      if (usedHere >= gm.total) { toast(L ? `Keine Plätze mehr auf Grad ${m.lv}` : `No slots left at level ${m.lv}`); return }
+      undoable(L ? `${spellName(m.spell_id)} gewirkt · Grad ${m.lv}: ${gm.total - usedHere - 1}/${gm.total}` : 'Cast',
+        () => patchLevel(m.lv, c => ({ ...c, used: Math.min(gm.total, Number(c.used ?? 0) + 1) })))
+    } else {
+      const open = preparedEntries(cur.prepared, m.lv).find(i => i.spell_id === m.spell_id && !i.used)
+      if (!open) { toast(L ? `${spellName(m.spell_id)} ist auf Grad ${m.lv} nicht (mehr) vorbereitet` : 'Not prepared (any more)'); return }
+      undoable(L ? `${spellName(m.spell_id)} gewirkt` : 'Cast',
+        () => patchLevel(m.lv, c => ({ ...c, prepared: c.prepared.map(x => (x.id === open.id ? { ...x, used: true } : x)) })))
+    }
+  }
+  const markBtn = (level, id) => {
+    const on = isMarked(level, id)
+    return <button className={`nc-icon-btn ${on ? 'is-active' : 'nc-muted'}`} onClick={() => toggleMark(level, id)} aria-pressed={on}
+      aria-label={on ? (L ? 'Vormerkung entfernen' : 'Unmark') : (L ? 'Für den nächsten Zug vormerken' : 'Mark for next turn')}
+      title={on ? (L ? 'Vormerkung entfernen' : 'Unmark') : (L ? 'Für den nächsten Zug vormerken' : 'Mark for next turn')}><BookmarkSimple weight={on ? 'fill' : 'regular'} /></button>
+  }
+
   // ── Körper je Modus ──
   let body = null
   if (mode === 'prep') {
@@ -208,7 +241,7 @@ function CasterView({ entry, sb, char, attrs, setSpellbook, lang, layout }) {
         {inst.map(i => (
           <SpellRow key={i.id} spellId={i.spell_id} dc={g.dc} lang={lang} done={i.used && !g.unlimited} tags={tagsFor(i)}
             lead={!g.unlimited ? <button className={`nc-check ${i.used ? 'is-on' : ''}`} onClick={() => toggleUsed(i)} aria-pressed={i.used} aria-label={L ? 'Gewirkt' : 'Cast'}>{i.used && <Check weight="bold" />}</button> : null}
-            actions={<button className="nc-icon-btn nc-muted" onClick={() => removeInst(i)} aria-label={L ? 'Entfernen' : 'Remove'}><X /></button>} />
+            actions={<>{markBtn(lv, i.spell_id)}<button className="nc-icon-btn nc-muted" onClick={() => removeInst(i)} aria-label={L ? 'Entfernen' : 'Remove'}><X /></button></>} />
         ))}
         {Array.from({ length: g.unlimited ? Math.max(0, g.total - inst.length) : normalFree }, (_, k) => (
           <button key={`f${k}`} className="nc-free-slot" onClick={() => setSheet({ type: 'pick', lv, slot: null })}><Plus />{L ? 'Freier Platz – vorbereiten' : 'Free slot – prepare'}</button>
@@ -263,6 +296,7 @@ function CasterView({ entry, sb, char, attrs, setSpellbook, lang, layout }) {
         {inst.map(i => (
           <SpellRow key={i.id} spellId={i.spell_id} dc={g.dc} lang={lang} tags={tagsFor(i)}
             actions={<>
+              {markBtn(lv, i.spell_id)}
               <button className="nc-btn nc-btn-small" onClick={cast} disabled={!g.unlimited && slotsLeft <= 0}>{L ? 'Wirken' : 'Cast'}</button>
               {mode === 'known' && <button className={`nc-icon-btn ${(lvData.bloodline_ids ?? []).includes(i.spell_id) ? 'is-active' : 'nc-muted'}`} onClick={() => toggleBonus(i.spell_id)}
                 aria-label={L ? 'Bonuszauber (Blutlinie/Mysterium) – zählt nicht mit' : 'Bonus spell'} title={L ? 'Bonuszauber (Blutlinie/Mysterium) – zählt nicht mit' : 'Bonus spell'}><Sparkle /></button>}
@@ -317,6 +351,29 @@ function CasterView({ entry, sb, char, attrs, setSpellbook, lang, layout }) {
           <button key={k} className={`nc-seg-opt ${mode === k ? 'is-on' : ''}`} onClick={() => pickMode(k)}><Icon />{fill(L ? de : en)}</button>
         ))}
       </div>
+
+      {marks.length > 0 && (
+        <section className="nc-marks">
+          <span className="nc-spell-block-title"><BookmarkSimple weight="fill" />{L ? 'Vorgemerkt für den nächsten Zug' : 'Marked for next turn'}</span>
+          <div className="nc-card nc-card-list">
+            {marks.map(m => {
+              const gm = grades[m.lv]
+              const t = gm ? gradeTile(entry, data, gm) : null
+              const prepLeft = entry.kind === 'spont' || entry.kind === 'hybrid' ? null
+                : preparedEntries(data.levels?.[m.lv]?.prepared, m.lv).filter(i => i.spell_id === m.spell_id && !i.used).length
+              const can = gm && (gm.unlimited || (prepLeft == null ? (t?.left ?? 0) > 0 : prepLeft > 0))
+              return (
+                <SpellRow key={`${m.lv}:${m.spell_id}`} spellId={m.spell_id} dc={gm?.dc} lang={lang}
+                  tags={<span className="nc-tag nc-tag-neutral">{L ? 'Grad' : 'Lvl'} {m.lv}{gm && !gm.unlimited ? ` · ${prepLeft == null ? `${t?.left ?? 0}/${gm.total}` : `${prepLeft}× ${L ? 'bereit' : 'ready'}`}` : ''}</span>}
+                  actions={<>
+                    <button className="nc-btn nc-btn-small" onClick={() => castMarked(m)} disabled={!can}>{L ? 'Wirken' : 'Cast'}</button>
+                    <button className="nc-icon-btn nc-muted" onClick={() => toggleMark(m.lv, m.spell_id)} aria-label={L ? 'Vormerkung entfernen' : 'Unmark'}><X /></button>
+                  </>} />
+              )
+            })}
+          </div>
+        </section>
+      )}
 
       {shownGrades.length > 0 ? <>
         <div className="nc-grade-tiles" role="tablist">

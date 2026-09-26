@@ -71,3 +71,6 @@
 @container spells (max-width: 480px) { .nc-spells .nc-seg-opt svg { display: none; } .nc-spells .nc-seg-opt { padding: 0 0.375rem; } }
 
 .nc-spell-head-top > .nc-spell-head-title { flex: 1 1 8rem; }   /* nur in der Kopfzeile (Zeilen-Flex), nicht in Spalten-Karten */
+/* Vorgemerkt für den nächsten Zug */
+.nc-marks { display: flex; flex-direction: column; gap: 0.375rem; }
+.nc-marks .nc-spell-block-title { display: inline-flex; align-items: center; gap: 0.375rem; color: var(--color-accent-200); }
