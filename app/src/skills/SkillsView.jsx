@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { MagnifyingGlass, Minus, Plus, Shield, ArrowSquareOut } from '@phosphor-icons/react'
+import { Minus, Plus, Shield, ArrowSquareOut } from '@phosphor-icons/react'
 import skillsData from '../data/skills.json'
 import { computeAllSkills, buildClassSkillSet, usedSkillRanks } from '../engine/skills.js'
 import { getConditionMods } from '../engine/conditions.js'
@@ -56,7 +56,6 @@ function skillBreakdown({ def, cv, entry, attrs, char, lang, instanceName }) {
 export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk = 0,
   skillsBuff = 0, companionRules = null, maxRanks = 20, lang, layout }) {
   const L = lang === 'de'
-  const [q, setQ] = useState('')
   const [filter, setFilter] = useState('alle')
   const [sheet, setSheet] = useState(null)
   const isCompanion = Boolean(companionRules)
@@ -85,10 +84,7 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
       rows.push({ def, entry: char.skills?.[def.id], cv: computed[def.id] })
     }
   }
-  const qq = q.trim().toLowerCase()
   const shown = rows.filter(r => {
-    const name = `${r.def.name.de} ${r.entry?.name ?? ''}`.toLowerCase()
-    if (qq && !name.includes(qq)) return false
     if (filter === 'klasse' && !classSet.has(r.def.id)) return false
     if (filter === 'raenge' && !r.cv.ranks) return false
     return true
@@ -114,10 +110,6 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
             <div className="nc-fp-bar"><div className={`is-${tone}`} style={{ width: `${Math.min(100, (used / Math.max(1, totalFk)) * 100)}%` }} /></div>
           </div>
         )}
-        <div className="nc-search nc-search-plain">
-          <MagnifyingGlass />
-          <input value={q} onChange={e => setQ(e.target.value)} placeholder={L ? 'Fertigkeit suchen' : 'Search skill'} />
-        </div>
         <div className="nc-seg is-full">
           {[['alle', L ? 'Alle' : 'All'], ['klasse', L ? 'Klasse' : 'Class'], ['raenge', L ? 'Mit Rängen' : 'Ranked']].map(([k, t]) => (
             <button key={k} className={`nc-seg-opt ${filter === k ? 'is-on' : ''}`} onClick={() => setFilter(k)}>{t}</button>
@@ -136,25 +128,22 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
           const name = r.multi ? `${r.def.name[lang] ?? r.def.name.de}${r.entry?.name ? ` (${r.entry.name})` : ''}` : (r.def.name[lang] ?? r.def.name.de)
           const key = `${r.def.id}:${r.idx ?? ''}`
           return (
-            <div key={key} className="nc-skill-row">
-              <button className="nc-skill-name" onClick={() => setSheet({ id: r.def.id, idx: r.idx })}>
-                <span className="nc-ellipsis nc-skill-title">{name}</span>
+            // Ränge nur im Detail änderbar (Stufenaufstieg) → im Spiel kein versehentliches +/−
+            <button key={key} className="nc-skill-row" onClick={() => setSheet({ id: r.def.id, idx: r.idx })}>
+              <span className="nc-skill-name">
+                <span className="nc-skill-title">{name}</span>
                 <span className="nc-skill-meta">
                   <span>{r.def.ability}</span>
                   {isClass && <span className="nc-accent-soft">{L ? 'Klasse' : 'Class'}</span>}
                   {r.def.armor_check_penalty && <span>RM</span>}
                   {r.def.trained_only && <span>{L ? 'geübt' : 'trained'}</span>}
+                  {r.cv.ranks > 0 && <span className="nc-skill-rank-tag">{r.cv.ranks} {L ? (r.cv.ranks === 1 ? 'Rang' : 'Ränge') : (r.cv.ranks === 1 ? 'rank' : 'ranks')}</span>}
                 </span>
-              </button>
-              <div className="nc-skill-ranks">
-                <button className="nc-rank-btn" onClick={() => setRanks(r, r.cv.ranks - 1)} aria-label="−"><Minus /></button>
-                <span className={`nc-rank-val ${r.cv.ranks ? '' : 'is-zero'}`}>{r.cv.ranks}</span>
-                <button className="nc-rank-btn" onClick={() => setRanks(r, r.cv.ranks + 1)} aria-label="+"><Plus /></button>
-              </div>
-              <button className={`nc-skill-total ${untrained ? 'is-na' : hasCondPenalty ? 'is-neg' : ''}`} onClick={() => setSheet({ id: r.def.id, idx: r.idx })}>
+              </span>
+              <span className={`nc-skill-total ${untrained ? 'is-na' : hasCondPenalty ? 'is-neg' : ''}`}>
                 {untrained ? '—' : sg(r.cv.total)}
-              </button>
-            </div>
+              </span>
+            </button>
           )
         })}
         {!shown.length && <span className="nc-empty">{L ? 'Keine Fertigkeit gefunden.' : 'No skill found.'}</span>}
@@ -165,6 +154,15 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
         {open && <>
           <BreakdownSheet bd={bd} lang={lang} />
           <div className="nc-bd-misc">
+            <div className="nc-bd-misc-row">
+              <span className="nc-bd-text"><span>{L ? 'Ränge' : 'Ranks'}</span>
+                <span className="nc-bd-sub">{`max. ${maxRanks}`}{totalFk > 0 ? ` · ${left >= 0 ? `${left} ${L ? 'FP frei' : 'SP free'}` : `${-left} ${L ? 'FP zu viel' : 'SP over'}`}` : ''}</span></span>
+              <div className="nc-stepper" aria-label={L ? 'Ränge' : 'Ranks'}>
+                <button className="nc-step-btn" disabled={open.cv.ranks <= 0} onClick={() => setRanks(open, open.cv.ranks - 1)} aria-label="−"><Minus /></button>
+                <span className="nc-step-val">{open.cv.ranks}</span>
+                <button className="nc-step-btn" disabled={open.cv.ranks >= maxRanks} onClick={() => setRanks(open, open.cv.ranks + 1)} aria-label="+"><Plus /></button>
+              </div>
+            </div>
             {open.multi && (
               <label className="nc-field"><span>{L ? 'Spezialisierung' : 'Specialty'}</span>
                 <input className="nc-input" value={open.entry?.name ?? ''} placeholder={L ? 'z. B. Schreiner' : 'e.g. carpenter'} onChange={e => setField('name', e.target.value)} /></label>

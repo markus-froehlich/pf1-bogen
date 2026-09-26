@@ -4,11 +4,7 @@
   position: sticky; top: 0; z-index: 2; display: flex; flex-direction: column; gap: 0.5rem;
   padding: 0.5rem 0; margin-top: -0.5rem; background: var(--color-bg);
 }
-/* breit genug: Suche + Filter in einer Zeile; wenig Höhe (Handy quer): Kopf scrollt mit */
-@media (min-width: 560px) {
-  .nc-skills-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .nc-skills-head > .nc-fp, .nc-skills-head > .nc-skills-note { grid-column: 1 / -1; }
-}
+/* wenig Höhe (Handy quer): Kopf scrollt mit */
 @media (max-height: 500px) { .nc-skills-head { position: static; } }
 
 /* FP-/Talent-Budget */
@@ -27,31 +23,26 @@
 
 /* Fertigkeitsliste */
 .nc-skill-list { container: skills / inline-size; display: flex; flex-direction: column; background: var(--color-surface); border-radius: var(--radius-md); outline: var(--hc-edge); outline-offset: -1px; }
-.nc-skill-row { display: flex; align-items: center; gap: 0.25rem; min-height: 3.25rem; padding-right: 0.25rem; min-width: 0; }
+.nc-skill-row {
+  display: flex; align-items: center; gap: 0.5rem; width: 100%; min-height: 3.25rem; padding: 0.25rem 0.375rem 0.25rem 0;
+  min-width: 0; background: none; border: 0; color: inherit; text-align: left;
+}
 .nc-skill-row + .nc-skill-row { border-top: 1px solid var(--color-neutral-900); }
-.nc-skill-name {
-  flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; align-self: stretch; justify-content: center;
-  padding: 0.375rem 0.5rem 0.375rem 0.875rem; background: none; border: 0; color: inherit; text-align: left;
-}
-.nc-skill-title { font-size: 0.9375rem; }
-.nc-skill-meta { display: flex; gap: 0.5rem; font-size: 0.6875rem; color: var(--color-neutral-500); }
-.nc-skill-ranks { display: flex; align-items: center; flex: none; }
-.nc-rank-btn {
-  width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center;
-  background: none; border: 0; color: var(--color-neutral-400); border-radius: var(--radius-sm);
-}
-.nc-rank-btn:active { background: var(--color-neutral-800); color: var(--color-text); }
-.nc-rank-val { min-width: 1.5rem; text-align: center; font-variant-numeric: tabular-nums; font-size: 0.9375rem; }
-.nc-rank-val.is-zero { color: var(--color-neutral-600); }
+.nc-skill-name { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; padding: 0.375rem 0.5rem 0.375rem 0.875rem; }
+.nc-skill-title { font-size: 0.9375rem; overflow-wrap: anywhere; hyphens: manual; }
+.nc-skill-meta { display: flex; flex-wrap: wrap; gap: 0 0.5rem; font-size: 0.6875rem; color: var(--color-neutral-500); }
+.nc-skill-rank-tag { color: var(--color-neutral-300); font-variant-numeric: tabular-nums; }
 .nc-skill-total {
-  flex: none; min-width: 3.25rem; height: 2.75rem; border-radius: var(--radius-sm); background: var(--color-neutral-900);
-  border: 0; color: var(--color-text); font-size: 1.25rem; font-weight: 500; font-variant-numeric: tabular-nums;
+  flex: none; min-width: 3.25rem; height: 2.75rem; padding: 0 0.375rem; border-radius: var(--radius-sm); background: var(--color-neutral-900);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text); font-size: 1.25rem; font-weight: 500; font-variant-numeric: tabular-nums;
 }
 .nc-skill-total.is-neg { color: var(--c-neg); }
 .nc-skill-total.is-na { color: var(--color-neutral-600); }
+.nc-skill-row:active { background: var(--color-neutral-900); }
 @media (hover: hover) and (pointer: fine) {
-  .nc-skill-name:hover .nc-skill-title { color: var(--color-accent-200); }
-  .nc-skill-total:hover { background: var(--color-neutral-800); }
+  .nc-skill-row:hover .nc-skill-title { color: var(--color-accent-200); }
+  .nc-skill-row:hover .nc-skill-total { background: var(--color-neutral-800); }
 }
 
 /* Talente */
@@ -77,11 +68,6 @@
 .nc-icon-btn.is-done { color: var(--color-accent-300); }
 @media (hover: hover) and (pointer: fine) { .nc-feat-main:hover .nc-feat-name { color: var(--color-accent-200); } }
 
-/* Schmal (kleines Handy oder große Schrift): Name über die ganze Breite, Ränge + Gesamt darunter */
-@container skills (max-width: 21rem) {
-  .nc-skill-row { flex-wrap: wrap; justify-content: flex-end; padding: 0.25rem 0.25rem 0.375rem; }
-  .nc-skill-name { flex: 1 0 100%; padding: 0.375rem 0.625rem 0; }
-}
 .nc-feat-budget { display: flex; flex-direction: column; gap: 0.125rem; font-size: 0.8125rem; color: var(--color-neutral-300); }
 .nc-feat-budget-line { display: flex; justify-content: space-between; gap: 0.75rem; }
 .nc-feat-budget-n { font-variant-numeric: tabular-nums; color: var(--color-neutral-100); flex: none; }
