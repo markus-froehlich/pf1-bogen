@@ -163,6 +163,15 @@ export function CombatView(props) {
       temp: L ? `${v} temporäre TP gesetzt` : `Set ${v} temporary HP`, nl: L ? `${v} NL-Schaden` : `${v} nonlethal damage` }[padMode]
     toast(msg, { undo: () => { setHp('current', prev.current); setHp('temp', prev.temp); setNlDamage(prev.nl) } })
   }
+  // Voll heilen (z. B. nach mehreren Tagen Rast): TP = Maximum, NL-Schaden weg; temporäre TP bleiben
+  function fullHeal() {
+    const prev = { current: hp.current, nl }
+    setHp('current', hp.max)
+    setNlDamage(0)
+    close()
+    toast(L ? `Voll geheilt: ${hp.max}/${hp.max} TP` : `Fully healed: ${hp.max}/${hp.max} HP`, { undo: () => { setHp('current', prev.current); setNlDamage(prev.nl) } })
+  }
+  const canFullHeal = hp.max > 0 && (hp.current < hp.max || nl > 0)
   const ratio = hp.max > 0 ? Math.max(0, Math.min(1, hp.current / hp.max)) : 0
   const hpTone = ratio <= 0.25 ? 'neg' : ratio <= 0.5 ? 'warn' : 'ok'
   const hpStatus = hp.current <= -koScore ? (L ? 'Tot' : 'Dead')
@@ -471,7 +480,11 @@ export function CombatView(props) {
             hint={`${L ? 'TP' : 'HP'} ${hp.current}/${hp.max}${hp.temp ? ` · temp. ${hp.temp}` : ''}${nl ? ` · NL ${nl}` : ''}`}
             cta={v => ({ dmg: L ? `${v} Schaden nehmen` : `Take ${v} damage`, heal: L ? `${v} TP heilen` : `Heal ${v} HP`,
               temp: L ? `${v} temporäre TP setzen` : `Set ${v} temp HP`, nl: L ? `${v} NL-Schaden nehmen` : `Take ${v} nonlethal` }[padMode])}
-            onCommit={applyPad} />
+            onCommit={applyPad}
+            extra={padMode === 'heal' && hp.max > 0 ? (
+              <button className="nc-btn nc-btn-secondary nc-pad-full" disabled={!canFullHeal} onClick={fullHeal}>
+                <Heart />{canFullHeal ? (L ? `Voll heilen (auf ${hp.max} TP${nl ? ', NL weg' : ''})` : `Heal fully (${hp.max} HP)`) : (L ? 'Schon voll' : 'Already full')}
+              </button>) : null} />
         )}
         {sheet?.type === 'hpEdit' && (
           <HpEdit hp={hp} nl={nl} setHp={setHp} setNlDamage={setNlDamage} attrs={attrs} baseValues={baseValues}
@@ -625,6 +638,11 @@ function HpEdit({ hp, nl, setHp, setNlDamage, attrs, baseValues, companionHd, fe
         {num(L ? 'Temporär' : 'Temporary', hp.temp, v => setHp('temp', v))}
         {num(L ? 'NL-Schaden' : 'Nonlethal', nl, v => setNlDamage(v))}
       </div>
+      {Number(hp.max) > 0 && (Number(hp.current) < Number(hp.max) || nl > 0) && (
+        <button className="nc-btn nc-btn-secondary nc-pad-full" onClick={() => { setHp('current', Number(hp.max)); setNlDamage(0) }}>
+          <Heart />{L ? `Auf voll setzen (${hp.max} TP${nl ? ', NL weg' : ''})` : `Set to full (${hp.max} HP)`}
+        </button>
+      )}
       {nl > 0 && (
         <div className="nc-inline-note">
           <span>{L ? `Bewusstlos bei ≤${hp.current - nl} TP` : `Unconscious at ≤${hp.current - nl} HP`}</span>

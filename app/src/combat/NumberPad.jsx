@@ -9,7 +9,7 @@ function loadRecent() {
  * Zahlenfeld-Sheet (README „Trefferpunkte" / „Zahlenfeld"): optionales Modus-Segment,
  * Schnellwerte (zuletzt benutzt + 1/5/10), Tastenfeld 3×4, Bestätigen mit Klartext.
  */
-export function NumberPad({ modes, mode, onMode, hint, cta, onCommit, quick = true, maxLen = 5, lang }) {
+export function NumberPad({ modes, mode, onMode, hint, cta, onCommit, quick = true, maxLen = 5, extra = null, lang }) {
   const L = lang === 'de'
   const [pad, setPad] = useState('')
   const [recent, setRecent] = useState(loadRecent)
@@ -48,6 +48,7 @@ export function NumberPad({ modes, mode, onMode, hint, cta, onCommit, quick = tr
           ))}
         </div>
       )}
+      {extra}
       <div className="nc-pad-keys">
         {keys.map(k => (
           <button key={k} className="nc-pad-key" onClick={() => press(k)} aria-label={k === '⌫' ? (L ? 'Löschen' : 'Backspace') : k}>{k}</button>
