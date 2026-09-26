@@ -26,7 +26,8 @@ const LABELS = {
   stats: ['Kampfwerte', 'Combat values'],
   saves: ['Rettungswürfe', 'Saving throws'],
   atk:   ['Angriffe', 'Attacks'],
-  def:   ['Verteidigung · Bewegung', 'Defense · Movement'],
+  def:   ['Verteidigung', 'Defense'],
+  move:  ['Bewegung', 'Movement'],
   cond:  ['Zustände', 'Conditions'],
   buff:  ['Buffs · Effekte', 'Buffs · Effects'],
   res:   ['Ressourcen', 'Resources'],
@@ -184,7 +185,8 @@ export function CombatView(props) {
     stats: `RK ${combat.rk} · Init ${sg(combat.init)} · KMB ${sg(combat.kmb)}`,
     saves: `${L ? 'Zäh' : 'Fort'} ${sg(combat.fort)} · Ref ${sg(combat.ref)} · ${L ? 'Wil' : 'Will'} ${sg(combat.will)}`,
     atk: attacks.map(a => `${a.name} ${a.result.full_attack_str}`).join(' · ') || (L ? 'keine' : 'none'),
-    def: `${speed.speed != null ? `${speed.speed} m` : '—'} · SR ${misc.dr_text || '—'}`,
+    def: `RK ${combat.rk} · SR ${misc.dr_text || '—'}`,
+    move: [speed.speed != null ? `${speed.speed} m` : '—', ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']].filter(([k]) => misc[k]).map(([k, n]) => `${n} ${misc[k]} m`)].join(' · '),
     cond: conds.length ? conds.map(id => CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id).join(', ') : (L ? 'keine' : 'none'),
     buff: buffs.filter(b => b.active).map(b => b.name).join(', ') || (L ? 'keine aktiv' : 'none active'),
     res: resources.map(r => `${r.name} ${Math.max(0, r.max - (r.current ?? 0))}/${r.max}`).join(' · ') || (L ? 'keine' : 'none'),
@@ -282,6 +284,7 @@ export function CombatView(props) {
     ),
     def: <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hbRaces} lang={lang}
       gearItems={gearItems} onEditGear={index => setSheet({ type: 'gear', index })} />,
+    move: <MovementSection char={rulesChar} setCombatMisc={setCombatMisc} speed={speed} lang={lang} />,
     cond: (
       <ListCard empty={!conds.length} emptyText={L ? 'Keine aktiven Zustände.' : 'No active conditions.'}
         addLabel={L ? 'Zustand hinzufügen' : 'Add condition'} onAdd={() => setSheet({ type: 'conds' })}>
@@ -549,17 +552,40 @@ function gearMeta(g, L) {
 }
 
 /** Verteidigung · Bewegung (README): Ausrüstungsliste, Größe, Bewegungsarten, SR/Resistenzen/Immunitäten. */
-export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbRaces, lang }) {
+/** Bewegung: Grundbewegung (Volk, Rüstung, Last) + weitere Bewegungsarten. */
+export function MovementSection({ char, setCombatMisc, speed, lang }) {
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
-  const sizeKey = currentSizeKey(char, hbRaces)
-  const resolved = gearItems.map(resolveGearItem)
   const speedField = (label, key) => (
     <label className="nc-field"><span>{label}</span>
       <input className="nc-input" type="text" inputMode="decimal" placeholder="—" value={misc[key] ?? ''}
         onChange={e => setCombatMisc(key, e.target.value === '' ? '' : e.target.value.replace(',', '.'))} />
     </label>
   )
+  const why = speed.encumbered ? (L ? 'durch Traglast reduziert' : 'reduced by load')
+    : speed.unarmored != null && speed.speed != null && speed.speed < speed.unarmored ? (L ? `durch Rüstung reduziert · ${speed.unarmored} m ohne` : `reduced by armor · ${speed.unarmored} m without`)
+      : speed.speed == null ? (L ? 'kein Volk gewählt' : 'no race chosen') : (L ? 'aus dem Volk' : 'from race')
+  return (
+    <div className="nc-card nc-card-pad nc-gap">
+      <div className="nc-set-row nc-set-row-flat">
+        <span className="nc-set-text"><span className="nc-set-label">{L ? 'Grundbewegung' : 'Base speed'}</span><span className="nc-set-hint">{why}</span></span>
+        <span className="nc-move-value">{speed.speed != null ? `${speed.speed} m` : '—'}</span>
+      </div>
+      <div className="nc-grid-2">
+        {speedField(L ? 'Fliegen (m)' : 'Fly (m)', 'speed_fly')}
+        {speedField(L ? 'Schwimmen (m)' : 'Swim (m)', 'speed_swim')}
+        {speedField(L ? 'Klettern (m)' : 'Climb (m)', 'speed_climb')}
+        {speedField(L ? 'Graben (m)' : 'Burrow (m)', 'speed_burrow')}
+      </div>
+    </div>
+  )
+}
+
+export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbRaces, lang }) {
+  const L = lang === 'de'
+  const misc = char.combat_misc ?? {}
+  const sizeKey = currentSizeKey(char, hbRaces)
+  const resolved = gearItems.map(resolveGearItem)
   const textField = (label, key, ph) => (
     <label className="nc-field"><span>{label}</span>
       <input className="nc-input" type="text" placeholder={ph} value={misc[key] ?? ''} onChange={e => setCombatMisc(key, e.target.value)} />
@@ -593,12 +619,6 @@ export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbR
           }}>
             {Object.entries(SIZE_MODS).map(([k, v]) => <option key={k} value={k}>{(L ? v.de : v.en)}{v.rk ? ` (RK ${sg(v.rk)})` : ''}</option>)}
           </select>
-        </div>
-        <div className="nc-grid-2">
-          {speedField(L ? 'Fliegen (m)' : 'Fly (m)', 'speed_fly')}
-          {speedField(L ? 'Schwimmen (m)' : 'Swim (m)', 'speed_swim')}
-          {speedField(L ? 'Klettern (m)' : 'Climb (m)', 'speed_climb')}
-          {speedField(L ? 'Graben (m)' : 'Burrow (m)', 'speed_burrow')}
         </div>
         {textField(L ? 'Schadensreduzierung' : 'Damage reduction', 'dr_text', L ? 'z. B. 5/Kaltes Eisen' : 'e.g. 5/cold iron')}
         {textField(L ? 'Resistenzen' : 'Resistances', 'resist_text', L ? 'z. B. Feuer 10, Kälte 5' : 'e.g. fire 10, cold 5')}

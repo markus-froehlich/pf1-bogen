@@ -256,3 +256,4 @@
 
 /* Kacheln: bei schmalem Bereich 2 statt 3 Spalten, damit Beschriftungen ganze Wörter behalten */
 @container section (max-width: 20rem) { .nc-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.nc-move-value { font-size: 1.375rem; font-weight: 500; font-variant-numeric: tabular-nums; flex: none; }
