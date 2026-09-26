@@ -100,11 +100,12 @@ export function CombatView(props) {
     setCombatMisc, setHp, setNlDamage, setConditions, setActiveBuffs, setResources, setWeapons, setGearItems,
     hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier, applyCarryMovement,
     companionHd = null, companionAttacks = [], casterLevel = 1,
-    order, onMove, onResetOrder, collapsed, onToggle,
+    order, onMove, onResetOrder, hidden = new Set(), onToggleHidden,
   } = props
   const L = lang === 'de'
   const toast = useToast()
   const [sheet, setSheet] = useState(null)      // { type, ... }
+  const [editSection, setEditSection] = useState(null)   // Bereich im Bearbeiten-Fenster (darüber öffnen sich weitere Fenster)
   const [padMode, setPadMode] = useState('dmg')
   const [confRoll, setConfRoll] = useState(null)
   const close = () => setSheet(null)
@@ -217,7 +218,7 @@ export function CombatView(props) {
       val('kmv', L ? 'KMV' : 'CMD', String(combat.kmv), openBd('kmv'), tag('kmv')),
     ],
     saves: [['fort', L ? 'Zäh' : 'Fort'], ['ref', 'Ref'], ['will', L ? 'Wil' : 'Will']].map(([k, l]) => val(k, l, sg(combat[k]), openBd(k), tag(k))),
-    atk: attacks.length ? attacks.map(a => ({ ...val(a.key, a.name, a.result.full_attack_str, openBd(a.key)), tone: a.cond < 0 ? 'down' : a.buff > 0 ? 'up' : '' })) : (L ? 'keine' : 'none'),
+    atk: attacks.length ? attacks.map(a => ({ ...val(a.key, a.name, a.result.full_attack_str, openBd(a.key)), sub: a.dmg, tone: a.cond < 0 ? 'down' : a.buff > 0 ? 'up' : '' })) : (L ? 'keine' : 'none'),
     def: [
       val('rk', L ? 'RK' : 'AC', String(combat.rk), openBd('rk'), tag('rk')),
       val('touch', L ? 'Ber.' : 'Touch', String(combat.rk_touch), openBd('touch'), tag('rk_touch')),
@@ -227,8 +228,14 @@ export function CombatView(props) {
     move: [val('walk', L ? 'Grund' : 'Base', speed.speed != null ? `${speed.speed} m` : '—'),
       ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']]
         .filter(([k]) => misc[k]).map(([k, n]) => val(k, n, `${misc[k]} m`))],
-    cond: conds.length ? conds.map(id => ({ key: id, label: CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id, tone: 'cond', onClick: () => setSheet({ type: 'qcond', id }) })) : (L ? 'keine' : 'none'),
-    buff: buffs.some(b => b.active) ? buffs.filter(b => b.active).map(b => ({ key: b.id, label: b.name, tone: 'buff', onClick: () => setSheet({ type: 'qbuff', id: b.id }) })) : (L ? 'keine aktiv' : 'none active'),
+    cond: [...conds.map(id => ({ key: id, label: CONDITIONS.find(c => c.id === id)?.[L ? 'de' : 'en'] ?? id, tone: 'cond', onClick: () => setSheet({ type: 'qcond', id }) })),
+      { key: '__add', label: L ? 'Zustand' : 'Condition', icon: <Plus />, tone: 'add', onClick: () => setSheet({ type: 'conds' }) }],
+    buff: buffs.length ? buffs.map(b => (b.active
+      ? { key: b.id, label: b.name, tone: 'buff', pressed: true, onClick: () => setSheet({ type: 'qbuff', id: b.id }) }
+      : { key: b.id, label: b.name, tone: 'off', pressed: false, onClick: () => {
+          setActiveBuffs(list => list.map(x => (x.id === b.id ? { ...x, active: true } : x)))
+          toast(L ? `${b.name} aktiv` : `${b.name} active`, { undo: () => setActiveBuffs(list => list.map(x => (x.id === b.id ? { ...x, active: false } : x))) })
+        } })) : (L ? 'keine angelegt' : 'none'),
     res: resources.length ? resources.map(r => {
       const left = Math.max(0, r.max - (r.current ?? 0))
       return { key: r.id ?? r.name, label: r.name, value: `${left}/${r.max}`, tone: left === 0 ? 'empty' : '', onClick: () => setSheet({ type: 'qres', id: r.id }) }
@@ -274,7 +281,7 @@ export function CombatView(props) {
             sub: speed.encumbered ? (L ? 'durch Last reduziert' : 'reduced by load') : speed.unarmored != null && speed.speed != null && speed.speed < speed.unarmored ? `${speed.unarmored} m ${L ? 'ohne Rüstung' : 'unarmored'}` : (L ? 'Grundbewegung' : 'Base speed'), noBd: true },
         ].map(t => {
           const tags = t.noBd ? {} : tag(t.key)
-          const onClick = t.key === 'speed' ? () => (collapsed.has('move') ? onToggle('move') : null)
+          const onClick = t.key === 'speed' ? () => setEditSection('move')
             : t.noBd ? () => toast(L ? `GAB aus Klassen: ${t.sub}` : `BAB from classes: ${t.sub}`)
             : () => setSheet({ type: 'bd', key: t.key })
           return (
@@ -444,6 +451,7 @@ export function CombatView(props) {
     ),
   }
 
+  const shown = order.filter(id => !hidden.has(id))
   // ── Tablet: Masonry (Bereiche fließen in die kürzere Spalte) ────────────
   const refs = useRef({})
   const [heights, setHeights] = useState({})
@@ -461,12 +469,15 @@ export function CombatView(props) {
   const columns = [[], []]
   if (masonry) {
     const colH = [0, 0]
-    for (const id of order) { const c = colH[0] <= colH[1] ? 0 : 1; columns[c].push(id); colH[c] += (heights[id] || 180) + 12 }
+    for (const id of shown) { const c = colH[0] <= colH[1] ? 0 : 1; columns[c].push(id); colH[c] += (heights[id] || 180) + 12 }
   }
+  // TP bleibt als Karte, alle anderen Bereiche zeigen Kacheln; Überschrift/Stift öffnet den Bereich zum Bearbeiten
+  const openEdit = id => (id === 'hp' ? setSheet({ type: 'hpEdit' }) : setEditSection(id))
   const renderSection = id => (
-    <SectionFrame key={id} id={id} label={LABELS[id][L ? 0 : 1]} summary={summaries[id]} collapsed={collapsed.has(id)} onToggle={onToggle}
+    <SectionFrame key={id} id={id} label={LABELS[id][L ? 0 : 1]} summary={id === 'hp' ? null : summaries[id]} onEdit={openEdit}
+      editLabel={L ? `${LABELS[id][0]} bearbeiten` : `Edit ${LABELS[id][1]}`}
       action={actions[id]} innerRef={el => { refs.current[id] = el }}>
-      {sections[id]}
+      {id === 'hp' ? sections.hp : null}
     </SectionFrame>
   )
 
@@ -475,9 +486,19 @@ export function CombatView(props) {
     <div className={`nc-combat ${masonry ? 'is-masonry' : ''}`}>
       {masonry
         ? <div className="nc-masonry">{columns.map((ids, i) => <div key={i} className="nc-masonry-col">{ids.map(renderSection)}</div>)}</div>
-        : order.map(renderSection)}
+        : shown.map(renderSection)}
       <button className="nc-btn nc-btn-secondary nc-arrange-btn" onClick={() => setSheet({ type: 'arrange' })}><ArrowsDownUp />{L ? 'Bereiche anordnen' : 'Arrange sections'}</button>
 
+      {/* Bereich bearbeiten (voller Inhalt); weitere Fenster öffnen sich darüber, danach ist man wieder hier */}
+      <Sheet open={!!editSection} onClose={() => { if (!sheet) setEditSection(null) }} layout={layout} label={editSection ? LABELS[editSection][L ? 0 : 1] : ''}>
+        {editSection && (
+          <div className="nc-sheet-body nc-gap nc-section-editor">
+            <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{LABELS[editSection][L ? 0 : 1]}</span>
+              <span className="nc-chips">{actions[editSection]}<button className="nc-btn nc-btn-ghost" onClick={() => setEditSection(null)}>{L ? 'Fertig' : 'Done'}</button></span></div>
+            {sections[editSection]}
+          </div>
+        )}
+      </Sheet>
       <Sheet open={!!sheet} onClose={close} layout={layout} label={sheet?.type}>
         {sheet?.type === 'pad' && (
           <NumberPad lang={lang}
@@ -527,7 +548,7 @@ export function CombatView(props) {
               <span className="nc-hint">{[r.unit || r.source, r.reset === 'nie' ? (L ? 'kein Reset' : 'no reset') : `Reset: ${(RESET_LABEL[r.reset ?? 'tag'] ?? RESET_LABEL.tag)[L ? 0 : 1]}`].filter(Boolean).join(' · ')}</span>
               <div className="nc-sheet-foot">
                 <button className="nc-btn nc-btn-ghost" onClick={() => setSheet({ type: 'resource', id: r.id })}><PencilSimple />{L ? 'Bearbeiten' : 'Edit'}</button>
-                <button className="nc-btn nc-btn-ghost" onClick={() => { close(); if (collapsed.has('res')) onToggle('res') }}>{L ? 'Alle Ressourcen' : 'All resources'}</button>
+                <button className="nc-btn nc-btn-ghost" onClick={() => { close(); setEditSection('res') }}>{L ? 'Alle Ressourcen' : 'All resources'}</button>
               </div>
             </div>
           )
@@ -545,7 +566,7 @@ export function CombatView(props) {
                 <span>{b.active ? (L ? 'Aktiv' : 'Active') : (L ? 'Aus' : 'Off')}</span><Switch on={!!b.active} /></button>
               <div className="nc-sheet-foot">
                 <button className="nc-btn nc-btn-ghost" onClick={() => setSheet({ type: 'buff', id: b.id })}><PencilSimple />{L ? 'Bearbeiten' : 'Edit'}</button>
-                <button className="nc-btn nc-btn-ghost" onClick={() => { close(); if (collapsed.has('buff')) onToggle('buff') }}>{L ? 'Alle Buffs' : 'All buffs'}</button>
+                <button className="nc-btn nc-btn-ghost" onClick={() => { close(); setEditSection('buff') }}>{L ? 'Alle Buffs' : 'All buffs'}</button>
               </div>
             </div>
           )
@@ -589,12 +610,12 @@ export function CombatView(props) {
               <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
             <div className="nc-arrange">
               {order.map((id, i) => {
-                const shut = collapsed.has(id)
+                const shut = hidden.has(id)
                 return (
                   <div key={id} className="nc-arrange-row">
                     <DotsSixVertical className="nc-muted-icon" />
                     <span className={`nc-arrange-name ${shut ? 'is-shut' : ''}`}>{LABELS[id][L ? 0 : 1]}</span>
-                    <button className={`nc-icon-btn nc-sm ${shut ? 'nc-muted' : 'is-active'}`} onClick={() => onToggle(id)} title={L ? 'Ein-/Ausklappen' : 'Collapse'}>{shut ? <EyeSlash /> : <Eye />}</button>
+                    <button className={`nc-icon-btn nc-sm ${shut ? 'nc-muted' : 'is-active'}`} onClick={() => onToggleHidden?.(id)} title={L ? 'Ein-/Ausblenden' : 'Show/hide'}>{shut ? <EyeSlash /> : <Eye />}</button>
                     <button className="nc-icon-btn nc-sm" disabled={i === 0} onClick={() => onMove(id, -1)} aria-label={L ? 'Nach oben' : 'Up'}><ArrowUp /></button>
                     <button className="nc-icon-btn nc-sm" disabled={i === order.length - 1} onClick={() => onMove(id, 1)} aria-label={L ? 'Nach unten' : 'Down'}><ArrowDown /></button>
                   </div>
@@ -602,7 +623,7 @@ export function CombatView(props) {
               })}
             </div>
             <div className="nc-sheet-foot">
-              <span className="nc-hint">{L ? 'Eingeklappte Bereiche zeigen ihre Werte als Kacheln. Kachel antippen = Schnellaktion (z. B. Ressource −/+), Überschrift antippen = ganzer Bereich.' : 'Collapsed sections show their values as tiles. Tap a tile for a quick action, tap the heading for the full section.'}</span>
+              <span className="nc-hint">{L ? 'Auge = Bereich ein-/ausblenden. Kachel antippen = Schnellaktion, Überschrift oder Stift = Bereich bearbeiten.' : 'Eye = show/hide. Tap a tile for a quick action, the heading or pencil to edit.'}</span>
               <button className="nc-btn nc-btn-ghost" onClick={onResetOrder}>{L ? 'Zurücksetzen' : 'Reset'}</button>
             </div>
           </div>

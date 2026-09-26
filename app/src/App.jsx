@@ -130,17 +130,18 @@ export default function App() {
 
   const [combatOrder, moveCombat, resetCombatOrder] = useSectionOrder('pf1_combat_order', COMBAT_SECTIONS)
 
-  const [combatCollapsed, setCombatCollapsed] = useState(() => {
+  // Ausgeblendete Kampf-Bereiche („Bereiche anordnen" → Auge); früheres Einklappen gibt es nicht mehr
+  const [combatHidden, setCombatHidden] = useState(() => {
     try {
-      return new Set(JSON.parse(localStorage.getItem('pf1_combat_collapsed') ?? '[]').filter(id => COMBAT_SECTIONS.includes(id)))
+      return new Set(JSON.parse(localStorage.getItem('pf1_combat_hidden') ?? '[]').filter(id => COMBAT_SECTIONS.includes(id)))
     }
     catch { return new Set() }
   })
-  const toggleCombatCollapse = (id) => {
-    setCombatCollapsed(prev => {
+  const toggleCombatHidden = (id) => {
+    setCombatHidden(prev => {
       const next = new Set(prev)
       if (next.has(id)) next.delete(id); else next.add(id)
-      localStorage.setItem('pf1_combat_collapsed', JSON.stringify([...next]))
+      localStorage.setItem('pf1_combat_hidden', JSON.stringify([...next]))
       return next
     })
   }
@@ -401,7 +402,7 @@ export default function App() {
               encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
               companionHd={companionRules?.hd ?? null} companionAttacks={companionRules?.attacks ?? []}
               order={combatOrder} onMove={moveCombat} onResetOrder={resetCombatOrder}
-              collapsed={combatCollapsed} onToggle={toggleCombatCollapse}
+              hidden={combatHidden} onToggleHidden={toggleCombatHidden}
               setWeapons={setWeapons} setGearItems={setGearItems} hbShields={hb.shields}
               casterLevel={Math.max(1, ...(char.meta.classes ?? []).filter(c => c.id && castingStatOf(c.id)).map(c => Number(c.level) || 1), 1)}
             />

@@ -18,6 +18,7 @@ const PREF_KEYS = [
   'pf1_combat_order',
   'pf1_attr_order',
   'pf1_combat_collapsed',
+  'pf1_combat_hidden',
   'pf1_attr_collapsed',
   'pf1_theme',
   'pf1_char_order',

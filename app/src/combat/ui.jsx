@@ -1,57 +1,34 @@
-import { useEffect, useRef } from 'react'
-import { CaretDown, Sparkle, WarningCircle, Minus, Plus } from '@phosphor-icons/react'
+import { Sparkle, WarningCircle, Minus, Plus, PencilSimple } from '@phosphor-icons/react'
 import { sg } from './breakdown.js'
 
-/** Bereich mit einklappbarer Überschrift (Caret dreht), Zusammenfassung wenn zu, optionale Aktion rechts. */
-export function SectionFrame({ id, label, summary, collapsed, onToggle, action, children, innerRef }) {
-  // Nach dem Aufklappen: passt der Bereich nicht ganz ins Bild, so scrollen, dass seine Überschrift oben steht
-  const own = useRef(null)
-  const wasCollapsed = useRef(collapsed)
-  useEffect(() => {
-    const opened = wasCollapsed.current && !collapsed
-    wasCollapsed.current = collapsed
-    const el = own.current
-    const holder = el?.parentElement
-    if (collapsed && holder) holder.style.paddingBottom = ''          // Luft von einem früheren Aufklappen wieder weg
-    if (!opened || !el) return
-    requestAnimationFrame(() => {
-      let sc = el.parentElement
-      while (sc && !/(auto|scroll)/.test(getComputedStyle(sc).overflowY)) sc = sc.parentElement
-      if (!sc) return
-      const view = sc.getBoundingClientRect()
-      const r = el.getBoundingClientRect()
-      if (r.bottom <= view.bottom && r.top >= view.top) return      // passt schon ganz ins Bild
-      // letzter Bereich: unten Luft schaffen, damit die Überschrift ganz nach oben kann
-      const want = sc.scrollTop + (r.top - view.top) - 8
-      const missing = want - (sc.scrollHeight - sc.clientHeight)
-      if (missing > 0 && holder) holder.style.paddingBottom = `${Math.ceil(missing)}px`
-      sc.scrollTo({ top: want, behavior: 'smooth' })
-    })
-  }, [collapsed])
-  const setRef = el => { own.current = el; if (typeof innerRef === 'function') innerRef(el) }
+/**
+ * Kampf-Bereich: Überschrift (antippen = Bereich bearbeiten, Stift rechts) + Werte als Kacheln.
+ * `summary` als Liste → Kacheln; Kachel mit eigener Schnellaktion (onClick), sonst öffnet sie den Bereich.
+ * Ohne Liste werden `children` gezeigt (z. B. die TP-Karte).
+ */
+export function SectionFrame({ id, label, summary, onEdit, editLabel, action, children, innerRef }) {
+  const chips = Array.isArray(summary)
   return (
-    <section className="nc-section" data-section={id} ref={setRef}>
+    <section className="nc-section" data-section={id} ref={innerRef}>
       <div className="nc-section-head">
-        <button className="nc-section-toggle" onClick={() => onToggle(id)} aria-expanded={!collapsed}>
-          <CaretDown className={`nc-caret ${collapsed ? 'is-shut' : ''}`} />
+        <button className="nc-section-toggle" onClick={() => onEdit(id)} aria-label={editLabel ?? label}>
           <span className="nc-section-label">{label}</span>
-          {collapsed && summary && !Array.isArray(summary) && <span className="nc-section-summary">{summary}</span>}
+          {!chips && summary && <span className="nc-section-summary">{summary}</span>}
         </button>
         {action}
+        <button className="nc-icon-btn nc-section-edit" onClick={() => onEdit(id)} aria-label={editLabel ?? label} title={editLabel ?? label}><PencilSimple /></button>
       </div>
-      {collapsed && Array.isArray(summary) && (
+      {chips ? (
         <div className="nc-section-chips">
-          {summary.map(c => {
-            const inner = <>
+          {summary.map(c => (
+            <button key={c.key} className={`nc-sum-chip ${c.tone ? `is-${c.tone}` : ''}`} onClick={c.onClick ?? (() => onEdit(id))} aria-pressed={c.pressed}>
               {(c.tone === 'buff' || c.tone === 'up') && <Sparkle weight="fill" />}{(c.tone === 'cond' || c.tone === 'down') && <WarningCircle weight="fill" />}
-              <span className="nc-sum-chip-label">{c.label}</span>{c.value && <b>{c.value}</b>}
-            </>
-            // Kachel mit eigener Schnellaktion, sonst klappt sie den Bereich auf
-            return <button key={c.key} className={`nc-sum-chip ${c.tone ? `is-${c.tone}` : ''}`} onClick={c.onClick ?? (() => onToggle(id))}>{inner}</button>
-          })}
+              {c.icon}
+              <span className="nc-sum-chip-label">{c.label}</span>{c.value && <b>{c.value}</b>}{c.sub && <span className="nc-sum-chip-sub">{c.sub}</span>}
+            </button>
+          ))}
         </div>
-      )}
-      {!collapsed && children}
+      ) : children}
     </section>
   )
 }
