@@ -363,13 +363,11 @@ export default function App() {
     .map(entry => `${CLASS_MAP_APP[entry.id]?.name?.[L ? 'de' : 'en'] ?? CLASS_MAP_APP[entry.id]?.name?.de ?? entry.id} ${entry.level}`)
     .join(' / ')
   const subline = [raceLabel, classLabel, char.meta.player].filter(Boolean).join(' · ') || (L ? 'Tippen für Charakterliste' : 'Tap for character list')
-  // Desktop: rechte Spalte = Zauber bei Zauberwirkern, sonst Fähigkeiten; der andere Tab wandert in die Schiene
-  const isCaster = (char.meta.classes ?? []).some(c => c.id && Number(c.level) > 0 && castingStatOf(c.id))
-  const dashRight = isCompanion ? null : isCaster ? 'spells' : 'skills'   // Gefährte: nur 2 Spalten
-  const navItems = layout === 'desktop'
-    ? ['attr', dashRight === 'skills' ? 'spells' : 'skills', 'inventory', 'more']
-    : (isCompanion ? TABS.filter(id => id !== 'spells') : TABS)
-  const activeNav = layout === 'desktop' && ['combat', dashRight].includes(tab) ? 'attr' : tab
+  // Desktop: Kampf | Char fest, dritte Spalte über die Schiene (Standard Fähigkeiten)
+  const DASH_THIRD = isCompanion ? ['skills', 'inventory', 'more'] : ['skills', 'spells', 'inventory', 'more']
+  const dashThird = DASH_THIRD.includes(tab) ? tab : 'skills'
+  const navItems = layout === 'desktop' ? DASH_THIRD : (isCompanion ? TABS.filter(id => id !== 'spells') : TABS)
+  const activeNav = layout === 'desktop' ? dashThird : tab
   const syncDot = gistSync.connected ? (gistSync.status === 'error' ? 'error' : gistSync.status === 'ok' ? 'ok' : 'syncing') : null
   const hbCount = Object.values(hb).reduce((sum, arr) => sum + (arr?.length ?? 0), 0)
   const moreCounts = {
@@ -466,7 +464,6 @@ export default function App() {
           )}
     </>
   )
-  const dashMid = ['combat', dashRight].includes(tab) ? 'attr' : tab
 
   return (
     <ToastProvider lang={lang}>
@@ -485,10 +482,10 @@ export default function App() {
 
       <main className={`nc-shell-main main-scroll ${layout === 'desktop' ? 'is-dash' : ''}`} onScroll={onMainScroll}>
         {layout === 'desktop' ? (
-          <div className={`nc-dash ${isCompanion ? 'is-two' : ''}`}>
+          <div className="nc-dash">
             <div className="nc-dash-col">{renderTab('combat')}</div>
-            <div className="nc-dash-col"><div className="nc-main-inner">{renderTab(dashMid)}</div></div>
-            {!isCompanion && <div className="nc-dash-col"><div className="nc-main-inner">{renderTab(dashRight)}</div></div>}
+            <div className="nc-dash-col"><div className="nc-main-inner">{renderTab('attr')}</div></div>
+            <div className="nc-dash-col"><div className="nc-main-inner">{renderTab(dashThird)}</div></div>
           </div>
         ) : (
           <div className="nc-main-inner">{renderTab(tab)}</div>
