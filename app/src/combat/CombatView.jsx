@@ -172,6 +172,12 @@ export function CombatView(props) {
     toast(L ? `Voll geheilt: ${hp.max}/${hp.max} TP` : `Fully healed: ${hp.max}/${hp.max} HP`, { undo: () => { setHp('current', prev.current); setNlDamage(prev.nl) } })
   }
   const canFullHeal = hp.max > 0 && (hp.current < hp.max || nl > 0)
+  function clearTemp() {
+    const prev = hp.temp
+    setHp('temp', 0)
+    close()
+    toast(L ? `Temporäre TP entfernt (${prev})` : `Temporary HP cleared (${prev})`, { undo: () => setHp('temp', prev) })
+  }
   const ratio = hp.max > 0 ? Math.max(0, Math.min(1, hp.current / hp.max)) : 0
   const hpTone = ratio <= 0.25 ? 'neg' : ratio <= 0.5 ? 'warn' : 'ok'
   const hpStatus = hp.current <= -koScore ? (L ? 'Tot' : 'Dead')
@@ -484,6 +490,9 @@ export function CombatView(props) {
             extra={padMode === 'heal' && hp.max > 0 ? (
               <button className="nc-btn nc-btn-secondary nc-pad-full" disabled={!canFullHeal} onClick={fullHeal}>
                 <Heart />{canFullHeal ? (L ? `Voll heilen (auf ${hp.max} TP${nl ? ', NL weg' : ''})` : `Heal fully (${hp.max} HP)`) : (L ? 'Schon voll' : 'Already full')}
+              </button>) : padMode === 'temp' && hp.temp > 0 ? (
+              <button className="nc-btn nc-btn-secondary nc-pad-full" onClick={clearTemp}>
+                <X />{L ? `Temporäre TP entfernen (${hp.temp})` : `Clear temporary HP (${hp.temp})`}
               </button>) : null} />
         )}
         {sheet?.type === 'hpEdit' && (
