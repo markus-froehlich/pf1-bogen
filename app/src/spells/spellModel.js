@@ -11,6 +11,7 @@
 import spellsData from '../data/spells.json'
 import { castingStatOf, spellRow, bonusSpells } from '../engine/spellSlots.js'
 import { classLabel } from '../engine/classes.js'
+import { chosenDomains } from './domainSpells.js'
 
 export const ALL_SPELLS = spellsData.spells
 export const SPELL_MAP = Object.fromEntries(ALL_SPELLS.map(s => [s.id, s]))
@@ -29,8 +30,9 @@ export function kindOf(charId, row) {
 }
 export const bookName = (charId, L) => (L ? BOOK[charId] ?? 'Zauberbuch' : ({ Zauberbuch: 'Spellbook', Vertrauter: 'Familiar', Formelbuch: 'Formula book' })[BOOK[charId]] ?? 'Spellbook')
 
-/** Zauberstufe: Paladin/Waldläufer = Klassenstufe − 3 (GRW); sonst Klassenstufe (Excel). */
-const CL_MINUS_3 = new Set(['paladin', 'waldlaeufer'])
+/** Zauberstufe = Klassenstufe − 3: Paladin/Waldläufer (GRW), Antipaladin (Expertenregeln/APG).
+ *  Blutwüter bewusst nicht: Klassenstufe (Regeltext ohne −3, Paizo-Entwickler bestätigt). */
+const CL_MINUS_3 = new Set(['paladin', 'waldlaeufer', 'antipaladin'])
 export const casterLevelOf = (charId, level) => (CL_MINUS_3.has(charId) ? Math.max(0, level - 3) : level)
 
 /** Kosten fürs Eintragen ins Zauberbuch (GRW, Magier): Grad 0 = 5 GM, sonst Grad² × 10 GM. */
@@ -48,7 +50,9 @@ export function casterEntries(char) {
   const primaryIdx = Math.max(0, list.findIndex(e => e.listId === sb.class_id || e.charId === sb.class_id))
   return list.map((e, i) => {
     const row = spellRow(e.charId, e.level)
-    return { ...e, key: i === primaryIdx ? '__primary' : e.charId, primary: i === primaryIdx, row, kind: kindOf(e.charId, row), stat: castingStatOf(e.charId), cl: casterLevelOf(e.charId, e.level) }
+    // GRW: Druide mit Naturbund-Domäne erhält einen Domänenzauberplatz wie der Kleriker (fehlt im Excel)
+    const druidDomain = e.charId === 'druide' && chosenDomains(char).length > 0
+    return { ...e, key: i === primaryIdx ? '__primary' : e.charId, primary: i === primaryIdx, row, kind: kindOf(e.charId, row), stat: castingStatOf(e.charId), cl: casterLevelOf(e.charId, e.level), druidDomain }
   })
 }
 
@@ -97,10 +101,11 @@ export function gradeInfo(entry, data, attrs) {
     if (lv >= 1 && accessible) {
       special += Math.floor(row?.extra?.[lv - 1] ?? 0)
       if (hasSchoolSlot(entry, data)) special += 1
+      if (entry.druidDomain) special += 1
     }
     const adjust = Number(data.levels?.[lv]?.adjust ?? 0)
     const total = accessible ? Math.max(0, base + bonus + special + adjust) : 0
-    const specialLabel = row?.extra ? (entry.charId === 'schamane' ? 'Geist' : 'Domäne') : 'Schule'
+    const specialLabel = entry.charId === 'schamane' ? 'Geist' : (row?.extra || entry.druidDomain) ? 'Domäne' : 'Schule'
     return { lv, accessible, day, base, bonus, special, specialLabel, adjust, total, unlimited, knownMax, dc: 10 + lv + mod }
   })
 }

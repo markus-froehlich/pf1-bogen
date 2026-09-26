@@ -429,13 +429,14 @@ export function CombatView(props) {
             <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Zustände' : 'Conditions'}</span>
               <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
             <div className="nc-chips">
-              {CONDITIONS.map(c => {
+              {CONDITIONS.filter(c => !c.spellEffect || conds.includes(c.id)).map(c => {
                 const on = conds.includes(c.id)
                 return <button key={c.id} className={`nc-chip nc-chip-cond ${on ? 'is-on' : ''}`} aria-pressed={on}
                   onClick={() => setConditions(list => (on ? list.filter(x => x !== c.id) : [...list, c.id]))}>{L ? c.de : c.en}</button>
               })}
             </div>
             <span className="nc-hint">{L ? 'Aktive Zustände fließen direkt in RK, Angriff, Rettungswürfe, Initiative und Fertigkeiten ein.' : 'Active conditions feed directly into AC, attacks, saves, initiative and skills.'}</span>
+            {CONDITIONS.some(c => c.spellEffect && conds.includes(c.id)) && <span className="nc-hint">{L ? 'Gehetzt, Verlangsamt und Gesegnet sind im GRW Zaubereffekte (Hast, Verlangsamen, Segnen) – bitte als Buff anlegen und hier abwählen.' : 'Hasted/slowed/blessed are spell effects – use the buff templates.'}</span>}
           </div>
         )}
         {sheet?.type === 'arrange' && (

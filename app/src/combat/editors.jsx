@@ -26,6 +26,8 @@ function buffTemplates(cl) {
     { name: 'Rindenhaut', type: 'verbesserung', bonuses: { nat_armor: clamp(2 + Math.floor(Math.max(0, cl - 3) / 3), 2, 5) }, duration: '10 Min./Stufe' },
     { name: 'Schild des Glaubens', type: 'ablenkung', bonuses: { deflection: clamp(2 + Math.floor(cl / 6), 2, 5) }, duration: '1 Min./Stufe' },
     { name: 'Göttliche Gunst', type: 'glueck', bonuses: { attack: clamp(Math.floor(cl / 3), 1, 3), damage: clamp(Math.floor(cl / 3), 1, 3) }, duration: '1 Minute' },
+    { name: 'Hast', type: 'ungetypt', bonuses: { attack: 1, ref: 1, dodge: 1 }, duration: '1 Runde/Stufe', notes: 'Ausweichbonus entfällt ohne GE-Bonus; +9 m Bewegung, 1 Zusatzangriff bei voller Aktion' },
+    { name: 'Verlangsamen', type: 'ungetypt', bonuses: { attack: -1, ac: -1, ref: -1 }, duration: '1 Runde/Stufe', notes: 'Nur Bewegungs- oder Standard-Aktion, halbe Bewegungsrate' },
     { name: 'Kampfrausch', type: 'moral', bonuses: { str: 4, kon: 4, will: 2, ac: -2 }, duration: 'Runden' },
   ]
 }

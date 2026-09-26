@@ -8,6 +8,7 @@ import {
   ALL_SPELLS, SPELL_MAP, LIST_NAMES, casterEntries, bookData, updateBook, gradeInfo, gradeTile, preparedEntries, newInstId,
   slotCost, classSpells, bookIds, bookName, copyCost, entryLabel, schoolOf, SCHOOLS,
 } from './spellModel.js'
+import { domainSpellsAt, domainLabel } from './domainSpells.js'
 import { SpellRow, SpellSearchList, SlotPips, WandsCard, WandEditor, CasterSettings } from './spellParts.jsx'
 import './spells.css'
 
@@ -109,7 +110,7 @@ export function SpellsView({ char, setSpellbook, setWands, setSummons, attrs, la
           {entries.map(e => <button key={e.key} className={`nc-chip ${e.key === entry.key ? 'is-on' : ''}`} onClick={() => { setSelKey(e.key); lsSet('pf1_spell_class', e.key) }}>{entryLabel(e, lang)}</button>)}
         </div>
       )}
-      <CasterView key={entry.key} entry={entry} sb={sb} attrs={attrs} setSpellbook={setSpellbook} lang={lang} layout={layout} />
+      <CasterView key={entry.key} entry={entry} sb={sb} char={char} attrs={attrs} setSpellbook={setSpellbook} lang={lang} layout={layout} />
       {setSummons && <button className="nc-btn nc-btn-secondary" onClick={() => setSummon(true)}><PawPrint />{L ? 'Herbeizaubern (Monster)' : 'Summon monsters'}</button>}
       {wandsBlock}
       {sheets}
@@ -118,7 +119,7 @@ export function SpellsView({ char, setSpellbook, setWands, setSummons, attrs, la
 }
 
 /** Eine Zauberklasse: Kopfkarte, Modi, Grad-Kacheln, Listen. */
-function CasterView({ entry, sb, attrs, setSpellbook, lang, layout }) {
+function CasterView({ entry, sb, char, attrs, setSpellbook, lang, layout }) {
   const L = lang === 'de'
   const toast = useToast()
   const data = bookData(sb, entry)
@@ -340,7 +341,7 @@ function CasterView({ entry, sb, attrs, setSpellbook, lang, layout }) {
             onPatch={p => updateBook(setSpellbook, entry, d => ({ ...d, ...p }))}
             onAdjust={(level, v) => updateBook(setSpellbook, entry, d => ({ ...d, levels: { ...d.levels, [level]: { total: 0, used: 0, prepared: [], ...(d.levels?.[level] ?? {}), adjust: v } } }))} />
         )}
-        {sheet?.type === 'pick' && <PickSheet entry={entry} data={data} g={grades[sheet.lv]} slot={sheet.slot} lang={lang}
+        {sheet?.type === 'pick' && <PickSheet entry={entry} char={char} data={data} g={grades[sheet.lv]} slot={sheet.slot} lang={lang}
           onPick={id => { addInstance(sheet.lv, id, sheet.slot); closeSheet() }} />}
       </Sheet>
     </>
@@ -348,16 +349,30 @@ function CasterView({ entry, sb, attrs, setSpellbook, lang, layout }) {
 }
 
 /** Auswahl für einen freien Platz: Klassenliste (vorbereitet) oder Buch (Buch/Hybrid). */
-function PickSheet({ entry, data, g, slot, onPick, lang }) {
+function PickSheet({ entry, char, data, g, slot, onPick, lang }) {
   const L = lang === 'de'
+  const [all, setAll] = useState(false)
   const fromBook = entry.kind === 'book' || entry.kind === 'hybrid'
   const spells = fromBook ? bookIds(data, g.lv).map(id => SPELL_MAP[id]).filter(Boolean) : classSpells(entry.listId, g.lv)
+  const domainSlot = slot === 'special' && g.specialLabel === 'Domäne'
+  const dom = domainSlot ? domainSpellsAt(char, g.lv) : []
+  const domIds = [...new Set(dom.flatMap(d => d.ids))]
+  const noId = dom.filter(d => !d.ids.length)
+  let list = spells
+  if (entry.charId === 'magier' && slot === 'special') list = spells.filter(s => schoolOf(s) === data.school)
+  else if (domainSlot && !all) list = domIds.map(id => SPELL_MAP[id]).filter(Boolean)
+  const domOf = id => dom.filter(d => d.ids.includes(id)).map(d => domainLabel(d.domain)).join(', ')
   return (
     <div className="nc-edit">
       <div className="nc-edit-head"><span className="nc-sheet-title">{slot === 'special' ? (L ? `${g.specialLabel}nplatz · Grad ${g.lv}` : `Special slot · level ${g.lv}`) : (L ? `Vorbereiten · Grad ${g.lv}` : `Prepare · level ${g.lv}`)}</span></div>
-      {slot === 'special' && <span className="nc-hint">{entry.charId === 'magier' ? (L ? 'Nur Zauber der eigenen Schule.' : 'Only spells of your school.') : (L ? 'Domänen-/Geistzauber des Grades (Liste nicht in den Daten – bitte selbst wählen).' : 'Domain spell of this level.')}</span>}
-      <SpellSearchList spells={entry.charId === 'magier' && slot === 'special' ? spells.filter(s => schoolOf(s) === data.school) : spells} dc={g.dc} lang={lang}
+      {slot === 'special' && entry.charId === 'magier' && <span className="nc-hint">{L ? 'Nur Zauber der eigenen Schule.' : 'Only spells of your school.'}</span>}
+      {domainSlot && (dom.length
+        ? <span className="nc-hint">{L ? `Domänenzauber Grad ${g.lv} deiner Domänen.` : 'Domain spells of your domains.'}{noId.length ? ` ${L ? 'Ohne Eintrag in den Zauberdaten' : 'Not in spell data'}: ${noId.map(d => `${d.name} (${domainLabel(d.domain)})`).join(', ')}.` : ''}</span>
+        : <span className="nc-hint">{L ? 'Noch keine Domäne gewählt – im Char-Tab bei der Klasse wählen. Solange: ganze Klassenliste.' : 'No domain chosen yet.'}</span>)}
+      {domainSlot && dom.length > 0 && <button className={`nc-chip nc-self-start ${all ? 'is-on' : ''}`} onClick={() => setAll(a => !a)}>{L ? 'Alle Klassenzauber zeigen' : 'Show all class spells'}</button>}
+      <SpellSearchList spells={domainSlot && !dom.length ? spells : list} dc={g.dc} lang={lang}
         placeholder={L ? 'Zauber suchen' : 'Search spells'}
+        renderTags={domainSlot ? s => (domOf(s.id) ? <span className="nc-tag nc-tag-accent">{domOf(s.id)}</span> : null) : undefined}
         emptyText={fromBook ? (L ? 'Keine passenden Zauber im Buch. Über „Nachschlagen" eintragen.' : 'Nothing in the book.') : (L ? 'Keine Zauber gefunden.' : 'No spells found.')}
         renderActions={s => <button className="nc-btn nc-btn-small" onClick={() => onPick(s.id)}>{L ? 'Wählen' : 'Pick'}</button>} />
     </div>

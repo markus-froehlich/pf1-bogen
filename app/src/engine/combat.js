@@ -17,6 +17,13 @@ import armorData   from '../data/armor.json'
 import shieldsData from '../data/shields.json'
 import ringsData   from '../data/rings.json'
 import { getConditionMods } from './conditions.js'
+import { buffContributions } from './buffs.js'
+import { carryThresholds } from './attributes.js'
+import { carriedWeight, carryTier, LOAD_EFFECTS, loadRulesOn } from './carry.js'
+
+// GRW (KMV): Ablenkungs-, Ausweich-, Glücks-, Heilige, Moral-, Situations-, Unheilige und
+// Verständnis-Boni auf die RK zählen auch auf die KMV.
+const KMV_AC_TYPES = new Set(['ablenkung', 'ausweichen', 'glueck', 'heilig', 'unheilig', 'moral', 'situation', 'verstaendnis'])
 
 const ARMOR_MAP   = Object.fromEntries(armorData.armor.map(a => [a.id, a]))
 const SHIELDS_MAP = Object.fromEntries(shieldsData.shields.map(s => [s.id, s]))
@@ -111,9 +118,15 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     if (g.acp < 0) gearCheckPenalty += g.acp
     if (g.asf > 0) gearSpellFailure += g.asf
   }
-  // MaxDex: worn armor's cap wins if lower than manual misc
+  // Traglast (GRW Tab. 7-5): mittlere/schwere Last wie Rüstung — der schlechtere Wert zählt, nicht kumulativ
+  const loadTier = loadRulesOn(char.inventory) ? carryTier(carriedWeight(char.inventory).total, carryThresholds(attrs.ST.buffed)) : 'light'
+  const load = LOAD_EFFECTS[loadTier] ?? null
+  const loadMaxDex = load ? load.maxDex : 99
+  const loadCheckPenalty = load && load.acp < gearCheckPenalty ? load.acp - gearCheckPenalty : 0   // nur der Anteil über den Rüstungsmalus hinaus
+  gearCheckPenalty += loadCheckPenalty
+  // MaxDex: worn armor's (or load's) cap wins if lower than manual misc
   const maxDex = Math.min(
-    armorMaxDex,
+    armorMaxDex, loadMaxDex,
     misc.max_dex != null ? Number(misc.max_dex) : 99
   )
   // If condition removes DEX to AC: cap positive DEX at 0 (negative still applies)
@@ -121,11 +134,25 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   const GEmodCapped = Math.min(GEmodForAC, maxDex)
 
   const rk_natural  = Number(misc.rk_natural ?? 0) + Number(bt.nat_armor ?? 0)
-  const rk_deflect  = rk_ring + Number(misc.rk_deflect ?? 0) + Number(bt.deflection ?? 0)
+  // RK-Buffs nach Bonus-Typ: Ablenkung → Ablenkung, Ausweichen → Ausweichen, Rest → RK
+  const acContribs  = (buffContributions(char.active_buffs ?? []).ac ?? []).filter(x => x.counted)
+  const acOfType    = pred => acContribs.filter(x => pred(x.type)).reduce((a, x) => a + x.value, 0)
+  const acDeflect   = acOfType(t => t === 'ablenkung')
+  const acDodge     = acOfType(t => t === 'ausweichen')
+  const rk_buff_ac  = acOfType(t => t !== 'ablenkung' && t !== 'ausweichen')
+  const acKmv       = acOfType(t => KMV_AC_TYPES.has(t) && t !== 'ablenkung' && t !== 'ausweichen')
+  // Ablenkung: Ring, Buff und manuelles Feld sind derselbe Bonus-Typ → nur der höchste zählt (GRW)
+  const deflSources = [
+    { src: 'ring', value: rk_ring },
+    { src: 'buff', value: Number(bt.deflection ?? 0) + acDeflect },
+    { src: 'manual', value: Number(misc.rk_deflect ?? 0) },
+  ].filter(x => x.value)
+  const rk_deflect  = deflSources.reduce((m, x) => Math.max(m, x.value), 0)
+  const deflCounted = deflSources.find(x => x.value === rk_deflect)?.src ?? null
   const rk_misc2    = Number(misc.rk_misc    ?? 0)
-  const rk_buff_ac  = Number(bt.ac ?? 0)
   // Ausweichen: zählt auf RK + Berührung, entfällt auf dem falschen Fuß und ohne GE-Bonus
-  const rk_dodge    = cond.no_dex_to_ac ? 0 : Number(bt.dodge ?? 0)
+  const dodgeRaw    = Number(bt.dodge ?? 0) + acDodge
+  const rk_dodge    = cond.no_dex_to_ac ? 0 : dodgeRaw
 
   const saves_all = Number(bt.saves_all ?? 0) + gearResist
 
@@ -151,8 +178,9 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
   // auch für Kampfmanöverwürfe). KMV is a defense value: it inherits AC-type dodge mods
   // (cond.rk, e.g. Gehetzt +1/Verlangsamt -1) but NOT the attacker's own attack-roll malus.
   const kmbBase = bab + effSTmod + sizeModKMB + Number(misc.kmb_misc ?? 0)
-  const kmb = kmbBase + cond.attack + cond.melee_attack
-  const kmv = 10 + kmbBase + effGEmod + cond.rk + Number(misc.kmv_misc ?? 0)
+  // GRW: beim Kampfmanöver zählen alle Boni aus Zaubern/Talenten/Effekten auf Angriffswürfe
+  const kmb = kmbBase + cond.attack + cond.melee_attack + Number(bt.attack ?? 0)
+  const kmv = 10 + kmbBase + effGEmod + cond.rk + Number(misc.kmv_misc ?? 0) + rk_deflect + rk_dodge + acKmv
 
   const meleeAttacks  = attackString(gabMelee,  bab)
   const rangedAttacks = attackString(gabRanged, bab)
@@ -168,7 +196,8 @@ export function computeCombat(char, attrs, baseValues, buffTotals = {}) {
     gear_spell_failure: gearSpellFailure,
     _components: {
       rk_armor, rk_shield, GEmodCapped, sizeModRK, rk_natural, rk_deflect, rk_misc2,
-      rk_ring, rk_buff_ac, rk_dodge, armorMaxDex, maxDex, effGEmod, effSTmod, sizeModKMB, gearResist,
+      rk_ring, rk_buff_ac, rk_dodge, dodgeRaw, acKmv, deflSources, deflCounted, loadTier, loadMaxDex, loadCheckPenalty,
+      kmb_buff: Number(bt.attack ?? 0), armorMaxDex, maxDex, effGEmod, effSTmod, sizeModKMB, gearResist,
       init_ability: effGEmod, init_misc: initMisc, init_feat: initFeat,
       init_condition: cond.init, init_buff: Number(bt.init ?? 0),
     },

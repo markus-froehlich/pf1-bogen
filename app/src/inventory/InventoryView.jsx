@@ -4,7 +4,7 @@ import { Sheet } from '../shell/Sheet.jsx'
 import { useToast } from '../shell/toastContext.js'
 import { EditSheet, TextField, NumField, Field } from '../combat/EditSheet.jsx'
 import { Switch } from '../combat/ui.jsx'
-import { COINS, TO_GP, carriedWeight, carryTier, coinValueGp } from './carry.js'
+import { COINS, TO_GP, carriedWeight, carryTier, coinValueGp, loadRulesOn } from './carry.js'
 import './inventory.css'
 
 const COIN_LABEL = { de: { pp: 'PM', gp: 'GM', sp: 'SM', cp: 'KM' }, en: { pp: 'PP', gp: 'GP', sp: 'SP', cp: 'CP' } }
@@ -136,10 +136,10 @@ export function InventoryView({ char, setInventory, setMagicSlots, carryThreshol
         <button className="nc-set-row nc-switch-row" onClick={() => setInventory(p => ({ ...p, count_coin_weight: !w.countCoins }))} aria-pressed={w.countCoins}>
           <span className="nc-set-label">{L ? 'Münzgewicht mitzählen' : 'Count coin weight'}</span><Switch on={w.countCoins} />
         </button>
-        <button className="nc-set-row nc-switch-row" onClick={() => setInventory(p => ({ ...p, apply_carry_movement: !(p.apply_carry_movement === true) }))} aria-pressed={inv.apply_carry_movement === true}>
-          <span className="nc-set-text"><span className="nc-set-label">{L ? 'Traglast senkt Bewegung' : 'Load reduces speed'}</span>
-            <span className="nc-set-hint">{L ? 'Mittlere/schwere Last wie Rüstung (GRW); aus = wie Excel' : 'Medium/heavy load like armor'}</span></span>
-          <Switch on={inv.apply_carry_movement === true} />
+        <button className="nc-set-row nc-switch-row" onClick={() => setInventory(p => ({ ...p, apply_carry_movement: !loadRulesOn(p) }))} aria-pressed={loadRulesOn(inv)}>
+          <span className="nc-set-text"><span className="nc-set-label">{L ? 'Traglast-Regeln anwenden' : 'Apply load rules'}</span>
+            <span className="nc-set-hint">{L ? 'GRW Tab. 7-5: mittlere Last max. GE +3, Malus −3; schwere +1, −6; Bewegung wie mittlere Rüstung' : 'Medium: max Dex +3, −3; heavy: +1, −6; speed as medium armor'}</span></span>
+          <Switch on={loadRulesOn(inv)} />
         </button>
       </section>
 

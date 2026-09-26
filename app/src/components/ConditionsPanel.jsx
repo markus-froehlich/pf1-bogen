@@ -29,7 +29,7 @@ export const CONDITIONS = [
   { id: 'blutung',       de: 'Blutung',         en: 'Bleed',        effect: 'Schaden zu Rundenbeginn, bis Heilkunde SG 15 o. Heilzauber' },
   { id: 'koerperlos',    de: 'Körperlos',       en: 'Incorporeal',  effect: 'immun geg. nichtmagische Angriffe, 50% Schaden von Magischem' },
   { id: 'taub',          de: 'Taub',            en: 'Deafened',     effect: '−4 Init, 20% Zauberversagen (verbal)' },
-  { id: 'sterbend',      de: 'Im Sterben',      en: 'Dying',        effect: 'bewusstlos, −1 TP/Rd' },
+  { id: 'sterbend',      de: 'Sterbend',      en: 'Dying',        effect: 'bewusstlos, −1 TP/Rd' },
   { id: 'erschoepft',    de: 'Erschöpft',       en: 'Fatigued',     effect: '−2 ST & GE, kein Rennen/Ansturm' },
   { id: 'ermuedtet',     de: 'Entkräftet',      en: 'Exhausted',    effect: '−6 ST & GE, halbe Bewegung, kein Rennen/Ansturm' },
   { id: 'verängstigt',   de: 'Verängstigt',     en: 'Frightened',   effect: '−2 Angriff/RW/Fertigk./Attributswürfe, muss fliehen' },
@@ -37,7 +37,7 @@ export const CONDITIONS = [
   { id: 'hilflos',       de: 'Hilflos',         en: 'Helpless',     effect: 'GE=0, Gnadenangriffe möglich' },
   { id: 'unsichtbar',    de: 'Unsichtbar',       en: 'Invisible',    effect: '+2 Angriff, Gegner verliert GE-Bonus auf RK' },
   { id: 'gelähmt',       de: 'Gelähmt',         en: 'Paralyzed',    effect: 'ST & GE effektiv 0, hilflos' },
-  { id: 'panisch',       de: 'Panisch',         en: 'Panicked',     effect: '−2 RW/Fertigk./Attributswürfe, muss fliehen, lässt Sachen fallen' },
+  { id: 'panisch',       de: 'In Panik',         en: 'Panicked',     effect: '−2 RW/Fertigk./Attributswürfe, muss fliehen, lässt Sachen fallen' },
   { id: 'niedergestreckt', de: 'Liegend',       en: 'Prone',        effect: '−4 Nahkampf-Angr., RK +4 vs. Fern/−4 vs. Nah' },
   { id: 'schütteln',     de: 'Erschüttert',     en: 'Shaken',       effect: '−2 Angriff/RW/Fertigk./Attributswürfe' },
   { id: 'krank',         de: 'Kränkelnd',       en: 'Sickened',     effect: '−2 Angriff/Schaden/RW/Fertigk./Attributswürfe' },
@@ -55,9 +55,9 @@ export const CONDITIONS = [
   { id: 'uebelkeit',     de: 'Übelkeit',        en: 'Nauseated',    effect: 'nur 1 Bewegungsaktion, kein Angriff/Zauber/Konzentr.' },
   { id: 'versteinert',   de: 'Versteinert',     en: 'Petrified',    effect: 'zu Stein verwandelt, gilt als bewusstlos' },
   { id: 'verstrickt',    de: 'Verstrickt',      en: 'Entangled',    effect: '−2 Angriff, −4 GE, halbe Bewegung, kein Rennen/Ansturm' },
-  { id: 'verlangsamt',   de: 'Verlangsamt',     en: 'Slowed',       effect: '−1 Angriff/RK/Reflex, eine Aktion weniger' },
-  { id: 'gehast',        de: 'Gehetzt',         en: 'Hasted',       effect: '+1 Angriff/RK/Reflex, Zusatzangriff, +9m Bew.' },
-  { id: 'gesegnet',      de: 'Gesegnet',        en: 'Blessed',      effect: '+1 Angriff, +1 RW gegen Furcht' },
+  { id: 'verlangsamt', spellEffect: true,   de: 'Verlangsamt',     en: 'Slowed',       effect: '−1 Angriff/RK/Reflex, eine Aktion weniger' },
+  { id: 'gehast', spellEffect: true,        de: 'Gehetzt',         en: 'Hasted',       effect: '+1 Angriff/RK/Reflex, Zusatzangriff, +9m Bew.' },
+  { id: 'gesegnet', spellEffect: true,      de: 'Gesegnet',        en: 'Blessed',      effect: '+1 Angriff, +1 RW gegen Furcht' },
 ]
 
 export function ConditionsPanel({ char, setConditions, lang, hideTitle = false }) {

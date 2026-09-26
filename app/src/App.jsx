@@ -6,7 +6,7 @@ import { useGistSync }   from './store/useGistSync.js'
 import { GistSyncPanel } from './components/GistSyncPanel.jsx'
 import { computeAttributes, computeBABAndSaves, computeCombat, computeBuffTotals, getCompanionRules, carryThresholds, ALL_CLASSES, registerHomebrewClasses, registerHomebrewArmor, registerHomebrewShields } from './engine/index.js'
 import { getConditionMods } from './engine/conditions.js'
-import { carriedWeight, carryTier } from './inventory/carry.js'
+import { carriedWeight, carryTier, loadRulesOn } from './inventory/carry.js'
 import racesData from './data/races.json'
 import poisonsData from './data/poisons.json'
 import templatesData from './data/templates.json'
@@ -311,7 +311,7 @@ export default function App() {
   // Carry tier for CombatTab (encumbrance → speed)
   const _carry = carryThresholds(computed.ST.buffed)
   const encumbranceTier = carryTier(carriedWeight(char.inventory).total, _carry)
-  const applyCarryMovement = char.inventory?.apply_carry_movement === true
+  const applyCarryMovement = loadRulesOn(char.inventory)
 
   // Fertigkeitspunkte-Budget
   const inMod = computed.IN.mod

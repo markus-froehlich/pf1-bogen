@@ -24,11 +24,12 @@ function condLines(conditions, keys, lang) {
   return out
 }
 
-function buffLines(activeBuffs, keys, lang) {
+function buffLines(activeBuffs, keys, lang, typeFilter = null) {
   const contribs = buffContributions(activeBuffs)
   const byBuff = new Map()
   for (const k of keys) {
     for (const c of contribs[k] ?? []) {
+      if (typeFilter && k === 'ac' && !typeFilter(c.type)) continue
       const entry = byBuff.get(c.id) ?? { name: c.name, value: 0, suppressed: [] }
       if (c.counted) entry.value += c.value
       else entry.suppressed.push(c.suppressedBy)
@@ -40,6 +41,18 @@ function buffLines(activeBuffs, keys, lang) {
     sub: e.suppressed.length ? (lang === 'de' ? `Buff · stapelt nicht mit ${e.suppressed.join(', ')}` : 'Buff · does not stack') : 'Buff',
     value: e.value,
   }))
+}
+
+/** Ablenkung: Ring, Buff, manuell — derselbe Bonus-Typ, nur der höchste zählt (Engine: deflSources). */
+function deflectionLines(c, L, activeBuffs = []) {
+  const contribs = buffContributions(activeBuffs)
+  const names = [...(contribs.deflection ?? []), ...(contribs.ac ?? []).filter(x => x.type === 'ablenkung')].filter(x => x.counted).map(x => x.name)
+  const label = { ring: L ? 'Ring' : 'Ring', buff: names.length ? `Buff · ${[...new Set(names)].join(', ')}` : 'Buff', manual: L ? 'manuell' : 'manual' }
+  return (c.deflSources ?? []).map(x => {
+    const counted = x.src === c.deflCounted
+    return { kind: x.src === 'ring' ? 'gear' : x.src === 'buff' ? 'buff' : 'misc', label: L ? 'Ablenkung' : 'Deflection',
+      sub: counted ? label[x.src] : `${label[x.src]} · ${L ? `stapelt nicht (${sg(x.value)}, höchster zählt)` : 'does not stack'}`, value: counted ? x.value : 0 }
+  })
 }
 
 function finish(title, total, lines, extra = {}) {
@@ -72,7 +85,9 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     }
     if (key !== 'flat' && c.GEmodCapped) {
       const capped = c.maxDex < 99 && c.effGEmod > c.maxDex
-      lines.push({ kind: 'attr', label: gePrefix, sub: capped ? (L ? `Attribut · max. GE ${sg(c.maxDex)}` : `Ability · max Dex ${sg(c.maxDex)}`) : (L ? 'Attribut' : 'Ability'), value: c.GEmodCapped })
+      const byLoad = capped && c.loadMaxDex === c.maxDex && c.loadMaxDex < c.armorMaxDex
+      const capText = byLoad ? (L ? `max. GE ${sg(c.maxDex)} durch Traglast` : `max Dex ${sg(c.maxDex)} (load)`) : (L ? `max. GE ${sg(c.maxDex)}` : `max Dex ${sg(c.maxDex)}`)
+      lines.push({ kind: 'attr', label: gePrefix, sub: capped ? `${L ? 'Attribut' : 'Ability'} · ${capText}` : (L ? 'Attribut' : 'Ability'), value: c.GEmodCapped })
     }
     if (c.sizeModRK) lines.push({ kind: 'size', label: L ? 'Größe' : 'Size', sub: L ? 'Größenmodifikator' : 'Size modifier', value: c.sizeModRK })
     if (key !== 'touch') {
@@ -80,15 +95,13 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
       if (natManual) lines.push({ kind: 'misc', label: L ? 'Natürliche Rüstung' : 'Natural armor', sub: L ? 'manuell' : 'manual', value: natManual })
       lines.push(...buffLines(buffs, ['nat_armor'], lang))
     }
-    if (c.rk_ring) lines.push({ kind: 'gear', label: L ? 'Ablenkung' : 'Deflection', sub: L ? 'Ring · Ausrüstung' : 'Ring', value: c.rk_ring })
-    const deflManual = Number(misc.rk_deflect ?? 0)
-    if (deflManual) lines.push({ kind: 'misc', label: L ? 'Ablenkung' : 'Deflection', sub: L ? 'manuell' : 'manual', value: deflManual })
-    lines.push(...buffLines(buffs, ['deflection', 'ac', ...(key === 'flat' ? [] : ['dodge'])], lang))
-    if (key !== 'flat') lines.push(...condLines(conds, ['rk'], lang))
-    // Ausweichen entfällt ohne GE-Bonus (Engine: rk_dodge = 0) — Buffzeilen sind dann korrigiert
-    if (key !== 'flat' && cm.no_dex_to_ac) {
-      const dodge = buffLines(buffs, ['dodge'], lang).reduce((s, l) => s + l.value, 0)
-      if (dodge) lines.push({ kind: 'cond', label: L ? 'Ausweichen entfällt' : 'Dodge lost', sub: L ? 'kein GE-Bonus auf RK' : 'no Dex to AC', value: -dodge })
+    lines.push(...deflectionLines(c, L, buffs))
+    lines.push(...buffLines(buffs, ['ac'], lang, t => t !== 'ablenkung' && t !== 'ausweichen'))
+    if (key !== 'flat') {
+      lines.push(...buffLines(buffs, ['dodge', 'ac'], lang, t => t === 'ausweichen').map(l => ({ ...l, sub: `${l.sub} · ${L ? 'Ausweichen' : 'Dodge'}` })))
+      lines.push(...condLines(conds, ['rk'], lang))
+      // Ausweichen entfällt ohne GE-Bonus (Engine: rk_dodge = 0)
+      if (cm.no_dex_to_ac && c.dodgeRaw) lines.push({ kind: 'cond', label: L ? 'Ausweichen entfällt' : 'Dodge lost', sub: L ? 'kein GE-Bonus auf RK' : 'no Dex to AC', value: -c.dodgeRaw })
     }
     const total = key === 'rk' ? combat.rk : key === 'touch' ? combat.rk_touch : combat.rk_flat
     const title = key === 'rk' ? (L ? 'Rüstungsklasse' : 'Armor Class') : key === 'touch' ? (L ? 'RK Berührung' : 'Touch AC') : (L ? 'RK auf dem falschen Fuß' : 'Flat-footed AC')
@@ -96,7 +109,7 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     const miscExtra = { miscKey: 'rk_misc', noteKey: 'rk_note', miscValue: Number(misc.rk_misc ?? 0), note: misc.rk_note, lang, editable: key === 'rk', absolute: true,
       extras: key === 'rk' ? [
         { key: 'rk_natural', label: L ? 'Natürliche Rüstung' : 'Natural armor', sub: L ? 'z. B. Volk, Tiergestalt' : 'e.g. race, wild shape', min: 0 },
-        { key: 'rk_deflect', label: L ? 'Ablenkung (sonstige)' : 'Deflection (other)', sub: L ? 'ohne Ring/Buff' : 'besides ring/buff', min: 0 },
+        { key: 'rk_deflect', label: L ? 'Ablenkung (sonstige)' : 'Deflection (other)', sub: L ? 'zählt nur, wenn höher als Ring/Buff' : 'counts only if higher than ring/buff', min: 0 },
       ] : [] }
     return finish(title, total, lines, miscExtra)
   }
@@ -118,6 +131,12 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     const kmbMisc = Number(misc.kmb_misc ?? 0)
     if (key === 'kmv' && kmbMisc) lines.push({ kind: 'misc', label: L ? 'Sonstiges (KMB)' : 'Other (CMB)', sub: misc.kmb_note || (L ? 'manuell' : 'manual'), value: kmbMisc })
     lines.push(...condLines(conds, key === 'kmb' ? ['attack', 'melee_attack'] : ['rk'], lang))
+    if (key === 'kmb') lines.push(...buffLines(buffs, ['attack'], lang).map(l => ({ ...l, sub: `${l.sub} · ${L ? 'Angriff' : 'Attack'}` })))
+    if (key === 'kmv') {
+      lines.push(...deflectionLines(c, L, buffs))
+      if (c.rk_dodge) lines.push(...buffLines(buffs, ['dodge', 'ac'], lang, t => t === 'ausweichen').map(l => ({ ...l, sub: `${l.sub} · ${L ? 'Ausweichen' : 'Dodge'}` })))
+      lines.push(...buffLines(buffs, ['ac'], lang, t => ['glueck', 'heilig', 'unheilig', 'moral', 'situation', 'verstaendnis'].includes(t)).map(l => ({ ...l, sub: `${l.sub} · ${L ? 'RK-Bonus zählt auf KMV' : 'AC bonus counts'}` })))
+    }
     const miscKey = key === 'kmb' ? 'kmb_misc' : 'kmv_misc'
     return finish(key === 'kmb' ? (L ? 'Kampfmanöverbonus' : 'Combat maneuver bonus') : (L ? 'Kampfmanöververteidigung' : 'Combat maneuver defense'),
       combat[key], lines, { miscKey, noteKey: key === 'kmb' ? 'kmb_note' : 'kmv_note', miscValue: Number(misc[miscKey] ?? 0), note: misc[key === 'kmb' ? 'kmb_note' : 'kmv_note'], lang, editable: true, absolute: key === 'kmv' })
