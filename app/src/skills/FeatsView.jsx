@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { ArrowSquareOut, MagnifyingGlass, Plus } from '@phosphor-icons/react'
 import featsData from '../data/feats.json'
-import { featBudget, hasKnownBonusRules } from '../engine/featBudget.js'
+import { featPlan, assignFeats, hasKnownBonusRules } from '../engine/featBudget.js'
 import { classLabel } from '../engine/classes.js'
 import { Stepper } from '../combat/ui.jsx'
 import { RefLink } from '../components/RefLink.jsx'
@@ -19,9 +19,9 @@ const PAGE = 40
 const genId = () => 'ft_' + Math.random().toString(36).slice(2, 10)
 const typeLabel = (t, L) => (L ? t : TYPES_EN[t] ?? t)
 
-function FeatEditor({ feat, onSave, onDelete, onClose, lang }) {
+function FeatEditor({ feat, preset, slots = [], slotName, onSave, onDelete, onClose, lang }) {
   const L = lang === 'de'
-  const [d, setD] = useState(() => feat ? { ...feat } : { id: genId(), name: '', type: 'Allgemein', notes: '', desc: '', source: '' })
+  const [d, setD] = useState(() => feat ? { ...feat } : { id: genId(), name: '', type: 'Allgemein', notes: '', desc: '', source: '', ...(preset ?? {}) })
   const [q, setQ] = useState('')
   const set = patch => setD(prev => ({ ...prev, ...patch }))
   const hits = useMemo(() => {
@@ -31,8 +31,8 @@ function FeatEditor({ feat, onSave, onDelete, onClose, lang }) {
   return (
     <EditSheet lang={lang} title={feat ? (L ? 'Talent bearbeiten' : 'Edit feat') : (L ? 'Talent anlegen' : 'Add feat')}
       onDelete={feat ? () => onDelete(feat.id) : null} onCancel={onClose} saveDisabled={!d.name.trim()}
-      onSave={() => onSave({ ...d, name: d.name.trim() })}>
-      {!feat && (
+      onSave={() => onSave({ ...d, name: d.name.trim(), slot: d.slot || undefined })}>
+      {!feat && !preset && (
         <Field label={L ? `Aus der Datenbank (${DB_FEATS.length})` : `From database (${DB_FEATS.length})`}>
           <div className="nc-search">
             <MagnifyingGlass className="nc-accent-soft" />
@@ -54,6 +54,12 @@ function FeatEditor({ feat, onSave, onDelete, onClose, lang }) {
       )}
       <TextField label="Name" value={d.name} onChange={v => set({ name: v })} placeholder={L ? 'z. B. Waffenfokus (Langschwert)' : 'e.g. Weapon Focus'} />
       <ChipsField label={L ? 'Typ' : 'Type'} options={TYPES.map(t => [t, typeLabel(t, L)])} value={d.type} onChange={v => set({ type: v })} />
+      {preset?.autoWhy && <span className="nc-hint">{preset.autoWhy}</span>}
+      {slots.length > 0 && !preset?.autoWhy && <>
+        <ChipsField label={L ? 'Zählt als' : 'Counts as'} value={d.slot ?? ''} onChange={v => set({ slot: v })}
+          options={[['', L ? 'Frei gewählt (Stufe/Volk)' : 'Free choice'], ...slots.map(sl => [sl.key, slotName(sl)])]} />
+        {d.slot && <span className="nc-hint">{L ? 'Erlaubt: ' : 'Allowed: '}{slots.find(sl => sl.key === d.slot)?.hint}</span>}
+      </>}
       {d.desc && <Field label={L ? 'Beschreibung (Datenbank)' : 'Description (database)'}><span className="nc-feat-desc">{d.desc}</span></Field>}
       <TextField area label={L ? 'Notiz' : 'Note'} value={d.notes} onChange={v => set({ notes: v })} placeholder={L ? 'z. B. gewählte Waffe, Stufe erhalten' : 'Note'} />
     </EditSheet>
@@ -68,10 +74,14 @@ export function FeatsView({ char, setFeats, update, totalLevel = 0, lang, layout
   const [btype, setBtype] = useState('')
   const [limit, setLimit] = useState(PAGE)
   const feats = char.feats ?? []
-  const fb = featBudget(char, totalLevel, lang)
-  const budget = fb.total
+  const plan = featPlan(char, totalLevel, lang)
+  const asg = assignFeats(char, plan)
+  const budget = plan.total
+  const count = asg.total
+  const whoLabel = w => (w?.classId ? `${classLabel(w.classId, lang)} ${L ? 'St.' : 'lvl'} ${w.level}` : w?.domain ? `${L ? 'Domäne' : 'Domain'} ${w.domain}` : '')
+  const slotName = sl => (sl.classId ? `${classLabel(sl.classId, lang)}: ${sl.label}` : sl.label)
   const unknownClasses = (char.meta?.classes ?? []).filter(c => c.id && !hasKnownBonusRules(c.id)).map(c => classLabel(c.id, lang))
-  const tone = feats.length > budget ? 'neg' : feats.length === budget ? 'ok' : 'warn'
+  const tone = count > budget ? 'neg' : count === budget ? 'ok' : 'warn'
   const browse = useMemo(() => {
     const s = bq.trim().toLowerCase()
     return DB_FEATS.filter(f => (!btype || f.type === btype) && (!s || f.name.de.toLowerCase().includes(s)))
@@ -97,14 +107,31 @@ export function FeatsView({ char, setFeats, update, totalLevel = 0, lang, layout
       <div className="nc-fp">
         <div className="nc-fp-row">
           <span className="nc-muted">{budget > 0 ? (L ? `Talente für Stufe ${totalLevel}` : `Feats for level ${totalLevel}`) : (L ? 'Talente' : 'Feats')}</span>
-          <span className={`nc-fp-val is-${budget > 0 ? tone : 'ok'}`}>{feats.length}{budget > 0 ? ` / ${budget}` : ''}</span>
+          <span className={`nc-fp-val is-${budget > 0 ? tone : 'ok'}`}>{count}{budget > 0 ? ` / ${budget}` : ''}</span>
         </div>
-        {budget > 0 && <div className="nc-fp-bar"><div className={`is-${tone}`} style={{ width: `${Math.min(100, (feats.length / budget) * 100)}%` }} /></div>}
-        {fb.lines.length > 0 && (
+        {budget > 0 && <div className="nc-fp-bar"><div className={`is-${tone}`} style={{ width: `${Math.min(100, (count / budget) * 100)}%` }} /></div>}
+        {plan.lines.length > 0 && (
           <div className="nc-feat-budget">
-            {fb.lines.map((l, i) => (
-              <span key={i} className="nc-feat-budget-line"><span>{l.classId ? `${classLabel(l.classId, lang)}: ${l.label}` : l.label}{l.sub && !l.classId ? <span className="nc-muted"> · {l.sub}</span> : null}</span><span className="nc-feat-budget-n">+{l.n}</span></span>
+            {/* frei wählbare Talente (Stufe, Volk, manuell) als eine Gruppe */}
+            <span className="nc-feat-budget-line is-head"><span>{L ? 'Frei gewählt' : 'Free choice'}</span>
+              <span className={`nc-feat-budget-n ${asg.freeUsed > plan.free ? 'is-neg' : asg.freeUsed < plan.free ? 'is-open' : ''}`}>{asg.freeUsed} / {plan.free}</span></span>
+            {plan.lines.filter(l => l.key === 'frei').map((l, i) => (
+              <span key={`f${i}`} className="nc-feat-budget-line is-sub"><span>{l.label}{l.sub ? <span className="nc-muted"> · {l.sub}</span> : null}</span><span className="nc-feat-budget-n">+{l.n}</span></span>
             ))}
+            {plan.lines.filter(l => l.auto).map((l, i) => (
+              <span key={`a${i}`} className="nc-feat-budget-line"><span>{l.classId ? `${classLabel(l.classId, lang)}: ` : ''}{l.label}</span>
+                <span className="nc-feat-budget-n is-auto">{L ? 'automatisch' : 'automatic'} {l.n}</span></span>
+            ))}
+            {plan.slots.map(sl => {
+              const u = asg.used[sl.key] ?? 0
+              return (
+                <span key={sl.key} className="nc-feat-budget-line" title={sl.hint}><span>{slotName(sl)}</span>
+                  <span className={`nc-feat-budget-n ${u > sl.n ? 'is-neg' : u < sl.n ? 'is-open' : ''}`}>{u} / {sl.n}</span></span>
+              )
+            })}
+            {plan.slots.some(sl => (asg.used[sl.key] ?? 0) < sl.n) && (
+              <span className="nc-hint">{L ? 'Bonustalente zuordnen: Talent antippen → „Zählt als".' : 'Assign bonus feats: tap a feat → “Counts as”.'}</span>
+            )}
           </div>
         )}
         {update && (
@@ -121,13 +148,18 @@ export function FeatsView({ char, setFeats, update, totalLevel = 0, lang, layout
         <button className="nc-btn nc-btn-ghost" onClick={() => { setSheet({ type: 'browse' }); setLimit(PAGE) }}><MagnifyingGlass />{L ? 'Datenbank durchsuchen' : 'Browse database'}</button>
       </div>
 
-      <ListCard empty={!feats.length} emptyText={L ? 'Noch keine Talente.' : 'No feats yet.'}>
-        {feats.map(f => {
+      <ListCard empty={!asg.rows.length} emptyText={L ? 'Noch keine Talente.' : 'No feats yet.'}>
+        {asg.rows.map(f => {
           const url = featUrl(f.name, f.source)
+          const open = () => (f.virtual
+            ? setSheet({ type: 'edit', id: null, preset: { name: f.name, type: f.type, desc: f.desc, source: f.source, autoWhy: `${L ? 'Automatisches Talent' : 'Automatic feat'} · ${whoLabel(f.autoOf.why)}` } })
+            : setSheet({ type: 'edit', id: f.id }))
           return (
-            <div key={f.id} className="nc-feat-row">
-              <button className="nc-feat-main" onClick={() => setSheet({ type: 'edit', id: f.id })}>
-                <span className="nc-feat-top"><span className="nc-feat-name">{f.name}</span><span className={`nc-feat-type t-${f.type}`}>{typeLabel(f.type, L)}</span></span>
+            <div key={f.id} className={`nc-feat-row ${f.virtual ? 'is-virtual' : ''}`}>
+              <button className="nc-feat-main" onClick={open}>
+                <span className="nc-feat-top"><span className="nc-feat-name">{f.name}</span><span className={`nc-feat-type t-${f.type}`}>{typeLabel(f.type, L)}</span>
+                  {f.autoOf && <span className="nc-feat-slot is-auto">{L ? 'Automatisch' : 'Automatic'} · {whoLabel(f.autoOf.why)}</span>}
+                  {f.slotOf && <span className="nc-feat-slot">{L ? 'Bonus' : 'Bonus'} · {slotName(f.slotOf)}</span>}</span>
                 {f.desc && <span className="nc-feat-desc">{f.desc}</span>}
                 {f.notes && <span className="nc-feat-note">{f.notes}</span>}
               </button>
@@ -138,7 +170,7 @@ export function FeatsView({ char, setFeats, update, totalLevel = 0, lang, layout
       </ListCard>
 
       <Sheet open={!!sheet} onClose={close} layout={layout} label={L ? 'Talent' : 'Feat'}>
-        {sheet?.type === 'edit' && <FeatEditor key={sheet.id ?? 'new'} feat={editing} onSave={save} onDelete={remove} onClose={close} lang={lang} />}
+        {sheet?.type === 'edit' && <FeatEditor key={sheet.id ?? 'new'} feat={editing} preset={sheet.preset} slots={plan.slots} slotName={slotName} onSave={save} onDelete={remove} onClose={close} lang={lang} />}
         {sheet?.type === 'browse' && (
           <div className="nc-edit">
             <div className="nc-edit-head"><span className="nc-sheet-title">{L ? 'Talent-Datenbank' : 'Feat database'}</span></div>

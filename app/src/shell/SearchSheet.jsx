@@ -22,7 +22,7 @@ function charSpells(sb) {
 }
 
 /** Suche (⌘/Strg + K): eigene Daten zuerst, dann Nachschlagewerke. Treffer springen zum passenden Bereich. */
-export function SearchSheet({ char, lang, featBudget, onGo }) {
+export function SearchSheet({ char, lang, featBudget, featsHave, onGo }) {
   const L = lang === 'de'
   const [q, setQ] = useState('')
   const s = q.trim().toLowerCase()
@@ -62,7 +62,7 @@ export function SearchSheet({ char, lang, featBudget, onGo }) {
 
   const w = carriedWeight(inv)
   const quick = [
-    { id: 'feats', Icon: Star, title: L ? 'Talente' : 'Feats', sub: `${(char.feats ?? []).length}${featBudget ? `/${featBudget}` : ''}`, go: { tab: 'skills', skillsMode: 'feats' } },
+    { id: 'feats', Icon: Star, title: L ? 'Talente' : 'Feats', sub: `${featsHave ?? (char.feats ?? []).length}${featBudget ? `/${featBudget}` : ''}`, go: { tab: 'skills', skillsMode: 'feats' } },
     { id: 'inv', Icon: Backpack, title: L ? 'Inventar' : 'Inventory', sub: `${fmt(coinValueGp(inv.coins))} ${L ? 'GM' : 'gp'} · ${fmt(w.total)} Pfd.`, go: { tab: 'inventory' } },
     { id: 'notes', Icon: NotePencil, title: L ? 'Notizen' : 'Notes', sub: L ? 'Öffnen' : 'Open', go: { tab: 'more', morePage: 'notes' } },
   ]
@@ -72,7 +72,7 @@ export function SearchSheet({ char, lang, featBudget, onGo }) {
     <div className="nc-edit nc-search-sheet">
       <div className="nc-search">
         <MagnifyingGlass className="nc-accent-soft" />
-        <input autoFocus value={q} onChange={e => setQ(e.target.value)} placeholder={L ? 'Talente, Gegenstände, Zauber, Fertigkeiten' : 'Feats, items, spells, skills'} aria-label={L ? 'Suche' : 'Search'}
+        <input autoFocus value={q} onChange={e => setQ(e.target.value)} placeholder={L ? 'Suchen: Talent, Zauber, Gegenstand …' : 'Search: feat, spell, item …'} aria-label={L ? 'Suche' : 'Search'}
           onKeyDown={e => { if (e.key === 'Enter' && groups[0]) onGo(groups[0].hits[0].go ?? groups[0].go) }} />
       </div>
       {s.length < 2 ? <>
@@ -91,7 +91,7 @@ export function SearchSheet({ char, lang, featBudget, onGo }) {
           </div>
         ))}
       </>}
-      <span className="nc-hint">{L ? 'Tipp: ⌘/Strg + K öffnet die Suche, Esc schließt sie.' : 'Tip: ⌘/Ctrl + K opens search, Esc closes it.'}</span>
+      <span className="nc-hint">{L ? 'Durchsucht Talente, Zauber, Gegenstände und Fertigkeiten dieses Charakters – Treffer antippen springt direkt dorthin. Am Rechner: ⌘/Strg + K öffnet, Esc schließt.' : 'Searches this character’s feats, spells, items and skills – tap a hit to jump there. ⌘/Ctrl + K opens, Esc closes.'}</span>
     </div>
   )
 }

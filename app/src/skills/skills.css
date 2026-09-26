@@ -71,3 +71,13 @@
 .nc-feat-budget { display: flex; flex-direction: column; gap: 0.125rem; font-size: 0.8125rem; color: var(--color-neutral-300); }
 .nc-feat-budget-line { display: flex; justify-content: space-between; gap: 0.75rem; }
 .nc-feat-budget-n { font-variant-numeric: tabular-nums; color: var(--color-neutral-100); flex: none; }
+.nc-feat-budget-line.is-head { color: var(--color-neutral-100); }
+.nc-feat-budget-line.is-sub { padding-left: 0.75rem; font-size: 0.75rem; color: var(--color-neutral-400); }
+.nc-feat-budget-line > span:first-child { min-width: 0; }
+.nc-feat-budget-n.is-open { color: var(--c-warn); }
+.nc-feat-budget-n.is-neg { color: var(--c-neg); }
+.nc-feat-budget-n.is-auto { color: var(--color-accent-200); font-size: 0.75rem; }
+/* Automatisch / Bonus-Platz an der Talent-Karte */
+.nc-feat-slot { font-size: 0.6875rem; padding: 0.125rem 0.5rem; border-radius: 6px; flex: none; border: 1px solid var(--color-accent-700); color: var(--color-accent-200); }
+.nc-feat-slot.is-auto { background: var(--color-accent-900); border-color: transparent; }
+.nc-feat-row.is-virtual .nc-feat-name { color: var(--color-neutral-200); }

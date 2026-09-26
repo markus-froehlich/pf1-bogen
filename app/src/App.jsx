@@ -30,7 +30,7 @@ import { MoreView } from './shell/MoreView.jsx'
 import { CharView } from './char/CharView.jsx'
 import { Wizard } from './char/Wizard.jsx'
 import { MORE_PAGES } from './shell/morePages.js'
-import { featBudget as featBudgetOf } from './engine/featBudget.js'
+import { featBudget as featBudgetOf, featCount } from './engine/featBudget.js'
 import { CombatView } from './combat/CombatView.jsx'
 import { castingStatOf } from './engine/spellSlots.js'
 import { COMBAT_SECTIONS, migrateCombatPrefs } from './combat/sections.js'
@@ -358,6 +358,7 @@ export default function App() {
 
   const L = lang === 'de'
   const featBudget = featBudgetOf(char, baseValues.totalLevel).total
+  const featsHave = featCount(char, baseValues.totalLevel)
   const raceLabel = RACE_MAP_APP[char.meta.race]?.name?.[L ? 'de' : 'en'] ?? RACE_MAP_APP[char.meta.race]?.name?.de ?? char.meta.race
   const classLabel = (char.meta.classes ?? []).filter(entry => entry.id)
     .map(entry => `${CLASS_MAP_APP[entry.id]?.name?.[L ? 'de' : 'en'] ?? CLASS_MAP_APP[entry.id]?.name?.de ?? entry.id} ${entry.level}`)
@@ -413,7 +414,7 @@ export default function App() {
                   {lang === 'de' ? 'Fertigkeiten' : 'Skills'}
                 </button>
                 <button className={`nc-seg-opt ${skillsMode === 'feats' ? 'is-on' : ''}`} onClick={() => selectSkillsMode('feats')}>
-                  {lang === 'de' ? 'Talente' : 'Feats'} {(char.feats ?? []).length}{featBudget > 0 ? `/${featBudget}` : ''}
+                  {lang === 'de' ? 'Talente' : 'Feats'} {featsHave}{featBudget > 0 ? `/${featBudget}` : ''}
                 </button>
               </div>
               {skillsMode === 'skills' && (
@@ -511,7 +512,7 @@ export default function App() {
       </Sheet>
 
       <Sheet open={searchOpen} onClose={() => setSearchOpen(false)} layout={layout} label={L ? 'Suche' : 'Search'}>
-        {searchOpen && <SearchSheet char={char} lang={lang} featBudget={featBudget} onGo={goSearchTarget} />}
+        {searchOpen && <SearchSheet char={char} lang={lang} featBudget={featBudget} featsHave={featsHave} onGo={goSearchTarget} />}
       </Sheet>
 
       <Sheet open={wizardOpen} onClose={() => setWizardOpen(false)} layout={layout} label={L ? 'Neuer Charakter' : 'New character'}>
