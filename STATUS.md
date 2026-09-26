@@ -23,9 +23,17 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
 - Abschlusstest: 360/375/390, 667/780/844 quer, 744/820/1024 (+quer), 1180/1280/1440; je M + XL,
   Standard + Kontrast; alle Tabs, Mehr-Unterseiten, 22 Sheets; Überlauf/Überlappung/Touch ≥ 44px/
   Eingaben ≥ 16px automatisiert geprüft; iOS-Rig (iPhone SE/12/14 Pro Max quer, iPad Pro 11).
-- **Offen (Entscheidung Nutzer):** siehe Abschluss-Zusammenfassung im Chat 2026-09-26
-  (u. a. Antipaladin/Blutwüter-ZS, Ring vs. Ablenkungs-Buff, KMB ohne Angriffs-Buffs,
-  alte Komponenten-Dateien löschen, wip-Commit 273797d, Merge/Deploy).
+- **Nachgezogen 2026-09-26 (Nutzer: „umsetzen und APG"):** KMB mit Angriffs-Buffs, KMV mit
+  Ablenkungs-/Ausweich-/Glücks-/Heilig-/Moral-/Situations-/Verständnis-Boni (GRW); Ablenkung Ring/Buff/
+  manuell = höchster (GRW); Ausweich-Buffs fallen auf dem falschen Fuß weg; Traglast Tab. 7-5 standardmäßig
+  an (max. GE/Malus/Bewegung, schlechterer Wert von Rüstung/Last); Zustände wie GRW-Anhang (34), Gehetzt/
+  Verlangsamt/Gesegnet → Buff-Vorlagen Hast/Verlangsamen; Antipaladin ZS = Stufe − 3 (APG), Blutwüter =
+  Stufe (Paizo); Druiden-Naturbund-Domäne gibt Domänenplatz (GRW); Domänenzauber `data/domain_spells.json`
+  (`tools/build_domain_spells.py`, GRW 33 maßgeblich + Excel-Unterdomänen). Char-Tab sortierbar, Tierart-
+  Auswahl + Domänenwahl im neuen Stil, 38 Alt-Komponenten gelöscht, wip-Commit in Schritt 2 aufgegangen.
+- **Testen ohne Merge:** `.claude/launch.json` → `pf1-app` (http://localhost:5199) bzw. `pf1-app-lan`
+  (Port 5200, im WLAN z. B. fürs iPhone). Eigene Daten dort per Export/Import; Gist-Backup im Test NICHT verbinden.
+- **Offen:** Merge nach `main` + Deploy (Nutzer entscheidet nach eigenem Test).
 
 ## Entscheidungen (festgezurrt, siehe AGENTS.md)
 1. ~~Rechnen 1:1 wie Excel~~ → **PDF-Grundregelwerk gilt** (siehe AGENTS.md „Regel-Autorität"),

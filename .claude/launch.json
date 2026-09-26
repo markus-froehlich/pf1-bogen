@@ -4,15 +4,45 @@
     {
       "name": "pf1-app",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "5199", "--strictPort"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5199",
+        "--strictPort"
+      ],
       "cwd": "app",
       "port": 5199,
       "autoPort": false
     },
     {
+      "name": "pf1-app-lan",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "5200",
+        "--strictPort"
+      ],
+      "cwd": "app",
+      "port": 5200,
+      "autoPort": false
+    },
+    {
       "name": "design-proto",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "5288", "--bind", "127.0.0.1"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5288",
+        "--bind",
+        "127.0.0.1"
+      ],
       "cwd": "docs/design/mobile_redesign",
       "port": 5288,
       "autoPort": false
