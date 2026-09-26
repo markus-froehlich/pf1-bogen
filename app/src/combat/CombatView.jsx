@@ -1,6 +1,6 @@
 import { useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
-  Sword, Heart, Crosshair, PencilSimple, Plus, X, DiceFive, Moon, ArrowsDownUp,
+  Sword, Heart, Crosshair, PencilSimple, X, DiceFive, Moon, ArrowsDownUp,
   DotsSixVertical, Eye, EyeSlash, ArrowUp, ArrowDown, Stack,
   TShirt, Shield, CircleNotch, Wind, Diamond, CaretRight,
 } from '@phosphor-icons/react'
@@ -114,6 +114,12 @@ export function CombatView(props) {
   const buffs = char.active_buffs ?? []
   const resources = char.resources ?? []
   const attacks = weaponRows({ char: rulesChar, attrs, baseValues, condMods, buffTotals, weaponMap, companionAttacks, deltas, lang })
+  const removeCondition = id => {
+    const prev = conds
+    const c = CONDITIONS.find(x => x.id === id)
+    setConditions(list => list.filter(x => x !== id))
+    toast(L ? `${c?.de ?? id} entfernt` : `${c?.en ?? id} removed`, { undo: () => setConditions(() => prev) })
+  }
   const tag = key => ({ buff: combat[key] - deltas.noBuff[key], cond: combat[key] - deltas.noCond[key] })
   const koScore = attrs.KO?.buffed ?? attrs.KO?.score ?? 10   // Tot bei negativen TP in Höhe des KO-Werts
 
@@ -277,22 +283,25 @@ export function CombatView(props) {
     def: <DefenseSection char={rulesChar} setCombatMisc={setCombatMisc} hbRaces={hbRaces} lang={lang}
       gearItems={gearItems} onEditGear={index => setSheet({ type: 'gear', index })} />,
     cond: (
-      <div className="nc-card nc-card-pad">
-        {!conds.length && <span className="nc-muted">{L ? 'Keine aktiven Zustände.' : 'No active conditions.'}</span>}
+      <ListCard empty={!conds.length} emptyText={L ? 'Keine aktiven Zustände.' : 'No active conditions.'}
+        addLabel={L ? 'Zustand hinzufügen' : 'Add condition'} onAdd={() => setSheet({ type: 'conds' })}>
         {conds.map(id => {
           const c = CONDITIONS.find(x => x.id === id)
           if (!c) return null
           return (
-            <div key={id} className="nc-cond-line">
-              <button className="nc-cond-chip" onClick={() => setConditions(list => list.filter(x => x !== id))} title={L ? 'Entfernen' : 'Remove'}>
-                {L ? c.de : c.en}<X />
+            <div key={id} className="nc-row">
+              <button className="nc-row-main" onClick={() => setSheet({ type: 'conds' })}>
+                <span className="nc-row-text">
+                  <span className="nc-row-title">{L ? c.de : c.en}</span>
+                  <span className="nc-row-sub">{c.effect}</span>
+                </span>
               </button>
-              <span className="nc-cond-effect">{c.effect}</span>
+              <button className="nc-row-edit" onClick={() => removeCondition(id)} title={L ? 'Zustand entfernen' : 'Remove condition'} aria-label={L ? `${c.de} entfernen` : `Remove ${c.en}`}><X /></button>
             </div>
           )
         })}
         {conds.includes('verwirrt') && (
-          <div className="nc-confused">
+          <div className="nc-confused nc-card-pad">
             <button className="nc-btn nc-btn-secondary" onClick={() => setConfRoll(1 + Math.floor(Math.random() * 100))}>
               <DiceFive />{L ? 'W% würfeln' : 'Roll d%'}{confRoll != null ? ` · ${confRoll}` : ''}
             </button>
@@ -303,7 +312,7 @@ export function CombatView(props) {
             })}
           </div>
         )}
-      </div>
+      </ListCard>
     ),
     buff: (
       <ListCard empty={!buffs.length} emptyText={L ? 'Keine Buffs angelegt.' : 'No buffs.'}
@@ -363,7 +372,6 @@ export function CombatView(props) {
     ),
   }
   const actions = {
-    cond: <button className="nc-btn nc-btn-ghost nc-head-action" onClick={() => setSheet({ type: 'conds' })}><Plus />{L ? 'Bearbeiten' : 'Edit'}</button>,
     res: resources.length > 0 && (
       <button className="nc-btn nc-btn-ghost nc-head-action" onClick={() => {
         const prev = resources
