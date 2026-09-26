@@ -31,6 +31,12 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
   Stufe (Paizo); Druiden-Naturbund-Domäne gibt Domänenplatz (GRW); Domänenzauber `data/domain_spells.json`
   (`tools/build_domain_spells.py`, GRW 33 maßgeblich + Excel-Unterdomänen). Char-Tab sortierbar, Tierart-
   Auswahl + Domänenwahl im neuen Stil, 38 Alt-Komponenten gelöscht, wip-Commit in Schritt 2 aufgegangen.
+- **Nach Nutzertest 2026-09-26:** Zustände als Liste; Speichern nie mehr stumm gesperrt; Lesbarkeit
+  (kein „…"-Abschneiden, Layout-Umschaltung per Container-Query in rem, gemessen 320–1440 px × M/L/XL);
+  Talent-Budget nach GRW inkl. Klassen-/Volks-Bonustalente (`engine/featBudget.js`, Hexenmeister
+  Materialkomponentenlos 1 + Blutlinie 7/13/19); Desktop: Kampf | Char fest, 3. Spalte über Schiene
+  (Standard Fähigkeiten); Verteidigung/Bewegung getrennt; Attribut-Buffs mit ✦; Kontrast-Theme modernisiert.
+  Idee für später: eigene Ansichten/Vorlagen am Desktop (Konzept im Chat 2026-09-26).
 - **Testen ohne Merge:** `.claude/launch.json` → `pf1-app` (http://localhost:5199) bzw. `pf1-app-lan`
   (Port 5200, im WLAN z. B. fürs iPhone). Eigene Daten dort per Export/Import; Gist-Backup im Test NICHT verbinden.
 - **Offen:** Merge nach `main` + Deploy (Nutzer entscheidet nach eigenem Test).
