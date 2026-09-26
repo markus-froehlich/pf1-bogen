@@ -9,9 +9,9 @@ wichtigsten Regel-Datasets sind portiert und in der App gebündelt.
 **Phase 3 (PWA + Engine) aktiv:** App, Engine und UI sind weit fortgeschritten;
 aktuell stehen Detailtreue, mobile Bedienung und Excel-Abgleich im Vordergrund.
 
-## Redesign „Nocturne" (Branch `redesign/mobile-nocturne`, Stand 2026-09-26)
-**Alle 7 Schritte umgesetzt und getestet, NICHT gemergt, NICHT deployt.** Branch ist nur lokal
-(push.default=matching → nur `main` wird gepusht; main unverändert).
+## Redesign „Nocturne" (Stand 2026-09-26)
+**Fertig, nach `main` gemergt (Fast-Forward) und deployt am 2026-09-26.** Der Branch
+`redesign/mobile-nocturne` bleibt lokal als Verlauf.
 Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag, Prototyp-HTML).
 - Neue UI je Bereich in eigenen Ordnern: `shell/` (Hülle, Sheets, Toast, Suche ⌘K), `combat/`,
   `char/` (inkl. Assistent), `skills/`, `spells/`, `inventory/`, `more/`. Engine/Daten unverändert
@@ -37,9 +37,18 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
   Materialkomponentenlos 1 + Blutlinie 7/13/19); Desktop: Kampf | Char fest, 3. Spalte über Schiene
   (Standard Fähigkeiten); Verteidigung/Bewegung getrennt; Attribut-Buffs mit ✦; Kontrast-Theme modernisiert.
   Idee für später: eigene Ansichten/Vorlagen am Desktop (Konzept im Chat 2026-09-26).
-- **Testen ohne Merge:** `.claude/launch.json` → `pf1-app` (http://localhost:5199) bzw. `pf1-app-lan`
+- **Letzte Runde nach Nutzertest (2026-09-26):** Zahlenfelder markieren beim Antippen (Safari), keine
+  führende 0; „0" statt „±0"/„+0"; Stepper als Pille, Größe als Stepper; Fertigkeiten-Ränge nur im Detail;
+  Talente: automatische Talente + Bonus-Plätze je Klasse/Volk/Domäne (`engine/featBudget.js`,
+  `engine/classFeatsExtra.js`, Quellen GRW + Excel + dt. PRD; Draufgänger ab St. 4 laut PRD, Excel 5);
+  Kampf-Tab ohne Ein-/Ausklappen: Bereiche immer als Kacheln, Kachel = Schnellaktion (Ressource −/+,
+  Buff an/aus, inaktive gedimmt, Zustand, TP, Aufschlüsselung), Stift = Bereich im Fenster bearbeiten,
+  Auge in „Bereiche anordnen" blendet aus (`pf1_combat_hidden`); TP „Voll heilen"/„Temp. entfernen";
+  Detailfenster per Wischgeste schließen; Waffenkategorie wieder sichtbar.
+- **Testen lokal:** `.claude/launch.json` → `pf1-app` (http://localhost:5199) bzw. `pf1-app-lan`
   (Port 5200, im WLAN z. B. fürs iPhone). Eigene Daten dort per Export/Import; Gist-Backup im Test NICHT verbinden.
-- **Offen:** Merge nach `main` + Deploy (Nutzer entscheidet nach eigenem Test).
+- **Ideen für später:** eigene Ansichten/Vorlagen am Desktop; Kacheln + Schnellfenster auch für
+  Zauberplätze (Zauber-Tab) und Münzen/Verbrauchsgüter (Inventar) – Nutzer gefragt, noch offen.
 
 ## Entscheidungen (festgezurrt, siehe AGENTS.md)
 1. ~~Rechnen 1:1 wie Excel~~ → **PDF-Grundregelwerk gilt** (siehe AGENTS.md „Regel-Autorität"),
