@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { Plus, Minus, X, PawPrint, CaretRight, Warning, PencilSimple } from '@phosphor-icons/react'
+import { Fragment, useMemo, useState } from 'react'
+import { Plus, Minus, X, PawPrint, CaretRight, Warning, PencilSimple, ArrowsDownUp, ArrowUp, ArrowDown, DotsSixVertical } from '@phosphor-icons/react'
 import archetypesData from '../data/archetypes.json'
 import classFeatData from '../data/class_features_by_level.json'
 import racialTraitsData from '../data/racial_traits.json'
@@ -12,11 +12,14 @@ import { BreakdownSheet } from '../combat/BreakdownSheet.jsx'
 import { NumberPad } from '../combat/NumberPad.jsx'
 import { EditSheet, TextField, NumField, ChipsField, SearchPick, Field } from '../combat/EditSheet.jsx'
 import { sg } from '../combat/breakdown.js'
-import { DomainsPanel } from '../components/DomainsPanel.jsx'
-import { CompanionsTab } from '../components/CompanionsTab.jsx'
+import { DomainPicker } from './DomainPicker.jsx'
+import { maxDomains, chosenDomains, domainLabel } from '../spells/domainSpells.js'
+import { CompanionPicker } from './CompanionPicker.jsx'
 import { CompanionAdvancementPanel } from '../components/CompanionAdvancementPanel.jsx'
 import { CompanionFeaturesPanel } from '../components/CompanionFeaturesPanel.jsx'
 import { ATTR_NAMES, attributeBreakdown, classProfile, classFeatureNames } from './charLogic.js'
+import { useSectionOrder } from '../store/useSectionOrder.js'
+import { CHAR_SECTIONS, CHAR_SECTION_LABELS } from './charSections.js'
 import './char.css'
 
 const ATTRS = ['ST', 'GE', 'KO', 'IN', 'WE', 'CH']
@@ -36,6 +39,7 @@ export function CharView(props) {
   const L = lang === 'de'
   const toast = useToast()
   const [sheet, setSheet] = useState(null)
+  const [charOrder, moveChar, resetChar] = useSectionOrder('pf1_char_order', CHAR_SECTIONS)
   const close = () => setSheet(null)
   const classMap = useMemo(() => Object.fromEntries([...ALL_CLASSES, ...hbClasses].map(c => [c.id, c])), [hbClasses])
   const raceMap = useMemo(() => Object.fromEntries(races.map(r => [r.id, r])), [races])
@@ -74,16 +78,16 @@ export function CharView(props) {
     toast(L ? `${name} entfernt` : `${name} removed`, { undo: () => setMeta('classes', prev) })
   }
 
-  return (
-    <div className="nc-page nc-char">
-      {/* Identität */}
+  // Bereiche (sortierbar, Reihenfolge in pf1_char_order)
+  const blocks = {
+    identity: (<>
       <button className="nc-card nc-card-list nc-identity-card" onClick={() => setSheet({ type: 'identity' })}>
         {identity.map(([label, value]) => (
           <span key={label} className="nc-kv"><span className="nc-kv-label">{label}</span><span className="nc-kv-value nc-ellipsis">{value}</span></span>
         ))}
       </button>
-
-      {/* Tiergefährte: Verweis auf Besitzer */}
+    </>),
+    owner: (<>
       {isCompanion && owner && (
         <button className="nc-card nc-companion-card" onClick={() => switchChar(owner.id)}>
           <span className="nc-char-icon is-lg"><PawPrint /></span>
@@ -92,8 +96,8 @@ export function CharView(props) {
           <CaretRight className="nc-list-caret" />
         </button>
       )}
-
-      {/* Klassen */}
+    </>),
+    classes: (<>
       {!isCompanion && <>
         <span className="nc-label">{L ? 'Klassen' : 'Classes'}</span>
         {classes.length === 0 && (
@@ -116,8 +120,7 @@ export function CharView(props) {
                 <span className="nc-chips nc-chips-tight">
                   {arch.map(a => <span key={a} className="nc-tag nc-tag-accent">{a}</span>)}
                   {(archetypesData.archetypes[entry.id]?.length ?? 0) > 0 && <span className="nc-tag nc-tag-outline">{arch.length ? (L ? 'Archetypen ändern' : 'Change archetypes') : (L ? '+ Archetyp' : '+ Archetype')}</span>}
-                  {(entry.id === 'kleriker' || entry.id === 'inquisitor') &&
-                    (char.meta.domains ?? []).filter(Boolean).map(d => <span key={d} className="nc-tag nc-tag-neutral">{d}</span>)}
+                  {maxDomains(entry.id) > 0 && chosenDomains(char).map(k => <span key={k} className="nc-tag nc-tag-neutral">{domainLabel(k)}</span>)}
                 </span>
               </button>
               {idx > 0 && <button className="nc-row-edit" onClick={() => removeClass(idx)} aria-label={L ? 'Klasse entfernen' : 'Remove class'}><X /></button>}
@@ -128,8 +131,8 @@ export function CharView(props) {
           <button className="nc-btn nc-btn-secondary nc-btn-start" onClick={() => setSheet({ type: 'class', idx: classes.length })}><Plus />{L ? 'Weitere Klasse' : 'Add class'}</button>
         )}
       </>}
-
-      {/* Attribute */}
+    </>),
+    attrs: (<>
       <span className="nc-label">{L ? 'Attribute' : 'Abilities'}</span>
       {isCompanion && <CompanionAdvancementPanel rules={companionRules} lang={lang} tricks={char.companion?.tricks ?? []} onTricksChange={tricks => update({ companion: { tricks } })} />}
       <div className={`nc-attr-grid ${layout === 'phone' ? '' : 'is-3'}`}>
@@ -159,8 +162,8 @@ export function CharView(props) {
         })}
       </div>
       <span className="nc-hint">{L ? 'Werte selbst eintragen, Modifikatoren werden berechnet. Volksboni werden nicht automatisch angewendet.' : 'Enter scores yourself; racial bonuses are not applied automatically.'}</span>
-
-      {/* Erfahrung */}
+    </>),
+    xp: (<>
       {!isCompanion && <>
         <span className="nc-label">{L ? 'Erfahrung' : 'Experience'}</span>
         <div className="nc-card nc-card-pad">
@@ -184,8 +187,8 @@ export function CharView(props) {
           </div>
         </div>
       </>}
-
-      {/* Tiergefährte (Druide) */}
+    </>),
+    companion: (<>
       {!isCompanion && isDruid && <>
         <span className="nc-label">{L ? 'Tiergefährte' : 'Animal companion'}</span>
         {ownedCompanions.map(c => (
@@ -199,14 +202,14 @@ export function CharView(props) {
         <button className="nc-btn nc-btn-secondary nc-btn-start" onClick={() => setSheet({ type: 'companion' })}><Plus />{L ? 'Tiergefährte anlegen' : 'Add companion'}</button>
       </>}
       {isCompanion && <CompanionFeaturesPanel features={companionRules?.features} lang={lang} />}
-
-      {/* Klassenmerkmale */}
+    </>),
+    features: (<>
       {!isCompanion && features.length > 0 && <>
         <span className="nc-label">{L ? `Klassenmerkmale bis Stufe ${baseValues.totalLevel}` : `Class features to level ${baseValues.totalLevel}`}</span>
         <div className="nc-chips nc-chips-tight">{features.map(f => <span key={f} className="nc-feature-chip">{f}</span>)}</div>
       </>}
-
-      {/* Person */}
+    </>),
+    person: (<>
       <span className="nc-label">{L ? 'Person' : 'Person'}</span>
       <button className="nc-person" onClick={() => setSheet({ type: 'person' })}>
         {[[L ? 'Geschlecht' : 'Gender', bio.gender], [L ? 'Alter' : 'Age', bio.age], [L ? 'Größe' : 'Height', bio.height_cm ? `${bio.height_cm} cm` : ''],
@@ -218,8 +221,35 @@ export function CharView(props) {
         {bio.background && <span className="nc-card nc-person-tile is-wide"><span className="nc-kv-label">{L ? 'Hintergrund' : 'Background'}</span><span className="nc-pre">{bio.background}</span></span>}
         <span className="nc-person-edit"><PencilSimple />{L ? 'Person bearbeiten' : 'Edit person'}</span>
       </button>
+    </>),
+  }
+
+  return (
+    <div className="nc-page nc-char">
+      {charOrder.map(id => <Fragment key={id}>{blocks[id]}</Fragment>)}
+      <button className="nc-btn nc-btn-secondary nc-arrange-btn" onClick={() => setSheet({ type: 'arrange' })}><ArrowsDownUp />{L ? 'Bereiche anordnen' : 'Arrange sections'}</button>
 
       <Sheet open={!!sheet} onClose={close} layout={layout} label={sheet?.type}>
+        {sheet?.type === 'arrange' && (
+          <div className="nc-sheet-body nc-gap">
+            <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Char-Tab anordnen' : 'Arrange char tab'}</span>
+              <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
+            <div className="nc-arrange">
+              {charOrder.map((id, i) => (
+                <div key={id} className="nc-arrange-row">
+                  <DotsSixVertical className="nc-muted-icon" />
+                  <span className="nc-arrange-name">{CHAR_SECTION_LABELS[id][L ? 0 : 1]}</span>
+                  <button className="nc-icon-btn nc-sm" disabled={i === 0} onClick={() => moveChar(id, -1)} aria-label={L ? 'Nach oben' : 'Up'}><ArrowUp /></button>
+                  <button className="nc-icon-btn nc-sm" disabled={i === charOrder.length - 1} onClick={() => moveChar(id, 1)} aria-label={L ? 'Nach unten' : 'Down'}><ArrowDown /></button>
+                </div>
+              ))}
+            </div>
+            <div className="nc-sheet-foot">
+              <span className="nc-hint">{L ? 'Bereiche ohne Inhalt (z. B. Tiergefährte bei Nicht-Druiden) bleiben ausgeblendet.' : 'Empty sections stay hidden.'}</span>
+              <button className="nc-btn nc-btn-ghost" onClick={resetChar}>{L ? 'Zurücksetzen' : 'Reset'}</button>
+            </div>
+          </div>
+        )}
         {sheet?.type === 'attr' && <BreakdownSheet bd={bd} lang={lang} />}
         {sheet?.type === 'xp' && (
           <NumberPad lang={lang} maxLen={7}
@@ -243,12 +273,8 @@ export function CharView(props) {
             onRemove={sheet.idx > 0 && sheet.idx < classes.length ? () => removeClass(sheet.idx) : null} lang={lang} onClose={close} />
         )}
         {sheet?.type === 'companion' && (
-          <div className="nc-sheet-body nc-gap">
-            <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Tiergefährte' : 'Animal companion'}</span>
-              <button className="nc-btn nc-btn-ghost" onClick={close}>{L ? 'Fertig' : 'Done'}</button></div>
-            <CompanionsTab index={index} ownerId={activeId} onCreate={species => { newCompanion(species, activeId); close() }}
-              onOpen={id => { switchChar(id); close() }} lang={lang} />
-          </div>
+          <CompanionPicker index={index} ownerId={activeId} onCreate={species => { newCompanion(species, activeId); close() }}
+            onOpen={id => { switchChar(id); close() }} onClose={close} lang={lang} />
         )}
       </Sheet>
     </div>
@@ -316,7 +342,7 @@ function PersonEditor({ bio, setBio, lang, onClose }) {
 function ClassEditor({ char, idx, classMap, hbClasses, setMeta, onRemove, lang, onClose }) {
   const L = lang === 'de'
   const cur = (char.meta.classes ?? [])[idx] ?? { id: '', level: 1, archetypes: [] }
-  const [d, setD] = useState({ id: cur.id ?? '', level: Number(cur.level) || 1, archetypes: cur.archetypes ?? [] })
+  const [d, setD] = useState({ id: cur.id ?? '', level: Number(cur.level) || 1, archetypes: cur.archetypes ?? [], domains: char.meta.domains ?? [] })
   const set = patch => setD(prev => ({ ...prev, ...patch }))
   const all = [...ALL_CLASSES, ...hbClasses].filter(c => c.progression?.length)
   const cls = classMap[d.id]
@@ -330,6 +356,7 @@ function ClassEditor({ char, idx, classMap, hbClasses, setMeta, onRemove, lang, 
         const classes = [...(char.meta.classes ?? []).filter(c => c.id)]
         classes[Math.min(idx, classes.length)] = { ...(classes[idx] ?? {}), id: d.id, level: d.level, archetypes: d.archetypes }
         setMeta('classes', classes)
+        if (maxDomains(d.id)) setMeta('domains', d.domains)
         onClose()
       }}>
       <SearchPick label={L ? `Klasse (${all.length})` : `Class (${all.length})`} items={all.map(c => ({ id: c.id, label: c.name?.de ?? c.id, c }))} selectedId={d.id}
@@ -342,9 +369,7 @@ function ClassEditor({ char, idx, classMap, hbClasses, setMeta, onRemove, lang, 
           onChange={v => set({ archetypes: Object.keys(v).filter(k => v[k]).slice(-3) })}
           hint={L ? 'Bis zu 3, sofern sie nicht dieselben Klassenmerkmale ersetzen.' : 'Up to 3 if they do not replace the same features.'} />
       )}
-      {(d.id === 'kleriker' || d.id === 'inquisitor') && (
-        <Field label={L ? 'Domänen' : 'Domains'}><DomainsPanel char={{ ...char, meta: { ...char.meta, classes: [{ id: d.id, level: d.level }] } }} setMeta={setMeta} lang={lang} /></Field>
-      )}
+      {maxDomains(d.id) > 0 && <DomainPicker classId={d.id} value={d.domains} onChange={v => set({ domains: v })} lang={lang} />}
     </EditSheet>
   )
 }

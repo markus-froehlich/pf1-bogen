@@ -20,6 +20,7 @@ const PREF_KEYS = [
   'pf1_combat_collapsed',
   'pf1_attr_collapsed',
   'pf1_theme',
+  'pf1_char_order',
 ]
 
 // Deep-merge: recursively merges plain objects; arrays + primitives take override value.

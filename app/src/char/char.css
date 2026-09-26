@@ -88,3 +88,6 @@
 .nc-wiz-attr { display: flex; align-items: center; gap: 0.375rem; min-height: 3.375rem; padding: 0.25rem 0.625rem 0.25rem 0.875rem; }
 .nc-wiz-final { min-width: 3.875rem; text-align: right; display: flex; flex-direction: column; align-items: flex-end; font-size: 1.0625rem; font-weight: 500; }
 .nc-wiz-final small { font-size: 0.6875rem; font-weight: 400; }
+.nc-chip.is-sub { font-size: 0.8125rem; color: var(--color-neutral-300); }
+.nc-chip.is-sub.is-on { color: var(--color-accent-200); }
+.nc-species-list { max-height: 22rem; overflow-y: auto; }
