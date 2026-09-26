@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 /**
- * Sheet: Handy = von unten (Griff, Backdrop 62 %), Tablet/Desktop = Seitenpanel rechts
- * (400px, 16px Abstand, Backdrop 38 %). Esc schließt (README „App-Shell" / „Responsive").
+ * Sheet: Handy = von unten (Griff, Backdrop 62 %), Tablet = Seitenpanel rechts (400px),
+ * Desktop = zentriertes Fenster (Backdrop 38 %). Esc schließt (README „App-Shell" / „Responsive").
  * Wischen schließt wie in nativen Apps: Handy nach unten (wenn der Inhalt oben steht),
  * Seitenpanel auf Touch-Geräten nach rechts.
  */
@@ -21,9 +21,10 @@ export function Sheet({ open, onClose, layout, children, label }) {
   }, [open, onClose])
 
   const phone = layout === 'phone'
+  const center = layout === 'desktop'
   useEffect(() => {
     const el = sheetRef.current
-    if (!open || !el) return
+    if (!open || !el || center) return   // zentriert: kein Wischen (Maus)
     const axisY = phone
     let g = null   // { x0, y0, t0, can, active, d }
     const setOffset = d => {
@@ -81,11 +82,11 @@ export function Sheet({ open, onClose, layout, children, label }) {
       el.removeEventListener('touchend', end)
       el.removeEventListener('touchcancel', end)
     }
-  }, [open, phone])
+  }, [open, phone, center])
 
   if (!open) return null
   return createPortal(
-    <div className={`nc-sheet-layer ${phone ? 'is-phone' : 'is-panel'}`}>
+    <div className={`nc-sheet-layer ${phone ? 'is-phone' : center ? 'is-panel is-center' : 'is-panel'}`}>
       <div className="nc-sheet-backdrop" ref={backRef} onClick={onClose} />
       <div className="nc-sheet" role="dialog" aria-modal="true" aria-label={label} ref={sheetRef}>
         {phone && <div className="nc-sheet-grab" />}

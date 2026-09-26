@@ -300,3 +300,8 @@ select.nc-input {
 @container head (max-width: 20rem) { .nc-head-caret { display: none; } .nc-head { gap: 0.375rem; } }
 @container head (max-width: 22rem) { .nc-avatar { display: none; } }
 @container head (max-width: 20rem) { .nc-head-notes { display: none; } }
+/* Desktop: Fenster mittig statt rechts */
+.nc-sheet-layer.is-center .nc-sheet {
+  inset: 0; margin: auto; height: fit-content; max-height: min(88%, 56rem);
+  width: min(34rem, calc(100% - 3rem));
+}
