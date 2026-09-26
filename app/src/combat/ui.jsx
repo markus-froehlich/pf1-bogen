@@ -1,10 +1,36 @@
+import { useEffect, useRef } from 'react'
 import { CaretDown, Sparkle, WarningCircle, Minus, Plus } from '@phosphor-icons/react'
 import { sg } from './breakdown.js'
 
 /** Bereich mit einklappbarer Überschrift (Caret dreht), Zusammenfassung wenn zu, optionale Aktion rechts. */
 export function SectionFrame({ id, label, summary, collapsed, onToggle, action, children, innerRef }) {
+  // Nach dem Aufklappen: passt der Bereich nicht ganz ins Bild, so scrollen, dass seine Überschrift oben steht
+  const own = useRef(null)
+  const wasCollapsed = useRef(collapsed)
+  useEffect(() => {
+    const opened = wasCollapsed.current && !collapsed
+    wasCollapsed.current = collapsed
+    const el = own.current
+    const holder = el?.parentElement
+    if (collapsed && holder) holder.style.paddingBottom = ''          // Luft von einem früheren Aufklappen wieder weg
+    if (!opened || !el) return
+    requestAnimationFrame(() => {
+      let sc = el.parentElement
+      while (sc && !/(auto|scroll)/.test(getComputedStyle(sc).overflowY)) sc = sc.parentElement
+      if (!sc) return
+      const view = sc.getBoundingClientRect()
+      const r = el.getBoundingClientRect()
+      if (r.bottom <= view.bottom && r.top >= view.top) return      // passt schon ganz ins Bild
+      // letzter Bereich: unten Luft schaffen, damit die Überschrift ganz nach oben kann
+      const want = sc.scrollTop + (r.top - view.top) - 8
+      const missing = want - (sc.scrollHeight - sc.clientHeight)
+      if (missing > 0 && holder) holder.style.paddingBottom = `${Math.ceil(missing)}px`
+      sc.scrollTo({ top: want, behavior: 'smooth' })
+    })
+  }, [collapsed])
+  const setRef = el => { own.current = el; if (typeof innerRef === 'function') innerRef(el) }
   return (
-    <section className="nc-section" data-section={id} ref={innerRef}>
+    <section className="nc-section" data-section={id} ref={setRef}>
       <div className="nc-section-head">
         <button className="nc-section-toggle" onClick={() => onToggle(id)} aria-expanded={!collapsed}>
           <CaretDown className={`nc-caret ${collapsed ? 'is-shut' : ''}`} />

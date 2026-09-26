@@ -5,7 +5,7 @@
 .nc-arrange-btn { margin-top: 0.5rem; min-height: 2.75rem; }
 
 /* Bereich + Kopf */
-.nc-section { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; container: section / inline-size; }
+.nc-section { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; container: section / inline-size; scroll-margin-top: 0.5rem; }
 .nc-section-head { display: flex; align-items: center; gap: 0.25rem; padding: 0 0.125rem; margin: -0.25rem 0 -0.125rem; min-width: 0; }
 .nc-section-toggle {
   flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.375rem; min-height: 2.75rem;

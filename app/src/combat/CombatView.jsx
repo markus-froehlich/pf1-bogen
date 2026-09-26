@@ -482,7 +482,13 @@ export function CombatView(props) {
           if (!r) return null
           const used = Number(r.current ?? 0)
           const left = Math.max(0, r.max - used)
-          const setUsed = n => setResources(list => list.map(x => (x.id === r.id ? { ...x, current: Math.max(0, Math.min(x.max, n)) } : x)))
+          // −/+ im Schnellfenster: sofort zurück zur Übersicht, Rückgängig im Hinweis
+          const setUsed = n => {
+            const next = Math.max(0, Math.min(r.max, n))
+            setResources(list => list.map(x => (x.id === r.id ? { ...x, current: next } : x)))
+            close()
+            toast(`${r.name} ${Math.max(0, r.max - next)}/${r.max}`, { undo: () => setResources(list => list.map(x => (x.id === r.id ? { ...x, current: used } : x))) })
+          }
           return (
             <div className="nc-sheet-body nc-gap nc-quick">
               <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{r.name}</span>
