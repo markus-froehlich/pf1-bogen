@@ -6,7 +6,7 @@ import { Stepper } from './ui.jsx'
  * Einheitliches Bearbeiten-Sheet (README „Bearbeiten, Hinzufügen, Rückgängig"):
  * Titel (+ Löschen) → Vorlagen-Chips → Felder → Vorschau → Abbrechen | Speichern.
  */
-export function EditSheet({ title, onDelete, templatesLabel, templates, children, preview, onCancel, onSave, saveDisabled, lang }) {
+export function EditSheet({ title, onDelete, templatesLabel, templates, children, preview, onCancel, onSave, saveDisabled, saveHint, lang }) {
   const L = lang === 'de'
   return (
     <div className="nc-edit">
@@ -23,6 +23,7 @@ export function EditSheet({ title, onDelete, templatesLabel, templates, children
       )}
       {children}
       {preview && <div className="nc-edit-preview"><Eye /><span>{preview}</span></div>}
+      {saveDisabled && <span className="nc-hint nc-save-hint">{saveHint ?? (L ? 'Zum Speichern bitte einen Namen eingeben.' : 'Enter a name to save.')}</span>}
       <div className="nc-edit-actions">
         <button className="nc-btn nc-btn-secondary" onClick={onCancel}>{L ? 'Abbrechen' : 'Cancel'}</button>
         <button className="nc-btn nc-btn-primary" onClick={onSave} disabled={saveDisabled}>{L ? 'Speichern' : 'Save'}</button>

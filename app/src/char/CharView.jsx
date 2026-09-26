@@ -350,7 +350,7 @@ function ClassEditor({ char, idx, classMap, hbClasses, setMeta, onRemove, lang, 
   const prof = classProfile(cls, lang)
   return (
     <EditSheet lang={lang} title={cur.id ? `${cls?.name?.de ?? cur.id}` : (idx === 0 ? (L ? 'Klasse wählen' : 'Choose class') : (L ? 'Weitere Klasse' : 'Add class'))}
-      onDelete={onRemove} onCancel={onClose} saveDisabled={!d.id}
+      onDelete={onRemove} onCancel={onClose} saveDisabled={!d.id} saveHint={L ? 'Bitte eine Klasse wählen.' : 'Choose a class.'}
       preview={cls ? `${cls.name?.de} ${d.level} · ${prof.text}` : ''}
       onSave={() => {
         const classes = [...(char.meta.classes ?? []).filter(c => c.id)]

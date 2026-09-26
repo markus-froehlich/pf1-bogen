@@ -39,6 +39,12 @@ function buffPreview(d, lang) {
   return parts.length ? `${L ? type?.de : type?.en} · ${parts.join(', ')}${d.duration ? ` · ${d.duration}` : ''}` : (L ? 'Noch kein Bonus' : 'No bonus yet')
 }
 
+/** Name, wenn keiner eingetragen ist: aus den Boni („Angriff +1 · RK +2"). */
+function autoBuffName(bonuses, lang) {
+  const parts = BUFF_STATS.filter(st => bonuses[st.key]).map(st => `${lang === 'de' ? st.de : st.en ?? st.de} ${bonuses[st.key] > 0 ? '+' : '−'}${Math.abs(bonuses[st.key])}`)
+  return parts.join(' · ') || (lang === 'de' ? 'Buff' : 'Buff')
+}
+
 export function BuffEditor({ buff, casterLevel, onSave, onDelete, onClose, lang }) {
   const L = lang === 'de'
   const [d, setD] = useState(() => buff
@@ -54,8 +60,9 @@ export function BuffEditor({ buff, casterLevel, onSave, onDelete, onClose, lang 
       templates={buff ? [] : tpls.map(t => ({ key: t.name, label: t.name, on: d.name === t.name,
         pick: () => set({ name: t.name, type: t.type, duration: t.duration, notes: t.notes ?? '', rows: Object.entries(t.bonuses).map(([key, v]) => ({ key, v })) }) }))}
       preview={buffPreview({ ...d, bonuses }, lang)}
-      onCancel={onClose} saveDisabled={!d.name.trim()}
-      onSave={() => onSave({ ...(buff ?? { id: newId('b'), active: true }), name: d.name.trim(), type: d.type, duration: d.duration.trim(), notes: d.notes.trim(), bonuses })}>
+      onCancel={onClose} saveDisabled={!Object.keys(bonuses).length && !d.name.trim()}
+      saveHint={L ? 'Mindestens einen Bonus oder einen Namen eintragen.' : 'Add a bonus or a name.'}
+      onSave={() => onSave({ ...(buff ?? { id: newId('b'), active: true }), name: d.name.trim() || autoBuffName(bonuses, lang), type: d.type, duration: d.duration.trim(), notes: d.notes.trim(), bonuses })}>
       <TextField label="Name" value={d.name} onChange={v => set({ name: v })} placeholder={L ? 'z. B. Segnen' : 'e.g. Bless'} />
       <TextField label={L ? 'Dauer' : 'Duration'} value={d.duration} onChange={v => set({ duration: v })} placeholder={L ? 'z. B. 7 Min. oder 1 Min./Stufe' : 'e.g. 1 min./level'} />
       <ChipsField label={L ? 'Bonus-Typ' : 'Bonus type'} options={BUFF_TYPES.map(t => [t.id, L ? t.de : t.en])} value={d.type} onChange={v => set({ type: v })}
@@ -130,7 +137,7 @@ export function WeaponEditor({ slot, index, char, attrs, bab, condMods, buffTota
     <EditSheet lang={lang} title={slot ? (L ? 'Waffe bearbeiten' : 'Edit weapon') : (L ? 'Waffe hinzufügen' : 'Add weapon')}
       onDelete={slot ? () => onDelete(index) : null}
       preview={result ? `${L ? 'Angriff' : 'Attack'} ${result.full_attack_str} · ${L ? 'Schaden' : 'Damage'} ${dice}${result.damage_mod ? result.damage_str : ''}${d.dmg_extra ? ` + ${d.dmg_extra}` : ''} · ${typo(def.crit) ?? '—'}` : (L ? 'Waffe aus der Liste wählen' : 'Pick a weapon')}
-      onCancel={onClose} saveDisabled={!def}
+      onCancel={onClose} saveDisabled={!def} saveHint={L ? 'Bitte eine Waffe aus der Liste wählen.' : 'Pick a weapon from the list.'}
       onSave={() => onSave(index, { ...d, name: d.name.trim() })}>
       <SearchPick label={L ? `Waffe aus Liste (${all.length})` : `Weapon (${all.length})`} items={items} selectedId={d.weapon_id}
         placeholder={L ? 'Waffe suchen …' : 'Search weapon …'}
@@ -177,7 +184,7 @@ export function GearEditor({ item, index, hbArmor = [], hbShields = [], onSave, 
   return (
     <EditSheet lang={lang} title={item ? (L ? 'Ausrüstung bearbeiten' : 'Edit gear') : (L ? 'Ausrüstung hinzufügen' : 'Add gear')}
       onDelete={item ? () => onDelete(index) : null} preview={preview}
-      onCancel={onClose} saveDisabled={!d.name.trim() && !d.id}
+      onCancel={onClose} saveDisabled={!d.name.trim() && !d.id} saveHint={L ? 'Bitte einen Eintrag aus der Liste wählen oder einen Namen eintragen.' : 'Pick an item or enter a name.'}
       onSave={() => onSave(index, { ...d, name: d.name.trim() })}>
       <ChipsField label={L ? 'Art' : 'Kind'} options={KINDS.map(k => [k, L ? k : KIND_EN[k]])} value={d.kind}
         onChange={v => set({ kind: v, id: null, name: d.id ? '' : d.name })} />
