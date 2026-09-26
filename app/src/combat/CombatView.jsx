@@ -487,13 +487,17 @@ export function CombatView(props) {
             cta={v => ({ dmg: L ? `${v} Schaden nehmen` : `Take ${v} damage`, heal: L ? `${v} TP heilen` : `Heal ${v} HP`,
               temp: L ? `${v} temporäre TP setzen` : `Set ${v} temp HP`, nl: L ? `${v} NL-Schaden nehmen` : `Take ${v} nonlethal` }[padMode])}
             onCommit={applyPad}
-            extra={padMode === 'heal' && hp.max > 0 ? (
-              <button className="nc-btn nc-btn-secondary nc-pad-full" disabled={!canFullHeal} onClick={fullHeal}>
-                <Heart />{canFullHeal ? (L ? `Voll heilen (auf ${hp.max} TP${nl ? ', NL weg' : ''})` : `Heal fully (${hp.max} HP)`) : (L ? 'Schon voll' : 'Already full')}
-              </button>) : padMode === 'temp' && hp.temp > 0 ? (
-              <button className="nc-btn nc-btn-secondary nc-pad-full" onClick={clearTemp}>
-                <X />{L ? `Temporäre TP entfernen (${hp.temp})` : `Clear temporary HP (${hp.temp})`}
-              </button>) : null} />
+            extra={<>
+              {/* in jedem Modus sichtbar, sobald etwas fehlt – nicht nur unter „Heilung“ */}
+              {canFullHeal && (
+                <button className="nc-btn nc-btn-secondary nc-pad-full" onClick={fullHeal}>
+                  <Heart />{L ? `Voll heilen (auf ${hp.max} TP${nl ? ', NL weg' : ''})` : `Heal fully (${hp.max} HP)`}
+                </button>)}
+              {padMode === 'temp' && hp.temp > 0 && (
+                <button className="nc-btn nc-btn-secondary nc-pad-full" onClick={clearTemp}>
+                  <X />{L ? `Temporäre TP entfernen (${hp.temp})` : `Clear temporary HP (${hp.temp})`}
+                </button>)}
+            </>} />
         )}
         {sheet?.type === 'hpEdit' && (
           <HpEdit hp={hp} nl={nl} setHp={setHp} setNlDamage={setNlDamage} attrs={attrs} baseValues={baseValues}
