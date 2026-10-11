@@ -180,8 +180,10 @@ export function CharView(props) {
           </div>
           <div className="nc-bar"><div className="nc-bar-fill is-ok" style={{ width: `${pct * 100}%` }} /></div>
           {mismatch && <span className="nc-warn-line"><Warning />{L ? `EP reichen für Stufe ${lvXp} – Klassenstufe (${baseValues.totalLevel}) anpassen.` : `XP match level ${lvXp} – adjust class level.`}</span>}
-          {(FEAT_LEVELS.includes(lvXp) || ATTR_LEVELS.includes(lvXp)) && (
+          {(FEAT_LEVELS.includes(lvXp) || ATTR_LEVELS.includes(lvXp) || !isCompanion) && (
             <span className="nc-chips nc-chips-tight">
+              {/* GRW „Bevorzugte Klasse": je Aufstieg in dieser Klasse +1 TP oder +1 Fertigkeitsrang – leicht zu vergessen */}
+              {!isCompanion && <span className="nc-tag nc-tag-neutral" title={L ? 'GRW: Jeder Aufstieg in der bevorzugten Klasse gibt +1 Trefferpunkt oder +1 Fertigkeitsrang.' : 'Favored class: +1 HP or +1 skill rank per level'}>{L ? 'Je Stufe: +1 TP oder +1 Rang (bevorzugte Klasse)' : 'Per level: +1 HP or +1 rank (favored class)'}</span>}
               {FEAT_LEVELS.includes(lvXp) && <span className="nc-tag nc-tag-neutral">{L ? `Talent auf Stufe ${lvXp}` : `Feat at level ${lvXp}`}</span>}
               {ATTR_LEVELS.includes(lvXp) && <span className="nc-tag nc-tag-neutral">{L ? `Attributswerterhöhung auf Stufe ${lvXp}` : `Ability increase at ${lvXp}`}</span>}
             </span>

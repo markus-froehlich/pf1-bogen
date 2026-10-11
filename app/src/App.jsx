@@ -421,7 +421,7 @@ export default function App() {
               {skillsMode === 'skills' && (
                 <SkillsView char={char} attrs={computed} setSkill={setSkill}
                   setMultiSkill={setMultiSkill} addSkillSlot={addSkillSlot} removeSkillSlot={removeSkillSlot}
-                  armorCheckPenalty={armorCheckPenalty} totalFk={totalFk}
+                  armorCheckPenalty={armorCheckPenalty} totalFk={totalFk} update={update}
                   skillsBuff={buffTotals.skills_all ?? 0} companionRules={companionRules}
                   maxRanks={companionRules ? companionRules.hd : Math.max(1, baseValues.totalLevel)}
                   lang={lang} layout={layout} />

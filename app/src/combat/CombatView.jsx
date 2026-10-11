@@ -694,6 +694,9 @@ function HpEdit({ hp, nl, setHp, setNlDamage, attrs, baseValues, companionHd, fe
         <div className="nc-inline-note"><span>KO {sg(koMod)} × {lvls} {unit}</span><span className={koMod < 0 ? 'nc-neg' : ''}>{sg(koMod * lvls)} {L ? 'TP' : 'HP'}</span></div>
       )}
       {companionHd != null && <div className="nc-inline-note"><span>{companionHd} {L ? 'TW' : 'HD'}</span><span>W8</span></div>}
+      {companionHd == null && (baseValues?.totalLevel ?? 0) > 0 && (
+        <div className="nc-inline-note"><span>{L ? 'Bevorzugte Klasse: je Stufe +1 TP – falls nicht stattdessen +1 Fertigkeitsrang' : 'Favored class: +1 HP per level (or +1 skill rank instead)'}</span></div>
+      )}
       {hasToughness(feats) && (companionHd ?? baseValues?.totalLevel ?? 0) > 0 && (() => {
         // GRW Abhärtung: +3 TP, ab dem 4. Trefferwürfel +1 je weiterem TW → max(3, TW)
         const hd = companionHd ?? baseValues.totalLevel

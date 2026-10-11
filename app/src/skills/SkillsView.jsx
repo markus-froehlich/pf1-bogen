@@ -10,6 +10,7 @@ import { Sheet } from '../shell/Sheet.jsx'
 import { BreakdownSheet } from '../combat/BreakdownSheet.jsx'
 import { sg } from '../combat/breakdown.js'
 import { ATTR_NAMES } from '../char/charLogic.js'
+import { Stepper } from '../combat/ui.jsx'
 import './skills.css'
 
 const SKILLS = skillsData.skills
@@ -53,7 +54,7 @@ function skillBreakdown({ def, cv, entry, attrs, char, lang, instanceName }) {
   }
 }
 
-export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk = 0,
+export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk: baseFk = 0, update,
   skillsBuff = 0, companionRules = null, maxRanks = 20, lang, layout }) {
   const L = lang === 'de'
   const [filter, setFilter] = useState('alle')
@@ -69,6 +70,8 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
   }, [char, isCompanion])
   const computed = useMemo(() => computeAllSkills(char, attrs, SKILLS, classSet, armorCheckPenalty, condMods.skill_penalty, skillsBuff, condMods),
     [char, attrs, classSet, armorCheckPenalty, condMods, skillsBuff])
+  const favored = companionRules ? 0 : Number(char.skill_ranks_favored ?? 0)   // bevorzugte Klasse: +1 Rang je Stufe statt +1 TP
+  const totalFk = baseFk + favored
   const used = usedSkillRanks(char.skills)
   const left = totalFk - used
   const tone = left < 0 ? 'neg' : left === 0 ? 'ok' : 'warn'
@@ -108,6 +111,13 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
             <div className="nc-fp-row"><span className="nc-muted">{L ? 'Fertigkeitspunkte' : 'Skill points'}</span>
               <span className={`nc-fp-val is-${tone}`}>{used} / {totalFk} · {left >= 0 ? `${left} ${L ? 'frei' : 'free'}` : `${-left} ${L ? 'zu viel' : 'over'}`}</span></div>
             <div className="nc-fp-bar"><div className={`is-${tone}`} style={{ width: `${Math.min(100, (used / Math.max(1, totalFk)) * 100)}%` }} /></div>
+            {update && !companionRules && (
+              <div className="nc-bd-misc-row">
+                <span className="nc-bd-text"><span>{L ? 'Ränge aus bevorzugter Klasse' : 'Favored class ranks'}</span>
+                  <span className="nc-bd-sub">{L ? 'je Stufe +1 Rang – wenn statt +1 TP gewählt' : '+1 rank per level instead of +1 HP'}</span></span>
+                <Stepper value={favored} min={0} max={20} format={v => String(v)} onChange={v => update({ skill_ranks_favored: v })} label={L ? 'Ränge aus bevorzugter Klasse' : 'Favored class ranks'} />
+              </div>
+            )}
           </div>
         )}
         <div className="nc-seg is-full">
