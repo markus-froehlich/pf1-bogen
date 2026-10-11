@@ -57,8 +57,8 @@ function FeatEditor({ feat, preset, slots = [], slotName, onSave, onDelete, onCl
       {preset?.autoWhy && <span className="nc-hint">{preset.autoWhy}</span>}
       {slots.length > 0 && !preset?.autoWhy && <>
         <ChipsField label={L ? 'Zählt als' : 'Counts as'} value={d.slot ?? ''} onChange={v => set({ slot: v })}
-          options={[['', L ? 'Frei gewählt (Stufe/Volk)' : 'Free choice'], ...slots.map(sl => [sl.key, slotName(sl)])]} />
-        {d.slot && <span className="nc-hint">{L ? 'Erlaubt: ' : 'Allowed: '}{slots.find(sl => sl.key === d.slot)?.hint}</span>}
+          options={[['', L ? 'Normales Talent' : 'Regular feat'], ...slots.map(sl => [sl.key, slotName(sl)])]} />
+        <span className="nc-hint">{d.slot ? `${L ? 'Erlaubt: ' : 'Allowed: '}${slots.find(sl => sl.key === d.slot)?.hint ?? ''}` : (L ? 'Frei wählbar – alle 2 Stufen (1, 3, 5 …) plus Mensch-Bonustalent.' : 'Any feat – every odd level plus human bonus feat.')}</span>
       </>}
       {d.desc && <Field label={L ? 'Beschreibung (Datenbank)' : 'Description (database)'}><span className="nc-feat-desc">{d.desc}</span></Field>}
       <TextField area label={L ? 'Notiz' : 'Note'} value={d.notes} onChange={v => set({ notes: v })} placeholder={L ? 'z. B. gewählte Waffe, Stufe erhalten' : 'Note'} />
@@ -113,7 +113,7 @@ export function FeatsView({ char, setFeats, update, totalLevel = 0, lang, layout
         {plan.lines.length > 0 && (
           <div className="nc-feat-budget">
             {/* frei wählbare Talente (Stufe, Volk, manuell) als eine Gruppe */}
-            <span className="nc-feat-budget-line is-head"><span>{L ? 'Frei gewählt' : 'Free choice'}</span>
+            <span className="nc-feat-budget-line is-head"><span>{L ? 'Normale Talente (frei wählbar)' : 'Regular feats (any)'}</span>
               <span className={`nc-feat-budget-n ${asg.freeUsed > plan.free ? 'is-neg' : asg.freeUsed < plan.free ? 'is-open' : ''}`}>{asg.freeUsed} / {plan.free}</span></span>
             {plan.lines.filter(l => l.key === 'frei').map((l, i) => (
               <span key={`f${i}`} className="nc-feat-budget-line is-sub"><span>{l.label}{l.sub ? <span className="nc-muted"> · {l.sub}</span> : null}</span><span className="nc-feat-budget-n">+{l.n}</span></span>
