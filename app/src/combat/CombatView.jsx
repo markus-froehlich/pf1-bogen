@@ -223,7 +223,10 @@ export function CombatView(props) {
       val('rk', L ? 'RK' : 'AC', String(combat.rk), openBd('rk'), tag('rk')),
       val('touch', L ? 'Ber.' : 'Touch', String(combat.rk_touch), openBd('touch'), tag('rk_touch')),
       val('flat', L ? 'Fuß' : 'Flat', String(combat.rk_flat), openBd('flat'), tag('rk_flat')),
+      // SR, Resistenzen, Immunitäten nur wenn eingetragen; Tipp öffnet die Verteidigung zum Bearbeiten
       misc.dr_text ? val('dr', 'SR', misc.dr_text) : null,
+      misc.resist_text ? val('resist', L ? 'Resist.' : 'Resist', misc.resist_text) : null,
+      misc.immunity_text ? val('immun', L ? 'Immun' : 'Immune', misc.immunity_text) : null,
     ].filter(Boolean),
     move: [val('walk', L ? 'Grund' : 'Base', speed.speed != null ? `${speed.speed} m` : '—'),
       ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']]
