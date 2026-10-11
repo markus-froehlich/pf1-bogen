@@ -45,6 +45,9 @@ function baseMovement(species) {
 }
 
 function addTextBonuses(attrs, text) {
+  // „ST/GE+1" in den Artdaten ist die Tabellen-Spalte ST/GE (GRW Tab. 3-6) und wird unten über statBonuses
+  // addiert – hier entfernen, sonst zählt „GE+1" ein zweites Mal (Fehler bis 2026-10-11: GE zu hoch).
+  text = text.replace(/ST\s*\/\s*GE\s*[+-]\s*\d+/gi, '')
   for (const key of ['ST', 'GE', 'KO', 'IN', 'WE', 'CH']) {
     const match = text.match(new RegExp(`${key}\\s*([+-])\\s*(\\d+)`, 'gi')) ?? []
     for (const part of match) {
