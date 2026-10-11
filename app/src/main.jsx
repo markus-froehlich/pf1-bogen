@@ -2,6 +2,19 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { registerSW } from 'virtual:pwa-register'
+
+// Updates: neue Version sofort übernehmen (autoUpdate lädt die Seite einmal selbst neu, statt erst beim
+// zweiten Öffnen). Zusätzlich beim Zurückkehren in die App nach Updates schauen (Homescreen-App am iPhone).
+registerSW({
+  immediate: true,
+  onRegisteredSW(_url, registration) {
+    if (!registration) return
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') registration.update().catch(() => {})
+    })
+  },
+})
 
 // Alle Zahlenfelder (type=number oder inputMode numeric/decimal): beim Hineintippen/-klicken den
 // Inhalt markieren → die neue Zahl ersetzt den alten Wert, keine führende 0 mehr.
