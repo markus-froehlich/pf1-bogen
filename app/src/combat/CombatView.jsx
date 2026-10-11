@@ -780,12 +780,16 @@ export function DefenseSection({ char, setCombatMisc, gearItems, onEditGear, hbR
       <div className="nc-card nc-card-pad nc-gap">
         {[['rk_natural', L ? 'Natürliche Rüstung' : 'Natural armor', L ? 'z. B. Volk, Tiergestalt (Buffs zählen extra)' : 'e.g. race, wild shape'],
           ['rk_deflect', L ? 'Ablenkung (sonstige)' : 'Deflection (other)', L ? 'zählt nur, wenn höher als Ring/Buff' : 'counts only if higher than ring/buff'],
-          ['rk_misc', L ? 'Sonstiges' : 'Other', L ? 'zählt auf RK, Berührung und falschen Fuß' : 'applies to all AC values']].map(([key, label, hint]) => (
+          ['rk_misc', L ? 'Sonstiges' : 'Other', L ? 'zählt auf RK, Berührung und falschen Fuß' : 'applies to all AC values']].map(([key, label, hint]) => {
+          // Tiergefährte: berechneter Anteil steckt in rk_natural_companion; hier nur der manuelle Zusatz
+          const comp = key === 'rk_natural' ? Number(misc.rk_natural_companion ?? 0) : 0
+          return (
           <div key={key} className="nc-bd-misc-row">
-            <span className="nc-bd-text"><span>{label}</span><span className="nc-bd-sub">{hint}</span></span>
-            <Stepper value={Number(misc[key] ?? 0)} onChange={v => setCombatMisc(key, v)} min={key === 'rk_misc' ? -20 : 0} max={30} label={label} />
+            <span className="nc-bd-text"><span>{label}</span><span className="nc-bd-sub">{comp ? (L ? `zusätzlich zu ${sg(comp)} vom Tiergefährten (berechnet)` : `on top of ${sg(comp)} from companion`) : hint}</span></span>
+            <Stepper value={Number(misc[key] ?? 0) - comp} onChange={v => setCombatMisc(key, v)} min={key === 'rk_misc' ? -20 : 0} max={30} label={label} />
           </div>
-        ))}
+          )
+        })}
         {(() => {
           // Größe als Stepper wie die Zeilen darüber: − kleiner, + größer (GRW-Reihenfolge Mini … Kolossal)
           const keys = Object.keys(SIZE_MODS)

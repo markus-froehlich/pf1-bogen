@@ -105,8 +105,10 @@ export function combatBreakdown(key, { char, attrs, combat, baseValues, lang }) 
     }
     if (c.sizeModRK) lines.push({ kind: 'size', label: L ? 'Größe' : 'Size', sub: L ? 'Größenmodifikator' : 'Size modifier', value: c.sizeModRK })
     if (key !== 'touch') {
-      const natManual = Number(misc.rk_natural ?? 0)
-      if (natManual) lines.push({ kind: 'misc', label: L ? 'Natürliche Rüstung' : 'Natural armor', sub: L ? 'manuell' : 'manual', value: natManual })
+      const natCompanion = Number(misc.rk_natural_companion ?? 0)
+      const natManual = Number(misc.rk_natural ?? 0) - natCompanion
+      if (natCompanion) lines.push({ kind: 'base', label: L ? 'Natürliche Rüstung (Tiergefährte)' : 'Natural armor (companion)', sub: L ? 'Tierart + Tab. 3-6 + Talente' : 'species + table 3-6 + feats', value: natCompanion })
+      if (natManual) lines.push({ kind: 'misc', label: L ? 'Natürliche Rüstung' : 'Natural armor', sub: natCompanion ? (L ? 'manuell zusätzlich' : 'manual extra') : (L ? 'manuell' : 'manual'), value: natManual })
       lines.push(...buffLines(buffs, ['nat_armor'], lang))
     }
     lines.push(...deflectionLines(c, L, buffs))

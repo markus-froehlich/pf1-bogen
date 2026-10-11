@@ -135,6 +135,28 @@ export function CharView(props) {
     attrs: (<>
       <span className="nc-label">{L ? 'Attribute' : 'Abilities'}</span>
       {isCompanion && <CompanionAdvancementPanel rules={companionRules} lang={lang} tricks={char.companion?.tricks ?? []} onTricksChange={tricks => update({ companion: { tricks } })} />}
+      {isCompanion && companionRules?.abilityIncreaseCount > 0 && (() => {
+        // GRW Tab. 3-6: „Erhöhung eines Attributwertes" auf Gefährtenstufe 4, 9, 14, 20 – je +1 auf ein Attribut nach Wahl
+        const picks = companionRules.choices?.abilityChoices ?? []
+        const setPick = (i, k) => {
+          const next = [...picks]; next[i] = k
+          update({ companion: { choices: { ...(char.companion?.choices ?? {}), abilityChoices: next } } })
+        }
+        return (
+          <div className="nc-card nc-card-pad nc-gap">
+            <span className="nc-edit-label">{L ? 'Attributserhöhungen (GRW Tab. 3-6)' : 'Ability increases'}</span>
+            {Array.from({ length: companionRules.abilityIncreaseCount }, (_, i) => (
+              <div key={i} className="nc-bd-misc-row">
+                <span className="nc-bd-text"><span>{L ? `Stufe ${[4, 9, 14, 20][i]}` : `Level ${[4, 9, 14, 20][i]}`}</span>
+                  <span className="nc-bd-sub">{picks[i] ? `+1 ${picks[i]}` : (L ? 'noch nicht gewählt' : 'not chosen yet')}</span></span>
+                <span className="nc-chips">{ATTRS.map(k => (
+                  <button key={k} className={`nc-chip ${picks[i] === k ? 'is-on' : ''}`} aria-pressed={picks[i] === k} onClick={() => setPick(i, k)}>{k}</button>
+                ))}</span>
+              </div>
+            ))}
+          </div>
+        )
+      })()}
       <div className={`nc-attr-grid ${layout === 'phone' ? '' : 'is-3'}`}>
         {ATTRS.map(k => {
           const a = attrs[k]
@@ -147,14 +169,16 @@ export function CharView(props) {
                 <span className="nc-attr-names"><span className="nc-attr-key">{k}</span><span className="nc-attr-name">{ATTR_NAMES[k][L ? 0 : 1]}</span></span>
                 <span className={`nc-mod-pill ${tone}`}>{sg(effMod)}</span>
               </button>
-              <div className="nc-attr-foot">
+              {isCompanion ? (
+                <div className="nc-attr-foot is-readonly"><span className="nc-attr-score">{a.score}</span></div>
+              ) : <div className="nc-attr-foot">
                 <button className="nc-step-btn" onClick={() => setAttr(k, Math.max(1, a.score - 1))} aria-label="−"><Minus /></button>
                 <span className="nc-attr-score-wrap">
                   <input className="nc-attr-score" inputMode="numeric" value={a.score} aria-label={ATTR_NAMES[k][0]}
                     onChange={e => { const v = e.target.value.replace(/\D/g, ''); if (v !== '') setAttr(k, Math.min(50, Number(v))) }} />
                 </span>
                 <button className="nc-step-btn" onClick={() => setAttr(k, Math.min(50, a.score + 1))} aria-label="+"><Plus /></button>
-              </div>
+              </div>}
               {(a.buffed !== a.score || condDelta) ? (
                     <span className="nc-attr-tags">
                       <ValueTags buff={a.buffed - a.score} cond={condDelta} />
@@ -165,7 +189,9 @@ export function CharView(props) {
           )
         })}
       </div>
-      <span className="nc-hint">{L ? 'Werte selbst eintragen, Modifikatoren werden berechnet. Volksboni werden nicht automatisch angewendet.' : 'Enter scores yourself; racial bonuses are not applied automatically.'}</span>
+      <span className="nc-hint">{isCompanion
+        ? (L ? 'Werte kommen automatisch aus Tierart und Gefährtenstufe (GRW Tab. 3-6); Erhöhungen oben wählen.' : 'Scores come from species and companion level; choose increases above.')
+        : (L ? 'Werte selbst eintragen, Modifikatoren werden berechnet. Volksboni werden nicht automatisch angewendet.' : 'Enter scores yourself; racial bonuses are not applied automatically.')}</span>
     </>),
     xp: (<>
       {!isCompanion && <>

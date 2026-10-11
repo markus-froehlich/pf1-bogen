@@ -14,6 +14,9 @@ const PROGRESSION = [
   [15, 11, 9, 5, 9, 12, 6, 7], [16, 12, 10, 5, 10, 12, 6, 7],
 ]
 
+// Tab. 3-6 Spalte „Talente" (Gesamtzahl je Gefährtenstufe 1–20, GRW S. 43, geprüft 2026-10-11)
+export const COMPANION_FEATS = [1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 8, 8, 8]
+
 const SIZE_MODS = { klein: [1, -1], mittelgroß: [0, 0], gross: [-1, 1], groß: [-1, 1], riesig: [-2, 2] }
 const normalise = value => String(value ?? '').trim().toLowerCase()
 

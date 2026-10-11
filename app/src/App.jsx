@@ -295,7 +295,10 @@ export default function App() {
     // per-level bonuses + ability-increase choices) — like RK/KMB/HD, they're not meant to
     // be hand-edited, so a stale score from an earlier level never lingers after a level change.
     attributes: companionRules.attrs,
-    combat_misc: { ...companionRules.combatMisc, ...char.combat_misc },
+    // Natürliche Rüstung: berechnet (Art + Tab. 3-6 + Talente); das manuelle Feld zählt nur zusätzlich
+    combat_misc: { ...companionRules.combatMisc, ...char.combat_misc,
+      rk_natural: companionRules.combatMisc.rk_natural + Number(char.combat_misc?.rk_natural || 0),
+      rk_natural_companion: companionRules.combatMisc.rk_natural },
     meta: { ...char.meta, level: companionRules.level, race: companionRules.size },
   } : char
   const buffTotals = computeBuffTotals(char.active_buffs ?? [])

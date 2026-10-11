@@ -96,3 +96,4 @@
 .nc-species-list { max-height: 22rem; overflow-y: auto; }
 .nc-attr-tags { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem; }
 .nc-attr-eff { font-size: 0.75rem; color: var(--color-neutral-300); font-variant-numeric: tabular-nums; }
+.nc-attr-foot.is-readonly { justify-content: center; } .nc-attr-foot.is-readonly .nc-attr-score { display: inline-flex; align-items: center; justify-content: center; }

@@ -21,6 +21,7 @@
 import featsData from '../data/feats.json'
 import { chosenDomains } from '../spells/domainSpells.js'
 import { EXTRA_CLASS_FEATS, EXTRA_NO_FEATS } from './classFeatsExtra.js'
+import { COMPANION_FEATS } from './companions.js'
 
 const at = (levels, lv) => levels.filter(x => x <= lv).length
 const range = (from, to, step) => Array.from({ length: Math.floor((to - from) / step) + 1 }, (_, i) => from + i * step)
@@ -99,6 +100,14 @@ export function featPlan(char, totalLevel, lang = 'de') {
   const auto = []
   const slots = []
   if (!totalLevel) return { total: 0, lines, auto, slots, free: 0 }
+  // Tiergefährte: Talente nach GRW Tab. 3-6 (eigene Spalte), keine Volks-/Klassenregeln
+  if (char.companion?.kind) {
+    const n = COMPANION_FEATS[Math.min(20, Math.max(1, totalLevel)) - 1]
+    lines.push({ key: 'frei', label: L ? `Tiergefährte Stufe ${totalLevel}` : `Companion level ${totalLevel}`, sub: L ? 'GRW Tab. 3-6' : 'Core table 3-6', n })
+    const extra = Number(char.feats_extra ?? 0)
+    if (extra) lines.push({ key: 'frei', label: L ? 'Weitere Bonustalente (manuell)' : 'Other bonus feats (manual)', n: extra })
+    return { total: n + extra, lines, auto, slots, free: n + extra }
+  }
   let free = Math.ceil(totalLevel / 2)
   lines.push({ key: 'frei', label: L ? `Stufe ${totalLevel}` : `Level ${totalLevel}`, sub: L ? 'Talente auf Stufe 1, 3, 5 …' : 'Feats at 1, 3, 5 …', n: free })
   const race = RACE_BONUS[char.meta?.race]
