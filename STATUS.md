@@ -50,7 +50,9 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
 - **Nach dem Merge (2026-09-26):** Zauber vormerken („für den nächsten Zug“): Lesezeichen an jedem Zauber,
   Liste oben im Zauber-Tab mit „Wirken“ (spontan: Platz des Grades, vorbereitet: nächstes Exemplar abhaken);
   `spellbook(.others[klasse]).marks = [{lv, spell_id}]`.
-- **Ideen für später:** eigene Ansichten/Vorlagen am Desktop; Kacheln für Zauber-Tab/Inventar
+- **Ideen für später:** Talent-Boni automatisch erkennen (Verbesserte Initiative auch als „Verb. Initiative K“,
+  Große Zähigkeit, Blitzschnelle Reflexe, Eiserner Wille; mit Schutz vor Doppelzählung bei händischen
+  „Sonstiges“-Werten/Buffs) – Nutzer trägt vorerst händisch ein (2026-10-11); eigene Ansichten/Vorlagen am Desktop; Kacheln für Zauber-Tab/Inventar
   bewusst verworfen (dort Listen mit direkten Knöpfen; Verbrauchsgüter laufen als Ressourcen im Kampf-Tab).
 
 ## Entscheidungen (festgezurrt, siehe AGENTS.md)
