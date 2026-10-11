@@ -132,7 +132,7 @@ export function WeaponEditor({ slot, index, char, attrs, bab, condMods, buffTota
   const autoRanged = def ? def.str_bonus_mult === 0 : false
   const isRanged = d.is_ranged ?? autoRanged
   const dmgKey = SIZE_TO_DMG[String(Number(char.combat_misc?.size_mod_rk ?? 0))] ?? 'm'
-  const result = def ? computeWeaponAttack({ ...d, is_ranged: isRanged, str_mult: weaponStrMult(def, d) }, attrs, bab, condMods, buffTotals.attack ?? 0, buffTotals.damage ?? 0) : null
+  const result = def ? computeWeaponAttack({ ...d, is_ranged: isRanged, str_mult: weaponStrMult(def, d), size_mod: Number(char.combat_misc?.size_mod_rk ?? 0) }, attrs, bab, condMods, buffTotals.attack ?? 0, buffTotals.damage ?? 0) : null
   const dice = def?.damage?.[dmgKey] ?? def?.damage?.m ?? '—'
   const items = all.map(w => ({ id: w.id, label: w.name?.de ?? w.id, w }))
   return (

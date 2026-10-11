@@ -177,7 +177,7 @@ export function PrintView({ char, computed, baseValues, combat, lang, onClose })
               {weapons.filter(w => w.weapon_id).length === 0
                 ? <div className="pv-empty">—</div>
                 : weapons.filter(w => w.weapon_id).map((w, i) => {
-                  const comp = computeWeaponAttack(w, computed, baseValues.bab)
+                  const comp = computeWeaponAttack({ ...w, size_mod: Number(char.combat_misc?.size_mod_rk ?? 0) }, computed, baseValues.bab)
                   return (
                     <div key={i} className="pv-weapon">
                       <b>{comp.name ?? w.weapon_id}</b>

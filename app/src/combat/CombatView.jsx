@@ -58,9 +58,10 @@ function weaponRows({ char, attrs, baseValues, condMods, buffTotals, weaponMap, 
   const L = lang === 'de'
   const misc = char.combat_misc ?? {}
   const dmgKey = SIZE_TO_DMG[String(Number(misc.size_mod_rk ?? 0))] ?? 'm'
+  const sizeMod = Number(misc.size_mod_rk ?? 0)   // Größenmodifikator auf Angriffe = der auf die RK (GRW)
   const rows = []
   for (const attack of companionAttacks ?? []) {
-    const slot = { weapon_id: `companion_${attack.name}`, str_mult: attack.strMult }
+    const slot = { weapon_id: `companion_${attack.name}`, str_mult: attack.strMult, size_mod: sizeMod }
     const result = computeWeaponAttack(slot, attrs, baseValues.bab, condMods, buffTotals.attack ?? 0, buffTotals.damage ?? 0)
     rows.push({ key: `nat:${attack.name}`, name: attack.name, natural: true, slot, result, isRanged: false,
       sub: `${L ? 'Natürlich' : 'Natural'}${attack.special ? ` · ${attack.special}` : ''}`,
@@ -71,7 +72,7 @@ function weaponRows({ char, attrs, baseValues, condMods, buffTotals, weaponMap, 
     if (!def) return
     const isRanged = slot.is_ranged != null ? slot.is_ranged : def.str_bonus_mult === 0
     const strMult = weaponStrMult(def, slot)
-    const s = { ...slot, is_ranged: isRanged, str_mult: strMult }
+    const s = { ...slot, is_ranged: isRanged, str_mult: strMult, size_mod: sizeMod }
     const result = computeWeaponAttack(s, attrs, baseValues.bab, condMods, buffTotals.attack ?? 0, buffTotals.damage ?? 0)
     const noBuff = computeWeaponAttack(s, deltas.noBuffAttrs, baseValues.bab, condMods, 0, 0)
     const noCond = computeWeaponAttack(s, attrs, baseValues.bab, {}, buffTotals.attack ?? 0, buffTotals.damage ?? 0)

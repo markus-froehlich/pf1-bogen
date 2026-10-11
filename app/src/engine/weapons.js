@@ -30,6 +30,7 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
   const misc      = Number(slot.misc_attack  ?? 0)
   const dmgMisc   = Number(slot.misc_damage  ?? 0)
   const offHand   = slot.off_hand  ?? false
+  const sizeMod   = Number(slot.size_mod ?? 0)   // GRW: Größenmodifikator (wie RK: klein +1, groß −1)
 
   // Attack ability
   const attackMod = (isRanged && !isThrWn) ? GEmod
@@ -40,13 +41,14 @@ export function computeWeaponAttack(slot, attrs, bab, condMods = {}, extraAttack
   const damageMod = isRanged ? (slot.composite_str ?? 0)
                   : Math.floor(STmod * strMult)
 
-  const attackBonus = bab + attackMod + enh + mwAttack + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + (isRanged ? 0 : (condMods.melee_attack ?? 0)) + extraAttack
+  const attackBonus = bab + attackMod + sizeMod + enh + mwAttack + misc + (offHand ? -4 : 0) + (condMods.attack ?? 0) + (isRanged ? 0 : (condMods.melee_attack ?? 0)) + extraAttack
   const totalDmgMod = damageMod + enh + dmgMisc + (condMods.damage ?? 0) + extraDamage
 
   return {
     attack_bonus: attackBonus,
     damage_mod:   totalDmgMod,
     attack_mod:   attackMod,
+    size_mod:     sizeMod,
     damage_mod_str: damageMod,
     enh,
     attack_str:      signedStr(attackBonus),

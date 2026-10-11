@@ -181,6 +181,7 @@ export function weaponBreakdown({ name, result, slot, bab, isRanged, finesse, co
     { kind: 'attr', label: isRanged && !slot.is_thrown ? (L ? 'Geschicklichkeit' : 'Dexterity') : finesse ? (L ? 'Stärke/GE (Finesse)' : 'Str/Dex (finesse)') : (L ? 'Stärke' : 'Strength'),
       sub: L ? 'Attribut' : 'Ability', value: result.attack_mod },
   ]
+  if (result.size_mod) lines.push({ kind: 'size', label: L ? 'Größe' : 'Size', sub: L ? 'Größenmodifikator' : 'Size modifier', value: result.size_mod })
   const enh = Number(slot.enhancement ?? 0)
   if (enh) lines.push({ kind: 'gear', label: L ? 'Verzauberung' : 'Enhancement', sub: L ? 'Waffe' : 'Weapon', value: enh })
   else if (slot.mw) lines.push({ kind: 'gear', label: L ? 'Meisterarbeit' : 'Masterwork', sub: L ? 'Waffe' : 'Weapon', value: 1 })
