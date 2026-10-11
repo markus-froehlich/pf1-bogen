@@ -99,7 +99,7 @@ export function CombatView(props) {
     char, rulesChar, attrs, combat, baseValues, condMods, buffTotals, lang, layout,
     setCombatMisc, setHp, setNlDamage, setConditions, setActiveBuffs, setResources, setWeapons, setGearItems,
     hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier, applyCarryMovement,
-    companionHd = null, companionAttacks = [], casterLevel = 1,
+    companionHd = null, companionAttacks = [], casterLevel = 1, conditionalSaves = [],
     order, onMove, onResetOrder, hidden = new Set(), onToggleHidden,
   } = props
   const L = lang === 'de'
@@ -217,7 +217,9 @@ export function CombatView(props) {
       val('kmb', L ? 'KMB' : 'CMB', sg(combat.kmb), openBd('kmb'), tag('kmb')),
       val('kmv', L ? 'KMV' : 'CMD', String(combat.kmv), openBd('kmv'), tag('kmv')),
     ],
-    saves: [['fort', L ? 'Zäh' : 'Fort'], ['ref', 'Ref'], ['will', L ? 'Wil' : 'Will']].map(([k, l]) => val(k, l, sg(combat[k]), openBd(k), tag(k))),
+    saves: [...[['fort', L ? 'Zäh' : 'Fort'], ['ref', 'Ref'], ['will', L ? 'Wil' : 'Will']].map(([k, l]) => val(k, l, sg(combat[k]), openBd(k), tag(k))),
+      // bedingte Boni (nur in bestimmten Fällen) als eigene Kachel; Tipp zeigt die Regel
+      ...conditionalSaves.map(c => ({ key: c.key, label: c.label, value: c.value, tone: 'cond-bonus', onClick: () => toast(c.info) }))],
     atk: attacks.length ? attacks.map(a => ({ ...val(a.key, a.name, a.result.full_attack_str, openBd(a.key)), sub: a.dmg, tone: a.cond < 0 ? 'down' : a.buff > 0 ? 'up' : '' })) : (L ? 'keine' : 'none'),
     def: [
       val('rk', L ? 'RK' : 'AC', String(combat.rk), openBd('rk'), tag('rk')),

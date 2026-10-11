@@ -332,3 +332,4 @@
 .nc-sum-chip.is-add { background: transparent; outline: 1px dashed var(--color-accent-700); outline-offset: -1px; color: var(--color-accent-200); }
 .nc-sum-chip-sub { color: var(--color-neutral-400); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
 .nc-section-editor > .nc-sheet-titlebar .nc-chips { align-items: center; flex-wrap: nowrap; }
+.nc-sum-chip.is-cond-bonus { background: transparent; outline: 1px dashed var(--color-neutral-700); outline-offset: -1px; } .nc-sum-chip.is-cond-bonus b { color: var(--color-accent-200); }
