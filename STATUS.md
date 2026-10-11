@@ -50,6 +50,10 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
 - **Nach dem Merge (2026-09-26):** Zauber vormerken („für den nächsten Zug“): Lesezeichen an jedem Zauber,
   Liste oben im Zauber-Tab mit „Wirken“ (spontan: Platz des Grades, vorbereitet: nächstes Exemplar abhaken);
   `spellbook(.others[klasse]).marks = [{lv, spell_id}]`.
+- **2026-10-11:** Tiergefährten-GE-Fehler behoben (`engine/companions.js`: „ST/GE+n“ der Artdaten wurde bei GE
+  zusätzlich zu Tab. 3-6 addiert, alle 92 Arten); Erinnerung bevorzugte Klasse (EP-Bereich, TP-Fenster,
+  Fertigkeiten-Zähler `char.skill_ranks_favored`); Abhärtung-Hinweis nach GRW (max(3, TW)); Resist./Immun-Kacheln;
+  „Normales Talent“ statt „Frei gewählt“.
 - **Ideen für später:** Talent-Boni automatisch erkennen (Verbesserte Initiative auch als „Verb. Initiative K“,
   Große Zähigkeit, Blitzschnelle Reflexe, Eiserner Wille; mit Schutz vor Doppelzählung bei händischen
   „Sonstiges“-Werten/Buffs) – Nutzer trägt vorerst händisch ein (2026-10-11); eigene Ansichten/Vorlagen am Desktop; Kacheln für Zauber-Tab/Inventar
