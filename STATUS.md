@@ -54,6 +54,12 @@ Vorgabe: `docs/design/mobile_redesign/` (README = Spec, AUFTRAG = Arbeitsauftrag
   zusätzlich zu Tab. 3-6 addiert, alle 92 Arten); Erinnerung bevorzugte Klasse (EP-Bereich, TP-Fenster,
   Fertigkeiten-Zähler `char.skill_ranks_favored`); Abhärtung-Hinweis nach GRW (max(3, TW)); Resist./Immun-Kacheln;
   „Normales Talent“ statt „Frei gewählt“.
+- **Bedingte Boni (2026-10-11):** `engine/condBonuses.js` + `combat/CondBonusEditor.jsx`; eigene Einträge
+  `char.cond_bonuses` je Aufschlüsselung (RW, RK, Init, Angriff, KMB/KMV, Fertigkeiten), zählen nicht in Werte,
+  Kachel in der Übersicht. Automatisch nach GRW: Völker (Zwerg, Elf/Halb-Elf, Gnom, Halbling), Fallengespür
+  (Barbar+Schurke addiert), Unbeugsamer Wille, Bewandert, Tapferkeit, Ruhiger Geist, Lockruf, Hingabe. Nicht
+  automatisch: Blutlinien-Boni, Erzfeind/Gelände (gewählte Werte). Tiergefährte: Attributserhöhungen wählbar,
+  Talente nach Tab. 3-6 (`COMPANION_FEATS`), nat. Rüstung berechnet + manueller Zusatz.
 - **Ideen für später:** Talent-Boni automatisch erkennen (Verbesserte Initiative auch als „Verb. Initiative K“,
   Große Zähigkeit, Blitzschnelle Reflexe, Eiserner Wille; mit Schutz vor Doppelzählung bei händischen
   „Sonstiges“-Werten/Buffs) – Nutzer trägt vorerst händisch ein (2026-10-11); eigene Ansichten/Vorlagen am Desktop; Kacheln für Zauber-Tab/Inventar
