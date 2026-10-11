@@ -31,6 +31,7 @@ import { CharView } from './char/CharView.jsx'
 import { Wizard } from './char/Wizard.jsx'
 import { MORE_PAGES } from './shell/morePages.js'
 import { featBudget as featBudgetOf, featCount } from './engine/featBudget.js'
+import { allCondBonuses } from './engine/condBonuses.js'
 import { CombatView } from './combat/CombatView.jsx'
 import { castingStatOf } from './engine/spellSlots.js'
 import { COMBAT_SECTIONS, migrateCombatPrefs } from './combat/sections.js'
@@ -302,6 +303,8 @@ export default function App() {
     meta: { ...char.meta, level: companionRules.level, race: companionRules.size },
   } : char
   const buffTotals = computeBuffTotals(char.active_buffs ?? [])
+  // bedingte Boni (eigene + aus Regeln) – zählen nicht in Werte, nur Anzeige
+  const condBonuses = allCondBonuses({ char, companionRules, lang })
   const computed   = computeAttributes(rulesChar, buffTotals)
   const baseValues = companionRules?.baseValues ?? computeBABAndSaves(char)
   const combat     = computeCombat(rulesChar, computed, baseValues, buffTotals)
@@ -404,14 +407,7 @@ export default function App() {
               hbRaces={hb.races} hbArmor={hb.armor} hbWeapons={hb.weapons}
               encumbranceTier={encumbranceTier} applyCarryMovement={applyCarryMovement}
               companionHd={companionRules?.hd ?? null} companionAttacks={companionRules?.attacks ?? []}
-              conditionalSaves={[
-                // Bedingte RW-Boni (GRW): zählen nicht in den Wert, werden in der Übersicht angezeigt
-                ...(companionRules?.level >= 6 ? [{ key: 'hingabe', label: L ? 'Wil gg. Verzauberung' : 'Will vs. enchantment', value: '+4',
-                  info: L ? 'Hingabe (GRW Tab. 3-6): +4 Moralbonus auf Willenswürfe gegen Verzauberungen und Verzauberungseffekte.' : 'Devotion: +4 morale bonus on Will saves vs. enchantments.' }] : []),
-                ...(!companionRules && (char.meta.classes ?? []).filter(c => c.id === 'druide').reduce((a, c) => a + Number(c.level || 0), 0) >= 4
-                  ? [{ key: 'lockruf', label: L ? 'RW gg. Feen/Pflanzen' : 'Saves vs. fey/plants', value: '+4',
-                    info: L ? 'Lockruf der Natur widerstehen (GRW, Druide ab Stufe 4): +4 auf Rettungswürfe gegen zauberähnliche und übernatürliche Fähigkeiten von Feenwesen und gegen Zauber, die Pflanzen betreffen.' : 'Resist nature\'s lure: +4 vs. fey abilities and plant spells.' }] : []),
-              ]}
+              condBonuses={condBonuses} update={update}
               order={combatOrder} onMove={moveCombat} onResetOrder={resetCombatOrder}
               hidden={combatHidden} onToggleHidden={toggleCombatHidden}
               setWeapons={setWeapons} setGearItems={setGearItems} hbShields={hb.shields}
@@ -432,7 +428,7 @@ export default function App() {
               {skillsMode === 'skills' && (
                 <SkillsView char={char} attrs={computed} setSkill={setSkill}
                   setMultiSkill={setMultiSkill} addSkillSlot={addSkillSlot} removeSkillSlot={removeSkillSlot}
-                  armorCheckPenalty={armorCheckPenalty} totalFk={totalFk} update={update}
+                  armorCheckPenalty={armorCheckPenalty} totalFk={totalFk} update={update} condBonuses={condBonuses}
                   skillsBuff={buffTotals.skills_all ?? 0} companionRules={companionRules}
                   maxRanks={companionRules ? companionRules.hd : Math.max(1, baseValues.totalLevel)}
                   lang={lang} layout={layout} />

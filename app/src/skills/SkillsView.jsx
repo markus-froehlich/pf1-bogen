@@ -11,6 +11,7 @@ import { BreakdownSheet } from '../combat/BreakdownSheet.jsx'
 import { sg } from '../combat/breakdown.js'
 import { ATTR_NAMES } from '../char/charLogic.js'
 import { Stepper } from '../combat/ui.jsx'
+import { CondBonusEditor } from '../combat/CondBonusEditor.jsx'
 import './skills.css'
 
 const SKILLS = skillsData.skills
@@ -54,7 +55,7 @@ function skillBreakdown({ def, cv, entry, attrs, char, lang, instanceName }) {
   }
 }
 
-export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk: baseFk = 0, update,
+export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot, removeSkillSlot, armorCheckPenalty = 0, totalFk: baseFk = 0, update, condBonuses = [],
   skillsBuff = 0, companionRules = null, maxRanks = 20, lang, layout }) {
   const L = lang === 'de'
   const [filter, setFilter] = useState('alle')
@@ -147,6 +148,7 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
                   {isClass && <span className="nc-accent-soft">{L ? 'Klasse' : 'Class'}</span>}
                   {r.def.armor_check_penalty && <span>RM</span>}
                   {r.def.trained_only && <span>{L ? 'geübt' : 'trained'}</span>}
+                  {condBonuses.filter(e => e.target === `skill:${r.def.id}`).map(e => <span key={e.id} className="nc-skill-cond-tag">{sg(Number(e.value) || 0)} {e.text}</span>)}
                   {r.cv.ranks > 0 && <span className="nc-skill-rank-tag">{r.cv.ranks} {L ? (r.cv.ranks === 1 ? 'Rang' : 'Ränge') : (r.cv.ranks === 1 ? 'rank' : 'ranks')}</span>}
                 </span>
               </span>
@@ -185,6 +187,8 @@ export function SkillsView({ char, attrs, setSkill, setMultiSkill, addSkillSlot,
                 <button className="nc-step-btn" onClick={() => setField('misc', Number(open.entry?.misc ?? 0) + 1)} aria-label="+"><Plus /></button>
               </div>
             </div>
+            {update && <CondBonusEditor target={`skill:${open.def.id}`} all={condBonuses} manual={char.cond_bonuses ?? []}
+              onChange={list => update({ cond_bonuses: list })} lang={lang} />}
             <input className="nc-input" value={open.entry?.note ?? ''} onChange={e => setField('note', e.target.value)} placeholder={L ? 'Notiz, z. B. Talent „Fertigkeitsfokus“' : 'Note'} />
             {!isCompanion && !open.multi && (
               <button className={`nc-chip ${char.skills?.[open.def.id]?.is_class ? 'is-on' : ''}`} onClick={() => setSkill(open.def.id, 'is_class', !char.skills?.[open.def.id]?.is_class)}>

@@ -333,3 +333,10 @@
 .nc-sum-chip-sub { color: var(--color-neutral-400); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
 .nc-section-editor > .nc-sheet-titlebar .nc-chips { align-items: center; flex-wrap: nowrap; }
 .nc-sum-chip.is-cond-bonus { background: transparent; outline: 1px dashed var(--color-neutral-700); outline-offset: -1px; } .nc-sum-chip.is-cond-bonus b { color: var(--color-accent-200); }
+/* Bedingte Boni (Aufschlüsselung) */
+.nc-cond-bonus { display: flex; flex-direction: column; gap: 0.5rem; }
+.nc-cond-bonus-row { display: flex; align-items: center; gap: 0.625rem; min-height: 2.75rem; padding: 0 0.25rem 0 0.75rem; border-radius: var(--radius-md); outline: 1px dashed var(--color-neutral-700); outline-offset: -1px; }
+.nc-cond-bonus-row b { font-variant-numeric: tabular-nums; color: var(--color-accent-200); min-width: 2rem; }
+.nc-cond-bonus-text { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.nc-cond-bonus-add { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.nc-cond-bonus-add .nc-input { flex: 1 1 10rem; min-width: 0; }

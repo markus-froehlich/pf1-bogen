@@ -9,6 +9,8 @@ import { computeAttributes, computeCombat, resolveGearItem } from '../engine/ind
 import { computeWeaponAttack, weaponStrMult, weaponCategory } from '../engine/weapons.js'
 import { BUFF_STATS, BUFF_TYPES, suppressedTargets } from '../engine/buffs.js'
 import { hasToughness } from '../engine/combat.js'
+import { targetForBd, targetLabel } from '../engine/condBonuses.js'
+import { CondBonusEditor } from './CondBonusEditor.jsx'
 import { classLabel } from '../engine/classes.js'
 import { CONDITIONS, CONFUSED_TABLE } from '../components/ConditionsPanel.jsx'
 import { Sheet } from '../shell/Sheet.jsx'
@@ -99,7 +101,7 @@ export function CombatView(props) {
     char, rulesChar, attrs, combat, baseValues, condMods, buffTotals, lang, layout,
     setCombatMisc, setHp, setNlDamage, setConditions, setActiveBuffs, setResources, setWeapons, setGearItems,
     hbRaces = [], hbArmor = [], hbShields = [], hbWeapons = [], encumbranceTier, applyCarryMovement,
-    companionHd = null, companionAttacks = [], casterLevel = 1, conditionalSaves = [],
+    companionHd = null, companionAttacks = [], casterLevel = 1, condBonuses = [], update,
     order, onMove, onResetOrder, hidden = new Set(), onToggleHidden,
   } = props
   const L = lang === 'de'
@@ -204,6 +206,12 @@ export function CombatView(props) {
   const openBd = key => () => setSheet({ type: 'bd', key })
   const val = (key, label, value, onClick, tags) => ({ key, label, value, onClick,
     tone: tags?.cond < 0 ? 'down' : tags?.buff > 0 ? 'up' : tags?.cond > 0 ? 'up' : tags?.buff < 0 ? 'down' : '' })
+  // bedingte Boni als gestrichelte Kacheln: Tipp öffnet die Aufschlüsselung (Regeln: Erklärung als Hinweis)
+  const BD_FOR = { fort: 'fort', ref: 'ref', will: 'will', rk: 'rk', init: 'init', kmb: 'kmb', kmv: 'kmv' }
+  const condChips = targets => condBonuses.filter(e => targets.includes(e.target)).map(e => ({
+    key: `cb:${e.id}`, label: `${targetLabel(e.target, L)} ${e.text}`, value: sg(Number(e.value) || 0), tone: 'cond-bonus',
+    onClick: e.info ? () => toast(e.info) : BD_FOR[e.target] ? openBd(BD_FOR[e.target]) : (attacks[0] ? openBd(attacks[0].key) : undefined),
+  }))
   const summaries = {
     hp: [
       { ...val('hp', L ? 'TP' : 'HP', `${hp.current}/${hp.max}`, () => { setPadMode('dmg'); setSheet({ type: 'pad' }) }), tone: hpTone === 'neg' ? 'down' : '' },
@@ -216,11 +224,11 @@ export function CombatView(props) {
       val('gab', L ? 'GAB' : 'BAB', sg(combat.bab)),
       val('kmb', L ? 'KMB' : 'CMB', sg(combat.kmb), openBd('kmb'), tag('kmb')),
       val('kmv', L ? 'KMV' : 'CMD', String(combat.kmv), openBd('kmv'), tag('kmv')),
+      ...condChips(['init', 'kmb', 'kmv']),
     ],
     saves: [...[['fort', L ? 'Zäh' : 'Fort'], ['ref', 'Ref'], ['will', L ? 'Wil' : 'Will']].map(([k, l]) => val(k, l, sg(combat[k]), openBd(k), tag(k))),
-      // bedingte Boni (nur in bestimmten Fällen) als eigene Kachel; Tipp zeigt die Regel
-      ...conditionalSaves.map(c => ({ key: c.key, label: c.label, value: c.value, tone: 'cond-bonus', onClick: () => toast(c.info) }))],
-    atk: attacks.length ? attacks.map(a => ({ ...val(a.key, a.name, a.result.full_attack_str, openBd(a.key)), sub: a.dmg, tone: a.cond < 0 ? 'down' : a.buff > 0 ? 'up' : '' })) : (L ? 'keine' : 'none'),
+      ...condChips(['fort', 'ref', 'will', 'saves'])],
+    atk: attacks.length ? [...attacks.map(a => ({ ...val(a.key, a.name, a.result.full_attack_str, openBd(a.key)), sub: a.dmg, tone: a.cond < 0 ? 'down' : a.buff > 0 ? 'up' : '' })), ...condChips(['attack'])] : (L ? 'keine' : 'none'),
     def: [
       val('rk', L ? 'RK' : 'AC', String(combat.rk), openBd('rk'), tag('rk')),
       val('touch', L ? 'Ber.' : 'Touch', String(combat.rk_touch), openBd('touch'), tag('rk_touch')),
@@ -229,6 +237,7 @@ export function CombatView(props) {
       misc.dr_text ? val('dr', 'SR', misc.dr_text) : null,
       misc.resist_text ? val('resist', L ? 'Resist.' : 'Resist', misc.resist_text) : null,
       misc.immunity_text ? val('immun', L ? 'Immun' : 'Immune', misc.immunity_text) : null,
+      ...condChips(['rk']),
     ].filter(Boolean),
     move: [val('walk', L ? 'Grund' : 'Base', speed.speed != null ? `${speed.speed} m` : '—'),
       ...[['speed_fly', L ? 'Fliegen' : 'Fly'], ['speed_swim', L ? 'Schwimmen' : 'Swim'], ['speed_climb', L ? 'Klettern' : 'Climb'], ['speed_burrow', L ? 'Graben' : 'Burrow']]
@@ -591,9 +600,13 @@ export function CombatView(props) {
             </div>
           )
         })()}
-        {sheet?.type === 'bd' && (
+        {sheet?.type === 'bd' && (<>
           <BreakdownSheet bd={bd} misc={misc} onMisc={(k, v) => setCombatMisc(k, v)} lang={lang} />
-        )}
+          {update && targetForBd(sheet.key) && (
+            <CondBonusEditor target={targetForBd(sheet.key)} all={condBonuses} manual={char.cond_bonuses ?? []}
+              onChange={list => update({ cond_bonuses: list })} lang={lang} />
+          )}
+        </>)}
         {sheet?.type === 'conds' && (
           <div className="nc-sheet-body nc-gap">
             <div className="nc-sheet-titlebar"><span className="nc-sheet-title">{L ? 'Zustände' : 'Conditions'}</span>
