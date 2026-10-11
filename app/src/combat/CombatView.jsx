@@ -691,9 +691,11 @@ function HpEdit({ hp, nl, setHp, setNlDamage, attrs, baseValues, companionHd, fe
         <div className="nc-inline-note"><span>KO {sg(koMod)} × {lvls} {unit}</span><span className={koMod < 0 ? 'nc-neg' : ''}>{sg(koMod * lvls)} {L ? 'TP' : 'HP'}</span></div>
       )}
       {companionHd != null && <div className="nc-inline-note"><span>{companionHd} {L ? 'TW' : 'HD'}</span><span>W8</span></div>}
-      {hasToughness(feats) && (baseValues?.totalLevel ?? 0) > 0 && (
-        <div className="nc-inline-note"><span>{L ? 'Abhärtung' : 'Toughness'}: +1 × {baseValues.totalLevel} {L ? 'Stufen' : 'levels'}</span><span>+{baseValues.totalLevel} {L ? 'TP' : 'HP'}</span></div>
-      )}
+      {hasToughness(feats) && (companionHd ?? baseValues?.totalLevel ?? 0) > 0 && (() => {
+        // GRW Abhärtung: +3 TP, ab dem 4. Trefferwürfel +1 je weiterem TW → max(3, TW)
+        const hd = companionHd ?? baseValues.totalLevel
+        return <div className="nc-inline-note"><span>{L ? `Abhärtung: 3 + 1 je TW ab dem 4. (${hd} TW)` : `Toughness: 3 + 1 per HD above 3 (${hd} HD)`}</span><span>+{Math.max(3, hd)} {L ? 'TP' : 'HP'}</span></div>
+      })()}
     </div>
   )
 }
